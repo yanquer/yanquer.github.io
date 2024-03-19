@@ -1,0 +1,467 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li  class="active"><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>生成TLS(SSL)证书</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/an-quan.html">安全</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/an-quan.html">安全</a></li>
+												<li><a class="button button-alt" href="tag/tags.html">Tags</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>生成TLS(SSL)证书</h2>
+									<p>openssl见: <em>/docs/操作系统/linux/linux指令/openssl</em></p>
+<ul class="simple">
+<li>SSL: Secure Sockets Layer</li>
+<li>TLS: Transport Layer Security</li>
+</ul>
+<p>TLS使用非对称加密算法, 通常是RSA算法. 公钥、私钥、签名信息共同组成证书.</p>
+<p>签名信息包括如组织信息、CA机构、过期时间、版本等等一切能被客户端识别的信息</p>
+<div class="section" id="tls">
+<h2>TLS</h2>
+<p>TLS全称Transport Layer Security，是⽤于在联⽹计算机之间建⽴经过身份验证和加密的链接的协议。
+其前身是SSL(Secure Sockets Layer)，最初是由⽹景公司（Netscape）研发，
+于1999年被IETF（The Internet Engineering Task Force - 互联⽹⼯程任务组）标准化，定义为TLS 1.0 。
+⽬前最新版本为2018年发布的TLS 1.3，详情参⻅RFC 8446。</p>
+<p>TLS运⾏在TCP/IP层之上、应⽤层之下，为应⽤程序提供加密数据通道。HTTPS实际上就是HTTP
+over SSL，它使⽤默认端⼝443，⽽不是像HTTP那样使⽤端⼝80来和TCP/IP进⾏通信。HTTPS协
+议使⽤SSL在发送⽅把原始数据进⾏加密，然后在接受⽅进⾏解密，加密和解密需要发送⽅和接受
+⽅通过交换共知的密钥来实现，因此，所传送的数据不容易被⽹络⿊客截获和解密。</p>
+</div>
+<div class="section" id="tls-ssl-1">
+<h2>TLS(SSL)证书</h2>
+<p>TLS使⽤⾮对称加密算法，通常情况下是RSA算法，所以TLS中有私钥和公钥。
+公钥、私钥和签名信息共同组成⼀个证书，此处的签名信息包含诸多杂项，
+⽐如组织信息、CA机构、过期时间、版本等等⼀切能被客户端识别的信息。</p>
+<p>TLS证书并⾮私有格式，⽽是使⽤X.509证书。X.509 是公钥证书、数字⽂档的标准格式，他遵循
+链式签名原则。可安全地将加密密钥对与身份（如⽹站、个⼈或组织）相关联，详情参⻅RFC
+5280。X.509证书使⽤场景相当⼴泛，包括但不限于以下⼏种：</p>
+<ul class="simple">
+<li>⽤于经过身份验证和加密的 Web 浏览的 SSL/TLS 和 HTTPS</li>
+<li>通过 S/MIME 协议签名和加密的电⼦邮件</li>
+<li>⽂件签名</li>
+<li>客户端认证</li>
+<li>政府颁发的电⼦身份证</li>
+</ul>
+</div>
+<div class="section" id="section-1">
+<h2>文件格式说明</h2>
+<p>使用PKCS（The Public-Key Cryptography Standards）标准:</p>
+<dl class="docutils">
+<dt>CA：</dt>
+<dd><p class="first">证书认证中心；
+收到证书后需要去CA验证正确性、真实性、有效期等. 所以在公网上的通信, 一般都是需要拿自己的 <strong>.csr</strong> 文件去官方CA机构签名的.
+CA自身的分发及安全保证，一般是通过一些权威的渠道进行的，比如操作系统会内置一些官方的CA、浏览器也会内置一些CA.</p>
+<p class="last">根证书实际上是⾃签名证书，是CA机构颁发给⾃⼰的证书，是信任链的起始点。</p>
+</dd>
+<dt>X.509:</dt>
+<dd>一种通用的证书格式, 定义公钥证书格式的标准, 包含证书持有人的公钥, 加密算法等信息;</dd>
+<dt>pkcs1 ~ pkcs12:</dt>
+<dd>公钥加密(非对称加密)的一种标准(Public Key Cryptography Standards), 一般存储为 <cite>*.pN</cite>, 是包含证书和密钥的封装格式;</dd>
+<dt>.key:</dt>
+<dd>私钥文件，通常使用rsa算法，私钥需要自己保存，无需提交给CA机构</dd>
+<dt>.csr:</dt>
+<dd>证书签名请求（证书请求文件, certificate signing request），含有持有人的信息如国家、邮件、域名等. 生成该文件时需要用到自己的私钥。</dd>
+<dt>.crt:</dt>
+<dd>CA认证后的证书文件，certificate的缩写, 此格式一般用于 Linux;
+存储格式可以是 <strong>.pem</strong> 的Base64, 也可以是 <strong>.der</strong> 的二进制;
+存储内容为公钥信息 + 额外的其他信息（比如所属的实体，采用的加密解密算法等）;</dd>
+<dt>.cer:</dt>
+<dd>与 <strong>.crt</strong> 一致(只是使用平台的差别), 都源于 &quot;certificate&quot;, 一般用于 Windows;</dd>
+<dt>.crl:</dt>
+<dd>证书吊销列表，Certificate Revocation List的缩写</dd>
+<dt>.pem:</dt>
+<dd>&quot;Privacy-Enhanced Mail&quot;, 直译过来就是“隐私增强邮件”.
+证书或密钥的Base64文本存储格式, 可以单独存放证书或密钥, 也可以同时存放证书和密钥, 使用特定的开头和结尾行来标识内容类型(证书/密钥)。
+(与windows下使用.pfx类似，不同的是.pem使用base64字符存储，而.pfx使用二进制存储).</dd>
+<dt>.pfx:</dt>
+<dd>微软IIS的实现;</dd>
+<dt>.jks:</dt>
+<dd>Java的keytool实现的证书格式;</dd>
+<dt>.der:</dt>
+<dd>&quot;Distinguished Encoding Rules&quot;，直译为“可分辩编码规则”. 证书的二进制存储格式.
+最流行的编码格式.
+将 <strong>.der</strong> 转换为 <strong>Base64</strong> 编码则是 <strong>.pem</strong> 文件.</dd>
+</dl>
+<p>总得来说这些文件都与X.509证书和密钥文件有关，从文件编码上分，只有两大类:</p>
+<ul class="simple">
+<li>PEM格式：使用Base64 ASCII进行编码的纯文本格式</li>
+<li>DER格式：二进制格式</li>
+</ul>
+<div class="sidebar">
+<p class="first sidebar-title">文件实际内容查看与转换</p>
+<p>假设有一个baidu.crt文件， 这个crt文件的实际格式其实是pem(Base64格式),
+有一个der格式的文件baidu.der(二进制格式)想要看到这两个文件的实际内容，可以使用命令:</p>
+<pre class="literal-block">
+openssl x509 -in baidu.crt -text -noout
+openssl x509 -inform der -in baidu.der -text -noout
+</pre>
+<p>两者文件的转化，使用命令:</p>
+<pre class="last literal-block">
+# pem转der
+openssl x509 -outform der -in baidu.pem -out baidu.der
+# der转pem
+openssl x509 -inform der -in baidu.der -out baidu.crt
+</pre>
+</div>
+<p>而CRT, CER，KEY这几种证书和密钥文件，在存储为物理文件时，既可以是PEM格式，也可以DER格式。</p>
+<ul class="simple">
+<li>CER：一般用于windows的证书文件格式</li>
+<li>CRT：一般用于Linux的证书，包含公钥和主体信息</li>
+<li>KEY：一般用于密钥，特别是私钥</li>
+</ul>
+</div>
+<div class="section" id="section-2">
+<h2>对文件的加密解密</h2>
+<div class="section" id="section-3">
+<h3>生成公私钥对</h3>
+<blockquote>
+<p>我们生成一个RSA的公钥和密钥对:</p>
+<pre class="literal-block">
+openssl genpkey -algorithm rsa -out rsa_private.key
+</pre>
+<p>从该文件中，提取出公钥:</p>
+<pre class="literal-block">
+openssl rsa -pubout -in rsa_private.key  -out rsa_pub.key
+</pre>
+</blockquote>
+</div>
+<div class="section" id="section-4">
+<h3>文件加/解密</h3>
+<p>先生成一个测试文件:</p>
+<pre class="literal-block">
+echo &quot;a test&quot; &gt; text.txt
+</pre>
+<p>对该文件进行加密, 采用公钥对文件进行加密:</p>
+<pre class="literal-block">
+openssl rsautl -encrypt -in text.txt -inkey rsa_pub.key -pubin -out text.en
+</pre>
+<p>采用私钥解密文件:</p>
+<pre class="literal-block">
+openssl rsautl -decrypt -in text.en -inkey rsa_private.key
+a test
+</pre>
+<p>既然是非对称加密，那我们尝试下用私钥加密，用公钥解密。
+这里需要注意的是，私钥加密在openssl中对应的是-sign这个选项，公钥解密对应的是-verify这个选项，如下：</p>
+<p>用私钥对文件进行加密（签名）:</p>
+<pre class="literal-block">
+openssl rsautl -sign -in text.txt -inkey rsa_private.key -out text.en
+</pre>
+<p>用公钥对文件进行解密（校验）:</p>
+<pre class="literal-block">
+openssl rsautl -verify -in text.en -inkey rsa_pub.key -pubin
+this is a test
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">到这里可以看出这是有其他安全问题的: 公钥是公开分发的，
+你无法确定你收到的公钥是真实的, 是没有经过篡改的.</p>
+</div>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>服务器证书的生成</h2>
+<div class="section" id="ca-ca">
+<h3>生成CA根证书(模拟一个CA机构)</h3>
+<dl class="docutils">
+<dt>步骤:</dt>
+<dd><ol class="first last loweralpha simple">
+<li>生成CA私钥（.key）</li>
+<li>生成CA证书请求（.csr）</li>
+<li>自签名得到根证书（.crt）</li>
+</ol>
+</dd>
+</dl>
+<p>大致指令如下:</p>
+<pre class="literal-block">
+# Generate CA private key
+openssl genrsa -out ca.key 2048
+
+# Generate CSR
+# 这一步生成.csr文件时，需要在提示下输入组织相关的信息
+openssl req -new -key ca.key -out ca.csr
+
+# Generate Self Signed certificate（CA 根证书）
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">一般内网使用就使用自签名的证书, 公网用才会向CA机构申请</p>
+</div>
+</div>
+<div class="section" id="section-6">
+<h3>生成用户证书</h3>
+<dl class="docutils">
+<dt>步骤:</dt>
+<dd><ol class="first last loweralpha simple">
+<li>生成私钥（.key）</li>
+<li>生成证书请求（.csr）</li>
+<li>用CA根证书签名得到证书（.crt）</li>
+</ol>
+</dd>
+</dl>
+<p>大致指令如下:</p>
+<pre class="literal-block">
+# private key, 可以通过 `-passout pass:密码` 来指定密钥密码
+$openssl genrsa -des3 -out server.key 1024
+
+# 若需要生成公钥
+$openssl rsa -in server.key -pubout -out server_public.pem
+
+# generate csr
+$openssl req -new -key server.key -out server.csr
+
+# generate certificate
+# 使用了根证书ca.crt以及对应的私钥ca.key来进行签名，而不是用户的私钥server.key
+$openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>生成.pem文件</p>
+<p>有时需要用到pem格式的证书，可以用以下方式合并证书文件（crt）和私钥文件（key）来生成:</p>
+<pre class="last literal-block">
+cat server.crt server.key &gt; server.pem
+</pre>
+</div>
+<p>在创建证书的时候，各个值的设定可以是任意的，但是”Common Name“的值通
+常要包含服务器的 DNS 主机名。如果你只是在本机测试，那么就使用”localhost“，否
+则使用服务器的域名。</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://zhuanlan.zhihu.com/p/423506052">https://zhuanlan.zhihu.com/p/423506052</a></td>
+</tr>
+</tbody>
+</table>
+<p>或者用最少指令完成从ca签发到服务器证书生成:</p>
+<pre class="literal-block">
+# 生成CA证书和私钥, -nodes表示不加密, 默认是会加密的(就得输入密码才能进入下一步)
+# 若不是用 -nodes, 可以直接在命令行设置密码: `-passout pass:密码`
+# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ca.key -out ca.crt
+# -x509 表示直接使用该CSR生成自签名证书,而不需要第三方CA签名
+# -newkey表示生成新的私钥, rsa:2048 表示指定rsa算法, 长度为2048
+openssl req -x509 -days 365 -newkey rsa:2048 -keyout ca.key -out ca.crt
+
+# 作为CA,签名客户端证书
+openssl req -newkey rsa:2048 -nodes -keyout server.key -out server.csr
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -set_serial 01 -days 365 -out server.crt
+</pre>
+<p>还可以启动一个SSL/TLS服务器(不过不知道咋用):</p>
+<pre class="literal-block">
+# 或者服务器指定CA证书和私钥,以CA身份运行,验证客户端证书
+# 本地启动一个SSL/TLS服务器，并在这个服务器上提供4433端口用于加密通信
+openssl s_server -accept 4433 -cert ca.crt -key ca.key
+</pre>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,379 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>collections</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 10 三月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-10</div>
+									<h2>collections</h2>
+									<div class="section" id="deque">
+<h2>deque</h2>
+<p>队列</p>
+<ul class="simple">
+<li>在队列两端插入或删除元素时间复杂度都是 O(1)</li>
+<li>在列表的开头插入或删除元 素的时间复杂度为 O(N)</li>
+</ul>
+</div>
+<div class="section" id="defaultdict">
+<h2>defaultdict</h2>
+<p>具有默认值的字典</p>
+</div>
+<div class="section" id="ordereddict">
+<h2>OrderedDict</h2>
+<p>自排序的字典(保持插入时顺序)</p>
+<p>OrderedDict 内部维护着一个根据键插入顺序排序的双向链表。
+每次当一个新的 元素插入进来的时候，它会被放到链表的尾部。
+对于一个已经存在的键的重复赋值不会改变键的顺序。</p>
+<p>需要注意的是，一个 OrderedDict 的大小是一个普通字典的两倍，
+因为它内部维 护着另外一个链表。
+所以如果你要构建一个需要大量 OrderedDict 实例的数据结构的 时候
+(比如读取 100,000 行 CSV 数据到一个 OrderedDict 列表中去)，
+那么你就得仔 细权衡一下是否使用 OrderedDict 带来的好处要大过额外内存消耗的影响。</p>
+</div>
+<div class="section" id="counter">
+<h2>Counter</h2>
+<p>计算出现次数</p>
+<p>下面有一个 most_common() 返回出现次数最多的:</p>
+<pre class="literal-block">
+words = [
+    'look', 'into', 'my', 'eyes', 'look', 'into', 'my', 'eyes',
+    'the', 'eyes', 'the', 'eyes', 'the', 'eyes', 'not', 'around', 'the',
+    'eyes', &quot;don't&quot;, 'look', 'around', 'the', 'eyes', 'look', 'into',
+    'my', 'eyes', &quot;you're&quot;, 'under'
+]
+from collections import Counter
+word_counts = Counter(words)
+# 出现频率最高的 3 个单词
+top_three = word_counts.most_common(3)
+print(top_three)
+# Outputs [('eyes', 8), ('the', 5), ('look', 4)]
+</pre>
+<p>作为输入，Counter 对象可以接受任意的由可哈希(hashable)元素构成的序列 对象。
+在底层实现上，一个 Counter 对象就是一个字典，将元素映射到它出现的次数 上。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; word_counts['not'] 1
+&gt;&gt;&gt; word_counts['eyes'] 8
+&gt;&gt;&gt;
+</pre>
+<p>同时也支持数学运算操作</p>
+<p>Counter 对象在几乎所有需要制表或者计数数据的场合是非常有用的 工具。
+在解决这类问题的时候你应该优先选择它，而不是手动的利用字典去实现。</p>
+<div class="section" id="counter-1">
+<h3>Counter求交集</h3>
+<p><strong>求交集(且保留最小值)</strong></p>
+<p>假设 <cite>secret = &quot;1123&quot;</cite> 且 <cite>guess = &quot;0111&quot;</cite>，
+那么 <cite>Counter(secret)</cite> 会得到:</p>
+<pre class="literal-block">
+Counter({'1': 2, '2': 1, '3': 1})
+</pre>
+<p>而 <cite>Counter(guess)</cite> 会得到:</p>
+<pre class="literal-block">
+Counter({'0': 1, '1': 3})
+</pre>
+<p>取它们的交集后得到:</p>
+<pre class="literal-block">
+# 交集只有 1, 取其中小的个数 2
+Counter({'1': 2})
+</pre>
+<p>表示在 <cite>secret</cite> 和 <cite>guess</cite> 中都有的数字 <cite>1</cite> 的数量为 2。</p>
+</div>
+<div class="section" id="total">
+<h3>total</h3>
+<p>Counter().total()表示当前总的个数, 比如:</p>
+<pre class="literal-block">
+Counter({'1': 2, '2': 3}).total() == 5
+</pre>
+</div>
+</div>
+<div class="section" id="namedtuple">
+<h2>namedtuple</h2>
+<p>映射元组到对象:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from collections import namedtuple
+&gt;&gt;&gt; Subscriber = namedtuple('Subscriber', ['addr', 'joined'])
+&gt;&gt;&gt; sub = Subscriber('jonesy&#64;example.com', '2012-10-19')
+&gt;&gt;&gt; sub
+Subscriber(addr='jonesy&#64;example.com', joined='2012-10-19')
+&gt;&gt;&gt; sub.addr
+'jonesy&#64;example.com'
+&gt;&gt;&gt; sub.joined
+'2012-10-19'
+&gt;&gt;&gt;
+</pre>
+<p>跟元组类型是可交换 的，支持所有的普通元组操作，比如索引和解压。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; len(sub)
+2
+&gt;&gt;&gt; addr, joined = sub &gt;&gt;&gt; addr 'jonesy&#64;example.com' &gt;&gt;&gt; joined '2012-10-19'
+</pre>
+<p>命名元组的一个主要用途是将你的代码从下标操作中解脱出来。</p>
+<p>命名元组另一个用途就是作为字典的替代，因为字典存储需要更多的内存空间。</p>
+<p>注意一个命名元组是不可更改的, 如有特殊需要, 使用 <tt class="docutils literal">_replace</tt></p>
+<pre class="literal-block">
+&gt;&gt;&gt; s = Stock('ACME', 100, 123.45)
+&gt;&gt;&gt; s
+Stock(name='ACME', shares=100, price=123.45)
+&gt;&gt;&gt; s.shares = 75
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: can't set attribute
+&gt;&gt;&gt;
+&gt;&gt;&gt; s = s._replace(shares=75)
+&gt;&gt;&gt; s
+Stock(name='ACME', shares=75, price=123.45)
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="chainmap">
+<h2>ChainMap</h2>
+<p>链式合并字典.</p>
+<p>假如你有如下两个字典:</p>
+<pre class="literal-block">
+a = {'x': 1, 'z': 3 }
+b = {'y': 2, 'z': 4 }
+</pre>
+<p>现在假设你必须在两个字典中执行查找操作(比如先从 a 中找，如果找不到再在 b 中找)。
+一个非常简单的解决方案就是使用 collections 模块中的 ChainMap 类。比如:</p>
+<pre class="literal-block">
+from collections import ChainMap c = ChainMap(a,b)
+print(c['x']) # Outputs 1 (from a) print(c['y']) # Outputs 2 (from b) print(c['z']) # Outputs 3 (from a)
+&gt;&gt;&gt; len(c)
+3
+&gt;&gt;&gt; list(c.keys()) ['x', 'y', 'z']
+&gt;&gt;&gt; list(c.values()) [1, 2, 3]
+&gt;&gt;&gt;
+</pre>
+<p>一个 ChainMap 接受多个字典并将它们在逻辑上变为一个字典。
+然后，这些字典并 不是真的合并在一起了，ChainMap 类只是在内部创建了一个容纳这些字典的列表并重 新定义了一些常见的字典操作来遍历这个列表。
+大部分字典操作都是可以正常使用的， 比如:
+如果出现重复键，那么第一次出现的映射值会被返回。</p>
+<p>因此，例子程序中的 c['z'] 总是会返回字典 a 中对应的值，而不是 b 中对应的值。
+对于字典的更新或删除操作总是影响的是列表中第一个字典。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; c['z'] = 10
+&gt;&gt;&gt; c['w'] = 40
+&gt;&gt;&gt; del c['x']
+&gt;&gt;&gt; a
+{'w': 40, 'z': 10}
+&gt;&gt;&gt; del c['y']
+Traceback (most recent call last): ...
+    KeyError: &quot;Key not found in the first mapping: 'y'&quot;
+&gt;&gt;&gt;
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

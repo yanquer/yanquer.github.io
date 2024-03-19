@@ -1,0 +1,672 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>nginx配置管理</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+												<li><a class="button button-alt" href="tag/nginx.html">Nginx</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>nginx配置管理</h2>
+									<p>参考: <a class="reference external" href="https://www.jianshu.com/p/f81195da5a22">Nginx web server配置</a></p>
+<div class="section" id="nginx-1">
+<h2>管理 Nginx 进程</h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">关于 Master 和 Worker 进程, 见 <em>NginxMasterAndWorker</em></p>
+</div>
+<p>有两种方式让修改后的配置文件生效：</p>
+<ul class="simple">
+<li><cite>停止</cite> 并 <cite>重启</cite> Nginx</li>
+<li>给`master`进程发送信号</li>
+</ul>
+<p>信号可以通过以下方式发送(nginx是可执行文件):</p>
+<pre class="literal-block">
+nginx -s signal
+</pre>
+<p>其中 <cite>signal</cite> 常用选项如下</p>
+<ul class="simple">
+<li>quit - 优雅的关闭，即处理完当前请求再关闭</li>
+<li>reload - 重新载入配置文件</li>
+<li>reopen - 重新打开日志文件</li>
+<li>stop - 立即关闭</li>
+</ul>
+<p>也可以通过Linux的`kill`命令直接发送信号给`master`进程。Nginx的进程ID通常保存在`/usr/local/nginx/logs`或`/var/run`目录下的`nginx.pid`文件中。</p>
+</div>
+<div class="section" id="section-1">
+<h2>使用变量</h2>
+<p>通过在配置文件中使用变量，可以让Nginx以不同的方式处理请求。
+变量的值在运行时计算获得，并可作为参数传递给指令。
+变量必须以`$`开头。变量基于Nginx的状态定义信息，如正被处理请求的属性。</p>
+<p>Nginx包含许多预设的变量，如`core HTTP`变量集，也可以使用`set`、<cite>map`和`geo`指令来自定义变量。
+大多数变量都在运行时计算值，这些值一般都包含某个请求的相关信息。
+如`$remote_addr`包含了IP地址，而`uri`则包含了当前访问的`URI</cite>。</p>
+</div>
+<div class="section" id="section-2">
+<h2>内置全局变量</h2>
+<p>变量:</p>
+<pre class="literal-block">
+$args ：这个变量等于请求行中的参数，同$query_string
+$content_length ： 请求头中的Content-length字段。
+$content_type ： 请求头中的Content-Type字段。
+$document_root ： 当前请求在root指令中指定的值。
+$host ： 请求主机头字段，否则为服务器名称。
+$http_user_agent ： 客户端agent信息
+$http_cookie ： 客户端cookie信息
+$limit_rate ： 这个变量可以限制连接速率。
+$request_method ： 客户端请求的动作，通常为GET或POST。
+$remote_addr ： 客户端的IP地址。
+$remote_port ： 客户端的端口。
+$remote_user ： 已经经过Auth Basic Module验证的用户名。
+$request_filename ： 当前请求的文件路径，由root或alias指令与URI请求生成。
+$scheme ： HTTP方法（如http，https）。
+$server_protocol ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。
+$server_addr ： 服务器地址，在完成一次系统调用后可以确定这个值。
+$server_name ： 服务器名称。
+$server_port ： 请求到达服务器的端口号。
+$request_uri ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。
+$uri ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。
+$document_uri ： 与$uri相同。
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>一些内置关键字</h2>
+<div class="section" id="server-name">
+<h3>server_name</h3>
+<p>当配置了多个server时，且某个server有配置server_name时，会优先找server_name，就会访问不到我想要的那个server</p>
+<p>另外，apt安装的nginx默认在 /etc/nginx/sites-available/default 下有一个默认的server配置，要避免于这个冲突或者直接删除</p>
+</div>
+<div class="section" id="root">
+<h3>root</h3>
+<p>使用范围：可以在 server、http、location</p>
+<p>表示路径拼接（一般配置静态资源），比如:</p>
+<pre class="literal-block">
+location /img {
+        root /var/img/
+}
+</pre>
+<p>实际经过 root 之后的路径为:</p>
+<pre class="literal-block">
+/img/var/img
+</pre>
+</div>
+<div class="section" id="alias">
+<h3>alias</h3>
+<p>使用范围：只能在 location</p>
+<p>表示新路径（从根路径开始），比如:</p>
+<pre class="literal-block">
+location /img {
+        alias /var/img/
+}
+</pre>
+<p>实际经过 alias 之后的路径为:</p>
+<pre class="literal-block">
+/var/img
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>实际使用注意分清 root 与 alias</p>
+<ul class="simple">
+<li>alias使用范围：只能在 location</li>
+<li>root使用范围：可以在 server、http、location</li>
+</ul>
+<p>例子:</p>
+<pre class="last literal-block">
+# 访问 localhost/ui/some 时候 实际访问的是 /var/www/ui/build/static/some
+# 只认自己定义的别名，注意不加 / 会触发重定向到正确的路径
+location /ui/ {
+                alias /var/www/ui/build/static/ ;
+}
+
+# 访问 localhost/ui/some 时候 实际访问的是 /var/www/ui/build/static/ui/some
+# 会把 location前缀加进去
+location /ui/ {
+                root /var/www/ui/build/static/ ;
+}
+</pre>
+</div>
+</div>
+<div class="section" id="return">
+<h3>return</h3>
+<p>return 状态码 字符串</p>
+<p>第二个字符串可选，默认访问会以文件的形式下载</p>
+</div>
+<div class="section" id="rewrite">
+<h3>rewrite</h3>
+<p>实现对url的重写、重定向</p>
+<p>格式:</p>
+<pre class="literal-block">
+rewrite $正则 $替换内容 [flag标记]
+</pre>
+<p>例子:</p>
+<pre class="literal-block">
+# 将url中的api去除
+location /ui {
+    rewrite &quot;^/api/(.*)$&quot; /$1 break ;
+}
+</pre>
+</div>
+<div class="section" id="break">
+<h3>break</h3>
+<p>在重写url后，不再重新匹配路径</p>
+</div>
+<div class="section" id="last">
+<h3>last</h3>
+<p>在重写路径后，将得到的路径重新进行一次路径路径匹配</p>
+</div>
+<div class="section" id="try-files">
+<h3>try_files</h3>
+<p>按照给定的文件列表匹配文件，访问找到的第一个文件， 若文件都没有匹配到，重新请求最后一个参数给的 url</p>
+<p>格式:</p>
+<pre class="literal-block">
+try_files file1 file2 ...(可以有多个file) url
+</pre>
+</div>
+<div class="section" id="section-4">
+<h3><tt class="docutils literal">~</tt></h3>
+<p>表示开启正则匹配</p>
+</div>
+<div class="section" id="proxy-pass">
+<h3>proxy_pass</h3>
+<p>反向代理 表示动态请求，需要进行请求转发（如转发到tomcat）（用法与root基本一致）</p>
+</div>
+<div class="section" id="upstream">
+<h3>upstream</h3>
+<p>负载均衡配置</p>
+<p>反向代理中，我们通过proxy_pass来指定Tomcat的地址，
+很显然我们只能指定一台Tomcat地址，那么我们如果想指定多台来达到负载均衡呢？</p>
+<ul class="simple">
+<li>第一, 通过 <strong>upstream</strong> 来定义一组Tomcat，
+并指定负载策略（IPHASH、加权论调、最少连接）, 健康检查策略（Nginx可以监控这一组Tomcat的状态）等。</li>
+<li>第二，将proxy_pass替换成upstream指定的值即可。</li>
+</ul>
+<dl class="docutils">
+<dt>负载均衡可能带来的问题？</dt>
+<dd>负载均衡所带来的明显的问题是，一个请求，可以到A server，也可以到B server，
+这完全不受我们的控制，当然这也不是什么问题，
+只是我们得注意的是： <strong>用户状态的保存问题，如Session会话信息，不能在保存到服务器上</strong></dd>
+</dl>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>斜杠的作用</h2>
+<p>被代理的路径加不加斜杠的情况,
+尝试访问 <tt class="docutils literal">xx.xx.xx.xx/ui/img/img1.png</tt></p>
+<pre class="literal-block">
+# 实际访问的是 http://127.0.0.1:5555/img/img1.png
+location /ui/ {
+                proxy_pass http://127.0.0.1:5555/ ;
+}
+
+# 实际访问的是 http://127.0.0.1:5555/ui/img/img1.png
+location /ui/ {
+                proxy_pass http://127.0.0.1:5555 ;
+}
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>如何配置</h2>
+<p>配置详解</p>
+<p>配置路径一般在 <tt class="docutils literal">/etc/nginx/nginx.conf</tt>,
+如果是lnmp环境安装, 配置文件可能是在 <tt class="docutils literal">/usr/local/nginx/conf/nginx.conf</tt></p>
+<dl class="docutils">
+<dt>其他情况:</dt>
+<dd><p class="first">默认的配置文件位置:</p>
+<pre class="last literal-block">
+/usr/local/nginx/conf, /etc/nginx, or /usr/local/etc/nginx.
+</pre>
+</dd>
+</dl>
+<p>打开主配置文件:</p>
+<pre class="literal-block">
+vim /usr/local/nginx/conf/nginx.conf
+</pre>
+<p>内容与解释:</p>
+<pre class="literal-block">
+user                    # 设置nginx服务的系统使用用户
+worker_processes        # 工作进程数 一般情况与CPU核数保持一致
+error_log               # nginx的错误日志
+pid                     # nginx启动时的pid
+
+events {
+        worker_connections    # 每个进程允许最大连接数
+        use                   # nginx使用的内核模型
+}
+</pre>
+<p>我们使用 nginx 的 http 服务，在配置文件 nginx.conf 中的 http 区域内，
+配置无数个 server ，每一个 server 对应这一个虚拟主机或者域名:</p>
+<pre class="literal-block">
+http {
+        ... ...        #后面再详细介绍 http 配置项目
+
+        server {
+                listen 80                          #监听端口;
+                server_name localhost              #地址
+
+                location / {                       #访问首页路径
+                        root /xxx/xxx/index.html       #默认目录
+                        index index.html index.htm     #默认文件
+                        }
+
+                error_page  500 504   /50x.html    #当出现以上状态码时从新定义到50x.html
+                location = /50x.html {             #当访问50x.html时
+                        root /xxx/xxx/html             #50x.html 页面所在位置
+                        }
+                }
+
+        server {
+                ... ...
+                }
+
+        }
+</pre>
+<p>一个 server 可以出现多个 location ，我们对不同的访问路径进行不同情况的配置。</p>
+<p>我们再来看看 http 的配置与含义:</p>
+<pre class="literal-block">
+http {
+                sendfile  on                  # 高效传输文件的模式 一定要开启
+                keepalive_timeout   65        # 客户端服务端请求超时时间
+                log_format  main   XXX        # 定义日志格式 代号为main
+                access_log  /usr/local/access.log  main     # 日志保存地址 格式代码 main
+}
+</pre>
+<p>配置内容全部一览:</p>
+<pre class="literal-block">
+# 配置http
+http {
+
+    server {        # 服务器配置，可以有多个server
+
+        listen 127.0.0.1:8080       # 监听的端口
+                                # 如果不填写端口，则采用标准端口。
+                                # 如果不填写ip地址，则监听所有地址。
+                                # 如果缺少整条listen指令，则标准端口是80/tcp，
+                                # 默认端口是8000/tcp，由超级用户的权限决定。
+
+        # 多个server配置了相同的ip地址和端口，Nginx会匹配server_name指令与请求头部的host字段。                  # server_name指令的参数可以是精确的文本、通配符或正则表达式。
+        server_name example.org www.example.org;
+
+        # 如果有多个server_name匹配host字段，Nginx根据以下规则选择第一个相匹配的server处理请求：
+        #   1、精确匹配
+        #   2、以*开始的最长通配符，如 *.example.org
+        #   3、以*结尾的最长通配符，如 mail.*
+        #   4、第一个匹配的正则表达式（根据在配置文件中出现的先后顺序）
+        # 如果找不到任何与host字段相匹配的server_name，Nginx会根据请求端口将其发送给默认的server。
+        # 默认server就是配置文件中第一个出现的server，
+        # 也可以通过default_server指定某个server为默认server，
+        # 如listen 0.0.0.0:8080 default_server
+
+
+        # 根据URL将请求发送给不同的代理/处理不同的文件请求。由server指令中的location指令配置规则。
+
+        # 匹配以/some/path/开始的请求URI
+        location /some/path/ {
+            ...
+        }
+
+        # ~  用于匹配区分大小写的正则表达式，
+        # ~* 用于匹配不区分大小写的正则表达式。
+
+        # 匹配任意包含.html或.htm的URI。
+        location ~ \.html? {
+            ...
+        }
+
+        # Nginx先匹配前缀字符串，然后再匹配正则表达式。正则表达式拥有较高优先级，
+        # 除非使用^~修饰符。在所有前缀字符串中，Nginx会挑选最精确的那个，也就是最长最匹配的那个。
+        # 详细匹配过程如下：
+        #   1、匹配所有前缀字符串；
+        #   2、如果有一个 = 定义的精确匹配前缀字符串，停止继续匹配；
+        #   3、如果 ^~ 在最长匹配的前缀字符串之前，将忽略正则表达式；
+        #   4、存储最长的匹配前缀字符串；
+        #   5、匹配正则表达式；
+        #   6、找到第一个相匹配的正则表达，停止匹配过程，并执行该location指令；
+        #   7、如果没有正则表达式匹配，则使用第4步存储的最长前缀字符串；
+
+        # = 修饰符的典型应用是匹配 /请求。
+        # 针对频繁访问/的情况，将location参数设置为= /可以加速处理过程，
+        # 因为整个匹配过程在第一条之后就结束了。
+        location = / {
+            ...
+        }
+
+
+        # location指令内可以配置如何处理请求：处理静态文档或将请求转发给代理服务器。
+        # 在下面的例子中，匹配第一个location的请求可以访问/data目录的文件，
+        # 匹配第二个location的请求将被转发到www.example.com服务器。
+        location /images/ {
+            # root指令指定了静态文件的文件系统路径，将与请求URI一起构成静态文件的完全路径
+            root /data;
+        }
+
+        location / {
+            # proxy_pass指令将请求转发到代理服务器，并将代理服务器的响应返回给客户端。
+            proxy_pass http://www.example.com;
+        }
+
+        # sub_filter指令支持重写或修改HTTP请求的响应内容，如替换某个字符串。该指令支持变量和链式替换。
+        # 将指向服务器的链接改为指向代理服务器的链接：
+        location / {
+            sub_filter      /blog/ /blog-staging/;
+            sub_filter_once off;
+        }
+        # 将http请求改为https请求，并将请求头部的本地主机地址改为主机名。
+        # sub_filter_once指令用于告诉Nginx是否连续执行location中的sub_filter指令。
+        # 注意：被sub_filter指令修改后的内容将不会再被其他sub_filter指令修改。
+        location / {
+            sub_filter     'href=&quot;http://127.0.0.1:8080/'    'href=&quot;https://$host/';
+            sub_filter     'img src=&quot;http://127.0.0.1:8080/' 'img src=&quot;https://$host/';
+            sub_filter_once on;
+        }
+
+        # error_page指令用于返回一个自定义错误页面和一个错误代码、
+        # 修改响应中的错误代码或重定向到不同的URI。
+        # 当Nginx未能找到请求的页面时，不会返回404，而会返回303和一个重定向到新页面指令。
+        # 这通常用于处理客户端访问旧地址的情况。
+        location /old/path.html {
+            error_page 404 =301 http:/example.com/new/path.html;
+        }
+
+        # 有些网站在处理错误或重定向时，会要求立即返回一个状态码。最简单的方式就是使用return指令
+        location /wrong/url {
+            return 404;
+        }
+        # return指令的第一个参数是一个状态码。
+        # 第二个是可选参数，可以是重定向的URL（当状态码是301、302、303和307时），
+        # 也可以是返回的文本信息。
+        location /permanently/moved/url {
+            return 301 http://www.example.com/moved/here;
+        }
+
+        # 处理请求过程中，可以通过rewrite指令重复修改请求的URI。
+        # rewrite指令包含2个必填参数和1个可选参数。
+        # 第一个参数是请求URI必须匹配的正则表达式。第二个参数是要替换的目标URI。
+        # 第三个为可选参数，可以是一个是否继续执行后续rewrite指令的标记，
+        # 也可以发送一个重定向指令(状态码是301或302)。
+        location /users/ {
+            rewrite ^/users/(.*)$ /show?user=$1 break;
+        }
+
+    }
+
+    # location和server中都可以包含多个rewrite指令。
+    # Nginx从上到下依次磁性rewrite指令，每次进入server指令块时，rewrite指令都会被执行一次。
+    # Nginx执行完一系列rewrite指令后，根据最新的URI来选择location指令。
+    # 如果location中也包含rewrite指令，它们也将被依次执行，执行完毕后将重新选择location。
+    server {
+        ...
+        rewrite ^(/download/.*)/media/(.*)\..*$ $1/mp3/$2.mp3 last;
+        rewrite ^(/download/.*)/audio/(.*)\..*$ $1/mp3/$2.ra  last;
+        return  403;
+        ...
+    }
+    # 这个例子用于区分两套不同的URI。
+    # 类似于/download/some/media/file的URI将被改写为/download/some/mp3/file.mp3。
+    # 由于最后的标识last，Nginx将忽略随后的两条指令，然后以新的URI继续处理请求。
+    # 同样地，类似于/download/some/audio/file的URI将被改写为/download/some/mp3/file.ra。
+    # 如果请求URI都不匹配上述两条rewrite指令，Nginx将返回403错误代码。
+
+    # rewrite指令可以包含以下两种参数，用于中断处理过程：
+    #       last - 停止执行当前server或location中的rewrite指令，并以新的URI查找新的location；
+    #       break - 停止执行当前上下文环境内的rewrite指令，并不以新的URI查找新的location；
+
+
+    # 以下例子中，当访问一个不存在的文件时，Nginx会将请求重定向到http://backend。
+    # 由于error_page指令未指定重定向代码，该代码将由重定向后的http://backend返回。
+    # 当请求文件未找到时，error_page指令将发起一个内部重定向。
+    # $url变量持有当前请求的URI，并被传递给重定向。
+    # 假设请求的/images/some/file文件未找到，将被重定向到/fetch/images/some/file，
+    # 同时搜索新的location。最终，请求将被第二个location处理，并被代理到http://backend。
+    # open_file_cache_errors指令可用于未找到请求文件时，禁止产生错误消息。
+    # 在下例中可以忽略，因为错误已被正确处理。
+    server {
+        ...
+        location /images/ {
+            # Set the root directory to search for the file
+            root /data/www;
+
+            # Disable logging of errors related to file existence
+            open_file_cache_errors off;
+
+            # Make an internal redirect if the file is not found
+            error_page 404 = /fetch$uri;
+        }
+
+        location /fetch/ {
+            proxy_pass http://backend/;
+        }
+    }
+
+}
+</pre>
+</div>
+<div class="section" id="section-7">
+<h2>本地实际配置尝试</h2>
+<p>配置前端:</p>
+<pre class="literal-block">
+location /static {
+                alias /var/www/ui/build/static ;    # 静态资源映射
+}
+
+location /ui/ {
+                alias /var/www/ui/build/ ;      # 前端ui资源
+                try_files $uri $uri/ index.html
+}
+
+location / {
+                rewrite / /ui/ ;    # 所有没匹配到的请求都交给 /ui/处理
+}
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

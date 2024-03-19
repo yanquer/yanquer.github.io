@@ -1,0 +1,612 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>数据可视化工具</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/pyside6_more.html">Pyside6_more</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>数据可视化工具</h2>
+									<div class="section" id="csv">
+<h2>从CSV获取数据</h2>
+<p>读取CSV数据的几种方式:</p>
+<ul class="simple">
+<li>直接读取</li>
+<li>使用 csv 库: <em>/docs/后端/python/python标准库/csv</em></li>
+<li>numpy: <em>/docs/后端/python/python三方库/numpy</em></li>
+<li>pandas: <em>/docs/后端/python/python三方库/pandas</em></li>
+</ul>
+<p>以使用 pandas 为例:</p>
+<pre class="literal-block">
+import argparse
+import pandas as pd
+
+
+def read_data(fname):
+    return pd.read_csv(fname)
+
+
+if __name__ == &quot;__main__&quot;:
+    options = argparse.ArgumentParser()
+    options.add_argument(&quot;-f&quot;, &quot;--file&quot;, type=str, required=True)
+    args = options.parse_args()
+    data = read_data(args.file)
+    print(data)
+</pre>
+</div>
+<div class="section" id="section-2">
+<h2>数据过滤</h2>
+<ul class="simple">
+<li>QDateTime 设置时间</li>
+<li>QTimeZone 设置时区</li>
+</ul>
+<p>例:</p>
+<pre class="literal-block">
+import argparse
+import pandas as pd
+
+from PySide6.QtCore import QDateTime, QTimeZone
+
+
+def transform_date(utc, timezone=None):
+    utc_fmt = &quot;yyyy-MM-ddTHH:mm:ss.zzzZ&quot;
+    new_date = QDateTime().fromString(utc, utc_fmt)
+    if timezone:
+        new_date.setTimeZone(timezone)
+    return new_date
+
+
+def read_data(fname):
+    # Read the CSV content
+    df = pd.read_csv(fname)
+
+    # Remove wrong magnitudes
+    df = df.drop(df[df.mag &lt; 0].index)
+    magnitudes = df[&quot;mag&quot;]
+
+    # My local timezone
+    timezone = QTimeZone(b&quot;Europe/Berlin&quot;)
+
+    # Get timestamp transformed to our timezone
+    times = df[&quot;time&quot;].apply(lambda x: transform_date(x, timezone))
+
+    return times, magnitudes
+
+
+if __name__ == &quot;__main__&quot;:
+    options = argparse.ArgumentParser()
+    options.add_argument(&quot;-f&quot;, &quot;--file&quot;, type=str, required=True)
+    args = options.parse_args()
+    data = read_data(args.file)
+    print(data)
+</pre>
+</div>
+<div class="section" id="qmainwindow">
+<h2>使用 QMainWindow</h2>
+<p>QMainWindow 是一个预定义的 GUI 主界面框架/结构:</p>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2023-03-30-15-37-20.png" style="width: 480px;" />
+</div>
+<p>源码:</p>
+<pre class="literal-block">
+from PySide6.QtCore import Slot
+from PySide6.QtGui import QAction, QKeySequence
+from PySide6.QtWidgets import QMainWindow
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
+        self.setWindowTitle(&quot;Eartquakes information&quot;)
+
+        # Menu
+        self.menu = self.menuBar()
+        self.file_menu = self.menu.addMenu(&quot;File&quot;)
+
+        # Exit QAction
+        exit_action = QAction(&quot;Exit&quot;, self)
+        exit_action.setShortcut(QKeySequence.Quit)
+        exit_action.triggered.connect(self.close)
+
+        self.file_menu.addAction(exit_action)
+
+        # Status Bar
+        self.status = self.statusBar()
+        self.status.showMessage(&quot;Data loaded and plotted&quot;)
+
+        # Window dimensions
+        geometry = self.screen().availableGeometry()
+        self.setFixedSize(geometry.width() * 0.8, geometry.height() * 0.7)
+</pre>
+</div>
+<div class="section" id="qtableview">
+<h2>增加 QTableView</h2>
+<p>QTableView 需要一个模型来显示数据. 可以使用 QAbstractTableModel 的实例.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">也可以使用更便捷的控件 QTableWidget. 相对减少代码量(不用写数据模型), 但是也降低了大数据时的性能, 不够灵活.</p>
+</div>
+<p>对于 QAbstractTableModel:</p>
+<ul class="simple">
+<li>headerData, 实现此方法来定义表格标题</li>
+<li>rowCount, 表格行数</li>
+<li>columnCount, 表格列数</li>
+</ul>
+<p>例, 自定义数据类 CustomTableModel</p>
+<pre class="literal-block">
+from PySide6.QtCore import Qt, QAbstractTableModel, QModelIndex
+from PySide6.QtGui import QColor
+
+
+class CustomTableModel(QAbstractTableModel):
+    def __init__(self, data=None):
+        QAbstractTableModel.__init__(self)
+        self.load_data(data)
+
+    def load_data(self, data):
+        self.input_dates = data[0].values
+        self.input_magnitudes = data[1].values
+
+        self.column_count = 2
+        self.row_count = len(self.input_magnitudes)
+
+    def rowCount(self, parent=QModelIndex()):
+        return self.row_count
+
+    def columnCount(self, parent=QModelIndex()):
+        return self.column_count
+
+    def headerData(self, section, orientation, role):
+        if role != Qt.DisplayRole:
+            return None
+        if orientation == Qt.Horizontal:
+            return (&quot;Date&quot;, &quot;Magnitude&quot;)[section]
+        else:
+            return f&quot;{section}&quot;
+
+    def data(self, index, role=Qt.DisplayRole):
+        column = index.column()
+        row = index.row()
+
+        if role == Qt.DisplayRole:
+            if column == 0:
+                date = self.input_dates[row].toPython()
+                return str(date)[:-3]
+            elif column == 1:
+                magnitude = self.input_magnitudes[row]
+                return f&quot;{magnitude:.2f}&quot;
+        elif role == Qt.BackgroundRole:
+            return QColor(Qt.white)
+        elif role == Qt.TextAlignmentRole:
+            return Qt.AlignRight
+
+        return None
+</pre>
+<p>创建表格:</p>
+<pre class="literal-block">
+from PySide6.QtWidgets import (QHBoxLayout, QHeaderView, QSizePolicy,
+                            QTableView, QWidget)
+
+from table_model import CustomTableModel
+
+
+class Widget(QWidget):
+    def __init__(self, data):
+        QWidget.__init__(self)
+
+        # Getting the Model
+        self.model = CustomTableModel(data)
+
+        # Creating a QTableView
+        self.table_view = QTableView()
+        self.table_view.setModel(self.model)
+
+        # QTableView Headers
+        self.horizontal_header = self.table_view.horizontalHeader()
+        self.vertical_header = self.table_view.verticalHeader()
+        self.horizontal_header.setSectionResizeMode(
+                            QHeaderView.ResizeToContents
+                            )
+        self.vertical_header.setSectionResizeMode(
+                            QHeaderView.ResizeToContents
+                            )
+        self.horizontal_header.setStretchLastSection(True)
+
+        # QWidget Layout
+        self.main_layout = QHBoxLayout()
+        size = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+
+        ## Left layout
+        size.setHorizontalStretch(1)
+        self.table_view.setSizePolicy(size)
+        self.main_layout.addWidget(self.table_view)
+
+        # Set the layout to the QWidget
+        self.setLayout(self.main_layout)
+</pre>
+</div>
+<div class="section" id="qtcharts">
+<h2>增加图片视图 QtCharts</h2>
+<p>使用</p>
+<ul class="simple">
+<li>QtCharts</li>
+<li>QChartView</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">在 QChartView 内放置 QtCharts</p>
+</div>
+<p>设计一个空的 图表:</p>
+<pre class="literal-block">
+from PySide6.QtCore import QDateTime, Qt
+from PySide6.QtGui import QPainter
+from PySide6.QtWidgets import (QWidget, QHeaderView, QHBoxLayout, QTableView,
+                            QSizePolicy)
+from PySide6.QtCharts import QChart, QChartView, QLineSeries, QDateTimeAxis, QValueAxis
+
+from table_model import CustomTableModel
+
+
+class Widget(QWidget):
+    def __init__(self, data):
+        QWidget.__init__(self)
+
+        # Getting the Model
+        self.model = CustomTableModel(data)
+
+        # Creating a QTableView
+        self.table_view = QTableView()
+        self.table_view.setModel(self.model)
+
+        # QTableView Headers
+        self.horizontal_header = self.table_view.horizontalHeader()
+        self.vertical_header = self.table_view.verticalHeader()
+        self.horizontal_header.setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.vertical_header.setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.horizontal_header.setStretchLastSection(True)
+
+        # Creating QChart
+        self.chart = QChart()
+        self.chart.setAnimationOptions(QChart.AllAnimations)
+
+        # Creating QChartView
+        self.chart_view = QChartView(self.chart)
+        self.chart_view.setRenderHint(QPainter.Antialiasing)
+
+        # QWidget Layout
+        self.main_layout = QHBoxLayout()
+        size = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+
+        ## Left layout
+        size.setHorizontalStretch(1)
+        self.table_view.setSizePolicy(size)
+        self.main_layout.addWidget(self.table_view)
+
+        ## Right Layout
+        size.setHorizontalStretch(4)
+        self.chart_view.setSizePolicy(size)
+        self.main_layout.addWidget(self.chart_view)
+
+        # Set the layout to the QWidget
+        self.setLayout(self.main_layout)
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>绘制图表</h2>
+<p>在上一节使用 QtCharts 的基础上</p>
+<p>根据CSV文件的数据来绘制图表</p>
+<ul class="simple">
+<li>QLineSeries, 折线图</li>
+</ul>
+<p>例:</p>
+<pre class="literal-block">
+from PySide6.QtCore import QDateTime, Qt
+from PySide6.QtGui import QPainter
+from PySide6.QtWidgets import (QWidget, QHeaderView, QHBoxLayout, QTableView,
+                            QSizePolicy)
+from PySide6.QtCharts import QChart, QChartView, QLineSeries, QDateTimeAxis, QValueAxis
+
+from table_model import CustomTableModel
+
+
+class Widget(QWidget):
+    def __init__(self, data):
+        QWidget.__init__(self)
+
+        # Getting the Model
+        self.model = CustomTableModel(data)
+
+        # Creating a QTableView
+        self.table_view = QTableView()
+        self.table_view.setModel(self.model)
+
+        # QTableView Headers
+        resize = QHeaderView.ResizeToContents
+        self.horizontal_header = self.table_view.horizontalHeader()
+        self.vertical_header = self.table_view.verticalHeader()
+        self.horizontal_header.setSectionResizeMode(resize)
+        self.vertical_header.setSectionResizeMode(resize)
+        self.horizontal_header.setStretchLastSection(True)
+
+        # Creating QChart
+        self.chart = QChart()
+        self.chart.setAnimationOptions(QChart.AllAnimations)
+        self.add_series(&quot;Magnitude (Column 1)&quot;, [0, 1])
+
+        # Creating QChartView
+        self.chart_view = QChartView(self.chart)
+        self.chart_view.setRenderHint(QPainter.Antialiasing)
+
+        # QWidget Layout
+        self.main_layout = QHBoxLayout()
+        size = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+
+        # Left layout
+        size.setHorizontalStretch(1)
+        self.table_view.setSizePolicy(size)
+        self.main_layout.addWidget(self.table_view)
+
+        # Right Layout
+        size.setHorizontalStretch(4)
+        self.chart_view.setSizePolicy(size)
+        self.main_layout.addWidget(self.chart_view)
+
+        # Set the layout to the QWidget
+        self.setLayout(self.main_layout)
+
+    def add_series(self, name, columns):
+        # Create QLineSeries
+        self.series = QLineSeries()
+        self.series.setName(name)
+
+        # Filling QLineSeries
+        for i in range(self.model.rowCount()):
+            # Getting the data
+            t = self.model.index(i, 0).data()
+            date_fmt = &quot;yyyy-MM-dd HH:mm:ss.zzz&quot;
+
+            x = QDateTime().fromString(t, date_fmt).toSecsSinceEpoch()
+            y = float(self.model.index(i, 1).data())
+
+            if x &gt; 0 and y &gt; 0:
+                self.series.append(x, y)
+
+        self.chart.addSeries(self.series)
+
+        # Setting X-axis
+        self.axis_x = QDateTimeAxis()
+        self.axis_x.setTickCount(10)
+        self.axis_x.setFormat(&quot;dd.MM (h:mm)&quot;)
+        self.axis_x.setTitleText(&quot;Date&quot;)
+        self.chart.addAxis(self.axis_x, Qt.AlignBottom)
+        self.series.attachAxis(self.axis_x)
+        # Setting Y-axis
+        self.axis_y = QValueAxis()
+        self.axis_y.setTickCount(10)
+        self.axis_y.setLabelFormat(&quot;%.2f&quot;)
+        self.axis_y.setTitleText(&quot;Magnitude&quot;)
+        self.chart.addAxis(self.axis_y, Qt.AlignLeft)
+        self.series.attachAxis(self.axis_y)
+
+        # Getting the color from the QChart to use it on the QTableView
+        color_name = self.series.pen().color().name()
+        self.model.color = f&quot;{color_name}&quot;
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

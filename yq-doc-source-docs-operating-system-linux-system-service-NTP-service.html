@@ -1,0 +1,296 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>ntp服务</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/xi-tong-fu-wu.html">系统服务</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>ntp服务</h2>
+									<p>NTP（Network Time Protocol，网络时间协议）是由RFC 1305定义的时间同步协议，用来在分布式时间服务器
+和客户端之间进行时间同步。NTP基于UDP报文进行传输，使用的UDP端口号为123。</p>
+<p>使用NTP的目的是对网络内所有具有时钟的设备进行时钟同步，使网络内所有设备的时钟保持一致，从而使设备
+能够提供基于统一时间的多种应用。</p>
+<p>对于运行NTP的本地系统，既可以接收来自其他时钟源的同步，又可以作为时钟源同步其他的时钟，并且可以和</p>
+<p>其他设备互相同步。</p>
+<div class="section" id="ntp-1">
+<h2>NTP的报文格式</h2>
+<p>NTP有两种不同类型的报文，一种是时钟同步报文，另一种是控制报文。控制报文仅用于需要网络管理的场合，它
+对于时钟同步功能来说并不是必需的，这里不做介绍。</p>
+<p>主要字段的解释如下：</p>
+<ul class="simple">
+<li>LI（Leap Indicator）：长度为2比特，值为“11”时表示告警状态，时钟未被同步。为其他值时NTP本身不做处理。</li>
+<li>VN（Version Number）：长度为3比特，表示NTP的版本号，目前的最新版本为3。</li>
+<li>Mode：长度为3比特，表示NTP的工作模式。不同的值所表示的含义分别是：0未定义、1表示主动对等体模式、
+2表示被动对等体模式、3表示客户模式、4表示服务器模式、5表示广播模式或组播模式、6表示此报文为NTP控制
+报文、7预留给内部使用。</li>
+<li>Stratum：系统时钟的层数，取值范围为1～16，它定义了时钟的准确度。层数为1的时钟准确度最高，准确度从
+1到16依次递减，层数为16的时钟处于未同步状态，不能作为参考时钟。</li>
+<li>Poll：轮询时间，即两个连续NTP报文之间的时间间隔。</li>
+<li>Precision：系统时钟的精度。</li>
+<li>Root Delay：本地到主参考时钟源的往返时间。</li>
+<li>Root Dispersion：系统时钟相对于主参考时钟的最大误差。</li>
+<li>Reference Identifier：参考时钟源的标识。</li>
+<li>Reference Timestamp：系统时钟最后一次被设定或更新的时间。</li>
+<li>Originate Timestamp：NTP请求报文离开发送端时发送端的本地时间。</li>
+<li>Receive Timestamp：NTP请求报文到达接收端时接收端的本地时间。</li>
+<li>Transmit Timestamp：应答报文离开应答者时应答者的本地时间。</li>
+<li>Authenticator：验证信息。</li>
+</ul>
+</div>
+<div class="section" id="ntp-2">
+<h2>NTP的工作模式</h2>
+<p>设备可以采用多种NTP工作模式进行时间同步：</p>
+<ul class="simple">
+<li>客户端/服务器模式</li>
+<li>对等体模式</li>
+<li>广播模式</li>
+<li>组播模式</li>
+</ul>
+<p>用户可以根据需要选择合适的工作模式。在不能确定服务器或对等体IP地址、网络中需要同步的设备很多等情况
+下，可以通过广播或组播模式实现时钟同步；客户端/服务器和对等体模式中，设备从指定的服务器或对等体获得</p>
+<p>时钟同步，增加了时钟的可靠性。</p>
+<ol class="arabic simple">
+<li>客户端/服务器模式</li>
+</ol>
+<p>在客户端/服务器模式中，客户端向服务器发送时钟同步报文，报文中的Mode字段设置为3（客户模式）。
+服务器端收到报文后会自动工作在服务器模式，并发送应答报文，报文中的Mode字段设置为4（服务器模式）。
+客户端收到应答报文后，进行时钟过滤和选择，并同步到优选的服务器。
+在该模式下，客户端能同步到服务器，而服务器无法同步到客户端。</p>
+<ol class="arabic simple" start="2">
+<li>对等体模式</li>
+</ol>
+<p>在对等体模式中，主动对等体和被动对等体之间首先交互Mode字段为3（客户端模式）和4（服务器模式）的NTP报文。
+之后，主动对等体向被动对等体发送时钟同步报文，报文中的Mode字段设置为1（主动对等体），
+被动对等体收到报文后自动工作在被动对等体模式，并发送应答报文，报文中的Mode字段设置为2（被动对等体）。
+经过报文的交互，对等体模式建立起来。主动对等体和被动对等体可以互相同步。如果双方的时钟都已经同步，则以层数小的时钟为准</p>
+<ol class="arabic simple" start="3">
+<li>广播模式</li>
+</ol>
+<p>在广播模式中，服务器端周期性地向广播地址255.255.255.255发送时钟同步报文，报文中的Mode字段设置为5（广播模式）。
+客户端侦听来自服务器的广播报文。当客户端接收到第一个广播报文后，
+客户端与服务器交互Mode字段为3（客户模式）和4（服务器模式）的NTP报文，以获得客户端与服务器间的网络延迟。
+之后，客户端就进入广播客户端模式，继续侦听广播报文的到来，根据到来的广播报文对系统时钟进行同步。</p>
+<ol class="arabic simple" start="4">
+<li>组播模式</li>
+</ol>
+<p>在组播模式中，服务器端周期性地向用户配置的组播地址（若用户没有配置组播地址，则使用默认的NTP组播地址224.0.1.1）发送时钟同步报文，
+报文中的Mode字段设置为5（组播模式）。客户端侦听来自服务器的组播报文。
+当客户端接收到第一个组播报文后，客户端与服务器交互Mode字段为3（客户模式）和4（服务器模式）的NTP报文，
+以获得客户端与服务器间的网络延迟。之后，客户端就进入组播客户模式，继续侦听组播报文的到来，根据到来的组播报文对系统时钟进行同步。</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

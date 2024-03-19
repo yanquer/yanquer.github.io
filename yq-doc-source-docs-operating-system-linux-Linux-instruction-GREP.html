@@ -1,0 +1,416 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>grep</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>grep</h2>
+									<p>用于查找文件里符合条件的字符串。</p>
+<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。</p>
+<p><strong>若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</strong></p>
+<p>语法:</p>
+<pre class="literal-block">
+grep [-abcEFGhHilLnqrsvVwxy][-A&lt;显示行数&gt;][-B&lt;显示列数&gt;][-C&lt;显示列数&gt;][-d&lt;进行动作&gt;][-e&lt;范本样式&gt;][-f&lt;范本文件&gt;][--help][范本样式][文件或目录...]
+</pre>
+<div class="section" id="section-1">
+<h2>选项参数(常用)</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-E</span></kbd></td>
+<td>在扩展正则模式下</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-P</span></kbd></td>
+<td>在Perl正则模式下</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-V</span></kbd></td>
+<td>将不匹配的过滤出来</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span></kbd></td>
+<td>递归查找</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span>, <span class="option">-R</span></kbd></td>
+<td>递归查找</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-q</span></kbd></td>
+<td>安静模式，不在屏幕上输出</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td>忽略大小写</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>增加行号</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-o</span></kbd></td>
+<td>只输出文件中匹配到的部分</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-m<var>&lt;num&gt;</var></span>, <span class="option">--max-count=<var>&lt;num&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>找到num行结果后停止查找，用来限制匹配行数</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--color</span></kbd></td>
+<td>红色输出</td></tr>
+</tbody>
+</table>
+<p>全部可参考: <a class="reference external" href="https://www.runoob.com/linux/linux-comm-grep.html#:~:text=Linux%20grep%20命令%201%20-a%20或%20--text%20%3A,计算符合样式的列数%E3%80%82%206%20-C%3C显示行数%3E%20或%20--context%3D%3C显示行数%3E或-%3C显示行数%3E%20%3A%20除了显示符合样式的那一行之外，并显示该行之前后的内容%E3%80%82%20更多项目">Linux grep 命令</a></p>
+<p>获取文件内容所在行:</p>
+<pre class="literal-block">
+cat file | grep -n 'xxx' | cut -d ':' -f 1
+
+# 或者
+grep -n 'xxx' file | cut -d ':' -f 1
+</pre>
+<p>搜索data文件夹下的所有文件, 是否包含pack:</p>
+<pre class="literal-block">
+grep -r &quot;pack&quot; data
+</pre>
+<p>全部选项</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span>, <span class="option">--text</span></kbd></td>
+<td>不要忽略二进制的数据。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-A<var>&lt;显示行数&gt;</var></span>, <span class="option">--after-context=<var>&lt;显示行数&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>除了显示符合范本样式的那一列之外，并显示该行之后的内容。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-b</span>, <span class="option">--byte-offset</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>在显示符合样式的那一行之前，标示出该行第一个字符的编号。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-B<var>&lt;显示行数&gt;</var></span>, <span class="option">--before-context=<var>&lt;显示行数&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>除了显示符合样式的那一行之外，并显示该行之前的内容。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c</span>, <span class="option">--count</span></kbd></td>
+<td>计算符合样式的列数。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-C<var>&lt;显示行数&gt;</var></span>, <span class="option">--context=<var>&lt;显示行数&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>或者直接 <cite>-&lt;显示行数&gt;</cite> . 除了显示符合样式的那一行之外，并显示该行之前后的内容。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-d <var>&lt;动作&gt;</var></span>, <span class="option">--directories=<var>&lt;动作&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-e<var>&lt;范本样式&gt;</var></span>, <span class="option">--regexp=<var>&lt;范本样式&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定字符串做为查找文件内容的样式。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-E</span>, <span class="option">--extended-regexp</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>将样式为延伸的正则表达式来使用。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-f<var>&lt;规则文件&gt;</var></span>, <span class="option">--file=<var>&lt;规则文件&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-F</span>, <span class="option">--fixed-regexp</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>将样式视为固定字符串的列表。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-G</span>, <span class="option">--basic-regexp</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>将样式视为普通的表示法来使用。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-h</span>, <span class="option">--no-filename</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>在显示符合样式的那一行之前，不标示该行所属的文件名称。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-H</span>, <span class="option">--with-filename</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>在显示符合样式的那一行之前，表示该行所属的文件名称。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-i</span>, <span class="option">--ignore-case</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>忽略字符大小写的差别。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-l</span>, <span class="option">--file-with-matches</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>列出文件内容符合指定的样式的文件名称。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-L</span>, <span class="option">--files-without-match</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>列出文件内容不符合指定的样式的文件名称。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-n</span>, <span class="option">--line-number</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>在显示符合样式的那一行之前，标示出该行的列数编号。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-o</span>, <span class="option">--only-matching</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>只显示匹配PATTERN 部分。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-q</span>, <span class="option">--quiet</span>, <span class="option">--silent</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>不显示任何信息。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-r</span>, <span class="option">--recursive</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>此参数的效果和指定&quot;-d recurse&quot;参数相同。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-s</span>, <span class="option">--no-messages</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>不显示错误信息。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-v</span>, <span class="option">--invert-match</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>显示不包含匹配文本的所有行。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-V</span>, <span class="option">--version</span></kbd></td>
+<td>显示版本信息。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-w</span>, <span class="option">--word-regexp</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>只显示全字符合的列。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-x</span>, <span class="option">--line-regexp</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>只显示全列符合的列。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-y</span></kbd></td>
+<td>此参数的效果和指定&quot;-i&quot;参数相同。</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="grep-1">
+<span id="grepexclude"></span><h2>grep去除本身</h2>
+<p>有个小技巧, 与ps结合的时候, grep的结果往往会包含grep当前查询本身,
+那么如何去掉?
+死办法:</p>
+<pre class="literal-block">
+ps | grep test | grep -v grep
+</pre>
+<p>优雅点:</p>
+<pre class="literal-block">
+ps | grep &quot;tes[t]&quot;
+</pre>
+<p>稍微解释一下, <tt class="docutils literal">[t]</tt> 表示一个正则, 只能选择字符 z,
+与直接查询效果是一致的, 能排出掉grep本身, 是因为这时候grep进程大致长这:</p>
+<pre class="literal-block">
+ps | grep &quot;tes[t]&quot;
+</pre>
+<p>不会解析正则, 所以可以直接排除掉</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,1245 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>文件/IO</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/cookbook.html">Cookbook</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>文件/IO</h2>
+									<p>所有程序都要处理输入和输出。这一章将涵盖处理不同类型的文件，包括文本和二
+进制文件，文件编码和其他相关的内容。对文件名和目录的操作也会涉及到。</p>
+<div class="section" id="section-1">
+<h2>读写文本数据</h2>
+<p>读写各种不同编码的文本数据，比如 ASCII，UTF-8 或 UTF-16 编码</p>
+<p>使用带有 rt 模式的 open() 函数读取文本文件:</p>
+<pre class="literal-block">
+# Read the entire file as a single string
+with open('somefile.txt', 'rt') as f:
+  data = f.read()
+
+# Iterate over the lines of the file
+with open('somefile.txt', 'rt') as f:
+  for line in f:
+    # process line
+    ...
+</pre>
+<p>文件的读写操作默认使用系统编码，可以通过调用 sys.getdefaultencoding() 来 得到。在大多数机器上面都是 utf-8 编码。
+如果你已经知道你要读写的文本是其他编码 方式，那么可以通过传递一个可选的 encoding 参数给 open() 函数:</p>
+<pre class="literal-block">
+with open('somefile.txt', 'rt', encoding='latin-1') as f:
+  ...
+</pre>
+<p>Python 支持非常多的文本编码。
+几个常见的编码是 ascii, latin-1, utf-8 和 utf-16。
+在 web 应用程序中通常都使用的是 UTF-8。ascii 对应从 U+0000 到 U+007F 范围内 的 7 位字符。
+latin-1 是字节 0-255 到 U+0000 至 U+00FF 范围内 Unicode 字符的直 接映射。</p>
+<p>当读取一个未知编码的文本时使用 latin-1 编码永远不会产生解码错误。
+使用 latin-1 编码读取一个文件的时候也许不能产生完全正确的文本解码数据，但是它也能 从中提取出足够多的有用数据。
+同时，如果你之后将数据回写回去，原先的数据还是会 保留的。</p>
+<p>读写文本文件一般来讲是比较简单的。
+但是也几点是需要注意的。
+首先，在例子 程序中的 with 语句给被使用到的文件创建了一个上下文环境，但 with 控制块结束时， 文件会自动关闭。
+你也可以不使用 with 语句，但是这时候你就必须记得手动关闭文件:</p>
+<pre class="literal-block">
+f = open('somefile.txt', 'rt')
+data = f.read()
+f.close()
+</pre>
+<p>另外一个问题是关于换行符的识别问题，在 Unix 和 Windows 中是不一样的 (分别 是 n 和 rn )。
+默认情况下，Python 会以统一模式处理换行符。
+这种模式下，在读 取文本的时候，Python 可以识别所有的普通换行符并将其转换为单个 n 字符。
+类似 的，在输出时会将换行符 n 转换为系统默认的换行符。
+如果你不希望这种默认的处理 方式，可以给 open() 函数传入参数 newline=''</p>
+<pre class="literal-block">
+# Read with disabled newline translation
+with open('somefile.txt', 'rt', newline='') as f:
+  ...
+</pre>
+<p>为了说明两者之间的差异，下面我在 Unix 机器上面读取一个 Windows 上面的文 本文件，里面的内容是 hello world!rn</p>
+<pre class="literal-block">
+&gt;&gt;&gt; # Newline translation enabled (the default)
+&gt;&gt;&gt; f = open('hello.txt', 'rt')
+&gt;&gt;&gt; f.read()
+'hello world!\n'
+&gt;&gt;&gt; # Newline translation disabled
+&gt;&gt;&gt; g = open('hello.txt', 'rt', newline='')
+&gt;&gt;&gt; g.read()
+'hello world!\r\n'
+&gt;&gt;&gt;
+</pre>
+<p>文本文件中可能出现的编码错误。但你读取或者写入一个文本 文件时，你可能会遇到一个编码或者解码错误.</p>
+<p>表示你读取文本时指定的编码不正确。你最好仔细阅读说 明并确认你的文件编码是正确的 (比如使用 UTF-8 而不是 Latin-1 编码或其他)。
+如果 编码错误还是存在的话，你可以给 open() 函数传递一个可选的 errors 参数来处理这 些错误。下面是一些处理常见错误的方法:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; # Replace bad chars with Unicode U+fffd replacement char
+&gt;&gt;&gt; f = open('sample.txt', 'rt', encoding='ascii', errors='replace')
+&gt;&gt;&gt; f.read()
+'Spicy Jalape?o!'
+&gt;&gt;&gt; # Ignore bad chars entirely
+&gt;&gt;&gt; g = open('sample.txt', 'rt', encoding='ascii', errors='ignore')
+&gt;&gt;&gt; g.read()
+'Spicy Jalapeo!'
+&gt;&gt;&gt;
+</pre>
+<p>如果你经常使用 errors 参数来处理编码错误，可能会让你的生活变得很糟糕。
+对 于文本处理的首要原则是确保你总是使用的是正确编码。
+当模棱两可的时候，就使用默 认的设置 (通常都是 UTF-8)</p>
+</div>
+<div class="section" id="section-2">
+<h2>打印输出至文件中</h2>
+<p>将 print() 函数的输出重定向到一个文件中去.</p>
+<p>在 print() 函数中指定 file 关键字参数:</p>
+<pre class="literal-block">
+with open('d:/work/test.txt', 'wt') as f:
+  print('Hello World!', file=f)
+</pre>
+<p>文件必须是以文本 模式打开。如果文件是二进制模式的话，打印就会出错。</p>
+</div>
+<div class="section" id="section-3">
+<h2>使用其他分隔符或行终止符打印</h2>
+<p>使用 print() 函数输出数据，但是想改变默认的分隔符或者行尾符</p>
+<p>可以使用在 print() 函数中使用 sep 和 end 关键字参数，以你想要的方式输出。 比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; print('ACME', 50, 91.5)
+ACME 50 91.5
+&gt;&gt;&gt; print('ACME', 50, 91.5, sep=',')
+ACME,50,91.5
+&gt;&gt;&gt; print('ACME', 50, 91.5, sep=',', end='!!\n')
+ACME,50,91.5!!
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>读写字节数据</h2>
+<p>读写二进制文件，比如图片，声音文件等等。</p>
+<p>使用模式为 rb 或 wb 的 open() 函数来读取或写入二进制数据</p>
+<p>在读取二进制数据时，需要指明的是所有返回的数据都是字节字符串格式的，而不 是文本字符串。
+类似的，在写入的时候，必须保证参数是以字节形式对外暴露数据的对 象 (比如字节字符串，字节数组对象等)。</p>
+<p>在读取二进制数据的时候，字节字符串和文本字符串的语义差异可能会导致一个 潜在的陷阱。
+特别需要注意的是，索引和迭代动作返回的是字节的值而不是字节字符 串。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; b = b'Hello World'
+&gt;&gt;&gt; b[0]
+72
+&gt;&gt;&gt; for c in b:
+...   print(c)
+...
+72
+101
+108
+108
+111
+...
+&gt;&gt;&gt;
+</pre>
+<p>如果你想从二进制模式的文件中读取或写入文本数据，必须确保要进行解码和编 码操作。比如:</p>
+<pre class="literal-block">
+with open('somefile.bin', 'rb') as f:
+  data = f.read(16)
+  text = data.decode('utf-8')
+
+with open('somefile.bin', 'wb') as f:
+  text = 'Hello World'
+  f.write(text.encode('utf-8'))
+</pre>
+<p>二进制 I/O 还有一个鲜为人知的特性就是数组和 C 结构体类型能直接被写入，而 不需要中间转换为自己对象:</p>
+<pre class="literal-block">
+import array
+nums = array.array('i', [1, 2, 3, 4])
+with open('data.bin','wb') as f:
+    f.write(nums)
+</pre>
+<p>这个适用于任何实现了被称之为”缓冲接口”的对象，这种对象会直接暴露其底层 的内存缓冲区给能处理它的操作。
+二进制数据的写入就是这类操作之一。</p>
+<p>很多对象还允许通过使用文件对象的 readinto() 方法直接读取二进制数据到其底 层的内存中去。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import array
+&gt;&gt;&gt; a = array.array('i', [0, 0, 0, 0, 0, 0, 0, 0])
+&gt;&gt;&gt; with open('data.bin', 'rb') as f:
+...   f.readinto(a)
+...
+16
+&gt;&gt;&gt; a
+array('i', [1, 2, 3, 4, 0, 0, 0, 0])
+&gt;&gt;&gt;
+</pre>
+<p>但是使用这种技术的时候需要格外小心，因为它通常具有平台相关性，并且可能会 依赖字长和字节顺序 (高位优先和低位优先)。</p>
+</div>
+<div class="section" id="section-5">
+<h2>文件不存在才能写入</h2>
+<p>想像一个文件中写入数据，但是前提必须是这个文件在文件系统上不存在。也就 是不允许覆盖已存在的文件内容。</p>
+<p>可以在 open() 函数中使用 x 模式来代替 w 模式的方法来解决这个问题:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; with open('somefile', 'wt') as f:
+...     f.write('Hello\n')
+...
+&gt;&gt;&gt; with open('somefile', 'xt') as f:
+...     f.write('Hello\n')
+...
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+FileExistsError: [Errno 17] File exists: 'somefile'
+&gt;&gt;&gt;
+</pre>
+<p>如果文件是二进制的，使用 xb 来代替 xt</p>
+<p>相对于先测试这个文件是否存在, 使用 x 文件模式更加简单。
+要注意的是 x 模式是一个 Python3 对 open() 函数特有的扩展。
+在 Python 的旧版本或者是 Python 实现的底层 C 函数库中都是没有 这个模式的。</p>
+</div>
+<div class="section" id="i-o">
+<h2>字符串的 I/O 操作</h2>
+<p>使用操作类文件对象的程序来操作文本或二进制字符串。</p>
+<p>使用 io.StringIO() 和 io.BytesIO() 类来创建类文件对象操作字符串数据:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s = io.StringIO()
+&gt;&gt;&gt; s.write('Hello World\n')
+12
+&gt;&gt;&gt; print('This is a test', file=s)
+15
+&gt;&gt;&gt; # Get all of the data written so far
+&gt;&gt;&gt; s.getvalue()
+'Hello World\nThis is a test\n'
+&gt;&gt;&gt;
+&gt;&gt;&gt; # Wrap a file interface around an existing string
+&gt;&gt;&gt; s = io.StringIO('Hello\nWorld\n')
+&gt;&gt;&gt; s.read(4)
+'Hell'
+&gt;&gt;&gt; s.read() 'o\nWorld\n'
+&gt;&gt;&gt;
+</pre>
+<p>io.StringIO 只能用于文本。如果你要操作二进制数据，要使用 io.BytesIO 类来 代替:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s = io.BytesIO()
+&gt;&gt;&gt; s.write(b'binary data')
+&gt;&gt;&gt; s.getvalue()
+b'binary data'
+&gt;&gt;&gt;
+</pre>
+<p>当你想模拟一个普通的文件的时候 StringIO 和 BytesIO 类是很有用的。
+比如，在 单元测试中，你可以使用 StringIO 来创建一个包含测试数据的类文件对象，这个对象 可以被传给某个参数为普通文件对象的函数。</p>
+<p>需要注意的是，StringIO 和 BytesIO 实例并没有正确的整数类型的文件描述符。
+因此，它们不能在那些需要使用真实的系统级文件如文件，管道或者是套接字的程序中 使用。</p>
+</div>
+<div class="section" id="section-6">
+<h2>读写压缩文件</h2>
+<p>想读写一个 gzip 或 bz2 格式的压缩文件。</p>
+<p>gzip 和 bz2 模块可以很容易的处理这些文件。
+两个模块都为 open() 函数提供了 另外的实现来解决这个问题。比如，为了以文本形式读取压缩文件，可以这样做:</p>
+<pre class="literal-block">
+# gzip compression
+import gzip
+with gzip.open('somefile.gz', 'rt') as f:
+    text = f.read()
+
+# bz2 compression
+import bz2
+with bz2.open('somefile.bz2', 'rt') as f:
+    text = f.read()
+</pre>
+<p>大部分情况下读写压缩数据都是很简单的。但是要注意的是选择一个正确的文件 模式是非常重要的。
+如果你不指定模式，那么默认的就是二进制模式，如果这时候程 序想要接受的是文本数据，那么就会出错。
+gzip.open() 和 bz2.open() 接受跟内置的 open() 函数一样的参数，包括 encoding，errors，newline 等等。</p>
+<p>当写入压缩数据时，可以使用 compresslevel 这个可选的关键字参数来指定一个 压缩级别。比如:</p>
+<pre class="literal-block">
+with gzip.open('somefile.gz', 'wt', compresslevel=5) as f:
+f.write(text)
+</pre>
+<p>默认的等级是 9，也是最高的压缩等级。等级越低性能越好，但是数据压缩程度也 越低。</p>
+<p>最后一点，gzip.open() 和 bz2.open() 还有一个很少被知道的特性，它们可以作 用在一个已存在并以二进制模式打开的文件上。
+比如，下面代码是可行的:</p>
+<pre class="literal-block">
+import gzip
+f = open('somefile.gz', 'rb')
+with gzip.open(f, 'rt') as g:
+    text = g.read()
+</pre>
+<p>这样就允许 gzip 和 bz2 模块可以工作在许多类文件对象上，比如套接字，管道和 内存中文件等。</p>
+</div>
+<div class="section" id="section-7">
+<h2>固定大小记录的文件迭代</h2>
+<p>在一个固定长度记录或者数据块的集合上迭代，而不是在一个文件中一行一 行的迭代。</p>
+<p>使用 iter 和 functools.partial() 函数:</p>
+<pre class="literal-block">
+from functools import partial
+RECORD_SIZE = 32
+with open('somefile.data', 'rb') as f:
+  records = iter(partial(f.read, RECORD_SIZE), b'')
+  for r in records:
+    ...
+</pre>
+<p>这个例子中的 records 对象是一个可迭代对象，它会不断的产生固定大小的数据 块，直到文件末尾。
+要注意的是如果总记录大小不是块大小的整数倍的话，最后一个返 回元素的字节数会比期望值少。</p>
+<p>在例子中，functools.partial 用来创建一个每次被调用时从文件中读取固定数
+目字节的可调用对象。标记值 b'' 就是当到达文件结尾时的返回值。
+最后再提一点，上面的例子中的文件时以二进制模式打开的。
+如果是读取固定大小 的记录，这通常是最普遍的情况。而
+对于文本文件，一行一行的读取 (默认的迭代行为) 更普遍点。</p>
+</div>
+<div class="section" id="section-8">
+<h2>读取二进制数据到可变缓冲区中</h2>
+<p>直接读取二进制数据到一个可变缓冲区中，而不需要做任何的中间复制操作。
+或者你想原地修改数据并将它写回到一个文件中去。</p>
+<p>为了读取数据到一个可变数组中，使用文件对象的 readinto() 方法:</p>
+<pre class="literal-block">
+import os.path
+def read_into_buffer(filename):
+  buf = bytearray(os.path.getsize(filename))
+  with open(filename, 'rb') as f:\
+    f.readinto(buf)
+    return buf
+</pre>
+<p>例子:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; # Write a sample file
+&gt;&gt;&gt; with open('sample.bin', 'wb') as f: ... f.write(b'Hello World')
+...
+&gt;&gt;&gt; buf = read_into_buffer('sample.bin') &gt;&gt;&gt; buf
+bytearray(b'Hello World')
+&gt;&gt;&gt; buf[0:5] = b'Hallo'
+&gt;&gt;&gt; buf
+bytearray(b'Hallo World')
+&gt;&gt;&gt; with open('newsample.bin', 'wb') as f: ... f.write(buf)
+...
+11
+&gt;&gt;&gt;
+</pre>
+<p>文件对象的 readinto() 方法能被用来为预先分配内存的数组填充数据，甚至包括 由 array 模块或 numpy 库创建的数组。
+和普通 read() 方法不同的是，readinto() 填 充已存在的缓冲区而不是为新对象重新分配内存再返回它们。
+因此，你可以使用它来避 免大量的内存分配操作。比如，如果你读取一个由相同大小的记录组成的二进制文件 时，你可以像下面这样写:</p>
+<pre class="literal-block">
+record_size = 32 # Size of each record (adjust value)
+buf = bytearray(record_size)
+with open('somefile', 'rb') as f:
+  while True:
+    n = f.readinto(buf)
+    if n &lt; record_size:
+      break
+     # Use the contents of buf
+...
+</pre>
+<p>另外有一个有趣特性就是 memoryview ，它可以通过零复制的方式对已存在的缓冲 区执行切片操作，甚至还能修改它的内容。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; buf
+bytearray(b'Hello World')
+&gt;&gt;&gt; m1 = memoryview(buf)
+&gt;&gt;&gt; m2 = m1[-5:]
+&gt;&gt;&gt; m2
+&lt;memory at 0x100681390&gt;
+&gt;&gt;&gt; m2[:] = b'WORLD'
+&gt;&gt;&gt; buf bytearray(b'Hello WORLD')
+&gt;&gt;&gt;
+</pre>
+<p>使用 f.readinto() 时需要注意的是，你必须检查它的返回值，也就是实际读取的 字节数。
+如果字节数小于缓冲区大小，表明数据被截断或者被破坏了 (比如你期望每次读取 指定数量的字节)。
+最后，留心观察其他函数库和模块中和 into 相关的函数 (比如 recv_into() ， pack_into() 等)。
+Python 的很多其他部分已经能支持直接的 I/O 或数据访问操作，这 些操作可被用来填充或修改数组和缓冲区内容。</p>
+</div>
+<div class="section" id="section-9">
+<h2>内存映射的二进制文件</h2>
+<p>你想内存映射一个二进制文件到一个可变字节数组中，目的可能是为了随机访问 它的内容或者是原地做些修改。</p>
+<p>使用 mmap 模块来内存映射文件。下面是一个工具函数，向你演示了如何打开一个 文件并以一种便捷方式内存映射这个文件:</p>
+<pre class="literal-block">
+import os
+import mmap
+
+def memory_map(filename, access=mmap.ACCESS_WRITE):
+  size = os.path.getsize(filename)
+  fd = os.open(filename, os.O_RDWR)
+  return mmap.mmap(fd, size, access=access)
+</pre>
+<p>为了使用这个函数，你需要有一个已创建并且内容不为空的文件。下面是一个例 子，教你怎样初始创建一个文件并将其内容扩充到指定大小:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; size = 1000000
+&gt;&gt;&gt; with open('data', 'wb') as f:
+...   f.seek(size-1)
+...   f.write(b'\x00')
+...
+&gt;&gt;&gt;
+</pre>
+<p>利用 memory_map() 函数类内存映射文件内容:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; m = memory_map('data')
+&gt;&gt;&gt; len(m)
+1000000
+&gt;&gt;&gt; m[0:10]
+b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+&gt;&gt;&gt; m[0]
+0
+&gt;&gt;&gt; # Reassign a slice
+&gt;&gt;&gt; m[0:11] = b'Hello World'
+&gt;&gt;&gt; m.close()
+&gt;&gt;&gt; # Verify that changes were made
+&gt;&gt;&gt; with open('data', 'rb') as f:
+...   print(f.read(11))
+...
+b'Hello World'
+&gt;&gt;&gt;
+</pre>
+<p>mmap() 返回的 mmap 对象同样也可以作为一个上下文管理器来使用，这时候底层 的文件会被自动关闭。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; with memory_map('data') as m:
+...   print(len(m))
+...   print(m[0:10])
+...
+1000000 b'Hello World' &gt;&gt;&gt; m.closed True
+&gt;&gt;&gt;
+</pre>
+<p>默认情况下，memeory_map() 函数打开的文件同时支持读和写操作。任何的修改 内容都会复制回原来的文件中。
+如果需要只读的访问模式，可以给参数 access 赋值为 mmap.ACCESS_READ</p>
+<p>如果你想在本地修改数据，但是又不想将修改写回到原始文件中，可以使用 mmap.ACCESS_COPY</p>
+<p>mmap 使用可参考: <em>/docs/后端/python/python标准库/mmap</em></p>
+<p>为了随机访问文件的内容，使用 mmap 将文件映射到内存中是一个高效和优雅的方 法。
+例如，你无需打开一个文件并执行大量的 seek() ，read() ，write() 调用，只需 要简单的映射文件并使用切片操作访问数据即可。</p>
+<p>一般来讲，mmap() 所暴露的内存看上去就是一个二进制数组对象。但是，你可以 使用一个内存视图来解析其中的数据。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; m = memory_map('data')
+&gt;&gt;&gt; # Memoryview of unsigned integers
+&gt;&gt;&gt; v = memoryview(m).cast('I')
+&gt;&gt;&gt; v[0] = 7
+&gt;&gt;&gt; m[0:4]
+b'\x07\x00\x00\x00'
+&gt;&gt;&gt; m[0:4] = b'\x07\x01\x00\x00'
+&gt;&gt;&gt; v[0]
+263
+&gt;&gt;&gt;
+</pre>
+<p>需要强调的一点是，内存映射一个文件并不会导致整个文件被读取到内存中。
+也就 是说，文件并没有被复制到内存缓存或数组中。
+相反，操作系统仅仅为文件内容保留了 一段虚拟内存。
+当你访问文件的不同区域时，这些区域的内容才根据需要被读取并映射 到内存区域中。
+而那些从没被访问到的部分还是留在磁盘上。所有这些过程是透明的， 在幕后完成!</p>
+<p>如果多个 Python 解释器内存映射同一个文件，得到的 mmap 对象能够被用来在解 释器直接交换数据。
+也就是说，所有解释器都能同时读写数据，并且其中一个解释器所做的修改会自动呈现在其他解释器中。
+很明显，这里需要考虑同步的问题。但是这种方 法有时候可以用来在管道或套接字间传递数据。</p>
+</div>
+<div class="section" id="section-10">
+<h2>文件路径名的操作</h2>
+<p>使用路径名来获取文件名，目录名，绝对路径等等。</p>
+<p>使用 os.path 模块中的函数来操作路径名:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; path = '/Users/beazley/Data/data.csv'
+&gt;&gt;&gt; # Get the last component of the path
+&gt;&gt;&gt; os.path.basename(path)
+'data.csv'
+&gt;&gt;&gt; # Get the directory name
+&gt;&gt;&gt; os.path.dirname(path)
+'/Users/beazley/Data'
+&gt;&gt;&gt; # Join path components together
+&gt;&gt;&gt; os.path.join('tmp', 'data', os.path.basename(path))
+'tmp/data/data.csv'
+&gt;&gt;&gt; # Expand the user's home directory
+&gt;&gt;&gt; path = '~/Data/data.csv'
+&gt;&gt;&gt; os.path.expanduser(path)
+'/Users/beazley/Data/data.csv'
+&gt;&gt;&gt; # Split the file extension
+&gt;&gt;&gt; os.path.splitext(path)
+('~/Data/data', '.csv')
+&gt;&gt;&gt;
+
+对于任何的文件名的操作，你都应该使用 os.path 模块，而不是使用标准字符串 操作来构造自己的代码。
+特别是为了可移植性考虑的时候更应如此，
+因为 os.path 模 块知道 Unix 和 Windows 系统之间的差异并且能够可靠地处理类似 Data/data.csv 和 Data\data.csv 这样的文件名。
+其次，你真的不应该浪费时间去重复造轮子。通常最好 是直接使用已经为你准备好的功能。
+</pre>
+</div>
+<div class="section" id="section-11">
+<h2>测试文件是否存在</h2>
+<p>使用 os.path 模块:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.path.exists('/etc/passwd')
+True
+</pre>
+<p>测试这个文件时什么类型的。在下面这些测试中，如果测试的文件不 存在的时候，结果都会返回 False:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; # Is a regular file
+&gt;&gt;&gt; os.path.isfile('/etc/passwd')
+True
+&gt;&gt;&gt; # Is a directory
+&gt;&gt;&gt; os.path.isdir('/etc/passwd')
+False
+&gt;&gt;&gt; # Is a symbolic link
+&gt;&gt;&gt; os.path.islink('/usr/local/bin/python3')
+True
+&gt;&gt;&gt; # Get the file linked to
+&gt;&gt;&gt; os.path.realpath('/usr/local/bin/python3')
+'/usr/local/bin/python3.3'
+</pre>
+<p>如果你还想获取元数据 (比如文件大小或者是修改日期)，也可以使用 os.path 模 块来解决:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; os.path.getsize('/etc/passwd')
+3669
+&gt;&gt;&gt; os.path.getmtime('/etc/passwd')
+1272478234.0
+&gt;&gt;&gt; import time
+&gt;&gt;&gt; time.ctime(os.path.getmtime('/etc/passwd'))
+'Wed Apr 28 13:10:34 2010'
+&gt;&gt;&gt;
+</pre>
+<p>使用 os.path 来进行文件测试是很简单的。
+在写这些脚本时，可能唯一需要注意 的就是你需要考虑文件权限的问题，特别是在获取元数据时候</p>
+</div>
+<div class="section" id="section-12">
+<h2>获取文件夹中的文件列表</h2>
+<p>对于文件名的匹配，你可能会考虑使用 glob 或 fnmatch 模块。比如:</p>
+<pre class="literal-block">
+import glob
+pyfiles = glob.glob('somedir/*.py')
+
+from fnmatch import fnmatch
+pyfiles = [name for name in os.listdir('somedir') if fnmatch(name, '*.py')]
+</pre>
+<p>获取目录中的列表是很容易的，但是其返回结果只是目录中实体名列表而已。
+如 果你还想获取其他的元信息，比如文件大小，修改时间等等，你或许还需要使用到 os.path 模块中的函数或着 os.stat() 函数来收集数据</p>
+<p>最后还有一点要注意的就是，有时候在处理文件名编码问题时候可能会出现一些 问题。
+通常来讲，函数 os.listdir() 返回的实体列表会根据系统默认的文件名编码来 解码。但是有时候也会碰到一些不能正常解码的文件名。</p>
+</div>
+<div class="section" id="section-13">
+<h2>忽略文件名编码</h2>
+<p>你想使用原始文件名执行文件的 I/O 操作，也就是说文件名并没有经过系统默认 编码去解码或编码过。</p>
+<p>默认情况下，所有的文件名都会根据 sys.getfilesystemencoding() 返回的文本 编码来编码或解码。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sys.getfilesystemencoding()
+'utf-8'
+&gt;&gt;&gt;
+</pre>
+<p>如果因为某种原因你想忽略这种编码，可以使用一个原始字节字符串来指定一个 文件名即可。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; # Wrte a file using a unicode filename
+&gt;&gt;&gt; with open('jalape\xf1o.txt', 'w') as f:
+...   f.write('Spicy!')
+...
+6
+&gt;&gt;&gt; # Directory listing (decoded)
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.listdir('.')
+['jalapeño.txt']
+
+&gt;&gt;&gt; # Directory listing (raw)
+&gt;&gt;&gt; os.listdir(b'.') # Note: byte string
+[b'jalapen\xcc\x83o.txt']
+
+&gt;&gt;&gt; # Open file with raw filename
+&gt;&gt;&gt; with open(b'jalapen\xcc\x83o.txt') as f:
+...   print(f.read())
+...
+Spicy!
+&gt;&gt;&gt;
+</pre>
+<p>通常来讲，你不需要担心文件名的编码和解码，普通的文件名操作应该就没问题 了。
+但是，有些操作系统允许用户通过偶然或恶意方式去创建名字不符合默认编码的文 件。
+这些文件名可能会神秘地中断那些需要处理大量文件的 Python 程序。</p>
+<p>读取目录并通过原始未解码方式处理文件名可以有效的避免这样的问题，尽管这 样会带来一定的编程难度。</p>
+</div>
+<div class="section" id="section-14">
+<h2>打印不合法的文件名</h2>
+<p>你的程序获取了一个目录中的文件名列表，
+但是当它试着去打印文件名的时候 程序崩溃，
+出现了 UnicodeEncodeError 异常和一条奇怪的消息——surrogates not allowed 。</p>
+<p>当打印未知的文件名时，使用下面的方法可以避免这样的错误:</p>
+<pre class="literal-block">
+def bad_filename(filename):
+  return repr(filename)[1:-1]
+try:
+  print(filename)
+except UnicodeEncodeError:
+  print(bad_filename(filename))
+</pre>
+<p>这一小节讨论的是在编写必须处理文件系统的程序时一个不太常见但又很棘手的 问题。
+默认情况下，Python 假定所有文件名都已经根据 sys.getfilesystemencoding() 的值编码过了。
+但是，有一些文件系统并没有强制要求这样做，因此允许创建文件名没 有正确编码的文件。
+这种情况不太常见，但是总会有些用户冒险这样做或者是无意之 中这样做了
+( 可能是在一个有缺陷的代码中给 open() 函数传递了一个不合规范的文件 名)。</p>
+<p>当执行类似 os.listdir() 这样的函数时，这些不合规范的文件名就会让 Python 陷入困境。
+一方面，它不能仅仅只是丢弃这些不合格的名字。
+而另一方面，它又不能将 这些文件名转换为正确的文本字符串。
+Python 对这个问题的解决方案是从文件名中获 取未解码的字节值
+比如 xhh 并将它映射成 Unicode 字符 udchh 表示的所谓的”代理 编码”。
+下面一个例子演示了当一个不合格目录列表中含有一个文件名为 bäd.txt(使用 Latin-1 而不是 UTF-8 编码) 时的样子:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; files = os.listdir('.')
+&gt;&gt;&gt; files
+['spam.py', 'b\udce4d.txt', 'foo.txt']
+&gt;&gt;&gt;
+</pre>
+<p>如果你有代码需要操作文件名或者将文件名传递给 open() 这样的函数，一切都能 正常工作。
+只有当你想要输出文件名时才会碰到些麻烦 (比如打印输出到屏幕或日志文 件等)。
+特别的，当你想打印上面的文件名列表时，你的程序就会崩溃:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; for name in files:
+...   print(name)
+...
+spam.py
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 2, in &lt;module&gt;
+UnicodeEncodeError: 'utf-8' codec can't encode character '\udce4' in
+position 1: surrogates not allowed
+&gt;&gt;&gt;
+</pre>
+<p>程序崩溃的原因就是字符 udce4 是一个非法的 Unicode 字符。
+它其实是一个被 称为代理字符对的双字符组合的后半部分。由于缺少了前半部分，因此它是个非法的 Unicode。
+所以，唯一能成功输出的方法就是当遇到不合法文件名时采取相应的补救措 施。比如可以将上述代码修改如下:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; for name in files:
+...   try:
+...     print(name)
+...   except UnicodeEncodeError:
+...     print(bad_filename(name))
+...
+spam.py
+b\udce4d.txt
+foo.txt
+&gt;&gt;&gt;
+</pre>
+<p>在 bad_filename() 函数中怎样处置取决于你自己。另外一个选择就是通过某种方 式重新编码，示例如下:</p>
+<pre class="literal-block">
+def bad_filename(filename):
+  temp = filename.encode(sys.getfilesystemencoding(), errors='surrogateescape')
+  return temp.decode('latin-1')
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p><strong>surrogateescape含义</strong></p>
+<p>这种是 Python 在绝大部分面向 OS 的 API 中所使用的错误处理器， 它能以一种优雅的方式处理由操作系统提供的数据的编码问题。
+在解码出错时会将出错字节存储到一个很少被使用到的 Unicode 编码范围内。 在编码时将那些隐藏值又还原回原先解码失败的字节序列。</p>
+<p class="last">它不仅对于 OS API 非常有用，也能很容易的处理其他情况下的编码错误。</p>
+</div>
+<p>此时的输出:</p>
+<pre class="literal-block">
+spam.py
+bäd.txt
+foo.txt
+</pre>
+</div>
+<div class="section" id="section-15">
+<h2>增加或改变已打开文件的编码</h2>
+<p>你想在不关闭一个已打开的文件前提下增加或改变它的 Unicode 编码。</p>
+<p>如果你想给一个以二进制模式打开的文件添加 Unicode 编码/解码方式，可以使用 io.TextIOWrapper() 对象包装它。比如:</p>
+<pre class="literal-block">
+import urllib.request
+import io
+u = urllib.request.urlopen('http://www.python.org')
+f = io.TextIOWrapper(u, encoding='utf-8')
+text = f.read()
+</pre>
+<p>如果你想修改一个已经打开的文本模式的文件的编码方式，可以先使用 detach() 方法移除掉已存在的文本编码层，并使用新的编码方式代替。
+下面是一个在 sys.stdout 上修改编码方式的例子:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.stdout.encoding
+'UTF-8'
+&gt;&gt;&gt; sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='latin-1')
+&gt;&gt;&gt; sys.stdout.encoding
+'latin-1'
+&gt;&gt;&gt;
+</pre>
+<p>这样做可能会中断你的终端，这里仅仅是为了演示而已。</p>
+<p>I/O 系统由一系列的层次构建而成。你可以试着运行下面这个操作一个文本文件的 例子来查看这种层次:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; f = open('sample.txt','w')
+&gt;&gt;&gt; f
+&lt;_io.TextIOWrapper name='sample.txt' mode='w' encoding='UTF-8'&gt;
+&gt;&gt;&gt; f.buffer
+&lt;_io.BufferedWriter name='sample.txt'&gt;
+&gt;&gt;&gt; f.buffer.raw
+&lt;_io.FileIO name='sample.txt' mode='wb'&gt;
+&gt;&gt;&gt;
+</pre>
+<ul class="simple">
+<li>io.TextIOWrapper 是一个编码和解码 Unicode 的文本处理层</li>
+<li>io. BufferedWriter 是一个处理二进制数据的带缓冲的 I/O 层，</li>
+<li>io.FileIO 是一个表示操 作系统底层文件描述符的原始文件</li>
+</ul>
+<p>增加或改变文本编码会涉及增加或改变最上面的 io.TextIOWrapper 层。</p>
+<p>一般来讲，像上面例子这样通过访问属性值来直接操作不同的层是很不安全的。
+例 如，如果你试着使用下面这样的技术改变编码看看会发生什么:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; f
+&lt;_io.TextIOWrapper name='sample.txt' mode='w' encoding='UTF-8'&gt;
+&gt;&gt;&gt; f = io.TextIOWrapper(f.buffer, encoding='latin-1')
+&gt;&gt;&gt; f
+&lt;_io.TextIOWrapper name='sample.txt' encoding='latin-1'&gt;
+&gt;&gt;&gt; f.write('Hello')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ValueError: I/O operation on closed file.
+&gt;&gt;&gt;
+</pre>
+<p>结果出错了，因为 f 的原始值已经被破坏了并关闭了底层的文件。
+detach() 方法会断开文件的最顶层并返回第二层，之后最顶层就没什么用了。例
+如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; f = open('sample.txt', 'w')
+&gt;&gt;&gt; f
+&lt;_io.TextIOWrapper name='sample.txt' mode='w' encoding='UTF-8'&gt;
+&gt;&gt;&gt; b = f.detach()
+&gt;&gt;&gt; b
+&lt;_io.BufferedWriter name='sample.txt'&gt;
+&gt;&gt;&gt; f.write('hello')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ValueError: underlying buffer has been detached
+&gt;&gt;&gt;
+</pre>
+<p>一旦断开最顶层后，你就可以给返回结果添加一个新的最顶层。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; f = io.TextIOWrapper(b, encoding='latin-1')
+&gt;&gt;&gt; f
+&lt;_io.TextIOWrapper name='sample.txt' encoding='latin-1'&gt;
+&gt;&gt;&gt;
+</pre>
+<p>尽管已经向你演示了改变编码的方法，但是你还可以利用这种技术来改变文件行 处理、错误机制以及文件处理的其他方面。例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='ascii', errors='xmlcharrefreplace')
+&gt;&gt;&gt; print('Jalape\u00f1o')
+Jalape&amp;#241;o
+&gt;&gt;&gt;
+</pre>
+<p>注意下最后输出中的非 ASCII 字符 ñ 是如何被 &amp;#241; 取代的。</p>
+</div>
+<div class="section" id="section-16">
+<h2>将字节写入文本文件</h2>
+<p>在文本模式打开的文件中写入原始的字节数据</p>
+<p>将字节数据直接写入文件的缓冲区即可:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.stdout.write(b'Hello\n')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: must be str, not bytes
+&gt;&gt;&gt; sys.stdout.buffer.write(b'Hello\n')
+Hello
+5
+&gt;&gt;&gt;
+</pre>
+<p>类似的，能够通过读取文本文件的 buffer 属性来读取二进制数据</p>
+<p>I/O 系统以层级结构的形式构建而成。
+文本文件是通过在一个拥有缓冲的二进制模 式文件上增加一个 Unicode 编码/解码层来创建。
+buffer 属性指向对应的底层文件。如 果你直接访问它的话就会绕过文本编码/解码层。</p>
+<p>本例展示的 sys.stdout 可能看起来有点特殊。
+默认情况下，sys.stdout 总 是以文本模式打开的。
+但是如果你在写一个需要打印二进制数据到标准输出的脚本的 话，你可以使用上面演示的技术来绕过文本编码层。</p>
+</div>
+<div class="section" id="section-17">
+<h2>将文件描述符包装成文件对象</h2>
+<p>你有一个对应于操作系统上一个已打开的 I/O 通道 (比如文件、管道、套接字等) 的整型文件描述符，你想将它包装成一个更高层的 Python 文件对象。</p>
+<p>一个文件描述符和一个打开的普通文件是不一样的。
+文件描述符仅仅是一个由操 作系统指定的整数，用来指代某个系统的 I/O 通道。
+如果你碰巧有这么一个文件描述 符，你可以通过使用 open() 函数来将其包装为一个 Python 的文件对象。
+你仅仅只需 要使用这个整数值的文件描述符作为第一个参数来代替文件名即可。
+如:</p>
+<pre class="literal-block">
+# Open a low-level file descriptor
+import os
+fd = os.open('somefile.txt', os.O_WRONLY | os.O_CREAT)
+# Turn into a proper file
+f = open(fd, 'wt') f.write('hello world\n') f.close()
+</pre>
+<p>当高层的文件对象被关闭或者破坏的时候，底层的文件描述符也会被关闭。
+如果这 个并不是你想要的结果，你可以给 open() 函数传递一个可选的 colsefd=False 。比 如:</p>
+<pre class="literal-block">
+# Create a file object, but don't close underlying fd when done
+f = open(fd, 'wt', closefd=False)
+...
+</pre>
+<p>在 Unix 系统中，这种包装文件描述符的技术可以很方便的将一个类文件接口作用 于一个以不同方式打开的 I/O 通道上，
+如管道、套接字等。举例来讲，下面是一个操 作管道的例子:</p>
+<pre class="literal-block">
+from socket import socket, AF_INET, SOCK_STREAM
+
+def echo_client(client_sock, addr):
+    print('Got connection from', addr)
+    # Make text-mode file wrappers for socket reading/writing
+    client_in = open(client_sock.fileno(), 'rt', encoding='latin-1',
+                closefd=False)
+    client_out = open(client_sock.fileno(), 'wt', encoding='latin-1',
+                closefd=False)
+
+    # Echo lines back to the client using file I/O
+    for line in client_in:
+        client_out.write(line)
+        client_out.flush()
+
+    client_sock.close()
+
+def echo_server(address):
+    sock = socket(AF_INET, SOCK_STREAM)
+    sock.bind(address)
+    sock.listen(1)
+    while True:
+        client, addr = sock.accept()
+        echo_client(client, addr)
+</pre>
+<p>需要重点强调的一点是，上面的例子仅仅是为了演示内置的 open() 函数的一个特 性，并且也只适用于基于 Unix 的系统。
+如果你想将一个类文件接口作用在一个套接字 并希望你的代码可以跨平台，请使用套接字对象的 makefile() 方法。
+但是如果不考虑 可移植性的话，那上面的解决方案会比使用 makefile() 性能更好一点。</p>
+<p>你也可以使用这种技术来构造一个别名，允许以不同于第一次打开文件的方式使 用它。
+例如，下面演示如何创建一个文件对象，它允许你输出二进制数据到标准输出 (通常以文本模式打开):</p>
+<pre class="literal-block">
+import sys
+# Create a binary-mode file for stdout
+bstdout = open(sys.stdout.fileno(), 'wb', closefd=False)
+bstdout.write(b'Hello World\n')
+bstdout.flush()
+</pre>
+<p>尽管可以将一个已存在的文件描述符包装成一个正常的文件对象，但是要注意的 是并不是所有的文件模式都被支持，
+并且某些类型的文件描述符可能会有副作用 (特别 是涉及到错误处理、文件结尾条件等等的时候)。
+在不同的操作系统上这种行为也是不 一样，特别的，上面的例子都不能在非 Unix 系统上运行。</p>
+</div>
+<div class="section" id="section-18">
+<h2>创建临时文件和文件夹</h2>
+<p>你需要在程序执行时创建一个临时文件或目录，并希望使用完之后可以自动销毁 掉。</p>
+<p>tempfile 模块( <em>/docs/后端/python/python标准库/tempfile</em> )中有很多的函数可以完成这任务。
+为了创建一个匿名的临时文件， 可以使用 tempfile.TemporaryFile</p>
+<pre class="literal-block">
+from tempfile import TemporaryFile
+with TemporaryFile('w+t') as f:
+    # Read/write to the file
+    f.write('Hello World\n')
+    f.write('Testing\n')
+    # Seek back to beginning and read the data
+    f.seek(0)
+    data = f.read()
+# Temporary file is destroyed
+</pre>
+<p>或者，如果你喜欢，你还可以像这样使用临时文件:</p>
+<pre class="literal-block">
+f = TemporaryFile('w+t')
+# Use the temporary file
+...
+f.close()
+# File is destroyed
+</pre>
+<p>TemporaryFile() 的第一个参数是文件模式，通常来讲文本模式使用 w+t ，二进 制模式使用 w+b 。
+这个模式同时支持读和写操作，在这里是很有用的，因为当你关闭 文件去改变模式的时候，文件实际上已经不存在了。
+TemporaryFile() 另外还支持跟内 置的 open() 函数一样的参数。比如:</p>
+<pre class="literal-block">
+with TemporaryFile('w+t', encoding='utf-8', errors='ignore') as f:
+  ...
+</pre>
+<p>在大多数 Unix 系统上，通过 TemporaryFile() 创建的文件都是匿名的，甚至连目 录都没有。
+如果你想打破这个限制，可以使用 NamedTemporaryFile() 来代替。比如:</p>
+<pre class="literal-block">
+from tempfile import NamedTemporaryFile
+with NamedTemporaryFile('w+t') as f:
+  print('filename is:', f.name)
+  ...
+# File automatically destroyed
+</pre>
+<p>这里，被打开文件的 f.name 属性包含了该临时文件的文件名。
+当你需要将文件 名传递给其他代码来打开这个文件的时候，这个就很有用了。
+和 TemporaryFile() 一 样，结果文件关闭时会被自动删除掉。
+如果你不想这么做，可以传递一个关键字参数 delete=False 即可。</p>
+<p>为了创建一个临时目录，可以使用 tempfile.TemporaryDirectory() 。比如:</p>
+<pre class="literal-block">
+from tempfile import TemporaryDirectory
+with TemporaryDirectory() as dirname:
+  print('dirname is:', dirname)
+  # Use the directory
+  ...
+# Directory and all contents destroyed
+</pre>
+<p>TemporaryFile() 、NamedTemporaryFile() 和 TemporaryDirectory() 函数应该
+是处理临时文件目录的最简单的方式了，
+因为它们会自动处理所有的创建和清理步骤。
+在一个更低的级别，你可以使用 mkstemp() 和 mkdtemp() 来创建临时文件和目录。比 如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import tempfile
+&gt;&gt;&gt; tempfile.mkstemp()
+(3, '/var/folders/7W/7WZl5sfZEF0pljrEB1UMWE+++TI/-Tmp-/tmp7fefhv')
+&gt;&gt;&gt; tempfile.mkdtemp()
+'/var/folders/7W/7WZl5sfZEF0pljrEB1UMWE+++TI/-Tmp-/tmp5wvcv6'
+&gt;&gt;&gt;
+</pre>
+<p>但是，这些函数并不会做进一步的管理了。
+例如，函数 mkstemp() 仅仅就返回一 个原始的 OS 文件描述符，你需要自己将它转换为一个真正的文件对象。
+同样你还需要 自己清理这些文件。</p>
+<p>通常来讲，临时文件在系统默认的位置被创建，比如 /var/tmp 或类似的地方。
+为 了获取真实的位置，可以使用 tempfile.gettempdir() 函数。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; tempfile.gettempdir()
+'/var/folders/7W/7WZl5sfZEF0pljrEB1UMWE+++TI/-Tmp-'
+&gt;&gt;&gt;
+</pre>
+<p>所有和临时文件相关的函数都允许你通过使用关键字参数 prefix 、suffix 和 dir 来自定义目录以及命名规则。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; f = NamedTemporaryFile(prefix='mytemp', suffix='.txt', dir='/tmp')
+&gt;&gt;&gt; f.name
+'/tmp/mytemp8ee899.txt'
+&gt;&gt;&gt;
+</pre>
+<p>最后还有一点，尽可能以最安全的方式使用 tempfile 模块来创建临时文件。
+包括 仅给当前用户授权访问以及在文件创建过程中采取措施避免竞态条件。要注意的是不 同的平台可能会不一样。</p>
+</div>
+<div class="section" id="section-19">
+<h2>与串行端口的数据通信</h2>
+<p>通过串行端口读写数据，典型场景就是和一些硬件设备打交道 (比如一个机器 人或传感器)。</p>
+<p>尽管你可以通过使用 Python 内置的 I/O 模块来完成这个任务，但对于串行通信 最好的选择是使用 pySerial 包 。
+这个包的使用非常简单，先安装 pySerial，使用类似下 面这样的代码就能很容易的打开一个串行端口:</p>
+<pre class="literal-block">
+import serial
+ser = serial.Serial('/dev/tty.usbmodem641', # Device name varies
+                    baudrate=9600,
+                    bytesize=8,
+                    parity='N',
+                    stopbits=1)
+</pre>
+<p>设备名对于不同的设备和操作系统是不一样的。
+比如，在 Windows 系统上，你可 以使用 0, 1 等表示的一个设备来打开通信端口”COM0”和”COM1”。
+一旦端口打开， 那就可以使用 read()，readline() 和 write() 函数读写数据了。例如:</p>
+<pre class="literal-block">
+ser.write(b'G1 X50 Y50\r\n')
+resp = ser.readline()
+</pre>
+<p>尽管表面上看起来很简单，其实串口通信有时候也是挺麻烦的。
+推荐你使用第三 方包如 pySerial 的一个原因是它提供了对高级特性的支持 (比如超时，控制流，缓冲 区刷新，握手协议等等)。
+举个例子，如果你想启用 RTS-CTS 握手协议，你只需要给 Serial() 传递一个 rtscts=True 的参数即可。</p>
+<p>时刻记住所有涉及到串口的 I/O 都是二进制模式的。
+因此，确保你的代码使用的 是字节而不是文本 (或有时候执行文本的编码/解码操作)。
+另外当你需要创建二进制编 码的指令或数据包的时候，struct 模块也是非常有用的。</p>
+</div>
+<div class="section" id="python">
+<h2>序列化 Python 对象</h2>
+<p>你需要将一个 Python 对象序列化为一个字节流，以便将它保存到一个文件、存储 到数据库或者通过网络传输它。</p>
+<p>对于序列化最普遍的做法就是使用 pickle 模块。为了将一个对象保存到一个文件 中，可以这样做:</p>
+<pre class="literal-block">
+import pickle
+data = ... # Some Python object
+f = open('somefile', 'wb')
+pickle.dump(data, f)
+</pre>
+<p>为了将一个对象转储为一个字符串，可以使用 pickle.dumps()</p>
+<pre class="literal-block">
+s = pickle.dumps(data)
+</pre>
+<p>为了从字节流中恢复一个对象，使用 picle.load() 或 pickle.loads() 函数。比 如:</p>
+<pre class="literal-block">
+# Restore from a file
+f = open('somefile', 'rb')
+data = pickle.load(f)
+
+# Restore from a string
+data = pickle.loads(s)
+</pre>
+<p>对于大多数应用程序来讲，dump() 和 load() 函数的使用就是你有效使用 pickle 模块所需的全部了。
+它可适用于绝大部分 Python 数据类型和用户自定义类的对象实 例。
+如果你碰到某个库可以让你在数据库中保存/恢复 Python 对象或者是通过网络传 输对象的话，那么很有可能这个库的底层就使用了 pickle 模块。</p>
+<p>pickle 是一种 Python 特有的自描述的数据编码。
+通过自描述，被序列化后的数 据包含每个对象开始和结束以及它的类型信息。
+因此，你无需担心对象记录的定义，它 总是能工作。举个例子，如果要处理多个对象，你可以这样做:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import pickle
+&gt;&gt;&gt; f = open('somedata', 'wb')
+&gt;&gt;&gt; pickle.dump([1, 2, 3, 4], f)
+&gt;&gt;&gt; pickle.dump('hello', f)
+&gt;&gt;&gt; pickle.dump({'Apple', 'Pear', 'Banana'}, f)
+&gt;&gt;&gt; f.close()
+
+&gt;&gt;&gt; f = open('somedata', 'rb')
+&gt;&gt;&gt; pickle.load(f)
+[1, 2, 3, 4]
+&gt;&gt;&gt; pickle.load(f)
+'hello'
+&gt;&gt;&gt; pickle.load(f)
+{'Apple', 'Pear', 'Banana'}
+&gt;&gt;&gt;
+</pre>
+<p>你还能序列化函数，类，还有接口，但是结果数据仅仅将它们的名称编码成对应的 代码对象。:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; import pickle.
+&gt;&gt;&gt; pickle.dumps(math.cos)
+b'\x80\x03cmath\ncos\nq\x00.'
+&gt;&gt;&gt;
+</pre>
+<p>当数据反序列化回来的时候，会先假定所有的源数据时可用的。模块、类和函数会 自动按需导入进来。
+对于 Python 数据被不同机器上的解析器所共享的应用程序而言， 数据的保存可能会有问题，因为所有的机器都必须访问同一个源代码。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">千万不要对不信任的数据使用 pickle.load()。
+pickle 在加载时有一个副作用就是它会自动加载相应模块并构造实例对象。
+但是某个坏人如果知道 pickle 的工作原理， 他就可以创建一个恶意的数据导致 Python 执行随意指定的系统命令。
+因此，一定要保证 pickle 只在相互之间可以认证对方的解析器的内部使用。</p>
+</div>
+<p>有些类型的对象是不能被序列化的。
+这些通常是那些依赖外部系统状态的对象， 比如打开的文件，网络连接，线程，进程，栈帧等等。
+用户自定义类可以通过提供 <tt class="docutils literal">__getstate__()</tt> 和 <tt class="docutils literal">__setstate__()</tt> 方法来绕过这些限制。
+如果定义了这两个方法， pickle.dump() 就会调用 <tt class="docutils literal">__getstate__()</tt> 获取序列化的对象。
+类似的，<tt class="docutils literal">__setstate__()</tt> 在反序列化时被调用。
+为了演示这个工作原理，下面是一个在内部定义了一个线程但仍 然可以序列化和反序列化的类:</p>
+<pre class="literal-block">
+# countdown.py
+import time
+import threading
+
+class Countdown:
+  def __init__(self, n):
+      self.n = n
+      self.thr = threading.Thread(target=self.run)
+      self.thr.daemon = True
+      self.thr.start()
+
+  def run(self):
+      while self.n &gt; 0:
+          print('T-minus', self.n)
+          self.n -= 1
+          time.sleep(5)
+
+  def __getstate__(self):
+      return self.n
+
+  def __setstate__(self, n):
+      self.__init__(n)
+</pre>
+<p>试着运行下面的序列化试验代码:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import countdown
+&gt;&gt;&gt; c = countdown.Countdown(30)
+&gt;&gt;&gt; T-minus 30
+T-minus 29
+T-minus 28
+...
+&gt;&gt;&gt; # After a few moments
+&gt;&gt;&gt; f = open('cstate.p', 'wb')
+&gt;&gt;&gt; import pickle
+&gt;&gt;&gt; pickle.dump(c, f)
+&gt;&gt;&gt; f.close()
+</pre>
+<p>然后退出 Python 解析器并重启后再试验下:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; f = open('cstate.p', 'rb')
+&gt;&gt;&gt; pickle.load(f)
+&lt;countdown.Countdown object at 0x10069e2d0&gt;
+T-minus 19
+T-minus 18
+...
+</pre>
+<p>你可以看到线程又奇迹般的重生了，从你第一次序列化它的地方又恢复过来</p>
+<p>pickle 对于大型的数据结构比如使用 array 或 numpy 模块创建的二进制数组效率 并不是一个高效的编码方式。
+如果你需要移动大量的数组数据，你最好是先在一个文 件中将其保存为数组数据块或使用更高级的标准编码方式如 HDF5 (需要第三方库的支 持)。</p>
+<p>由于 pickle 是 Python 特有的并且附着在源码上，所有如果需要长期存储数据的 时候不应该选用它。
+例如，如果源码变动了，你所有的存储数据可能会被破坏并且变得 不可读取。
+坦白来讲，对于在数据库和存档文件中存储数据时，你最好使用更加标准的 数据编码格式如 XML，CSV 或 JSON。
+这些编码格式更标准，可以被不同的语言支持， 并且也能很好的适应源码变更。</p>
+<p>最后一点要注意的是 pickle 有大量的配置选项和一些棘手的问题。
+对于最常见的 使用场景，你不需要去担心这个，但是如果你要在一个重要的程序中使用 pickle 去做 序列化的话，
+最好去查阅一下 官方文档 。</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

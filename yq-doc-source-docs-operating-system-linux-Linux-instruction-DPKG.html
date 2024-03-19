@@ -1,0 +1,410 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>dpkg</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>dpkg</h2>
+									<p>debian linux上安装、创建、管理软件包的工具</p>
+<div class="section" id="section-1">
+<h2>选项参数</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-i <var>&lt;package&gt;</var></span>, <span class="option">--install <var>&lt;package&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>安装软件包 package</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-r <var>&lt;package&gt;</var></span>, <span class="option">--remove <var>&lt;package&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>删除软件包</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-P <var>&lt;package&gt;</var></span>, <span class="option">--purge <var>&lt;package&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>删除软件包的同时删除其配置文件</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-L <var>&lt;package&gt;</var></span>, <span class="option">--listfiles <var>&lt;package&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>显示软件包关联的文件</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l</span></kbd></td>
+<td>显示已安装软件包列表</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--unpack</span></kbd></td>
+<td>解开软件包</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c <var>&lt;package&gt;</var></span></kbd></td>
+<td>显示软件包内文件列表</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--confiugre <var>&lt;package&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>配置软件包</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-s <var>&lt;package&gt;</var></span>, <span class="option">--status <var>&lt;package&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>查看软件包信息，是否已安装之类</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-S</span></kbd></td>
+<td>搜索</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--list</span></kbd></td>
+<td>查看所有已安装软件包</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-b<var>&lt;dir deb_name&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>打包软件包, 第一个参数为deb的构建目录, 第二个为包名</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--info <var>&lt;package&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>查看deb包信息</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-x <var>&lt;package dir&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>解压deb中所要安装的文件, 第一个参数为所要解压的deb包，第二个参数为将deb包解压到指定的目录
+不过这个只能解出安装文件, desktop等文件解包的用 dpkg-deb -R</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-e <var>&lt;package&gt;</var></span></kbd></td>
+<td>解压deb中所要安装的文件, 第一个参数为所要解压的deb包，第二个参数为将deb包解压到指定的目录</td></tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>读取手册使用:</p>
+<pre class="literal-block">
+man dpkg-query
+</pre>
+<p>而不是:</p>
+<pre class="last literal-block">
+man dpkg
+</pre>
+</div>
+<!-- 在这些情况下，dpkg仅充当前端 -->
+<!-- 关于选项 l 的结果解析（可以通过 dpkg -l | head -n 3 查看） -->
+</div>
+<div class="section" id="dpkg-l">
+<h2>dpkg -l 结果</h2>
+<p>dpkg -l 结果结构解析:</p>
+<pre class="literal-block">
+root&#64;6378b4ca047d:/# dpkg -l
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                        Version                 Architecture Description
++++-===========================-=======================-============-===============================================================================
+ii  adduser                     3.118ubuntu2            all          add and remove users and groups
+ii  apt                         2.0.2                   amd64        commandline package manager
+</pre>
+<table border="1" class="docutils">
+<caption>第一列首字母含义</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">首字母</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>u</td>
+<td>未知</td>
+</tr>
+<tr><td>i</td>
+<td>安装</td>
+</tr>
+<tr><td>r</td>
+<td>删除/卸载</td>
+</tr>
+<tr><td>p</td>
+<td>清除（删除包括配置文件）</td>
+</tr>
+<tr><td>h</td>
+<td>？？？保持？保留？</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<caption>第一列第二字母含义</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">字母</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>n</td>
+<td>未安装</td>
+</tr>
+<tr><td>i</td>
+<td>安装</td>
+</tr>
+<tr><td>c</td>
+<td>仅安装配置文件</td>
+</tr>
+<tr><td>U</td>
+<td>已解压</td>
+</tr>
+<tr><td>F</td>
+<td>由于某种原因配置失败（半配置）</td>
+</tr>
+<tr><td>H</td>
+<td>由于某种原因安装失败（半安装）</td>
+</tr>
+<tr><td>W</td>
+<td>等待触发器（程序包正在等待另一个程序包的触发器）</td>
+</tr>
+<tr><td>t</td>
+<td>触发挂起（已经触发）</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<caption>第一列第三字母含义</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">字母</th>
+<th class="head">含义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>R</td>
+<td>需要重新安装（包损坏 需重装）</td>
+</tr>
+</tbody>
+</table>
+<p>如:</p>
+<ul>
+<li><p class="first">ii 表示软件正常安装</p>
+</li>
+<li><p class="first">rc表示软件已卸载，可是配置文件还在，可以通过以下命令进行清理:</p>
+<pre class="literal-block">
+dpkg -l | grep ^rc | cut -d' ' -f3 | sudo xargs dpkg --purg
+</pre>
+</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

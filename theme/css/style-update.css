@@ -1,0 +1,205 @@
+
+/* 默认的黑色主题 */
+html, html > body *:not(a):not(.highlight):not(pre):not(span),
+html > body *[class]:not(a):not(.highlight):not(pre):not(span),
+html > body *[id]:not(a):not(.highlight):not(pre):not(span){
+	color: rgb(183, 183, 183);
+}
+/* a {
+	color: #6091c1 !important;
+} */
+html > body[class]:not a:not(.button),
+html > body[class]:not a[class]{
+	color: #6091c1;
+}
+
+/* 全局 按钮 链接 标签 */
+a:hover, a:hover *,
+a:visited:hover,
+a:visited:hover *,
+span[onclick]:hover,
+div[onclick]:hover,
+[role="link"]:hover,
+[role="link"]:hover *,
+[role="button"]:hover *,
+[role="menuitem"]:hover,
+[role="menuitem"]:hover *,
+.link:hover,
+.link:hover * {
+  color: #2a3bb1 !important;
+  background-color: #0000009c !important;
+}
+
+/* home a 标签 */
+.page-home > h1 > a,
+.page-head-content > a{
+	color: #6091c1 !important;
+}
+.page-home > h1 > a:hover{
+	background: unset;
+}
+
+.box {
+	background: rgb(24, 26, 27) !important;
+}
+.actions a{
+	background-color: rgb(128, 21, 44) !important;
+}
+#main-wrapper{
+	background: rgb(24, 26, 27) !important;
+}
+.literal-block{
+	background: rgb(44, 44, 44) !important;
+	color: rgb(183, 183, 183) !important;
+}
+
+
+/* 代码预览 */
+.highlight pre{
+	background: rgb(44, 44, 44) !important;
+}
+.kc{
+	color: #058e2c;
+}
+.nt {
+	color: #4880c8;
+}
+.nf {
+	color: #4470e0;
+}
+
+/* 设置滚动条 */
+/*html {
+   background-color: #252525 !important;
+   background-image: none !important;
+}*/
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+   ::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+   }
+   ::-webkit-scrollbar-thumb {
+	background: #525252;
+	border: 0px none #ffffff;
+	border-radius: 50px;
+   }
+   ::-webkit-scrollbar-thumb:hover {
+	background: #4c4c4c;
+   }
+   ::-webkit-scrollbar-thumb:active {
+	background: #404040;
+   }
+   ::-webkit-scrollbar-track {
+	background: #272727;
+	border: 0px dashed #ffffff;
+	border-radius: 22px;
+   }
+   ::-webkit-scrollbar-corner {
+	background: transparent;
+   }
+
+
+
+
+/*  */
+.page-index{
+	text-align: center;
+	height: 1em;
+}
+	.page-index > div,
+	.page-head > div,
+	.container > div{
+		background-color: unset !important;
+	}
+
+.red-line{
+	border-bottom: 2px solid red !important;
+	width: 10% !important;
+	margin-left: 47.5%;
+	margin-top: -3.5%;
+	height: 1px;
+}
+
+.page-index .page-index-head-content{
+	height: 1em;
+	margin-top: -1%;
+	font-style: italic;
+}
+
+.page-head {
+	text-align: center;
+	margin-top: 14%;
+}
+
+/* .page-head .page-index-head-content{
+	height: 1em;
+	margin-top: -1%;
+} */
+
+
+#header {
+	width: 100%;
+}
+
+	#header .page-home {
+		text-align: left;
+		display: inline-block; /* 将 div 设置为内联块元素 */
+	}
+
+	#header .page-menu {
+		text-align: right;
+		display: inline-block; /* 将 div 设置为内联块元素 */
+		width: 80%; /* 或者根据需要设置宽度 */
+		vertical-align: top; /* 垂直对齐方式，可选 */
+	}
+
+.page-archives > h2{
+	margin-bottom: 2em;
+}
+.page-archives > div{
+	/* display: inline-block; */
+	/* margin-left: 1%; */
+}
+.page-archives > div > .row {
+	width: 100%;
+	margin-left: unset !important;
+	/* margin-left: 1%; */
+}
+	.page-archives > div > .row:not(:first-child) {
+		/* margin-top: -4%; */
+	}
+	.page-archives > div > .row > .column{
+		display: inline-block;
+		padding: 1px;
+	}
+	.page-archives > div > .row > .column-25{
+		/* width: 10%; */
+		padding-right: 10px;
+	}
+	.page-archives > div > .row > .column-75{
+		width: 70%;
+	}
+
+
+/* 小节 */
+dt{
+	font-weight: 800 !important;
+}
+dd{
+	margin-left: 1% !important;
+}
+
+/* 头部菜单 */
+#nav > ul > li.active > a {
+    background: rgb(44, 44, 44) !important;
+}
+.page-menu > #nav a {
+	color: #cdc1c1;
+}
+
+/* 导入sphinx主题alabaster的alabaster.css */
+/* @import url("alabaster.css"); */
+/* 导入无效, 还是直接放在html吧 */

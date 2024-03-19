@@ -1,0 +1,316 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>echo</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>echo</h2>
+									<p>回显，就是显示正在执行的批处理命令及执行的结果等</p>
+<div class="section" id="section-1">
+<h2>选项</h2>
+<div class="topic">
+<p class="topic-title">echo选项</p>
+<p>-n: 不换行输出</p>
+<p>-e: 激活转义字符。使用-e选项时，若字符串中出现以下字符，则特别加以处理，而不会将它当成一般文字输出：</p>
+<blockquote>
+<ul class="simple">
+<li>\a 发出警告声；</li>
+<li>\b 删除前一个字符；</li>
+<li>\c 最后不加上换行符号；</li>
+<li>\f 换行但光标仍旧停留在原来的位置；</li>
+<li>\n 换行且光标移至行首；</li>
+<li>\r 光标移至行首，但不换行；</li>
+<li>\t 插入tab；</li>
+<li>\v 与\f相同；</li>
+<li>\\ 插入\字符；</li>
+<li>\nnn 插入nnn（八进制）所代表的ASCII字符；</li>
+</ul>
+</blockquote>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p class="last">在脚本中echo自带转义功能</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>使用</h2>
+<div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\e[1;36m</span><span class="si">${</span><span class="nv">_strs</span><span class="si">}</span><span class="s2">\e[0m\n&quot;</span>
+</pre></div>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>例子的这种情况官方建议使用 <em>./printf</em></p>
+<p class="last">对于颜色输出而言, echo的 <tt class="docutils literal">\e</tt> 和 <tt class="docutils literal">\033</tt> 一个效果</p>
+</div>
+</div>
+<div class="section" id="echo-vs-bin-echo">
+<h2>echo vs /bin/echo</h2>
+<ul class="simple">
+<li>echo 是shell内置命令</li>
+<li>/bin/echo 是可执行文件</li>
+</ul>
+<p>通常来说，内建命令会比外部命令执行得更快，执行外部命令时不但会触发磁盘 I/O，
+还需要 fork 出一个单独的进程来执行，执行完成后再退出。
+而执行内建命令相当于调用当前 Shell 进程的一个函数。</p>
+<p>目前来说遇到的一些区别:</p>
+<pre class="literal-block">
+/bin/echo 参数触发 Argument list too long的临界点是 131072
+
+echo 暂时没测试到有限制
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>输出带颜色</h2>
+<p>颜色表见 <em>/docs/操作系统/linux/概念性/颜色表与代码表</em></p>
+<p>格式:</p>
+<pre class="literal-block">
+echo -e &quot;\033[字背景颜色;字体颜色m字符串\033[0m&quot;
+</pre>
+<p>例如 打印红色输出:</p>
+<pre class="literal-block">
+echo -e &quot;\e[1;31m 内容 \e[0m&quot;
+#\e[1;31m 将颜色设置为红色
+#\e[0m 将颜色重新置回
+#颜色码：重置=0，黑色=30，红色=31，绿色=32，黄色=33，蓝色=34，洋红=35，青色=36，白色=37
+</pre>
+<p>ANSI控制码的说明:</p>
+<pre class="literal-block">
+\33[0m 关闭所有属性
+\33[1m 设置高亮度
+\33[4m 下划线
+\33[5m 闪烁
+\33[7m 反显
+\33[8m 消隐
+\33[30m -- \33[37m 设置前景色
+\33[40m -- \33[47m 设置背景色
+\33[nA 光标上移n行
+\33[nB 光标下移n行
+\33[nC 光标右移n行
+\33[nD 光标左移n行
+\33[y;xH设置光标位置
+\33[2J 清屏
+\33[K 清除从光标到行尾的内容
+\33[s 保存光标位置
+\33[u 恢复光标位置
+\33[?25l 隐藏光标
+\33[?25h 显示光标
+
+#\e和\033一个效果
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

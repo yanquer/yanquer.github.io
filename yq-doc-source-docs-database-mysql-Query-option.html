@@ -1,0 +1,462 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>查询选项</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/mysql.html">Mysql</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>查询选项</h2>
+									<ul class="simple">
+<li>union 去重查询</li>
+<li>union all     不去重查询</li>
+<li>distinct      字段去重</li>
+</ul>
+<div class="section" id="section-2">
+<h2>非交互式查询</h2>
+<p>命令行直接查询:</p>
+<pre class="literal-block">
+# 如果是文件
+mysql -u $user -p $pass &lt; $file.sql
+# 不是文件
+echo &quot;$sql&quot; | mysql -u $user -p$pass
+</pre>
+<p>如果把账号密码放到一个文件:</p>
+<pre class="literal-block">
+# pwd.cnf
+[client]
+user=root
+password=root
+</pre>
+<p>命令行直接查询:</p>
+<pre class="literal-block">
+# 如果是sql语句文件
+mysql --defaults-extra-file=pwd.cnf &lt; $file.sql
+# 如果不是
+echo &quot;$sql&quot; | mysql --defaults-extra-file=pwd.cnf
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>空间占用查询</h2>
+<p>查询所占空间:</p>
+<pre class="literal-block">
+select
+  table_schema as '数据库',
+  sum(table_rows) as '记录数',
+  sum(truncate(data_length/1024/1024, 2)) as '数据容量(MB)',
+  sum(truncate(index_length/1024/1024, 2)) as '索引容量(MB)'
+from information_schema.tables
+where table_schema='mysql';
+</pre>
+<p>使用optimize命令查询空间占用:</p>
+<pre class="literal-block">
+optimize table tb_report_inventory;
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>使用的时间比较长，需要耐心等待。</p>
+<p class="last">optimize执行时会将表锁住，所以不要在高峰期使用。也不要经常使用，每月一次就足够了</p>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>查询数据库连接</h2>
+<p>SQL:</p>
+<pre class="literal-block">
+show processlist;
+</pre>
+<p>显示当前正在执行的进程或会话的列表以及与每个进程相关的一些信息.
+会返回一个结果集，其中包含以下信息：</p>
+<dl class="docutils">
+<dt>Id</dt>
+<dd>表示连接的唯一标识符。</dd>
+<dt>User</dt>
+<dd>表示连接使用的数据库用户。</dd>
+<dt>Host</dt>
+<dd>表示连接的主机名或 IP 地址。</dd>
+<dt>db</dt>
+<dd>表示连接当前正在使用的数据库。</dd>
+<dt>Command</dt>
+<dd>表示连接正在执行的 SQL 命令类型，如 Query、Sleep、Binlog Dump 等。</dd>
+<dt>Time</dt>
+<dd>表示连接已经执行的时间（以秒为单位）。</dd>
+<dt>State</dt>
+<dd>表示连接的当前状态，如 Running、Locked、Sending data 等。</dd>
+<dt>Info</dt>
+<dd>表示连接当前正在执行的 SQL 语句或操作的描述。</dd>
+</dl>
+<p>监视数据库连接和识别潜在问题非常有用</p>
+</div>
+<div class="section" id="mysql8-0">
+<h2>mysql8.0下实际使用记录</h2>
+<p>创建用户:</p>
+<pre class="literal-block">
+create user 'username'&#64;'%' identified by 'password';
+
+username      用户名
+%     主机名，本机可用localhost，%表示所有（通配符）
+</pre>
+<p>查看用户权限:</p>
+<pre class="literal-block">
+show grants for username&#64;localhost;
+</pre>
+<p>为username&#64;localhost赋予超级用户权限:</p>
+<pre class="literal-block">
+grant all privileges on *.* to username&#64;localhost with grant option;
+
+grant 授权
+all privileges        所有权限
+on *.*        所有数据库，所有表
+to username&#64;localhost 哪个用户的哪个主机
+with grant option     是否将username自身的权限赋予其他账户
+</pre>
+<p>普通用户权限添加:</p>
+<pre class="literal-block">
+grant usage,select,insert,update,delete,create temporary tables,execute on jikedb.* to username&#64;localhost; //此时没有with grant option 表示不给其他用户赋权限
+flush privileges;
+
+usage:无权限，当你想创建一个没有权限的用户时候，指定usage
+show:的权限
+view:视图的权限(mysql8.0+赋权限出错)ERROR 3619 (HY000): Illegal privilege level specified for VIEW
+create temporary tables:创建临时表的权限
+excute：执行的权限
+</pre>
+<p>收回权限:</p>
+<pre class="literal-block">
+revoke delete on jikedb.* from username&#64;localhost;
+# 意思是收回username&#64;localhost下jikedb库所有的表的删除操作
+</pre>
+<p>新创建的用户username&#64;localhost 要想使用，登录后需要修改密码:</p>
+<pre class="literal-block">
+alter user username&#64;localhost identified by '12345678'
+</pre>
+<p>删除用户:</p>
+<pre class="literal-block">
+drop user username&#64;localhost; //username，localhost加不加引号都可
+</pre>
+<p>有时候需要重载一下表数据:</p>
+<pre class="literal-block">
+grant reload on *.* to username&#64;'%';
+</pre>
+</div>
+<div class="section" id="section-5">
+<span id="tablecreate"></span><h2>实际使用2-表的创建修改</h2>
+<p>创建t1表:</p>
+<pre class="literal-block">
+mysql&gt; create table t1(id int primary key, name varchar(255), age int);
+Query OK, 0 rows affected (0.03 sec)
+</pre>
+<p>查看创建语句:</p>
+<pre class="literal-block">
+mysql&gt; show create table t1 \G;
+*************************** 1. row ***************************
+      Table: t1
+Create Table: CREATE TABLE `t1` (
+  `id` int NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `age` int DEFAULT NULL
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+1 row in set (0.00 sec)
+
+ERROR:
+No query specified
+</pre>
+<p>修改表, 增加一个birth字段:</p>
+<pre class="literal-block">
+mysql&gt; alter table t1 add birth datetime;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+</pre>
+<p>查看:</p>
+<pre class="literal-block">
+mysql&gt; show create table t1 \G;
+*************************** 1. row ***************************
+      Table: t1
+Create Table: CREATE TABLE `t1` (
+  `id` int NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `birth` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+1 row in set (0.00 sec)
+
+ERROR:
+No query specified
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>其他</h2>
+<ul class="simple">
+<li>select into 写入文件</li>
+</ul>
+<p>常用语句(有些上面有了):</p>
+<pre class="literal-block">
+            select
+                    now()             查看当前时间
+                    database()        查看当前数据库
+                    version()         查看数据库版本
+                    user()            查看当前登录的数据库用户
+
+                    sleep(n)           睡眠 n 秒
+                    substr(a, b, c)    对于a字符串，b位置开始，截取长度c的字符
+                    count()            计算总数
+                    ascii(a)           字符a的ascii码
+                    length(a)          字符串a的长度
+
+            # 查询数据库版本
+            select version();
+
+            # 使用指定的数据库
+            use $database_name;
+
+            # 查看指定表信息 这个好像在8.0有问题...
+            # show table $table_name
+
+            # 查看指定表的结构
+            show create table $table_name
+
+            # 查看指定表的索引
+            show index from $table_name
+
+            # 删除表 多个逗号隔开, drop table 单个也可
+            drop tables $table_name;
+
+            # 查看SQL查询计划
+            EXPLAIN 加数据库语句
+
+            # 查看各种优化参数开关
+            select &#64;&#64;optimizer_switch;
+            # 在会话级别设置查询优化器可以看到隐藏索引,
+            # use_invisible_indexes 可以通过上面的 optimizer_switch 看到
+            set session optimizer_switch=&quot;use_invisible_indexes=on&quot;;
+
+            # 开启一个事务
+            # begin;
+
+# 删除外键约束
+DROP FOREIGN KEY &lt;外键约束名&gt;
+
+# 查看所有触发器
+show triggers\G;
+</pre>
+<p>mysql命令:</p>
+<pre class="literal-block">
+-h host         链接到指定的主机
+-u user         用户
+-p password     密码
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

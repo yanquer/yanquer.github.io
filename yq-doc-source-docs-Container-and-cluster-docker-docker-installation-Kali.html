@@ -1,0 +1,324 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Docker安装Kali</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+												<li><a class="button button-alt" href="tag/docker.html">Docker</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>Docker安装Kali</h2>
+									<div class="section" id="section-1">
+<h2>命令</h2>
+<div class="highlight"><pre><span></span><span class="c1"># 拉取镜像</span>
+docker<span class="w"> </span>pull<span class="w"> </span>kalilinux/kali-rolling
+
+<span class="c1"># 查看</span>
+docker<span class="w"> </span>images
+
+<span class="c1"># 运行</span>
+<span class="c1"># -t 让 docker 分配一个伪终端并绑定到容器的标准输入上</span>
+<span class="c1"># -p 映射端口,</span>
+<span class="c1"># -d 保持后台运行，</span>
+<span class="c1"># -c 执行一些命令</span>
+<span class="c1"># docker run -t -d -p 60000:22  -p 60001:5901 -p 60002:5902 fd54aef8e4ea  /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;</span>
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-t<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">60000</span>:5900<span class="w"> </span>-p<span class="w"> </span><span class="m">60001</span>:5901<span class="w"> </span>-p<span class="w"> </span><span class="m">60002</span>:5902<span class="w"> </span>--name<span class="w"> </span>mykali<span class="w"> </span>kalilinux/kali-rolling
+docker<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">60000</span>:5900<span class="w"> </span>-p<span class="w"> </span><span class="m">60001</span>:5901<span class="w"> </span>-p<span class="w"> </span><span class="m">60002</span>:5902<span class="w"> </span>--name<span class="w"> </span>mykali<span class="w"> </span>kalilinux/kali-rolling
+
+<span class="c1"># 查看容器</span>
+docker<span class="w"> </span>ps
+
+<span class="c1"># 进入</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mykali<span class="w"> </span>/bin/bash
+</pre></div>
+<p>系统环境配置</p>
+<div class="highlight"><pre><span></span># 修改 root 用户密码
+passwd root
+</pre></div>
+<p>国内修改镜像源</p>
+<div class="highlight"><pre><span></span># 阿里云镜像源
+vi /etc/apt/sources.list
+
+#中科大
+
+deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+
+deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+
+#阿里云
+
+deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+
+deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+#清华大学
+
+deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+
+deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+#浙大
+
+deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free
+
+deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free
+
+#东软大学
+
+deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib
+
+deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib
+#官方源
+
+deb http://http.kali.org/kali kali-rolling main non-free contrib
+
+deb-src http://http.kali.org/kali kali-rolling main non-free contrib
+
+#163
+deb http://mirrors.163.com/debian/ jessie main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+</pre></div>
+<p>SSH服务</p>
+<div class="highlight"><pre><span></span># 更新系统
+apt-get update &amp;&amp; apt-get upgrade
+# 安装所需软件
+apt-get install vim net-tools openssh-server
+# 修改 vim 配置文件，允许 root 用户远程登录
+vim /etc/ssh/sshd_config
+
+#启动 ssh 服务
+service ssh start
+#允许开机自启动
+systemctl enable ssh
+</pre></div>
+<p>通过60000端口ssh连接</p>
+<p>必要工具安装</p>
+<div class="highlight"><pre><span></span>apt<span class="w"> </span>update
+apt<span class="w"> </span>install<span class="w"> </span>lsb-release<span class="w"> </span>vim<span class="w"> </span>git<span class="w"> </span>python3<span class="w"> </span>net-tools<span class="w"> </span>kali-linux-everything
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>kali-linux-everything 太大了, 几个G了还没完</p>
+<p>官网建议这样装:</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="c1"># apt update &amp;&amp; apt -y install &lt;package&gt;</span>
+apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>kali-linux-headless
+apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>kali-linux-large
+</pre></div>
+</div></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

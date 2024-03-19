@@ -1,0 +1,589 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>容器生命周期管理</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+												<li><a class="button button-alt" href="tag/docker.html">Docker</a></li>
+
+												<li><a class="button button-alt" href="tag/docker_command.html">Docker_command</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>容器生命周期管理</h2>
+									<div class="section" id="run">
+<span id="docker-run"></span><h2>run</h2>
+<div class="line-block">
+<div class="line">创建一个新的容器并运行一个命令, 如果没有会自动pull拉取</div>
+</div>
+<p>语法:</p>
+<pre class="literal-block">
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><tt class="docutils literal">[COMMAND] <span class="pre">[ARG...]</span></tt> 会覆盖 <em>dockerfile &lt;/docs/容器与集群/docker/dockerfile编写&gt;</em>
+的 CMD</p>
+</div>
+<p>OPTIONS说明:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a <var>stdin</var></span></kbd></td>
+<td>指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>不使用此选项就直接在当前命令行窗口前台执行;</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td>以交互模式运行容器，通常与 -t 同时使用；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-P</span></kbd></td>
+<td>随机端口映射，不加参数就是对于容器内打开的所有端口, 自动寻找主机空闲端口映射</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span></kbd></td>
+<td>指定端口映射，格式为: 主机(宿主)端口:容器端口</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t</span></kbd></td>
+<td>为容器重新分配一个伪输入终端，通常与 -i 同时使用；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--name=<var>&lt;name&gt;</var></span></kbd></td>
+<td>为容器指定一个名称；</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--dns <var>&lt;8.8.8.8&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定容器使用的DNS服务器，默认和宿主一致；</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--dns-search <var>&lt;example.com&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定容器DNS搜索域名，默认和宿主一致；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-h <var>mars</var></span></kbd></td>
+<td>指定容器的hostname；</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-e <var>&lt;username=ritchie&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>设置环境变量；</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--env-file=<var>&lt;env_file&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>从指定文件读入环境变量；</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--cpuset=<var>&lt;nums&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>如 --cpuset=&quot;0-2&quot; --cpuset=&quot;0,1,2&quot;, 绑定容器到指定CPU运行；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m</span></kbd></td>
+<td>设置容器使用内存最大值；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--net=<var>bridge</var></span></kbd></td>
+<td>指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--link=<var>&lt;link&gt;</var></span></kbd></td>
+<td>添加链接到另一个容器；</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--expose=<var>&lt;ports&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>开放一个端口或一组端口；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--volume</span>, <span class="option">-v</span></kbd></td>
+<td>绑定一个卷, 格式为 <cite>$宿主机目录:$容器内目录</cite></td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--rm</span></kbd></td>
+<td>退出容器时, 自动删除此容器</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--restart</span></kbd></td>
+<td>always表示检测到挂掉后自定重启</td></tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>一般不跟任何参数:</p>
+<pre class="literal-block">
+docker run $image_name
+</pre>
+<p>总是会产生一个挂掉的容器,
+只有容器内有进程运行的时候, 才不会挂掉</p>
+<p class="last"><strong>容器内的进程</strong>,
+<strong>容器内的进程必须处于前台运行状态，否则容器就会直接退出</strong></p>
+</div>
+<div class="section" id="section-2">
+<h3>示例</h3>
+<p>使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx:</p>
+<pre class="literal-block">
+docker run --name mynginx -d nginx:latest
+</pre>
+<p>使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口:</p>
+<pre class="literal-block">
+docker run -P -d nginx:latest
+</pre>
+<p>使用镜像 nginx:latest，以后台模式启动一个容器,将容器的 80 端口映射到主机的 80 端口,主机的目录 /data 映射到容器的 /data:</p>
+<pre class="literal-block">
+docker run -p 80:80 -v /data:/data -d nginx:latest
+</pre>
+<p>绑定容器的 8080 端口，并将其映射到本地主机 127.0.0.1 的 80 端口上:</p>
+<pre class="literal-block">
+$ docker run -p 127.0.0.1:80:8080/tcp ubuntu bash
+</pre>
+<p>使用镜像nginx:latest以交互模式启动一个容器,在容器内执行/bin/bash命令:</p>
+<pre class="literal-block">
+runoob&#64;runoob:~$ docker run -it nginx:latest /bin/bash
+root&#64;b8573233d675:/#
+</pre>
+</div>
+</div>
+<div class="section" id="start-stop-restart">
+<h2>start/stop/restart</h2>
+<ul class="simple">
+<li>docker start :启动一个或多个已经被停止的容器</li>
+<li>docker stop :停止一个运行中的容器</li>
+<li>docker restart :重启容器</li>
+</ul>
+<div class="section" id="section-3">
+<h3>语法</h3>
+<ul class="simple">
+<li><tt class="docutils literal">docker start [OPTIONS] CONTAINER <span class="pre">[CONTAINER...]</span></tt></li>
+<li><tt class="docutils literal">docker stop [OPTIONS] CONTAINER <span class="pre">[CONTAINER...]</span></tt></li>
+<li><tt class="docutils literal">docker restart [OPTIONS] CONTAINER <span class="pre">[CONTAINER...]</span></tt></li>
+</ul>
+</div>
+<div class="section" id="section-4">
+<h3>示例</h3>
+<p>启动名为 <em>qinglong</em> 的容器</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">     </span>COMMAND<span class="w">   </span>CREATED<span class="w">   </span>STATUS<span class="w">    </span>PORTS<span class="w">     </span>NAMES
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-a
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                    </span>COMMAND<span class="w">                  </span>CREATED<span class="w">       </span>STATUS<span class="w">                      </span>PORTS<span class="w">     </span>NAMES
+de1871a5ebeb<span class="w">   </span>whyour/qinglong:latest<span class="w">   </span><span class="s2">&quot;./docker/docker-ent…&quot;</span><span class="w">   </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">   </span>Exited<span class="w"> </span><span class="o">(</span><span class="m">137</span><span class="o">)</span><span class="w"> </span><span class="m">44</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">             </span>qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>start<span class="w"> </span>qinglong
+qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                    </span>COMMAND<span class="w">                  </span>CREATED<span class="w">       </span>STATUS<span class="w">         </span>PORTS<span class="w">                    </span>NAMES
+de1871a5ebeb<span class="w">   </span>whyour/qinglong:latest<span class="w">   </span><span class="s2">&quot;./docker/docker-ent…&quot;</span><span class="w">   </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">5</span><span class="w"> </span>seconds<span class="w">   </span><span class="m">0</span>.0.0.0:5700-&gt;5700/tcp<span class="w">   </span>qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+</pre></div>
+<p>停止名为 <em>qinglong</em> 的容器</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                    </span>COMMAND<span class="w">                  </span>CREATED<span class="w">       </span>STATUS<span class="w">         </span>PORTS<span class="w">                    </span>NAMES
+de1871a5ebeb<span class="w">   </span>whyour/qinglong:latest<span class="w">   </span><span class="s2">&quot;./docker/docker-ent…&quot;</span><span class="w">   </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">5</span><span class="w"> </span>seconds<span class="w">   </span><span class="m">0</span>.0.0.0:5700-&gt;5700/tcp<span class="w">   </span>qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span>qinglong
+qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">     </span>COMMAND<span class="w">   </span>CREATED<span class="w">   </span>STATUS<span class="w">    </span>PORTS<span class="w">     </span>NAMES
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+</pre></div>
+<p>重启名为 <em>qinglong</em> 的容器</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">     </span>COMMAND<span class="w">   </span>CREATED<span class="w">   </span>STATUS<span class="w">    </span>PORTS<span class="w">     </span>NAMES
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>restart<span class="w"> </span>qinglong
+qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                    </span>COMMAND<span class="w">                  </span>CREATED<span class="w">       </span>STATUS<span class="w">         </span>PORTS<span class="w">                    </span>NAMES
+de1871a5ebeb<span class="w">   </span>whyour/qinglong:latest<span class="w">   </span><span class="s2">&quot;./docker/docker-ent…&quot;</span><span class="w">   </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">3</span><span class="w"> </span>seconds<span class="w">   </span><span class="m">0</span>.0.0.0:5700-&gt;5700/tcp<span class="w">   </span>qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+</pre></div>
+</div>
+</div>
+<div class="section" id="kill">
+<h2>kill</h2>
+<div class="line-block">
+<div class="line">docker kill :杀掉一个运行中的容器</div>
+</div>
+<div class="section" id="section-5">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker kill [OPTIONS] CONTAINER <span class="pre">[CONTAINER...]</span></tt></p>
+<p>OPTIONS说明:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>向容器发送一个信号</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-6">
+<h3>示例</h3>
+<p>杀掉运行中的容器 <em>qinglong</em></p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                    </span>COMMAND<span class="w">                  </span>CREATED<span class="w">       </span>STATUS<span class="w">          </span>PORTS<span class="w">                    </span>NAMES
+de1871a5ebeb<span class="w">   </span>whyour/qinglong:latest<span class="w">   </span><span class="s2">&quot;./docker/docker-ent…&quot;</span><span class="w">   </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">26</span><span class="w"> </span>seconds<span class="w">   </span><span class="m">0</span>.0.0.0:5700-&gt;5700/tcp<span class="w">   </span>qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-s<span class="w"> </span>KILL<span class="w"> </span>qinglong
+qinglong
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">     </span>COMMAND<span class="w">   </span>CREATED<span class="w">   </span>STATUS<span class="w">    </span>PORTS<span class="w">     </span>NAMES
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm">
+<h2>rm</h2>
+<div class="line-block">
+<div class="line">docker rm : 删除一个或多个容器。</div>
+</div>
+<div class="section" id="section-7">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker rm [OPTIONS] CONTAINER <span class="pre">[CONTAINER...]</span></tt></p>
+<p>OPTIONS说明:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>通过 SIGKILL 信号强制删除一个运行中的容器。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l</span></kbd></td>
+<td>移除容器间的网络连接，而非容器本身。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>删除与容器关联的卷。</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-8">
+<h3>示例</h3>
+<p>强制删除容器 db01、db02:</p>
+<pre class="literal-block">
+docker rm -f db01 db02
+</pre>
+<p>移除容器 nginx01 对容器 db01 的连接，连接名 db:</p>
+<pre class="literal-block">
+docker rm -l db
+</pre>
+<p>删除容器 nginx01, 并删除容器挂载的数据卷:</p>
+<pre class="literal-block">
+docker rm -v nginx01
+</pre>
+<p>删除所有已经停止的容器:</p>
+<pre class="literal-block">
+docker rm $(docker ps -a -q)
+</pre>
+</div>
+</div>
+<div class="section" id="pause-unpause">
+<h2>pause/unpause</h2>
+<ul class="simple">
+<li>docker pause :暂停容器中所有的进程。</li>
+<li>docker unpause :恢复容器中所有的进程。</li>
+</ul>
+<div class="section" id="section-9">
+<h3>语法</h3>
+<ul class="simple">
+<li><tt class="docutils literal">docker pause CONTAINER <span class="pre">[CONTAINER...]</span></tt></li>
+<li><tt class="docutils literal">docker unpause CONTAINER <span class="pre">[CONTAINER...]</span></tt></li>
+</ul>
+<p>OPTIONS说明:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>向容器发送一个信号</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-10">
+<h3>示例</h3>
+<p>暂停数据库容器db01提供服务:</p>
+<pre class="literal-block">
+docker pause db01
+</pre>
+<p>恢复数据库容器 db01 提供服务:</p>
+<pre class="literal-block">
+docker unpause db01
+</pre>
+</div>
+</div>
+<div class="section" id="create">
+<h2>create</h2>
+<div class="line-block">
+<div class="line">docker create : 创建一个新的容器但不启动它, 用法同 <em>docker run</em></div>
+</div>
+<div class="section" id="section-11">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker create [OPTIONS] IMAGE [COMMAND] <span class="pre">[ARG...]</span></tt></p>
+<p>用法同 <em>docker run</em></p>
+</div>
+<div class="section" id="section-12">
+<h3>示例</h3>
+<p>使用docker镜像 <em>yanquer/kali:config_apt_list2</em> 创建一个容器,并将容器命名为 <em>mykali</em></p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp ~ % docker images
+REPOSITORY               TAG                IMAGE ID       CREATED         SIZE
+yanquer/kali             config_apt_list2   24b7cbbe11fb   2 days ago      236MB
+yanque@yanquedembp ~ %
+yanque@yanquedembp ~ % docker create -t -p 60000:5900 -p 60001:5901 -p 60002:5902 --name mykali yanquer/kali:config_apt_list2
+WARNING: The requested image&#39;s platform (linux/arm64) does not match the detected host platform (linux/amd64) and no specific platform was requested
+fa15654fc7d19605dbc2415e09d279bfc1d898efae6b1ff8f87f27940aa94cd8
+yanque@yanquedembp ~ %
+yanque@yanquedembp ~ % docker ps -a
+CONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS                        PORTS     NAMES
+fa15654fc7d1   yanquer/kali:config_apt_list2   &quot;bash&quot;                   About a minute ago   Created                                 mykali
+</pre></div>
+</div>
+</div>
+<div class="section" id="exec">
+<h2>exec</h2>
+<div class="line-block">
+<div class="line">docker exec : 在运行的容器中执行命令</div>
+</div>
+<div class="section" id="section-13">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker exec [OPTIONS] CONTAINER COMMAND <span class="pre">[ARG...]</span></tt></p>
+<p>OPTIONS说明:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>分离模式, 在后台运行</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td>即使没有附加也保持STDIN 打开</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t</span></kbd></td>
+<td>分配一个伪终端</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-14">
+<h3>示例</h3>
+<p>调用容器 <em>mykali</em> 执行 <em>ls /usr</em>:</p>
+<pre class="literal-block">
+yanque&#64;yanquedembp ~ % docker exec -it mykali ls /usr
+bin  games  include  lib  libexec  local  sbin        share  src
+</pre>
+<p>容器开启一个交互模式终端:</p>
+<pre class="literal-block">
+yanque&#64;yanquedembp ~ % docker exec -it mykali /bin/bash
+┌──(root㉿fa15654fc7d1)-[/]
+└─#
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">执行指令时的对象, 可以是容器名, 也可以是容器id</p>
+</div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

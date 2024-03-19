@@ -1,0 +1,300 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>call</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/windows.html">Windows</a></li>
+
+												<li><a class="button button-alt" href="tag/windows_shell.html">Windows_shell</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>call</h2>
+									<p>从批处理程序调用另一个批处理程序:</p>
+<pre class="literal-block">
+CALL [drive:][path]filename [batch-parameters]
+
+  batch-parameters   指定批处理程序所需的命令行信息。
+</pre>
+<p>如果命令扩展被启用，CALL 会如下改变:</p>
+<p>CALL 命令现在将卷标当作 CALL 的目标接受。语法是:</p>
+<pre class="literal-block">
+CALL:label arguments
+</pre>
+<p>一个新的批文件上下文由指定的参数所创建，控制在卷标被指定后传递到语句。
+你必须通过达到批脚本文件末两次来 &quot;exit&quot; 两次。
+第一次读到文件末时，控制会回到 CALL 语句的紧后面。
+第二次会退出批脚本。
+键入 GOTO /?，参看 GOTO :EOF 扩展的描述，此描述允许你从一个批脚本返回。</p>
+<p>另外，批脚本文本参数参照(%0、%1、等等)已如下改变:</p>
+<pre class="literal-block">
+批脚本里的 %* 指出所有的参数(如 %1 %2 %3 %4 %5 ...)
+
+批参数(%n)的替代已被增强。你可以使用以下语法:
+
+    %~1         - 删除引号(&quot;)，扩展 %1
+    %~f1        - 将 %1 扩展到一个完全合格的路径名
+    %~d1        - 仅将 %1 扩展到一个驱动器号
+    %~p1        - 仅将 %1 扩展到一个路径
+    %~n1        - 仅将 %1 扩展到一个文件名
+    %~x1        - 仅将 %1 扩展到一个文件扩展名
+    %~s1        - 扩展的路径只含有短名
+    %~a1        - 将 %1 扩展到文件属性
+    %~t1        - 将 %1 扩展到文件的日期/时间
+    %~z1        - 将 %1 扩展到文件的大小
+    %~$PATH:1   - 查找列在 PATH 环境变量的目录，并将 %1
+                  扩展到找到的第一个完全合格的名称。如果
+                  环境变量名未被定义，或者没有找到文件，
+                  此修改符会扩展到空字符串
+</pre>
+<p>可以组合修改符来取得多重结果:</p>
+<pre class="literal-block">
+%~dp1       - 只将 %1 扩展到驱动器号和路径
+%~nx1       - 只将 %1 扩展到文件名和扩展名
+%~dp$PATH:1 - 在列在 PATH 环境变量中的目录里查找 %1，
+              并扩展到找到的第一个文件的驱动器号和路径。
+%~ftza1     - 将 %1 扩展到类似 DIR 的输出行。
+</pre>
+<p>在上面的例子中，%1 和 PATH 可以被其他有效数值替换。
+%~ 语法被一个有效参数号码终止。%~ 修定符不能跟 %*
+使用</p>
+<p>此处提一下与 <em>/docs/操作系统/windows/windows_shell/start</em> 的区别:</p>
+<ul class="simple">
+<li>start的调用需要在调用的bat脚本内写入 <tt class="docutils literal">exit</tt> 才能正常返回当前bat指令</li>
+<li>call 的退出有没有 <tt class="docutils literal">exit /b</tt> 即可, 默认就是这个</li>
+</ul>
+<p>如, 1.bat 调用 2.bat , 使用 start:</p>
+<div class="figure">
+<img alt="" src="../../../../resources/images/2023-03-23-09-06-12.png" style="width: 480px;" />
+</div>
+<p>使用 call:</p>
+<div class="figure">
+<img alt="" src="../../../../resources/images/2023-03-23-09-08-16.png" style="width: 480px;" />
+</div>
+<p>输出都是:</p>
+<pre class="literal-block">
+C:\Users\烟雀\Desktop\some\t\_&gt;1.bat
+end 0
+end 1
+C:\Users\烟雀\Desktop\some\t\_&gt;
+</pre>
+<p>使用call时, 在 2.bat 使用 <em>/docs/操作系统/windows/windows_shell/exit</em> 会退出整个程序,
+因为, call 是在一个批处理中直接调用另一个批处理, 不会打开新的窗口.</p>
+<p>而 start 是新开一个窗口, 所以需要在新开的窗口手动 exit 退出.</p>
+<p>要处理call执行子脚本退出父脚本可以使用:</p>
+<pre class="literal-block">
+goto :eof
+</pre>
+<p>来替代, 表示转到文件末尾</p>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

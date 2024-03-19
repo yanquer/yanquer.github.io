@@ -1,0 +1,626 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Python使用技巧/问题</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xiang-guan.html">概念相关</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>Python使用技巧/问题</h2>
+									<div class="section" id="section-1">
+<span id="progressinpy"></span><h2>进度条</h2>
+<p>最原始数字实现:</p>
+<pre class="literal-block">
+def print_hi():
+  n = 100
+  for i in range(n):
+      for j in range(n):
+          j += i
+      print(f&quot;{i+1} / {n}&quot;, end='\r')
+</pre>
+<p>效果:</p>
+<pre class="literal-block">
+8622 / 10000
+</pre>
+<p>百分比进度条:</p>
+<pre class="literal-block">
+def print_hi():
+  n = 10000
+  for i in range(n):
+      for j in range(n):
+          j += i
+      # print(i)
+      # print(f&quot;{i+1} / {n}&quot;, end='\r')
+      print(&quot;进度·&quot;,
+            f&quot;|{ '+' * ((i+1) * 100 // n):100}|&quot;,
+            f&quot;{(i+1) * 100 // n}/%&quot;,
+            end='\r')
+</pre>
+<p>效果</p>
+<div class="figure">
+<img alt="" src="../../../../resources/images/2024-02-07-12-28-42.png" style="width: 480px;" />
+</div>
+<p>其他第三方进度条库模块:</p>
+<ul class="simple">
+<li><em>/docs/后端/python/python三方库/progress</em></li>
+<li><em>/docs/后端/python/python三方库/tqdm</em></li>
+<li><em>/docs/后端/python/python三方库/alive-progress</em></li>
+</ul>
+</div>
+<div class="section" id="section-2">
+<h2>多赋值</h2>
+<p>普通多赋值:</p>
+<pre class="literal-block">
+In [10]: product_info = ['apple', '5', 1000]
+
+In [11]: name, price, num = product_info
+
+In [12]: name, price, num
+Out[12]: ('apple', '5', 1000)
+
+In [13]:
+</pre>
+<p>如果只需要部分, 其它的任意变量占位即可, 如只需要name:</p>
+<pre class="literal-block">
+In [13]: name, *_ = product_info
+
+In [14]: name, _
+Out[14]: ('apple', ['5', 1000])
+</pre>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>可使用 * 赋值为列表</p>
+<p class="last">适用与任何可迭代对象, 如list, str</p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>获取参数列表</h2>
+<div class="section" id="section-4">
+<h3>函数内部</h3>
+<p><strong>函数内部</strong> 获取, 使用 locals</p>
+<pre class="literal-block">
+In [1]: def fun1(a, b, c):
+...:     d = 4
+...:     print(locals())
+...:     print(a, b, c)
+...:
+
+In [2]: fun1(1, 2, 3)
+{'a': 1, 'b': 2, 'c': 3, 'd': 4}
+1 2 3
+</pre>
+</div>
+<div class="section" id="section-5">
+<h3>函数外部</h3>
+<p><strong>函数外部</strong> 获取, 使用 <tt class="docutils literal">__code__.co_varnames</tt> , 只能获取参数名</p>
+<pre class="literal-block">
+In [4]: fun1.__code__.co_varnames
+Out[4]: ('a', 'b', 'c', 'd')
+</pre>
+<p>或者使用 inspect 模块, 获取形参列表和默认参数, 例:</p>
+<pre class="literal-block">
+In [8]: import inspect
+
+In [9]: inspect.getargspec(fun1)
+&lt;ipython-input-9-96541cc6565c&gt;:1: DeprecationWarning: inspect.getargspec() is deprecated since Python 3.0, use inspect.signature() or inspect.getfullargspec()
+inspect.getargspec(fun1)
+Out[9]: ArgSpec(args=['a', 'b', 'c'], varargs=None, keywords=None, defaults=None)
+
+In [10]: inspect.signature(fun1)
+Out[10]: &lt;Signature (a, b, c)&gt;
+
+In [11]: inspect.getfullargspec(fun1)
+Out[11]: FullArgSpec(args=['a', 'b', 'c'], varargs=None, varkw=None, defaults=None, kwonlyargs=[], kwonlydefaults=None, annotations={})
+</pre>
+<p>看起来建议使用 getfullargspec 获取的最详细.</p>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>相关</p>
+<p>获取函数参数个数(形参个数):</p>
+<pre class="literal-block">
+In [6]: fun1.__code__.co_argcount
+Out[6]: 3
+</pre>
+<p>获取函数参数默认值(元组), 如果有:</p>
+<pre class="last literal-block">
+In [7]: fun1.__defaults__
+</pre>
+</div>
+</div>
+</div>
+<div class="section" id="section-6">
+<h2>关于字典</h2>
+<p>当字典的元素个数少于1000时，应使用:</p>
+<pre class="literal-block">
+dData.keys(),dData.items(),dDate.values()
+</pre>
+<p>当字典的元素个数超过1000时，为了提高效率，可以使用:</p>
+<pre class="literal-block">
+dData.iterkeys(),dData.iteritems,dData.itervalues()
+</pre>
+<p>当没有把握时，采用第一种keys的方案</p>
+<p>keys，items，values会创建新的副本参与元素遍历，安全性更高，
+而iter是迭代器的概念，直接用元素的内存地址指针参与每个元素的遍历</p>
+</div>
+<div class="section" id="section-7">
+<h2>多个变量的赋值</h2>
+<p>创建一个整型对象，值为1，三个变量被分配到相同的内存空间上:</p>
+<pre class="literal-block">
+a = b = c = 1
+</pre>
+<p>a,b,c分别被赋值为1,2，&quot;john&quot;:</p>
+<pre class="literal-block">
+a, b, c = 1, 2, &quot;john&quot;
+</pre>
+</div>
+<div class="section" id="python-1">
+<h2>Python 五个标准的数据类型</h2>
+<ul class="simple">
+<li>Numbers:    数字</li>
+<li>String:     字符串</li>
+<li>List:       列表</li>
+<li>Tuple:      元组</li>
+<li>Dictionary: 字典</li>
+</ul>
+</div>
+<div class="section" id="python-2">
+<h2>Python支持四种不同的数字类型</h2>
+<ul class="simple">
+<li>int:      有符号整型</li>
+<li>long:     长整型，也可以代表八进制或者十六进制</li>
+<li>float:    浮点型</li>
+<li>complex:  复数</li>
+</ul>
+<p>python2.2之后int溢出后会自动自动转换为long，3中long被移除</p>
+<p>在python中类型属于对象，变量是没有类型的</p>
+</div>
+<div class="section" id="section-8">
+<h2>字符串的操作</h2>
+<p>截取字符串:</p>
+<pre class="literal-block">
+str = 'hello'
+print str[1:4]                                #ell
+# str[start:end],从下标start开始，end结束，不包括end
+</pre>
+<p>将字符串转换为数组:</p>
+<pre class="literal-block">
+str = 'hi yo'
+print str.split()                     #['hi', 'yo']
+# split，以指定字符串分隔, 不带参默认是空格
+</pre>
+</div>
+<div class="section" id="section-9">
+<h2>获取对象占用的内存大小</h2>
+<p>sys.getsizeof()</p>
+<p>获取对象占用的内存大小</p>
+</div>
+<div class="section" id="sys-modules">
+<h2>sys.modules</h2>
+<p>sys.modules是一个全局字典，该字典是python启动后就加载在内存中，
+每当导入新的模块，sys.modules都将记录这些模块。</p>
+<p>字典sys.modules对于加载模块起到了缓冲的作用。
+当某个模块第一次导入，字典sys.modules将自动记录该模块。
+当第二次再导入该模块时，python会直接到字典中查找，从而加快了程序运行的速度。</p>
+</div>
+<div class="section" id="sys-argv">
+<h2>sys.argv[]</h2>
+<p>sys.argv[0]表示代码本身文件路径以及调用时的参数</p>
+<p>sys.argv[]说白了就是一个从程序外部获取参数的桥梁，
+这个“外部”很关键，所以那些试图从代码来说明它作用的解释一直没看明白。
+因为我们从外部取得的参数可以是多个，所以获得的是一个列表（list)，
+也就是说sys.argv其实可以看作是一个列表，所以才能用[]提取其中的元素。
+其第一个元素是程序本身，随后才依次是外部给予的参数:</p>
+<pre class="literal-block">
+sys.argv[num]         #调用时的第num个参数，0表示脚本本身
+</pre>
+</div>
+<div class="section" id="section-10">
+<h2>四舍五入</h2>
+<p>code:</p>
+<pre class="literal-block">
+format(1.23456, '.2f')
+
+'%.4f' % 1.23456
+</pre>
+<p>还有一个 <em>/docs/后端/python/内置函数/round</em> 不是很建议, 除非对精度无要求</p>
+</div>
+<div class="section" id="n">
+<h2>获取集合中最大/小的N个元素</h2>
+<p>如果 N == 1, 那么还是使用 min(), max() 好点</p>
+<p>N &gt; 1 时, 使用 <em>/docs/后端/python/python标准库/heapq</em> 的:</p>
+<ul class="simple">
+<li>heapq.nlargest(n, iterable, key=None)  获取最大n个元素</li>
+<li>heapq.nsmallest(n, iterable, key=None) 获取最小n个元素</li>
+</ul>
+</div>
+<div class="section" id="section-11">
+<h2>字典的一些不常见操作</h2>
+<p>例:</p>
+<pre class="literal-block">
+a={
+'x' : 1,
+'y' : 2,
+'z' : 3 }
+b={
+'w' : 10,
+'x' : 11,
+'y' : 2 }
+</pre>
+<p>操作:</p>
+<pre class="literal-block">
+# Find keys in common
+a.keys() &amp; b.keys()
+# { 'x', 'y' }
+# Find keys in a that are not in b
+a.keys() - b.keys()
+# { 'z' }
+# Find (key,value) pairs in common
+a.items() &amp; b.items()
+# { ('y', 2) }
+</pre>
+<p>一个字典就是一个键集合与值集合的映射关系。字典的 keys() 方法返回一个展现 键集合的键视图对象。
+键视图的一个很少被了解的特性就是它们也支持集合操作，比如 集合并、交、差运算。
+所以，如果你想对集合的键执行一些普通的集合操作，可以直接 使用键视图对象而不用先将它们转换成一个 set。</p>
+<p>字典的 items() 方法返回一个包含 (键，值) 对的元素视图对象。
+这个对象同样也 支持集合操作，并且可以被用来查找两个字典有哪些相同的键值对。</p>
+<p>尽管字典的 values() 方法也是类似，但是它并不支持这里介绍的集合操作。
+某种 程度上是因为值视图不能保证所有的值互不相同，这样会导致某些集合操作会出现问题。
+不过，如果你硬要在值上面执行这些集合操作的话，你可以先将值集合转换成 set， 然后再执行集合运算就行了。</p>
+</div>
+<div class="section" id="section-12">
+<h2>序列中出现次数最多的元素</h2>
+<p>collections.Counter</p>
+<p>见 <em>/docs/后端/python/python标准库/collections</em></p>
+</div>
+<div class="section" id="section-13">
+<h2>下划线</h2>
+<p>在Python中，下划线（underscore）有多种用途，包括：</p>
+<ul class="simple">
+<li>单个前导下划线：<cite>_var</cite>，表示该变量是一个私有变量，建议不要在类的外部直接访问。</li>
+<li>单个结尾下划线：<cite>var_</cite>，避免与Python关键字或内置函数冲突。</li>
+<li>双前导下划线：<cite>__var</cite>，表示该变量是一个强制私有变量，不能在类的外部直接访问。在类内部通过`self.__var`的方式访问。</li>
+<li>双前导和双结尾下划线：<cite>__var__</cite>，表示Python内置的方法或属性，避免与自定义方法或属性发生冲突。</li>
+<li>单个独立下划线：<cite>_</cite>，作为占位符使用，表示某个变量或参数没有被使用。
+在交互式界面中, 默认表示最近一次的值.</li>
+</ul>
+<p>需要注意的是，在Python中使用下划线并不是强制性的，而只是一种编码规范。但是，遵守这些规范可以提高代码的可读性和可维护性。</p>
+<p>特别的, 在python交互式控制台中, 单下划线表示上一个语句的返回值.</p>
+</div>
+<div class="section" id="typing">
+<h2>判断类型注解是否属于typing</h2>
+<p><em>判断类型注解是否引入了typing &lt;an_is_typing&gt;</em></p>
+</div>
+<div class="section" id="section-14">
+<h2>关于数据类型模块使用注解</h2>
+<p>当使用 <em>/docs/后端/python/python标准库/dataclasses</em> 模块时,
+可能会用到 <em>/docs/后端/python/python标准库/typing</em> 注解.</p>
+<p>当需要获取注解的相关信息时, 可以使用 fields 函数:</p>
+<pre class="literal-block">
+&#64;dataclass
+class Person(object):
+  name: str
+  pet: List[Cat] = field(default_factory=list)
+  pet2: Cat = field(default_factory=Cat)
+
+from typing import _GenericAlias
+
+for f in fields(Person):
+  print('type', f.type)
+</pre>
+<p>返回结果是 typing.Field 的一个迭代</p>
+</div>
+<div class="section" id="section-15">
+<h2>一些内置类型的注解</h2>
+<p>比如 函数类型的注解, 可以使用 <em>/docs/后端/python/python标准库/types</em> 下的定义,
+如:</p>
+<pre class="literal-block">
+def _fun(): ...
+
+import types
+assert types.FunctionType == type(_fun)
+</pre>
+<p>判断是否是协程函数, 调用后可以使用 Awaitable,
+未调用时只能使用</p>
+<pre class="literal-block">
+import asyncio
+asyncio.iscoroutinefunction()
+</pre>
+<p>实际会调用 inspect 模块下的 iscoroutinefunction</p>
+</div>
+<div class="section" id="python-3">
+<h2>Python定义抽象类/接口类</h2>
+<p>见 <em>Python_抽象/接口类</em></p>
+<p>使用 abc 会定义的抽象类会强制进行类型检查,
+并不建议使用强制类型检查, 因为Python是一门动态语言, 这样不但降低性能, 而且显得舍本逐末.</p>
+<p>可以直接按照普通的定义, 抽象基类直接抛异常即可:</p>
+<pre class="literal-block">
+class IBase(object):
+
+  def method1(self):
+    raise NotImplemented
+</pre>
+<p>快速实现比较方法</p>
+<p>不想全部定义object比较的方法, 可以使用
+<em>/docs/后端/python/python标准库/functools</em> 下的 total_ordering 装饰器</p>
+<p>这样只需要定义任意一个比较方法, 就可以实现完整的比较.</p>
+<p>不过性能较慢, 所以如果不是强需求的话, 还是手动都实现了吧, 实在不行, 定义个比较基类实现就行</p>
+</div>
+<div class="section" id="section-16">
+<h2>判断语句</h2>
+<p>看这个例子:</p>
+<pre class="literal-block">
+def fun(*args, **kwargs):  return not (args or kwargs)
+def fun2(*args, **kwargs): return not args and not kwargs
+</pre>
+<p>当我没说...</p>
+</div>
+<div class="section" id="section-17">
+<h2>进制说明</h2>
+<p>八进制以 0o 开头, 如:</p>
+<pre class="literal-block">
+0o755
+</pre>
+<p>进制转换见 <em>Python_进制转换</em></p>
+</div>
+<div class="section" id="property">
+<h2>同名类属性/实例变量与属性访问器(Property)的访问顺序</h2>
+<ul class="simple">
+<li>类属性: 定义类时定义的属性</li>
+<li>实例属性: 类实例化后设置的属性</li>
+<li>属性访问器: 使用 &#64;property 修饰的属性方法</li>
+</ul>
+<p>结果: 对于已经实例的对象而言, 优先查找&#64;property属性访问器</p>
+<p>注意: 如果定义同名的实例属性与属性访问器, 必须设置属性访问器的setter方法, 否则会报错.
+若定义的类属性需要支持设置值时, 也需要设置, 否则报错.</p>
+<p>如, 同名实例属性与属性访问器:</p>
+<pre class="literal-block">
+class A(object):
+    def __init__(self):
+        self.name: str = '123'
+
+    &#64;property
+    def name(self):
+        return 'nnn'
+
+if __name__ == '__main__':
+    a = A()
+    print(a.name)
+</pre>
+<p>报错:</p>
+<pre class="literal-block">
+self.name: str = '123'
+AttributeError: can't set attribute
+</pre>
+<p>同名类属性与属性访问器(不支持设置类属性值):</p>
+<pre class="literal-block">
+class A(object):
+    name: str = '123'
+
+    &#64;property
+    def name(self):
+        return 'nnn'
+
+if __name__ == '__main__':
+    a = A()
+    print(a.name)
+</pre>
+<p>结果:</p>
+<pre class="literal-block">
+nnn
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

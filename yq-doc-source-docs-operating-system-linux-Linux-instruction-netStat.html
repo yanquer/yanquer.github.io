@@ -1,0 +1,390 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>netstat</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>netstat</h2>
+									<p>Ubuntu安装:</p>
+<pre class="literal-block">
+apt install net-tools -y
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">net-tools包含arp, ifconfig, netstat, rarp, nameif and route命令，如果使用这些命令报错，可以尝试安装。</p>
+</div>
+<div class="section" id="section-1">
+<h2>功能</h2>
+<p>查看网络状态</p>
+<p>Linux netstat 命令用于显示网络状态。利用 netstat 指令可让你得知整个 Linux 系统的网络情况。</p>
+<p>使用:</p>
+<pre class="literal-block">
+netstat [-acCeFghilMnNoprstuvVwx][-A&lt;网络类型&gt;][--ip]
+</pre>
+</div>
+<div class="section" id="section-2">
+<h2>选项参数</h2>
+<table border="1" class="docutils">
+<caption>netstat选项参数</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">选项</th>
+<th class="head">含义</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>-a/--all</td>
+<td>显示所有连线中的Socket</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-n/--numeric</td>
+<td>以ip形式显示当前建立的有效连接和端口.直接使用IP地址，而不通过域名服务器</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-u/--udp</td>
+<td>显示UDP传输协议的连线状况。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-t/--tcp</td>
+<td>显示TCP传输协议的连线状况。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-p/--programs</td>
+<td>显示对应PID与程序名. 显示正在使用Socket的程序识别码和程序名称。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>A&lt;网络类型&gt;或--&lt;网络类型&gt;</td>
+<td>列出该网络类型连线中的相关地址。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-c/--continuous</td>
+<td>持续列出网络状态。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-C/--cache</td>
+<td>显示路由器配置的快取信息。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-e/--extend</td>
+<td>显示网络其他相关信息。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-F/--fib</td>
+<td>显示路由缓存。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-g/--groups</td>
+<td>显示多重广播功能群组组员名单。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-h/--help</td>
+<td>在线帮助。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-i</td>
+<td>--interfaces</td>
+<td>显示网络界面信息表单。</td>
+</tr>
+<tr><td>-l/--listening</td>
+<td>显示监控中的服务器的Socket。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-M/--masquerade</td>
+<td>显示伪装的网络连线。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-N/--netlink/--symbolic</td>
+<td>显示网络硬件外围设备的符号连接名称。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-o/--timers</td>
+<td>显示计时器。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-r/--route</td>
+<td>显示Routing Table。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-s/--statistics</td>
+<td>显示网络工作信息统计表。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-v/--verbose</td>
+<td>显示指令执行过程。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-V/--version</td>
+<td>显示版本信息。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-w/--raw</td>
+<td>显示RAW传输协议的连线状况。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>-x/--unix</td>
+<td>此参数的效果和指定&quot;-A unix&quot;参数相同。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>--ip/--inet</td>
+<td>此参数的效果和指定&quot;-A inet&quot;参数相同。</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">常用: <tt class="docutils literal">netstat <span class="pre">-anutp</span></tt></p>
+</div>
+<p>常用:</p>
+<pre class="literal-block">
+#列出所有端口 (包括监听和未监听的)
+netstat -a     #列出所有端口
+netstat -at    #列出所有tcp端口
+netstat -au    #列出所有udp端口
+#列出所有处于监听状态的 Socket
+netstat -l        #只显示监听端口
+netstat -lt       #只列出所有监听 tcp 端口
+netstat -lu       #只列出所有监听 udp 端口
+netstat -lx       #只列出所有监听 UNIX 端口
+
+netstat -antup    #显示所有 及 占用程序名
+</pre>
+<p>内容解释:</p>
+<pre class="literal-block">
+Proto        该联机的封包协议
+Recv-Q        非由用户程序连接所复制而来的总 bytes
+Send-Q        由远程主机所传送而来，但不具有ACK标志的总bytes数，意指主动联机SYN或其他标志的封包所占的bytes数
+Local Address    本地地址
+Foreign Address    远程主机地址
+stat        状态栏，有以下
+                ESTABLISED    已建立的联机的状态
+                SYNC_SENT    发出主动联机的联机封包
+                SYNC_RECV    接收到一个要求联机的主动联机封包
+                FIN_WAIT1    该插槽服务socket已中断，该联机正在断线中
+                FIN_WAIT2    该联机已挂断，但正在等待对方主机响应断线确认的封包
+                TIME_WAIT    该联机已挂断，但socket还在网络上等待结束
+                LISTEN        通常在服务的监听port，可使用 -l查询
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

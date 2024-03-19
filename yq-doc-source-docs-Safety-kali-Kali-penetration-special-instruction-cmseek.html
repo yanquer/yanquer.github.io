@@ -1,0 +1,367 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li  class="active"><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>cmseek</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 25 二月 2023
+      , Category:
+	  <a href="category/an-quan.html">安全</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/an-quan.html">安全</a></li>
+												<li><a class="button button-alt" href="tag/kali.html">Kali</a></li>
+
+												<li><a class="button button-alt" href="tag/kalishen-tou-zhuan-yong-zhi-ling.html">Kali渗透专用指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-25</div>
+									<h2>cmseek</h2>
+									<p>指纹扫描</p>
+<p>在Kali中直接输入cmseek，启动该软件,
+如果没有安装, 会提示y安装</p>
+<p>不带参数默认进入交互式界面</p>
+<div class="figure">
+<img alt="" src="../../../../resources/images/2024-02-25-16-03-46.png" style="width: 480px;" />
+</div>
+<p>用法:</p>
+<pre class="literal-block">
+python3 cmseek.py (for guided scanning)
+cmseek (for guided scanning)
+python3 cmseek.py [OPTIONS] &lt;Target Specification&gt;
+cmseek [OPTIONS] &lt;Target Specification&gt;
+</pre>
+<dl class="docutils">
+<dt>指定 TARGET:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-u <var>URL</var></span>, <span class="option">--url <var>URL</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Target Url</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-l <var>LIST</var></span>, <span class="option">--list <var>LIST</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>文件路径, 内容为 url 路径集合, 以逗号分隔</td></tr>
+</tbody>
+</table>
+</dd>
+<dt>扫描选项:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-i <var>cms</var></span>, <span class="option">--ignore--cms <var>cms</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>忽略指定的 CMS IDs 以避免失败. 以 comma &quot;,&quot; 逗号分隔</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--strict-cms <var>cms</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>只检查给定的 CMS IDs, 多个以逗号分隔</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--skip-scanned</span></kbd></td>
+<td>如果CMS已经预探测过了, 跳过 target</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--light-scan</span></kbd></td>
+<td>跳过深度扫描. 即只探测CMS和版本</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-o</span>, <span class="option">--only-cms</span></kbd></td>
+<td>只探测CMS, 不进行深度扫描以及版本信息探测</td></tr>
+</tbody>
+</table>
+</dd>
+<dt>重定向:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--follow-redirect</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>需要进行的重定向</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-redirect</span></kbd></td>
+<td>跳过所有的重定向</td></tr>
+</tbody>
+</table>
+</dd>
+<dt>用户代理:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-r</span>, <span class="option">--random-agent</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>使用随机用户代理</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--googlebot</span></kbd></td>
+<td>Use Google bot user agent</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--user-agent <var>USER_AGENT</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>自定义代理</td></tr>
+</tbody>
+</table>
+</dd>
+<dt>输出:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
+<td>输出详细信息</td></tr>
+</tbody>
+</table>
+</dd>
+<dt>版本:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--version</span></kbd></td>
+<td>版本信息</td></tr>
+</tbody>
+</table>
+</dd>
+<dt>HELP &amp; 杂项(MISCELLANEOUS):</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></td>
+<td>帮助</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--clear-result</span></kbd></td>
+<td>删除所有扫描结果</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--batch</span></kbd></td>
+<td>扫描每一个site前, 不用手动 enter</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>用例:</p>
+<pre class="literal-block">
+python3 cmseek.py -u example.com                           # 扫描 example.com
+python3 cmseek.py -l /home/user/target.txt                 # 扫描 target.txt 中指定的 sites (逗号分隔)
+python3 cmseek.py -u example.com --user-agent Mozilla 5.0  # 扫描 example.com, 且使用自定义用户代理(user-Agent): Mozilla is 5.0
+python3 cmseek.py -u example.com --random-agent            # 使用随机用户代理(user-Agent)扫描example.com
+python3 cmseek.py -v -u example.com                        # 查看扫描 example.com 的详细输出
+</pre>
+<div class="section" id="section-1">
+<h2>示例</h2>
+<div class="highlight"><pre><span></span>cmseek<span class="w"> </span>-u<span class="w"> </span>www.baidu.com
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,602 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>网络中的NAT模式</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/ji-suan-ji-wang-luo.html">计算机网络</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/ji-suan-ji-wang-luo.html">计算机网络</a></li>
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>网络中的NAT模式</h2>
+									<p>参考: <a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html">https://www.cnblogs.com/linhaostudy/p/10355614.html</a></p>
+<p>阅读目录</p>
+<dl class="docutils">
+<dt>概述</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label0_0">分类</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label0_1">NAT的三个方向：</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label0_2">NAT的应用分类：</a></li>
+</ul>
+</dd>
+<dt>工作原理</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label1_0">NAT-原理</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label1_1">NAT-基本地址转换原理</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label1_2">NAT中的转换方式:</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label1_3">NAT-基本IP地址转换原理</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label1_4">内部地址NAT-转换原理</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label1_5">一个简单的NAT-转换示例</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/linhaostudy/p/10355614.html#_label1_6">外部地址NAT-转换原理</a></li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="section-1">
+<h2>概述</h2>
+<p>NAT英文全称是“Network Address Translation”，中文意思是“网络地址转换”，
+它是一个IETF(Internet Engineering Task Force, Internet工程任务组)标准，
+允许一个整体机构以一个公用IP（Internet Protocol）地址出现在Internet上。</p>
+<p>顾名思义，它是一种把内部私有网络地址（IP地址）翻译成合法网络IP地址的技术。
+NAT 可以让那些使用私有地址的内部网络连接到Internet或其它IP网络上。
+NAT路由器在将内部网络的数据包发送到公用网络时，在IP包的报头把私有地址转换成合法的IP地址。</p>
+<p>RFC1918规定了三块专有的地址，作为私有的内部组网使用:</p>
+<ul class="simple">
+<li>A类：10.0.0.0—10.255.255.255 10.0.0.0/8</li>
+<li>B类：172.16.0.0—172.31.255.255 172.16.0.0/12</li>
+<li>C类：192.168.0.0—192.168.255.255 192.168.0.0/16</li>
+</ul>
+<p>这三块私有地址本身是可路由的，只是公网上的路由器不会转发这三块私有地址的流量；
+当一个公司内部配置了这些私有地址后，内部的计算机在和外网通信时，
+公司的边界路由会通过NAT或者PAT技术，将内部的私有地址转换成外网IP，
+外部看到的源地址是公司边界路由转换过的公网IP地址，这在某种意义上也增加了内部网络的安全性。</p>
+<dl class="docutils">
+<dt>Basic NAT</dt>
+<dd>是一种把一组IP地址映射成另一组IP地址的方法，映射的过程在IP中继设备上完成，对用户完全透明。</dd>
+<dt>NAPT</dt>
+<dd>要复杂一些，它把许多（不能太多）IP地址连同TCP/UDP端口号映射到单独一个IP地址和端口号上。</dd>
+</dl>
+<p>无论是Basic NAT还是NAPT都提供一种把内部的私有地址转换成在公网上可用的全球唯一IP地址的方法。</p>
+</div>
+<div class="section" id="nat-9">
+<h2>NAT分类</h2>
+<p>NAT有三种类型：</p>
+<ol class="arabic simple">
+<li>静态NAT(Static NAT)（一对一）。
+将内部网络的私有IP地址转换为公有IP地址，IP地址对是一对一的，是一直不变的；</li>
+<li>动态地址NAT(Pooled NAT)（多对多）。
+将内部网络的私有IP地址转换为公用IP地址时，IP地址是不确定，随机的。
+所有被授权访问Internet的私有IP地址可随机转换为任何指定合法的IP地址。
+也就是说，只要指定哪些内部地址可以进行转换，以及用哪些合法地址作为外部地址时，就可以进行动态NAT转换。
+动态NAT是在路由器上配置一个外网IP地址池，当内部有计算机需要和外部通信时，
+就从地址池里动态的取出一个外网IP，并将他们的对应关系绑定到NAT表中，
+通信结束后，这个外网IP才被释放，可供其他内部IP地址转换使用，这个DHCP租约IP有相似之处。
+当ISP提供的合法IP地址略少于网络内部的计算机数量时。可以采用动态转换的方式。</li>
+<li>网络地址端口转换NAPT（Network Address Port Translation）（Port-Level NAT）（多对一）。
+改变外出数据包的源端口并进行端口转换，采用端口多路复用方式。
+内部网络的所有主机均可共享一个合法外部IP地址实现对Internet的访问，可以最大限度地节约IP地址资源。
+同时，也可以隐藏网络内部的所有主机，有效避免来自Internet的攻击。
+因此，目前网络中应用最多的就是PAT规则。这是最常用的NAT技术，也是IPv4能够维持到今天的最重要的原因之一，
+它提供了一种多对一的方式，对多个内网IP地址，边界路由可以给他们分配一个外网IP，
+利用这个外网IP的不同端口和外部进行通信。
+NAPT 与 动态NAT 不同，它将内部连接映射到外部网络中的一个单独的IP地址上，同时在该地址上加上一个由NAT设备选定的端口号。</li>
+</ol>
+<p>NAPT是使用最普遍的一种转换方式，在HomeGW中也主要使用该方式。
+它又包含两种转换方式：SNAT和DNAT。</p>
+<ol class="arabic simple">
+<li>源NAT（Source NAT，SNAT）：修改数据包的源地址。
+源NAT改变第一个数据包的来源地址，它永远会在数据包发送到网络之前完成，数据包伪装就是一具SNAT的例子。</li>
+<li>目的NAT（Destination NAT，DNAT）：修改数据包的目的地址。
+Destination NAT刚好与SNAT相反，它是改变第一个数据懈的目的地地址，如平衡负载、端口转发和透明代理就是属于DNAT。</li>
+</ol>
+<p>对于网络地址转换技术来讲，最重要的一点是，在配置 NAT 的路由器上形成了 NAT 转换表，这个转换表的形成是非常关键的。
+配置 NAT 后，能形成正确的转换表，那么我们的工作就算成功了。</p>
+</div>
+<div class="section" id="nat-10">
+<h2>NAT的三个方向</h2>
+<p>NAT 在outside口生效，所有在inside口需要先路由,在outside口先nat。</p>
+<dl class="docutils">
+<dt>ip nat inside source:</dt>
+<dd>将内部局部地址转换为内部全局地址;数据方向inside-&gt;outside,在outside上执行转换;</dd>
+<dt>ip nat inside destination:</dt>
+<dd>将内部全局地址转换为内部局部地址;数据方向outside-&gt;inside,在outside上执行转换</dd>
+<dt>ip nat outside source:</dt>
+<dd>将外部全局地址转换为外部局部地址;数据方向outside-&gt;inside,在outside上执行转换;</dd>
+</dl>
+</div>
+<div class="section" id="nat-11">
+<h2>NAT的应用分类</h2>
+<dl class="docutils">
+<dt>ip nat source</dt>
+<dd>静态 nat的映射：永远一个ip对应另外一个ip。</dd>
+<dt>ip nat inside source static A.B.C.D A.B.C.D</dt>
+<dd>动态 nat的映射：每次一个IP会对应另外一个公网的IP；</dd>
+<dt>ip nat inside source list 2 pool qing</dt>
+<dd>动态PAT映射：pool里面只有一个IP。</dd>
+<dt>ip nat inside source list 2 pool qing overload</dt>
+<dd>静态PAT映射：</dd>
+</dl>
+<p>ip nat inside source list 3 interface fastEthernet 0/0 overload</p>
+<dl class="docutils">
+<dt>ip nat inside destination</dt>
+<dd>tcp负载均衡，外网主动发起流量访问内网服务器。只用动态，没有静态。</dd>
+</dl>
+<p>ip nat inside destination list 10 pool feng</p>
+<dl class="docutils">
+<dt>ip nat outside source:</dt>
+<dd>当两端同时做nat既inside和outside需要同时翻译并出现地址冲突的时候需要用outside source和其他同时命令同时实现。</dd>
+</dl>
+</div>
+<div class="section" id="cisco3nat">
+<h2>Cisco路由器配置3中NAT的主要命令</h2>
+<div class="section" id="nat-12">
+<h3>静态NAT</h3>
+<p>指定NAT内部接口, 在内网相应接口的接口配置模式下执行:</p>
+<pre class="literal-block">
+ip nat inside
+</pre>
+<p>指定NAT外部接口, 在外网相应接口的接口配置模式下执行:</p>
+<pre class="literal-block">
+ip nat outside
+</pre>
+<p>在内部本地地址与内部全局地址之间建立静态地址转换关系:</p>
+<pre class="literal-block">
+ip nat insde source static 内部本地地址 内部全局地址
+</pre>
+</div>
+<div class="section" id="nat-13">
+<h3>动态地址NAT</h3>
+<p>指定NAT内部接口, 在内网相应接口的接口配置模式下执行:</p>
+<pre class="literal-block">
+ip nat inside
+</pre>
+<p>指定NAT外部接口, 在外网相应接口的接口配置模式下执行:</p>
+<pre class="literal-block">
+ip nat outside
+</pre>
+<p>在全局配置模式下，定义一个标准的access-list规则，
+声明允许哪些内部本地地址可以进行动态地址转换:</p>
+<pre class="literal-block">
+access-list list-number permit 源地址 通配符
+</pre>
+<p>其中，list-number为1－99之间的一个任意整数。</p>
+<p>在全局配置模式下，定义内部全局地址池:</p>
+<pre class="literal-block">
+ip nat pool 地址池名 起始IP地址 终止IP地址 netmask 子网掩码
+</pre>
+<p>其中，地址池名可以任意设定，但最好有一定的说明意义。</p>
+<p>在全局配置模式下，
+定义符合先前定义的access-list规则的IP数据包与先前定义的地址池中的IP地址进行转换:</p>
+<pre class="literal-block">
+ip nat inside source list list-number pool 内部全局地址池名
+</pre>
+</div>
+<div class="section" id="napt">
+<h3>网络地址端口转换NAPT</h3>
+<p>指定NAT内部接口, 在内网相应接口的接口配置模式下执行:</p>
+<pre class="literal-block">
+ip nat inside
+</pre>
+<p>指定NAT外部接口, 在外网相应接口的接口配置模式下执行:</p>
+<pre class="literal-block">
+ip nat outside
+</pre>
+<p>在全局配置模式下，定义内部全局地址池:</p>
+<pre class="literal-block">
+ip nat pool 地址池名 起始IP地址 终止IP地址 netmask 子网掩码
+</pre>
+<p>其中，地址池名可以任意设定，但最好有一定的说明意义。</p>
+<p>在全局配置模式下，定义一个标准的access-list规则，声明允许哪些内部本地地址可以进行复用地址转换:</p>
+<pre class="literal-block">
+access-list list-number permit 源地址 通配符
+</pre>
+<p>其中，list-number为1－99之间的一个任意整数。</p>
+<p>在全局配置模式下，定义符合先前定义的access-list规则的IP数据包与先前定义的地址池中的IP地址进行复用地址转换:</p>
+<pre class="literal-block">
+ip nat inside source list list-number pool 内部全局地址池名 overload
+</pre>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>工作原理</h2>
+<p>了解原理之前先了解下NAT 术语。</p>
+<p>在配置了 NAT 的路由器上，可以把整个网络分成两部分：内部网络 和 外部网络。</p>
+<p>NAT 技术中有四个术语：</p>
+<ol class="arabic simple">
+<li>内部本地地址（Inside Local）：内网中设备所使用的IP地址</li>
+<li>内部全局地址（Inside Global）：对于外部网络来说，局域网内部主机所表现的 IP 地址。</li>
+<li>外部本地地址（Outside Local）：外部网络主机的真实地址。</li>
+<li>外部全局地址（Outside Global）：对于内部网络来说，外部网络主机所表现的 IP 地址。外网设备所使用的真正的地址。</li>
+</ol>
+<p>local 、global 是相对于端口状态说的，local是inside部分可以被路由的，global是outside部分可以被路由的。</p>
+<p>网络地址转换常常和代理服务搞混，但是它们之间有明确的不同。NAT 对源和目的计算机都是透明的。
+没有任何一方会意识到它正在和第三方设备打交道。但是代理服务却不是透明的。
+源计算机知道它正向代理服务器发起一个请求，而且你还必须进行配置才能这样做。
+目的计算机会认为代理服务器就是与它直接通信的源计算机。
+还有，代理服务通常工作在 OSI 参考模型的第 4 层 (传输层) 或更高，而 NAT 工作在第 3 层 (网络层)。
+由于代理服务工作在更高层，所以通常它将比 NAT 要慢。</p>
+<p>NAT 工作在 OSI 参考模型的网络层 (第3层) 是有道理的，因为路由器就工作在这一层：</p>
+</div>
+<div class="section" id="nat-14">
+<h2>NAT 原理</h2>
+<p>NAT设备维护一个状态表，用来把非法的IP地址映射到合法的IP地址上去。
+每个包在NAT设备中都被翻译成正确的IP地址，发往下一级，这意味着给处理器带来了一定的负担。
+但对于一般的网络来说，这种负担是微不足道的。
+在运行NAT的路由器中，当数据包被传送时，NAT可以转换数据包的IP地址和TCP/UDP数据包的端口号。
+设置NAT功能的路由器至少要有一个Inside（内部）端口和一个Outside（外部）端口。
+内部端口连接内网的用户，外部端口一般连接到Internet。
+当IP数据包离开内部网络时，NAT负责将内网IP源地址（通常是专用地址）转换为合法的公共IP地址。
+当IP数据包进入内网时，NAT将合法的公共IP目的地址转换为内网的IP源地址。</p>
+<p>NAT的基本工作原理是：当私有网主机和公共网主机通信的IP包经过NAT网关时，将IP包中的源IP或目的IP在私有IP和NAT的公共IP之间进行转换。</p>
+<p>当内部网络中的一台主机想传输数据到外部网络时，它先将数据包传输到NAT路由器上，路由器检查数据包的报头，
+获取该数据包的源IP信息，并从它的NAT映射表中找出与该IP匹配的转换条目，
+用所选用的内部全局地址（全球唯一的IP地址）来替换内部局部地址，并转发数据包。</p>
+<p>当外部网络对内部主机进行应答时，数据包被送到NAT路由器上，路由器接收到目的地址为内部全局地址的数据包后，
+它将用内部全局地址通过NAT映射表查找出内部局部地址，然后将数据包的目的地址替换成内部局部地址，并将数据包转发到内部主机。</p>
+<p>其实主要就是 修改 IP 数据包中的源 IP 地址，或目的 IP 地址。
+主要目的是把 RFC1918所提议的私有地址转变成在 Internet 上可路由的公有合法地址。
+对于某些有限的应用（如 DNS、 FTP 等），它也可以修改 IP 数据包有效载荷中的地址。
+由于应用的复杂性， NAT 目前支持的应用有限，当然，如果需要，完全可以针对新的应用做相应的开发工作。</p>
+<p>总体来说，NAT进行地址转换的过程就是“本地地址”与“全局地址”之间的转换过程，无论数据包是从内部网络发往外部网络，还是从外部网络发往内部网络。
+不同的只是本地地址和全局地址所对应的网络不同，以及数据包重新封装的源和目的地址不同。具体如图所示。</p>
+</div>
+<div class="section" id="nat-15">
+<h2>NAT基本地址转换原理</h2>
+<p>这个过程是通过NAT中的本地址与全局地址映射条目来实现的，所以事先要在NAT路由器上配置这样的映射条目。</p>
+</div>
+<div class="section" id="nat-16">
+<h2>NAT中的转换方式</h2>
+<ol class="arabic simple">
+<li>从内网中设备上发出的IP包是以“inside local address”作为源地址，以“outside local address”作为目的地址。
+当数据包到达NAT设备的“inside”接口后，地址分别被翻译成“inside global address”和“outside global address”并从“outside”接口送出。</li>
+<li>外网设备上发出的IP包以“outside global address”作为源地址，以“inside global address”作为目的地址。
+当数据包到达NAT设备的“outside”接口后，地址分别被翻译成“outside local address”和“inside local address”并从“inside”接口送出。</li>
+</ol>
+<p>当内部网络用户访问外部网络时，所进行的是“内部本地地址”和“内部全局地址”之间的转换。</p>
+<p>在NAT路由器接收到来自内部网络主机发送的数据包时，其源IP地址（SA）为“内部本地地址”，目的IP地址（DA）为“外部本地地址”。
+当数据包被转发到外部网络时，数据包的源IP地址（SA）就会转变为“内部全局地址”，而目的IP地址（DA）被转变为“外部全局地址”。
+也就是把数据包的所有源IP地址（SA）和目的IP地址（DA）全部由本地地址转换为全局地址。如图6-9上部分数据包IP地址转换示意图。</p>
+<p>相反，当外部网络用户访问内部网络时，所进行的是“外部本地地址”和“外部全局地址”之间的转换。</p>
+<p>在NAT路由器接收到来自外部网络主机发送的数据包时，其源IP地址（SA）就是“外部全局地址”，目的IP地址（DA）就是“内部全局地址”。
+相当于由内部网络向外部网络发送数据包时数据包中的源IP地址（SA）和目的IP地址（DA）的互换。
+而当数据包被路由器转发到本地网络时，源IP地址（SA）被转变为“外部本地地址”，目的IP地址（DA）被转变为“内部本地地址”，
+也相当于由内部网络向外部网络发送数据包时数据包中的源IP地址（SA）和目的IP地址（DA）的互换。如图6-9下部分数据包IP地址转换示意图</p>
+</div>
+<div class="section" id="natip">
+<h2>NAT基本IP地址转换原理</h2>
+<p>以上是从总体上介绍NAT的IP地址转换原理的，实际NAT应用有时并不需要对源IP地址和IP地址进行全面替换，
+仅需要对源IP地址或者仅需要对目的IP地址进行转换即可达到所需的目的。
+下面予以介绍。</p>
+<div class="section" id="nat-17">
+<h3>内部地址NAT转换原理</h3>
+<p>多数情况下使用NAT的目的就是为了使内部网络中的多个用户能使用一个注册IP地址访问外部网络，所以仅需要配置内部地址NAT转换。
+即通过ip nat inside source命令实现“内部本地地址”到“内部全局地址”之间的转换（既可以采用静态NAT方式实现，也可以采取动态NAT方式实现），
+只需要定义内部本地址与内部本局地址的映射。</p>
+</div>
+<div class="section" id="nat-18">
+<h3>一个简单的NAT转换示例</h3>
+<p>这是一个简单的NAT转换示例。要实现以下目的：当NAT路由器的内部网络s0接口上接收到一个源地址为内部本地地址10.10.10.1，
+目的IP地址为外部本地地址171.16.68.1的数据包时，在转发到s1接口时，原来数据包源地址的内部本地地址10.10.10.1被转换成内部全局地址171.16.68.5，
+但目的地址不变，然后继续发送。在这个过程中，所进行的只是数据包中源IP地址的转换，由内部本地地址向内部全局地址转换，且只是内部地址之间的转换。</p>
+<p>相反，当在NAT路由器的外部网络接口s1上接收源地址为172.16.68.1外部本地地址，
+目的地址为内部全局地址172.16.68.5的外部服务器响应数据包时，目的地址将被转换成10.10.10.1这个内部本地地址，然后继续发送。
+在这个过程中，所进行的只是数据包中目的IP地址的转换，由内部全局地址向内部本地地址转换，也只是内部地址之间的转换。</p>
+<p>下面仅以静态NAT转换方式为例介绍内部地址转换的配置步骤，详细的NAT配置方法将在本章后面具体介绍。</p>
+<p>（1）使用“ip nat inside source static”全局配置命令启用基于内部源IP地址的静态NAT IP地址转换。
+也就是定义内部本地地址和内部全局地址，使它们之间形成一一对应的映射关系:</p>
+<pre class="literal-block">
+Router(config)#ip nat inside source static 10.10.10.1 171.16.68.5
+!--- 在内部本地地址10.10.10.1与内部全局地址171.16.68.5之间建立静态NAT映射关系，使内部网络主机知道要以171.16.68.5这个地址到达外部网络主机
+</pre>
+<p>（2）使用以下两条语句配置路由器的s0为NAT的内部网络接口:</p>
+<pre class="literal-block">
+Router(config)#interface s0    !---  进入s0串口配置模式
+Router(config-if)#ip nat inside    !--- 把s0串口指定为内部网络接口
+</pre>
+<p>（3）使用以下两条语句配置路由器的s1为NAT的外部网络接口:</p>
+<pre class="literal-block">
+Router(config)#interface s1    !--- 进入s1串口配置模式
+Router(config-if)#ip nat outside   !--- 把s1串口指定为外部网络接口
+</pre>
+<p>（4）使用show ip nat translations特权模式命令验证上述进行的路由器NAT配置。
+输出信息中显示以上配置的NAT条目配置为：内部本地地址为10.10.10.1，内部全局地址为171.16.68.5。
+这与上面的配置是一致的，证明配置是成功的:</p>
+<pre class="literal-block">
+Router#show ip nat translations   !--- 在特权模式下显示当前路由器NAT配置
+
+Pro     Inside global      Inside local       Outside local      Outside global
+---     171.16.68.5        10.10.10.1            ---                 ---
+</pre>
+<p>此时如果对外部网络目的主机进行ping操作，就会有数据包从内部网络转发到外部网络。
+然后再在路由器特权模式下执行“show ip nat translations”命令，显示的NAT信息如下。
+多了一条icmp协议类型数据包（执行ping操作后加的）显示，但因为此时没有配置外部网络的本地地址和全局地址，
+所以显示的外部本地地址和外部全局地址都是一样的，都是ping操作目的主机地址171.16.68.1:</p>
+<pre class="literal-block">
+Router#show ip nat translations
+
+Pro       Inside global          Inside local        Outside local      Outside global
+icmp     171.16.68.5:15         10.10.10.1:15       171.16.68.1:15     171.16.68.1:15
+---       171.16.68.5            10.10.10.1             ---                 ---
+</pre>
+<p>通过以上配置后，从内部网络发往外部网络的数据包只是源地址（SA）将
+在经过路由器后进行转换（由内部本地地址10.10.10.1转换成内部全局地址171.16.68.5），但目标地址（DA）不变，
+但从外部网络发往内部网络的应答数据包的源地址没有改变，
+只是经过路由器后的数据包目的地址发生了转换（由内部全局地址172.16.68.5转换成内部本地地址10.10.10.1），
+但源地址（SA）不变。因为此时还没有为NAT路由器配置外部网络的本地地址和全局地址转换。</p>
+<p>此时，数据包在内、外部网络中的源地址、目的地址的转换方式参如图</p>
+<p>在内部地址的NAT转换中，无论数据包来自哪里，数据包中地址变化的只是内部地址之间的转换。
+但要注意，地址变化所对应的是源地址，还是目的地址是要看数据包是来自内部网络，
+还是来自外部网络：如果是来自内部网络，转换是源地址；如果是来自外部网络，转换的是目的地址。</p>
+</div>
+</div>
+<div class="section" id="nat-19">
+<h2>外部地址NAT转换原理</h2>
+<p>当公司服务器位于内部网络，使用内部网络私有IP地址，为了方便外部网络用户对内部网络服务器进行访问，
+则需要使用ip nat outside source命令配置“外部全局地址”与“外部本地地址”之间
+的转换（既可以采用静态NAT方式实现，也可以采取动态NAT方式实现）。
+外部地址NAT转换与上节介绍的内部地址NAT转换是相反的，它仅需要定义外部地址（包括外部本地地址和外部全局地址）。</p>
+<p>下面同样以上面那个简单的NAT转换示例进行介绍。
+本示例要实现的目的是：
+当NAT路由器外部网络接口s1接收到来自外部网络用户发送的源IP地址为外部全局地址171.16.68.1，
+目的地址为外部本地地址10.10.10.1的数据包在被路由器转发到s0接口时，
+数据包中的源IP地址转变为外部本地地址10.10.10.5（即由外部全局地址转换成外部本地地址），
+目的IP地址不变，即也只是源IP地址的转换；而由内部网络用户发送的响应数据包中，
+却只是目的IP地址（即由外部本地地址转换为外部全局地址）的转换，源IP地址不变。</p>
+<p>下面仅以静态NAT转换方式为例介绍外部地址NAT转换的配置步骤，详细的NAT配置方法将在本章后面具体介绍。</p>
+<p>（1）使用ip nat outside source static全局配置命令启用基于外部源IP地址的静态NAT IP地址转换。
+也就是定义外部全局地址和外部本地地址之间的映射关系:</p>
+<pre class="literal-block">
+Router(config)#ip nat outside source static 171.16.68.1 10.10.10.5
+!--- 在外部全局地址171.16.68.1与外部本地地址10.10.10.5之间建立静态NAT转换关系，使外部网络主机知道要以10.10.10.1这个地址到达内部网络主机
+</pre>
+<p>（2）使用以下两条语句配置路由器的s0作为NAT的内部网络接口:</p>
+<pre class="literal-block">
+Router(config)#interface s0
+Router(config-if)#ip nat inside
+</pre>
+<p>（3）使用以下两条语句配置路由器的s1作为NAT的外部网络接口:</p>
+<pre class="literal-block">
+Router(config)#interface s1
+Router(config-if)#ip nat outside
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">对于特定的NAT网络来说，路由器上的内、外部网络接口是固定的，不会随着通信方向的改变而改变。
+如在上节介绍的内部地址的NAT转换示例中，我们同样是把s0接口作为内部网络接口，s1接口作为外部网络接口。</p>
+</div>
+<p>（4）使用show ip nat translations特权模式命令验证上述进行的路由器NAT配置。
+从中可以看出，此时NAT的外部本地地址为10.10.10.5，外部全局地址为171.16.68.1。这与上面的配置是一致的，证明配置是成功的:</p>
+<pre class="literal-block">
+Router#show ip nat translations
+
+Pro    Inside global          Inside local          Outside local      Outside global
+        --- ---                   ---               10.10.10.5          171.16.68.1
+</pre>
+<p>同样，如果此时执行一个从外部网络主机（171.16.68.1）到内部网络主机（10.10.10.1）的ping操作，
+然后再在路由器特权模式下执行“show ip nat translations”命令，则显示如下结果。
+因为此时仅配置了外部本地地址和外部全局地址，所以结果中显示的内部本地地址和全局地址都是一样的，都是ping操作目的主机地址10.10.10.1:</p>
+<pre class="literal-block">
+Router#show ip nat translations
+
+Pro        Inside global       Inside local         Outside local        Outside global
+            --- ---             ---                10.10.10.5           171.16.68.1
+icmp       10.10.10.1:37       10.10.10.1:37      10.10.10.5:37        171.16.68.1:37
+</pre>
+<p>与上节介绍的仅配置内部地址相反，此处从外部网络发往内部网络的数据包的源IP地址（SA）将
+在经过路由器后进行转换（由外部全局地址171.16.68.1转换成外部本地地址10.10.10.5），但目标地址（DA）不变；
+但从内部网络发往外部网络的响应数据包的源IP地址没有改变，
+只是经过路由器后的数据目的IP地址发生了改变（由外部本地地址10.10.10.5转换成外部全局地址171.16.68.1）。
+因为此时还没有为NAT路由器配置内部本地地址和内部全局地址转换。此时，数据包在内、外部网络中的源IP地址、目的IP地址的转换方式如图6-12所示。</p>
+<p>【经验之谈】在仅进行外部地址NAT转换时，无论数据包来自哪里，数据包中地址变化的只是外部地址之间的转换。
+同样也需注意，地址变化所对应的是源IP地址，还是目的IP地址是要看数据包是来自内部网络，
+还是来自外部网络：如果来自内部网络，转换是目的IP地址；
+如果来自外部网络，转换的是源IP地址。这与前面的内部地址NAT转换是对应相反的。</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

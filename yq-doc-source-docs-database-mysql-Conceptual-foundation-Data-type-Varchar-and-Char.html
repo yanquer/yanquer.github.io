@@ -1,0 +1,328 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>数据类型VARCHAR和CHAR</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 27 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/mysql.html">Mysql</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-ji-chu.html">概念基础</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-27</div>
+									<h2>数据类型VARCHAR和CHAR</h2>
+									<div class="section" id="section-1">
+<h2>固定长度 &amp; 可变长度</h2>
+<dl class="docutils">
+<dt>VARCHAR</dt>
+<dd><p class="first">VARCHAR类型用于存储 <cite>可变长度</cite> 字符串，是最常见的字符串数据类型。
+它比固定长度类型更节省空间，因为它仅使用必要的空间(根据实际字符串的长度改变存储空间)。</p>
+<p class="last">有一种情况例外，如果MySQL表使用ROW_FORMAT=FIXED创建的话，每一行都会使用定长存储。</p>
+</dd>
+<dt>CHAR</dt>
+<dd><p class="first">CHAR类型用于存储固定长度字符串: MySQL总是根据定义的字符串长度分配足够的空间。
+当存储CHAR值时，MySQL会删除字符串中的末尾空格
+(在MySQL 4.1和更老版本中VARCHAR 也是这样实现的 ——
+也就是说这些版本中CHAR和VARCHAR在逻辑上是一样的，区别只是在存储格式上)。</p>
+<p class="last">同时，CHAR值会根据需要采用空格进行剩余空间填充，以方便比较和检索。
+但正因为其长度固定，所以会占据多余的空间，也是一种空间换时间的策略；</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>存储方式</h2>
+<dl class="docutils">
+<dt>VARCHAR</dt>
+<dd><p class="first">VARCHAR需要使用1或2个额外字节记录字符串的长度:
+如果列的最大长度小于或等于255字节，则只使用1个字节表示，否则使用2个字节。
+假设采用latinl字符集，一个VARCHAR(10)的列需要11个字节的存储空间。
+VARCHAR(1000)的列则需要1002 个字节，因为需要2个字节存储长度信息。</p>
+<p class="last">VARCHAR节省了存储空间，所以对性能也有帮助。
+但是，由于行是变长的，在UPDATE时可能使行变得比原来更长，这就导致需要做额外的工作。
+如果一个行占用的空间增长，并且在页内没有更多的空间可以存储，
+在这种情况下，不同的存储引擎的处理方式是不一样的。
+例如，MylSAM会将行拆成不同的片段存储，InnoDB则需要分裂页来使行可以放进页内。</p>
+</dd>
+<dt>CHAR</dt>
+<dd><p class="first">CHAR适合存储很短或长度近似的字符串。
+例如，CHAR非常适合存储密码的MD5值，因为这是一个定长的值。
+对于经常变更的数据，CHAR也比VARCHAR更好，因为定长的CHAR类型不容易产生碎片。</p>
+<p class="last">对于非常短的列，CHAR比VARCHAR在存储空间上也更有效率。
+例如用CHAR(1)来存储只有Y和N的值，如果采用单字节字符集只需要一个字节，
+但是VARCHAR(1)却需要两个字节，因为还有一个记录长度的额外字节。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h2>存储容量</h2>
+<dl class="docutils">
+<dt>CHAR</dt>
+<dd>对于char类型来说，最多只能存放的字符个数为255，和编码无关，任何编码最大容量都是255。</dd>
+<dt>VARCHAR</dt>
+<dd><p class="first">MySQL行默认最大65535字节，是所有列共享（相加）的，所以VARCHAR的最大值受此限制。</p>
+<p class="last">表中只有单列字段情况下，varchar一般最多能存放(65535 - 3)个字节，
+varchar的最大有效长度通过最大行数据长度和使用的字符集来确定，
+通常的最大长度是65532个字符（当字符串中的字符都只占1个字节时，能达到65532个字符）；</p>
+</dd>
+<dt>计算为什么是65532个字符？</dt>
+<dd><p class="first">算法如下（有余数时向下取整）:</p>
+<pre class="literal-block">
+最大长度(字符数) = （行存储最大字节数 - NULL标识列占用字节数 - 长度标识字节数） / 字符集单字符最大字节数
+</pre>
+<ul class="simple">
+<li>NULL标识列占用字节数：允许NULL时，占一字节</li>
+<li>长度标识字节数：记录长度的标识，长度小于等于255（28）时，占1字节；小于65535时（216）,占2字节</li>
+</ul>
+<p>VARCHAR类型在4.1和5.0版本发生了很大的变化，使得情况更加复杂。
+从MySQL 4.1开始，每个字符串列可以定义自己的字符集和排序规则。这些东西会很大程度上影响性能。</p>
+<ul class="simple">
+<li>4.0版本及以下，MySQL中varchar长度是按字节展示，如varchar(20)，指的是20字节；</li>
+<li>5.0版本及以上，MySQL中varchar长度是按字符展示。如varchar(20)，指的是20字符。</li>
+</ul>
+<p>当然，行总长度还是65535字节，而字符和字节的换算，则与编码方式有关，不同的字符所占的字节是不同的。编码划分如下：</p>
+<dl class="docutils">
+<dt>GBK编码</dt>
+<dd>一个英文字符占一个字节，中文2字节，单字符最大可占用2个字节。</dd>
+<dt>UTF-8编码</dt>
+<dd>一个英文字符占一个字节，中文3字节，单字符最大可占用3个字节。</dd>
+<dt>utf8mb4编码</dt>
+<dd>一个英文字符占一个字节，中文3字节，单字符最大占4个字节（如emoji表情4字节）。</dd>
+</dl>
+<p class="last">假设当前还有6字节可以存放字符，按单字符占用最大字节数来算，可以存放3个GBK、或2个utf8、或1个utf8mb4。</p>
+</dd>
+<dt>思考：既然VARCHAR长度可变，那我要不要定到最大?</dt>
+<dd><p class="first">没错，相信你已经有答案了，别这么干！</p>
+<p>就像使用VARCHAR(5)和VARCHAR(200)存储 '陈哈哈’的磁盘空间开销是一样的。
+那么使用更短的列有什么优势呢？</p>
+<p>事实证明有很大的优势。
+更长的列会消耗更多的内存，因为MySQL通常会分配固定大小的内存块来保存内部值。</p>
+<p>当然，在没拿到存储引擎存储的数据之前，
+并不会知道我这一行拿出来的数据到底有多长，可能长度只有1，可能长度是500，那怎么办呢？
+那就只能先把最大空间分配好了，避免放不下的问题发生，这样实际上对于真实数据较短的varchar确实会造成空间的浪费。</p>
+<p class="last">举例：我向数据类型为：varchar（1000）的列插入了1024行数据，
+但是每个只存一个字符，那么这1024行真实数据量其实只有1K，
+但是我却需要约1M的内存去适应他。所以最好的策略是只分配真正需要的空间。</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>与 CHAR 和 VARCHAR 类似的类型还有 BINARY 和 VARBINARY, 它们存储的是二进制字符串.
+二进制字符串跟常规字符串非常相似，但是二进制字符串存储的是字节码而不是字符。
+填充也不一样: MySQL填充BINARY采用的是 <tt class="docutils literal">\0</tt> (零字节)而不是空格，在检索时也不会去掉填充值。</p>
+<p class="last">当需要存储二进制数据，并且希望MySQL使用字节码而不是字符进行比较时，这些类型是非常有用的。
+二进制比较的优势并不仅仅体现在大小写敏感上。
+MySQL比较BINARY字符串时，每次按一个字节，并且根据该字节的数值进行比较。
+因此，二进制比 较比字符比较简单很多，所以也就更快。</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

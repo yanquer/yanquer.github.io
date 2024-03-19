@@ -1,0 +1,461 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>wrk</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>wrk</h2>
+									<p>轻量级性能压测工具</p>
+<p>可以用来测试接口的性能如何,
+吞吐量能达到多少,
+QPS（Query per second 每秒处理完的请求数） 能达到多少呢</p>
+<div class="section" id="section-1">
+<h2>介绍</h2>
+<p>wrk 是一款针对 Http 协议的基准测试工具，它能够在单机多核 CPU 的条件下，
+使用系统自带的高性能 I/O 机制，
+如 epoll，kqueue 等，通过多线程和事件模式，对目标机器产生大量的负载。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">wrk 是复用了 redis 的 ae 异步事件驱动框架，
+准确来说 ae 事件驱动框架并不是 redis 发明的,
+它来至于 Tcl 的解释器 jim, 这个小巧高效的框架,
+因为被 redis 采用而被大家所熟知。</p>
+</div>
+<dl class="docutils">
+<dt>优势</dt>
+<dd><ul class="first last simple">
+<li>轻量级性能测试工具;</li>
+<li>安装简单（相对 Apache ab 来说）;</li>
+<li>学习曲线基本为零，几分钟就能学会咋用了；</li>
+<li>基于系统自带的高性能 I/O 机制，
+如 epoll, kqueue, 利用异步的事件驱动框架，
+通过很少的线程就可以压出很大的并发量；</li>
+</ul>
+</dd>
+<dt>劣势</dt>
+<dd>wrk 目前仅支持单机压测，后续也不太可能支持多机器对目标机压测，
+因为它本身的定位，并不是用来取代 JMeter, LoadRunner 等专业的测试工具，
+wrk 提供的功能，对我们后端开发人员来说，应付日常接口性能验证还是比较友好的。</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>安装</h2>
+<p>wrk 只能被安装在类 Unix 系统上，所以我们需要一个 Linux 或者 MacOS 环境。
+Windows 10 安装需要开启自带的 Ubuntu 子系统。</p>
+<p>对于Debian:</p>
+<pre class="literal-block">
+sudo apt-get install build-essential libssl-dev git -y
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+make
+# 将可执行文件移动到 /usr/local/bin 位置
+sudo cp wrk /usr/local/bin
+</pre>
+<p>对于RedHat:</p>
+<pre class="literal-block">
+sudo yum groupinstall 'Development Tools'
+sudo yum install -y openssl-devel git
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+make
+# 将可执行文件移动到 /usr/local/bin 位置
+sudo cp wrk /usr/local/bin
+</pre>
+<p>对于MacOS:</p>
+<pre class="literal-block">
+brew install wrk
+</pre>
+<p>对于Windows:</p>
+<pre class="literal-block">
+Windown 10 需要在 Windows 功能 里勾选 适用于 Linux 的 Windows 子系统,
+然后通过 bash 命令切换到 Ubuntu 子系统。
+参考上面.
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>使用-语法</h2>
+<p>语法:</p>
+<pre class="literal-block">
+wrk &lt;选项&gt; &lt;被测HTTP服务的URL&gt;
+</pre>
+<dl class="docutils">
+<dt>Options:</dt>
+<dd><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-c</span>, <span class="option">--connections <var>&lt;N&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>跟服务器建立并保持的TCP连接数量</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-d</span>, <span class="option">--duration <var>&lt;T&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>压测时间</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-t</span>, <span class="option">--threads <var>&lt;N&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>使用多少个线程进行压测</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-s</span>, <span class="option">--script <var>&lt;S&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定Lua脚本路径</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-H</span>, <span class="option">--header <var>&lt;H&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>为每一个HTTP请求添加HTTP头</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--latency</span></kbd></td>
+<td>在压测结束后，打印延迟统计信息</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--timeout <var>&lt;T&gt;</var></span></kbd></td>
+<td>超时时间</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span>, <span class="option">--version</span></kbd></td>
+<td>打印正在使用的wrk的详细版本信息</td></tr>
+</tbody>
+</table>
+<p class="last">&lt;N&gt;代表数字参数，支持国际单位 (1k, 1M, 1G)
+&lt;T&gt;代表时间参数，支持时间单位 (2s, 2m, 2h)</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">关于线程数，并不是设置的越大，压测效果越好，线程设置过大，
+反而会导致线程切换过于频繁，效果降低，
+一般来说，推荐设置成压测机器 CPU 核心数的 2 倍到 4 倍就行了。</p>
+</div>
+<p>对 www.baidu.com 发起压力测试，
+线程数为 12，模拟 400 个并发请求，持续 30 秒:</p>
+<pre class="literal-block">
+wrk -t12 -c400 -d30s http://www.baidu.com
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>测试报告</h2>
+<p>还是上面的对 www.baidu.com 发起压力测试，
+线程数为 12，模拟 400 个并发请求，持续 30 秒
+并打印延迟报告:</p>
+<pre class="literal-block">
+$ wrk -t12 -c400 -d30s --latency http://www.baidu.com
+Running 30s test &#64; http://www.baidu.com
+  12 threads and 400 connections (共12个测试线程，400个连接)
+                                (平均值)  (标准差)（最大值）(正负一个标准差所占比例)
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    (延迟)
+    Latency     1.44s   483.77ms   2.00s    76.01%
+    (每秒请求数)
+    Req/Sec    14.70     11.35    90.00     74.57%
+  Latency Distribution (延迟分布)
+    50%    1.58s
+    75%    1.79s
+    90%    1.92s
+    99%    1.99s
+  3967 requests in 30.11s, 1.55GB read  (30.11s内处理了 3967 个请求，耗费流量1.55GB)
+  Socket errors: connect 158, read 0, write 0, timeout 1191 (发生错误数)
+Requests/sec:    131.77    (QPS 131.77,即平均每秒处理请求数为131.77)
+Transfer/sec:     52.60MB  (平均每秒流量52.60MB)
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">标准差啥意思？标准差如果太大说明样本本身离散程度比较高，有可能系统性能波动较大。</p>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>复杂测试</h2>
+<p>通过编写 Lua 脚本的方式，在运行压测命令时，通过参数 --script 来指定 Lua 脚本</p>
+<p>提供的函数</p>
+<dl class="docutils">
+<dt>function setup(thread)</dt>
+<dd><p class="first">setup 函数在目标 IP 地址已经解析完, 并且所有 thread 已经生成, 但是还没有开始时被调用. 每个线程执行一次这个函数.</p>
+<p>setup 方法中可操作该 thread 对象，获取信息、存储信息、甚至关闭该线程:</p>
+<pre class="last literal-block">
+thread.addr             - get or set the thread's server address
+thread:get(name)        - get the value of a global in the thread's env
+thread:set(name, value) - set the value of a global in the thread's env
+thread:stop()           - stop the thread
+</pre>
+</dd>
+<dt>function init(args)</dt>
+<dd>init 函数每次请求发送之前被调用.
+可以接受 wrk 命令行的额外参数. 通过 -- 指定.</dd>
+<dt>function delay()</dt>
+<dd>delay函数返回一个数值, 在这次请求执行完以后延迟多长时间执行下一个请求. 可以对应 thinking time 的场景.</dd>
+<dt>function request()</dt>
+<dd>request函数可以每次请求之前修改本次请求的属性. 返回一个字符串. 这个函数要慎用, 会影响测试端性能.</dd>
+<dt>function response(status, headers, body)</dt>
+<dd>response函数每次请求返回以后被调用. 可以根据响应内容做特殊处理, 比如遇到特殊响应停止执行测试, 或输出到控制台等等.</dd>
+<dt>function done(summary, latency, requests)</dt>
+<dd>done函数在所有请求执行完以后调用, 一般用于自定义统计结果.</dd>
+</dl>
+<p>wrk官网提供的setup.lua实例:</p>
+<pre class="literal-block">
+-- example script that demonstrates use of setup() to pass
+-- data to and from the threads
+
+local counter = 1
+local threads = {}
+
+function setup(thread)
+  thread:set(&quot;id&quot;, counter)
+  table.insert(threads, thread)
+  counter = counter + 1
+end
+
+function init(args)
+  requests  = 0
+  responses = 0
+
+  local msg = &quot;thread %d created&quot;
+  print(msg:format(id))
+end
+
+function request()
+  requests = requests + 1
+  return wrk.request()
+end
+
+function response(status, headers, body)
+  responses = responses + 1
+end
+
+function done(summary, latency, requests)
+  for index, thread in ipairs(threads) do
+      local id        = thread:get(&quot;id&quot;)
+      local requests  = thread:get(&quot;requests&quot;)
+      local responses = thread:get(&quot;responses&quot;)
+      local msg = &quot;thread %d made %d requests and got %d responses&quot;
+      print(msg:format(id, requests, responses))
+  end
+end
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://www.cnblogs.com/quanxiaoha/p/10661650.html">性能测试工具 wrk 使用教程</a></li>
+<li><a class="reference external" href="https://www.jianshu.com/p/ac185e01cc30">HTTP压测工具之wrk</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

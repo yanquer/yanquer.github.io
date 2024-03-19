@@ -1,0 +1,358 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>canvas</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/celery_more.html">Celery_more</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>canvas</h2>
+									<p>celery 的 canvas 应当值得是一种设计流程, 目前不是很理解.</p>
+<div class="section" id="section-1">
+<h2>签名</h2>
+<p>有时候可能希望将任务调用的签名传递给另外一个进程或其他函数的参数，Celery 提供了签名。
+<strong>签名通过一种方式进行封装任务调用的参数以及执行选项，便于传递给他的函数，甚至通过序列化通过网络传送。</strong>
+可以将 add 使用的参数作为任务创建的签名，倒计时为 10 秒，如下所示（2,2）:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; add.signature((2, 2), countdown=10)
+tasks.add(2, 2)
+</pre>
+<p>也可以通过一个快捷的方式进行操作:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; add.s(2, 2)
+tasks.add(2, 2)
+</pre>
+<p>签名实例支持调用API：这就意味着可以使用 delay 和 apply_async 方法。
+但区别就在于签名实例已经指定了参数签名，该 add 任务有两个参数，需要指定两个参数的签名才能够成一个完整的签名实例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s1 = add.s(2, 2)
+&gt;&gt;&gt; res = s1.delay()
+&gt;&gt;&gt; res.get()
+4
+</pre>
+<p>也可以创建不完整的签名来进行创建:</p>
+<pre class="literal-block">
+# incomplete partial: add(?, 2)
+&gt;&gt;&gt; s2 = add.s(2)
+</pre>
+<p>也可以设置新的参值，新设置的参数会覆盖原有的参数值:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s3 = add.s(2, 2, debug=True)
+&gt;&gt;&gt; s3.delay(debug=False)   # debug is now False.
+</pre>
+<div class="section" id="section-2">
+<h3>不变签名</h3>
+<p>不变性(Immutability)</p>
+<p>部分参数通常在回调中使用，父任务的结果将会作为参数传递给链接或chord的回调任务。</p>
+<p>有时你希望指明一个不需要参数的回调，这时你可以设置签名为不变的:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; add.apply_async((2, 2), link=reset_buffers.signature(immutable=True))
+</pre>
+<p>快捷方式 .si() 也能创建不变签名:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; add.apply_async((2, 2), link=reset_buffers.si())
+</pre>
+<p>对于不变签名，只有执行选项可以进行设置，并无法使用部分参数和关键词参数。</p>
+</div>
+<div class="section" id="section-3">
+<h3>回调</h3>
+<p>任务可以使用 apply_async 的 link 参数来添加回调:</p>
+<pre class="literal-block">
+add.apply_async((2, 2), link=other_task.s())
+</pre>
+<p>只有当任务成功退出，回调函数才能被执行，并且将父任务的结果作为参数传递给回调的任务。
+如前所述，新传递的参数将会添加在签名指定的参数前。
+如果你有一个签名:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sig = add.s(10)
+</pre>
+<p>接着 sig.delay(result) 将变为:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; add.apply_async(args=(result, 10))
+</pre>
+<p>现在，让我们调用 add 任务，并设置回调:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; add.apply_async((2, 2), link=add.s(8))
+</pre>
+<p>正如预期，首先第一个任务将会计算 2 + 2，接着回调任务将会计算 4 + 8。</p>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>组</h2>
+<p>组：Groups</p>
+<p>一个 group 并行调用任务列表，返回一个特殊的结果实例，可以将结果作为一个列表进行查看，并且通过索引进去获取返回值:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from celery import group, add
+&gt;&gt;&gt; group(add.s(i, i) for i in xrange(10))().get()
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+</pre>
+<p>Partial group:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; g = group(add.s(i) for i in xrange(10))
+&gt;&gt;&gt; g(10).get()
+[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+</pre>
+</div>
+<div class="section" id="section-5">
+<h2>链</h2>
+<p>链：Chains</p>
+<p>可以将任务链接在一起，在一个人返回后进行调用另外一个任务:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from celery import chain
+&gt;&gt;&gt; from proj.tasks import add, mul
+
+# (4 + 4) * 8
+&gt;&gt;&gt; chain(add.s(4, 4) | mul.s(8))().get()
+64
+</pre>
+<p>或 partial chain:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; # (? + 4) * 8
+&gt;&gt;&gt; g = chain(add.s(4) | mul.s(8))
+&gt;&gt;&gt; g(4).get()
+64
+</pre>
+<p>链也可以这样写:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; (add.s(4, 4) | mul.s(8))().get()
+64
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>和弦</h2>
+<p>和弦：Chords
+和弦是一个带有回调的组:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from celery import chord
+&gt;&gt;&gt; from proj.tasks import add, xsum
+
+&gt;&gt;&gt; chord((add.s(i, i) for i in xrange(10)), xsum.s())().get()
+90
+</pre>
+<p>链接到其他任务的组将自动转换为和弦:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; (group(add.s(i, i) for i in xrange(10)) | xsum.s())().get()
+90
+</pre>
+<p>这些原语都是签名的类型，可以根据需要进行组合，例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; upload_document.s(file) | group(apply_filter.s() for filter in filters)
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

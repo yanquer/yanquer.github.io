@@ -1,0 +1,305 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>apt</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>apt</h2>
+									<p>debian/ubuntu 的下的包管理器</p>
+<p>语法:</p>
+<pre class="literal-block">
+apt &lt;command&gt; [options] [packages]
+</pre>
+<p>支持的command</p>
+<ul class="simple">
+<li>show</li>
+<li>list</li>
+<li>install</li>
+<li>search</li>
+<li>depends 查看某个软件包的依赖信息</li>
+</ul>
+<div class="section" id="section-1">
+<h2>选项参数</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-y</span></kbd></td>
+<td>无需输入y手动确认是否安装</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>install</dt>
+<dd>install 命令用来安装或者升级包。
+每个包都有一个包名，而不是一个完全限定的文件名(例如，在 Debian 系统中，提供的参数是 apt-utils，而不是 apt-utils_1.6.1_amd64.deb)。
+被安装的包依赖的包也将被安装。配置文件 /etc/apt/sources.list 中包含了用于获取包的源(服务器)。install 命令还可以用来更新指定的包。</dd>
+<dt>upgrade</dt>
+<dd><p class="first">upgrade 命令用于从 /etc/apt/sources.list 中列出的源安装系统上当前安装的所有包的最新版本。
+在任何情况下，当前安装的软件包都不会被删除，尚未安装的软件包也不会被检索和安装。
+如果当前安装的包的新版本不能在不更改另一个包的安装状态的情况下升级，则将保留当前版本。
+必须提前执行 update 命令以便 apt-get 知道已安装的包是否有新版本可用。</p>
+<dl class="last docutils">
+<dt>注意 update 与 upgrade 的区别：</dt>
+<dd>update 是更新软件列表，upgrade 是更新软件。</dd>
+</dl>
+</dd>
+<dt>dist-upgrade</dt>
+<dd><p class="first">除执行升级功能外，dist-upgrade 还智能地处理与新版本包的依赖关系的变化。
+apt-get 有一个 &quot;智能&quot; 的冲突解决系统，如果有必要，它将尝试升级最重要的包，以牺牲不那么重要的包为代价。
+因此，distr -upgrade 命令可能会删除一些包。
+因此在更新系统中的包时，建议按顺序执行下面的命令:</p>
+<pre class="last literal-block">
+$ apt-get update
+$ apt-get upgrade -y
+$ apt-get dis-upgrade -y
+</pre>
+</dd>
+<dt>remove</dt>
+<dd>remove 与 install 类似，不同之处是删除包而不是安装包。注意，使用 remove 命令删除一个包会将其配置文件留在系统上。</dd>
+<dt>purge</dt>
+<dd>purge 命令与 remove 命令类似，purge 命令在删除包的同时也删除了包的配置文件。</dd>
+<dt>autoremove</dt>
+<dd>autoremove 命令用于删除自动安装的软件包，这些软件包当初是为了满足其他软件包对它的依赖关系而安装的，而现在已经不再需要了。</dd>
+<dt>download</dt>
+<dd>download 命令把指定包的二进制文件下载到当前目录中。注意，是类似 <tt class="docutils literal">*.deb</tt> 这样的包文件。</dd>
+<dt>clean</dt>
+<dd>clean 命令清除在本地库中检索到的包。它从 /var/cache/apt/archives/ 和 /var/cache/apt/archives/partial/ 目录删除除锁文件之外的所有内容。</dd>
+<dt>autoclean</dt>
+<dd>与 clean 命令类似，autoclean 命令清除检索到的包文件的本地存储库。
+不同之处在于，它只删除不能再下载的软件包文件，而且这些文件在很大程度上是无用的。
+这允许长时间维护缓存，而不至于大小失控。</dd>
+<dt>source</dt>
+<dd>source 命令下载包的源代码。默认会下载最新可用版本的源代码到当前目录中。</dd>
+<dt>changelog</dt>
+<dd>changelog 命令尝试下载并显示包的更新日志。</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>相关</h2>
+<div class="section" id="apt-cache">
+<h3>apt-cache</h3>
+<p><em>/docs/操作系统/linux/linux指令/apt-cache</em></p>
+</div>
+<div class="section" id="apt-get">
+<h3>apt-get</h3>
+<p><em>/docs/操作系统/linux/linux指令/apt-get</em></p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

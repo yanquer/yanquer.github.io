@@ -1,0 +1,304 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>edquota</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 27 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-27</div>
+									<h2>edquota</h2>
+									<p>修改用户（群组）的磁盘配额</p>
+<p>edit quota 缩写，用于修改用户和群组的配额限制参数，
+包括磁盘容量和文件个数限制、软限制和硬限制值、宽限时间，
+该命令的基本格式有以下 3 种:</p>
+<pre class="literal-block">
+[root&#64;localhost ~]# edquota [-u 用户名] [-g 群组名]
+[root&#64;localhost ~]# edquota -t
+[root&#64;localhost ~]# edquota -p 源用户名 -u 新用户名
+</pre>
+<p>此命令各常用选项及功能如下：</p>
+<dl class="docutils">
+<dt>-u 用户名</dt>
+<dd>进入配额的 Vi 编辑界面，修改针对用户的配置值；</dd>
+<dt>-g 群组名</dt>
+<dd>进入配额的 Vi 编辑界面，修改针对群组的配置值；</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-t</span></kbd></td>
+<td>修改配额参数中的宽限时间；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span></kbd></td>
+<td>将源用户（或群组）的磁盘配额设置，复制给其他用户（或群组）</td></tr>
+</tbody>
+</table>
+<p>例如，以用户 myquota 为例，通过如下命令配置此命令的 Quota:</p>
+<pre class="literal-block">
+[root&#64;localhost ~]# edquota -u myquota
+Disk quotas for user myquota (uid 710):
+Filesystem  blocks soft  hard inodes soft hard
+/dev/hda3     80   0   0   10   0   0
+</pre>
+<p>此命令的输出信息共 3 行，
+第一行指明了针对哪个用户进行配额限制，
+第二行是各个配额值的表头，
+共分为 7 列，其每一列的含义</p>
+<dl class="docutils">
+<dt>文件系统（filesystem）</dt>
+<dd>说明该限制值是针对哪个文件系统（或分区）；</dd>
+<dt>磁盘容量（blocks）</dt>
+<dd>此列的数值是 quota 自己算出来的，单位为 Kbytes，不要手动修改；</dd>
+<dt>磁盘容量的软限制（soft）</dt>
+<dd>当用户使用的磁盘空间超过此限制值，则用户在登陆时会收到警告信息，告知用户磁盘已满，单位为 KB；</dd>
+<dt>磁盘容量的硬限制（hard）</dt>
+<dd>要求用户使用的磁盘空间最大不能超过此限制值，单位为 KB；</dd>
+<dt>文件数量（inodes）</dt>
+<dd>同 blocks 一样，此项也是 quota自己计算出来的，无需手动修改；</dd>
+<dt>文件数量的软限制（soft）</dt>
+<dd>当用户拥有的文件数量超过此值，系统会发出警告信息；</dd>
+<dt>文件数量的硬限制（hard）</dt>
+<dd>用户拥有的文件数量不能超过此值。</dd>
+</dl>
+<p>注意，当 soft/hard 为 0 时，表示没有限制。
+另外，在 Vi（或 Vim）中修改配额值时，填写的数据无法保证同表头对齐，
+只要保证此行数据分为 7 个栏目即可。</p>
+<p>【例 1】 修改用户 myquota 的软限制值和硬限制值:</p>
+<pre class="literal-block">
+[root&#64;localhost ~]# edquota -u myquota
+Disk quotas for user myquota (uid 710):
+Filesystem  blocks  soft  hard inodes soft hard
+/dev/hda3     80 250000 300000   10   0   0
+</pre>
+<p>【例 2】 修改群组 mygrpquota 的配额:</p>
+<pre class="literal-block">
+[root&#64;localhost ~]# edquota -g mygrpquota
+Disk quotas for group mygrpquota (gid 713):
+Filesystem  blocks  soft   hard inodes soft hard
+/dev/hda3    400 900000 1000000   50   0   0
+</pre>
+<p>【例 3】修改宽限天数:</p>
+<pre class="literal-block">
+[root&#64;localhost ~]# edquota -t
+Grace period before enforcing soft limits for users:
+Time units may be: days, hours, minutes, or seconds
+Filesystem     Block grace period   Inode grace period
+/dev/hda3        14days         7days
+</pre>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

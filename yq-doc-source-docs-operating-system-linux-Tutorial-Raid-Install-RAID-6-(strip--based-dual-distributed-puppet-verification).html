@@ -1,0 +1,568 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>安装 RAID 6 (条带化双分布式奇偶校验)</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 23 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+												<li><a class="button button-alt" href="tag/raid.html">Raid</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-23</div>
+									<h2>安装 RAID 6 (条带化双分布式奇偶校验)</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li>作者: <a class="reference external" href="http://www.tecmint.com/create-raid-6-in-linux/">Babin Lonston</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/">LCTT</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/strugglingyouth">struggling</a></li>
+<li>&lt;<a class="reference external" href="https://linux.cn/portal.php?mod=comment&amp;id=6121&amp;idtype=aid">https://linux.cn/portal.php?mod=comment&amp;id=6121&amp;idtype=aid</a>&gt;`_</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>RAID 6 是 RAID 5 的升级版，它有两个分布式奇偶校验，即使两个磁盘发生故障后依然有容错能力。
+在两个磁盘同时发生故障时，系统的关键任务仍然能运行。
+它与 RAID 5 相似，但性能更健壮，因为它多用了一个磁盘来进行奇偶校验。</p>
+<p>在之前的文章中，我们已经在 RAID 5 看了分布式奇偶校验，但在本文中，我们将看到的是 RAID 6 双分布式奇偶校验。
+不要期望比其他 RAID 有更好的性能，除非你也安装了一个专用的 RAID 控制器。
+在 RAID 6 中，即使我们失去了2个磁盘，我们仍可以通过更换磁盘，从校验中构建数据，然后取回数据。</p>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-45-11.png" style="width: 480px;" />
+<p class="caption">在 Linux 中安装 RAID 6</p>
+</div>
+<p>要建立一个 RAID 6，一组最少需要4个磁盘。RAID 6 甚至在有些组中会有更多磁盘，
+这样将多个硬盘捆在一起，当读取数据时，它会同时从所有磁盘读取，
+所以读取速度会更快，当写数据时，因为它要将数据写在条带化的多个磁盘上，所以性能会较差。</p>
+<p>现在，很多人都在讨论为什么我们需要使用 RAID 6，它的性能和其他 RAID 相比并不太好。
+提出这个问题首先需要知道的是，如果需要高容错性就选择 RAID 6。
+在每一个用于数据库的高可用性要求较高的环境中，
+他们需要 RAID 6 因为数据库是最重要，无论花费多少都需要保护其安全，它在视频流环境中也是非常有用的。</p>
+<div class="section" id="raid-6-1">
+<h2>RAID 6 的的优点和缺点</h2>
+<ul class="simple">
+<li>性能不错。</li>
+<li>RAID 6 比较昂贵，因为它要求两个独立的磁盘用于奇偶校验功能。</li>
+<li>将失去两个磁盘的容量来保存奇偶校验信息（双奇偶校验）。</li>
+<li>即使两个磁盘损坏，数据也不会丢失。我们可以在更换损坏的磁盘后从校验中重建数据。</li>
+<li>读性能比 RAID 5 更好，因为它从多个磁盘读取，但对于没有专用的 RAID 控制器的设备写性能将非常差。</li>
+</ul>
+</div>
+<div class="section" id="section-1">
+<h2>要求</h2>
+<p>要创建一个 RAID 6 最少需要4个磁盘。
+你也可以添加更多的磁盘，但你必须有专用的 RAID 控制器。
+使用软件 RAID 我们在 RAID 6 中不会得到更好的性能，所以我们需要一个物理 RAID 控制器。</p>
+<p>如果你新接触 RAID 设置，我们建议先看完以下 RAID 文章。</p>
+<dl class="docutils">
+<dt>原文:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://linux.cn/article-6085-1.html">介绍 RAID 的级别和概念</a></li>
+<li><a class="reference external" href="https://linux.cn/article-6087-1.html">使用 mdadm 工具创建软件 RAID 0 （条带化）</a></li>
+<li><a class="reference external" href="https://linux.cn/article-6093-1.html">用两块磁盘创建 RAID 1（镜像）</a></li>
+<li><a class="reference external" href="https://linux.cn/article-6102-1.html">创建 RAID 5（条带化与分布式奇偶校验）</a></li>
+</ul>
+</dd>
+</dl>
+<p>我的服务器设置:</p>
+<pre class="literal-block">
+操作系统    :  CentOS 6.5 Final
+IP 地址     :  192.168.0.228
+主机名      :  rd6.tecmintlocal.com
+磁盘 1 [20GB]  :  /dev/sdb
+磁盘 2 [20GB]  :  /dev/sdc
+磁盘 3 [20GB]  :  /dev/sdd
+磁盘 4 [20GB]  :  /dev/sde
+</pre>
+<p>这是9篇系列教程的第5部分，
+在这里我们将看到如何在 Linux 系统或者服务器上使用四个 20GB 的磁盘（名为 /dev/sdb、 /dev/sdc、 /dev/sdd 和 /dev/sde）
+创建和设置软件 RAID 6 （条带化双分布式奇偶校验）。</p>
+</div>
+<div class="section" id="mdadm">
+<h2>第1步：安装 mdadm 工具，并检查磁盘</h2>
+<p>如果你按照我们最进的两篇 RAID 文章（第2篇和第3篇），我们已经展示了如何安装 <cite>mdadm</cite> 工具。
+如果你直接看的这篇文章，我们先来解释下在 Linux 系统中如何使用 <cite>mdadm</cite> 工具来创建和管理 RAID，
+首先根据你的 Linux 发行版使用以下命令来安装:</p>
+<pre class="literal-block">
+yum install mdadm         # [在 RedHat 系统]
+apt-get install mdadm     # [在 Debain 系统]
+</pre>
+<p>安装该工具后，然后来验证所需的四个磁盘，我们将会使用下面的 <cite>fdisk</cite> 命令来检查用于创建 RAID 的磁盘:</p>
+<pre class="literal-block">
+fdisk -l | grep sd
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-50-52.png" style="width: 480px;" />
+<p class="caption">在 Linux 中检查磁盘</p>
+</div>
+<p>在创建 RAID 磁盘前，先检查下我们的磁盘是否创建过 RAID 分区:</p>
+<pre class="literal-block">
+mdadm -E /dev/sd[b-e]### mdadm --examine /dev/sdb /dev/sdc /dev/sdd /dev/sde ### 或
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-51-27.png" style="width: 480px;" />
+<p class="caption">在磁盘上检查 RAID 分区</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">在上面的图片中，没有检测到任何 super-block 或者说在四个磁盘上没有 RAID 存在。现在我们开始创建 RAID 6。</p>
+</div>
+</div>
+<div class="section" id="raid-6-2">
+<h2>第2步：为 RAID 6 创建磁盘分区</h2>
+<p>现在在 <cite>/dev/sdb</cite> , <cite>/dev/sdc</cite> , <cite>/dev/sdd</cite> 和 <cite>/dev/sde</cite> 上为 RAID 创建分区，
+使用下面的 fdisk 命令。在这里，我们将展示如何在 sdb 磁盘创建分区，同样的步骤也适用于其他分区。</p>
+<p>创建 /dev/sdb 分区:</p>
+<pre class="literal-block">
+fdisk /dev/sdb
+</pre>
+<p>请按照说明进行操作，如下图所示创建分区。</p>
+<ul class="simple">
+<li>按 <cite>n</cite> 创建新的分区。</li>
+<li>然后按 <cite>P</cite> 选择主分区。</li>
+<li>接下来选择分区号为1。</li>
+<li>只需按两次回车键选择默认值即可。</li>
+<li>然后，按 <cite>P</cite> 来打印创建好的分区。</li>
+<li>按 <cite>L</cite> ，列出所有可用的类型。</li>
+<li>按 <cite>t</cite> 去修改分区。</li>
+<li>键入 <cite>fd</cite> 设置为 Linux 的 RAID 类型，然后按回车确认。</li>
+<li>然后再次使用 <cite>p</cite> 查看我们所做的更改。</li>
+<li>使用 <cite>w</cite> 保存更改。</li>
+</ul>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-53-01.png" style="width: 480px;" />
+<p class="caption">创建 /dev/sdb 分区*</p>
+</div>
+<p>创建 /dev/sdc 分区:</p>
+<pre class="literal-block">
+fdisk /dev/sdc
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-53-48.png" style="width: 480px;" />
+<p class="caption">创建 /dev/sdc 分区</p>
+</div>
+<p>创建 /dev/sdd 分区:</p>
+<pre class="literal-block">
+fdisk /dev/sdd
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-54-34.png" style="width: 480px;" />
+<p class="caption">创建 /dev/sdd 分区</p>
+</div>
+<p>创建 /dev/sde 分区:</p>
+<pre class="literal-block">
+fdisk /dev/sde
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-55-10.png" style="width: 480px;" />
+<p class="caption">创建 /dev/sde 分区</p>
+</div>
+<p>创建好分区后，检查磁盘的 super-blocks 是个好的习惯。
+如果 super-blocks 不存在我们可以按前面的创建一个新的 RAID:</p>
+<pre class="literal-block">
+mdadm -E /dev/sd[b-e]1    ### mdadm --examine /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1 ### 或
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-11-55-48.png" style="width: 480px;" />
+<p class="caption">Check Raid on New Partitions, 在新分区中检查 RAID</p>
+</div>
+</div>
+<div class="section" id="md-raid">
+<h2>第3步：创建 md 设备（RAID）</h2>
+<p>现在可以使用以下命令创建 RAID 设备 <cite>md0</cite> （即 /dev/md0），
+并在所有新创建的分区中应用 RAID 级别，然后确认 RAID 设置:</p>
+<pre class="literal-block">
+mdadm --create /dev/md0 --level=6 --raid-devices=4 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1
+cat /proc/mdstat
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-08-14.png" style="width: 480px;" />
+<p class="caption">创建 Raid 6 设备</p>
+</div>
+<p>你还可以使用 watch 命令来查看当前创建 RAID 的进程，如下图所示:</p>
+<pre class="literal-block">
+watch -n1 cat /proc/mdstat
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-08-54.png" style="width: 480px;" />
+<p class="caption">检查 RAID 6 创建过程</p>
+</div>
+<p>使用以下命令验证 RAID 设备:</p>
+<pre class="literal-block">
+mdadm -E /dev/sd[b-e]1
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">上述命令将显示四个磁盘的信息，这是相当长的，所以没有截取其完整的输出。</p>
+</div>
+<p>接下来，验证 RAID 阵列，以确认重新同步过程已经开始:</p>
+<pre class="literal-block">
+mdadm --detail /dev/md0
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-10-12.png" style="width: 480px;" />
+<p class="caption">检查 Raid 6 阵列</p>
+</div>
+</div>
+<div class="section" id="raid-2">
+<h2>第4步：在 RAID 设备上创建文件系统</h2>
+<p>使用 ext4 为 <cite>/dev/md0</cite> 创建一个文件系统，并将它挂载在 /mnt/raid6 。
+这里我们使用的是 ext4，但你可以根据你的选择使用任意类型的文件系统:</p>
+<pre class="literal-block">
+mkfs.ext4 /dev/md0
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-13-47.png" style="width: 480px;" />
+<p class="caption">在 RAID 6 上创建文件系统</p>
+</div>
+<p>将创建的文件系统挂载到 /mnt/raid6，并验证挂载点下的文件，我们可以看到 lost+found 目录:</p>
+<pre class="literal-block">
+mkdir /mnt/raid6### mount /dev/md0 /mnt/raid6/### ls -l /mnt/raid6/
+</pre>
+<p>在挂载点下创建一些文件，在任意文件中添加一些文字并验证其内容:</p>
+<pre class="literal-block">
+touch /mnt/raid6/raid6_test.txt
+ls -l /mnt/raid6/
+echo &quot;tecmint raid setups&quot; &gt; /mnt/raid6/raid6_test.txt
+cat /mnt/raid6/raid6_test.txt
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-14-48.png" style="width: 480px;" />
+<p class="caption">验证 RAID 内容</p>
+</div>
+<p>在 /etc/fstab 中添加以下条目使系统启动时自动挂载设备，操作系统环境不同挂载点可能会有所不同:</p>
+<pre class="literal-block">
+vim /etc/fstab/dev/md0
+/mnt/raid6              ext4    defaults        0 0
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-15-56.png" style="width: 480px;" />
+<p class="caption">自动挂载 RAID 6 设备</p>
+</div>
+<p>接下来，执行 <cite>mount -a</cite> 命令来验证 fstab 中的条目是否有错误:</p>
+<pre class="literal-block">
+mount -av
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-16-49.png" style="width: 480px;" />
+<p class="caption">验证 RAID 是否自动挂载</p>
+</div>
+</div>
+<div class="section" id="raid-6-3">
+<h2>第5步：保存 RAID 6 的配置</h2>
+<p>请注意，默认情况下 RAID 没有配置文件。
+我们需要使用以下命令手动保存它，然后检查设备 <cite>/dev/md0</cite> 的状态:</p>
+<pre class="literal-block">
+mdadm --detail --scan --verbose &gt;&gt; /etc/mdadm.conf
+cat /etc/mdadm.conf
+mdadm --detail /dev/md0
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-18-00.png" style="width: 480px;" />
+<p class="caption">保存 RAID 6 配置</p>
+</div>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-18-38.png" style="width: 480px;" />
+<p class="caption">检查 RAID 6 状态</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>第6步：添加备用磁盘</h2>
+<p>现在，已经使用了4个磁盘，并且其中两个作为奇偶校验信息来使用。
+在某些情况下，如果任意一个磁盘出现故障，我们仍可以得到数据，因为在 RAID 6 使用双奇偶校验。</p>
+<p>如果第二个磁盘也出现故障，在第三块磁盘损坏前我们可以添加一个新的。
+可以在创建 RAID 集时加入一个备用磁盘，但我在创建 RAID 集合前没有定义备用的磁盘。
+不过，我们可以在磁盘损坏后或者创建 RAID 集合时添加一块备用磁盘。
+现在，我们已经创建好了 RAID，下面让我演示如何添加备用磁盘。</p>
+<p>为了达到演示的目的，我已经热插入了一个新的 HDD 磁盘（即 /dev/sdf），让我们来验证接入的磁盘:</p>
+<pre class="literal-block">
+ls -l /dev/ | grep sd
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-19-35.png" style="width: 480px;" />
+<p class="caption">检查新磁盘</p>
+</div>
+<p>现在再次确认新连接的磁盘没有配置过 RAID ，使用 mdadm 来检查:</p>
+<pre class="literal-block">
+mdadm --examine /dev/sdf
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-20-17.png" style="width: 480px;" />
+<p class="caption">在新磁盘中检查 RAID</p>
+</div>
+<p>像往常一样，我们早前已经为四个磁盘创建了分区，同样，我们使用 fdisk 命令为新插入的磁盘创建新分区:</p>
+<pre class="literal-block">
+fdisk /dev/sdf
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-21-53.png" style="width: 480px;" />
+<p class="caption">为 /dev/sdf 创建分区</p>
+</div>
+<p>在 /dev/sdf 创建新的分区后，在新分区上确认没有 RAID，
+然后将备用磁盘添加到 RAID 设备 /dev/md0 中，并验证添加的设备:</p>
+<pre class="literal-block">
+mdadm --examine /dev/sdf
+mdadm --examine /dev/sdf1
+mdadm --add /dev/md0 /dev/sdf1
+mdadm --detail /dev/md0
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-22-42.png" style="width: 480px;" />
+<p class="caption">在 sdf 分区上验证 Raid</p>
+</div>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-23-09.png" style="width: 480px;" />
+<p class="caption">Add sdf Partition to Raid, 添加 sdf 分区到 RAID</p>
+</div>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-23-41.png" style="width: 480px;" />
+<p class="caption">验证 sdf 分区信息</p>
+</div>
+</div>
+<div class="section" id="raid-6-4">
+<h2>第7步：检查 RAID 6 容错</h2>
+<p>现在，让我们检查备用驱动器是否能自动工作，当我们阵列中的任何一个磁盘出现故障时。
+为了测试，我将一个磁盘手工标记为故障设备。</p>
+<p>在这里，我们标记 /dev/sdd1 为故障磁盘:</p>
+<pre class="literal-block">
+mdadm --manage --fail /dev/md0 /dev/sdd1
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-24-30.png" style="width: 480px;" />
+<p class="caption">检查 RAID 6 容错</p>
+</div>
+<p>让我们查看 RAID 的详细信息，并检查备用磁盘是否开始同步:</p>
+<pre class="literal-block">
+mdadm --detail /dev/md0
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-25-07.png" style="width: 480px;" />
+<p class="caption">检查 RAID 自动同步</p>
+</div>
+<p>这里，我们看到备用磁盘激活了，并开始重建进程。
+在底部，我们可以看到有故障的磁盘 /dev/sdd1 标记为 faulty。可以使用下面的命令查看进程重建:</p>
+<pre class="literal-block">
+cat /proc/mdstat
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-14-25-59.png" style="width: 480px;" />
+<p class="caption">RAID 6 自动同步</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

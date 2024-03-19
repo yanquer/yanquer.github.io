@@ -1,0 +1,407 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>time</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>time</h2>
+									<p>统计给定命令所花费的总时间</p>
+<p>语法:</p>
+<pre class="literal-block">
+time(参数)
+</pre>
+<dl class="docutils">
+<dt>参数</dt>
+<dd>指令：指定需要运行的额指令及其参数。</dd>
+</dl>
+<div class="section" id="section-1">
+<h2>实例</h2>
+<p>当测试一个程序或比较不同算法时，执行时间是非常重要的，
+一个好的算法用时一定是较优的。
+所有类UNIX系统都包含time命令，使用这个命令可以统计时间消耗。例如:</p>
+<pre class="literal-block">
+[root&#64;localhost ~]# time ls
+anaconda-ks.cfg  install.log  install.log.syslog  satools  text
+
+real    0m0.009s
+user    0m0.002s
+sys     0m0.007s
+</pre>
+<p>输出的信息分别显示了该命令所花费的real时间、user时间和sys时间。</p>
+<dl class="docutils">
+<dt>real时间</dt>
+<dd>指挂钟时间，也就是命令开始执行到结束的时间。这个短时间包括其他进程所占用的时间片，和进程被阻塞时所花费的时间。</dd>
+<dt>user时间</dt>
+<dd>指进程花费在用户模式中的CPU时间，这是唯一真正用于执行进程所花费的时间，其他进程和花费阻塞状态中的时间没有计算在内。</dd>
+<dt>sys时间</dt>
+<dd>指花费在内核模式中的CPU时间，代表在内核中执系统调用所花费的时间，这也是真正由进程使用的CPU时间。</dd>
+</dl>
+<p>shell内建也有一个time命令，当运行time时候是调用的系统内建命令，
+因为系统内建的功能有限，所以需要时间其他功能需要使用time命令可执行二进制文件 <cite>/usr/bin/time</cite></p>
+<p>使用 <cite>-o</cite> 选项将执行时间写入到文件中:</p>
+<pre class="literal-block">
+/usr/bin/time -o outfile.txt ls
+</pre>
+<p>使用 <cite>-a</cite> 选项追加信息:</p>
+<pre class="literal-block">
+/usr/bin/time -a -o outfile.txt ls
+</pre>
+<p>使用 <cite>-f</cite> 选项格式化时间输出:</p>
+<pre class="literal-block">
+/usr/bin/time -f &quot;time: %U&quot; ls
+</pre>
+<p><cite>-f</cite> 选项后的参数</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><div class="first last line-block">
+<div class="line">参数</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">描述</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%E</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">real时间，显示格式为[小时:]分钟:秒</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%U</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">user时间。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%S</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">sys时间。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%C</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进行计时的命令名称和命令行参数。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%D</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进程非共享数据区域，以KB为单位。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%x</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">命令退出状态。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%k</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进程接收到的信号数量。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%w</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进程被交换出主存的次数。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%Z</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">系统的页面大小，这是一个系统常量，不用系统中常量值也不同。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%P</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进程所获取的CPU时间百分百，这个值等于 <cite>user+system</cite> 时间除以总共的运行时间。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%K</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进程的平均总内存使用量（data+stack+text），单位是 <cite>KB</cite>。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%w</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进程主动进行上下文切换的次数，例如等待I/O操作完成。</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><cite>%c</cite></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">进程被迫进行上下文切换的次数（由于时间片到期）。</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

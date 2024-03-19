@@ -1,0 +1,366 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li  class="active"><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>积分和微分</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 17 三月 2023
+      , Category:
+	  <a href="category/ai.html">AI</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/ai.html">Ai</a></li>
+												<li><a class="button button-alt" href="tag/shu-li.html">数理</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-03-17</div>
+									<h2>积分和微分</h2>
+									<p>以下主要针对这样的一元函数:</p>
+<pre class="literal-block">
+y = f(x)
+</pre>
+<dl class="docutils">
+<dt>想起以前大学的一个概念</dt>
+<dd>可导一定连续, 连续不一定可导</dd>
+</dl>
+<div class="section" id="section-2">
+<h2>古典微积分, 导数</h2>
+<p>古典微积分求解曲线围成的面积的主要思想，就是把曲线下的面积划分成了无数个矩形面积之和</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-09-51.png" style="width: 480px;" />
+</div>
+<p>（显然）直觉告诉我们，如果  越大，则这个近似越准确</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-10-27.png" style="width: 480px;" />
+</div>
+<p>此时，无穷小量就出现了。
+在 <strong>古典微积分</strong> 学中，无穷小量是建立微积分的基础。
+莱布尼兹介绍微积分的论文就叫做《论深度隐藏的几何学及无穷小与无穷大的分析》。
+在当时的观点下，无穷小量到底是什么，也是颇有争论的。
+当时有数学家打比喻：“无穷小量就好比山上的灰尘，去掉和增加都没有什么影响”，很显然有人认为这是真实存在的。
+在具体计算曲线下面的面积，即我们现在所说的定积分的时候，必然会遇到导数的问题，所以很自然的开始了对导数的定义和讨论。</p>
+<dl class="docutils">
+<dt>导数的古典定义</dt>
+<dd><p class="first">在曲线上取两点，连接起来所形成的直线，就称为曲线的割线：</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-09-54-51.png" style="width: 480px;" />
+</div>
+<p>连续的割线可以反应曲线的平均变化率。</p>
+<p>也就是说，这一段曲线大概总的趋势是上升还是下降，上升了多少，用割线描述是并不是精确的。</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-09-55-39.png" style="width: 480px;" />
+</div>
+<p>有了切线之后我们进一步去定义导数</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-09-57-03.png" style="width: 480px;" />
+</div>
+<p>从这张图得出 <strong>导数</strong> 的定义</p>
+<pre class="literal-block">
+f'(x) = dy / dx
+</pre>
+<p>而 dx 和 dy 被称为 x 和 y 的 <strong>微分</strong> ，都为无穷小量，</p>
+<p class="last">所以导数也被莱布尼兹称为 <strong>微商</strong> (微分之商)</p>
+</dd>
+<dt>无穷小量导致的麻烦</dt>
+<dd><p class="first">上图实际上是有矛盾的</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-00-06.png" style="width: 480px;" />
+</div>
+<p>所以就古典微积分中切线的定义而言，微积分的基础就是不牢固的。</p>
+<p>无穷小量的麻烦还远远不止这一些，x^2 的导数是这样计算的:</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-01-32.png" style="width: 240px;" />
+</div>
+<p>dx 先在除法中当作不为 0 的变量被约掉,
+再在最后的加法中当作 0 被忽略.</p>
+<p>一会是0一会又不是0。
+无穷小量和无穷小量相除为什么可以得到不一样的值？难道不应该都是1？
+无穷小量还违反了 阿基米德公理 ，这个才是更严重的缺陷，
+康托尔证明过，如果阿基米德公理被违背的话会出大问题。</p>
+<p class="last">一边是看起来没有错的微积分，一边是有严重缺陷的无穷小量，这就是第二次数学危机。
+数学的严格性受到了挑战， <strong>“对于数学，严格性不是一切，但是没有了严格性就没有了一切”。</strong></p>
+</dd>
+<dt>相关概念</dt>
+<dd><dl class="first last docutils">
+<dt>无穷小量</dt>
+<dd>在用古典微积分求解曲线围成的面积事，
+把曲线对的定义域[a,b]均分成间隔长度 <tt class="docutils literal">delta x</tt> (这应该是三角形符号, 我没找到, 暂时直接用英文) 为n份，
+当 <tt class="docutils literal"><span class="pre">n-&gt;∞</span></tt>  时， <tt class="docutils literal">delta x</tt>  变成无穷小量，记作 dx ，即 x 的 <strong>微分</strong></dd>
+<dt>微分</dt>
+<dd>微分是微小的增量，即无穷小量。在古典微积分学中，无穷小量是建立微积分的基础。</dd>
+<dt>切线</dt>
+<dd>通过无穷小量定义了切线。</dd>
+<dt>导数</dt>
+<dd>导数就是切线的斜率。</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h2>基于极限重建的微积分</h2>
+<p>莱布尼兹、欧拉等都认识到了无穷小量导致的麻烦，
+一直拼命想要修补，但这个问题等了200年后，即19世纪极限概念的清晰之后才得到解决。</p>
+<p>解决办法是，完全摈弃无穷小量，基于极限的概念，重新建立了微积分。</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-14-01.png" style="width: 480px;" />
+</div>
+<p>可以看到，极限的描述并没有用到什么无穷小量。</p>
+<p><strong>导数</strong> 的极限定义</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-14-49.png" style="width: 240px;" />
+</div>
+<p>用极限重新严格定义了导数，此时已经脱离了微商的概念。也就是此时，导数应该被看成一个整体。
+不过我们仍然可以去定义什么是微分，说到这里，真是有点剧情反转:</p>
+<ul class="simple">
+<li>古典微积分是先定义微分再定义导数，</li>
+<li>现在极限微积分是先定义了导数再有微分。</li>
+</ul>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-18-56.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-20-10-23-55.png" style="width: 480px;" />
+</div>
+<dl class="docutils">
+<dt>相关概念</dt>
+<dd><dl class="first last docutils">
+<dt>导数</dt>
+<dd>导数被定义为一个极限，其意义就是变化率</dd>
+<dt>微分</dt>
+<dd>微分是一个线性函数，其意义就是变化的具体数值</dd>
+<dt>切线</dt>
+<dd>有了导数之后就可以被确定下来了</dd>
+</dl>
+</dd>
+</dl>
+<p>参考: <a class="reference external" href="https://zhuanlan.zhihu.com/p/38337248">https://zhuanlan.zhihu.com/p/38337248</a></p>
+</div>
+<div class="section" id="section-4">
+<h2>古今微积分</h2>
+<p>微积分实际上被发明了两次。
+古典微积分和极限微积分可以说是两个东西。我们再来比较一下古典微积分和极限微积分。</p>
+<ul class="simple">
+<li>古典微积分是先定义微分再定义导数； 极限微积分是先定义导数再定义微分。</li>
+<li>古典微积分的导数是基于无穷小量定义的； 极限微积分的导数是基于极限定义的</li>
+<li>古典微积分的微分是无穷小量； 极限微积分的微分是一个线性函数。</li>
+<li>古典微积分的定积分是求无穷小矩形面积的和；极限微积分的定积分是求黎曼和。</li>
+<li>古典微积分的切线是画出来的； 极限微积分的切线是算出来的。</li>
+<li>古典微积分的建立过程很直观； 极限微积分的建立过程更抽象。</li>
+<li>古典微积分最大的好处就是很直观，不过也是因为太直观了，
+所以我们一直都无法忘记它带来的印象，也对我们理解极限微积分造成了障碍。
+也让我们在实际应用中造成了错误的理解。</li>
+</ul>
+</div>
+<div class="section" id="section-5">
+<h2>加权积分</h2>
+<p>比如摸球, 蓝球 10 分, 红球 5 分, 最后的得分就是:</p>
+<pre class="literal-block">
+10 * nBlue + 5 * nRed
+</pre>
+<p>这里 10, 5 就是权</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

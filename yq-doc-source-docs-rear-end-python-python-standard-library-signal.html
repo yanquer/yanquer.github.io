@@ -1,0 +1,324 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>signal</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 27 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-27</div>
+									<h2>signal</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">官网文档::</th><td class="field-body"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/signal.html">signal</a></td>
+</tr>
+<tr class="field"><th class="field-name">部分参考::</th><td class="field-body"><a class="reference external" href="https://www.cnblogs.com/thomson-fred/p/9502497.html">python进程间通信--信号Signal</a></td>
+</tr>
+</tbody>
+</table>
+<p>python的信号处理模块</p>
+<p>信号是 Unix 系统中常见的一种进程间通信方式（IPC）, 也叫软中断信号</p>
+<p>作用是通知进程发生了异步事件。进程之间可以调用系统来传递信号, 本身内核也可以发送信号给进程, 告诉该进程发生了某个事件.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>注意，信号只是用来通知某进程发生了什么事件，并不给该进程传递任何数据。</p>
+<p><strong>Python 信号处理程序总是会在主 Python 主解释器的主线程中执行，即使信号是在另一个线程中接收的。 这意味着信号不能被用作线程间通信的手段。 你可以改用 threading 模块中的同步原语。</strong></p>
+<p class="last">此外，只有主解释器的主线程才被允许设置新的信号处理程序。</p>
+</div>
+<p>接收信号的进程对不同的信号有三种处理方法:</p>
+<ul class="simple">
+<li>指定处理函数</li>
+<li>忽略</li>
+<li>根据系统默认值处理, 大部分信号的默认处理是终止进程</li>
+</ul>
+<p>linux相关信号可见: <em>/docs/操作系统/linux/概念性/linux系统信号</em></p>
+<div class="section" id="signal-2">
+<h2>signal函数</h2>
+<div class="topic" id="handler">
+<p class="topic-title">自定义handler</p>
+<p>用于在进程捕捉到其他进程发送的信号时调用的函数. 当此函数返回时, 进程继续按原来的逻辑顺序执行。</p>
+<p>此函数在定义时python普通函数的定义没有区别。
+函数名不一定是handler, 但作为作为参数传入signal()方法的参数名一定是与定义handler函数的函数相同:</p>
+<pre class="literal-block">
+def  handler(signum,frame):
+
+    do  something…
+
+sig:
+  接收到的信号编号, signal模块内部定义了一些常用的内核信号, 并为它们进行了编号。
+
+  注意: windows操作系统没有SIGUSR1和SIGUSR2这两个型号类型, linux操作系统才有
+frame:
+  信号结构对象(可以通过结构对象查看信号信息,基本不用)
+
+  signal函数实际上是一个异步的回调函数, 只要执行了该函数, 则进程任意时候接收到相应信号都会处理。
+
+  这里的异步就是上文提到的异步机制, 是计算机内核程序与本进程间同时运行, 互相不干扰的一种机制, 对于进程的正常执行有着关键的作用。
+  这种异步机制在任何后端编程语言中都是存在的, 只不过实现的方式和细节不一样而已。
+</pre>
+</div>
+</div>
+<div class="section" id="alarm">
+<h2>alarm</h2>
+</div>
+<div class="section" id="pause">
+<h2>pause</h2>
+</div>
+<div class="section" id="getsignal">
+<h2>getsignal</h2>
+</div>
+<div class="section" id="section-1">
+<h2>信号举例</h2>
+<p>windows操作系统下, SIGNALINT编号为2:</p>
+<pre class="literal-block">
+&gt;&gt;&gt;signal.SIGINT
+&lt;Signals.SIGINT: 2&gt;
+</pre>
+<p>SIGBREAK编号为21:</p>
+<pre class="literal-block">
+&gt;&gt;&gt;signal.SIGBREAK
+&lt;Signals.SIGBREAK: 21&gt;
+</pre>
+<p>常用信号类型解析:</p>
+<pre class="literal-block">
+SIGHUP   断开连接
+SIGINT    ctrl-C
+SIGUIT    ctrl-\
+SIGTSTP   ctrl-z
+SIGKILL    终止进程且不能被处理
+SIGSTOP   暂停进程且不能被处理
+SIGALRM   时钟进程
+SIGCHLD   子进程状态改变发送给父进程信息号(但一般父进程不会处理)
+</pre>
+<p>linux系统信号可参考: <em>/docs/操作系统/linux/概念性/linux系统信号</em></p>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>在系统中, SIGKILL 和 SIGSTOP 两种信号, 进程是无法捕获的.</p>
+<p>所以对于需要人为杀死的进程, 可使用SIGTERM信号，SIGTERM表示终止信号，是kill命令传送的系统默认信号，
+它与SIGKIIL的区别是，SIGTERM更为友好，进程可以捕捉SIGTERM信号，进而根据需要来做一些清理工作.</p>
+<p>手动触发就是:</p>
+<pre class="last literal-block">
+kill -15 pid
+</pre>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">多线程环境下使用信号，只有 main thread 可以设置 signal 的 handler</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,721 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>教程</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/pyside6_more.html">Pyside6_more</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>教程</h2>
+									<p>基本说明见: <em>/docs/后端/python/python三方库/pyside6_more/index</em></p>
+<div class="section" id="widgets">
+<h2>Widgets说明</h2>
+<p>控件示例参考: <a class="reference external" href="https://doc.qt.io/qt-6/gallery.html">gallery</a></p>
+<p>常用控件:</p>
+<ul class="simple">
+<li>QPushButton, 可点击的按钮</li>
+<li>QLabel, 标签控件</li>
+<li>QLineEdit, 行编辑框</li>
+</ul>
+<p>创建应用程序都需要先导入 <tt class="docutils literal">QApplication</tt></p>
+<pre class="literal-block">
+from PySide6.QtWidgets import QApplication, QLabel
+
+app = QApplication([])
+
+# do something
+# QLabel 参数除了是纯文本, 还可以是 HTML
+label = QLabel(&quot;&lt;font color=red size=40&gt;Hello World!&lt;/font&gt;&quot;)
+
+app.exec()
+</pre>
+<p>当 <tt class="docutils literal">QApplication</tt> 不需要参数时, 就给空列表即可, 需要命令行参数就写 <tt class="docutils literal">sys .argv</tt></p>
+</div>
+<div class="section" id="section-2">
+<h2>信号-槽 机制</h2>
+<p>Signals and Slots</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">官网::</th><td class="field-body"><a class="reference external" href="https://doc.qt.io/qtforpython/tutorials/basictutorial/signals_and_slots.html">Signals and Slots</a></td>
+</tr>
+</tbody>
+</table>
+<p>用于控件之间的通信, 类似于回调函数, Qt 的核心功能</p>
+<ul class="simple">
+<li>当控件对象发生状态改变时, 信号由控件对象发出 (官网说是真正的对象封装?)</li>
+<li>槽用于接收信号</li>
+<li>信号也可直接连接到另一个信号, 相当于两个信号同时发生(一个信号发生时, 会立即出发另一个信号, 不论第一个信号发生是否完毕)</li>
+<li>Qt 内部也预定于了一些槽, 比如 <tt class="docutils literal">QLineEdit</tt> 的 <tt class="docutils literal">clear</tt> 方法</li>
+<li>信号与槽的连接使用 <tt class="docutils literal">connect</tt> , 返回 <tt class="docutils literal">QMetaObject.Connection</tt> 对象,
+解绑使用这个返回对象的 <tt class="docutils literal">disconnect()</tt> 方法</li>
+</ul>
+<p>可用于减少依赖,
+解偶?
+但是个人觉得, 使用 <tt class="docutils literal">connet</tt> 连接信号和槽的时候还是知道了自己连接了哪个, 只是不知道之后连接的的哪个槽会做出哪些操作,
+感觉不算完全结偶</p>
+<p>槽 Slot 使用装饰器:</p>
+<pre class="literal-block">
+from PySide6.QtCore import Slot
+
+&#64;Slot()
+def fun():
+  pass
+</pre>
+<p>使用控件的 <tt class="docutils literal">connect</tt> 连接到槽, <tt class="docutils literal">clicked</tt> 就是信号:</p>
+<pre class="literal-block">
+# Create a button
+button = QPushButton(&quot;Click me&quot;)
+
+# Connect the button to the function
+button.clicked.connect(fun)
+</pre>
+<p>显示控件:</p>
+<pre class="literal-block">
+# Show the button
+button.show()
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>其实普通的类似这样的函数定义(无参数的函数定义), 加不加 &#64;Slot 的装饰器实际测试没什么差别, 但是迄今为止还没找到一个合适的说法.</p>
+<p>比如? 为什么普通的函数需要加 &#64;Slot 注解? 什么时候起作用? 等等.</p>
+<p>官网只有一句这个: <strong>Signals can also be connected to free functions</strong></p>
+<p class="last">这里没动 free functions 是啥意思, 官网给的例子像是说 外部定义的自由函数? 但是个人觉得应该也包含无参数方法吧.</p>
+</div>
+<p>拓展说明</p>
+<div class="section" id="signals">
+<h3>Signals</h3>
+<p>自定义信号, 可传入不同的类型:</p>
+<pre class="literal-block">
+from PySide6.QtCore import Signal
+</pre>
+<p>Python 类型:</p>
+<pre class="literal-block">
+signal1 = Signal(int)  # Python types
+</pre>
+<p>Qt 类型:</p>
+<pre class="literal-block">
+signal2 = Signal(QUrl)  # Qt Types
+</pre>
+<p>多个参数:</p>
+<pre class="literal-block">
+signal3 = Signal(int, str, int)  # more than one type
+</pre>
+<p>可选参数:</p>
+<pre class="literal-block">
+signal4 = Signal((float,), (QDate,))  # optional types
+</pre>
+<p>Signal 可接受的关键词参数:</p>
+<dl class="docutils">
+<dt>name: str</dt>
+<dd>表示这个槽的名称, 若没指定, 则使用变量名</dd>
+<dt>arguments: list</dt>
+<dd><p class="first">可用于 QML 应用, 表示按照名称引用发射值</p>
+<p>如:</p>
+<pre class="literal-block">
+sumResult = Signal(int, arguments=['sum'])
+</pre>
+<p>QML:</p>
+<pre class="last literal-block">
+Connections {
+    target: ...
+    function onSumResult(sum) {
+        // do something with 'sum'
+    }
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="slot">
+<h3>Slot</h3>
+<p>与信号类似, 支持传入类型:</p>
+<pre class="literal-block">
+&#64;Slot(str)
+def slot_function(self, s):
+    ...
+</pre>
+<p>可接受的关键字参数:</p>
+<dl class="docutils">
+<dt>name: str</dt>
+<dd>槽名称, 未指定则为函数名</dd>
+<dt>result:</dt>
+<dd>返回类型, 可以是 Python 类型, 也可以是 C 类型</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h3>不同类型的超载信号与槽</h3>
+<p>即一个信号可接受可变类型参数, 如可接受 int 与 str 类型:</p>
+<pre class="literal-block">
+Signal((int,), (str,))
+</pre>
+<p>列官网例子:</p>
+<pre class="literal-block">
+import sys
+from PySide6.QtWidgets import QApplication, QPushButton
+from PySide6.QtCore import QObject, Signal, Slot
+
+class Communicate(QObject):
+    # create two new signals on the fly: one will handle
+    # int type, the other will handle strings
+    speak = Signal((int,), (str,))
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.speak[int].connect(self.say_something)
+        self.speak[str].connect(self.say_something)
+
+    # define a new slot that receives a C 'int' or a 'str'
+    # and has 'say_something' as its name
+    &#64;Slot(int)
+    &#64;Slot(str)
+    def say_something(self, arg):
+        if isinstance(arg, int):
+            print(&quot;This is a number:&quot;, arg)
+        elif isinstance(arg, str):
+            print(&quot;This is a string:&quot;, arg)
+
+if __name__ == &quot;__main__&quot;:
+    app = QApplication(sys.argv)
+    someone = Communicate()
+
+    # emit 'speak' signal with different arguments.
+    # we have to specify the str as int is the default
+    someone.speak.emit(10)
+    someone.speak[str].emit(&quot;Hello everybody!&quot;)
+</pre>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>控件布局</h2>
+<p>布局 相关控件:</p>
+<ul class="simple">
+<li>QHBoxLayout, 水平布局(从左到右)</li>
+<li>QVBoxLayout, 垂直布局(从上到下)</li>
+<li>QGridLayout, 格子布局</li>
+<li>QFormLayout, 只有两列的格子布局</li>
+</ul>
+<p>设置一个水平布局:</p>
+<pre class="literal-block">
+self._layout = QHBoxLayout(self)
+</pre>
+<p>布局内加入两个控件, 控件水平方向占比为 <strong>1:4</strong></p>
+<pre class="literal-block">
+self._layout.addWidget(self._m_left_side_window, 1)
+self._layout.addWidget(self._m_main_window, 4)
+</pre>
+<p>与以下代码效果一致:</p>
+<pre class="literal-block">
+self._layout.addWidget(self._m_left_side_window, )
+self._layout.addWidget(self._m_main_window, )
+self._layout.setStretchFactor(self._m_left_side_window, 1)
+self._layout.setStretchFactor(self._m_main_window, 4)
+</pre>
+<p>有时有设置控件布局的需求:</p>
+<pre class="literal-block">
+# xx_widget.setLayout(self._layout)
+self.setLayout(self._layout)
+</pre>
+<p><strong>使用 ``resize(width, heigth)`` 与 使用布局控件如 ``QVBoxLayout`` 垂直布局是冲突的</strong></p>
+<ul class="simple">
+<li><tt class="docutils literal">resize(width, heigth)</tt> 表示自定义窗体大小,
+这个时候是需要自己进行手动布局的, 且需要手动执行 <tt class="docutils literal">show()</tt> 才可以显示控件</li>
+<li>使用布局控件, 布局控件会自动帮你调整其内容大小, 只有最顶层的需要调用 <tt class="docutils literal">show()</tt> ,
+需要注意的是, 其下如果有控件没放到布局内部, 还是需要手动 show</li>
+<li>addStretch(), 填充一个空白位置</li>
+</ul>
+</div>
+<div class="section" id="section-5">
+<h2>显示表格数据的两个控件</h2>
+<ul class="simple">
+<li>QTableWidget 搭配 QTableWidgetItem(表示每一个单元格) 使用, 简单一点, 但是大数据时候不卡</li>
+<li>QTableView 复杂一点, 大数据流畅</li>
+</ul>
+<p>QTableWidget 部分方法:</p>
+<p>setHorizontalHeaderLabels 设置表格头, 参数为 str或者list类型</p>
+</div>
+<div class="section" id="section-6">
+<h2>展示/更新颜色控件</h2>
+<p>QColor</p>
+<p>一些基本颜色与对应16进制:</p>
+<pre class="literal-block">
+colors = [(&quot;Red&quot;, &quot;#FF0000&quot;),
+          (&quot;Green&quot;, &quot;#00FF00&quot;),
+          (&quot;Blue&quot;, &quot;#0000FF&quot;),
+          (&quot;Black&quot;, &quot;#000000&quot;),
+          (&quot;White&quot;, &quot;#FFFFFF&quot;),
+          (&quot;Electric Green&quot;, &quot;#41CD52&quot;),
+          (&quot;Dark Blue&quot;, &quot;#222840&quot;),
+          (&quot;Yellow&quot;, &quot;#F9E56d&quot;)]
+</pre>
+</div>
+<div class="section" id="section-7">
+<h2>树控件</h2>
+<ul class="simple">
+<li>QTreeWidget, 与 QTreeWidgetItem 协作</li>
+<li>QTreeView</li>
+</ul>
+</div>
+<div class="section" id="section-8">
+<h2>图表控件</h2>
+<ul class="simple">
+<li>QPieSeries, 饼状图</li>
+<li>QLineSeries, 折线图</li>
+<li>QChart</li>
+<li>QChartView</li>
+</ul>
+<p>可参考例子: <a class="reference external" href="https://doc.qt.io/qtforpython/tutorials/expenses/expenses.html">Expenses Tool Tutorial</a></p>
+</div>
+<div class="section" id="section-9">
+<h2>异步编程</h2>
+<ul class="simple">
+<li>trio 模块</li>
+</ul>
+</div>
+<div class="section" id="ui">
+<h2>ui 文件配置</h2>
+<p>感觉没有手写方便, 先略过</p>
+</div>
+<div class="section" id="qrc">
+<h2>qrc 文件配置</h2>
+<p><tt class="docutils literal">.qrc</tt> 是用来配置二进制资源文件的, 通过此文件加载响应的资源文件如字体, 图标, 然后使用 控件 如: QFile, QIcon</p>
+<p>一个图标qrc文件 icons.qrc:</p>
+<pre class="literal-block">
+&lt;/ui&gt;
+&lt;!DOCTYPE RCC&gt;&lt;RCC version=&quot;1.0&quot;&gt;
+&lt;qresource&gt;
+    &lt;file&gt;icons/play.png&lt;/file&gt;
+    &lt;file&gt;icons/pause.png&lt;/file&gt;
+    &lt;file&gt;icons/stop.png&lt;/file&gt;
+    &lt;file&gt;icons/previous.png&lt;/file&gt;
+    &lt;file&gt;icons/forward.png&lt;/file&gt;
+&lt;/qresource&gt;
+&lt;/RCC&gt;
+</pre>
+<p>使用 <tt class="docutils literal"><span class="pre">pyside6-rcc</span></tt> 转换为 Python 文件:</p>
+<pre class="literal-block">
+pyside6-rcc icons.rc -o rc_icons.py
+</pre>
+<p>原来代码:</p>
+<pre class="literal-block">
+from PySide6.QtGui import QIcon, QKeySequence
+playIcon = self.style().standardIcon(QStyle.SP_MediaPlay)
+</pre>
+<p>修改后的代码:</p>
+<pre class="literal-block">
+from PySide6.QtGui import QIcon, QKeySequence, QPixmap
+playIcon = QIcon(QPixmap(&quot;:/icons/play.png&quot;))
+</pre>
+</div>
+<div class="section" id="section-10">
+<h2>多语言支持</h2>
+<div class="section" id="qt-linguist">
+<h3>Qt Linguist</h3>
+<p>官网称做: <tt class="docutils literal">Qt Linguist</tt></p>
+<p>见: <a class="reference external" href="https://doc.qt.io/qtforpython/tutorials/basictutorial/translations.html">translations</a></p>
+<p>使用 <tt class="docutils literal">self.tr()</tt></p>
+<pre class="literal-block">
+count = len(self._list_widget.selectionModel().selectedRows())
+message = self.tr(&quot;%n language(s) selected&quot;, &quot;&quot;, count)
+</pre>
+<p>翻译文件为基于 XML 的 <tt class="docutils literal">.ts</tt> 文件, 通过 <strong>lupdate</strong> 提取:</p>
+<pre class="literal-block">
+pyside6-lupdate main.py main.qml form.ui -ts example_de.ts
+</pre>
+<p>文件已存在则为更新模式.</p>
+<p>转换为二进制的 <tt class="docutils literal">.qm</tt> 文件:</p>
+<pre class="literal-block">
+mkdir translations
+pyside6-lrelease example_de.ts -qm translations/example_de.qm
+</pre>
+<p>建议通过 <tt class="docutils literal">.qrc</tt> 文件来使用:</p>
+<pre class="literal-block">
+&lt;!DOCTYPE RCC&gt;&lt;RCC version=&quot;1.0&quot;&gt;
+&lt;qresource&gt;
+    &lt;file&gt;translations/example_de.qm&lt;/file&gt;
+&lt;/qresource&gt;
+&lt;/RCC&gt;
+</pre>
+<p>代码中路径形式:</p>
+<pre class="literal-block">
+:/translations/example_de.qm
+</pre>
+<p>代码中通过 <strong>QTranslator</strong> 来加载:</p>
+<pre class="literal-block">
+path = QLibraryInfo.location(QLibraryInfo.TranslationsPath)
+translator = QTranslator(app)
+if translator.load(QLocale.system(), 'qtbase', '_', path):
+    app.installTranslator(translator)
+translator = QTranslator(app)
+path = ':/translations'
+if translator.load(QLocale.system(), 'example', '_', path):
+    app.installTranslator(translator)
+</pre>
+<p>第一次加载 Qt 的翻译, 第二次加载资源文件的翻译.</p>
+<p>可通过以下方式运行:</p>
+<pre class="literal-block">
+LANG=de python main.py
+</pre>
+<!-- 这里没咋懂 de 哪定义的, 后面写个例子再看吧 -->
+</div>
+<div class="section" id="gnu-gettext">
+<h3>GNU gettext</h3>
+<p>相关可参考 <em>/docs/后端/python/python标准库/gettext</em></p>
+<p>例子,</p>
+<p><strong>最顶部定义</strong></p>
+<pre class="literal-block">
+import gettext
+...
+_ = None
+ngettext = None
+</pre>
+<p><strong>翻译部分定义</strong></p>
+<pre class="literal-block">
+src_dir = Path(__file__).resolve().parent
+try:
+    translation = gettext.translation('example', localedir=src_dir / 'locales')
+    if translation:
+        translation.install()
+        _ = translation.gettext
+        ngettext = translation.ngettext
+except FileNotFoundError:
+    pass
+if not _:
+    _ = gettext.gettext
+    ngettext = gettext.ngettext
+</pre>
+<p>将会找 <strong>locales</strong> 下的 <strong>example</strong></p>
+<p><strong>使用</strong></p>
+<pre class="literal-block">
+file_menu = self.menuBar().addMenu(_(&quot;&amp;File&quot;))
+</pre>
+<p>转换 <tt class="docutils literal">.pot</tt> 文件:</p>
+<pre class="literal-block">
+mkdir -p locales/de_DE/LC_MESSAGES
+xgettext -L Python -o locales/example.pot main.py
+</pre>
+<p>文件头大概如下:</p>
+<pre class="literal-block">
+&quot;Project-Id-Version: PySide6 gettext example\n&quot;
+&quot;POT-Creation-Date: 2021-07-05 14:16+0200\n&quot;
+&quot;Language: de_DE\n&quot;
+&quot;MIME-Version: 1.0\n&quot;
+&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
+&quot;Plural-Forms: nplurals=2; plural=n != 1;\n&quot;
+</pre>
+<p>翻译内容大概如下:</p>
+<pre class="literal-block">
+#: main.py:57
+msgid &quot;&amp;File&quot;
+msgstr &quot;&amp;Datei&quot;
+</pre>
+<p>转换为 <tt class="docutils literal">.mo</tt> 翻译文件:</p>
+<pre class="literal-block">
+msgfmt -o example.mo example.pot
+</pre>
+<p>运行:</p>
+<pre class="literal-block">
+LANG=de python main.py
+</pre>
+</div>
+</div>
+<div class="section" id="section-11">
+<h2>控件样式</h2>
+<p>默认使用当前平台系统的主题.
+也可自定义样式</p>
+<p>自定义方式:</p>
+<ul>
+<li><p class="first">使用 Qt 提供的部分样式,
+如:</p>
+<pre class="literal-block">
+w = QLabel(&quot;This is a placeholder text&quot;)
+w.setAlignment(Qt.AlignCenter)
+</pre>
+</li>
+<li><p class="first">类 CSS 语法,
+如:</p>
+<pre class="literal-block">
+w.setStyleSheet(&quot;&quot;&quot;
+    background-color: #262626;
+    color: #FFFFFF;
+    font-family: Titillium;
+    font-size: 18px;
+    &quot;&quot;&quot;)
+</pre>
+<p>多个类 CSS 样式可以使用 <tt class="docutils literal">.qss</tt> 文件</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用字体需要先安装. 可以使用 <strong>QFontDatabase</strong> 查看已安装字体, 使用 families() 指定.</p>
+</div>
+</li>
+</ul>
+<p><tt class="docutils literal">.qss</tt> 文件说明: 与 CSS 文件基本是一致的, 不过可以直接使用控件类名来指定样式:</p>
+<pre class="literal-block">
+QLabel {
+    background-color: red;
+}
+</pre>
+<p>也可以设置控件类对象的名称, 如:</p>
+<pre class="literal-block">
+QLabel#title {
+    font-size: 20px;
+}
+</pre>
+<p>而对于某些预定义控件下的控件, 如 <strong>QListWidget</strong> 下的 <strong>QListWidgetItem</strong></p>
+<pre class="literal-block">
+QListWidget::item {
+    height: 50px;
+}
+</pre>
+<p>同样的, 选中状态定义:</p>
+<pre class="literal-block">
+QListWidget::item:selected {
+    background-color: #2ABf9E;
+    qproperty-alignment: AlignCenter;
+}
+</pre>
+<p>代码中这样定义:</p>
+<pre class="literal-block">
+label = QLabel(“Test”)
+label.setObjectName(“title”)
+</pre>
+<p>使用自定义的样式文件, 使用 <strong>setStyleSheet</strong></p>
+<pre class="literal-block">
+if __name__ == &quot;__main__&quot;:
+  app = QApplication()
+
+  w = Widget()
+  w.show()
+
+  with open(&quot;style.qss&quot;, &quot;r&quot;) as f:
+      _style = f.read()
+      app.setStyleSheet(_style)
+
+  sys.exit(app.exec())
+</pre>
+<p>这样设计可以很好的去 <strong>解耦</strong></p>
+</div>
+<div class="section" id="c-python-qt">
+<h2>移植 C++ 应用到 Python Qt</h2>
+<p>称 <strong>重写</strong> 更贴切.</p>
+<p>参考: <a class="reference external" href="https://doc.qt.io/qtforpython/tutorials/portingguide/index.html">Porting a C++ Application to Python</a></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

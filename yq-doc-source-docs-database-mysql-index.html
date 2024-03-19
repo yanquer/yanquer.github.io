@@ -1,0 +1,469 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>索引</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/mysql.html">Mysql</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>索引</h2>
+									<div class="section" id="section-2">
+<h2>数据结构实现</h2>
+<p>见: <em>/docs/数据库/mysql/索引数据结构</em></p>
+</div>
+<div class="section" id="section-3">
+<h2>索引分类</h2>
+<p>数据结构角度</p>
+<ul class="simple">
+<li>B+</li>
+<li>Hash</li>
+<li>FULL TEXT</li>
+</ul>
+<p>物理存储角度</p>
+<ul class="simple">
+<li>聚簇索引</li>
+<li>非聚簇索引</li>
+</ul>
+<p>逻辑角度</p>
+<ul>
+<li><p class="first">主键索引(Primary Key): 也叫 聚集索引, 聚簇索引, 是特殊的唯一索引, 不允许空;
+InnoDB存储引擎的表会存在主键（唯一非null），如果建表的时候没有指定主键，
+则会使用第一非空的唯一索引作为聚集索引，
+否则InnoDB会自动帮你创建一个不可见的、长度为6字节的row_id用来作为聚集索引。</p>
+</li>
+<li><p class="first">唯一索引(Unique): 索引列值惟一, 允许空;
+索引列的值必须唯一，但允许有空值;</p>
+</li>
+<li><p class="first">单列索引(Key): 也叫普通索引, 一个索引只包含单个列;
+是MySQL中的基本索引类型，允许在定义索引的列中插入重复值和空值;</p>
+</li>
+<li><p class="first">多列索引: 也叫组合索引;
+组合索引指在表的多个字段组合上创建的索引，
+列值的组合必须唯一,
+只有在查询条件中使用了这些字段的左边字段时，
+索引才会被使用。使用组合索引时 <strong>遵循最左前缀集合</strong>;</p>
+</li>
+<li><p class="first">全文索引(FULLTEXT): 全文索引类型为FULLTEXT，在定义索引的列上支持值的全文查找，
+允许在这些索引列中插入重复值和空值。全文索引可以在CHAR、VARCHAR或者TEXT类型的列上创建</p>
+<p>注意搜索长度有默认值，参考: <a class="reference external" href="https://blog.csdn.net/mrzhouxiaofei/article/details/79940958">MySQL 之全文索引</a></p>
+</li>
+<li><p class="first">空间索引(SPATIAL): 空间索引是对空间数据类型的字段建立的索引，
+MySQL中的空间数据类型有4种，分别是GEOMETRY、POINT、LINESTRING和POLYGON。
+MySQL使用SPATIAL关键字进行扩展，使得能够用于创建正规索引类似的语法创建空间索引。
+创建空间索引的列必须声明为NOT NULL</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>遵循最左前缀集合</p>
+<p>order by使用索引最左前缀:</p>
+<pre class="literal-block">
+order by a
+order by a,b
+order by a,b,c
+order by a desc, b desc, c desc
+</pre>
+<p>如果where使用索引的最左前缀定义为常量，则order by能使用索引:</p>
+<pre class="literal-block">
+where a=const order by b,c
+where a=const and b=const order by c
+where a=const and b &gt; const order by b,c
+</pre>
+<p>不能使用索引进行排序:</p>
+<pre class="last literal-block">
+order by a , b desc ,c desc  --排序不一致
+where d=const order by b,c   --a丢失
+where a=const order by c     --b丢失
+where a=const order by b,d   --d不是索引的一部分
+where a in(...) order by b,c --a属于范围查询
+</pre>
+</div>
+<p>说明,
+当创建一个简单的表:</p>
+<pre class="literal-block">
+CREATE TABLE my_test (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `sex` varchar(5) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `birthday` datetime NOT NULL,
+  `user_num` int(11) unique,
+  PRIMARY KEY (`id`),
+  index(username)
+);
+</pre>
+<p>会发现明明在建表的时候只创建了一个索引，查询出来的有三个:</p>
+<pre class="literal-block">
+show index from my_test;
+</pre>
+<p>其实 <strong>主键，唯一约束列，外键</strong> 这些都自动会生成索引，至于外键大家可以去尝试下</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>上表格中各个列的说明:</p>
+<pre class="last literal-block">
+table #表名称
+non_unique  #如果索引不能包括重复词，为0，如果可以，则为1
+key_name  #索引的名称
+seq_in_index #索引中的列序号
+column_name  #列名称
+collation  #列以什么方式存储在索引中，在mysql中，有值'A'（升序）或者NULL（无分类）
+cardinality  #索引在唯一值的数据的估值，通过运行analyze table xxx_table;或者 myisamchk -a 可以更新，技术根据被存储为整数的统计数据来计数，所以即使对于小型表，该值也没必要是精确的，基数越大，当进行联合所饮食，mysql使用该索引的机会越大。myisam中，该值是准确的，INNODB中该值数据是估算的，存在偏差
+sub_part  #如果列只是部分的编入索引 则为被编入索引的字符的数目，如果整列被编入索引，则为NULL
+packed  #指示关键词如何被压缩，如果没有被压缩，则为NULL
+NULL   #如果列含有NULL，则含有YES，如果没有，则该列为NO
+index_type  #用过的索引方法（BTREE,FULLTEXT,HASH,RTREE）
+comment  #备注
+index_comment  #为索引创建时提供了一个注释属性的索引的任何评论
+</pre>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>创建索引注意点</h2>
+<ul>
+<li><p class="first">索引应该建在查询应用频繁的字段，比如whelre判断、order 排序和join 的（on）字段上创建索引。</p>
+</li>
+<li><p class="first">索引的个数应该适量，索引需要占用空间，更新时候也需要维护;</p>
+<p>一个表中如果有大量的索引，不仅占用磁盘空间，而且会影响INSERT、DELETE、UPDATE等语句的性能，
+因为在表中的数据更改的同时，索引也会进行调整和更新;</p>
+</li>
+<li><p class="first">区分度低的字段，例如性别，不要建索引。</p>
+</li>
+<li><p class="first">频繁更新的值，不要作为索引，维护索引文件需要成本；还会导致页分裂，I0次数增多。</p>
+</li>
+<li><p class="first">联合索引把散列性高（区分度高）的值放在前面为了更好的满足最左前缀匹配原则</p>
+</li>
+<li><p class="first">尽可能用联合索引代替多个单列索引
+（对于单列索引，MySQL基本只能使用一个索引，所以经常使用多个条件查询时更适合使用联合索引）
+过长的字段，使用前缀索引。当字段值比较长的时候，建立索引会消耗很多的空间，搜索起来也会很慢。
+我们可以通过截取字段的前面一部分内容建立索引，这个就叫前缀索引。</p>
+</li>
+<li><p class="first">不建议用无序的值（例如身份证、UUID）作为索引，在插入时会造成叶子节点频繁分裂，出现磁盘存储的碎片化</p>
+</li>
+<li><p class="first">数据量小的表最好不要使用索引，由于数据较少，查询花费的时间可能比遍历索引的时间还要短，索引可能不会产生优化效果;</p>
+</li>
+<li><p class="first">当唯一性是某种数据本身的特征时(比如下单日期可以)，指定唯一索引。使用唯一索引需能确保定义的列的数据完整性，以提高查询速度;</p>
+</li>
+<li><p class="first">搜索的索引列，不一定是所要选择的列;
+换句话说，最适合索引的列是出现在WHERE子句中的列，或连接子句中指定的列，而不是出现在SELECT关键字后的选择列表中的列;</p>
+</li>
+<li><p class="first">使用短索引; 如果对字符串列进行索引，应该指定一个前缀长度，只要有可能就应该这样做;
+例如，有一个CHAR(200)列，如果在前10个或20个字符内，多数值是唯一的，那么就不要对整个列进行索引;
+对前10个或20个字符进行索引能够节省大量索引空间，也可能会使查询更快;
+较小的索引涉及的磁盘 IO 较少，较短的值比较起来更快;
+更为重要的是，对于较短的键值，索引高速缓存中的块能容纳更多的键值，
+因此，MySQL 也可以在内存中容纳更多的值。这样就增加了找到行而不用读取索引中较多块的可能性;</p>
+</li>
+<li><p class="first">对于InnoDB存储引擎的表，记录默认会按照一定的顺序保存;</p>
+<p>如果有明确定义的主键，则按照主键顺序保存;</p>
+<p>如果没有主键，但是有唯一索引，那么就是按照唯一索引的顺序保存;</p>
+<p>如果既没有主键又没有唯一索引，那么表中会自动生成一个内部列，按照这个列的顺序保存;</p>
+<p>按照主键或者内部列进行的访问是最快的，所以InnoDB表尽量自己指定主键，
+当表中同时有几个列都是唯一的，都可以作为主键的时候，
+要选择最常作为访问条件的列作为主键，提高查询的效率;
+另外，还需要注意，InnoDB 表的普通索引都会保存主键的键值，
+所以主键要尽可能选择较短的数据类型，可以有效地减少索引的磁盘占用，提高索引的缓存效果</p>
+</li>
+</ul>
+</div>
+<div class="section" id="section-5">
+<h2>创建索引</h2>
+<p>显示索引信息:</p>
+<pre class="literal-block">
+# SHOW INDEX 命令
+mysql&gt; SHOW INDEX FROM table_name\G
+</pre>
+<p>几种方式通过修改表结构增加索引:</p>
+<pre class="literal-block">
+# 添加一个主键，这意味着索引值必须是唯一的，且不能为NULL
+ALTER TABLE tbl_name ADD PRIMARY KEY (column_list);
+
+# 创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）
+ALTER TABLE tbl_name ADD UNIQUE index_name (column_list);
+
+# 添加普通索引，索引值可出现多次
+ALTER TABLE tbl_name ADD INDEX index_name (column_list);
+
+# 指定了索引为 FULLTEXT ，用于全文索引
+ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list)
+</pre>
+<p>使用 ALTER 命令添加和删除主键:</p>
+<pre class="literal-block">
+mysql&gt; ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;
+mysql&gt; ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);
+
+# 删除主键时只需指定PRIMARY KEY，但在删除索引时，你必须知道索引名。
+mysql&gt; ALTER TABLE testalter_tbl DROP PRIMARY KEY;
+</pre>
+<dl class="docutils">
+<dt>普通索引</dt>
+<dd><p class="first">这是最基本的索引，它没有任何限制。它有以下几种创建方式:</p>
+<pre class="literal-block">
+CREATE INDEX indexName ON table_name (column_name)
+</pre>
+<p>如果是CHAR，VARCHAR类型，length可以小于字段实际长度；
+如果是BLOB和TEXT类型，必须指定 length。</p>
+<p>修改表结构(添加索引):</p>
+<pre class="literal-block">
+ALTER table tableName ADD INDEX indexName(columnName)
+</pre>
+<p>创建表的时候直接指定:</p>
+<pre class="literal-block">
+CREATE TABLE mytable(
+  ID INT NOT NULL,
+  username VARCHAR(16) NOT NULL,
+  INDEX [indexName] (username(length))
+);
+</pre>
+<p>删除索引的语法:</p>
+<pre class="last literal-block">
+DROP INDEX [indexName] ON mytable;
+</pre>
+</dd>
+<dt>唯一索引</dt>
+<dd><p class="first">创建:</p>
+<pre class="literal-block">
+CREATE UNIQUE INDEX indexName ON mytable(username(length))
+</pre>
+<p>修改表结构:</p>
+<pre class="literal-block">
+ALTER table mytable ADD UNIQUE [indexName] (username(length))
+</pre>
+<p>创建表的时候直接指定:</p>
+<pre class="last literal-block">
+CREATE TABLE mytable(
+  ID INT NOT NULL,
+  username VARCHAR(16) NOT NULL,
+  UNIQUE [indexName] (username(length))
+);
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-6">
+<h2>索引失效</h2>
+<ul class="simple">
+<li>查询条件包含or，可能导致索引失效</li>
+<li>如果字段类型是字符串，where时一定用引号括起来，否则会因为隐式类型转换，索引失效</li>
+<li>like通配符可能导致索引失效。</li>
+<li>联合索引，查询时的条件列不是联合索引中的第一个列，索引失效。</li>
+<li>在索引列上使用mysql的内置函数，索引失效。</li>
+<li>对索引列运算（如，+、一、 * 1，索引失效。</li>
+<li>索引字段上使用（！=或者&lt;&gt;，not in）时，可能会导致索引失效。</li>
+<li>索引字段上使用is null，is not null，可能导致索引失效。</li>
+<li>左连接查询或者右连接查询查询关联的字段编码格式不一样，可能导致索引失效。</li>
+<li>MySQL优化器估计使用全表扫描要比使用索引快，则不使用索引。</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

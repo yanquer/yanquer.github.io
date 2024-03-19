@@ -1,0 +1,369 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li  class="active"><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>数据预处理</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 17 三月 2023
+      , Category:
+	  <a href="category/ai.html">AI</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/ai.html">Ai</a></li>
+												<li><a class="button button-alt" href="tag/shen-du-xue-xi.html">深度学习</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-03-17</div>
+									<h2>数据预处理</h2>
+									<p>数据的归一化和标准化是特征缩放(feature scaling)的方法，
+是数据预处理的关键步骤。
+不同评价指标往往具有不同的量纲和量纲单位，
+这样的情况会影响到数据分析的结果，
+为了消除指标之间的量纲影响，需要进行数据归一化/标准化处理，
+以解决数据指标之间的可比性。
+原始数据经过数据归一化/标准化处理后，各指标处于同一数量级，适合进行综合对比评价。</p>
+<p>归一化/标准化实质是一种线性变换，线性变换有很多良好的性质，
+这些性质决定了对数据改变后不会造成“失效”，反而能提高数据的表现，
+这些性质是归一化/标准化的前提。
+比如有一个很重要的性质：线性变换不会改变原始数据的数值排序。</p>
+<p>优点</p>
+<ul class="simple">
+<li>归一化/标准化后可以加快梯度下降的求解速度</li>
+<li>避免局部值偏差太大</li>
+</ul>
+<div class="section" id="section-2">
+<h2>归一化</h2>
+<p><strong>归一化（Normalization）</strong></p>
+<p>归一化一般是将数据映射到指定的范围，用于去除不同维度数据的量纲以及量纲单位。</p>
+<p>在机器学习领域中，不同评价指标（即特征向量中的不同特征就是所述的不同评价指标）往往具有不同的量纲和量纲单位，这样的情况会影响到数据分析的结果，</p>
+<p>为了消除指标之间的量纲影响，需要进行数据标准化处理，
+以解决数据指标之间的可比性。原始数据经过数据标准化处理后，
+各指标处于同一数量级，适合进行综合对比评价。其中，最典型的就是数据的归一化处理。</p>
+<p>常见的映射范围有 [0, 1] 和 [-1, 1] ，最常见的归一化方法就是 Min-Max 归一化。</p>
+<div class="section" id="min-max">
+<h3>Min-Max 归一化</h3>
+<p>Min-Max 归一化（Min-Max Normalization）</p>
+<p>也称为离差标准化，是对原始数据的线性变换，使结果值映射到[0 - 1]之间。转换函数如下：</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-19-15-12-35.png" style="width: 240px;" />
+</div>
+<p>其中max为样本数据的最大值，min为样本数据的最小值。
+这种归一化方法比较适用在数值比较集中的情况。
+但是，如果max和min不稳定，很容易使得归一化结果不稳定，使得后续使用效果也不稳定，
+实际使用中可以用经验常量值来替代max和min。
+而且当有新数据加入时，可能导致max和min的变化，需要重新定义。</p>
+<p>作用：</p>
+<ul class="simple">
+<li>数据映射到指定的范围内进行处理，更加便捷快速。</li>
+<li>把有量纲表达式变成无量纲表达式，便于不同单位或量级的指标能够进行比较和加权。
+经过归一化后，将有量纲的数据集变成纯量，还可以达到简化计算的作用。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>有时候我们希望将输入转换到[-1,1]的范围，可以使用以下的公式:</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-19-15-14-45.png" style="width: 240px;" />
+</div>
+<p>实质上，归一化的一般规范函数是:</p>
+<pre class="last literal-block">
+y = (ymax-ymin)*(x-xmin)/(xmax-xmin) + ymin。
+</pre>
+</div>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>标准化</h2>
+<p><strong>标准化（Normalization）</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">归一化和标准化的英文翻译是一致的，但是根据其用途（或公式）的不同去理解（或翻译）</p>
+</div>
+<p>标准化是依照特征矩阵的列处理数据。
+数据标准化方法有多种，
+如：直线型方法(如极值法、标准差法)、折线型方法(如三折线法)、曲线型方法(如半正态性分布)。
+不同的标准化方法，对系统的评价结果会产生不同的影响。其中，最常用的是Z-Score 标准化。</p>
+<div class="section" id="z-score">
+<h3>Z-Score 标准化</h3>
+<p>Z-Score 标准化（Z-Score Normalization）</p>
+<p>这种方法给予原始数据的均值（mean）和标准差（standard deviation）进行数据的标准化。
+经过处理的数据符合标准正态分布，即均值为0，标准差为1，转化函数为</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-19-15-18-09.png" style="width: 240px;" />
+</div>
+<p>其中 u 是样本数据的均值（mean），
+o 是样本数据的标准差（std）。
+此外，标准化后的数据保持异常值中的有用信息，
+使得算法对异常值不太敏感，这一点归一化就无法保证。</p>
+<p>作用:</p>
+<ul class="simple">
+<li>提升模型的收敛速度（加快梯度下降的求解速度）</li>
+<li>提升模型的精度（消除量级和量纲的影响）</li>
+<li>简化计算（与归一化的简化原理相同）</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>归一化和标准化的异同</h2>
+<dl class="docutils">
+<dt>区别</dt>
+<dd><ul class="first last simple">
+<li>归一化是将样本的特征值转换到同一量纲下把数据映射到[0,1]或者[-1, 1]区间内，
+仅由变量的极值决定，因区间放缩法是归一化的一种。</li>
+<li>标准化是依照特征矩阵的列处理数据，其通过求z-score的方法，
+转换为标准正态分布，和整体样本分布相关，每个样本点都能对标准化产生影响。</li>
+</ul>
+</dd>
+<dt>相同</dt>
+<dd>它们的相同点在于都能取消由于量纲不同引起的误差；
+都是一种线性变换，都是对向量X按照比例压缩再进行平移。</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h2>归一化和标准化的适用场景</h2>
+<ul>
+<li><p class="first">数据的分布本身就服从正态分布，使用Z-Score标准化</p>
+</li>
+<li><p class="first">有离群值的情况：使用Z-Score</p>
+<p>这里不是说有离群值时使用Z-Score不受影响，
+而是，Min-Max对于离群值十分敏感，因为离群值的出现，
+会影响数据中max或min值，从而使Min-Max的效果很差。
+相比之下，虽然使用Z-Score计算方差和均值的时候仍然会受到离群值的影响，
+但是相比于Min-Max法，影响会小一点</p>
+</li>
+<li><p class="first">如果对输出结果范围有要求，用归一化</p>
+</li>
+<li><p class="first">如果数据较为稳定，不存在极端的最大最小值，用归一化</p>
+</li>
+<li><p class="first">如果数据存在异常值和较多噪音，用标准化，可以间接通过中心化避免异常值和极端值的影响</p>
+</li>
+</ul>
+</div>
+<div class="section" id="section-6">
+<h2>非线性变换</h2>
+<p>非线性变换经常用在数据分化比较大的场景，有些数值很大，有些很小。通过一些数学函数，将原始值进行映射。该方法包括 log、指数，正切等。需要根据数据分布的情况，决定非线性函数的曲线，比如log(V, 2)还是log(V, 10)等。</p>
+<p>对数函数转换:</p>
+<pre class="literal-block">
+y = log10(x)
+</pre>
+<p>反余切函数转换:</p>
+<pre class="literal-block">
+y = atan(x) * 2 / π
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/296252799">数据预处理：归一化和标准化</a></li>
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/424518359">如何理解归一化（normalization）</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

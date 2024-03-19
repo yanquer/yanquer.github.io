@@ -1,0 +1,555 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>基础知识C(++)</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/c.html">C</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>基础知识C(++)</h2>
+									<div class="section" id="section-1">
+<h2>结构体</h2>
+<div class="section" id="section-2">
+<h3>定义</h3>
+<p>定义:</p>
+<pre class="literal-block">
+struct $tag {
+        $c_type arg1;
+        $c_type arg2;
+        ...
+} arg_list;
+</pre>
+<ul class="simple">
+<li>struct 是关键字表示定义结构体</li>
+<li>tag 是结构题标签, 相当于Python的类</li>
+<li>c_type arg1 表示定义结构题内具体的成员变量, 比如 <cite>int x</cite></li>
+<li>arg_list 是当前结构体变量名, 可以为多个. 可以理解为 tag 标签实例化了多个类</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">结构体标签, 成员变量定义, 结构题变量名. 定义时, 至少需要其中两个, 否则错误.</p>
+</div>
+<p>如, 以下声明了拥有3个成员的结构体，分别为整型的a，字符型的b和双精度的c:</p>
+<pre class="literal-block">
+//结构体的标签被命名为SIMPLE,没有声明变量
+struct SIMPLE
+{
+        int a;
+        char b;
+        double c;
+};
+//用SIMPLE标签的结构体，另外声明了变量t1、t2、t3
+struct SIMPLE t1, t2[20], *t3;
+</pre>
+<p>等价与:</p>
+<pre class="literal-block">
+struct SIMPLE
+{
+        int a;
+        char b;
+        double c;
+} t1, t2[20], *t3;
+</pre>
+</div>
+<div class="section" id="section-3">
+<h3>初始化</h3>
+<p>初始化:</p>
+<pre class="literal-block">
+#include &lt;stdio.h&gt;
+
+struct Books
+{
+        char  title[50];
+        char  author[50];
+        char  subject[100];
+        int   book_id;
+} book = {&quot;标题&quot;, &quot;作者&quot;, &quot;C&quot;, 1111};
+
+// 访问使用 . , 如 book.book_id
+</pre>
+</div>
+<div class="section" id="section-4">
+<h3>访问</h3>
+<p>结构体本身用 . 访问
+结构题指针用 -&gt; 访问</p>
+<p>用例:</p>
+</div>
+</div>
+<div class="section" id="typedef">
+<h2>typedef</h2>
+<p>重新定义已有变量、类型等</p>
+</div>
+<div class="section" id="char">
+<h2>char数组赋值</h2>
+<p>初始化直接赋值:</p>
+<pre class="literal-block">
+char a[20] = &quot;hello&quot;;
+</pre>
+<p>数组逐个赋值:</p>
+<pre class="literal-block">
+char a[20] = {'h', 'e', 'l', 'l', 'o'};
+</pre>
+<p>strcpy拷贝赋值:</p>
+<pre class="literal-block">
+char a[20];
+strcpy(a, &quot;hello&quot;)
+</pre>
+<p>其他:</p>
+<pre class="literal-block">
+char const *se = &quot;hello&quot;;
+</pre>
+<p>等价与:</p>
+<pre class="literal-block">
+char const *see;
+see = &quot;hello&quot;;
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><cite>char const *se = &quot;hello&quot;;</cite> 需要加 const 是因为char表示字符常量, 不允许被修改.</p>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>单/双引号</h2>
+<ul class="simple">
+<li>单引号引用单个字符, 表示字符字面量, 占用一个字符, 代表整数, 整数值对应于该字符在编译器采用的字符集中的序列值(一般编译器采用的都是ASCII字符集)</li>
+<li>双引号引用字符串常量, 表示字符串字面量, 占用为所有字符个数加一, 因为每个字符串末尾自动会加上一个空字符 '0', 代表字符指针, 指向字符数组首地址. 如 <cite>&quot;a&quot;+1</cite> 表示指针运算, 指向结束符 '0'.</li>
+<li>空字符常量 '0'</li>
+<li>空白字符串 &quot;&quot;</li>
+</ul>
+</div>
+<div class="section" id="section-6">
+<h2>指针</h2>
+<p>指针也是一种变量，只不过它的内存单元中保存的是一个标识其他位置的地址。。由于地址也是整数，在３２位平台下，指针默认为３２位。。</p>
+<p>指向的直接意思就是指针变量所保存的其他的地址单元中所存放的数据类型:</p>
+<pre class="literal-block">
+int *p ;        //p 变量保存的地址所在内存单元中的数据类型为整型
+
+float *q;       // ... 浮点型
+</pre>
+<p>不论指向的数据类型为那种，指针变量其本身永远为整型，因为它保存的地址。</p>
+<p>C语言中定义一个变量时可以初始化:</p>
+<pre class="literal-block">
+char str[10] = {&quot;hello world&quot;};
+</pre>
+<p>当编译器遇到这句时，会把str数组中从第一个元素把hello world0 逐个填入。。</p>
+<p>C语言中规定数组代表数组所在内存位置的首地址，也是 str[0]的地址，即:</p>
+<pre class="literal-block">
+str = &amp;str[0];
+</pre>
+<p>而printf(&quot;%s&quot;,str); 为什么用首地址就可以输出字符串, 因为这里给的也是地址. 即打印出的结果为变量地址所指向的值.</p>
+<p>比较打脑壳的情况:</p>
+<pre class="literal-block">
+char *s ;
+s = &quot;China&quot;;
+
+// 可以编译通过, 因为这里赋值实际还是赋值的首地址
+// &quot;China&quot; 是一个字符串, 若用变量表示指向即为其首地址, 这里把首地址赋值给s (打印出来也是首地址而非&quot;China&quot;)
+</pre>
+<p>几个不同概念</p>
+<ul class="simple">
+<li>char *a : 保存字符串首地址的指针变量</li>
+<li>char a[] : 字符数组</li>
+<li>char *a [] : []的优先级高于*, 所以a先和 []结合, 他还是一个数组, 数组中的元素才是char *</li>
+<li>char **a  : 二级指针, 表示一级指针 的地址</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>char* a 等价与 char *a, 都是表示指针</p>
+<p>不过如果一起定义两个指针只能这样写:</p>
+<pre class="last literal-block">
+char *a, *b
+</pre>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>特殊符号 #</h2>
+<p>在C(++)中, #表示预处理或者预编译(正式编译前的处理, 非编译).</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">C语言程序从编写到运行要经过预处理、编译、汇编和链接这 4 个阶段</p>
+</div>
+<div class="section" id="define">
+<h3>#define(宏定义)</h3>
+<div class="section" id="section-8">
+<h4>定义普通常量</h4>
+<p>定义一个标识符来表示一个常量。其特点是：定义的标识符不占内存，只是一个临时的符号，预编译后这个符号就不存在了。</p>
+<p>用 #define 定义标识符的一般形式为:</p>
+<pre class="literal-block">
+#define  标识符  常量   //注意, 最后没有分号
+</pre>
+<p>作用范围为当前源文件, 若要终止使用宏定义, 用:</p>
+<pre class="literal-block">
+#undef  标识符
+</pre>
+<p>表示不再使用宏替换</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">宏定义的标识符一般大写, 末尾不加分号, 且支持定义嵌套</p>
+</div>
+</div>
+<div class="section" id="section-9">
+<h4>带参数替换</h4>
+<p>例:</p>
+<pre class="literal-block">
+#define S(a,b) a*b
+
+area=S(3,2);
+</pre>
+<p>第一步被换为area=a*b; 第二步换为area=3*2;</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>注意宏替换只做替换, 不求解.</p>
+<p class="last">宏展开不占用运行时间，只占用编译时间，函数调用占运行时间（分配内存、保留现场、值传递、返回值）</p>
+</div>
+</div>
+<div class="section" id="section-10">
+<h4>双#表示连接</h4>
+<p>##是连接符号</p>
+<p>例:</p>
+<pre class="literal-block">
+#define Conn(x,y) x##y
+</pre>
+<p>表示x与y连接, 如:</p>
+<pre class="literal-block">
+int n = Conn(123,456);
+</pre>
+<p>结果就是n=123456;</p>
+</div>
+<div class="section" id="section-11">
+<h4>表示转换字符#&#64;</h4>
+<p>“#&#64;”表示转换字符(结果加上单引号), 结果返回constchar类型</p>
+<p>例:</p>
+<pre class="literal-block">
+#define ToChar(x) #&#64;x
+</pre>
+<p>如:</p>
+<pre class="literal-block">
+char a = ToChar(1);
+</pre>
+<p>结果就是a='1';</p>
+<p>做个越界试验:</p>
+<pre class="literal-block">
+char a = ToChar(123);
+</pre>
+<p>结果是a='3';</p>
+<p>但是如果你的参数超过四个字符，编译器就给给你报错了！error C2015:too many characters in constant ：P</p>
+</div>
+<div class="section" id="section-12">
+<h4>转换字符串单#</h4>
+<p>#是替换为字符串</p>
+<p>例:</p>
+<pre class="literal-block">
+#define ToString(x) #x
+</pre>
+<p>若定义:</p>
+<pre class="literal-block">
+char* str = ToString(123132);
+</pre>
+<p>就成了str=&quot;123132&quot;;</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>可以使用 ifndef 来避免重复定义宏:</p>
+<pre class="last literal-block">
+#ifndef __headerfileXXX__
+#define __headerfileXXX__
+…
+code
+…
+#endif
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="c-1">
+<h2>c++虚函数</h2>
+<p>被virtual关键字修饰的成员函数，就是虚函数. 作用是为了实现多态(将接口与实现分离)</p>
+<p>借用百度百科的例子:</p>
+<pre class="literal-block">
+#include&lt;iostream&gt;
+using namespace std;
+
+class A
+{
+        public:
+                virtual void print(){cout&lt;&lt;&quot;This is A&quot;&lt;&lt;endl;}
+};
+class B : public A
+{
+        public:
+        void print(){cout&lt;&lt;&quot;This is B&quot;&lt;&lt;endl;}
+};
+
+int main1()
+{
+        A a;
+        B b;
+        a.print();
+        b.print();
+        return 0;
+}
+
+int main2()
+{
+        A a;
+        B b;
+        A *p1 = &amp;a;
+        A *p2 = &amp;b;
+        p1-&gt;print();
+        p2-&gt;print();
+        return 0;
+}
+</pre>
+<div class="sidebar">
+此例中, 如果父类print不是定义的虚函数, 那么main2函数打印结果都是 This is A.</div>
+<p>只要基类是虚函数, 那么派生类继承此虚函数的, 不管是否有关键字virtual, 都是虚函数. 因为如果没有写关键字, 编译器会自动帮你加上.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://baike.baidu.com/item">https://baike.baidu.com/item</a>/虚函数#:~:text=在某基类中声明为%20virtual%20并在一个或多个派生类中被重新定义的成员函数，用法格式为：virtual,函数返回类型%20函数名（参数表）%20%7B函数体%7D；实现多态性，通过指向派生类的基类指针或引用，访问派生类中同名覆盖成员函数%E3%80%82</td>
+</tr>
+</tbody>
+</table>
+<p>另外一个问题, 虚函数的继承要保持一致, 如, 以下两个定义是不等价的:</p>
+<pre class="literal-block">
+virtual void func()const
+
+virtual void func()
+</pre>
+<p>虚函数的声明与定义要求非常严格，只有在子函数中的虚函数与父函数一模一样的时候（包括限定符）才会被认为是真正的虚函数，不然的话就只能是重载。这被称为虚函数定义的同名覆盖原则，意思是只有名称完全一样时才能完成虚函数的定义。</p>
+</div>
+<div class="section" id="section-13">
+<h2>内存分区</h2>
+<p>内存分5个区：全局名字空间，自由存储区，寄存器，代码空间，栈</p>
+</div>
+<div class="section" id="section-14">
+<h2>大端/小端</h2>
+<ul class="simple">
+<li>大端: 较低的有效字节存放在较高的存储器地址中，较高的有效字节存放在较低的存储器地址</li>
+<li>小端: 较高的有效字节存放在较高的存储器地址中，较低的有效字节存放在较低的存储器地址</li>
+</ul>
+<p>栈的地址分配是从高-&gt;低,堆的地址分配是从低-&gt;高.</p>
+<!-- 以10000为例 -->
+<!-- 如果我们定义两个连续的10000 (即 ``0x2710``) ，内存中的表示方式可能如下所示： -->
+<!-- 第一个10000：10 27 00 00 -->
+<!-- 第二个10000：11 27 00 00 -->
+<!-- 可以看到，第二个10000的第一个字节变为了"11"，而其他字节保持不变。 -->
+<!-- 这是因为在小端序中，较低的内存地址存放较低位的字节。 -->
+<!-- 当定义多个连续的10000时，每个10000的低位字节会存储在前一个10000的高位字节后面。 -->
+<!-- 大端序好像没有这个问题, 且好像只有一个是纯数字, 一个在数组里面才会遇到 -->
+<!-- 忽略, 上面的问题 是写错了 -->
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

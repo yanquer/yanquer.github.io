@@ -1,0 +1,476 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>分库分表</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/mysql.html">Mysql</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>分库分表</h2>
+									<p>具体情况具体分析,
+合理选择策略.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>还有 NewSQL 的 单机 到 分布式集群, 不属于分库分表,
+而是直接就实现了分布式</p>
+<div class="last figure">
+<img alt="" src="../../../resources/images/2024-02-01-00-19-31.png" style="width: 480px;" />
+</div>
+</div>
+<p>分库分表算是一个轻量级的优化解决方案</p>
+<ul class="simple">
+<li>分库: 将数据分离多个库, 解放数据库IO性能</li>
+<li>分表: 将数据分离多个表, 突破单表数据压力</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>这里提一句, 还有其他优化方案, 比如使用 <strong>主从架构</strong> (binlog) 实现 <strong>读写分离</strong></p>
+<p class="last">业务代码层面, 读写分离只关注路由到读的库, 还是写的库.</p>
+</div>
+<div class="section" id="section-2">
+<h2>分库分表方案</h2>
+<p>数据分片</p>
+<dl class="docutils">
+<dt>常见策略</dt>
+<dd><ul class="first last simple">
+<li>取模分片。优点：数据存放均匀。缺点：扩容需要大量数据迁移。</li>
+<li>按范围分片。优点：扩容不需要迁移数据。缺点：数据存放不均匀，容易产生数据倾斜(比如按月份分, 某月的数据过多, 另一月内数据又过少)。</li>
+<li>配置路由, 比如将路由配置信息写到路由表; 缺点是得多查询一次, 以及数据量大时候又回陷入分表循环;</li>
+<li>根据业务场景，灵活定制分片策略。--面试重点</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="section-3">
+<h3>垂直拆分</h3>
+<p>垂直分片：</p>
+<blockquote>
+<ul class="simple">
+<li>从业务维度切分扩展数据库连接数</li>
+<li>提升数据库IO性能</li>
+</ul>
+<p>把单库中的不同表分到不同的库,
+再深入点, 把单表的列拆分给多个表</p>
+</blockquote>
+</div>
+<div class="section" id="section-4">
+<h3>水平拆分</h3>
+<p>水平分片：</p>
+<blockquote>
+<ul class="simple">
+<li>从数据维度切分扩展单表可控数据量</li>
+<li>提升数据库查询性能</li>
+</ul>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-01-00-31-44.png" style="width: 480px;" />
+</div>
+<p>水平分片从理论上突破了单机数据量处理的瓶颈，并且扩展相对自由，是分库分表的标准解决方案。</p>
+</blockquote>
+<p>如</p>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-03-22-33-11.png" style="width: 480px;" />
+</div>
+<p>比如按日期拆分(范围分表), 那在WEB应用的角度怎么查? 可以按照时间, 2021年的查2021年的表...</p>
+<dl class="docutils">
+<dt>Hash分表</dt>
+<dd><p class="first">其实就是上面的取模策略.</p>
+<p>查id, id计算hash后对多少(比如拆为4张表)取余, 然后决定去哪个表查.</p>
+<p>但是有个缺点, 后续如果再拆4个表, 加起来一共八个, 之前的逻辑的混乱了.
+所以还要作数据迁移</p>
+<p class="last">无热点问题, 但是扩容迁移麻烦.</p>
+</dd>
+<dt>范围分表</dt>
+<dd><p class="first">时间分表就是,</p>
+<p>比如 1000-2000 w数据在第2张表.</p>
+<p class="last">存在热点问题. 比如同时并发在某一个表.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>分库分表后如何实现不停机扩容</h2>
+<p>实际上，不停机扩容，实操起来是个非常麻烦而且很有风险的操作，
+当然，面试回答起来就简单很多。</p>
+<dl class="docutils">
+<dt>第一阶段：在线双写，查询走老库</dt>
+<dd><ol class="first last loweralpha simple">
+<li>建立好新的库表结构，数据写入老库的同时，也写入拆分的新库</li>
+<li>数据迁移，使用数据迁移程序，将旧库中的历史数据迁移到新库</li>
+<li>使用定时任务，新旧库的数据对比，把差异补齐</li>
+</ol>
+</dd>
+<dt>第二阶段：在线双写，查询走新库</dt>
+<dd><ol class="first last loweralpha simple">
+<li>完成了历史数据的同步和校验</li>
+<li>把对数据的读切换到新库</li>
+</ol>
+</dd>
+<dt>第三阶段：旧库下线</dt>
+<dd><ol class="first last loweralpha simple">
+<li>旧库不再写入新的数据</li>
+<li>经过一段时间，确定旧库没有请求之后，就可以下线老库</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-6">
+<h2>分库分表问题</h2>
+<div class="section" id="section-7">
+<h3>从分库的角度来讲</h3>
+<dl class="docutils">
+<dt>事务的问题</dt>
+<dd><p class="first">使用关系型数据库，君很大一点在于它保证事务完整性。</p>
+<p class="last">而分库之后单机事务就用不上了，必须使用分布式事务来解决。</p>
+</dd>
+<dt>跨库 JOIN 问题</dt>
+<dd><p class="first">在一个库中的时候我们还可以利用JOIN 来连表查询，而跨库了之后就无法使用JOIN 了</p>
+<p>此时的解决方案就是在业务代码中进行关联，也就是先把一个表的数据查出来，
+然后通过得到的结果再去查另一张表，然后利用代码来关联得到最终的结果。</p>
+<p>这种方式实现起来稍微比较复杂，不过也是可以接受的。</p>
+<p>还有可以适当的冗余一些字段。比如以前的表就存储一个关联 ID，但是业务时常要求返回对应的 Name 或者其他字段。
+这时候就可以把这些字段冗余到当前表中，来去除需要关联的操作。</p>
+<p class="last">还有一种方式就是数据异构，通过binlog同步等方式，把需要跨库join的数据同步到ES的大宽表里去，通过ES直接查询，效率很高。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-8">
+<h3>从分表的角度来看</h3>
+<dl class="docutils">
+<dt>跨节点的 count,order by.group by 以及聚合函数问题</dt>
+<dd>只能由业务代码来实现或者用中间件将各表中的数据汇总、排序、分页然后返回。</dd>
+<dt>数据迁移，容量规划，扩容等问题</dt>
+<dd>数据的迁移，容量如何规划，未来是否可能再次需要扩容，等等，都是需要考虑的问题。</dd>
+<dt>ID 问题</dt>
+<dd><p class="first">数据库表被切分后，不能再依赖数据库自身的主键自增生成机制，所以需要一些手段来保证全局主键唯一。
+即 <a class="reference internal" href="#section-9">案例-主键冲突</a></p>
+<ul class="last simple">
+<li>还是自增，只不过自增步长设置一下。比如现在有三张表，步长设置为3，
+三张表ID 初始值分别是1、2、3。
+这样第一张表的ID增长是1、4、7。第二张表是2、5、8。第三张表是3、6、9，这样就不会重复了。</li>
+<li>UUID，这种最简单，但是不连续的主键插入会导致严重的页分裂，性能比较差。</li>
+<li>分布式ID，比较出名的就是 Twitter 开源的 sonwflake 雪花算法</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-9">
+<h3>案例-主键冲突</h3>
+<p>数据库一般使用整型自增主键,
+那么当进行分库分表时,
+新的表也是需要主键索引的, 这个时候就会有主键冲突,
+如何解决?</p>
+<p>有个自定义主键,  <strong>雪花</strong> 算法,
+它让主键只是保持一个增加的趋势,
+具体怎么实现的, 后面再研究.</p>
+</div>
+<div class="section" id="section-10">
+<h3>案例-多数据源, 分布式事务问题</h3>
+</div>
+</div>
+<div class="section" id="section-11">
+<h2>分库分表开源框架</h2>
+<div class="section" id="shardingsphere">
+<h3>ShardingSphere分库分表</h3>
+<p>京东开源</p>
+<p>地址: <a class="reference external" href="https://shardingsphere.apache.org/index_zh.html">Apache ShardingSphere</a></p>
+<p>支持:</p>
+<ul class="simple">
+<li>ShardingJDBC: 客户端分库分表</li>
+<li>ShardingProxy: 服务端分库分表</li>
+</ul>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-01-00-28-26.png" style="width: 480px;" />
+</div>
+<p>实际使用方面来看, 实现是通过配置把多个表、库整合为一个逻辑表、库</p>
+<p>支持策略</p>
+<ul>
+<li><p class="first">Inline策略 - 根据单一分片键进行精确分片;
+如
+SQL:</p>
+<pre class="literal-block">
+Insert into course values (?,?,?,?)
+Select * from course where cid = ?
+Select * from course where cid in ?
+</pre>
+<p>注: 此处cid是由雪花算法生成的主键id</p>
+<p>分片键: cid尽量不要用id，MyBatis会对id字段默认生成雪花主键</p>
+<p>分片算法:</p>
+<pre class="literal-block">
+m$-&gt;{cid%2+1}.course_$-&gt; I ((cid+1) %4).intdiv(2) +1}
+</pre>
+<p>真实节点:</p>
+<pre class="literal-block">
+m$-&gt;{1.. 2}.course_$-&gt;{1.. 2}
+</pre>
+</li>
+<li><p class="first">Standard策略 - 根据单一分片键进行精确或者范围分片;</p>
+<p>如SQL:</p>
+<pre class="literal-block">
+Select * from course where cid between ? and ?
+</pre>
+<p>分片键: cid</p>
+<p>分片算法:</p>
+<pre class="literal-block">
+Precise algorithm + Range algorithm
+</pre>
+<p>真实节点:</p>
+<pre class="literal-block">
+m$-&gt;{1.. 2}.course_$-&gt;{1.. 2}
+</pre>
+</li>
+<li><p class="first">Complex策略 - 根据多个分片键进行精确或者范围分片;</p>
+</li>
+<li><p class="first">Hint策略 - 使用与SQL无关的方式进行分片;
+如查询的cid是奇数</p>
+</li>
+</ul>
+<p>其他:</p>
+<ul class="simple">
+<li>支持读写分离下的策略配置</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-12">
+<h2>案例举例</h2>
+<div class="section" id="section-13">
+<h3>案例-不同用户端优化</h3>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-01-31-23-35-05.png" style="width: 480px;" />
+</div>
+<p>说明: 主要是运营管理端, 如果需要实时可以用es, es中可以只存相关关键查询字段和主键
+然后再拿主键去数据库拿.</p>
+</div>
+<div class="section" id="section-14">
+<h3>案例-线上单库不停机迁移</h3>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-01-31-23-42-51.png" style="width: 480px;" />
+</div>
+<p>先考虑停机迁移, 可以直接整库迁移, 或者每次迁移1k数据等</p>
+<p>但是如果是线上迁移, 期间可能会有业务数据更新.</p>
+<dl class="docutils">
+<dt>方案一: 监听binlog</dt>
+<dd><p class="first">binlog记录了对数据库的修改,
+阿里有个开源的 <strong>canal</strong> 组件 , 可以做到监听binlog</p>
+<p class="last">然后把binlog的变动解析出来写到新库表.
+但是得考虑, 如果监听binlog写到新库表要比迁移的快, 就会造成数据混乱.
+解决方案就是用版本啊, 重试机制啥的</p>
+</dd>
+</dl>
+<p>迁移后也不能马上全部拿去用,
+而是 <strong>灰度发布</strong>, 先给部分服务器用.
+灰度的周期一般比较短, 因为期间可能有分流的问题,
+比如更新的新表, 但是有查询旧表...</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

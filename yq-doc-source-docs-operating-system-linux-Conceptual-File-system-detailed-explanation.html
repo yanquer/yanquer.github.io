@@ -1,0 +1,367 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>文件系统详解</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xing.html">概念性</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>文件系统详解</h2>
+									<div class="section" id="section-2">
+<h2>文件系统的基本组成</h2>
+<p>文件系统就是操作系统中负责管理持久数据的子系统（持久化的将文件保存在硬盘上）</p>
+<p>文件系统的基本数据单位是文件，目的是对磁盘上的文件进行管理</p>
+<p>Linux，一切皆文件</p>
+<p>Linux数据系统会为每个文件分配两个数据结构： <strong>索引节点</strong> (index node)和 <strong>目录项</strong> (directory entry)，记录文件元信息和目录层次结构</p>
+<dl class="docutils">
+<dt>索引节点</dt>
+<dd>记录文件的元信息，如访问权限、大小、数据在磁盘的位置等等，储存在硬盘中</dd>
+<dt>目录项</dt>
+<dd>记录文件的名字、索引节点指针以及与其他目录项的层级关联关系。
+多个目录项关联起来，形成目录结构，与索引节点不同的是，目录项是由内核维护的一个数据结构，不存放于磁盘而是存在于内存</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h2>虚拟文件系统</h2>
+<p>文件系统的种类繁多，而操作系统希望对用户提供一个统一的接口，于是在用户层和文件系统层中引入了中间层，被称为虚拟文件系统</p>
+</div>
+<div class="section" id="section-4">
+<h2>文件存储方式</h2>
+<dl class="docutils">
+<dt>连续空间存放：</dt>
+<dd>连续的物理空间存储，易产生磁盘碎片</dd>
+<dt>非连续空间存放</dt>
+<dd><dl class="first last docutils">
+<dt>链表方式</dt>
+<dd><dl class="first docutils">
+<dt>隐式链表</dt>
+<dd>实现的方式是文件头要包含磁盘块“第一块”和“最后一块”的位置，
+并且每个数据块留出一个指针空间，用来存放下一个数据块的位置。
+稳定性较差，一般发生错误导致指针损坏，会导致文件数据的丢失</dd>
+<dt>显式链接</dt>
+<dd>相当于在隐式的基础上取出所有的指针，放在内存的一个表上。
+链接文件各个数据块的指针，显式的存放在内存的一张表中，每个表项中存放链接指针，
+指向下一个数据块号。（表在内存，不适用与大磁盘）</dd>
+</dl>
+<p class="last">链表的方式解决了连续分配的磁盘碎片和文件动态拓展问题，但是不能有效支持直接访问（FAT除外）</p>
+</dd>
+<dt>索引方式</dt>
+<dd><p class="first">索引解决了直接访问的问题。索引的现实是为每个文件创建一个索引数据块，里面存放的是指向文件数据块的指针列表。</p>
+<p class="last">索引的缺陷在于储存索引带来的额外开销</p>
+</dd>
+<dt>链式索引块</dt>
+<dd>链表加索引的组合，实现方式是在索引数据块留出一个存放下一个索引数据块的指针。会出现某个索引数据块坏了导致文件受损。</dd>
+<dt>多级索引块</dt>
+<dd>通过一个索引块来存储多个索引数据块（俄罗斯套娃）。</dd>
+</dl>
+</dd>
+</dl>
+<p>早期 <strong>Unix存储</strong> 结合了以上的优点:</p>
+<pre class="literal-block">
+一个索引文件头（Inode）——————&gt;10个数据块
+
+                  ——————&gt;一级索引数据块——————&gt;n个数据块
+
+                  ——————&gt;二级索引数据块——————&gt;n^2个数据块
+
+                  ——————&gt;三级索引数据块——————&gt;n^3个数据块
+</pre>
+<p>如果存放文件的数据块超过10块，采用直接查找的方式</p>
+<p>超过10块，采用一级间接索引；</p>
+<p>以上不够存放大文件，采用二级索引；</p>
+<p>以上不够存放大文件，采用三级索引。</p>
+<p>文件头包含13个指针，10个指向数据块，各1个一、二、三级索引的指针指向。</p>
+<p>此方案用在了Linux Ext2/3文件系统里，解决了大文件的存储，但是对于大文件的访问需要大量的查询，访问效率低。</p>
+</div>
+<div class="section" id="section-5">
+<h2>空闲空间管理</h2>
+<dl class="docutils">
+<dt>空闲表法</dt>
+<dd>为所有的空闲空间建立一张表，包含空闲区的第一个块号和该空闲区的个数（连续分配）</dd>
+<dt>空闲链表法</dt>
+<dd><p class="first">所有的空闲块以链表的方式来指向，特点是简单</p>
+<p>缺点：指针会消耗一定存储空间，不能随机访问，效率低</p>
+<p class="last">空闲表和空闲链表都不适合大文件系统，否则会使表太大</p>
+</dd>
+<dt>位图法</dt>
+<dd><p class="first">利用二进制的一位来表示磁盘中一个盘块的使用情况</p>
+<p class="last">（Linux就采用此法管理空闲空间，还用来进行Inode空闲块的管理，因为Inode也是存在磁盘的）</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-6">
+<h2>文件系统的结构</h2>
+<p>数据库的位图是放在磁盘块里的，假设是放在一个块里，一个块4 k，
+每位表示一个数据块，共可以表示4 * 1024 * 8 = 2^15个空闲块，
+由于一个数据块是4 k大小，那么最大可以表示 2^15 * 4 * 1024 = 2^27 个byte，也就是128 M。</p>
+<p>也就是说按照上面的结构，采用 [一个块的位图 + 一系列的块] ，
+外加 [一个iNode的位图 + 一系列iNode的结构] 所表示的内容最大128 M太少了。</p>
+<p>上述结构在Linux中被称为一个**块组**， 那么有n多的块组，就能表示n大的文件</p>
+<p>Linux Ext2 整个文件系统由1 k的引导块加n个块组组成，块组包含</p>
+<ul class="simple">
+<li>超级块1块</li>
+<li>块组描述符多块</li>
+<li>数据位图一块</li>
+<li>iNode位图一块</li>
+<li>iNode列表多块</li>
+<li>数据块多块</li>
+</ul>
+<p>其中， <strong>超级块</strong> 与 <strong>块组描述符</strong> 是全局信息，非常重要</p>
+<p>Ext2的后续系统中采用了稀疏技术（并不是每一块都有 <strong>超级块</strong> 与 <strong>块组描述符</strong> ）。</p>
+</div>
+<div class="section" id="section-7">
+<h2>目录的存储</h2>
+<p>目录文件的块里保存着目录里面一项项文件信息。</p>
+<p>Linux的Ext文件系统就是采用了哈希表，来保存目录的内容。</p>
+<p>目录查询通过在磁盘反复搜索所完成，i/o开销比较大，所以可以先缓存在内存里面。</p>
+</div>
+<div class="section" id="section-8">
+<h2>软链接和硬链接</h2>
+<dl class="docutils">
+<dt>硬链接</dt>
+<dd>多个目录项的索引节点指向一个文件系统，而 iNode 是不可跨文件系统的，
+每个文件系统都有自己的iNode数据结构和列表，所以硬链接是不可跨文件系统的。
+只有删除文件的所有硬链接以及源文件时，系统才会彻底删除该文件。</dd>
+<dt>软链接</dt>
+<dd>相当于重新创建一个文件，这个文件有独立的inode，但是文件内容是另外一个文件的路径，
+所以访问软链接的时候，实际相当于访问到另一个文件，所以软链接是可跨越文件系统的。</dd>
+</dl>
+<p>总结一下：</p>
+<ul class="simple">
+<li>硬链接： 与普通文件没什么不同， <cite>inode</cite> 都指向同一个文件在硬盘中的区块</li>
+<li>软链接： 保存了其代表的文件的绝对路径，是另外一种文件，在硬盘上有独立的区块，访问时替换自身路径。</li>
+</ul>
+</div>
+<div class="section" id="i-o">
+<h2>文件i/o</h2>
+<p>分类：</p>
+<dl class="docutils">
+<dt>缓冲与非缓冲i/o</dt>
+<dd>是否通过标准库的缓存访问文件（缓冲：标准库内部的缓冲）。</dd>
+<dt>直接与非直接i/o</dt>
+<dd><p class="first">是否利用操作系统的缓存，内核空间缓存，也叫页缓存</p>
+<p>直接i/o：不会发生内核缓存和用户数据之间的复制，而是直接经过文件系统访问磁盘。</p>
+<p class="last">非直接i/o：读操作时，数据从内核缓存拷贝给用户程序，写操作时，数据从用户程序拷贝给内核缓存，再由内核决定什么时候写到磁盘</p>
+</dd>
+<dt>阻塞与非阻塞i/o VS 同步与异步i/o</dt>
+<dd><p class="first">阻塞等待的是“内核数据准备好”和“数据从内核态拷贝到用户态”这两个过程。</p>
+<p>非阻塞，read在为准备好时立即返回，后又轮询。以为太傻了，改进了有了多路复用（都是同步的）。</p>
+<p class="last">异步不需等待，可以直接去做其他的，系统会自己完成调用写到程序空间</p>
+</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

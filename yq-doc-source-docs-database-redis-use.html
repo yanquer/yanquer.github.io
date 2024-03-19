@@ -1,0 +1,564 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>使用</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/redis.html">Redis</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>使用</h2>
+									<div class="section" id="section-2">
+<h2>相关命令</h2>
+<dl class="docutils">
+<dt>redis-benchmark</dt>
+<dd>redis性能测试</dd>
+<dt>redis-check-aof</dt>
+<dd>校验aof文件完整性</dd>
+<dt>redis-check-rdb</dt>
+<dd>检查rdb</dd>
+<dt>redis-cli</dt>
+<dd>命令行交互式打开使用</dd>
+<dt>redis-sentinel</dt>
+<dd>哨兵, 与服务是一个</dd>
+<dt>redis-server</dt>
+<dd><p class="first">服务. 启动redis可以使用:</p>
+<pre class="last literal-block">
+redis-server [conf-file]
+</pre>
+</dd>
+</dl>
+<div class="figure">
+<img alt="" src="../../../resources/images/2024-02-06-00-32-06.png" style="width: 480px;" />
+<p class="caption">docker安装的redis结构</p>
+</div>
+<div class="section" id="redis-cli">
+<h3>redis-cli交互指令</h3>
+<p>redis-cli</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-h</span></kbd></td>
+<td>主机</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span></kbd></td>
+<td>端口</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td>密码</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--raw</span></kbd></td>
+<td>当输出结果有中文的时候, 默认输出是16进制,
+加此选项, 解码为中文显示</td></tr>
+</tbody>
+</table>
+<p>也可以直接跟在redis-cli后面直接执行:</p>
+<pre class="literal-block">
+redis-cli --raw get $key
+</pre>
+<p>关闭redis:</p>
+<pre class="literal-block">
+redis shutdown
+</pre>
+<p>不建议直接kill, 会丢失内存数据</p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>交互式操作</h2>
+<dl class="docutils">
+<dt>dbsize</dt>
+<dd>查看当前存储的key数量</dd>
+<dt>keys</dt>
+<dd><p class="first">查看所有key:</p>
+<pre class="last literal-block">
+keys *
+</pre>
+</dd>
+<dt>flushdb</dt>
+<dd>清空当前会话的数据</dd>
+<dt>auth</dt>
+<dd>账户验证登陆</dd>
+<dt>type</dt>
+<dd>查看指定key数据类型</dd>
+<dt>object encoding</dt>
+<dd><p class="first">查看key对应数据底层结构.</p>
+<p>如:</p>
+<pre class="last literal-block">
+object encoding $key
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="string">
+<h2>String操作</h2>
+<dl class="docutils">
+<dt>set</dt>
+<dd><p class="first">设置key-value</p>
+<p>语法:</p>
+<pre class="literal-block">
+set key value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET]
+</pre>
+<p>参数选项说明</p>
+<dl class="last docutils">
+<dt>key</dt>
+<dd>设置的键名</dd>
+<dt>value</dt>
+<dd>键对应的值</dd>
+<dt>EX seconds</dt>
+<dd>可选参数，过期时间, 单位秒</dd>
+<dt>PX milliseconds</dt>
+<dd>可选参数，过期时间, 单位毫秒, 与EX二选一即可</dd>
+<dt>EXAT timestamp</dt>
+<dd>可选参数，时间戳</dd>
+<dt>PXAT milliseconds-timestamp</dt>
+<dd>可选参数，毫秒级时间戳</dd>
+<dt>KEEPTTL</dt>
+<dd>可选参数，保持键的现有过期时间不变。</dd>
+<dt>NX</dt>
+<dd>可选参数，如果要设置的key不存在才设置, 仅使用此选项, 与 <strong>setnx</strong> 效果一致</dd>
+<dt>XX</dt>
+<dd>可选参数，仅在键已存在时设置键的值（即执行 &quot;SET IF EXISTS&quot; 操作）。</dd>
+<dt>GET</dt>
+<dd>可选参数，在设置键的值的同时，获取键的旧值</dd>
+</dl>
+</dd>
+<dt>setnx</dt>
+<dd><p class="first">与set类似, 不过只有在键key不存在时才设置.</p>
+<p>命令来自于 <tt class="docutils literal">SET if Not eXists</tt> 的缩写</p>
+<p>命令的返回值:</p>
+<ul class="last simple">
+<li>1：设置成功；</li>
+<li>0：key 没有设置成功。</li>
+</ul>
+</dd>
+<dt>del</dt>
+<dd>删除指定的key</dd>
+<dt>exists</dt>
+<dd>判断指定的key是否存在</dd>
+<dt>hincrby</dt>
+<dd>创建指定key的hash表</dd>
+<dt>hexists</dt>
+<dd>判断key对应的hash表中是否存在某个值</dd>
+<dt>expire</dt>
+<dd>指定某个key的过期时间, 单位: 秒</dd>
+<dt>incr</dt>
+<dd>设置某个key自增, 就是每次设置一次后就加一</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">对于 &quot;查看指定key数据类型&quot;, 表示key对应的值的数据类型</p>
+</div>
+</div>
+<div class="section" id="hash">
+<h2>Hash操作</h2>
+<dl class="docutils">
+<dt>HMSET</dt>
+<dd>hash, 批量存储</dd>
+<dt>HMGET</dt>
+<dd>hash, 批量获取</dd>
+</dl>
+</div>
+<div class="section" id="list">
+<h2>List操作</h2>
+<p>一览</p>
+<ul class="simple">
+<li>LPUSH</li>
+<li>RPUSH</li>
+<li>LPOP</li>
+<li>RPOP</li>
+<li>LRANGE</li>
+<li>BLPOP</li>
+<li>BRPOP</li>
+</ul>
+<p>将一个或多个值value插入到key列表的表头（最左边）:</p>
+<pre class="literal-block">
+LPUSH key value [value ...]
+</pre>
+<p>将一个或多个值value插入到key列表的表尾（最右边）:</p>
+<pre class="literal-block">
+RPUSH key value [value ...]
+</pre>
+<p>移除并返回key列表的头元素:</p>
+<pre class="literal-block">
+LPOP key
+</pre>
+<p>移除并返回key列表的尾元素:</p>
+<pre class="literal-block">
+RPOP key
+</pre>
+<p>返回列表key中指定区间内的元素，区间以偏移量start和stop指定:</p>
+<pre class="literal-block">
+LRANGE key start stop
+</pre>
+<p>从key列表表头弹出一个元素，若列表中没有元素，阻塞等待 timeout秒；如果timeout=0， 直阻塞等待:</p>
+<pre class="literal-block">
+BLPOP key [key ...] timeout
+</pre>
+<p>从key列表表尾弹出一个元素，若列表中没有元素，阻塞等待 timeout秒；如果timeout=0，一直阻塞等待:</p>
+<pre class="literal-block">
+BRPOP key [key ...] timeout
+</pre>
+<p>常用分布式数据结构</p>
+<blockquote>
+<p>栈:</p>
+<pre class="literal-block">
+Stack = LPUSH + LPOP
+</pre>
+<p>队列:</p>
+<pre class="literal-block">
+Queue = LPUSH + RPOP
+</pre>
+<p>阻塞队列:</p>
+<pre class="literal-block">
+Blocking MQ = LPUSH + BRPOP
+</pre>
+</blockquote>
+</div>
+<div class="section" id="set">
+<h2>Set操作</h2>
+<p>一览</p>
+<ul class="simple">
+<li>SADD</li>
+<li>SREM</li>
+<li>SCARD</li>
+<li>SISMEMBER</li>
+<li>SRANDMEMBER</li>
+<li>SPOP</li>
+</ul>
+<p>往集合key中存入元素，元素存在则忽略， 若key不存在则新建:</p>
+<pre class="literal-block">
+SADD key member [member ...]
+</pre>
+<p>从集合key中删除元素:</p>
+<pre class="literal-block">
+SREM key member [member ...]
+</pre>
+<p>获取集合key中所有元素:</p>
+<pre class="literal-block">
+SMEMBERS key
+</pre>
+<p>获取集合key的元素个数:</p>
+<pre class="literal-block">
+SCARD key
+</pre>
+<p>判断member元素是否存在于集合key中:</p>
+<pre class="literal-block">
+SISMEMBER key member
+</pre>
+<p>从集合key中选出count个元素(随机选取)，元素不从key中删除:</p>
+<pre class="literal-block">
+SRANDMEMBER key [count]
+</pre>
+<p>从集合key中选出count个元素，元素从key中删除:</p>
+<pre class="literal-block">
+SPOP key [count]
+</pre>
+<div class="section" id="set-1">
+<h3>Set运算操作</h3>
+<p>一览</p>
+<ul class="simple">
+<li>SINTER</li>
+<li>SINTERSTORE</li>
+<li>SUNION</li>
+<li>SUNIONSTORE</li>
+<li>SDIFF</li>
+<li>SDIFFSTORE</li>
+</ul>
+<p>交集运算:</p>
+<pre class="literal-block">
+SINTER key [key ...]
+</pre>
+<p>将交集结果存入新集合destination中:</p>
+<pre class="literal-block">
+SINTERSTORE destination key [key ..]
+</pre>
+<p>并集运算:</p>
+<pre class="literal-block">
+SUNION key [key .]
+</pre>
+<p>将并集结果存入新集合destination中:</p>
+<pre class="literal-block">
+SUNIONSTORE destination key [key ...]
+</pre>
+<p>差集运算:</p>
+<pre class="literal-block">
+SDIFF key [key ...]
+</pre>
+<p>将差集结果存入新集合destination中:</p>
+<pre class="literal-block">
+SDIFFSTORE destination key [key ...]
+</pre>
+</div>
+</div>
+<div class="section" id="zset">
+<h2>ZSet常用操作</h2>
+<p>一览</p>
+<ul class="simple">
+<li>ZADD</li>
+<li>ZREM</li>
+<li>ZSCORE</li>
+<li>ZINCRBY</li>
+<li>ZCARD</li>
+<li>ZRANGE</li>
+<li>ZREVRANGE</li>
+</ul>
+<p>与Set的区别就是, 元素插入的时候要提供一个 <cite>分值</cite></p>
+<p>往有序集合key中加入带分值元素:</p>
+<pre class="literal-block">
+ZADD key score member [[score member]...]
+</pre>
+<p>从有序集合key中删除元素:</p>
+<pre class="literal-block">
+ZREM key member [member ...]
+</pre>
+<p>返回有序集合key中元素member的分值:</p>
+<pre class="literal-block">
+ZSCORE key member
+</pre>
+<p>为有序集合key中元素member的分值加上increment:</p>
+<pre class="literal-block">
+ZINCRBY key increment member
+</pre>
+<p>返回有序集合key中元素个数:</p>
+<pre class="literal-block">
+ZCARD key
+</pre>
+<p>正序获取有序集合key从start下标到stop下标的元素:</p>
+<pre class="literal-block">
+ZRANGE key start stop [WITHSCORES]
+</pre>
+<p>倒序获取有序集合key从start下标到stop下标的元素:</p>
+<pre class="literal-block">
+ZREVRANGE key start stop [WITHSCORES]
+</pre>
+<div class="section" id="zset-1">
+<h3>Zset集合操作</h3>
+<p>一览</p>
+<ul class="simple">
+<li>ZUNIONSTORE</li>
+<li>ZINTERSTORE</li>
+</ul>
+<p>并集计算:</p>
+<pre class="literal-block">
+ZUNIONSTORE destkey numkeys key [key ...]
+</pre>
+<p>交集计算:</p>
+<pre class="literal-block">
+ZINTERSTORE destkey numkeys key [key ...]
+</pre>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

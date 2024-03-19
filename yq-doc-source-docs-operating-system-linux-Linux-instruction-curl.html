@@ -1,0 +1,798 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>curl</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>curl</h2>
+									<p>curl 是常用的命令行工具，用来请求 Web 服务器。
+它的名字就是客户端（client）的 URL 工具的意思。</p>
+<p>它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具。</p>
+<p>不带有任何参数时，curl 就是发出 GET 请求:</p>
+<pre class="literal-block">
+$ curl https://www.example.com
+</pre>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-A</span></kbd></td>
+<td><p class="first"><cite>-A</cite> 参数指定客户端的用户代理标头，即 <cite>User-Agent</cite> .
+curl 的默认用户代理字符串是 <cite>curl/[version]</cite></p>
+<p>将 <cite>User-Agent</cite> 改成 Chrome 浏览器:</p>
+<pre class="literal-block">
+$ curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36' https://google.com
+</pre>
+<p>移除 <cite>User-Agent</cite> 标头:</p>
+<pre class="literal-block">
+$ curl -A '' https://google.com
+</pre>
+<p>也可以通过 <cite>-H</cite> 参数直接指定标头，更改 <cite>User-Agent</cite>:</p>
+<pre class="last literal-block">
+$ curl -H 'User-Agent: php/1.0' https://google.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b</span></kbd></td>
+<td><p class="first"><cite>-b</cite> 参数用来向服务器发送 Cookie</p>
+<p>生成一个标头`Cookie: foo=bar`，向服务器发送一个名为`foo`、值为`bar`的 Cookie:</p>
+<pre class="literal-block">
+$ curl -b 'foo=bar' https://google.com
+</pre>
+<p>发送两个 Cookie:</p>
+<pre class="literal-block">
+$ curl -b 'foo1=bar;foo2=bar2' https://google.com
+</pre>
+<p>读取本地文件`cookies.txt`，里面是服务器设置的 Cookie（参见`-c`参数），将其发送到服务器:</p>
+<pre class="last literal-block">
+$ curl -b cookies.txt https://www.google.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c</span></kbd></td>
+<td><p class="first"><cite>-c</cite> 参数将服务器设置的 Cookie 写入一个文件。</p>
+<p>将服务器的 HTTP 回应所设置 Cookie 写入文本文件 <cite>cookies.txt</cite>:</p>
+<pre class="last literal-block">
+$ curl -c cookies.txt https://www.google.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td><p class="first"><cite>-d</cite> 参数用于发送 POST 请求的数据体</p>
+<p>使用`-d`参数以后，HTTP 请求会自动加上标头 <cite>Content-Type : application/x-www-form-urlencoded</cite>。
+并且会自动将请求转为 POST 方法，因此可以省略 <cite>-X POST</cite>:</p>
+<pre class="literal-block">
+$ curl -d'login=emma＆password=123'-X POST https://google.com/login
+# 或者
+$ curl -d 'login=emma' -d 'password=123' -X POST  https://google.com/login
+</pre>
+<p><cite>-d</cite> 参数可以读取本地文本文件的数据，向服务器发送.
+如读取`data.txt`文件的内容，作为数据体向服务器发送:</p>
+<pre class="last literal-block">
+$ curl -d '&#64;data.txt' https://google.com/login
+</pre>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--data-urlencode</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first"><cite>--data-urlencode</cite> 参数等同于 <cite>-d</cite>，发送 POST 请求的数据体，
+区别在于会自动将发送的数据进行 URL 编码。</p>
+<p>发送的数据 <cite>hello world</cite> 之间有一个空格，需要进行 URL 编码:</p>
+<pre class="last literal-block">
+$ curl --data-urlencode 'comment=hello world' https://google.com/login
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-e</span></kbd></td>
+<td><p class="first">设置 HTTP 的标头 <cite>Referer</cite>，表示请求的来源。</p>
+<p>将`Referer`标头设为 <cite>https://google.com?q=example</cite>:</p>
+<pre class="literal-block">
+curl -e 'https://google.com?q=example' https://www.example.com
+</pre>
+<p><cite>-H`参数可以通过直接添加标头`Referer</cite>，达到同样效果:</p>
+<pre class="last literal-block">
+curl -H 'Referer: https://google.com?q=example' https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-F</span></kbd></td>
+<td><p class="first">向服务器上传二进制文件</p>
+<p>给 HTTP 请求加上标头`Content-Type: multipart/form-data`，然后将文件`photo.png`作为`file`字段上传:</p>
+<pre class="literal-block">
+$ curl -F 'file=&#64;photo.png' https://google.com/profile
+</pre>
+<p><cite>-F</cite> 参数可以指定 MIME 类型。
+如指定 MIME 类型为`image/png`，否则 curl 会把 MIME 类型设为 <cite>application/octet-stream</cite>:</p>
+<pre class="literal-block">
+$ curl -F 'file=&#64;photo.png;type=image/png' https://google.com/profile
+</pre>
+<p><cite>-F`参数也可以指定文件名。
+如原始文件名为`photo.png</cite>，但是服务器接收到的文件名为 <cite>me.png</cite>:</p>
+<pre class="last literal-block">
+$ curl -F 'file=&#64;photo.png;filename=me.png' https://google.com/profile
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-G</span></kbd></td>
+<td><p class="first">构造 URL 的查询字符串。</p>
+<p>发出一个 GET 请求，实际请求的 URL 为`https://google.com/search?q=kitties&amp;count=20`。如果省略`--G`，会发出一个 POST 请求:</p>
+<pre class="literal-block">
+$ curl -G -d 'q=kitties' -d 'count=20' https://google.com/search
+</pre>
+<p>如果数据需要 URL 编码，可以结合 <cite>--data--urlencode</cite> 参数:</p>
+<pre class="last literal-block">
+$ curl -G --data-urlencode 'comment=hello world' https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-H</span></kbd></td>
+<td><p class="first">添加 HTTP 请求的标头。
+添加 HTTP 标头 <cite>Accept-Language: en-US</cite>:</p>
+<pre class="literal-block">
+$ curl -H 'Accept-Language: en-US' https://google.com
+</pre>
+<p>添加两个 HTTP 标头:</p>
+<pre class="literal-block">
+$ curl -H 'Accept-Language: en-US' -H 'Secret-Message: xyzzy' https://google.com
+</pre>
+<p>添加 HTTP 请求的标头是 <cite>Content-Type: application/json</cite>，然后用`-d`参数发送 JSON 数据:</p>
+<pre class="last literal-block">
+$ curl -d '{&quot;login&quot;: &quot;emma&quot;, &quot;pass&quot;: &quot;123&quot;}' -H 'Content-Type: application/json' https://google.com/login
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td><p class="first">打印出服务器回应的 HTTP 标头</p>
+<p>收到服务器回应后，先输出服务器回应的标头，然后空一行，再输出网页的源码:</p>
+<pre class="last literal-block">
+$ curl -i https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-I</span></kbd></td>
+<td><p class="first">向服务器发出 HEAD 请求，然会将服务器返回的 HTTP 标头打印出来。</p>
+<p>输出服务器对 HEAD 请求的回应:</p>
+<pre class="literal-block">
+$ curl -I https://www.example.com
+</pre>
+<p><cite>--head`参数等同于 `-I</cite>:</p>
+<pre class="last literal-block">
+$ curl --head https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-k</span></kbd></td>
+<td><p class="first">指定跳过 SSL 检测。</p>
+<p>不会检查服务器的 SSL 证书是否正确:</p>
+<pre class="last literal-block">
+$ curl -k https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-L</span></kbd></td>
+<td><p class="first">让 HTTP 请求跟随服务器的重定向。
+curl 默认不跟随重定向:</p>
+<pre class="last literal-block">
+$ curl -L -d 'tweet=hi' https://api.twitter.com/tweet
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--limit-rate</span></kbd></td>
+<td><p class="first"><cite>--limit-rate</cite> 限制 HTTP 请求和回应的带宽，模拟慢网速的环境</p>
+<p>将带宽限制在每秒 200K 字节:</p>
+<pre class="last literal-block">
+$ curl --limit-rate 200k https://google.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-o</span></kbd></td>
+<td><p class="first"><cite>-o</cite> 参数将服务器的回应保存成文件，等同于 <cite>wget</cite> 命令</p>
+<p>将 <cite>www.example.com</cite> 保存成 <cite>example.html</cite>:</p>
+<pre class="last literal-block">
+$ curl -o example.html https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-O</span></kbd></td>
+<td><p class="first"><cite>-O</cite> 参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。</p>
+<p>将服务器回应保存成文件，文件名为 <cite>bar.html</cite>:</p>
+<pre class="last literal-block">
+$ curl -O https://www.example.com/foo/bar.html
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td><p class="first"><cite>-s</cite> 参数将不输出错误和进度信息</p>
+<p>一旦发生错误，不会显示错误信息。不发生错误的话，会正常显示运行结果:</p>
+<pre class="literal-block">
+$ curl -s https://www.example.com
+</pre>
+<p>如果想让 curl 不产生任何输出，可以使用下面的命令:</p>
+<pre class="last literal-block">
+$ curl -s -o /dev/null https://google.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-S</span></kbd></td>
+<td><p class="first"><cite>-S`参数指定只输出错误信息，通常与 `-s</cite> 一起使用。</p>
+<p>命令没有任何输出，除非发生错误:</p>
+<pre class="last literal-block">
+$ curl -s -o /dev/null https://google.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-u</span></kbd></td>
+<td><p class="first">设置服务器认证的用户名和密码。</p>
+<p>设置用户名为 <cite>bob</cite>，密码为 <cite>12345</cite>， 然后将其转为 HTTP 标头 <cite>Authorization: Basic Ym9iOjEyMzQ1</cite>:</p>
+<pre class="literal-block">
+$ curl -u 'bob:12345' https://google.com/login
+</pre>
+<p>curl 能够识别 URL 里面的用户名和密码, 将其转为上个例子里面的 HTTP 标头:</p>
+<pre class="literal-block">
+$ curl https://bob:12345&#64;google.com/login
+</pre>
+<p>只设置了用户名，执行后，curl 会提示用户输入密码:</p>
+<pre class="last literal-block">
+$ curl -u 'bob' https://google.com/login
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td><p class="first">输出通信的整个过程，用于调试:</p>
+<pre class="literal-block">
+$ curl -v https://www.example.com
+</pre>
+<p><cite>--trace</cite> 参数也可以用于调试，还会输出原始的二进制数据:</p>
+<pre class="last literal-block">
+$ curl --trace - https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-x</span></kbd></td>
+<td><p class="first"><cite>-x</cite> 参数指定 HTTP 请求的代理。</p>
+<p>指定 HTTP 请求通过 <cite>myproxy.com:8080</cite> 的 socks5 代理发出:</p>
+<pre class="literal-block">
+$ curl -x socks5://james:cats&#64;myproxy.com:8080 https://www.example.com
+</pre>
+<p>如果没有指定代理协议，默认为 HTTP。</p>
+<p>请求的代理使用 HTTP 协议:</p>
+<pre class="last literal-block">
+$ curl -x james:cats&#64;myproxy.com:8080 https://www.example.com
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-X</span></kbd></td>
+<td><p class="first"><cite>-X</cite> 参数指定 HTTP 请求的方法。</p>
+<p>对 <cite>https://www.example.com</cite> 发出 POST 请求:</p>
+<pre class="last literal-block">
+$ curl -X POST https://www.example.com
+</pre>
+</td></tr>
+</tbody>
+</table>
+<p>CURL状态码列表</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">状态码</th>
+<th class="head">状态原因</th>
+<th class="head">解释</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>正常访问</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>错误的协议</td>
+<td>未支持的协议。此版cURL 不支持这一协议。</td>
+</tr>
+<tr><td>2</td>
+<td>初始化代码失败</td>
+<td>初始化失败。</td>
+</tr>
+<tr><td>3</td>
+<td>URL格式不正确</td>
+<td>URL 格式错误。语法不正确。</td>
+</tr>
+<tr><td>4</td>
+<td>请求协议错误</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>5</td>
+<td>无法解析代理</td>
+<td>无法解析代理。无法解析给定代理主机。</td>
+</tr>
+<tr><td>6</td>
+<td>无法解析主机地址</td>
+<td>无法解析主机。无法解析给定的远程主机。</td>
+</tr>
+<tr><td>7</td>
+<td>无法连接到主机</td>
+<td>无法连接到主机。</td>
+</tr>
+<tr><td>8</td>
+<td>远程服务器不可用</td>
+<td>FTP 非正常的服务器应答。cURL 无法解析服务器发送的数据。</td>
+</tr>
+<tr><td>9</td>
+<td>访问资源错误</td>
+<td>FTP 访问被拒绝。服务器拒绝登入或无法获取您想要的特定资源或目录。最有可 能的是您试图进入一个在此服务器上不存在的目录。</td>
+</tr>
+<tr><td>11</td>
+<td>FTP密码错误</td>
+<td>FTP 非正常的PASS 回复。cURL 无法解析发送到PASS 请求的应答。</td>
+</tr>
+<tr><td>13</td>
+<td>结果错误</td>
+<td>FTP 非正常的的PASV 应答，cURL 无法解析发送到PASV 请求的应答。</td>
+</tr>
+<tr><td>14</td>
+<td>FTP回应PASV命令</td>
+<td>FTP 非正常的227格式。cURL 无法解析服务器发送的227行。</td>
+</tr>
+<tr><td>15</td>
+<td>内部故障</td>
+<td>FTP 无法连接到主机。无法解析在227行中获取的主机IP。</td>
+</tr>
+<tr><td>17</td>
+<td>设置传输模式为二进制</td>
+<td>FTP 无法设定为二进制传输。无法改变传输方式到二进制。</td>
+</tr>
+<tr><td>18</td>
+<td>文件传输短或大于预期</td>
+<td>部分文件。只有部分文件被传输。</td>
+</tr>
+<tr><td>19</td>
+<td>RETR命令传输完成</td>
+<td>FTP 不能下载/访问给定的文件， RETR (或类似)命令失败。</td>
+</tr>
+<tr><td>21</td>
+<td>命令成功完成</td>
+<td>FTP quote 错误。quote 命令从服务器返回错误。</td>
+</tr>
+<tr><td>22</td>
+<td>返回正常</td>
+<td>HTTP 找不到网页。找不到所请求的URL 或返回另一个HTTP 400或以上错误。 此返回代码只出现在使用了-f/--fail 选项以后。</td>
+</tr>
+<tr><td>23</td>
+<td>数据写入失败</td>
+<td>写入错误。cURL 无法向本地文件系统或类似目的写入数据。</td>
+</tr>
+<tr><td>25</td>
+<td>无法启动上传</td>
+<td>FTP 无法STOR 文件。服务器拒绝了用于FTP 上传的STOR 操作。</td>
+</tr>
+<tr><td>26</td>
+<td>回调错误</td>
+<td>读错误。各类读取问题。</td>
+</tr>
+<tr><td>27</td>
+<td>内存分配请求失败</td>
+<td>内存不足。内存分配请求失败。</td>
+</tr>
+<tr><td>28</td>
+<td>访问超时</td>
+<td>操作超时。到达指定的超时期限条件。</td>
+</tr>
+<tr><td>30</td>
+<td>FTP端口错误</td>
+<td>FTP PORT 失败。PORT 命令失败。并非所有的FTP 服务器支持PORT 命令，请 尝试使用被动(PASV)传输代替！</td>
+</tr>
+<tr><td>31</td>
+<td>FTP错误</td>
+<td>FTP 无法使用REST 命令。REST 命令失败。此命令用来恢复的FTP 传输。</td>
+</tr>
+<tr><td>33</td>
+<td>不支持请求</td>
+<td>HTTP range 错误。range &quot;命令&quot;不起作用。</td>
+</tr>
+<tr><td>34</td>
+<td>内部发生错误</td>
+<td>HTTP POST 错误。内部POST 请求产生错误。</td>
+</tr>
+<tr><td>35</td>
+<td>SSL/TLS握手失败</td>
+<td>SSL 连接错误。SSL 握手失败。</td>
+</tr>
+<tr><td>36</td>
+<td>下载无法恢复</td>
+<td>FTP 续传损坏。不能继续早些时候被中止的下载。</td>
+</tr>
+<tr><td>37</td>
+<td>文件权限错误</td>
+<td>文件无法读取。无法打开文件。权限问题？</td>
+</tr>
+<tr><td>38</td>
+<td>LDAP可没有约束力</td>
+<td>LDAP 无法绑定。LDAP 绑定(bind)操作失败。</td>
+</tr>
+<tr><td>39</td>
+<td>LDAP搜索失败</td>
+<td>LDAP 搜索失败。</td>
+</tr>
+<tr><td>41</td>
+<td>函数没有找到</td>
+<td>功能无法找到。无法找到必要的LDAP 功能。</td>
+</tr>
+<tr><td>42</td>
+<td>中止的回调</td>
+<td>由回调终止。应用程序告知cURL 终止运作。</td>
+</tr>
+<tr><td>43</td>
+<td>内部错误</td>
+<td>内部错误。由一个不正确参数调用了功能。</td>
+</tr>
+<tr><td>45</td>
+<td>接口错误</td>
+<td>接口错误。指定的外发接口无法使用。</td>
+</tr>
+<tr><td>47</td>
+<td>过多的重定向</td>
+<td>过多的重定向。cURL 达到了跟随重定向设定的最大限额跟</td>
+</tr>
+<tr><td>48</td>
+<td>无法识别选项</td>
+<td>指定了未知TELNET 选项。</td>
+</tr>
+<tr><td>49</td>
+<td>TELNET格式错误</td>
+<td>不合式的telnet 选项。</td>
+</tr>
+<tr><td>51</td>
+<td>远程服务器的SSL证书</td>
+<td>peer 的SSL 证书或SSH 的MD5指纹没有确定。</td>
+</tr>
+<tr><td>52</td>
+<td>服务器无返回内容</td>
+<td>服务器无任何应答，该情况在此处被认为是一个错误。</td>
+</tr>
+<tr><td>53</td>
+<td>加密引擎未找到</td>
+<td>找不到SSL 加密引擎。</td>
+</tr>
+<tr><td>54</td>
+<td>设定默认SSL加密失败</td>
+<td>无法将SSL 加密引擎设置为默认。</td>
+</tr>
+<tr><td>55</td>
+<td>无法发送网络数据</td>
+<td>发送网络数据失败。</td>
+</tr>
+<tr><td>56</td>
+<td>衰竭接收网络数据</td>
+<td>在接收网络数据时失败。</td>
+</tr>
+<tr><td>57</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>58</td>
+<td>本地客户端证书</td>
+<td>本地证书有问题。</td>
+</tr>
+<tr><td>59</td>
+<td>无法使用密码</td>
+<td>无法使用指定的SSL 密码。</td>
+</tr>
+<tr><td>60</td>
+<td>凭证无法验证</td>
+<td>peer 证书无法被已知的CA 证书验证。</td>
+</tr>
+<tr><td>61</td>
+<td>无法识别的传输编码</td>
+<td>无法辨识的传输编码。</td>
+</tr>
+<tr><td>62</td>
+<td>无效的LDAP URL</td>
+<td>无效的LDAP URL。</td>
+</tr>
+<tr><td>63</td>
+<td>文件超过最大大小</td>
+<td>超过最大文件尺寸。</td>
+</tr>
+<tr><td>64</td>
+<td>FTP失败</td>
+<td>要求的FTP 的SSL 水平失败。</td>
+</tr>
+<tr><td>65</td>
+<td>倒带操作失败</td>
+<td>发送此数据需要的回卷(rewind)失败。</td>
+</tr>
+<tr><td>66</td>
+<td>SSL引擎失败</td>
+<td>初始化SSL 引擎失败。</td>
+</tr>
+<tr><td>67</td>
+<td>服务器拒绝登录</td>
+<td>用户名、密码或类似的信息未被接受，cURL 登录失败。</td>
+</tr>
+<tr><td>68</td>
+<td>未找到文件</td>
+<td>在TFTP 服务器上找不到文件。</td>
+</tr>
+<tr><td>69</td>
+<td>无权限</td>
+<td>TFTP 服务器权限有问题。</td>
+</tr>
+<tr><td>70</td>
+<td>超出服务器磁盘空间</td>
+<td>TFTP 服务器磁盘空间不足。</td>
+</tr>
+<tr><td>71</td>
+<td>非法TFTP操作</td>
+<td>非法的TFTP 操作。</td>
+</tr>
+<tr><td>72</td>
+<td>未知TFTP传输的ID</td>
+<td>未知TFTP 传输编号(ID)。</td>
+</tr>
+<tr><td>73</td>
+<td>文件已经存在</td>
+<td>文件已存在(TFTP) 。</td>
+</tr>
+<tr><td>74</td>
+<td>错误TFTP服务器</td>
+<td>无此用户(TFTP) 。</td>
+</tr>
+<tr><td>75</td>
+<td>字符转换失败</td>
+<td>字符转换失败。</td>
+</tr>
+<tr><td>76</td>
+<td>必须记录回调</td>
+<td>需要字符转换功能。</td>
+</tr>
+<tr><td>77</td>
+<td>CA证书权限</td>
+<td>读SSL 证书出现问题(路径？访问权限？ ) 。</td>
+</tr>
+<tr><td>78</td>
+<td>URL中引用资源不存在</td>
+<td>URL 中引用的资源不存在。</td>
+</tr>
+<tr><td>79</td>
+<td>错误发生在SSH会话</td>
+<td>SSH 会话期间发生一个未知错误。</td>
+</tr>
+<tr><td>80</td>
+<td>无法关闭SSL连接</td>
+<td>未能关闭SSL 连接。</td>
+</tr>
+<tr><td>81</td>
+<td>服务未准备</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>82</td>
+<td>无法载入CRL文件</td>
+<td>无法加载CRL 文件，丢失或格式不正确(在7.19.0版中增加) 。</td>
+</tr>
+<tr><td>83</td>
+<td>发行人检查失败</td>
+<td>签发检查失败(在7.19.0版中增加) 。</td>
+</tr>
+</tbody>
+</table>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

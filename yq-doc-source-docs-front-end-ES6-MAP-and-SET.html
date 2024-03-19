@@ -1,0 +1,338 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Map与Set</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/qian-duan.html">前端</a></li>
+												<li><a class="button button-alt" href="tag/es6.html">Es6</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>Map与Set</h2>
+									<div class="section" id="map">
+<h2>Map 对象</h2>
+<p>Map 对象保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值</p>
+<p>Maps 和 Objects 的区别</p>
+<ul class="simple">
+<li>一个 Object 的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值</li>
+<li>Map 中的键值是有序的（FIFO 原则），而添加到对象中的键则不是</li>
+<li>Map 的键值对个数可以从 size 属性获取，而 Object 的键值对个数只能手动计算</li>
+<li>Object 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突</li>
+</ul>
+<div class="section" id="map-1">
+<h3>Map的迭代</h3>
+<p>方法一, 使用 <cite>for ... of ...</cite>:</p>
+<pre class="literal-block">
+var myMap = new Map();
+myMap.set(0, &quot;zero&quot;);
+myMap.set(1, &quot;one&quot;);
+
+// 将会显示两个 log。 一个是 &quot;0 = zero&quot; 另一个是 &quot;1 = one&quot;
+for (var [key, value] of myMap) {
+  console.log(key + &quot; = &quot; + value);
+}
+for (var [key, value] of myMap.entries()) {
+  console.log(key + &quot; = &quot; + value);
+}
+/* 这个 entries 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的 [key, value] 数组。 */
+</pre>
+<p>方法二, 使用 <cite>forEach()</cite>:</p>
+<pre class="literal-block">
+var myMap = new Map();
+myMap.set(0, &quot;zero&quot;);
+myMap.set(1, &quot;one&quot;);
+
+// 将会显示两个 logs。 一个是 &quot;0 = zero&quot; 另一个是 &quot;1 = one&quot;
+myMap.forEach(function(value, key) {
+  console.log(key + &quot; = &quot; + value);
+}, myMap)
+</pre>
+</div>
+<div class="section" id="map-2">
+<h3>Map 对象的操作</h3>
+<p>Map 与 Array的转换</p>
+<p>Map 构造函数可以将一个二维键值对数组转换成一个 Map 对象:</p>
+<pre class="literal-block">
+var kvArray = [[&quot;key1&quot;, &quot;value1&quot;], [&quot;key2&quot;, &quot;value2&quot;]];
+var myMap = new Map(kvArray);
+</pre>
+<p>使用 Array.from 函数可以将一个 Map 对象转换成一个二维键值对数组:</p>
+<pre class="literal-block">
+var outArray = Array.from(myMap);
+Map 的克隆
+var myMap1 = new Map([[&quot;key1&quot;, &quot;value1&quot;], [&quot;key2&quot;, &quot;value2&quot;]]);
+var myMap2 = new Map(myMap1);
+
+console.log(original === clone);
+// 打印 false。 Map 对象构造函数生成实例，迭代出新的对象。
+</pre>
+<p>Map 的合并</p>
+<p>合并两个 Map 对象时，如果有重复的键值，则后面的会覆盖前面的，对应值即 uno，dos， three:</p>
+<pre class="literal-block">
+var first = new Map([[1, 'one'], [2, 'two'], [3, 'three'],]);
+var second = new Map([[1, 'uno'], [2, 'dos']]);
+var merged = new Map([...first, ...second]);
+</pre>
+</div>
+</div>
+<div class="section" id="set">
+<h2>Set 对象</h2>
+<p>Set 对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用</p>
+<div class="section" id="set-1">
+<h3>Set 中的特殊值</h3>
+<p>Set 对象存储的值总是唯一的，所以需要判断两个值是否恒等</p>
+<p>有几个特殊值需要特殊对待：</p>
+<ul class="simple">
+<li>+0 与 -0 在存储判断唯一性的时候是恒等的，所以不重复；</li>
+<li>undefined 与 undefined 是恒等的，所以不重复；</li>
+<li>NaN 与 NaN 是不恒等的，但是在 Set 中只能存一个，不重复。</li>
+</ul>
+</div>
+<div class="section" id="section-1">
+<h3>类型转换</h3>
+<p>Array</p>
+<p>Array 转 Set:</p>
+<pre class="literal-block">
+var mySet = new Set([&quot;value1&quot;, &quot;value2&quot;, &quot;value3&quot;]);
+</pre>
+<p>用...操作符，将 Set 转 Array:</p>
+<pre class="literal-block">
+var myArray = [...mySet];
+</pre>
+<p>String</p>
+<p>String 转 Set:</p>
+<pre class="literal-block">
+var mySet = new Set('hello');  // Set(4) {&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;o&quot;}
+// 注：Set 中 toString 方法是不能将 Set 转换成 String
+</pre>
+<p>并集:</p>
+<pre class="literal-block">
+var a = new Set([1, 2, 3]);
+var b = new Set([4, 3, 2]);
+var union = new Set([...a, ...b]); // {1, 2, 3, 4}
+</pre>
+<p>交集:</p>
+<pre class="literal-block">
+var a = new Set([1, 2, 3]);
+var b = new Set([4, 3, 2]);
+var intersect = new Set([...a].filter(x =&gt; b.has(x))); // {2, 3}
+</pre>
+<p>差集:</p>
+<pre class="literal-block">
+var a = new Set([1, 2, 3]);
+var b = new Set([4, 3, 2]);
+var difference = new Set([...a].filter(x =&gt; !b.has(x))); // {1}
+</pre>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

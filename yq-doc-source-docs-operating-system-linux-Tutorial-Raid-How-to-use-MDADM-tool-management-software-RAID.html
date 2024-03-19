@@ -1,0 +1,383 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>如何使用 Mdadm 工具管理软件 RAID</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 23 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+												<li><a class="button button-alt" href="tag/raid.html">Raid</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-23</div>
+									<h2>如何使用 Mdadm 工具管理软件 RAID</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li>作者: <a class="reference external" href="http://www.tecmint.com/manage-software-raid-devices-in-linux-with-mdadm/">Babin Lonston</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/">LCTT</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/strugglingyouth">struggling</a></li>
+<li>&lt;<a class="reference external" href="https://linux.cn/portal.php?mod=comment&amp;id=6463&amp;idtype=aid">https://linux.cn/portal.php?mod=comment&amp;id=6463&amp;idtype=aid</a>&gt;`_</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>无论你以前有没有使用 RAID 阵列的经验，
+以及是否完成了 <a class="reference external" href="https://linux.cn/article-6085-1.html">此 RAID 系列</a> 的所有教程，
+一旦你在 Linux 中熟悉了 <cite>mdadm --manage</cite> 命令的使用，管理软件 RAID 将不是很复杂的任务。</p>
+<p>在本教程中，我们会再介绍此工具提供的功能，这样当你需要它，就可以派上用场。</p>
+<div class="section" id="raid-1">
+<h2>RAID 测试方案</h2>
+<p>在本系列的最后一篇文章中，我们将使用一个简单的 RAID 1（镜像）阵列，
+它由两个 8GB 的磁盘（/dev/sdb 和 /dev/sdc）和一个备用设备（/dev/sdd）来演示，
+但在此使用的方法也适用于其他类型的配置。也就是说，放心去用吧，把这个页面添加到浏览器的书签，然后让我们开始吧。</p>
+</div>
+<div class="section" id="mdadm">
+<h2>了解 mdadm 的选项和使用方法</h2>
+<p>幸运的是，mdadm 有一个内建的 <cite>--help</cite> 参数来对每个主要的选项提供说明文档。</p>
+<p>因此，让我们开始输入:</p>
+<pre class="literal-block">
+mdadm --manage --help
+</pre>
+<p>就会使我们看到 <cite>mdadm --manage</cite> 能够执行哪些任务：</p>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-49-40.png" style="width: 480px;" />
+<p class="caption">使用 mdadm 工具来管理 RAID</p>
+</div>
+<p>正如我们在上面的图片看到，管理一个 RAID 阵列可以在任意时间执行以下任务：</p>
+<ul class="simple">
+<li>（重新）将设备添加到阵列中</li>
+<li>把设备标记为故障</li>
+<li>从阵列中删除故障设备</li>
+<li>使用备用设备更换故障设备</li>
+<li>先创建部分阵列</li>
+<li>停止阵列</li>
+<li>标记阵列为 ro（只读）或 rw（读写）</li>
+</ul>
+</div>
+<div class="section" id="mdadm-raid-1">
+<h2>使用 mdadm 工具管理 RAID 设备</h2>
+<p>需要注意的是，如果用户忽略 <cite>--manage</cite> 选项，mdadm 默认使用管理模式。请记住这一点，以避免出现最坏的情况。</p>
+<p>上图中的高亮文本显示了管理 RAID 的基本语法:</p>
+<pre class="literal-block">
+mdadm --manage RAID options devices
+</pre>
+<p>让我们来演示几个例子。</p>
+</div>
+<div class="section" id="raid-2">
+<h2>例1：为 RAID 阵列添加设备</h2>
+<p>你通常会添加新设备来更换故障的设备，或者使用空闲的分区以便在出现故障时能及时替换:</p>
+<pre class="literal-block">
+mdadm --manage /dev/md0 --add /dev/sdd1
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-51-00.png" style="width: 480px;" />
+<p class="caption">添加设备到 Raid 阵列</p>
+</div>
+</div>
+<div class="section" id="raid-3">
+<h2>例2：把一个 RAID 设备标记为故障并从阵列中移除</h2>
+<p>在从逻辑阵列中删除该设备前，这是强制性的步骤，
+然后才能从机器中取出它 - 注意顺序（如果弄错了这些步骤，最终可能会造成实际设备的损害）:</p>
+<pre class="literal-block">
+mdadm --manage /dev/md0 --fail /dev/sdb1
+</pre>
+<p>请注意在前面的例子中，知道如何添加备用设备来自动更换出现故障的磁盘。
+在此之后， <a class="reference external" href="https://linux.cn/article-6448-1.html">恢复和重建 raid 数据</a> 就开始了：</p>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-51-53.png" style="width: 480px;" />
+<p class="caption">恢复和重建 raid 数据</p>
+</div>
+<p>一旦设备已被手动标记为故障，你就可以安全地从阵列中删除它:</p>
+<pre class="literal-block">
+mdadm --manage /dev/md0 --remove /dev/sdb1
+</pre>
+</div>
+<div class="section" id="section-1">
+<h2>例3：重新添加设备，来替代阵列中已经移除的设备</h2>
+<p>到现在为止，我们有一个工作的 RAID 1 阵列，
+它包含了2个活动的设备：/dev/sdc1 和 /dev/sdd1。
+现在让我们试试重新添加 /dev/sdb1 到/dev/md0:</p>
+<pre class="literal-block">
+mdadm --manage /dev/md0 --re-add /dev/sdb1
+</pre>
+<p>我们会碰到一个错误:</p>
+<pre class="literal-block">
+mdadm: --re-add for /dev/sdb1 to /dev/md0 is not possible
+</pre>
+<p>因为阵列中的磁盘已经达到了最大的数量。
+因此，我们有两个选择:</p>
+<ul class="simple">
+<li>a）将 /dev/sdb1 添加为备用的，如例1；</li>
+<li>b）从阵列中删除 /dev/sdd1 然后重新添加 /dev/sdb1。</li>
+</ul>
+<p>我们选择选项 b），先停止阵列然后重新启动:</p>
+<pre class="literal-block">
+mdadm --stop /dev/md0### mdadm --assemble /dev/md0 /dev/sdb1 /dev/sdc1
+</pre>
+<p>如果上面的命令不能成功添加 /dev/sdb1 到阵列中，使用例1中的命令来完成。</p>
+<p>mdadm 能检测到新添加的设备并将其作为备用设备，当添加完成后它会开始重建数据，
+它也被认为是 RAID 中的活动设备：</p>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-53-23.png" style="width: 480px;" />
+<p class="caption">重建 Raid 的状态</p>
+</div>
+</div>
+<div class="section" id="raid-5">
+<h2>例4：使用特定磁盘更换 RAID 设备</h2>
+<p>在阵列中使用备用磁盘更换磁盘很简单:</p>
+<pre class="literal-block">
+mdadm --manage /dev/md0 --replace /dev/sdb1 --with /dev/sdd1
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-54-00.png" style="width: 480px;" />
+<p class="caption">更换 Raid 设备</p>
+</div>
+<p>这会导致 <cite>--replace</cite> 指定的设备被标记为故障，而 <cite>--with</cite> 指定的设备添加到 RAID 中来替代它：</p>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-54-44.png" style="width: 480px;" />
+<p class="caption">检查 Raid 重建状态</p>
+</div>
+</div>
+<div class="section" id="raid-ro-rw">
+<h2>例5：标记 RAID 阵列为 ro 或 rw</h2>
+<p>创建阵列后，你必须在它上面创建一个文件系统并将其挂载到一个目录下才能使用它。
+你可能不知道，RAID 也可以被设置为 ro，使其只读；或者设置为 rw，就可以同时写入了。</p>
+<p>要标记该设备为 ro，首先需要将其卸载:</p>
+<pre class="literal-block">
+umount /mnt/raid1### mdadm --manage /dev/md0 --readonly### mount /mnt/raid1### touch /mnt/raid1/test1
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-55-25.png" style="width: 480px;" />
+<p class="caption">在 RAID 阵列上设置权限</p>
+</div>
+<p>要配置阵列允许写入操作需要使用 <cite>--readwrite</cite> 选项。请注意，在设置 rw 标志前，你需要先卸载设备并停止它:</p>
+<pre class="literal-block">
+umount /mnt/raid1### mdadm --manage /dev/md0 --stop### mdadm --assemble /dev/md0 /dev/sdc1 /dev/sdd1### mdadm --manage /dev/md0 --readwrite### touch /mnt/raid1/test2
+</pre>
+<div class="figure">
+<img alt="" src="../../../../../resources/images/2024-02-22-17-55-57.png" style="width: 480px;" />
+<p class="caption">配置 Raid 允许读写操作</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>总结</h2>
+<p>在本系列中，我们已经解释了如何建立一个在企业环境中使用的软件 RAID 阵列。
+如果你按照这些文章所提供的例子进行配置，在 Linux 中你会充分领会到软件 RAID 的价值。</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

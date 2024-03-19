@@ -1,0 +1,351 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>创建自己的IDE</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/qian-duan.html">前端</a></li>
+												<li><a class="button button-alt" href="tag/kuang-jia.html">框架</a></li>
+
+												<li><a class="button button-alt" href="tag/theia.html">Theia</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>创建自己的IDE</h2>
+									<p>其实跟着官方文档走就行了, 主要可能遇到的问题就是依赖包的问题,</p>
+<p>可以直接按照官网文档给的来: <cite>https://theia-ide.org/docs/composing_applications/</cite> ,
+复制文档最后一个 <cite>package.json</cite> 即可</p>
+<p>不过这里的就过只是一个基于浏览器的版本,
+如果想要使用 <cite>Electron</cite> 运行, 那么需要在依赖项中加入 <cite>electron</cite> 和 <cite>&#64;theia/electron</cite>,
+在 <cite>theia</cite> 项中加入目标为 <cite>electron</cite> 即可:</p>
+<pre class="literal-block">
+&quot;theia&quot;: {
+  &quot;target&quot;: &quot;electron&quot;
+}
+</pre>
+<p>还需要指定一下 <cite>electron</cite> 的main文件(启动文件):</p>
+<pre class="literal-block">
+&quot;main&quot;: &quot;lib/backend/electron-main.js&quot;,
+</pre>
+<p>如果是自定义的启动文件, 需要在自定义启动文件里手动 <cite>require</cite> 导入一下这个包.</p>
+<div class="sidebar">
+<p class="first">这里不需要手动去弄一个 <cite>electron</cite> 启动的js, 因为theia内部已经定义好了,
+只需要制定一下目标, 以及构建的时候也指定即可:</p>
+<pre class="literal-block">
+theia rebuild:electron --cacheRoot ./.theia_build/cache
+</pre>
+<p class="last">这里加了 <cite>cacheRoot</cite> , 表示缓存目录, 下次再编的时候就会用这里的比对分析</p>
+</div>
+<p>最终的package.json内容大致如下:</p>
+<pre class="literal-block">
+{
+  &quot;private&quot;: true,
+  &quot;name&quot;: &quot;theia-ide&quot;,
+  &quot;main&quot;: &quot;lib/backend/electron-main.js&quot;,
+  &quot;dependencies&quot;: {
+    &quot;&#64;theia/callhierarchy&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/electron&quot;: &quot;^1.41.0&quot;,
+    &quot;&#64;theia/file-search&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/git&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/markers&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/messages&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/navigator&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/outline-view&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/plugin-ext-vscode&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/preferences&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/preview&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/search-in-workspace&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/terminal&quot;: &quot;latest&quot;,
+    &quot;&#64;theia/vsx-registry&quot;: &quot;latest&quot;,
+    &quot;electron&quot;: &quot;^26.2.1&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;&#64;theia/cli&quot;: &quot;latest&quot;,
+    &quot;electron&quot;: &quot;^26.2.1&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;prepare&quot;: &quot;yarn run clean &amp;&amp; yarn build &amp;&amp; yarn run download:plugins&quot;,
+    &quot;clean&quot;: &quot;theia clean&quot;,
+    &quot;build&quot;: &quot;theia rebuild &amp;&amp; theia build --mode development&quot;,
+    &quot;rebuild&quot;: &quot;theia rebuild:electron --cacheRoot ./.theia_build/cache&quot;,
+    &quot;start&quot;: &quot;theia start --plugins=local-dir:plugins&quot;,
+    &quot;download:plugins&quot;: &quot;theia download:plugins&quot;
+  },
+  &quot;theia&quot;: {
+    &quot;target&quot;: &quot;electron&quot;
+  },
+  &quot;theiaPluginsDir&quot;: &quot;plugins&quot;,
+  &quot;theiaPlugins&quot;: {
+    &quot;vscode-builtin-extensions-pack&quot;: &quot;https://open-vsx.org/api/eclipse-theia/builtin-extension-pack/1.50.1/file/eclipse-theia.builtin-extension-pack-1.50.1.vsix&quot;
+  },
+  &quot;theiaPluginsExcludeIds&quot;: [
+    &quot;ms-vscode.js-debug-companion&quot;,
+    &quot;vscode.extension-editing&quot;,
+    &quot;vscode.git&quot;,
+    &quot;vscode.git-ui&quot;,
+    &quot;vscode.github&quot;,
+    &quot;vscode.github-authentication&quot;,
+    &quot;vscode.microsoft-authentication&quot;
+  ]
+}
+</pre>
+<p>要启动的话, 直接 <cite>yarn install</cite> 然后 <cite>yarn prepare</cite> 编译构建下,
+再 <cite>yarn start</cite> 启动即可, 注意解决这期间的报错等</p>
+<p>如果需要ts, 在项目根手动创建 <cite>tsconfig.json</cite>, 内容大致如下, 按需修改:</p>
+<pre class="literal-block">
+{
+  &quot;compilerOptions&quot;: {
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;emitDecoratorMetadata&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;module&quot;: &quot;commonjs&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;noImplicitAny&quot;: true,
+    &quot;paths&quot;: {
+      //      &quot;*&quot;: [&quot;src/*&quot;]
+    },
+    &quot;removeComments&quot;: false,
+    &quot;sourceMap&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;suppressImplicitAnyIndexErrors&quot;: true,
+    &quot;target&quot;: &quot;esnext&quot;,
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;outDir&quot;: &quot;out&quot;,
+    &quot;jsx&quot;: &quot;react&quot;
+  },
+  &quot;include&quot;: [
+    &quot;src&quot;
+  ],
+  &quot;exclude&quot;: [
+    &quot;node_modules&quot;
+  ]
+}
+</pre>
+<p>附: package.json 稍微完善一点的scripts:</p>
+<pre class="literal-block">
+&quot;scripts&quot;: {
+  &quot;build&quot;: &quot;yarn -s compile &amp;&amp; yarn -s bundle&quot;,
+  &quot;bundle&quot;: &quot;yarn rebuild &amp;&amp; theia build --mode development&quot;,
+  &quot;clean&quot;: &quot;theia clean&quot;,
+  &quot;compile&quot;: &quot;tsc -b&quot;,
+  &quot;lint&quot;: &quot;theiaext lint&quot;,
+  &quot;rebuild&quot;: &quot;theia rebuild:electron --cacheRoot ./.theia-build&quot;,
+  &quot;start&quot;: &quot;theia start --plugins=local-dir:plugins&quot;,
+  &quot;start:debug&quot;: &quot;yarn -s start --log-level=debug --remote-debugging-port=9222&quot;,
+  &quot;start:watch&quot;: &quot;concurrently --kill-others -n tsc,bundle,run -c red,yellow,green \&quot;tsc -b -w --preserveWatchOutput\&quot; \&quot;yarn -s watch:bundle\&quot; \&quot;yarn -s start\&quot;&quot;,
+  &quot;test&quot;: &quot;electron-mocha --timeout 60000 \&quot;./lib/test/**/*.espec.js\&quot;&quot;,
+  &quot;watch&quot;: &quot;concurrently --kill-others -n tsc,bundle -c red,blue \&quot;tsc -b -w --preserveWatchOutput\&quot; \&quot;yarn -s watch:bundle\&quot;&quot;,
+  &quot;watch:bundle&quot;: &quot;theia build --watch --mode development&quot;,
+  &quot;watch:compile&quot;: &quot;tsc -b -w&quot;
+}
+</pre>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,377 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>配置文件说明</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/java.html">Java</a></li>
+
+												<li><a class="button button-alt" href="tag/gou-jian-gong-ju.html">构建工具</a></li>
+
+												<li><a class="button button-alt" href="tag/gradle.html">Gradle</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>配置文件说明</h2>
+									<ul class="simple">
+<li>build.gradle</li>
+<li>settings.gradle</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">settings.gradle 编译优先级高于build.gradle</p>
+</div>
+<div class="section" id="build-gradle">
+<h2>build.gradle</h2>
+<p>build.gradle 是项目构建所使用的脚本。</p>
+</div>
+<div class="section" id="settings-gradle">
+<h2>settings.gradle</h2>
+<p>settings.gradle 必要的一些设置，例如，任务或项目之间的依懒关系等</p>
+<p>settings.gradle是模块Module配置文件，主要是用于配置子模块，
+根目录下的setting.gradle脚本文件是针对module的全局配置, 如:</p>
+<pre class="literal-block">
+// 为指定父模块的名称 平台根
+rootProject.name = 'project-root'
+//包含子系统以及模块
+include ':project-core'
+//Hello系统模块的加载
+include ':project-hello'
+//World系统模块的加载
+include ':project-world'
+</pre>
+<p>单项目构建该文件可选，多项目构建必须, 因为需要在这个文件中声明哪些子项目需要参与构建，也包括子项目路径、名称等.
+多项目的构建原则:
+如果该构建目录中存在settings.gradle文件，那么就依据该文件来进行构建；
+如果不存在该文件，那么会向上一级目录查询文件是否存在(注意：只会向父目录查询，而不是一直向上级目录递归查询)，
+如果存在就依据该文件进行构建，否则此次构建就是一个单项目的构建</p>
+<div class="section" id="section-2">
+<h3>文件结构及其配置</h3>
+<dl class="docutils">
+<dt>plugins:</dt>
+<dd><p class="first">需要引进的相关插件Plugins, 此处调用了 PluginDependenciesSpec 中的 id 方法, 如:</p>
+<pre class="last literal-block">
+// 需要引进的相关插件Plugins
+plugins {
+    // 'com.android.application' 表示应用com.android.application插件
+    id 'com.android.application'
+}
+</pre>
+</dd>
+<dt>repositories:</dt>
+<dd><p class="first">仓库配置, 用于存储依赖(从哪下载依赖), 如:</p>
+<pre class="last literal-block">
+// repositories闭包  存储库
+// 声明在何处查找项目的依赖项
+repositories {
+//    指定使用maven本地仓库，而本地仓库在配置maven时setting文件指定的仓库位置。
+    mavenLocal()
+
+    maven {
+        name &quot;aliyun&quot;
+        url &quot;https://maven.aliyun.com/repository/gradle-plugin&quot;
+    }
+
+    // 这是Maven的中央仓库，无需配置，直接声明就可以使用
+    mavenCentral()
+
+    // JCenter中央仓库，实际也是是用的maven搭建的，但相比Maven仓库更友好，通过CDN分发，并且支持https访问。
+    // jcenter()
+}
+</pre>
+</dd>
+<dt>dependencies:</dt>
+<dd><p class="first">依赖声明, 如:</p>
+<pre class="last literal-block">
+// dependencies闭包  依赖
+// 是用于声明这个项目依赖于哪些jar
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+</pre>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="gradle-properties">
+<h2>gradle.properties</h2>
+<p>定义一些执行的属性</p>
+<p>脚本位置一般在 <cite>$GRADLE_USER_HOME/</cite> 目录下. 但, 我的Mac个人目录下有一个 <cite>.gradle</cite> , 这下面有一个,
+貌似是如果没设置, 默认就是这个目录? 暂时还没看到有说明.</p>
+<p>可参考官网文档: <a class="reference external" href="https://docs.gradle.org/current/userguide/build_environment.html">https://docs.gradle.org/current/userguide/build_environment.html</a></p>
+</div>
+<div class="section" id="init-gradle">
+<h2>init.gradle</h2>
+<p>初始化时执行的脚本, 详情可参考: <a class="reference external" href="https://docs.gradle.org/current/userguide/init_scripts.html">https://docs.gradle.org/current/userguide/init_scripts.html</a></p>
+<div class="sidebar">
+到这里的时候, 想起安装时候有看到说设置环境变量 <cite>GRADLE_HOME</cite>, 目前为止貌似没看到官方文档有提到用处</div>
+<p>使用方式</p>
+<ul class="simple">
+<li>可以通过命令行参数 <cite>-I</cite> 或者 <cite>--init-script</cite> 跟文件路径来指定, 支持多个,</li>
+<li>也可以直接将其文件放在 <cite>$GRADLE_USER_HOME/</cite> 目录下. (需提前设置此环境变量)</li>
+<li>若有多个文件, 可以将其命令为以 <cite>.gradle</cite> 结尾的文件, 然后放到 <cite>$GRADLE_USER_HOME/init.d/</cite> 目录下.</li>
+</ul>
+<p>脚本支持的内容, 如build.gradle:</p>
+<pre class="literal-block">
+repositories {
+    mavenCentral()
+}
+
+tasks.register('showRepos') {
+    def repositoryNames = repositories.collect { it.name }
+    doLast {
+        println &quot;All repos:&quot;
+        println repositoryNames
+    }
+}
+</pre>
+<p>设置源大抵也得放到这里, 不过我机器使用官方的源也挺快, 就没设置.</p>
+<p>如init.gradle:</p>
+<pre class="literal-block">
+allprojects {
+    repositories {
+        mavenLocal()
+    }
+}
+
+// 声明额外依赖
+initscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.apache.commons:commons-math:2.0'
+    }
+}
+</pre>
+<p>之前冲浪看到有人说高版本已经废弃了allprojects, 但是官网文档还有这个...</p>
+<p>然后使用命令行可以这么:</p>
+<pre class="literal-block">
+&gt; gradle --init-script init.gradle -q showRepos
+All repos:
+[MavenLocal, MavenRepo]
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>工作流程</h2>
+<p>工作流程:</p>
+<pre class="literal-block">
+初始化阶段(首先解析settings.gradle)
+
+            ==》
+
+Configration阶段(解析每个Project中的build.gradle，解析过程中并不会执行各个build.gradle中的task)
+</pre>
+<p>一个 Project 包含很多 Task, 每个 Task 之间有依赖关系</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

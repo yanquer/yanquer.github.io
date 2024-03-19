@@ -1,0 +1,311 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>容器rootfs命令</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+												<li><a class="button button-alt" href="tag/docker.html">Docker</a></li>
+
+												<li><a class="button button-alt" href="tag/docker_command.html">Docker_command</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>容器rootfs命令</h2>
+									<div class="section" id="commit">
+<h2>commit</h2>
+<div class="line-block">
+<div class="line">从容器创建一个新的镜像</div>
+</div>
+<div class="section" id="section-1">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker commit [OPTIONS] CONTAINER <span class="pre">[REPOSITORY[:TAG]]</span></tt></p>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<ul class="simple">
+<li>-a :提交的镜像作者；</li>
+<li>-c :使用Dockerfile指令来创建镜像；</li>
+<li>-m :提交时的说明文字；</li>
+<li>-p :在commit时，将容器暂停。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-2">
+<h3>示例</h3>
+<p>将容器 ea0a6afe23a3 保存为新的镜像, 设置仓库名为 <cite>kali</cite>, tag为 <cite>config_apt_list2</cite> , 并添加提交人信息和说明信息。</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>commit<span class="w"> </span>-a<span class="w"> </span><span class="s1">&#39;yanque&#39;</span><span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;kali image with config ustc apt list&#39;</span><span class="w"> </span>ea0a6afe23a3<span class="w"> </span>kali:config_apt_list2
+sha256:24b7cbbe11fb587bf850dad2f2dc1b46412a2c73c2b55a00716dabb1b7832204
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images<span class="w"> </span>kali:config_apt_list2
+REPOSITORY<span class="w">   </span>TAG<span class="w">                </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">          </span>SIZE
+kali<span class="w">         </span>config_apt_list2<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">56</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">   </span>236MB
+</pre></div>
+</div>
+</div>
+<div class="section" id="cp">
+<h2>cp</h2>
+<div class="line-block">
+<div class="line">docker cp :用于容器与主机之间的数据拷贝。</div>
+</div>
+<div class="section" id="section-3">
+<h3>语法</h3>
+<ul class="simple">
+<li><tt class="docutils literal">docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-</tt></li>
+<li><tt class="docutils literal">docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH</tt></li>
+</ul>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<ul class="simple">
+<li>-L :保持源目标中的链接</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-4">
+<h3>示例</h3>
+<p>将主机 <em>README.en.md</em> 拷贝到容器 <em>mykali</em> 的 <em>/root</em> 目录下。</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span>mytest<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>cp<span class="w"> </span>README.en.md<span class="w"> </span>mykali:/root
+yanque@yanquedembp<span class="w"> </span>mytest<span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>README.en.md
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>yanque<span class="w">  </span>staff<span class="w">   </span>816B<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">02</span>:12<span class="w"> </span>README.en.md
+yanque@yanquedembp<span class="w"> </span>mytest<span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span>mytest<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mykali<span class="w"> </span>/bin/bash
+┌──<span class="o">(</span>root㉿fa15654fc7d1<span class="o">)</span>-<span class="o">[</span>/<span class="o">]</span>
+└─#
+┌──<span class="o">(</span>root㉿fa15654fc7d1<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+└─#<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ls<span class="w"> </span>-lh
+total<span class="w"> </span><span class="m">4</span>.0K
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">501</span><span class="w"> </span>dialout<span class="w"> </span><span class="m">816</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">18</span>:12<span class="w"> </span>README.en.md
+
+┌──<span class="o">(</span>root㉿fa15654fc7d1<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+└─#
+</pre></div>
+</div>
+</div>
+<div class="section" id="diff">
+<h2>diff</h2>
+<div class="line-block">
+<div class="line">docker diff : 检查容器里文件结构的更改</div>
+</div>
+<div class="section" id="section-5">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker diff [OPTIONS] CONTAINER</tt></p>
+</div>
+<div class="section" id="section-6">
+<h3>示例</h3>
+<p>查看容器 <em>mykali</em> 的文件结构更改。</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>diff<span class="w"> </span>mykali
+C<span class="w"> </span>/root
+C<span class="w"> </span>/root/.bash_history
+yanque@yanquedembp<span class="w"> </span>~<span class="w"> </span>%
+</pre></div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

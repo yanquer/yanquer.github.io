@@ -1,0 +1,376 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>mount</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 23 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-23</div>
+									<h2>mount</h2>
+									<p>mount命令</p>
+<p>功能：文件挂载</p>
+<p>格式:</p>
+<pre class="literal-block">
+mount [-参数] [设备名称] [挂载点]
+</pre>
+<p>常用选项：</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td>安装在/etc/fstab文件中类出的所有文件系统。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>伪装mount，作出检查设备和目录的样子，但并不真正挂载文件系统。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>不把安装记录在/etc/mtab 文件中。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span></kbd></td>
+<td>将文件系统安装为只读。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>详细显示安装信息。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-w</span></kbd></td>
+<td>将文件系统安装为可写，为命令默认情况。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t <var>&lt;文件系统类型&gt;</var></span></kbd></td>
+<td><dl class="first last docutils">
+<dt>指定设备的文件系统类型，常见的有：</dt>
+<dd>ext2 是linux目前常用的文件系统
+msdos MS-DOS的fat，就是fat16
+vfat windows98常用的fat32
+nfs 网络文件系统
+iso9660 CD-ROM光盘标准文件系统
+ntfs windows NT/2000/XP的文件系统
+auto 自动检测文件系统</dd>
+</dl>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-o <var>&lt;选项&gt;</var></span></kbd></td>
+<td><dl class="first last docutils">
+<dt>指定挂载文件系统时的选项，有些也可写到在 /etc/fstab 中。常用的有：</dt>
+<dd>defaults 使用所有选项的默认值（auto、nouser、rw、suid）
+auto/noauto 允许/不允许以 –a选项进行安装
+dev/nodev 对/不对文件系统上的特殊设备进行解释
+exec/noexec 允许/不允许执行二进制代码
+suid/nosuid 确认/不确认suid和sgid位
+user/nouser 允许/不允许一般用户挂载
+codepage=XXX 代码页
+iocharset=XXX 字符集
+ro 以只读方式挂载
+rw 以读写方式挂载
+remount 重新安装已经安装了的文件系统
+loop 挂载“回旋设备”以及“ISO镜像文件”</dd>
+</dl>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--bind <var>&lt;dir1 dir2&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first">命令来将两个目录连接起来，</p>
+<p class="last">mount --bind 命令是将前一个目录挂载到后一个目录上，
+<strong>所有对后一个目录的访问其实都是对前一个目录的访问</strong></p>
+</td></tr>
+</tbody>
+</table>
+<div class="section" id="bind">
+<h2>关于 --bind</h2>
+<p><cite>mount --bind test1 test2</cite> 为例，
+当 mount --bind 命令执行后，Linux将会把被挂载目录的目录项（也就是该目录文件的block，记录了下级目录的信息）屏蔽，
+即test2的下级路径被隐藏起来了（注意，只是隐藏不是删除，数据都没有改变，只是访问不到了）。
+同时，内核将挂载目录 <cite>test1</cite> 的目录项记录在内存里的一个s_root对象里，
+在mount命令执行时，VFS会创建一个vfsmount对象，这个对象里包含了整个文件系统所有的mount信息，
+其中也会包括本次mount中的信息，这个对象是一个HASH值对应表（HASH值通过对路径字符串的计算得来），
+表里就有 /test1 到 /test2 两个目录的HASH值对应关系。</p>
+<p>命令执行完后，当访问 /test2下的文件时， 系统会告知 /test2 的目录项被屏蔽掉了，
+自动转到内存里找VFS，通过 vfsmount 了解到 /test2 和 /test1 的对应关系，
+从而读取到 /test1 的inode，这样在 /test2 下读到的全是 /test1 目录下的文件。</p>
+<ul class="simple">
+<li>mount --bind连接的两个目录的inode号码并不一样，
+只是被挂载目录的block被屏蔽掉，inode被重定向到挂载目录的inode（被挂载目录的inode和block依然没变）。</li>
+<li>两个目录的对应关系存在于内存里，一旦重启挂载关系就不存在了。</li>
+</ul>
+<p>在固件开发过程中常常遇到这样的情况：为测试某个新功能，必需修改某个系统文件。
+而这个文件在只读文件系统上（总不能为一个小小的测试就重刷固件吧），
+或者是虽然文件可写，但是自己对这个改动没有把握，不愿意直接修改。这时候 mount --bind 就是你的好帮手。</p>
+<p>假设我们要改的文件是/etc/hosts，可按下面的步骤操作:</p>
+<ol class="arabic simple">
+<li>把新的hosts文件放在/tmp下。 当然也可放在硬盘或U盘上。</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal">mount <span class="pre">--bind</span> /tmp/hosts /etc/hosts</tt>,</dt>
+<dd>此时的/etc目录是可写的，所做修改不会应用到原来的/etc目录，
+可以放心测试。测试完成了执行 <tt class="docutils literal">umount /etc/hosts</tt> 断开绑定(可参考: <em>umount</em>)</dd>
+</dl>
+</li>
+</ol>
+<p>例如:</p>
+<pre class="literal-block">
+## test1 test2为两个不同的目录
+linux-UMLhEm:/home/test/linux # ls test1
+11.test  1.test
+linux-UMLhEm:/home/test/linux # ls test2
+22.test  2.test
+linux-UMLhEm:/home/test/linux # ls -lid test1
+1441802 drwx------ 2 root root 4096 Feb 13 09:50 test1
+linux-UMLhEm:/home/test/linux # ls -lid test2
+1441803 drwx------ 2 root root 4096 Feb 13 09:51 test2
+
+## 执行mount --bind 将test1挂载到test2上，inode号都变为test1的inode
+linux-UMLhEm:/home/test/linux # mount --bind test1 test2
+linux-UMLhEm:/home/test/linux # ls -lid test1
+1441802 drwx------ 2 root root 4096 Feb 13 09:50 test1
+linux-UMLhEm:/home/test/linux # ls -lid test2
+1441802 drwx------ 2 root root 4096 Feb 13 09:50 test2
+linux-UMLhEm:/home/test/linux # ls test2
+11.test  1.test
+</pre>
+<p>参考: <a class="reference external" href="https://www.cnblogs.com/xingmuxin/p/8446115.html">mount --bind使用方法</a></p>
+</div>
+<div class="section" id="section-1">
+<span id="disk-partition-mount"></span><h2>扩展可用存储空间</h2>
+<div class="section" id="bind-1">
+<h3>方案1: 使用 --bind</h3>
+<p>如果你在另一个分区里有一个带有可用空间的空目录（例如 <cite>/path/to/emp-dir</cite> ），
+你可以通过带有 “ <cite>--bind</cite> ” 选项的 mount ，
+将它挂载到一个你需要更多空间的目录（例如 <cite>work-dir</cite> ）:</p>
+<pre class="literal-block">
+$ sudo mount --bind /path/to/emp-dir work-dir
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">这个只是相当于用 <cite>/path/to/emp-dir</cite> 暂时将 <cite>work-dir</cite> 屏蔽,
+信息保存与内存中, <strong>只建议测试使用</strong></p>
+</div>
+</div>
+<div class="section" id="t-overlay">
+<h3>方案2: 使用 -t overlay</h3>
+<p>通过 overlay 挂载（overlay-mounting）另一个目录来扩展可用存储空间</p>
+<p>如果你在另一个分区表中有可用的空间（例如， <cite>/path/to/empty</cite> 和  <cite>/path/to/work</cite> ），
+你可以在其中建立一个目录并堆栈到你需要空间的那个旧的目录（例如， <cite>/path/to/old</cite> ），
+要这样做，你需要用于 Linux 3.18 版内核或更新版本（对应 Debian Stetch 9.0 或更新版本）
+的 <a class="reference external" href="https://en.wikipedia.org/wiki/OverlayFS">OverlayFS</a></p>
+<pre class="literal-block">
+$ sudo mount -t overlay overlay \
+  -olowerdir=/path/to/old-dir,upperdir=/path/to/empty,workdir=/path/to/work
+</pre>
+<p><cite>/path/to/empty</cite> 和 <cite>/path/to/work</cite> 应该位于可读写的分区，从而能够写入 <cite>/path/to/old</cite></p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

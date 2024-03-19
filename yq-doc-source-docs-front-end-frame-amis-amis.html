@@ -1,0 +1,515 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>amis</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 二月 2023
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/qian-duan.html">前端</a></li>
+												<li><a class="button button-alt" href="tag/kuang-jia.html">框架</a></li>
+
+												<li><a class="button button-alt" href="tag/amis.html">Amis</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-26</div>
+									<h2>amis</h2>
+									<p>Github地址: <a class="reference external" href="https://github.com/baidu/amis">https://github.com/baidu/amis</a></p>
+<p>Amis 是百度开源的一块前端低代码框架，
+通过 JSON 配置就能生成各种后台页面，极大减少开发成本，甚至可以不需要了解前端。</p>
+<div class="section" id="section-1">
+<h2>使用</h2>
+<p>原文: <a class="reference external" href="https://aisuda.bce.baidu.com/amis/zh-CN/docs/start/getting-started">https://aisuda.bce.baidu.com/amis/zh-CN/docs/start/getting-started</a></p>
+<p>有两种方式</p>
+<dl class="docutils">
+<dt>原生JS脚本导入(SDK导入)</dt>
+<dd><p class="first">直接 <tt class="docutils literal">npm i amis</tt>, 在 node_modulesamissdk 目录里就能找到;
+或者直接下载包文件 <cite>https://github.com/baidu/amis/releases/download/3.5.2/sdk.tar.gz</cite>, 手动解压.</p>
+<p>用例:</p>
+<pre class="literal-block">
+&lt;script src=&quot;sdk.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  (function () {
+    let amis = amisRequire('amis/embed');
+    // 通过替换下面这个配置来生成不同页面
+    let amisJSON = {
+      type: 'page',
+      title: '表单页面',
+      body: {
+        type: 'form',
+        mode: 'horizontal',
+        api: '/saveForm',
+        body: [
+          {
+            label: 'Name',
+            type: 'input-text',
+            name: 'name'
+          },
+          {
+            label: 'Email',
+            type: 'input-email',
+            name: 'email'
+          }
+        ]
+      }
+    };
+    let amisScoped = amis.embed('#root', amisJSON);
+  })();
+&lt;/script&gt;
+</pre>
+<p>默认 amis 渲染是单页模式</p>
+<p class="last">如果是单页应用，在离开当前页面的时候通常需要销毁实例: <tt class="docutils literal"><span class="pre">amisScoped.unmount();</span></tt></p>
+</dd>
+<dt>React项目</dt>
+<dd>直接 <tt class="docutils literal">npm i amis</tt></dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>数据域初始化</h2>
+<dl class="docutils">
+<dt>直接使用确定的数据</dt>
+<dd><p class="first">使用 <cite>data</cite>:</p>
+<pre class="last literal-block">
+{
+  &quot;type&quot;: &quot;page&quot;,
+  &quot;data&quot;: {
+    &quot;name&quot;: &quot;zhangsan&quot;,
+    &quot;age&quot;: 20
+  },
+  &quot;body&quot;: [
+    {
+      &quot;type&quot;: &quot;tpl&quot;,
+      &quot;tpl&quot;: &quot;my name is ${name}&quot;
+    }
+  ]
+}
+</pre>
+</dd>
+<dt>从API获取初始化的数据</dt>
+<dd><p class="first">使用 <cite>initApi</cite></p>
+<pre class="literal-block">
+{
+  &quot;type&quot;: &quot;page&quot;,
+  &quot;initApi&quot;: &quot;/amis/api/initData&quot;,
+  &quot;body&quot;: &quot;Hello ${text}&quot;
+}
+</pre>
+<p>注意API的返回数据必定是这种格式:</p>
+<pre class="literal-block">
+{
+  &quot;status&quot;: 0,
+  &quot;msg&quot;: &quot;&quot;,
+  &quot;data&quot;: {
+    &quot;text&quot;: &quot;World!&quot;
+    ...其他字段
+  }
+}
+</pre>
+<p class="last">以上最外层字段必须有, 可以增加, 不能减少, <cite>data</cite> 类型必是字典</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>并不是所有组件都支持配置初始化接口来实现数据域初始化操作，
+对于那些 <strong>不支持配置初始化接口的组件</strong> 来说，一般会使用 Service 组件 来辅助实现数据域初始化；</p>
+<p class="last">如果两种同时配置, 那么将会合并两种结果</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<p>什么叫, 具备数据域的组件?</p>
+<p class="last">直白来说, 就是当经过这一层时候, 会创建新的数据域,
+这个时候 <strong>当定义data时, 无法使用$来引用上层数据域的数据</strong>, 而是直接将其当作字符串.</p>
+</div>
+<dl class="docutils">
+<dt>具备数据域的组件(或者说 <cite>支持配置初始化接口</cite> 的组件?):</dt>
+<dd><ul class="first last simple">
+<li>App</li>
+<li>Page</li>
+<li>Cards</li>
+<li>Chart</li>
+<li>CRUD</li>
+<li>CRUD2</li>
+<li>Dialog</li>
+<li>Drawer</li>
+<li>List</li>
+<li>Page</li>
+<li>PaginationWrapper</li>
+<li>Service</li>
+<li>Wizard</li>
+<li>Combo</li>
+<li>InputArray</li>
+<li>Table</li>
+<li>Table2</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">一般对于不支持数据域的组件, 想使用数据域时, 往往是在外层包裹一层 <cite>Service</cite></p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>数据链</h2>
+<p>一般情况下, 子层的数据域, 如果获取的值不存在, 会递归向上查找,
+甚至可以拿到URL路径的参数(url 中的参数会进入顶层数据域)</p>
+<p>默认行为, 预定义只找上层和上上层.</p>
+<p>定义查找范围, 使用 <cite>trackExpression</cite>:</p>
+<ul>
+<li><p class="first">trackExpression: &quot;none&quot; : 不追踪任何数据</p>
+</li>
+<li><p class="first">trackExpression: &quot;${xxxVariable}&quot; : xxxVariable 变化了更新当前组件的数据链
+可以监听多个变量比如: &quot;${xxx1},${xxx2}&quot;，还可以写表达式如 &quot;${ xxx ? xxx : yyy}&quot;。</p>
+<p>如果变量是数组，或者对象，会转成统一的字符串 [object Array] 或者 [object Object] ;
+这个其实会影响检测的，所以建议转成 json 字符串如。 ${xxxObject | json}。
+还有就是既然是监控上层数据，表达式中不要写当前层数据变量，是取不到的。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="section-4">
+<h2>逻辑函数</h2>
+<ul class="simple">
+<li>IF(condition, consequent, alternate) -&gt; consequent | alternate
+相当于三目表达式.</li>
+<li>AND(expression1, expression2, ...expressionN) -&gt; bool</li>
+<li>OR(expression1, expression2, ...expressionN) -&gt; bool</li>
+<li>XOR(condition1, condition2, ...expressionN) -&gt; bool</li>
+<li>IFS(condition1, result1, condition2, result2,...conditionN, resultN) -&gt; any
+相当于多个 else if 合并成一个</li>
+</ul>
+</div>
+<div class="section" id="section-5">
+<h2>数学函数</h2>
+<ul class="simple">
+<li>ABS(num) -&gt; number
+求绝对值</li>
+<li>MAX(num1, num2, ...numN) -&gt; number
+如果只有一个参数且是数组，则计算这个数组内的值, 下同</li>
+<li>MIN(num1, num2, ...numN) -&gt; number</li>
+<li>SUM(num1, num2, ...numN) -&gt; number</li>
+<li>INT(num) -&gt; number</li>
+<li>MOD(num, divisor) -&gt; number
+返回两数相除的余数，参数 number 是被除数，divisor 是除数。</li>
+<li>PI() -&gt; number
+圆周率</li>
+<li>ROUND(num[, numDigits = 2]) -&gt; number
+将数字四舍五入到指定的位数，可以设置小数位</li>
+<li>FLOOR(num[, numDigits=2])
+向下取整</li>
+<li>CEIL(num[, numDigits=2]) -&gt; number
+将数字向上取整到指定的位数，可以设置小数位</li>
+<li>SQRT(num) -&gt; number
+开平方，参数 number 为非负数</li>
+<li>AVG(num1, num2, ...numN) -&gt; number
+平均值</li>
+<li>DEVSQ(num1, num2, ...numN) -&gt; number
+返回数据点与数据均值点之差（数据偏差）的平方和，如果只有一个参数且是数组，则计算这个数组内的值。</li>
+<li>AVEDEV(num1, num2, ...numN) -&gt; number
+数据点到其算术平均值的绝对偏差的平均值</li>
+<li>HARMEAN(num1, num2, ...numN) -&gt; number
+数据点的调和平均值，如果只有一个参数且是数组，则计算这个数组内的值</li>
+<li>LARGE(array, k) -&gt; number
+数据集中第 k 个最大值</li>
+<li>UPPERMONEY(num) -&gt; string
+将数值转为中文大写金额</li>
+<li>RAND() -&gt; number
+返回大于等于 0 且小于 1 的均匀分布随机实数。每一次触发计算都会变化</li>
+<li>LAST(array) -&gt; any
+取数组最后一个</li>
+<li>POW(base, exponent) -&gt; number
+基数 base 的指数次幂</li>
+</ul>
+</div>
+<div class="section" id="section-6">
+<h2>文本函数</h2>
+<p>参考: <a class="reference external" href="https://aisuda.bce.baidu.com/amis/zh-CN/docs/concepts">https://aisuda.bce.baidu.com/amis/zh-CN/docs/concepts</a>/expression#新表达式语法</p>
+</div>
+<div class="section" id="section-7">
+<h2>日期函数</h2>
+</div>
+<div class="section" id="section-8">
+<h2>数组函数</h2>
+</div>
+<div class="section" id="section-9">
+<h2>编码函数</h2>
+<ul class="simple">
+<li>ENCODEJSON({name: 'amis'})
+将JS对象转换成JSON字符串</li>
+<li>DECODEJSON('{&quot;name&quot;: &quot;amis&quot;}')
+解析JSON编码数据，返回JS对象</li>
+</ul>
+</div>
+<div class="section" id="section-10">
+<h2>其他函数</h2>
+<ul>
+<li><p class="first">GET(obj:any, path:string, defaultValue:any)
+根据对象或者数组的path路径获取值。 如果解析 value 是 undefined 会以 defaultValue 取代</p>
+</li>
+<li><p class="first">ISTYPE(obj:any, type: string)
+判断是否为类型支持：string, number, array, date, plain-object
+如:</p>
+<pre class="literal-block">
+ISTYPE([{a: '1'}, {b: '2'}, {a: '1'}], 'array')
+</pre>
+</li>
+</ul>
+</div>
+<div class="section" id="section-11">
+<h2>图标使用</h2>
+<p>详细见: <a class="reference external" href="https://aisuda.bce.baidu.com/amis/zh-CN/components/icon">https://aisuda.bce.baidu.com/amis/zh-CN/components/icon</a></p>
+<p>导入CSS:</p>
+<pre class="literal-block">
+&#64;fortawesome/fontawesome-free/css/all.css
+</pre>
+<p>react安装:</p>
+<pre class="literal-block">
+yarn add &#64;fortawesome/fontawesome &#64;fortawesome/react-fontawesome &#64;fortawesome/fontawesome-free --save
+</pre>
+<p>通过名称使用:</p>
+<pre class="literal-block">
+{
+  &quot;type&quot;: &quot;page&quot;,
+  &quot;body&quot;: {
+    &quot;type&quot;: &quot;icon&quot;,
+    &quot;icon&quot;: &quot;cloud&quot;
+  }
+}
+</pre>
+<p>也支持用url:</p>
+<pre class="literal-block">
+{
+  &quot;type&quot;: &quot;page&quot;,
+  &quot;body&quot;: {
+    &quot;type&quot;: &quot;icon&quot;,
+    &quot;icon&quot;: &quot;https://suda.cdn.bcebos.com/images%2F2021-01%2Fdiamond.svg&quot;
+  }
+}
+</pre>
+<p>icon 默认支持fontawesome v4(vendor默认为 &quot;fa&quot; 表示v4)，
+如果想要支持 v5 以及 v6 版本的 fontawesome 请设置 vendor 为空字符串:</p>
+<pre class="literal-block">
+{
+  &quot;type&quot;: &quot;icon&quot;,
+  &quot;icon&quot;: &quot;far fa-address-book&quot;,
+  &quot;vendor&quot;: &quot;&quot;
+},
+</pre>
+<p>v5 用 far/fas 等表示前缀;
+详细V5图标库见: <a class="reference external" href="https://fontawesome.com/v5/search?m=free">https://fontawesome.com/v5/search?m=free</a></p>
+<p>v6 用 fa-regular / fa-solid 等表示前缀:</p>
+<pre class="literal-block">
+{
+  &quot;type&quot;: &quot;icon&quot;,
+  &quot;icon&quot;: &quot;fa-regular fa-address-book&quot;,
+  &quot;vendor&quot;: &quot;&quot;
+},
+</pre>
+<p>详细V6图标库见: <a class="reference external" href="https://fontawesome.com/icons/list">https://fontawesome.com/icons/list</a></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

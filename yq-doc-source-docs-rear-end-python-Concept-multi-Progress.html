@@ -1,0 +1,780 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Python多进程</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xiang-guan.html">概念相关</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>Python多进程</h2>
+									<p>Python多进程方面涉及的模块主要包括:</p>
+<ul class="simple">
+<li><em>/docs/后端/python/python标准库/subprocess</em></li>
+<li><em>/docs/后端/python/python标准库/mmap</em></li>
+</ul>
+<!-- - `mmap: 提供一种基于内存的进程间通信机制 <http://www.cnblogs.com/Security-Darren/p/4733387.html>`_ -->
+<ul class="simple">
+<li><em>/docs/后端/python/python标准库/multiprocessing</em> :
+提供支持多处理器技术的多进程编程接口, 并且接口的设计最大程度地保持了和threading模块的一致, 便于理解和使用.</li>
+</ul>
+<div class="section" id="section-1">
+<h2>进程间通信</h2>
+<p>信号, 管道(不安全,默认没加锁), 消息队列, 信号量, 共享内存, socket</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="#section-2">信号</a></dt>
+<dd>signal. 在多个进程中通信的机制中, 只有singal是异步执行的</dd>
+<dt><a class="reference internal" href="#section-3">管道</a></dt>
+<dd>半双工,默认无锁, 不安全, 双向通信(只能一端发, 一端收)
+- 匿名管道, 只能在具有亲缘关系进程间通信
+- 命名管道, 允许无亲缘关系进程通信</dd>
+<dt><a class="reference internal" href="#section-4">消息队列</a></dt>
+<dd>由消息组成的链表, 存放在内核中并由消息队列标识符标识. 消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点</dd>
+<dt><a class="reference internal" href="#section-6">信号量</a></dt>
+<dd>是一个计数器, 可以用来控制多个进程对共享资源的访问.
+它常作为一种锁机制, 防止某进程正在访问共享资源时, 其他进程也访问该资源.
+因此, 主要作为进程间以及同一进程内不同线程之间的同步手段.</dd>
+<dt><a class="reference internal" href="#section-5">共享内存</a></dt>
+<dd>共享内存就是映射一段能被其他进程所访问的内存, 这段共享内存由一个进程创建, 但多个进程都可以访问.
+共享内存是最快的 IPC 方式, 它是针对其他进程间通信方式运行效率低而专门设计的.
+它往往与其他通信机制, 如信号量, 配合使用, 来实现进程间的同步和通信.</dd>
+<dt><a class="reference internal" href="#section-7">套接字</a></dt>
+<dd>也是一种进程间通信机制, 与其他通信机制不同的是, 它可用于不同机器之间的进程通信.</dd>
+<dt><a class="reference internal" href="#section-8">事件</a></dt>
+<dd>python进程的事件用于主进程控制其他进程的执行</dd>
+</dl>
+<div class="section" id="section-2">
+<h3>信号</h3>
+<p>signal</p>
+<p>信号通过注册的方式‘挂’在一个进程中, 并且不会阻塞该进程的运行。
+一个进程一旦接收到其他进程（可能是应用中的其他进程, 也可能使操作系统中的进程）发送的信号就会打断原来的程序执行流程来处理这个信号。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>异步: 程序在执行中利用内核功能帮助完成必要的辅助操作,不影响应用层持续执行</p>
+<p class="last">注意: 这里的同步和异步机制是相对多进程而言的。</p>
+</div>
+<p><strong>在多个进程中通信的机制中, 只有singal是异步执行的</strong></p>
+<p>和kill相关的几个函数:</p>
+<ul class="simple">
+<li>signal.alarm(sec): 见 <em>/docs/后端/python/python标准库/signal</em></li>
+<li>signal.pause(): 见 <em>/docs/后端/python/python标准库/signal</em></li>
+<li>signal.signal(sig,handler): 见 <em>/docs/后端/python/python标准库/signal</em></li>
+</ul>
+</div>
+<div class="section" id="section-3">
+<h3>管道</h3>
+<p>管道, 半双工,默认无锁, 不安全, 双向通信(一端发, 一端收)</p>
+<ul class="simple">
+<li>匿名管道, 只能在具有亲缘关系进程间通信</li>
+<li>命名管道, 允许无亲缘关系进程通信</li>
+</ul>
+<pre class="code literal-block">
+from multiprocessing import Pipe
+</pre>
+</div>
+<div class="section" id="section-4">
+<h3>消息队列</h3>
+<p>消息队列, 基于管道实现, 有加锁, 数据安全</p>
+<p>消息队列是由消息组成的链表, 存放在内核中并由消息队列标识符标识.
+消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点.</p>
+<ul class="simple">
+<li>Queue</li>
+<li>JoinableQueue : 有put端和get的技术机制.
+每次get()数据发送task_done()  put端计数-1,
+直到get()端取完了队列的所有数据,  put()端的join()就会接受到信号, 直到get()端已经接受完数据了</li>
+</ul>
+</div>
+<div class="section" id="section-5">
+<h3>共享内存</h3>
+<p>共享内存就是映射一段能被其他进程所访问的内存.</p>
+<p>这段共享内存由一个进程创建, 但多个进程都可以访问.</p>
+<p>共享内存是最快的 IPC 方式, 它是针对其他进程间通信方式运行效率低而专门设计的.
+它往往与其他通信机制, 如信号量, 配合使用, 来实现进程间的同步和通信.</p>
+<pre class="code literal-block">
+from multiprocessing import Manager
+</pre>
+<p>例:</p>
+<pre class="literal-block">
+# 共享内存, 举例, https://www.jb51.net/article/232067.htm
+from multiprocessing import Value,Array
+
+obj = Value(ctype,data)
+# 功能: 开辟共享内存
+# 参数: ctype 表示共享内存空间类型 'i' 'f' 'c'
+#     data 共享内存空间初始数据
+# 返回值: 共享内存对象
+
+obj.value # 对象属性的修改查看即对共享内存读写
+
+obj = Array(ctype,data)
+# 功能: 开辟共享内存
+# 参数: ctype 表示共享内存空间类型 'i' 'f' 'c'
+#     data 整数表示开辟空间的大小,其数据表示开辟空间
+# 返回值: 共享内存对象
+
+# Array共享内存读写:通过遍历obj可以得到每个值,直接通过索引可以修改
+
+# * 可以使用obj.value 直接打印共享内存中的字节串
+</pre>
+</div>
+<div class="section" id="section-6">
+<h3>信号量</h3>
+<p>信号量(信号灯集)</p>
+<p>给定一个数量对多个进程可见,多个进程都可以操作该数增减,并根据数量值决定自己的行</p>
+<p>信号量是一个计数器, 可以用来控制多个进程对共享资源的访问.
+它常作为一种锁机制, 防止某进程正在访问共享资源时, 其他进程也访问该资源.</p>
+<p>因此, 主要作为进程间以及同一进程内不同线程之间的同步手段.</p>
+<pre class="code literal-block">
+from multiprocessing import Semaphore
+
+sem = Semaphore(num)
+# 功能: 创建信号量对象
+# 参数: 信号量的初始值
+# 返回值: 信号量对象
+
+sem.acquire()                 # 信号量减1 当信号量为0时阻塞
+sem.release()                 # 信号量加1
+sem.get_value()       # 获取信号量数量
+</pre>
+</div>
+<div class="section" id="section-7">
+<h3>套接字</h3>
+<p>套接字（socket）通信</p>
+<p>套接口也是一种进程间通信机制, 与其他通信机制不同的是, 它可用于不同机器之间的进程通信.</p>
+<pre class="code literal-block">
+multiprocessing.Manager 共享全局变量 (共享内存)
+</pre>
+<p>注意, 如果要共享变量, 只能将共享的变量定义在外部使用, 然后调用进程的时候传入, 最终获取还是在使用外部命名获取:</p>
+<pre class="literal-block">
+# coding: utf-8
+
+&quot;&quot;&quot;
+python 进程间通信测试,
+
+主进程跟, 异步进程池
+&quot;&quot;&quot;
+import asyncio
+import time
+from concurrent.futures import ProcessPoolExecutor
+from multiprocessing import Manager, Pipe
+from typing import Optional
+
+
+class SonPool(object):
+
+    _total: Optional[int] = None
+    _now: Optional[int] = None
+
+    _total_manager = None
+    _now_manager = None
+    _list_manager = [None, None]
+
+    &#64;classmethod
+    def get_now_and_total(cls):
+        return [cls._now, cls._total]
+
+    &#64;classmethod
+    def get_now_and_total_manager_val(cls):
+        print('_manager', cls._now_manager, cls._total_manager)
+        if cls._now_manager and type(cls._now_manager) != int:
+            print('_manager', cls._now_manager.value, cls._total_manager.value)
+            return [cls._now_manager.value, cls._total_manager.value]
+
+        return [cls._now_manager, cls._total_manager]
+
+    &#64;classmethod
+    def get_list_manager_val(cls):
+        print('inner _list_manager', [x for x in cls._list_manager])
+        return cls._list_manager
+
+    &#64;classmethod
+    def _reset(cls):
+        cls._total = None
+        cls._now = None
+        cls._total_manager = Manager().Value(int, 1)
+        cls._now_manager = Manager().Value(int, 1)
+        cls._list_manager = Manager().list([None, None])
+
+    &#64;staticmethod
+    async def _async_long_time_wait():
+        await asyncio.sleep(3)
+        print('sleep 3 s')
+
+    &#64;staticmethod
+    def _long_time_wait(*args):
+        time.sleep(5)
+        print('sleep 5', *args)
+
+    &#64;classmethod
+    def _set_total(cls):
+        cls._long_time_wait('total')
+        cls._total = 100
+        if cls._total_manager:
+            cls._total_manager.value = 101
+        else:
+            cls._total_manager = 101
+        cls._list_manager.append(102)
+
+    &#64;classmethod
+    def _set_now(cls):
+        cls._long_time_wait('now')
+        cls._now = 10
+        if cls._now_manager:
+            cls._now_manager.value = 11
+        else:
+            cls._now_manager = 11
+        cls._list_manager.append(12)
+
+    &#64;classmethod
+    def run(cls, *args, **kwargs):
+        if args:
+            # cls._list_manager = arg_dict.get('list_manager')
+            cls._list_manager = args[0]
+            cls._total_manager = args[1]
+            cls._now_manager = args[2]
+        cls._set_now()
+        cls._set_total()
+        print('inner SonPool val',
+              '\ninner now, total: ', SonPool.get_now_and_total(),
+              '\ninner now, total manager: ', SonPool.get_now_and_total_manager_val(),
+              '\ninner list manager: ', SonPool.get_list_manager_val(),
+              )
+
+
+async def main_process():
+    loop = asyncio.get_running_loop()
+    pool = ProcessPoolExecutor()
+
+    # 类内定义变量不支持进程之间共享, 错误用法
+    SonPool._total_manager = Manager().Value(int, None)
+    SonPool._now_manager = Manager().Value(int, None)
+    SonPool._list_manager = Manager().list([None, None])
+
+    # 用变量,  外部定义,  这样传入才可以正确通信
+    list_manager = Manager().list([None, None])
+    total_manager = Manager().Value(int, None)
+    now_manager = Manager().Value(int, None)
+
+  # 这样外部封装也行,  不过传入的时候还是要传入 LocalSonPool.total
+    # class LocalSonPool(object):
+    #     total = Manager().Value(int, None)
+    #     now = Manager().Value(int, None)
+    #     list_m = Manager().list([None, None])
+
+    # 用管道
+    # 还没写,
+    fd1, fd2 = Pipe()
+
+    async def _check_task1(m1, m2):
+        while True:
+            print('check_task1', m1.value, m2.value)
+            await asyncio.sleep(1)
+
+    # async def _check_task2():
+    #     while True:
+    #         print('check_task2', now_manager.value, total_manager.value)
+    #         await asyncio.sleep(1)
+
+    loop.create_task(_check_task1(now_manager, total_manager))
+  # 这样也可以
+    # loop.create_task(_check_task2())
+
+    # await loop.run_in_executor(pool, SonPool.run, )
+    await loop.run_in_executor(pool, SonPool.run,
+                              list_manager,
+                              total_manager,
+                              now_manager,)
+    print('main val',
+          # SonPool main跟进程池用的是两个不同空间的,  所以不能这样用
+          '\nmain now, total: ', SonPool.get_now_and_total(),
+          '\nmain now, total manager: ', SonPool.get_now_and_total_manager_val(),
+          '\nmain list manager: ', SonPool.get_list_manager_val(),
+
+          # 只有下面的这样,  定义在main,  使用main的调用才可以获取到值
+          '\nouter list manager', [x for x in list_manager],
+          '\nouter now manager', now_manager.value,
+          '\nouter total manager', total_manager.value,
+          )
+
+
+def main():
+    loop = asyncio.get_event_loop()
+    loop.create_task(main_process())
+    loop.run_forever()
+
+
+if __name__ == '__main__':
+    main()
+</pre>
+</div>
+<div class="section" id="section-8">
+<h3>事件</h3>
+<p>python进程的事件用于主进程控制其他进程的执行, 事件主要提供了三个方法 set、wait、clear.</p>
+<p>事件处理的机制:</p>
+<p>想象全局定义了一个“Flag”,
+如果“Flag”值为 False, 那么当程序执行 event.wait 方法时就会阻塞,
+如果“Flag”值为True, 那么event.wait 方法时便不再阻塞.</p>
+<p>其中, clear方法: 将“Flag”设置为False, set方法: 将“Flag”设置为True:</p>
+<pre class="literal-block">
+# 来源: https://zhuanlan.zhihu.com/p/446374478
+import multiprocessing
+import time
+
+from multiprocessing import Process, Queue, set_start_method
+
+event = multiprocessing.Event()
+
+def xiao_fan(event):
+  print('小贩: 生产...')
+  print('小贩: 售卖...')
+  # time.sleep(1)
+  print('小贩: 等待就餐')
+  event.set()
+  event.clear()
+  event.wait()
+  print('小贩: 谢谢光临')
+  event.set()
+  event.clear()
+
+
+def gu_ke(event):
+  print('顾客: 准备买早餐')
+  event.set()
+  event.clear()
+  event.wait()
+  print('顾客: 买到早餐')
+  print('顾客: 享受美食')
+  # time.sleep(2)
+  print('顾客: 付款, 真好吃...')
+  event.set()
+  event.clear()
+
+
+if __name__ == '__main__':
+  set_start_method('fork', True)
+
+  # 创建进程
+  xf = multiprocessing.Process(target=xiao_fan, args=(event,))
+  gk = multiprocessing.Process(target=gu_ke, args=(event, ))
+  # 启动进程
+
+  gk.start()
+  xf.start()
+
+  # time.sleep(2)
+</pre>
+</div>
+<div class="section" id="section-9">
+<h3>互斥锁-进程锁</h3>
+<p>可使用 <em>/docs/后端/python/python标准库/multiprocessing</em> 的
+Lock() 函数</p>
+</div>
+</div>
+<div class="section" id="i-o">
+<h2>缓冲I/O</h2>
+<p>分为：无缓冲，行缓冲，全缓冲</p>
+<ul class="simple">
+<li>通过 read 和 write 系统调用直接读写文件，就是无缓冲模式，性能也最差。</li>
+<li>而通过标准 I/O 库读写文件，就是缓冲模式，标准 I/O 库提供缓冲的目的是尽可能减少 read 和 write 调用的次数，提高性能。</li>
+</ul>
+<dl class="docutils">
+<dt>行缓冲模式</dt>
+<dd>当在输入输出中遇到换行符时，才进行实际 I/O 操作。</dd>
+<dt>全缓冲模式</dt>
+<dd>当填满缓冲区时，才进行实际 I/O 操作。</dd>
+</dl>
+<ul class="simple">
+<li>管道和普通文件默认是全缓冲的;</li>
+<li>标准输入和标准输出默认是行缓冲的;</li>
+<li>标准错误默认是无缓冲的。</li>
+</ul>
+</div>
+<div class="section" id="section-10">
+<h2>获取子进程的返回值</h2>
+<p>队列:</p>
+<pre class="literal-block">
+multiprocessing.Queue()
+</pre>
+<p>Pool.map():</p>
+<pre class="literal-block">
+from multiprocessing import Pool
+import time
+
+def func(i):
+    return  i*i
+
+if __name__ == '__main__':
+    p = Pool(5)
+    ret = p.map(func,range(10))
+    print(ret)
+</pre>
+<p>pool.apply_async:</p>
+<pre class="literal-block">
+from multiprocessing import Pool
+
+def func(): return 1
+
+pool = multiprocessing.Pool(processes=1)
+p = pool.apply_async(func, (i,))
+
+pool.close()    # 关闭进程池，表示不能再往进程池中添加进程，需要在join之前调用
+pool.join()     # 等待进程池中的所有进程执行完毕
+
+print(p.get())  # 使用get获取值
+</pre>
+<p>multiprocessing.Manager:</p>
+<pre class="literal-block">
+from multiprocessing import Manager
+
+Manager().list()
+</pre>
+</div>
+<div class="section" id="section-11">
+<h2>一些报错</h2>
+<div class="section" id="can-t-pickle-thread-lock-objects">
+<h3>can't pickle _thread.lock objects</h3>
+<p>使用进程池报错, TypeError: can't pickle _thread.lock objects</p>
+<pre class="literal-block">
+from concurrent.futures.process import ProcessPoolExecutor
+</pre>
+<p>进程池内部处理使用了pickle模块(用于python特有的类型和python的数据类型间进行转换)
+中的dump(obj, file, protocol=None,)方法对参数进行了封装处理.</p>
+<p>而pickle dump 方法不支持自定义的类.</p>
+<p>pickle用来序列化对象很方便, 但是pickle对传入对象的要求是不能是内部类, 也不能是lambda函数.</p>
+<p><strong>解决</strong></p>
+<p>方法一: 使用dill包来代替, 使用方法和pickle一样:</p>
+<pre class="literal-block">
+pip install dill
+</pre>
+<p>使用:</p>
+<pre class="literal-block">
+import dill
+
+
+class Obj:
+  def __init__(self, info):
+    self.info = info
+
+
+obj = Obj(&quot;this is a local object&quot;)
+
+pk = dill.dumps(obj)
+new_obj = dill.loads(pk)
+</pre>
+<p>dill扩展了python的pickle模块, 用于对大多数内置python类型进行序列化和反序列化.
+序列化是将对象转换为字节流的过程, 而相反的过程是将字节流转换回python对象层次结构.</p>
+<p>所以如果遇到了pickle模块无法序列化的对象, 不妨试试dill.</p>
+<p>方法二:</p>
+<pre class="literal-block">
+from pathos.multiprocessing import ProcessingPool
+</pre>
+<p>使用pathos的进程池 <cite>https://github.com/uqfoundation/pathos</cite></p>
+<p>方法三: 将定义(或者说定义的闭包)放在外部</p>
+</div>
+</div>
+<div class="section" id="section-12">
+<h2>一些坑</h2>
+<p>系统: MacOS 12. Python3.9</p>
+<p>多进程使用 multiprocessing.Lock , 如果定义在全局变量然后使用是不可行的.</p>
+<p>threading模块貌似没有这个问题, 应该是全局解释器锁的原因.</p>
+<p>全局定义示例代码:</p>
+<pre class="literal-block">
+# coding: utf-8
+import time
+from multiprocessing import Lock, Process
+
+lock = Lock()
+
+def run1():
+    lock.acquire()
+    print('run1 get lock')
+    time.sleep(3)
+
+def run2():
+    lock.acquire()
+    print('run2 get lock')
+    time.sleep(3)
+    print('run2 release lock')
+    lock.release()
+
+if __name__ == '__main__':
+
+    p1 = Process(target=run1,)
+    p2 = Process(target=run2,)
+
+    p1.start()
+    p1.join()
+    p2.start()
+
+    time.sleep(5)
+    print('main thread release lock')
+    lock.release()
+</pre>
+<p>错误输出:</p>
+<pre class="literal-block">
+run1 get lock
+run2 get lock
+run2 release lock
+Traceback (most recent call last):
+  File &quot;/Users/yanque/project/pycharm/mytest/with_mul_process/global_lock2.py&quot;, line 30, in &lt;module&gt;
+    lock.release()
+ValueError: semaphore or lock released too many times
+main thread release lock
+</pre>
+<p>可以看到连续 acquire 了两次锁... 而且之前的demo还没有报错信息</p>
+<p>这里估计是变量的多进程多核访问问题, 网上很多文章都用的全局变量定义, 误导人.</p>
+<p>不使用全局变量而是传值之后:</p>
+<pre class="literal-block">
+# coding: utf-8
+import time
+from multiprocessing import Lock, Process
+
+def run1(lock: Lock):
+    lock.acquire()
+    print('run1 get lock')
+    time.sleep(3)
+
+def run2(lock: Lock):
+    lock.acquire()
+    print('run2 get lock')
+    time.sleep(3)
+    print('run2 release lock')
+    lock.release()
+
+if __name__ == '__main__':
+    _lock = Lock()
+    p1 = Process(target=run1, args=(_lock,), )
+    p2 = Process(target=run2, args=(_lock,), )
+
+    p1.start()
+    p1.join()
+    p2.start()
+
+    time.sleep(5)
+    print('main thread release lock')
+    _lock.release()
+</pre>
+<p>输出正常了:</p>
+<pre class="literal-block">
+run1 get lock
+main thread release lock
+run2 get lock
+run2 release lock
+</pre>
+<p>当天下班想起这个问题, 突然反应过来
+<strong>不同进程分配的是不同的资源, 所以使用全局变量的时候, 每个进程使用的都是不同的全局变量, 所以会出现异常的问题.</strong></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,815 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>正则表达式</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/za-luan-wu-zhang.html">杂乱无章</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/za-luan-wu-zhang.html">杂乱无章</a></li>
+												<li><a class="button button-alt" href="tag/tags.html">Tags</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>正则表达式</h2>
+									<p>正则表达式 - 菜鸟教程: <cite>https://www.runoob.com/regexp/regexp-syntax.html</cite></p>
+<div class="section" id="section-2">
+<h2>字符表示</h2>
+<div class="section" id="section-3">
+<h3>普通字符</h3>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">[...]</span></tt>             匹配 <tt class="docutils literal"><span class="pre">[...]</span></tt> 中的所有字符</li>
+<li><tt class="docutils literal"><span class="pre">[^...]</span></tt>    匹配除了 <tt class="docutils literal"><span class="pre">[...]</span></tt> 中的所有字符</li>
+<li><tt class="docutils literal">\s</tt>        匹配所有的空白字符, 包括换行</li>
+<li><tt class="docutils literal">\S</tt>        匹配所有空白符, 不包括换行</li>
+<li><tt class="docutils literal">\w</tt>        匹配字母, 数字, 下划线. 等价于 <tt class="docutils literal"><span class="pre">[A-Za-z0-9]</span></tt></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">字符</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">[ABC]</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配 <tt class="docutils literal"><span class="pre">[...]</span></tt> 中的所有字符, 例如 <tt class="docutils literal">`[aeiou]</tt> 匹配字符串 <tt class="docutils literal">google runoob taobao</tt> 中所有的 <tt class="docutils literal">e o u a</tt> 字母.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">[^ABC]</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配除了 <tt class="docutils literal"><span class="pre">[...]</span></tt> 中字符的所有字符,</div>
+<div class="line">例如 <tt class="docutils literal">[^aeiou]</tt> 匹配字符串 <tt class="docutils literal">google runoob taobao</tt> 中除了 <tt class="docutils literal">e o u a</tt> 字母的所有字母.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">[A-Z]</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">[A-Z]</span></tt> 表示一个区间, 匹配所有大写字母,  <tt class="docutils literal"><span class="pre">[a-z]</span></tt>  表示所有小写字母.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">.</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配除换行符 <tt class="docutils literal">(\n, \r)</tt> 之外的任何单个字符, 相等于 <tt class="docutils literal"><span class="pre">[^\n\r]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">[\s\S]</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配所有. <tt class="docutils literal">\s</tt> 是匹配所有空白符, 包括换行, <tt class="docutils literal">\S</tt> 非空白符, 不包括换行.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\w</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配字母, 数字, 下划线. 等价于 <tt class="docutils literal"><span class="pre">[A-Za-z0-9_]</span></tt></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-4">
+<h3>非打印字符</h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><div class="first last line-block">
+<div class="line">字符</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">描述</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\cx</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配由 <tt class="docutils literal">x</tt> 指明的控制字符. 例如,  <tt class="docutils literal">\cM</tt> 匹配一个 <tt class="docutils literal"><span class="pre">Control-M</span></tt> 或回车符.</div>
+<div class="line"><tt class="docutils literal">x</tt> 的值必须为 <tt class="docutils literal"><span class="pre">A-Z</span></tt> 或 <tt class="docutils literal"><span class="pre">a-z</span></tt> 之一. 否则, 将 <tt class="docutils literal">c</tt> 视为一个原义的 <tt class="docutils literal">'c'</tt> 字符.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\f</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配一个换页符. 等价于 <tt class="docutils literal">\x0c</tt> 和 <tt class="docutils literal">\cL</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\n</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配一个换行符. 等价于 <tt class="docutils literal">\x0a</tt> 和 <tt class="docutils literal">\cJ</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\r</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配一个回车符. 等价于 <tt class="docutils literal">\x0d</tt> 和 <tt class="docutils literal">\cM</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\s</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配任何空白字符, 包括空格, 制表符, 换页符等等. 等价于 <tt class="docutils literal">[ \f\n\r\t\v]</tt>. 注意 Unicode 正则表达式会匹配全角空格符.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\S</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配任何非空白字符. 等价于 <tt class="docutils literal">[^ \f\n\r\t\v]</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\t</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配一个制表符. 等价于 <tt class="docutils literal">\x09</tt> 和 <tt class="docutils literal">\cI</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\v</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配一个垂直制表符. 等价于 <tt class="docutils literal">\x0b</tt> 和 <tt class="docutils literal">\cK</tt>.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-5">
+<h3>特殊字符</h3>
+<p>一些有特殊含义的字符
+若要匹配这些特殊字符, 必须首先使字符&quot;转义&quot;, 即, 将反斜杠字符放在它们前面.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">特别字符</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">$</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配输入字符串的结尾位置. 如果设置了 RegExp 对象的 Multiline 属性, 则 <tt class="docutils literal">$</tt> 也匹配 <tt class="docutils literal">\n</tt> 或 <tt class="docutils literal">\r</tt>. 要匹配 <tt class="docutils literal">$</tt> 字符本身, 请使用 <tt class="docutils literal">\$</tt></div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">( )</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">标记一个子表达式的开始和结束位置. 子表达式可以获取供以后使用. 要匹配这些字符, 请使用 <tt class="docutils literal">\(</tt> 和 <tt class="docutils literal">\)</tt></div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">*</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配前面的子表达式零次或多次. 要匹配 <tt class="docutils literal">*</tt> 字符, 请使用 <tt class="docutils literal">\*</tt></div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">+</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配前面的子表达式一次或多次. 要匹配 <tt class="docutils literal">+</tt> 字符, 请使用 <tt class="docutils literal">\+</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">.</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配除换行符 <tt class="docutils literal">\n</tt> 之外的任何单字符. 要匹配 <tt class="docutils literal">.</tt> , 请使用 <tt class="docutils literal">\.</tt> .</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">[</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">标记一个中括号表达式的开始. 要匹配 <tt class="docutils literal">[</tt> , 请使用 <tt class="docutils literal">\[</tt> .</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">?</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配前面的子表达式零次或一次, 或指明一个非贪婪限定符. 要匹配 <tt class="docutils literal">?</tt> 字符, 请使用 <tt class="docutils literal">\?</tt></div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">将下一个字符标记为或特殊字符, 或原义字符, 或向后引用, 或八进制转义符.</div>
+<div class="line">例如,  <tt class="docutils literal">n</tt> 匹配字符 <tt class="docutils literal">n</tt> . <tt class="docutils literal">\n</tt> 匹配换行符. 序列 <tt class="docutils literal">\\</tt> 匹配 <tt class="docutils literal">\</tt>, 而 <tt class="docutils literal">\(</tt> 则匹配 <tt class="docutils literal">(</tt></div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">^</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配输入字符串的开始位置, 除非在方括号表达式中使用,</div>
+<div class="line">当该符号在方括号表达式中使用时, 表示不接受该方括号表达式中的字符集合. 要匹配 <tt class="docutils literal">^</tt> 字符本身, 请使用 <tt class="docutils literal">\^</tt></div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">{</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">标记限定符表达式的开始. 要匹配 <tt class="docutils literal">{</tt> , 请使用 <tt class="docutils literal">\{</tt> .</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-6">
+<h3>限定符</h3>
+<p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配. 有 * 或 <strong>+</strong> 或 <strong>?</strong> 或 <strong>{n}</strong> 或 <strong>{n,}</strong> 或 <strong>{n,m}</strong> 共6种.</p>
+<p>正则表达式的限定符有:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><div class="first last line-block">
+<div class="line">字符</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">描述</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">*</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配前面的子表达式零次或多次.</div>
+<div class="line">例如, <tt class="docutils literal">zo*</tt> 能匹配 &quot;z&quot; 以及 &quot;zoo&quot;. <tt class="docutils literal">*</tt> 等价于 <tt class="docutils literal">{0,}</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">+</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配前面的子表达式一次或多次.</div>
+<div class="line">例如, <tt class="docutils literal">'zo+'</tt> 能匹配 &quot;zo&quot; 以及 &quot;zoo&quot;, 但不能匹配 &quot;z&quot;. <tt class="docutils literal">+</tt> 等价于 <tt class="docutils literal">{1,}</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">?</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">匹配前面的子表达式零次或一次.</div>
+<div class="line">例如, <tt class="docutils literal"><span class="pre">&quot;do(es)?&quot;</span></tt> 可以匹配 &quot;do&quot; ,  &quot;does&quot; 中的 &quot;does&quot; ,  &quot;doxy&quot; 中的 &quot;do&quot; . <tt class="docutils literal">?</tt> 等价于 <tt class="docutils literal">{0,1}</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">{n}</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">n 是一个非负整数. 匹配确定的 n 次.</div>
+<div class="line">例如, <tt class="docutils literal">'o{2}'</tt> 不能匹配 &quot;Bob&quot; 中的 'o', 但是能匹配 &quot;food&quot; 中的两个 o.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">{n,}</tt></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">n 是一个非负整数. 至少匹配n 次.</div>
+<div class="line">例如, <tt class="docutils literal"><span class="pre">'o{2,}'</span></tt> 不能匹配 &quot;Bob&quot; 中的 'o', 但能匹配 &quot;foooood&quot; 中的所有 o.</div>
+<div class="line"><tt class="docutils literal"><span class="pre">'o{1,}'</span></tt> 等价于 <tt class="docutils literal">'o+'</tt>. <tt class="docutils literal"><span class="pre">'o{0,}'</span></tt> 则等价于 <tt class="docutils literal">'o*'</tt>.</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">{n,m}</tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">m 和 n 均为非负整数, 其中n &lt;= m. 最少匹配 n 次且最多匹配 m 次.</div>
+<div class="line">例如, &quot;o{1,3}&quot; 将匹配 &quot;fooooood&quot; 中的前三个 o. 'o{0,1}' 等价于 'o?'. 请注意在逗号和两个数之间不能有空格.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>正则表达式-简洁版</h2>
+<p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern）,
+可以用来检查一个串是否含有某种子串, 将匹配的子串替换或者从某个串中取出符合某个条件的子串等.</p>
+<p>​字符类:</p>
+<pre class="literal-block">
+.                #任意一个字符
+[]               #匹配括号中的一个字符
+-                #括号内表示范围
+^                #位于括号内开头表示不匹配括号内的 [^0-3] 非（0到3）之间
+[[:xxx:]]        #grep工具预定义的一些命令字符类
+</pre>
+<p>数量限定符:</p>
+<pre class="literal-block">
+?                #匹配0或者1次
++                #前一个单元匹配一次或者多次
+*                #匹配前一个单元0次或多次
+{N}                #前一个单元匹配N次
+{N,}            #前一个单元至少匹配N次
+{,M}            #前一个单元最多匹配M次
+{N,M}            #前一个单元匹配N至M次
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">grep 找的是包含某个模式的行, 而非完全匹配.</p>
+</div>
+<p>位置限定符:</p>
+<pre class="literal-block">
+^                #匹配行首的位置
+$                #匹配行末的位置
+\&lt;                #匹配单词开头的位置
+\&gt;                #匹配单词结尾的位置
+\b                #匹配以单词开头或者结尾的位置
+\B                #匹配非该单词开头和结尾的位置, 与\b相反
+</pre>
+<p>其他特殊字符:</p>
+<pre class="literal-block">
+\                 转义字符, 特殊与普通字符相互转换
+()                将正则表达式的部分括起来表示一个单元
+|                 连接两个子表达式表示或的关系
+?:                表示 非捕获组, 即该组的内容不会被单独捕获为匹配结果。
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>竖线 <tt class="docutils literal">|</tt> 的作用范围是比较广的, 或许这也是其于 <tt class="docutils literal">[]</tt> 的区别:</p>
+<pre class="last literal-block">
+/apple|banana/    # 匹配 &quot;apple&quot; 或 &quot;banana&quot;
+/appl[es],banana/        # 匹配 &quot;apple,banana&quot; 或 &quot;appls,banana&quot;
+</pre>
+</div>
+</div>
+<div class="section" id="section-8">
+<h2>正则表达式的模式</h2>
+<ul class="simple">
+<li>基础正则表达式(Basic)</li>
+<li>扩展正则表达式(extended)</li>
+<li>Perl正则表达式(Perl)</li>
+</ul>
+<p>区别:</p>
+<ul class="simple">
+<li>基础正则和扩展正则的规范基本相同, 只是在Basic规范下,
+有些字符 <tt class="docutils literal"><span class="pre">?,</span> +, {}, (), |</tt> 解释为普通字符, 要表示
+特殊含义需要加 进行转义.</li>
+<li>在Extended规范下, 这些符号被解释为特殊含义, 要取其字面值, 也要对其进行 <tt class="docutils literal">\</tt> 转义.</li>
+<li>其他常用通用字符集及其替换</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="25%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><div class="first last line-block">
+<div class="line">符号</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">替换正则</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">匹配</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\d</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">[0-9]</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">数字字符</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\D</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">[^0-9]</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">非数字字符</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\w</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">[a-zA-Z0-9]</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">数字, 字母, 下划线</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\W</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">[^w]</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">非数字, 字母, 下划线</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\s</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">[_rtnf]</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">回车, 换行, 制表符等空白区域</div>
+</div>
+</td>
+</tr>
+<tr><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal">\S</tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">[^s]</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">非空白区域</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="section-9">
+<h3>贪婪模式与非贪婪模式</h3>
+<ul class="simple">
+<li>grep 默认的就是贪婪匹配, 会将一行中所有满足正则的全部匹配出来.</li>
+<li>而非贪婪模式是一旦发现匹配符合要求, 立马匹配成功, 而不会继续匹配下去（除非有g, 开启下一组匹配）</li>
+</ul>
+</div>
+<div class="section" id="section-10">
+<h3>零宽断言</h3>
+<p>用于指定一个位置, 这个位置应该满足一定的条件.</p>
+<dl class="docutils">
+<dt>零宽度正预测</dt>
+<dd><p class="first">(?=正则表达式)</p>
+<p class="last">正则表达式所处位置之前, 不包括正则表达式指定的位置的单元.</p>
+</dd>
+<dt>零宽度正后顾后发断言</dt>
+<dd><p class="first">(?&lt;=正则表达式)</p>
+<p class="last">正则表达式所处位置之后, 不包括正则表达式指定的位置的单元.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="linux-grep">
+<h3>linux-grep常用选项</h3>
+<p>见: <em>/docs/操作系统/linux/linux指令/grep</em></p>
+</div>
+</div>
+<div class="section" id="section-11">
+<h2>转义符</h2>
+<p>如下:</p>
+<pre class="literal-block">
+\                  表示开始转义, 在Python中处于行尾位置时表示续行符
+\\                 反斜杠
+\‘                 单引号
+\&quot;                 双引号
+\b                 退格
+\n                 换行
+\v                 纵向制表符
+\t                 横向制表符
+\r                 回车
+\f                 换页
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

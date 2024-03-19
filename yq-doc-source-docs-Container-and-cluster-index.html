@@ -1,0 +1,341 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>容器、代理与集群</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 15 四月 2022
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+												<li><a class="button button-alt" href="tag/tags.html">Tags</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2022-04-15</div>
+									<h2>容器、代理与集群</h2>
+									<p>暂时只写了docker与nginx, 集群待补充</p>
+<div class="section" id="section-2">
+<h2>什么是虚拟化技术？</h2>
+<dl class="docutils">
+<dt>维基百科中的解释是这样的:</dt>
+<dd>虚拟化（技术）是一种资源管理技术，是将计算机的各种实体资源（CPU、内存、磁盘空间、网络适配器等），
+予以抽缴、转换后呈现出来并可供分割、组合为一个或多个电脑配置环境。</dd>
+</dl>
+<p>对于一台计算机，我们可以简单的划分为三层：从下到上依次是</p>
+<ul class="simple">
+<li>物理硬件层</li>
+<li>操作系统层</li>
+<li>应用程序层</li>
+</ul>
+</div>
+<div class="section" id="section-3">
+<h2>容器和虚拟机差异</h2>
+<p>容器技术的演变:</p>
+<pre class="literal-block">
+纯物理机     ----&gt;     物理机上多VMWare虚拟机       ----&gt;         容器
+
+浪费资源                    节省, 也有限度                      轻量级(有时候只想要一个mysql这种, 可能还想要多个版本共存)
+不易拓展迁移                迁移方便                            更高效利用系统资源
+                            还是比较重量级
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">有个误解, Docker不完全代表容器;
+Docker只是实现了容器技术的一种方式</p>
+</div>
+<p>虚拟机工具:</p>
+<ul class="simple">
+<li>WMVare WorkStation (个人学习使用), 仅支持Windows</li>
+<li>VMVare esxi (企业版虚拟化); 高性能服务器结合，进行服务器资源虚拟化</li>
+<li>KVM, Linux下虚拟工具</li>
+</ul>
+<dl class="docutils">
+<dt>虚拟机技术</dt>
+<dd><p class="first">虚拟机是虚拟出一套硬件，在其上面运行一个完整的操作系统，
+例如我们使用KVM，指定系统镜像然后装系统，最终可以使用，在该系统上再运行所需的应用程序。</p>
+<div class="figure">
+<img alt="" src="../../resources/images/2024-02-07-18-07-21.png" style="width: 480px;" />
+</div>
+<p class="last">KVM创建虚拟机时，若指定较少的cpu，内存，硬盘等资源，虚拟机性能较低, 业务支持不好。</p>
+</dd>
+<dt>容器技术</dt>
+<dd><p class="first">容器内的应用程序直接运行在宿主机的内核上，容器内没有自己的内核，
+也没有对硬件进行虚拟，因此容器比起虚拟机更为轻便。</p>
+<div class="last figure">
+<img alt="" src="../../resources/images/2024-02-07-18-07-48.png" style="width: 480px;" />
+</div>
+</dd>
+<dt>容器对比KVM的好处</dt>
+<dd><ul class="first last simple">
+<li>容器能够提供宿主机的性能，而kvm虚拟机是分配宿主机硬件资源，
+性能较弱 •同样配置的宿主机，最多可以启动10个虚拟机的话，可以启动100+的容器数量;</li>
+<li>启动一个KVM虚拟机，得有一个完整的开机流程，花费时间较长，或许得20S，而启动一个容器只需要 1S;</li>
+<li>KVM需要硬件CPU的虚拟化支持，而容器不需要;</li>
+</ul>
+</dd>
+<dt>docker更高效的利用系统资源</dt>
+<dd>容器不需要进行硬件虚拟化以及运行一个完整操作系统的额外开销，
+docker对系统资源的利用率更高，无论是应用执行，
+文件存储，还是在内存消耗等方面，都比传统虚拟机更高效。
+因此一个同样配置的主机，可以运行处更多数量的容器实例。</dd>
+</dl>
+</div>
+<div class="section" id="section-4">
+<h2>集群、分布式、微服务的区别</h2>
+<dl class="docutils">
+<dt>集群</dt>
+<dd>将同一份项目或者系统, 物理部署到多台机器上分流, 物理上提高可用性</dd>
+<dt>分布式</dt>
+<dd><p class="first">将项目, 垂直/水平 拆分为多个子模块, 分开部署</p>
+<p>水平拆分: 根据“分层”的思想进行拆分。 比如前后端分离就是将 前端表示层 单独拆出来</p>
+<p class="last">垂直拆分: 根据业务进行拆分。
+例如，可以根据业务逻辑，将“电商项目”拆分成“订单项目”、“用户项目”和“秒杀项目”。
+显然这三个拆分后的项目，仍然可以作为独立的项目使用。像这种拆分的方法，就成为垂直拆分。</p>
+</dd>
+<dt>微服务</dt>
+<dd><p class="first">对于分布式的子模块, 进行更细粒度的拆分. 且在当前流程下不存在更细粒度的拆分</p>
+<p class="last">例如，以上“订单项目”本来就是垂直拆分后的子项目，
+但实际上“订单项目”还能进一步拆分为“购物项目”、“结算项目”和“售后项目”</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="nginx">
+<h2>Nginx常用命令</h2>
+<p>一览:</p>
+<pre class="literal-block">
+# 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务
+nginx -s stop
+
+# 平稳关闭Nginx，保存相关信息，有安排的结束web服务
+nginx -s quit
+
+# 因改变了Nginx相关配置，需要重新加载配置而重载
+nginx -s reload
+
+# 重新打开日志文件
+nginx -s reopen
+
+# 为 Nginx 指定一个配置文件，来代替缺省的
+nginx -c filename
+
+# 不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件
+nginx -t
+
+#  显示 nginx 的版本
+nginx -v
+
+# 显示 nginx 的版本，编译器版本和配置参数
+nginx -V
+
+# 格式换显示 nginx 配置参数
+2&gt;&amp;1 nginx -V | xargs -n1
+2&gt;&amp;1 nginx -V | xargs -n1 | grep lua
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

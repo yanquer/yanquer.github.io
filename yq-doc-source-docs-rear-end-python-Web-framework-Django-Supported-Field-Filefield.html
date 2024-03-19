@@ -1,0 +1,307 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>FileField</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/webkuang-jia.html">Web框架</a></li>
+
+												<li><a class="button button-alt" href="tag/django.html">Django</a></li>
+
+												<li><a class="button button-alt" href="tag/zhi-chi-de-field.html">支持的field</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>FileField</h2>
+									<p>一个文件上传字段:</p>
+<pre class="literal-block">
+class FileField(upload_to=None, max_length=100, \*\*options)
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">primary_key 参数不支持，如果使用，会引起错误。</p>
+</div>
+<p>有两个可选参数：</p>
+<dl class="docutils">
+<dt>FileField.upload_to</dt>
+<dd><p class="first">这个属性提供了一种设置上传目录和文件名的方式，可以有两种设置方式。在这两种情况下，值都会传递给 Storage.save() 方法。</p>
+<p>如果你指定一个字符串值或一个 Path，它可能包含 strftime() 格式，
+它将被文件上传的日期／时间所代替（这样上传的文件就不会填满指定的目录）。例如:</p>
+<pre class="literal-block">
+class MyModel(models.Model):
+    # file will be uploaded to MEDIA_ROOT/uploads
+    upload = models.FileField(upload_to='uploads/')
+    # or...
+    # file will be saved to MEDIA_ROOT/uploads/2015/01/30
+    upload = models.FileField(upload_to='uploads/%Y/%m/%d/')
+</pre>
+<p>如果你使用的是默认的 FileSystemStorage，这个字符串的值将被附加到你的 MEDIA_ROOT 路径后面，
+形成本地文件系统中上传文件的存储位置。
+如果你使用的是不同的存储系统，请检查该存储系统的文档，看看它是如何处理 upload_to 的。</p>
+<p>upload_to 也可以是一个可调用对象，如函数。这个函数将被调用以获得上传路径，包括文件名。
+这个可调用对象必须接受两个参数，并返回一个 Unix 风格的路径（带斜线），以便传给存储系统。这两个参数是：</p>
+<dl class="docutils">
+<dt>instance</dt>
+<dd><p class="first">定义 FileField 的模型实例。更具体地说，这是附加当前文件的特定实例。</p>
+<p class="last">在大多数情况下，这个对象还没有被保存到数据库，所以如果它使用默认的 AutoField，它的主键字段可能还没有一个值。</p>
+</dd>
+<dt>filename</dt>
+<dd>最初给文件的文件名。在确定最终目标路径时，可能会考虑到，也可能不会考虑到。</dd>
+</dl>
+<p>例子:</p>
+<pre class="last literal-block">
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_&lt;id&gt;/&lt;filename&gt;
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
+
+class MyModel(models.Model):
+    upload = models.FileField(upload_to=user_directory_path)
+</pre>
+</dd>
+<dt>FileField.storage</dt>
+<dd>一个存储对象，或是一个返回存储对象的可调用对象。它处理你的文件的存储和检索。参见 管理文件，了解如何提供这个对象。</dd>
+<dt>Changed in Django 3.1:</dt>
+<dd>增加了提供可调用对象的能力。</dd>
+</dl>
+<p>该字段的默认表单部件是一个 ClearableFileInput。</p>
+<p>在模型中使用 FileField 或 ImageField （见下文）需要几个步骤：</p>
+<ul class="simple">
+<li>在你的配置文件中，你需要定义 MEDIA_ROOT 作为你希望 Django 存储上传文件的目录的完整路径。
+（为了保证性能，这些文件不存储在数据库中。）
+定义 MEDIA_URL 作为该目录的基本公共 URL。确保这个目录是 Web 服务器的用户账号可以写的。</li>
+<li>将 FileField 或 ImageField 添加到你的模型中，定义 upload_to 选项，指定 MEDIA_ROOT 的子目录，用于上传文件。</li>
+<li>所有这些将被存储在你的数据库中的是一个文件的路径（相对于 MEDIA_ROOT ）。
+你很可能要使用 Django 提供的方便的 url 属性。
+例如，如果你的 ImageField 叫做 mug_shot，你可以在模板中使用 {{ object.mug_shot.url }} 获取图片的绝对路径。</li>
+</ul>
+<p>例如，你的 MEDIA_ROOT 设置为 '/home/media'，
+upload_to 设置为 'photos/%Y/%m/%d'。
+upload_to 中的 '%Y/%m/%d' 部分是 strftime() 格式化，
+'%Y' 是四位数的年，'%m' 是两位数的月，'%d' 是两位数的日。
+如果你在 2007 年 1 月 15 日上传了一个文件，它将被保存在 /home/media/photos/2007/01/15 目录下。</p>
+<p>如果你想检索上传文件的盘上文件名，或者文件的大小，可以分别使用 name 和 size 属性；关于可用属性和方法的更多信息，
+请参见 File 类参考和 管理文件 主题指南。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">文件在数据库中作为保存模型的一部分，因此在模型被保存之前，不能依赖磁盘上使用的实际文件名。</p>
+</div>
+<p>上传的文件的相对 URL 可以通过 url 属性获得。内部调用底层 Storage 类的 store() 方法。</p>
+<p>需要注意的是，无论何时处理上传的文件，你都应该密切关注你上传的文件在哪里，
+是什么类型的文件，以避免安全漏洞。对所有上传的文件进行验证，这样你才能确定文件是你认为的那样。
+例如，如果你盲目地让别人上传文件，不经过验证，就上传文件到你的 Web 服务器的文档根目录下，
+那么有人就可以上传一个 CGI 或 PHP 脚本，并通过访问它的 URL 在你的网站上执行该脚本。不要允许这种情况发生。</p>
+<p>另外要注意的是，即使是上传的 HTML 文件，由于可以被浏览器执行（虽然不能被服务器执行），也会造成相当于 XSS 或 CSRF 攻击的安全威胁。</p>
+<p>FileField 实例在数据库中被创建为 varchar 列，默认最大长度为 100 个字符。与其他字段一样，你可以使用 max_length 参数改变最大长度。</p>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

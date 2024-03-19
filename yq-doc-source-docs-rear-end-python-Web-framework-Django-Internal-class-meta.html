@@ -1,0 +1,343 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>内部类Meta</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/webkuang-jia.html">Web框架</a></li>
+
+												<li><a class="button button-alt" href="tag/django.html">Django</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>内部类Meta</h2>
+									<p>可用的选项</p>
+<dl class="docutils">
+<dt>abstract</dt>
+<dd>abstract = True，表示这是一个 <em>/docs/后端/python/Web框架/Django/抽象基类</em></dd>
+<dt>app_label</dt>
+<dd><p class="first">如果在 INSTALLED_APPS 中定义了一个应用程序之外的模型，它必须声明它属于哪个应用程序:</p>
+<pre class="literal-block">
+app_label = 'myapp'
+</pre>
+<p>如果你想用 app_label.object_name 或 app_label.model_name 来表示一个模型，你可以分别使用:</p>
+<pre class="last literal-block">
+model._meta.label 或 model._meta.label_lower
+</pre>
+</dd>
+<dt>db_table</dt>
+<dd>用于模型的数据库表的名称</dd>
+<dt>base_manager_name</dt>
+<dd><p class="first">管理器的属性名</p>
+<p>管理器的属性名，例如，'objects'，用于模型的 _base_manager。</p>
+<p class="last">说实话 没懂</p>
+</dd>
+<dt>db_tablespace</dt>
+<dd><p class="first">数据库表空间名称</p>
+<p class="last"><a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/tablespaces/">表空间（Tablespaces） | Django 文档 | Django (djangoproject.com)</a></p>
+</dd>
+<dt>default_manager_name</dt>
+<dd><p class="first">模型的管理器名称</p>
+<p class="last">模型的 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/managers/#django.db.models.Model._default_manager">_default_manager</a> 管理器名称。</p>
+</dd>
+<dt>default_related_name</dt>
+<dd><p class="first">从相关对象到这个对象的关系默认使用的名称。默认为 <cite>_set</cite>。</p>
+<p>这个选项还可以设置 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#django.db.models.ForeignKey.related_query_name">related_query_name</a></p>
+<p class="last">由于字段的反向名称应该是唯一的，所以如果你打算对你的模型进行子类化，就要小心了。
+为了避免名称冲突，名称的一部分应该包含 <cite>'%(app_label)s'</cite> 和 <cite>'%(model_name)s'</cite>，
+它们分别被模型所在的应用程序的名称和模型的名称所取代，都是小写的。
+见 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/#abstract-related-name">抽象模型的相关名称</a> 段落。</p>
+</dd>
+<dt>get_latest_by</dt>
+<dd><p class="first">模型中的字段名或字段名列表</p>
+<p class="last">我的理解是 以这个字段集进行排序</p>
+</dd>
+<dt>managed</dt>
+<dd><p class="first">默认为True，表示Django 管理 数据库表的生命周期。</p>
+<p class="last">如果 False，将不对该模型进行数据库表的创建、修改或删除操作。
+如果该模型代表一个现有的表或一个通过其他方式创建的数据库视图，这一点很有用。
+这是在 managed=False 时 唯一 的区别。模型处理的所有其他方面都与正常情况完全相同。</p>
+</dd>
+<dt>order_with_respect_to</dt>
+<dd>使该对象可以根据给定字段（通常是 ForeignKey ）进行排序。</dd>
+<dt>ordering</dt>
+<dd>对象的默认排序</dd>
+<dt>permissions</dt>
+<dd><p class="first">表的额外权限</p>
+<p>创建此对象时要输入权限表的额外权限。为每个模型自动创建添加、更改、删除和查看权限。
+这个例子指定了一个额外的权限，can_deliver_pizzas</p>
+<pre class="literal-block">
+permissions = [('can_deliver_pizzas', 'Can deliver pizzas')]
+</pre>
+<p class="last">这是一个由二元元组组成的列表或元组，格式为 (permission_code, human_readable_permission_name)。</p>
+</dd>
+<dt>default_permissions</dt>
+<dd><p class="first">默认值为 ('add', 'change', 'delete', 'view') 。</p>
+<p class="last">你可以自定义这个列表，例如，如果你的应用不需要任何默认的权限，可以将其设置为空列表。
+它必须在模型创建之前通过 migrate 在模型上指定，以防止任何遗漏的权限被创建。</p>
+</dd>
+<dt>proxy</dt>
+<dd>如果 <cite>proxy = True</cite>，作为另一个模型子类的模型将被视为 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/#proxy-models">代理模型</a></dd>
+<dt>required_db_features</dt>
+<dd>当前连接应具备的数据库特征列表，以便在迁移阶段考虑模型。
+例如，如果你将此列表设置为 ['gis_enabled']，则模型将只在支持 GIS 的数据库上同步。
+在使用多个数据库后端进行测试时，跳过一些模型也很有用。避免模型之间的关系，
+这些模型可能会被创建，也可能不会被创建，因为 ORM 不会处理这个问题。</dd>
+<dt>required_db_vendor</dt>
+<dd>本模型所特有的支持的数据库厂商名称。目前的内置厂商名称是： <cite>sqlite</cite>，<cite>postgresql</cite>，<cite>mysql</cite> 和 <cite>oracle</cite>。
+如果该属性不为空，且当前连接厂商与之不匹配，则该模型将不会同步。</dd>
+<dt>select_on_save</dt>
+<dd><p class="first">确定 Django 是否会使用 1.6 之前的
+<a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/ref/models/instances/#django.db.models.Model.save">django.db.models.Model.save()</a> 算法.
+旧的算法使用 <cite>SELECT</cite> 来确定是否有一条现有的记录需要更新。
+新算法直接尝试 <cite>UPDATE</cite>。在一些罕见的情况下，Django 看不到现有行的 <cite>UPDATE</cite>。
+例如 PostgreSQL 的 <cite>ON UPDATE</cite> 触发器会返回 <cite>NULL</cite>。
+在这种情况下，即使数据库中存在一条记录，新算法最终也会进行 <cite>INSERT</cite>。</p>
+<p>通常不需要设置这个属性。默认值是 <cite>False</cite>。</p>
+<p class="last">关于新旧保存算法，请参见 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/ref/models/instances/#django.db.models.Model.save">django.db.models.Model.save()</a></p>
+</dd>
+<dt>indexes</dt>
+<dd><p class="first">定义索引列表</p>
+<p>如:</p>
+<pre class="last literal-block">
+from django.db import models
+
+class Customer(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['last_name', 'first_name']),
+            models.Index(fields=['first_name'], name='first_name_idx'),
+        ]
+</pre>
+</dd>
+<dt>unique_together</dt>
+<dd>一组字段名，组合起来必须是唯一的</dd>
+<dt>index_together</dt>
+<dd>可以理解为联合索引</dd>
+<dt>constraints</dt>
+<dd>表约束</dd>
+<dt>verbose_name</dt>
+<dd>对象的注释 单数</dd>
+<dt>verbose_name_plural</dt>
+<dd>对象的复数，默认是上一个加s</dd>
+<dt>label</dt>
+<dd>对象的表示，返回 app_label.object_name，例如 'polls.Question'。</dd>
+<dt>label_lower</dt>
+<dd>模型的表示，返回 app_label.model_name，例如 'polls.question'。</dd>
+</dl>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

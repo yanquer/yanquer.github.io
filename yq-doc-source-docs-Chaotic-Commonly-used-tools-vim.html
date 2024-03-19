@@ -1,0 +1,421 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li  class="active"><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>vim</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>vim</h2>
+									<p>vim有四个模式</p>
+<ul class="simple">
+<li>正常模式 (Normal-mode)</li>
+<li>插入模式 (Insert-mode)</li>
+<li>命令模式 (Command-mode)</li>
+<li>可视模式 (Visual-mode)</li>
+</ul>
+<p>简单使用:</p>
+<pre class="literal-block">
+vim     file                #打开文件
+        file1 file2         #打开两个文件
+        -O2 file1 file2     #分屏打开两个文件。有几个O几
+        -o                  #大写O表示左右排版，小写o表示上下排版
+</pre>
+<div class="section" id="section-1">
+<h2>常用快捷键</h2>
+<p>快捷键:</p>
+<pre class="literal-block">
+shift + a (or A)    # 快速移动到行末尾, 并进入编辑模式
+dd                  # 删除当前行
+gg                  # 光标跳转到文件首行
+shift + g (or G)    # 光标跳转文件最后一行
+_                   # 光标移到当前行第一个非空字符位置
+v,V                 # 可视化模式
+行号+gg             # 快速移动到指定行号
+i                   # 当前位置插入
+o                   # 当前行下一行插入
+
+:u              # 撤销
+ctrl+r          # 恢复撤销
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">更多详见::</th><td class="field-body"><a class="reference external" href="https://zhuanlan.zhihu.com/p/68111471">精通 VIM ，此文就够了</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-2">
+<h2>编码格式</h2>
+<p>编码格式:</p>
+<pre class="literal-block">
+:set fenc                   # 查看文本编码 fenc是fileencoding缩写
+                            # 与 :set fileencoding 一样
+:set fenc='filecode'        # 转换当前文本的编码为指定的编码
+:set enc='filecode'         # 以指定的编码显示文本，但不保存到文件中 encoding缩写
+                            # 这里的“编码”常见为gbk utf-8 big5 cp936
+                            # fileencoding---fenc
+                            #     encoding---enc
+
+:set invlist 显示换行符等字符
+:set nolist  关闭换行符等字符显示
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>模式</h2>
+<p>模式:</p>
+<pre class="literal-block">
+:set ff?                    #查看模式类型，一般为dos,unix
+:set ff=dos                    #设置模式    例如设置unix模式    :set fileformat=unix
+                            #与:set fileformat=dos一个效果 ff是缩写
+                            #  fileformat---ff
+                            # :%s/^M//g等同于:set ff=unix
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>移动编辑</h2>
+<p>移动编辑:</p>
+<pre class="literal-block">
+gg               # 光标跳转到文件首行
+G                # 光标跳转文件最后一行
+_                # 光标移到当前行第一个非空字符位置
+A                # 移动到行尾
+v,V              # 可视化模式
+行号+gg            #快速移动到指定行号
+</pre>
+</div>
+<div class="section" id="section-5">
+<h2>粘贴与复制</h2>
+<p>粘贴与复制:</p>
+<pre class="literal-block">
+y                # 复制当前光标所在处字符
+yy               # 复制当前光标所在行
+p                # 在当前位置粘贴上一次复制的内容
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>删除</h2>
+<p>删除:</p>
+<pre class="literal-block">
+dd                #命令模式下dd删除当前行
+
+# 删除多行，如删除8-17行 8,17d
+</pre>
+</div>
+<div class="section" id="section-7">
+<h2>查找</h2>
+<p>斜杠后跟查找的字符查找:</p>
+<pre class="literal-block">
+:/'what'
+</pre>
+</div>
+<div class="section" id="section-8">
+<h2>替换</h2>
+<p>替换:</p>
+<pre class="literal-block">
+# :{作用范围}s/{目标}/{替换}/{替换标志}
+
+# 会在全局范围(%)查找foo并替换为bar，所有出现都会被替换（g）。
+:%s/foo/bar/g
+
+s表示单行查找替换,
+%s表示全局查找替换
+</pre>
+</div>
+<div class="section" id="section-9">
+<h2>其他</h2>
+<p>其他:</p>
+<pre class="literal-block">
+:w                 #保存不退出
+:w                 #新文件名 把文件另存为新文件
+:q                 #不保存退出
+:wq             #保存退出
+:!                 #强制
+:q!             #强制不保存退出，用于修改文件之后，不保存数据退出
+:wq!             #强制保存退出，当文件的所有者或 root 用户，对文件没有写权限的时候，强制写入数据使用
+
+:ls                #查看当前编辑器所有文件
+:bn                #切换到第n个文件  主要是b控制的 序号可以先ls查看
+</pre>
+</div>
+<div class="section" id="section-10">
+<h2>便捷配置</h2>
+<p>语法高亮:</p>
+<pre class="literal-block">
+vim
+syntax on                # 语法高亮
+filetype indent on       # 开启文件类型检查，并且载入与该类型对应的缩进规则
+
+set showmode               # 底部显示当前模式， 如命令模式、插入模式
+set showcmd                # 命令模式下，底部显示当前键入的指令
+set mouse=a                # 支持使用鼠标
+set encoding=utf-8         # 使用 utf-8 编码
+set t_Co=256               # 启用256色
+</pre>
+<p>缩进:</p>
+<pre class="literal-block">
+set autoindent             # 按下回车键时，下一行缩进与上一行保持一致
+set tabstop=2              # 按下tab时, vim显示的空格数
+set shiftwidth             # 在文本上按下&gt;&gt;（增加一级缩进）、&lt;&lt;（取消一级缩进）或者==（取消全部缩进）时，每一级的字符数。
+set expandtab              # 由于 Tab 键在不同的编辑器缩进不一致，该设置自动将 Tab 转为空格。
+set softtabstop=2          # Tab 转为多少个空格
+</pre>
+<p>外观:</p>
+<pre class="literal-block">
+set number                  # set nu 也可，显示行号
+set relativenumber          # 显示光标所在的当前行的行号，其他行都为相对于该行的相对行号。
+set cursorline              # 光标所在当前行高亮
+set textwidth=80            # 设置行宽，即一行显示多少字符
+set wrap                    # 自动折行，即太长的行分为几行显示
+set nowrap                  # 关闭自动折行
+set linebreak               # 只有遇到指定的符号（比如空格、连词号和其他标点符号），才发生折行。也就是说，不会在单词内部折行。
+set wrapmargin=2            # 指定折行处与编辑窗口的右边缘之间空出的字符数。
+set scrolloff=5             # 垂直滚动时，光标距离顶部/底部的位置（单位：行）
+set sidescrolloff=15        # 水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用。
+set laststatus=2            # 是否显示状态栏。0 表示不显示，1 表示只在多窗口时显示，2 表示显示。
+set ruler                   # 在状态栏显示光标的当前位置（位于哪一行哪一列）。
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://www.ruanyifeng.com/blog/2018/09/vimrc.html">Vim 配置入门 - 阮一峰的网络日志</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-11">
+<h2>语法</h2>
+<div class="section" id="section-12">
+<h3>变量</h3>
+<p>变量定义:</p>
+<pre class="literal-block">
+let a=1
+</pre>
+<p>打印:</p>
+<pre class="literal-block">
+echo &amp;a
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://yianwillis.github.io/vimcdoc/doc/usr_41.html">VIM 中文用户手册: 编写 Vim 脚本</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

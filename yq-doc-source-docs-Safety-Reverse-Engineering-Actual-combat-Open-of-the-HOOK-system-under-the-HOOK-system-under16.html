@@ -1,0 +1,466 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li  class="active"><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>实战-Ubuntu16下Hook系统的open</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/an-quan.html">安全</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/an-quan.html">安全</a></li>
+												<li><a class="button button-alt" href="tag/ni-xiang-gong-cheng.html">逆向工程</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>实战-Ubuntu16下Hook系统的open</h2>
+									<p>因为上一篇的 <em>/docs/安全/逆向工程/实战-Mac下Hook其他进程</em>
+失败了,
+然后找原因啊, 巴拉巴拉的, 就有了这个</p>
+<div class="section" id="hookopen">
+<h2>Hook标准库的open</h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>此篇幅本也是想用add的, 但是估计是动态库的使用方式不对,
+所以最终还是换成了系统的动态库里面的open调用</p>
+<p class="last">下方源码主要看open, add后面再看啥问题</p>
+</div>
+<p>test3.c源码:</p>
+<pre class="literal-block">
+#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+
+int add(int a, int b){ return a+b+3; }
+
+int main(){
+  int a = 200;
+  int b = 300;
+  int ret = add(a, b);
+  printf(&quot;a + b = %d + %d = %d\n&quot;, a, b, ret);
+
+  int fd = open(&quot;test3.c&quot;, O_RDONLY) ;
+  if (fd != -1){
+    printf(&quot;open t3 success\n&quot;);
+  } else {
+    printf(&quot;open t3 failed\n&quot;);
+  }
+  close(fd);
+
+  return 0;
+}
+</pre>
+<p>编译为执行文件:</p>
+<pre class="literal-block">
+gcc -g -o test3 test3.c
+</pre>
+<p>然后是hook的代码hookt3.c:</p>
+<pre class="literal-block">
+#include &quot;stdio.h&quot;
+
+int add(int a, int b){
+
+  printf(&quot;===hook in====&quot;);
+  int ret = a + b + 100;
+  printf(&quot;===hook out===&quot;);
+  return ret;
+}
+
+extern int __open(char *,int,int);
+//打开文件
+int open(char * path,int flags,int mode)
+{
+  //输出打开的文件名
+  printf(&quot;=======hook open :%s\n&quot;,path);
+  int ret =  __open(path,flags,mode);
+  printf(&quot;===hoot fd: %d \n&quot;, ret);
+  return ret;
+  // return 0;
+}
+</pre>
+<p>编译为动态库:</p>
+<pre class="literal-block">
+gcc -shared -fPIC  -g -o libhkt2.so hookt3.c
+</pre>
+<p>单独执行:</p>
+<pre class="literal-block">
+$ ./test3
+a + b = 200 + 300 = 503
+open t3 success
+</pre>
+<p>加hook库:</p>
+<pre class="literal-block">
+$ LD_PRELOAD=./libhkt2.so ./test3
+a + b = 200 + 300 = 503
+=======hook open :test3.c
+===hoot fd: 3
+open t3 success
+</pre>
+<p>ldd对比下加载库顺序:</p>
+<pre class="literal-block">
+root&#64;740ff0ad5041:~/project/test# ldd test3
+  linux-vdso.so.1 =&gt;  (0x00007fff657c8000)
+  libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f5d2fd2a000)
+  /lib64/ld-linux-x86-64.so.2 (0x00007f5d300f4000)
+</pre>
+<p>做了 LD_PRELOAD 的:</p>
+<pre class="literal-block">
+root&#64;740ff0ad5041:~/project/test# LD_PRELOAD=./libhkt2.so ldd test3
+=======hook open :/dev/tty
+===hoot fd: 3
+=======hook open :/usr/bin/ldd
+===hoot fd: 3
+  linux-vdso.so.1 =&gt;  (0x00007ffebd48a000)
+  ./libhkt2.so (0x00007f9b745a3000)
+  libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f9b741d9000)
+  /lib64/ld-linux-x86-64.so.2 (0x00007f9b747a5000)
+root&#64;740ff0ad5041:~/project/test#
+</pre>
+</div>
+<div class="section" id="open">
+<h2>为什么open要使用双下划线前缀</h2>
+<p>使用__open对底层open函数进行hook,为什么定义的函数原型是:</p>
+<pre class="literal-block">
+extern int __open(char *,int,int);
+</pre>
+<p>原因是:
+在GNU/Linux系统中,系统调用和库函数的名称带有前缀来区分。
+对应open系统调用的库函数名称是__open。</p>
+<ul class="simple">
+<li>如果直接使用系统调用的 API,如 open()、write() 等,定义和调用时使用的是没有下划线前缀的名称,如 open()。</li>
+<li>但是如果要对系统调用做 hook,那么 hook 函数的定义需要使用下划线前缀隐藏名称,如 __open()。</li>
+<li>标准库函数如 strcpy()、printf() 等,直接使用和定义时也是没有下划线前缀。</li>
+<li>只有在需要进行 hook 标准库函数时,hook 函数才使用下划线前缀隐藏名称,如 __strcpy() 等。</li>
+</ul>
+</div>
+<div class="section" id="hookadd">
+<h2>Hook标准库的自定义的add</h2>
+<p>经过不懈努力, 终于在linux上成功了, 之前编译顺序问题导致一直失败</p>
+<p>ub16正确编译带库的执行文件:</p>
+<pre class="literal-block">
+gcc -o test3 test3.c -luadd -L./ -g
+</pre>
+<p>换个顺序就是错的:</p>
+<pre class="literal-block">
+// error, 找不到add
+gcc -luadd -L./ -g -o test3 test3.c
+</pre>
+<p>自定义一个动态库, 实现add函数</p>
+<p>add.h:</p>
+<pre class="literal-block">
+int add(int a, int b);
+</pre>
+<p>add.c:</p>
+<pre class="literal-block">
+#include &quot;add.h&quot;
+
+int add(int a, int b){
+  return a+b+300;
+}
+</pre>
+<p>将add编译为uadd库:</p>
+<pre class="literal-block">
+gcc -shared -fPIC -g -o libuadd.so add.c
+</pre>
+<p>入口执行文件test3.c:</p>
+<pre class="literal-block">
+#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &quot;add.h&quot;
+
+int main(){
+
+  int a = 200;
+  int b = 300;
+  int ret = add(a, b);
+  printf(&quot;a + b = %d + %d = %d\n&quot;, a, b, ret);
+
+  int fd = open(&quot;test3.c&quot;, O_RDONLY) ;
+  if (fd != -1){
+    printf(&quot;open t3 success\n&quot;);
+  } else {
+    printf(&quot;open t3 failed\n&quot;);
+  }
+
+  close(fd);
+  return 0;
+
+}
+
+// linux下  -o test3 test3.c 得在最前面, 不然找不到add
+// gcc -o test3 test3.c -luadd -L./ -g
+// gcc -g -o test3 test3.c
+</pre>
+<p>编译为执行文件:</p>
+<pre class="literal-block">
+gcc -o test3 test3.c -luadd -L./ -g
+</pre>
+<p>hook的库源码hookt3.c:</p>
+<pre class="literal-block">
+#include &lt;stdio.h&gt;
+
+int add(int a, int b){
+
+  printf(&quot;===hook in add====\n&quot;);
+  int ret = a + b + 100;
+  printf(&quot;===hook out add===\n&quot;);
+  return ret;
+}
+
+extern int __open(char *,int,int);
+//打开文件
+int open(char * path,int flags,int mode)
+{
+  //输出打开的文件名
+  printf(&quot;=======hook open :%s\n&quot;,path);
+  int ret =  __open(path,flags,mode);
+  printf(&quot;===hoot fd: %d \n&quot;, ret);
+  return ret;
+    // return 0;
+}
+
+// gcc -shared -fPIC  -g -o libhkt2.so hookt3.c
+// LD_LIBRARY_PATH=./ LD_PRELOAD=./libhkt2.so ./test3
+</pre>
+<p>编译为动态库hkt2:</p>
+<pre class="literal-block">
+gcc -shared -fPIC  -g -o libhkt2.so hookt3.c
+</pre>
+<p>现在可以来测试了, 当不插入hook动态库时候:</p>
+<pre class="literal-block">
+$ LD_LIBRARY_PATH=./ ./test3
+a + b = 200 + 300 = 800
+open t3 success
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">此处使用 LD_LIBRARY_PATH 是因为, 调用了当前自己编的动态库, 这样才能找到
+不这样的话, 要么写到系统库路径去, 要么重写下ldconf</p>
+</div>
+<p>当插入hook时:</p>
+<pre class="literal-block">
+$ LD_LIBRARY_PATH=./ LD_PRELOAD=./libhkt2.so ./test3
+===hook in add====
+===hook out add===
+a + b = 200 + 300 = 600
+=======hook open :test3.c
+===hoot fd: 3
+open t3 success
+</pre>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<p class="last">LD_PRELOAD 只是预加载动态库的,
+如果add直接是源码写在了执行文件, 或者add在静态库, 那么这种方法就不行了</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

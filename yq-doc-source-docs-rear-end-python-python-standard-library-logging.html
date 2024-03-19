@@ -1,0 +1,457 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>logging</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>logging</h2>
+									<p>官网: <a class="reference external" href="https://docs.python.org/zh-cn/3/library/logging.html">https://docs.python.org/zh-cn/3/library/logging.html</a></p>
+<p>知乎有篇总结的貌似也可以: <a class="reference external" href="https://zhuanlan.zhihu.com/p/425678081">https://zhuanlan.zhihu.com/p/425678081</a></p>
+<p>算是内置的一个灵活的日志库</p>
+<div class="section" id="section-1">
+<h2>部分函数/模块使用说明</h2>
+<div class="section" id="logging-basicconfig">
+<h3>logging.basicConfig</h3>
+<p>最直接的使用是直接调用模块级别函数如:</p>
+<pre class="literal-block">
+import logging
+logging.info('xxxx')
+</pre>
+<p>最简单的配置是使用 <strong>logging.basicConfig</strong> , 这会设置一个全局的日志配置, 如果多次调用, 以第一次的配置信息为准,
+如设置日志:</p>
+<pre class="literal-block">
+logging.basicConfig(filename='tmp_log.log', level=logging.DEBUG)
+</pre>
+<p>亦可设置日志格式:</p>
+<pre class="literal-block">
+logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+</pre>
+</div>
+<div class="section" id="logging-getlogger">
+<span id="getlogger"></span><h3>logging.getLogger</h3>
+<p>获取日志处理器</p>
+<ul class="simple">
+<li>可传入一个字符串参数, 表示处理器名, 多次调用且使用同一个字符串时, 返回同一个handler</li>
+<li>若不传入参数, 表示获取 root logger</li>
+</ul>
+</div>
+<div class="section" id="logging-streamhandler">
+<h3>logging.StreamHandler</h3>
+<p><strong>logging.StreamHandler()</strong> 获取一个stream的handler, 可添加给上面 <a class="reference internal" href="#getlogger">getLogger</a> 获取到的 logger,
+表示输出到控制台.</p>
+</div>
+<div class="section" id="logging-filehandler">
+<span id="filehandler"></span><h3>logging.FileHandler</h3>
+</div>
+<div class="section" id="logging-formatter">
+<h3>logging.Formatter</h3>
+<p>定义日志格式, 如:</p>
+<pre class="literal-block">
+_formatter = \
+logging.Formatter('%(asctime)s - %{pathname}s[line:%{lineno}d] - %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+</pre>
+<p>设置好的 _formatter 可设置给handler(比如上面 <a class="reference internal" href="#filehandler">FileHandler</a> 的实例对象)</p>
+<p>支持的格式字符串(部分):</p>
+<ul class="simple">
+<li>%(levelname)s: 日志级别(INFO、DEBUG、WARNING、ERROR等)</li>
+<li>%(filename)s: 发生日志记录的文件名称</li>
+<li>%(funcName)s: 发生日志记录的函数名称</li>
+<li>%(lineno)d: 发生日志记录的代码行数</li>
+<li>%(asctime)s: 日志记录的时间,默认格式为%Y-%m-%d %H:%M:%S</li>
+<li>%(message)s: 日志记录的消息正文</li>
+<li>%(name)s: Logger的名称</li>
+<li>%(threadName)s: 线程名称</li>
+<li>%(process)d: 进程ID</li>
+<li>%{pathname}s: 所执行程序所在路径, 绝对路径</li>
+<li>%(filename)s : 所执行程序所在路径, 相对路径</li>
+</ul>
+</div>
+<div class="section" id="logging-handlers">
+<h3>logging.handlers</h3>
+<p>logging.handlers模块提供了几种日志处理程序,用于处理日志记录。主要有以下几种:</p>
+<ul class="simple">
+<li>RotatingFileHandler:日志轮询处理,可以支持日志文件达到一定大小后自动切割为多个文件。</li>
+<li>TimedRotatingFileHandler:日志定期轮询,可以按时间切割日志文件。</li>
+<li>SMTPHandler:通过SMTP协议发送日志邮件。</li>
+<li>HTTPHandler:将日志记录发送到HTTP服务器。</li>
+<li>SocketHandler:将日志发送到网络套接字。</li>
+<li>QueueHandler: 将日志记录发送到队列,由其他进程从队列中获取日志记录进行处理。</li>
+<li>SysLogHandler:通过Syslog协议发送日志到syslog守护进程</li>
+</ul>
+<div class="section" id="rotatingfilehandler">
+<h4>RotatingFileHandler</h4>
+<p>如日志文件名为app.log, 最多10M, 保留最近5个日志文件:</p>
+<pre class="literal-block">
+handler = RotatingFileHandler('app.log', maxBytes=10*1024*1024, backupCount=5)
+</pre>
+</div>
+<div class="section" id="timedrotatingfilehandler">
+<h4>TimedRotatingFileHandler</h4>
+<p>通过TimedRotatingFileHandler每天做日志文件轮询,实现日志文件按日切割的功能:</p>
+<pre class="literal-block">
+import logging
+from logging.handlers import TimedRotatingFileHandler
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+# 每天做日志轮询
+handler = TimedRotatingFileHandler('app.log', when='D', interval=1, backupCount=7)
+logger.addHandler(handler)
+
+logger.info('Start')
+</pre>
+</div>
+<div class="section" id="smtphandler">
+<h4>SMTPHandler</h4>
+<p>通过SMTPHandler将日志发送邮件的方式进行处理:</p>
+<pre class="literal-block">
+import logging
+from logging.handlers import SMTPHandler
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)
+
+# 通过SMTP发送日志邮件
+mail_handler = SMTPHandler(mailhost='smtp.gmail.com',
+                          fromaddr='from&#64;example.com',
+                          toaddrs=['to&#64;example.com'],
+                          subject='Application Error',
+                          credentials=credentials)
+logger.addHandler(mail_handler)
+
+logger.error('Error occurred')
+</pre>
+</div>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>日志级别</h2>
+<p>日志等级:</p>
+<pre class="literal-block">
+critical &gt; error &gt; warning &gt; info &gt; debug
+</pre>
+<p>级别越高打印的越少.</p>
+<ul class="simple">
+<li>debug         : 打印 debug, info, warning, error, critical 级别的日志</li>
+<li>info          : 打印 info, warning, error, critical 级别的日志</li>
+<li>warning       : 打印 warning, error, critical 级别的日志</li>
+<li>error         : 打印 error, critical 级别的日志</li>
+<li>critical      : 打印 critical 级别</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">默认只打印大于等于warning级别的日志</p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>自定义配置(可选)</h2>
+<p>logging标准模块支持三种配置方式:</p>
+<ul class="simple">
+<li>dictConfig
+dictConfig 是通过一个字典进行配置 Logger，Handler，Filter，Formatter；</li>
+<li>fileConfig
+fileConfig 则是通过一个文件进行配置；</li>
+<li>listen
+listen 则监听一个网络端口，通过接收网络数据来进行配置。</li>
+</ul>
+<p>除此之外, 也可以直接调用 Logger，Handler 等对象中的方法在代码中来显式配置, 如:</p>
+<pre class="literal-block">
+import logging
+_logger = logging.getLogger(__name__)
+
+# 之后调用跟普通调用一样
+_logger.info('info msg')
+</pre>
+<p>说明: logger只是一个日志器, 真正处理的的handler, 然后handler可以设置 Filter 和 Formatter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://zhuanlan.zhihu.com/p/425678081">https://zhuanlan.zhihu.com/p/425678081</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="logger">
+<h2>将单独的logger记录到日志文件</h2>
+<p>无论对 logging.getLogger('someLogger') 进行多少次调用，都会返回同一个 logger 对象的引用。
+不仅在同一个模块内如此，只要是在同一个 Python 解释器进程中，跨模块调用也是一样。</p>
+<p>同样是引用同一个对象，应用程序也可以在一个模块中定义和配置一个父 logger，
+而在另一个单独的模块中创建（但不配置）子 logger，对于子 logger 的所有调用都会传给父 logger。</p>
+<p>比如在一个单独的logger下添加到其他位置:</p>
+<p>定义一个普通logger:</p>
+<pre class="literal-block">
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+</pre>
+<p>定义一个文件处理logger:</p>
+<pre class="literal-block">
+logger_file_handler = logging.FileHandler('log_test.log')
+logger_file_handler.setLevel(logging.DEBUG)
+</pre>
+<p>定义一个流handler的logger:</p>
+<pre class="literal-block">
+logger_stream_handler = StreamHandler()
+logger_stream_handler.setLevel(logging.INFO)
+</pre>
+<p>可以先设置一下格式:</p>
+<pre class="literal-block">
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger_file_handler.setFormatter(formatter)
+logger_stream_handler.setFormatter(formatter)
+</pre>
+<p>将文件和流的logger作为子logger加入到最开始的普通logger:</p>
+<pre class="literal-block">
+logger.addHandler(logger_file_handler)
+logger.addHandler(logger_stream_handler)
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">详细见::</th><td class="field-body"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/logging.html">logging --- Python 的日志记录工具</a>
+<a class="reference external" href="https://docs.python.org/zh-cn/3/howto/logging-cookbook.html#logging-cookbook">日志操作手册</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-4">
+<h2>日志没输出到控制台</h2>
+<p>从两个方面看:</p>
+<ul class="simple">
+<li>设置日志输出级别</li>
+<li>设置流式输出(即控制台输出)的handler</li>
+</ul>
+<p>例:</p>
+<pre class="literal-block">
+# 获取处理器
+_logger = logging.getLogger(__name__)
+
+# 实例 stream handler
+_console_handler = logging.StreamHandler()
+
+# 给处理器增加handler
+_logger.addHandler(_console_handler)
+
+# 设置日志级别
+_logger.setLevel(logging.INFO)
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
+											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>19</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
+											<p><p class="first last">python实现翻译功能</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>18</strong></span>
+											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
+											<p><p class="first last">gnome图标文件缓存刷新</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>17</strong></span>
+											<h3><a href="yq-doc-vs-plugin.html">Vscode文档相关插件.rst</a></h3>
+											<p><p class="first last">Vscode文档相关实用插件</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>
