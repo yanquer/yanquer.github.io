@@ -293,64 +293,50 @@
 <p>此模板将应用于每个现有类别，根据 CATEGORY_SAVE_AS 设置 (默认值: category/{slug}.html) 生成输出。 如果分页功能处于启用状态，则后续的页面默认类似为 category/{slug}{number}.html 这种形式。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
+<col width="50%" />
+<col width="50%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">变量</th>
 <th class="head">描述</th>
-<th class="head">&nbsp;</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr><td>category</td>
 <td>分类名</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>articles</td>
 <td>分类文章</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>dates</td>
 <td>分类的文章，按日期升序排序</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>articles_paginator</td>
 <td>文章列表的分页对象</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>articles_page</td>
 <td>文章的当前页面</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>articles_previous_page</td>
 <td>文章的前一页(如果页面不存在，则为”无”)</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>articles_next_page</td>
 <td>文章的下一页(如果页面不存在，则为”无”)</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>dates_paginator</td>
 <td>文章列表的分页对象，按日期升序排序</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>dates_page</td>
 <td>文章的当前页，按日期升序排序。</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>dates_previous_page</td>
 <td>文章的前一页，按日期升序排序(如果页面不存在，则为”无”)</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>dates_next_page</td>
 <td>文章的下一页，按日期升序排序(如果页面不存在，则为”无”)</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td>page_name</td>
-<td>CATEGORY_URL</td>
-<td>其中 {slug} 之后的所有内容都被删除 - 对于分页链接有用</td>
+<td>CATEGORY_URL，其中 {slug} 之后的所有内容都被删除 - 对于分页链接有用</td>
 </tr>
 </tbody>
 </table>
@@ -476,23 +462,17 @@ FacebookImage: http://franciscabrel.com/images/pythonlove.png
 如果定义了 <cite>MONTH_ARCHIVE_SAVE_AS</cite> ，则按月份，定义 <cite>DAY_ARCHIVE_SAVE_AS</cite> 按天数。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
+<col width="50%" />
+<col width="50%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">变量</th>
 <th class="head">描述</th>
-<th class="head">&nbsp;</th>
-<th class="head">&nbsp;</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr><td>period</td>
-<td>一个元组tuple( 年</td>
-<td>月</td>
-<td>日 )，表示当前时间段。 年 和 日 格式是数字，而 月 是字符串。 当时间段给定只有年份时，此元组也才只包含 年 。 如果时间段给定有年和月等，元组将包含 年 和 月 。</td>
+<td>一个元组tuple(年 月 日)，表示当前时间段。 年 和 日 格式是数字，而 月 是字符串。 当时间段给定只有年份时，此元组也才只包含 年 。 如果时间段给定有年和月等，元组将包含 年 和 月 。</td>
 </tr>
 </tbody>
 </table>
