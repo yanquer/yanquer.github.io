@@ -132,4 +132,10 @@
   cursor: pointer;
 }
 
+/* 匹配字符特殊显示 */
+.tipue_search_content_bold{
+  font-weight: 900;
+  color: rgb(105, 92, 221);
+  font-size: 18px;
+}
 
