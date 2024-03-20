@@ -1,3 +1,8 @@
+/* 引入字体 */
+/* @font-face {
+	font-family: FontAwesome;
+	src: url(font-awesome/webfonts/fa-v4compatibility.ttf);
+} */
 
 /* 默认的黑色主题 */
 html, html > body *:not(a):not(.highlight):not(pre):not(span),
@@ -184,6 +189,57 @@ div[onclick]:hover,
 		width: 70%;
 	}
 
+/* 搜索框 */
+.row.page-head-search{
+	width: 100%;
+	margin-left: unset !important;
+	background: #7BA7AB;
+}
+	.row.page-head-search > form{
+		/* text-align: right; */
+		padding-top: 0;
+		padding-bottom: 0;
+		height: 42px;
+	}
+
+		.row.page-head-search > form > input{
+			/* background: #f9faeb; */
+			background: rgb(0 0 0 / 20%);
+			border: none;
+			width: 12%;
+			border-radius: 42px;
+			border: 2px solid #324B4E;
+			transition: .3s linear;
+			float: right;
+			color: #c0c0d6 !important;
+			font-size: 16px;
+			height: 22px;
+			margin-right: 0.5%;
+		}
+		.row.page-head-search > form > input:focus{
+			width: 300px;
+		}
+
+		.row.page-head-search > form > button{
+			background-image: url(images/search-white-70.svg);
+			background-color: rgb(0 0 0 / 20%);
+			background-repeat: no-repeat;
+			/* background-size: 100% 100%; */
+			background-size: cover;
+			/* background-position: center bottom; */
+			height: 22px;
+			width: 22px;
+			/* top: -2px;
+			right: 0; */
+			margin-right: 7%;
+			float: right;
+			border: none;
+		}
+		.row.page-head-search > form > button::before{
+			/* content: "f002"; */
+			/* font-family: FontAwesome; */
+			color: #324b4e;
+		}
 
 /* 小节 */
 dt{

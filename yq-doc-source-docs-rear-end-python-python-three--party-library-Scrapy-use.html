@@ -55,6 +55,14 @@
 
 						</div>
 					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
       <h2>使用</h2>
@@ -227,7 +235,8 @@ def start_requests(self):
 <p class="last">注意 start_requests 返回结果需要是一个生成器</p>
 </dd>
 </dl>
-<dl class="docutils" id="parse">
+<!-- parse: -->
+<dl class="docutils">
 <dt>parse(self, response)</dt>
 <dd><p class="first">解析的方法，每个初始URL完成下载后将被调用，调用的时候传入从每一个URL传回的Response对象来作为唯一参数，
 主要作用如下：</p>
@@ -262,8 +271,8 @@ cd mySpider; scrapy crawl itcast
 <p class="first sidebar-title">发生了什么?</p>
 <p>不管是否重新定义 <a class="reference internal" href="#start-requests">start_requests</a> ,
 start_requests 的返回结果都是 <cite>scrapy.Request</cite> 对象的生成器</p>
-<p>对于每一个生成器的 url, 都会调用 <a class="reference internal" href="#parse">parse</a> 方法, 处理拿到的数据</p>
-<p class="last">另外, <a class="reference internal" href="#start-requests">start_requests</a> 返回的 <cite>scrapy.Request</cite> 默认回调就是 <a class="reference internal" href="#parse">parse</a></p>
+<p>对于每一个生成器的 url, 都会调用 <cite>parse</cite> 方法, 处理拿到的数据</p>
+<p class="last">另外, <a class="reference internal" href="#start-requests">start_requests</a> 返回的 <cite>scrapy.Request</cite> 默认回调就是 <cite>parse</cite></p>
 </div>
 </div>
 <div class="section" id="shell">

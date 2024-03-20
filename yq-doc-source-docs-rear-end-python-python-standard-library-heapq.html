@@ -55,6 +55,14 @@
 
 						</div>
 					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
       <h2>heapq</h2>
@@ -126,11 +134,12 @@
 <li><a class="reference internal" href="#heappushpop">heappushpop</a> , 相当于 先做 <a class="reference internal" href="#heappush">heappush</a> , 再做 <a class="reference internal" href="#heappop">heappop</a></li>
 <li><a class="reference internal" href="#heapify">heapify</a>  , 将 list 原地转换为 堆</li>
 <li><a class="reference internal" href="#heapreplace">heapreplace</a></li>
-<li><a class="reference internal" href="#merge">merge</a></li>
+<li>merge</li>
 <li><a class="reference internal" href="#nlargest">nlargest</a></li>
 <li><a class="reference internal" href="#nsmallest">nsmallest</a></li>
 </ul>
 <p>该模块还提供了三个基于堆的通用功能函数。</p>
+<!-- merge: -->
 <p>后两个函数在 n 值较小时性能最好。
 对于更大的值，使用 sorted() 函数会更有效率。
 此外，当 n==1 时，使用内置的 min() 和 max() 函数会更有效率。
