@@ -36,7 +36,8 @@ div[onclick]:hover,
 	color: #6091c1 !important;
 }
 .page-home > h1 > a:hover{
-	background: unset;
+	background: unset !important;
+	color: #6091c1 !important;
 }
 
 .box {
