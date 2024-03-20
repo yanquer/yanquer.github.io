@@ -115,3 +115,21 @@
 
 }
 
+/* 搜索时间 不显示关闭 */
+.tipue_search_image_close{
+  display: none;
+}
+#tipue_search_results_count{
+  display: inline-block;
+}
+/* 搜索时间关闭按钮 自定义关闭按钮 */
+#tipue_search_results_count_close{
+  margin-left: 4%;
+  display: inline-block;
+  color: #a07878;
+}
+#tipue_search_results_count_close:hover{
+  cursor: pointer;
+}
+
+

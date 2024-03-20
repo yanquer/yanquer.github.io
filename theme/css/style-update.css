@@ -212,13 +212,26 @@ div[onclick]:hover,
 			transition: .3s linear;
 			float: right;
 			color: #c0c0d6 !important;
-			font-size: 16px;
+			/* font-size: 16px; */
 			height: 22px;
 			margin-right: 0.5%;
 		}
 		.row.page-head-search > form > input:focus{
-			width: 300px;
+			width: 16%;
 		}
+		.row.page-head-search > form > input:focus-visible{
+			outline: none;
+		}
+		/* .row.page-head-search > form > input:-internal-autofill-selected, */
+
+		/* 当选择历史时候, 会变成默认的白色, 无解... */
+		/* .row.page-head-search > form > input::selection,
+		.row.page-head-search > form > input::-ms-fill,
+		.row.page-head-search > form > input::-webkit-file-upload-button,
+		.row.page-head-search > form > input::webkit-input-placeholder,
+		.row.page-head-search > form > input:-internal-autofill-selected {
+			background: rgb(0 0 0 / 20%);
+		} */
 
 		.row.page-head-search > form > button{
 			background-image: url(images/search-white-70.svg);
