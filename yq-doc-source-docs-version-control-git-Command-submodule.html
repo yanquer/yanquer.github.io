@@ -12,11 +12,15 @@
 			<meta charset="utf-8" />
 			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
 				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
 				<link rel="stylesheet" href="/theme/css/style.css" />
 				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
 			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
 		<link rel="stylesheet" href="/theme/css/style-update.css" />
 	</head>
@@ -103,7 +107,38 @@
 
 									<div class="pennant pennant-alt date">2023-02-26</div>
 									<h2>submodule</h2>
-									<div class="section" id="section-1">
+									<p>支持的选项</p>
+<div class="section" id="init">
+<h2>init</h2>
+<p>不带参数默认从 <cite>.gitmodules</cite> 发现子模块,
+并注册子模块(要求此目录不在版本库)到索引信息 (即注册到 <cite>.git/config</cite>)</p>
+</div>
+<div class="section" id="sync">
+<h2>sync</h2>
+<p>从子模块的远程url(上游)同步信息 (子模块从 <cite>.git/config</cite> 获取).
+也就是只有 init 好的才可以使用</p>
+</div>
+<div class="section" id="deinit">
+<h2>deinit</h2>
+<p>解注册一/多个子模块.
+会将其相关信息从 <cite>.git/config</cite> 下移除(包括work tree),
+但是保留 <cite>.gitmodules</cite> 里的信息.</p>
+<p>效果等价于</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update
+git<span class="w"> </span>submodule<span class="w"> </span>foreach
+git<span class="w"> </span>submodule<span class="w"> </span>sync
+</pre></div>
+<p>有时候你从别人仓库拉东西, 又不想要里面子模块, 就可以用这个指令.</p>
+<p>语法</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>deinit<span class="w"> </span><span class="o">[</span>-f<span class="p">|</span>--force<span class="o">]</span><span class="w"> </span><span class="o">(</span>--all<span class="p">|</span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span>&lt;path&gt;<span class="o">)</span>
+</pre></div>
+<dl class="docutils">
+<dt>-f,     --force</dt>
+<dd>即使已经拉取了子模块, 且修改了子模块内容, 也进行删除操作</dd>
+</dl>
+<p>如果想完全删除子模块, 包括版本库, 可以搭配 <cite>git rm</cite> 使用</p>
+</div>
+<div class="section" id="section-1">
 <h2>使用</h2>
 <p>git submodule add $remote_git_addr $local_dir   添加子模块到本地的目录</p>
 <p>git submodule update --remote $local_dir 更新某一个子模块</p>
@@ -169,6 +204,12 @@ git restore --staged .
 </p>
 										</li>
 										<li>
+											<span class="date"> 3 <strong>21</strong></span>
+											<h3><a href="yq-doc-do-from-sp-to-pelican.html">记录将sphinx文档库迁移到pelican</a></h3>
+											<p><p class="first last">将旧的文档形式内容迁移到pelican做成博客</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>19</strong></span>
 											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
 											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
@@ -178,12 +219,6 @@ git restore --staged .
 											<span class="date"> 3 <strong>19</strong></span>
 											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
 											<p><p class="first last">python实现翻译功能</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>18</strong></span>
-											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
-											<p><p class="first last">gnome图标文件缓存刷新</p>
 </p>
 										</li>
 									</ul>

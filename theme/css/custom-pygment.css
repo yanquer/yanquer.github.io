@@ -1,0 +1,29 @@
+/* 对于python pygment 生成的, 有些地方不支持深色 */
+
+.literal-block{
+	background: rgb(44, 44, 44);
+	/* color: rgb(183, 183, 183); */
+}
+/* 代码预览 */
+.highlight pre{
+	background: rgb(44, 44, 44);
+}
+pre{
+	color: #fbf7f7;
+}
+.kc{
+	color: #058e2c;
+}
+.nt {
+	color: #4880c8;
+}
+.nf {
+	color: #4470e0;
+}
+.s1{
+	color: #6ffff2;
+}
+
+
+
+

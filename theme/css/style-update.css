@@ -54,25 +54,6 @@ div[onclick]:hover,
 #main-wrapper{
 	background: rgb(24, 26, 27) !important;
 }
-.literal-block{
-	background: rgb(44, 44, 44) !important;
-	color: rgb(183, 183, 183) !important;
-}
-
-
-/* 代码预览 */
-.highlight pre{
-	background: rgb(44, 44, 44) !important;
-}
-.kc{
-	color: #058e2c;
-}
-.nt {
-	color: #4880c8;
-}
-.nf {
-	color: #4470e0;
-}
 
 /* 设置滚动条 */
 /*html {

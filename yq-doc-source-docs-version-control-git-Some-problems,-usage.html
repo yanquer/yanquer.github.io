@@ -12,11 +12,15 @@
 			<meta charset="utf-8" />
 			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
 				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
 				<link rel="stylesheet" href="/theme/css/style.css" />
 				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
 			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
 		<link rel="stylesheet" href="/theme/css/style-update.css" />
 	</head>
@@ -323,6 +327,69 @@ User yanquer
 IdentityFile ~/.ssh/id_rsa_gitee
 </pre>
 </div>
+<div class="section" id="section-13">
+<h2>完全删除子模块</h2>
+<p>从 <cite>[Git] 如何优雅的删除子模块(submodule)或修改Submodule URL &lt;https://www.jianshu.com/p/ed0cb6c75e25&gt;</cite> 看到的</p>
+<div class="section" id="section-14">
+<h3>优雅的删除子模块</h3>
+<div class="highlight"><pre><span></span><span class="c1"># 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空</span>
+git<span class="w"> </span>submodule<span class="w"> </span>deinit<span class="w"> </span><span class="o">{</span>MOD_NAME<span class="o">}</span>
+<span class="c1"># 删除.gitmodules中记录的模块信息（--cached选项清除.git/modules中的缓存）</span>
+git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span><span class="o">{</span>MOD_NAME<span class="o">}</span>
+<span class="c1"># 提交更改到代码库，可观察到&#39;.gitmodules&#39;内容发生变更</span>
+git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;Remove a submodule.&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="url">
+<h3>修改某模块URL</h3>
+<ol class="arabic simple">
+<li>修改 <cite>.gitmodules</cite> 文件中对应模块的 <cite>url</cite> 属性;</li>
+<li>使用 <cite>git submodule sync</cite> 命令，将新的URL更新到文件 <cite>.git/config</cite>；</li>
+</ol>
+<div class="highlight"><pre><span></span>thinker-g@localhost:<span class="w"> </span>~/app$<span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>sync
+Synchronizing<span class="w"> </span>submodule<span class="w"> </span>url<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;gitmods/thinker_g/Helpers&#39;</span>
+thinker-g@localhost:<span class="w"> </span>~/app$<span class="w"> </span><span class="c1"># 运行后可观察到&#39;.git/config&#39;中对应模块的url属性被更新</span>
+thinker-g@localhost:<span class="w"> </span>~/app$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;Update submodule url.&quot;</span><span class="w"> </span><span class="c1"># 提交变更</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-15">
+<h2>将已在版本库的文件更为子模块</h2>
+<p>先建立好子模块仓库,
+假设有一个 <cite>submodule_repo</cite> 目录需要更改为子模块</p>
+<p>先将本地仓库初始化</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>submodule_repo
+git<span class="w"> </span>init
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;first commit&quot;</span>
+</pre></div>
+<p>再将远程与本地合并(这个是远程是刚建立的情况, 最多加 License, README 等与本地无关的文件)</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@xxx.git
+<span class="w">      </span>git<span class="w"> </span>fetch<span class="w"> </span>origin
+<span class="c1"># 加 --allow-unrelated-historie  允许无历史线交点合并</span>
+<span class="c1"># 若不行则切分支合</span>
+<span class="w">      </span>git<span class="w"> </span>merge<span class="w"> </span>--allow-unrelated-historie<span class="w"> </span>origin/master
+</pre></div>
+<p>返回主仓库清除版本库内容</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
+git<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>--cached<span class="w"> </span>submodule_repo
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;remove submodule_repo&quot;</span>
+</pre></div>
+<p>将子模块加到 <cite>.gitmodules</cite>, 没有就新建:</p>
+<pre class="literal-block">
+[submodule &quot;submodule_repo&quot;]
+      path = submodule_repo
+      url = git&#64;xxx.git
+</pre>
+<p>然后更新子模块</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>init
+git<span class="w"> </span>submodule<span class="w"> </span>sync
+</pre></div>
+<p>然后 <cite>git status</cite> 就可以看到信息了, 再提交即可</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add submodule_repo as submodule&quot;</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -353,6 +420,12 @@ IdentityFile ~/.ssh/id_rsa_gitee
 </p>
 										</li>
 										<li>
+											<span class="date"> 3 <strong>21</strong></span>
+											<h3><a href="yq-doc-do-from-sp-to-pelican.html">记录将sphinx文档库迁移到pelican</a></h3>
+											<p><p class="first last">将旧的文档形式内容迁移到pelican做成博客</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>19</strong></span>
 											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
 											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
@@ -362,12 +435,6 @@ IdentityFile ~/.ssh/id_rsa_gitee
 											<span class="date"> 3 <strong>19</strong></span>
 											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
 											<p><p class="first last">python实现翻译功能</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>18</strong></span>
-											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
-											<p><p class="first last">gnome图标文件缓存刷新</p>
 </p>
 										</li>
 									</ul>
