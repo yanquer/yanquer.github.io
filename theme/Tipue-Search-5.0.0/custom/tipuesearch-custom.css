@@ -74,7 +74,8 @@ http://www.tipue.com/search
 		} */
 
 		.row.page-head-search > form > button{
-			margin-top: 0.8%;
+			margin-top: 8px;
+			/* margin-top: 0.8%; */
 			background-image: url(images/search-white-70.svg);
 			background-color: rgb(0 0 0 / 1%);
 			background-repeat: no-repeat;
