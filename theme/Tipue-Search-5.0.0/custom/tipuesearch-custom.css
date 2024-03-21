@@ -1,0 +1,196 @@
+
+/*
+Tipue Search 5.0
+Copyright (c) 2015 Tipue
+Tipue Search is released under the MIT License
+http://www.tipue.com/search
+*/
+
+/* custom */
+
+/* custom reload */
+
+/* 搜索框-重载 */
+#tipue_search_input
+{
+	/* background: #fff url('../search.png') no-repeat 15px 15px; */
+	background: rgb(0 0 0 / 20%);
+	margin-right: 0.5%;
+	border-radius: 42px;
+	border: 2px solid #93a1a2;
+	transition: .3s linear;
+	float: right;
+	color: #c0c0d6 !important;
+	padding: 6px;
+}
+#tipue_search_input:focus{
+	width: 20%;
+}
+#tipue_search_input:focus-visible{
+	outline: none;
+}
+/* 搜索框-自定义 */
+.row.page-head-search{
+	width: 100%;
+	margin-left: unset !important;
+	background: #7BA7AB;
+}
+	.row.page-head-search > form{
+		/* text-align: right; */
+		padding-top: 0;
+		padding-bottom: 0;
+		height: 42px;
+	}
+
+		/* .row.page-head-search > form > input{
+			background: #f9faeb;
+			background: rgb(0 0 0 / 20%);
+			border: none;
+			width: 12%;
+			border-radius: 42px;
+			border: 2px solid #324B4E;
+			transition: .3s linear;
+			float: right;
+			color: #c0c0d6 !important;
+			font-size: 16px;
+			height: 22px;
+			margin-right: 0.5%;
+		}
+		.row.page-head-search > form > input:focus{
+			width: 16%;
+		}
+		.row.page-head-search > form > input:focus-visible{
+			outline: none;
+		} */
+		/* .row.page-head-search > form > input:-internal-autofill-selected, */
+
+		/* 当选择历史时候, 会变成默认的白色, 无解... */
+		/* .row.page-head-search > form > input::selection,
+		.row.page-head-search > form > input::-ms-fill,
+		.row.page-head-search > form > input::-webkit-file-upload-button,
+		.row.page-head-search > form > input::webkit-input-placeholder,
+		.row.page-head-search > form > input:-internal-autofill-selected {
+			background: rgb(0 0 0 / 20%);
+		} */
+
+		.row.page-head-search > form > button{
+			margin-top: 0.8%;
+			background-image: url(images/search-white-70.svg);
+			background-color: rgb(0 0 0 / 1%);
+			background-repeat: no-repeat;
+			/* background-size: 100% 100%; */
+			background-size: cover;
+			/* background-position: center bottom; */
+			height: 22px;
+			width: 22px;
+			/* top: -2px;
+			right: 0; */
+			margin-right: 7%;
+			float: right;
+			border: none;
+		}
+		.row.page-head-search > form > button::before{
+			/* content: "f002"; */
+			/* font-family: FontAwesome; */
+			color: #324b4e;
+		}
+
+/* 主体内容区域 */
+#tipue_search_content {
+	max-width: 80%;
+	margin: 0 0 0 10%;
+	}
+
+/* 底部 下一页样式 */
+#tipue_search_foot_boxes li a {
+	padding: 9px 15px 10px 15px;
+	/* background-color: #f1f1f1; */
+	border: 1px solid #bf9999;
+	border-radius: 1px;
+	/* color: #333; */
+	margin-right: 7px;
+	text-decoration: none;
+	text-align: center;
+
+	color: #dad4d4;
+	background: #852f2f;
+  }
+
+  #tipue_search_foot_boxes li.current {
+	padding: 9px 15px 10px 15px;
+	background: #a96969;
+	border: 1px solid #bf9999;
+	border-radius: 1px;
+	color: #dad4d4;
+	margin-right: 7px;
+	text-align: center; }
+
+  #tipue_search_foot_boxes li a:hover {
+	/* border: 1px solid #ccc;
+	background-color: #f3f3f3; */
+	background: #7a4646 !important;
+
+  }
+
+
+/* 搜索出的标题 */
+.tipue_search_content_title {
+	/* font-size: 2em; */
+	/* line-height: 42px; */
+	font-weight: 400;
+	/* text-transform: none; */
+	/* margin-top: 0.5em; */
+}
+.tipue_search_content_title > a{
+	color: #b5c3e7;
+}
+
+/* 不显示 url */
+.tipue_search_content_url{
+	display: none;
+}
+
+/* 匹配到的字符 */
+.h01{
+	font-weight: 900;
+	color: rgb(114 187 234);
+	font-size: 18px;
+}
+
+/* 搜索结果数 搜索时间 事件好像没了 */
+#tipue_search_results_count{
+	color: rgb(183, 183, 183);
+}
+
+/* custom  all */
+
+/* 搜索时间 不显示关闭 */
+.tipue_search_image_close{
+	display: none;
+  }
+#tipue_search_results_count{
+display: inline-block;
+}
+/* 搜索时间关闭按钮 自定义关闭按钮 */
+#tipue_search_results_count_close{
+margin-left: 4%;
+display: inline-block;
+color: #a07878;
+}
+#tipue_search_results_count_close:hover{
+cursor: pointer;
+}
+
+/* 匹配字符特殊显示 */
+.tipue_search_content_bold{
+font-weight: 900;
+color: rgb(105, 92, 221);
+font-size: 18px;
+}
+
+
+
+
+
+
+
