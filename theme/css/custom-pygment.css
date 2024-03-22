@@ -14,15 +14,36 @@ pre{
 .kc{
 	color: #058e2c;
 }
+.na{
+	color: #bcd8f5;
+}
 .nt {
 	color: #4880c8;
 }
 .nf {
-	color: #4470e0;
+	color: #bacdff;
+}
+.nv{
+	color: #f0bbff;
+}
+.s{
+	color: #6ab4ff;
 }
 .s1{
 	color: #6ffff2;
 }
+.s2{
+	color: #7abcff;
+}
+
+.o{
+	color: #e5e5e5;
+}
+
+.nb{
+	color: #96c8a5;
+}
+
 
 
 
