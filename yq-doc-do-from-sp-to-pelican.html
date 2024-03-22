@@ -74,7 +74,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 21 三月 2024
+      , 21 March 2024
       , Category:
 	  <a href="category/wen-dang.html">文档</a>
     </div>
@@ -205,6 +205,45 @@ _ undeifned
 <p>但是暂时也找不到其他方法, 就暂时只好用错误的mktime了.</p>
 <p>其他信息写了个脚本来全部加.</p>
 </div>
+<div class="section" id="rst">
+<h2>编写rst文档时缺少指令提示</h2>
+<p>因为编写时候是在pelican项目, 所以需要禁用 <cite>sphinx</cite> 的语言服务器 <cite>esbonio</cite></p>
+<div class="highlight"><pre><span></span><span class="nt">&quot;esbonio.server.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+</pre></div>
+<p>然后发现用不了指令提示, 主要是 <cite>docutil</cite> 相关的. 加之有时候手打的可能有拼写错误,
+就打算研究研究自定义个纯粹的指令提示插件.</p>
+<p>with long time...</p>
+<p>直到准备写相关插件, 去看 rst 怎么实现的时候, 发现 <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext">reStructuredText</a>
+插件的功能是这样写的</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.. code-block:: ${1:language}\n$0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Code&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;source.rst&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.. image:: ${1:path}\n$0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;source.rst&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;figure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;figure&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.. figure:: ${1:path}\n\n   $0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Figure&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;source.rst&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="err">...</span>
+</pre></div>
+<p>好吧, 是我用 <tt class="docutils literal">..</tt> 开始的触发方式错误.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">此前用 <tt class="docutils literal">..</tt> 能触发成功, 是因为 <cite>esbonio</cite> 服务器找的是 <cite>docutil</cite> 相关的提示(即使 <cite>esbonio</cite> 没启起来).
+我是觉得, pelican 不需要它且老会自动触发构建又没法成功, 所以给关了</p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -229,25 +268,25 @@ _ undeifned
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
+											<span class="date">Mar <strong>21</strong></span>
 											<h3><a href="yq-doc-source-docs-front-end-frame-jquery-jQuery-provided-methods.html">jQuery提供方法</a></h3>
 											<p><p class="first last">jQuery提供常用方法/函数</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
+											<span class="date">Mar <strong>21</strong></span>
 											<h3><a href="yq-doc-do-from-sp-to-pelican.html">记录将sphinx文档库迁移到pelican</a></h3>
 											<p><p class="first last">将旧的文档形式内容迁移到pelican做成博客</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>19</strong></span>
+											<span class="date">Mar <strong>19</strong></span>
 											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
 											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>19</strong></span>
+											<span class="date">Mar <strong>19</strong></span>
 											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
 											<p><p class="first last">python实现翻译功能</p>
 </p>

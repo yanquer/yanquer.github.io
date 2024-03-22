@@ -189,3 +189,15 @@ dd{
 /* 导入sphinx主题alabaster的alabaster.css */
 /* @import url("alabaster.css"); */
 /* 导入无效, 还是直接放在html吧 */
+
+
+
+
+/* for custom sphinx directive */
+/* toctree 的 a标签 */
+.sphinx-toc-tree{
+	padding: 2px;
+	display: block;
+	width: 100px;
+	font-size: 19px;
+}
