@@ -171,7 +171,7 @@ NAT模式也是VMware创建虚拟机的默认网络连接模式。
 </dl>
 </div>
 <p>控制器默认即可,
-磁盘选择使用 <em>/docs/杂乱无章/常用工具使用/StarWindConverter</em> 转换的虚拟机文件(需要保持现有格式):</p>
+磁盘选择使用 <a class="reference external" href="/yq-doc-source-docs-Chaotic-Commonly-used-tools-StarWindConverter.html">VMware安裝OpenWrt</a> 转换的虚拟机文件(需要保持现有格式):</p>
 <div class="figure">
 <img alt="" src="../../../../resources/images/2024-03-03-18-59-10.png" style="width: 480px;" />
 </div>
@@ -187,8 +187,8 @@ NAT模式也是VMware创建虚拟机的默认网络连接模式。
 <p class="first admonition-title">注解</p>
 <p>这里补充一下, 下载的 img 的压缩包, 需要先转换为ISO文件</p>
 <p>我这里使用的是WSL, 直接在cmd输入debian即可,
-然后配置源, 可参考 <em>/docs/操作系统/linux/debian/配置debian容器</em></p>
-<p>最后使用 <em>/docs/操作系统/linux/linux指令/genisoimage</em> 指令:</p>
+然后配置源, 可参考 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-debian-Configure-DEBIAN-container.html">VMware安裝OpenWrt</a></p>
+<p>最后使用 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-GenisoImage.html">VMware安裝OpenWrt</a> 指令:</p>
 <pre class="literal-block">
 # 进入解压目录
 cd /mnt/e/xxxxxxxxxxx/openwrt-23.05.2-x86-generic-generic-ext4-combined.img
@@ -198,13 +198,13 @@ geteltorito -o output_file.iso input_file.img
 <pre class="literal-block">
 genisoimage -o openwrt.iso openwrt-23.05.2-x86-generic-generic-ext4-combined.img
 </pre>
-<p class="last">实测直接转换的iso是不能用的, 还是老老实实使用工具 <em>/docs/杂乱无章/常用工具使用/StarWindConverter</em> 吧</p>
+<p class="last">实测直接转换的iso是不能用的, 还是老老实实使用工具 <a class="reference external" href="/yq-doc-source-docs-Chaotic-Commonly-used-tools-StarWindConverter.html">VMware安裝OpenWrt</a> 吧</p>
 </div>
 <p>然后打开虚拟机, 会安装一会儿, 出现 ready 后回车即可:</p>
 <div class="figure">
 <img alt="" src="../../../../resources/images/2024-03-03-19-04-27.png" style="width: 480px;" />
 </div>
-<p>物理机 <em>/docs/操作系统/windows/windows_shell/ipconfig</em> 查看网络信息</p>
+<p>物理机 <a class="reference external" href="/yq-doc-source-docs-operating-system-Windows-windows_shell-ipconfig.html">VMware安裝OpenWrt</a> 查看网络信息</p>
 <div class="figure">
 <img alt="" src="../../../../resources/images/2024-03-03-19-08-02.png" style="width: 480px;" />
 </div>

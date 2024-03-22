@@ -108,8 +108,8 @@
 									<div class="pennant pennant-alt date">2023-02-23</div>
 									<h2>硬盘分区配置</h2>
 									<p>对于 <a class="reference external" href="https://zh.wikipedia.org/wiki/Disk_partitioning">硬盘分区</a> 配置，
-尽管 <em>/docs/操作系统/linux/linux指令/fdisk</em> 被认为是标准的配置，
-但是 <em>/docs/操作系统/linux/linux指令/parted</em> 工具还是值得注意的</p>
+尽管 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-fdisk.html">硬盘分区配置</a> 被认为是标准的配置，
+但是 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-PARTED.html">硬盘分区配置</a> 工具还是值得注意的</p>
 <p>老的 PC 使用经典的
 <a class="reference external" href="https://zh.wikipedia.org/wiki/Master_boot_record">主引导记录（Master Boot Record，MBR）</a> 方案，
 将
@@ -124,8 +124,8 @@
 方案，
 <a class="reference external" href="https://zh.wikipedia.org/wiki/Disk_partitioning">硬盘分区</a>
 数据不保存在第一个扇区。</p>
-<p>尽管 <em>/docs/操作系统/linux/linux指令/fdisk</em> 一直是硬盘分区的标准工具，
-但现在 <em>/docs/操作系统/linux/linux指令/parted</em> 替代了它。</p>
+<p>尽管 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-fdisk.html">硬盘分区配置</a> 一直是硬盘分区的标准工具，
+但现在 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-PARTED.html">硬盘分区配置</a> 替代了它。</p>
 <div class="section" id="lvm2">
 <h2>LVM2</h2>
 <p>LVM2 是一个用于 Linux 内核的
@@ -140,13 +140,13 @@
 </div>
 <div class="section" id="tmpdir">
 <h2>通过 $TMPDIR 指定临时存储目录</h2>
-<p>见: <em>/docs/操作系统/linux/Linux环境变量/TMPDIR</em></p>
+<p>见: <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-environment-variable-TMPDIR.html">硬盘分区配置</a></p>
 </div>
 <div class="section" id="section-2">
 <h2>挂载另一个分区来扩展可用存储空间</h2>
 <p>如果你有一个空的分区（例如 <cite>/dev/sdx</cite> ），
 你可以使用 <cite>mkfs.ext4</cite> 将它格式化，
-并使用 <em>/docs/操作系统/linux/linux指令/mount</em> 将它挂载到你需要更多空间的目录。（你需要复制原始数据内容。）:</p>
+并使用 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-mount.html">硬盘分区配置</a> 将它挂载到你需要更多空间的目录。（你需要复制原始数据内容。）:</p>
 <pre class="literal-block">
 $ sudo mv work-dir old-dir
 $ sudo mkfs.ext4 /dev/sdx

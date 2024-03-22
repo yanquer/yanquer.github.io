@@ -488,7 +488,7 @@ b'Hello World'
 <p>默认情况下，memeory_map() 函数打开的文件同时支持读和写操作。任何的修改 内容都会复制回原来的文件中。
 如果需要只读的访问模式，可以给参数 access 赋值为 mmap.ACCESS_READ</p>
 <p>如果你想在本地修改数据，但是又不想将修改写回到原始文件中，可以使用 mmap.ACCESS_COPY</p>
-<p>mmap 使用可参考: <em>/docs/后端/python/python标准库/mmap</em></p>
+<p>mmap 使用可参考: <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-mmap.html">文件、IO</a></p>
 <p>为了随机访问文件的内容，使用 mmap 将文件映射到内存中是一个高效和优雅的方 法。
 例如，你无需打开一个文件并执行大量的 seek() ，read() ，write() 调用，只需 要简单的映射文件并使用切片操作访问数据即可。</p>
 <p>一般来讲，mmap() 所暴露的内存看上去就是一个二进制数组对象。但是，你可以 使用一个内存视图来解析其中的数据。比如:</p>
@@ -892,7 +892,7 @@ bstdout.flush()
 <div class="section" id="section-18">
 <h2>创建临时文件和文件夹</h2>
 <p>你需要在程序执行时创建一个临时文件或目录，并希望使用完之后可以自动销毁 掉。</p>
-<p>tempfile 模块( <em>/docs/后端/python/python标准库/tempfile</em> )中有很多的函数可以完成这任务。
+<p>tempfile 模块( <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-tempfile.html">文件、IO</a> )中有很多的函数可以完成这任务。
 为了创建一个匿名的临时文件， 可以使用 tempfile.TemporaryFile</p>
 <pre class="literal-block">
 from tempfile import TemporaryFile

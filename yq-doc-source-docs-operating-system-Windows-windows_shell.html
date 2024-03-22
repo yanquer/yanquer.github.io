@@ -255,8 +255,8 @@ for /f &quot;delims=*&quot; %%i in ('dir /b %home% ^| findstr /v /i /x %exclude_
 )
 </pre>
 <p>简单说明, for 中使用 单引号 包裹表示需要执行的指令, 这时管道需要加 <tt class="docutils literal">^</tt> 转义</p>
-<p><em>/docs/操作系统/windows/windows_shell/dir</em> : /b 表示值列出目录/文件 字符串; 可加 /s 递归查找下面所有子目录</p>
-<p><em>/docs/操作系统/windows/windows_shell/findstr</em> : /v 反向匹配; /i 忽略大小写; /x 全词匹配</p>
+<p><a class="reference external" href="/yq-doc-source-docs-operating-system-Windows-windows_shell-dir.html">windows_shell</a> : /b 表示值列出目录/文件 字符串; 可加 /s 递归查找下面所有子目录</p>
+<p><a class="reference external" href="/yq-doc-source-docs-operating-system-Windows-windows_shell-Findstr.html">windows_shell</a> : /v 反向匹配; /i 忽略大小写; /x 全词匹配</p>
 </div>
 <div class="section" id="section-8">
 <h2>连接符号</h2>
@@ -408,7 +408,7 @@ t.bat &gt;1.txt 2&gt;&amp;1
 </div>
 <div class="section" id="section-15">
 <h2>跨盘移动的坑</h2>
-<p>使用 <em>/docs/操作系统/windows/windows_shell/move</em> 跨盘移动文件夹时, 会报错 <strong>拒绝访问</strong></p>
+<p>使用 <a class="reference external" href="/yq-doc-source-docs-operating-system-Windows-windows_shell-move.html">windows_shell</a> 跨盘移动文件夹时, 会报错 <strong>拒绝访问</strong></p>
 <p>管理员权限也无法.</p>
 <p>目前所知的解决方案只有先复制过去然后删除:</p>
 <pre class="literal-block">

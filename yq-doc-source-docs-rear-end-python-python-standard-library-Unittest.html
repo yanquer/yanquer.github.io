@@ -126,7 +126,7 @@
 <pre class="literal-block">
 pickle.PicklingError: Can't pickle &lt;class 'mock.Mock'&gt;: it's not the same object as mock.Mock
 </pre>
-<p>类似这种 pickle 序列化报错, 大部分是在 <em>/docs/后端/python/概念相关/多进程</em> 下进行测试而出现的序列化问题</p>
+<p>类似这种 pickle 序列化报错, 大部分是在 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-Concept-multi-Progress.html">unittest</a> 下进行测试而出现的序列化问题</p>
 <p>但是这里是 Mock 本身的问题, 使用以下方式解决:</p>
 <pre class="literal-block">
 class PickableMock(Mock):

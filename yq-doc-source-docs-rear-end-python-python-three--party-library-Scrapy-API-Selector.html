@@ -140,10 +140,10 @@ response 是 HtmlResponse/XmlResponse 对象</p>
 <div class="section" id="section-2">
 <h2>对象方法</h2>
 <dl class="docutils">
-<dt>css(表达式): <em>/docs/后端/python/python三方库/Scrapy/API/SelectorList</em></dt>
+<dt>css(表达式): <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-Scrapy-API-SelectOmerist.html">Selector</a></dt>
 <dd><p class="first">根据表达式获取对应的 CSS 元素,
 <strong>可以理解为一个 CSS 选择器</strong>
-返回 <em>/docs/后端/python/python三方库/Scrapy/API/SelectorList</em></p>
+返回 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-Scrapy-API-SelectOmerist.html">Selector</a></p>
 <p>如获取 title 标签元素:</p>
 <pre class="literal-block">
 # html
@@ -155,7 +155,7 @@ response.css(&quot;title&quot;)
 # 文本
 response.css(&quot;title::text&quot;)
 </pre>
-<p>选择器支持见 <em>../选择器/index</em></p>
+<p>选择器支持见 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-Scrapy-Selector-index.html">Selector</a></p>
 <p>如果要获取属性, 比如</p>
 <pre class="literal-block">
 &lt;a href=&quot;xxx&quot;/&gt;
@@ -167,9 +167,9 @@ response.css(&quot;a&quot;).attrib[&quot;href&quot;]
 response.css(&quot;a::attr('href')&quot;)
 </pre>
 </dd>
-<dt>xpath(表达式): <em>/docs/后端/python/python三方库/Scrapy/API/SelectorList</em></dt>
-<dd><p class="first">使用 <em>/docs/后端/python/教程/xpath/index</em> 获取元素,
-返回 <em>/docs/后端/python/python三方库/Scrapy/API/SelectorList</em></p>
+<dt>xpath(表达式): <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-Scrapy-API-SelectOmerist.html">Selector</a></dt>
+<dd><p class="first">使用 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-Tutorial-XPath-index.html">Selector</a> 获取元素,
+返回 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-Scrapy-API-SelectOmerist.html">Selector</a></p>
 <p>方法:</p>
 <pre class="literal-block">
 xpath(query: str, namespaces: Optional[Mapping[str, str]] = None, **kwargs: Any)→ SelectorList[_SelectorType]
@@ -199,7 +199,7 @@ xpath(query: str, namespaces: Optional[Mapping[str, str]] = None, **kwargs: Any)
 <pre class="literal-block">
 contains(&#64;class, &quot;c1&quot;)
 </pre>
-<p class="last">可参考 <em>/docs/后端/python/教程/xpath/XPath运算符</em></p>
+<p class="last">可参考 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-Tutorial-XPath-Xpath-operator.html">Selector</a></p>
 </dd>
 </dl>
 </div>

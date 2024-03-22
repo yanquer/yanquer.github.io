@@ -181,7 +181,7 @@ def __repr__(self):
 <div class="section" id="section-4">
 <h2>让对象支持上下文管理协议</h2>
 <p>想让你的对象支持上下文管理协议 (with 语句)</p>
-<p>with语句部分说明可见: <em>/docs/后端/python/内置函数/with</em></p>
+<p>with语句部分说明可见: <a class="reference external" href="/yq-doc-source-docs-rear-end-python-Built--in-function-with.html">类与对象</a></p>
 <p>需要实现 __enter__() 和 __exit__() 方法
 编写上下文管理器的主要原理是你的代码会放到 with 语句块中执行。当出现 with
 语句的时候，对象的 __enter__() 方法被触发，它返回的值 (如果有的话) 会被赋值给
@@ -193,7 +193,7 @@ as 声明的变量。然后，with 语句块里面的代码开始执行。最后
 它并返回一个 None 值。如果 __exit__() 返回 True ，那么异常会被清空，就好像什
 么都没发生一样，with 语句后面的程序继续在正常执行。</p>
 <p>在 contextmanager 模块中有一个标准的上下文管理方案模板,
-可参考 <em>/docs/后端/python/python标准库/contextlib</em></p>
+可参考 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-contextLib.html">类与对象</a></p>
 </div>
 <div class="section" id="section-5">
 <h2>创建大量对象时节省内存方法</h2>
@@ -312,7 +312,7 @@ def first_name(self, value):
 <div class="section" id="section-8">
 <h2>调用父类方法</h2>
 <p>想在子类中调用父类的某个已经被覆盖的方法。</p>
-<p>使用 super() 函数, 可参考: <em>/docs/后端/python/概念相关/对super的理解</em></p>
+<p>使用 super() 函数, 可参考: <a class="reference external" href="/yq-doc-source-docs-rear-end-python-Concept-Understanding-of-super.html">类与对象</a></p>
 <pre class="literal-block">
 class A:
   def spam(self):

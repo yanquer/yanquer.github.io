@@ -110,7 +110,7 @@
 									<div class="section" id="section-2">
 <h2>数字的四舍五入</h2>
 <ul class="simple">
-<li>round(value, ndigits), 不过当取数的值为5时有点特殊, 见 <em>/docs/后端/python/内置函数/round</em></li>
+<li>round(value, ndigits), 不过当取数的值为5时有点特殊, 见 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-Built--in-function-round.html">数字、日期、时间</a></li>
 </ul>
 <p>当一个值刚好在两个边界的中间的时候，round 函数返回离它最近的偶数。也就是 说，对 1.5 或者 2.5 的舍入运算都会得到 2。</p>
 <p>传给 round() 函数的 ndigits 参数可以是负数，这种情况下，舍入运算会作用在 十位、百位、千位等上面。比如:</p>
@@ -222,7 +222,7 @@ True
 &gt;&gt;&gt; math.fsum(nums) 1.0
 &gt;&gt;&gt;
 </pre>
-<p>math详情见: <em>/docs/后端/python/python标准库/math</em></p>
+<p>math详情见: <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-math.html">数字、日期、时间</a></p>
 <p>然而，对于其他的算法，你应该仔细研究它并理解它的误差产生来源。</p>
 <p>总的来说，decimal 模块主要用在涉及到金融的领域。
 在这类程序中，哪怕是一点 小小的误差在计算过程中蔓延都是不允许的。
@@ -471,7 +471,7 @@ b'\x03X\xf1\x82iT\x96\xac\xc7c\x16\xf3\xb9\xcf...\xd0'
 4.47213595499958
 &gt;&gt;&gt;
 </pre>
-<p>如果要执行其他的复数函数比如正弦、余弦或平方根，使用 <em>/docs/后端/python/python标准库/cmath</em> 模块:</p>
+<p>如果要执行其他的复数函数比如正弦、余弦或平方根，使用 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-cmath.html">数字、日期、时间</a> 模块:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; import cmath
 &gt;&gt;&gt; cmath.sin(a)
@@ -483,7 +483,7 @@ b'\x03X\xf1\x82iT\x96\xac\xc7c\x16\xf3\xb9\xcf...\xd0'
 &gt;&gt;&gt;
 </pre>
 <p>Python 中大部分与数学相关的模块都能处理复数。
-比如使用 <em>/docs/后端/python/python三方库/numpy</em> ，可以 很容易的构造一个复数数组并在这个数组上执行各种操作:</p>
+比如使用 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-numpy.html">数字、日期、时间</a> ，可以 很容易的构造一个复数数组并在这个数组上执行各种操作:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; a = np.array([2+3j, 4+5j, 6-7j, 8+9j])
@@ -585,7 +585,7 @@ fpectl 模块可以用来改变这种行为，但是它在标准的 Python 构�
 </div>
 <div class="section" id="section-8">
 <h2>分数运算</h2>
-<p><em>/docs/后端/python/python标准库/fractions</em> 模块可以被用来执行包含分数的数学运算:</p>
+<p><a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-frames.html">数字、日期、时间</a> 模块可以被用来执行包含分数的数学运算:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; from fractions import Fraction
 &gt;&gt;&gt; a = Fraction(5, 4)
@@ -612,7 +612,7 @@ Fraction(15, 4)
 </div>
 <div class="section" id="section-9">
 <h2>大型数组运算</h2>
-<p>使用 <em>/docs/后端/python/python三方库/numpy</em> .:</p>
+<p>使用 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-numpy.html">数字、日期、时间</a> .:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; # Python lists
 &gt;&gt;&gt; x = [1, 2, 3, 4]
@@ -672,7 +672,7 @@ array([ 2, 6, 10])
 <div class="section" id="section-10">
 <h2>矩阵与线性代数运算</h2>
 <p>执行矩阵和线性代数运算，比如矩阵乘法、寻找行列式、求解线性方程组等 等</p>
-<p>NumPy 库( <em>/docs/后端/python/python三方库/numpy</em> )有一个矩阵对象可以用来解决这个问题:</p>
+<p>NumPy 库( <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-numpy.html">数字、日期、时间</a> )有一个矩阵对象可以用来解决这个问题:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; m = np.matrix([[1,-2,3],[0,4,5],[7,8,-9]])

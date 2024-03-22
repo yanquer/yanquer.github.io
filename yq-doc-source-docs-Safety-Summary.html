@@ -108,8 +108,8 @@
 									<div class="section" id="sudo-suid">
 <h2>sudo/suid提权</h2>
 <ul class="simple">
-<li>suid涉及到linux的s权限位: <em>/docs/操作系统/linux/概念性/linux下文件权限位</em></li>
-<li>sudo可以其他用户执行, 可见: <em>/docs/操作系统/linux/linux指令/sudo</em></li>
+<li>suid涉及到linux的s权限位: <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Conceptual-Document-rights-limit-under-Linux.html">提权总结</a></li>
+<li>sudo可以其他用户执行, 可见: <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-SUDO.html">提权总结</a></li>
 </ul>
 <p>一般来说, 就是利用某些具有s位权限的指令, 获取到root的权限</p>
 <p>查找具有suid权限文件:</p>
@@ -402,7 +402,7 @@ find / -mmin -10 2&gt;/dev/null | grep -Ev &quot;^/proc&quot;  (不显示^/proc�
 <p>capabilities 把root的权限细分了, 可以分别启用或者禁用.</p>
 <div class="sidebar">
 <p class="first sidebar-title">euid</p>
-<p class="last">见 <em>/docs/操作系统/linux/概念性/linux下文件权限位</em> 下 <strong>文件权限的s位和t位的理解</strong> 小节</p>
+<p class="last">见 <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Conceptual-Document-rights-limit-under-Linux.html">提权总结</a> 下 <strong>文件权限的s位和t位的理解</strong> 小节</p>
 </div>
 <p>在进行特权操作的时候, 如果 euid 不是root,
 那么系统就会检查是否具有执行特权操作的对应capabilities , 并以此为凭据决定特权操作是否能被执行.</p>

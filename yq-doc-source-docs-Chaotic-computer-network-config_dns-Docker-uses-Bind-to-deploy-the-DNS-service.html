@@ -111,7 +111,7 @@
 mkdir -p dns_config
 docker run -d --name bind9-dns-server -e TZ=UTC -p 30053:53 -v dns_config:/data  ubuntu/bind9:9.18-22.04_beta
 </pre>
-<p>后面方式基本与 :<em>ubuntu配置dns</em> 一致</p>
+<p>后面方式基本与 :<a class="reference external" href="/yq-doc-source-docs-Chaotic-computer-network-config_dns-ubuntu-configuration-DNS.html">docker使用bind部署dns服务</a> 一致</p>
 <div class="section" id="section-1">
 <h2>其他</h2>
 <p>具有管理面板的docker-bind: <a class="reference external" href="https://cloud.tencent.com/developer/article/2027134">使用Docker搭建自己的DNS服务器</a></p>

@@ -112,14 +112,14 @@
 <pre class="literal-block">
 trap &quot;动作&quot; &quot;信号&quot;
 </pre>
-<p>支持的信号见: <em>/docs/操作系统/linux/概念性/linux系统信号</em></p>
+<p>支持的信号见: <a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Conceptual-Linux-system-signal.html">trap</a></p>
 <p>例如，收到0信号执行 <tt class="docutils literal">exit 1</tt></p>
 <pre class="literal-block">
 trap &quot;exit 1&quot; 0
 </pre>
 <div class="section" id="set">
 <h2>与set协作</h2>
-<p><em>/docs/操作系统/linux/linux指令/set</em> 支持在脚本执行错误时退出,
+<p><a class="reference external" href="/yq-doc-source-docs-operating-system-linux-Linux-instruction-set.html">trap</a> 支持在脚本执行错误时退出,
 那如果要在退出时候打印一些消息或者清理应该如何做?</p>
 <p><tt class="docutils literal">set <span class="pre">-e</span></tt> 在检查到命令异常返回时并没有信号的产生,
 故trap指令就不能写信号了, 而是写bash内置定义的 <tt class="docutils literal">ERR</tt> (不区分大小写):</p>

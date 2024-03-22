@@ -155,7 +155,7 @@ CALL:label arguments
 <p>在上面的例子中，%1 和 PATH 可以被其他有效数值替换。
 %~ 语法被一个有效参数号码终止。%~ 修定符不能跟 %*
 使用</p>
-<p>此处提一下与 <em>/docs/操作系统/windows/windows_shell/start</em> 的区别:</p>
+<p>此处提一下与 <a class="reference external" href="/yq-doc-source-docs-operating-system-Windows-windows_shell-start.html">call</a> 的区别:</p>
 <ul class="simple">
 <li>start的调用需要在调用的bat脚本内写入 <tt class="docutils literal">exit</tt> 才能正常返回当前bat指令</li>
 <li>call 的退出有没有 <tt class="docutils literal">exit /b</tt> 即可, 默认就是这个</li>
@@ -175,7 +175,7 @@ end 0
 end 1
 C:\Users\烟雀\Desktop\some\t\_&gt;
 </pre>
-<p>使用call时, 在 2.bat 使用 <em>/docs/操作系统/windows/windows_shell/exit</em> 会退出整个程序,
+<p>使用call时, 在 2.bat 使用 <a class="reference external" href="/yq-doc-source-docs-operating-system-Windows-windows_shell-exit.html">call</a> 会退出整个程序,
 因为, call 是在一个批处理中直接调用另一个批处理, 不会打开新的窗口.</p>
 <p>而 start 是新开一个窗口, 所以需要在新开的窗口手动 exit 退出.</p>
 <p>要处理call执行子脚本退出父脚本可以使用:</p>

@@ -108,7 +108,7 @@
 									<div class="section" id="b">
 <h2>B+树</h2>
 <p>Mysql索引采取的是 <strong>B+树</strong>,
-可参考 <em>/docs/数据结构/树</em></p>
+可参考 <a class="reference external" href="/yq-doc-source-docs-data-structure-Tree.html">索引数据结构</a></p>
 <p>对于 <strong>B+树</strong>,</p>
 <ul class="simple">
 <li>每个节点的每一个索引值, 只有到达叶子节点时候, 才会有当前对应的行数据
@@ -125,7 +125,7 @@ show GLOBAL_STATUS like 'Innodb_page_size'
 </div>
 <div class="section" id="hash">
 <h2>Hash</h2>
-<p>在Mysql表中新建索引时, 还可选择索引类型为 <em>Hash表 &lt;/docs/数据结构/Hash&gt;</em> ,
+<p>在Mysql表中新建索引时, 还可选择索引类型为 <a class="reference external" href="{filename}./Hash表 &lt;/docs/数据结构/Hash&gt;.rst;.rst">索引数据结构</a> ,
 对于单查询时非常快的</p>
 <p>但是只支持 <tt class="docutils literal">=</tt> ,  <tt class="docutils literal">IN</tt> , 不支持范围查询,
 且需要处理Hash冲突</p>

@@ -281,7 +281,7 @@ start_requests 的返回结果都是 <cite>scrapy.Request</cite> 对象的生成
 </div>
 <div class="section" id="shell">
 <h3>shell工具</h3>
-<p>最开始可以使用 <em>/docs/后端/python/python三方库/Scrapy/Scrapy shell</em> 工具:</p>
+<p>最开始可以使用 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-Scrapy-Scrapy-shell.html">使用</a> 工具:</p>
 <pre class="literal-block">
 scrapy shell 'http://www.itcast.cn/channel/teacher.shtml'
 </pre>
@@ -545,14 +545,14 @@ yield from response.follow_all(css=&quot;ul.pager a&quot;, callback=self.parse)
 </div>
 <div class="section" id="xpath">
 <h3>XPath支持</h3>
-<p>XPath 参考 <em>/docs/后端/python/教程/xpath/index</em></p>
+<p>XPath 参考 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-Tutorial-XPath-index.html">使用</a></p>
 <p>除了 上面的使用 CSS选择器来做数据提取,
 Scrapy的 选择器 也支持 <cite>XPath</cite> 对象:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; response.xpath(&quot;//title&quot;)
 [&lt;Selector query='//title' data='&lt;title&gt;师资力量|讲师介绍_黑马程序员&lt;/title&gt;'&gt;]
 </pre>
-<p>返回的也是 <em>API/SelectorList</em> 对象:</p>
+<p>返回的也是 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-three--party-library-Scrapy-API-SelectOmerist.html">使用</a> 对象:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; response.xpath(&quot;//title&quot;).get()
 '&lt;title&gt;师资力量|讲师介绍_黑马程序员&lt;/title&gt;'

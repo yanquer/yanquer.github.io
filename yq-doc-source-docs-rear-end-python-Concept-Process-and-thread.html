@@ -149,13 +149,13 @@
 <!-- 多进程 -->
 <!-- 多线程 -->
 <ul class="simple">
-<li><em>/docs/后端/python/概念相关/多线程</em></li>
-<li><em>/docs/后端/python/概念相关/多进程</em></li>
+<li><a class="reference external" href="/yq-doc-source-docs-rear-end-python-Concept-Multithreading.html">进程与线程</a></li>
+<li><a class="reference external" href="/yq-doc-source-docs-rear-end-python-Concept-multi-Progress.html">进程与线程</a></li>
 </ul>
 </div>
 <div class="section" id="can-t-pickle-local-object">
 <h2>Can't pickle local object</h2>
-<p>使用多线/进程时, 一般都是使用的 <em>/docs/后端/python/python标准库/multiprocessing</em> 模块(或者多线程的).</p>
+<p>使用多线/进程时, 一般都是使用的 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-multiprocessing.html">进程与线程</a> 模块(或者多线程的).</p>
 <p>其内部进行数据传输时, 会将数据序列化处理. 其内部源码使用的是 <tt class="docutils literal">pickle</tt> 模块.</p>
 <p>但是这个模块又不能对局部函数, lambda 函数进行序列化, 所以容易产生这样的报错:</p>
 <pre class="literal-block">

@@ -162,7 +162,7 @@ executor.submit(wait_on_future)
 <div class="section" id="processpoolexecutor">
 <h2>ProcessPoolExecutor</h2>
 <p>ProcessPoolExecutor 类是 <a class="reference internal" href="#executor">Executor</a> 的子类，它使用进程池来异步地执行调用。
-ProcessPoolExecutor 会使用 <em>/docs/后端/python/python标准库/multiprocessing</em> 模块，
+ProcessPoolExecutor 会使用 <a class="reference external" href="/yq-doc-source-docs-rear-end-python-python-standard-library-multiprocessing.html">concurrent</a> 模块，
 这允许它绕过 全局解释器锁 但也意味着只可以处理和返回可封存的对象。</p>
 <p><tt class="docutils literal">__main__</tt> 模块必须可以被工作者子进程导入。这意味着 ProcessPoolExecutor 不可以工作在交互式解释器中。</p>
 <p>从可调用对象中调用 <a class="reference internal" href="#executor">Executor</a> 或 <a class="reference internal" href="#future">Future</a> 的方法提交给 ProcessPoolExecutor 会导致死锁。</p>
