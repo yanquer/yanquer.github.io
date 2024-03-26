@@ -23,6 +23,11 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
 		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
 	</head>
 	<body class="no-sidebar">
 		<!-- Header Wrapper -->
@@ -110,7 +115,25 @@
 <a class="sphinx-toc-tree" href="/yq-doc-source-docs-front-end-CSS-common-use-of-CSS.html">./css常见使用技巧</>
 <a class="sphinx-toc-tree" href="/yq-doc-source-docs-front-end-CSS-Width-height-percentage-explanation.html">./宽度-高度百分比说明</>
 <a class="sphinx-toc-tree" href="/yq-doc-source-docs-front-end-CSS-The-order-of-elements.html">./元素的出场顺序</>
-<a class="sphinx-toc-tree" href="/yq-doc-source-docs-front-end-CSS-Pseudo--category.html">伪类</><div class="section" id="section-1">
+<a class="sphinx-toc-tree" href="/yq-doc-source-docs-front-end-CSS-Pseudo--category.html">伪类</><div class="section" id="css-1">
+<h2>CSS媒体查询</h2>
+<p>CSS 媒体查询（Media Queries）是 CSS3 中的一个特性，
+它允许你根据一系列的媒体特性（如屏幕分辨率、视口宽度、打印设备等）来应用不同的样式规则。</p>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">600px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c">/* 当屏幕宽度至少为 600 像素时，这些样式将被应用 */</span>
+<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>如果要在JavaScript中查询, 可通过 <cite>window.matchMedia()</cite> 方法，
+你可以在 JavaScript 中检测媒体查询的条件是否为真，
+并根据结果执行相应的代码。
+这不是直接在 CSS 中定义媒体查询，而是在 JavaScript 中检测和响应 CSS 媒体查询的条件。
+参考: <cite>/docs/前端/概念性/Window对象</cite></p>
+</div>
+<div class="section" id="section-1">
 <h2>一些伪类选择器</h2>
 <ul class="simple">
 <li>hover: 鼠标悬停</li>
@@ -151,7 +174,7 @@ em 也是相对于父元素的字体大小计算的单位。
 这些单位在打印和物理媒体方面比较常用。</dd>
 </dl>
 </div>
-<div class="section" id="css-1">
+<div class="section" id="css-2">
 <h2>导入其他css</h2>
 <p>比如在 theme.css 中导入 checkbox.css:</p>
 <pre class="literal-block">
@@ -163,7 +186,7 @@ em 也是相对于父元素的字体大小计算的单位。
 <h2>chrome支持前端断点</h2>
 <p>比如按钮点击后的断点</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2023-12-26-09-44-32.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2023-12-26-09-44-32.png" style="width: 480px;" />
 </div>
 </div>
 
@@ -190,27 +213,27 @@ em 也是相对于父元素的字体大小计算的单位。
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 3 <strong>22</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-Conceptual-dom-document.html">Dom-Document对象</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-frame-jquery-jQuery-provided-methods.html">jQuery提供方法</a></h3>
-											<p><p class="first last">jQuery提供常用方法/函数</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-CSS-commonly-used-attributes-overflow.html">overflow</a></h3>
+											<p><p class="first last">overflow滚动条属性</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
-											<h3><a href="yq-doc-do-from-sp-to-pelican.html">记录将sphinx文档库迁移到pelican</a></h3>
-											<p><p class="first last">将旧的文档形式内容迁移到pelican做成博客</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-Pseudo-element.html">CSS伪元素</a></h3>
+											<p><p class="first last">CSS伪元素</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>19</strong></span>
-											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
-											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-font-file-import.html">字体文件导入</a></h3>
+											<p><p class="first last">字体文件导入</p>
 </p>
 										</li>
 									</ul>

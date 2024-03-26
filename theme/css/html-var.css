@@ -1,0 +1,166 @@
+/* 定义全局html变量 */
+
+/* 导入字体 */
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Font Awesome 6 Free Web';
+    src: url('../fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2') format('woff2');
+         /* url('../fontawesome-free-6.5.1-web/webfonts/fa-brands-400.ttf') format('truetype'); */
+
+    /* src: url('../fontawesome/webfonts/fa-brands-400.woff2') format('woff2'),
+         url('../fontawesome/webfonts/fa-regular-400.woff2') format('woff2'),
+         url('../fontawesome/webfonts/fa-solid-900.woff2') format('woff2'),
+         url('../fontawesome/webfonts/fa-v4compatibility.woff2') format('woff2'); */
+
+    /* swap; 表示如果字体在一定时间内没有加载完成，将使用备用字体显示文本，一旦字体加载完成，就会切换到自定义字体。 */
+    /* font-display: swap; */
+    font-display: block;
+    /* 或者使用 'block' 或 'fallback' */
+}
+
+
+@font-face {
+    font-family: 'Font Awesome 6 Free Web';
+    /* 常规体 */
+    src: url('../fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2') format('woff2');
+         /* url('../fontawesome-free-6.5.1-web/webfonts/fa-regular-400.ttf') format('truetype'); */
+
+    font-display: block;
+    unicode-range: U+F003,U+F006,U+F014,U+F016-F017,U+F01A-F01B,U+F01D,U+F022,U+F03E,U+F044,U+F046,U+F05C-F05D,U+F06E,U+F070,U+F087-F088,U+F08A,U+F094,U+F096-F097,U+F09D,U+F0A0,U+F0A2,U+F0A4-F0A7,U+F0C5,U+F0C7,U+F0E5-F0E6,U+F0EB,U+F0F6-F0F8,U+F10C,U+F114-F115,U+F118-F11A,U+F11C-F11D,U+F133,U+F147,U+F14E,U+F150-F152,U+F185-F186,U+F18E,U+F190-F192,U+F196,U+F1C1-F1C9,U+F1D9,U+F1DB,U+F1E3,U+F1EA,U+F1F7,U+F1F9,U+F20A,U+F247-F248,U+F24A,U+F24D,U+F255-F25B,U+F25D,U+F271-F274,U+F278,U+F27B,U+F28C,U+F28E,U+F29C,U+F2B5,U+F2B7,U+F2BA,U+F2BC,U+F2BE,U+F2C0-F2C1,U+F2C3,U+F2D0,U+F2D2,U+F2D4,U+F2DC;
+}
+
+@font-face {
+    font-family: 'Font Awesome 6 Free Web';
+    src: url('../fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2') format('woff2');
+         /* url('../fontawesome-free-6.5.1-web/webfonts/fa-solid-900.ttf') format('truetype'); */
+
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Font Awesome 6 Free Web';
+    src: url('../fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2') format('woff2');
+         /* url('../fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.ttf') format('truetype'); */
+
+    font-display: block;
+    unicode-range: U+F041,U+F047,U+F065-F066,U+F07D-F07E,U+F080,U+F08B,U+F08E,U+F090,U+F09A,U+F0AC,U+F0AE,U+F0B2,U+F0D0,U+F0D6,U+F0E4,U+F0EC,U+F10A-F10B,U+F123,U+F13E,U+F148-F149,U+F14C,U+F156,U+F15E,U+F160-F161,U+F163,U+F175-F178,U+F195,U+F1F8,U+F219,U+F27A;
+}
+
+
+html{
+    --g-color: #b7b7b7;	 /* rgb(183, 183, 183) */
+    --g-a-color: #6091c1;
+    --g-a-color2: #2a3bb1;
+    --g-a-bg-color: #0000009c;
+    --g-a-action-color: #80152c;	/* rgb(128, 21, 44) */
+
+    --g-border-color: #93a1a2;
+    --g-border-radius: 5px;
+    --g-radius-border: 5px solid #a58243d1;
+    --g-radius-border-no-color: 5px solid;
+
+    --main-area-bg-color: #181a1b;	/* rgb(24, 26, 27) */
+
+    /* // Font Awesome default icons */
+    /* // fa-solid fa-circle-check */
+    --pst-icon-check-circle: "\f058";
+    /* // fa-solid fa-circle-info */
+    --pst-icon-info-circle: "\f05a";
+    /* // fa-solid fa-triangle-exclamation */
+    --pst-icon-exclamation-triangle: "\f071";
+    /* // fa-solid fa-circle-exclamation */
+    --pst-icon-exclamation-circle: "\f06a";
+    /* // fa-solid fa-circle-xmark */
+    --pst-icon-times-circle: "\f057";
+    /* // fa-solid fa-lightbulb */
+    --pst-icon-lightbulb: "\f0eb";
+    /* // fa-solid fa-download */
+    --pst-icon-download: "\f019";
+    /* // fa-solid fa-angle-left */
+    --pst-icon-angle-left: "\f104";
+    /* // fa-solid fa-angle-right */
+    --pst-icon-angle-right: "\f105";
+    /* // fa-solid fa-up-right-from-square */
+    --pst-icon-external-link: "\f35d";
+    /* // fa-solid fa-magnifying-glass-minus */
+    --pst-icon-search-minus: "\f010";
+    /* // fa-brands fa-github */
+    --pst-icon-github: "\f09b";
+    /* // fa-brands fa-gitlab */
+    --pst-icon-gitlab: "\f296";
+    /* // fa-solid fa-share */
+    --pst-icon-share: "\f064";
+    /* // fa-solid fa-bell */
+    --pst-icon-bell: "\f0f3";
+    /* // fa-solid fa-pencil */
+    --pst-icon-pencil: "\f303";
+
+
+      /*****************************************************************************
+    * Admonitions from pydata-sphinx-theme
+    **/
+    --pst-icon-admonition-default: var(--pst-icon-bell);
+    --pst-icon-admonition-note: var(--pst-icon-info-circle);
+    --pst-icon-admonition-attention: var(--pst-icon-exclamation-circle);
+    --pst-icon-admonition-caution: var(--pst-icon-exclamation-triangle);
+    --pst-icon-admonition-warning: var(--pst-icon-exclamation-triangle);
+    --pst-icon-admonition-danger: var(--pst-icon-exclamation-triangle);
+    --pst-icon-admonition-error: var(--pst-icon-times-circle);
+    --pst-icon-admonition-hint: var(--pst-icon-lightbulb);
+    --pst-icon-admonition-tip: var(--pst-icon-lightbulb);
+    --pst-icon-admonition-important: var(--pst-icon-exclamation-circle);
+    --pst-icon-admonition-seealso: var(--pst-icon-share);
+    --pst-icon-admonition-todo: var(--pst-icon-pencil);
+
+    /* custom admonition form last */
+    --g-content-icon-admonition-default: var(--pst-icon-bell);
+    --g-content-icon-admonition-note: var(--pst-icon-info-circle);
+    --g-content-icon-admonition-attention: var(--pst-icon-exclamation-circle);
+    --g-content-icon-admonition-caution: var(--pst-icon-exclamation-triangle);
+    --g-content-icon-admonition-warning: var(--pst-icon-exclamation-triangle);
+    --g-content-icon-admonition-danger: var(--pst-icon-exclamation-triangle);
+    --g-content-icon-admonition-error: var(--pst-icon-times-circle);
+    --g-content-icon-admonition-hint: var(--pst-icon-lightbulb);
+    --g-content-icon-admonition-tip: var(--pst-icon-lightbulb);
+    --g-content-icon-admonition-important: var(--pst-icon-exclamation-circle);
+    --g-content-icon-admonition-seealso: var(--pst-icon-share);
+    --g-content-icon-admonition-todo: var(--pst-icon-pencil);
+}
+
+
+/* 设置滚动条 */
+/*html {
+   background-color: #252525 !important;
+   background-image: none !important;
+}*/
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+   ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+   }
+   ::-webkit-scrollbar-thumb {
+    background: #525252;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+   }
+   ::-webkit-scrollbar-thumb:hover {
+    background: #4c4c4c;
+   }
+   ::-webkit-scrollbar-thumb:active {
+    background: #404040;
+   }
+   ::-webkit-scrollbar-track {
+    background: #272727;
+    border: 0px dashed #ffffff;
+    border-radius: 22px;
+   }
+   ::-webkit-scrollbar-corner {
+    background: transparent;
+   }
+
+
+

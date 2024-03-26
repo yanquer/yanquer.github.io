@@ -23,6 +23,11 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
 		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
 	</head>
 	<body class="no-sidebar">
 		<!-- Header Wrapper -->
@@ -117,11 +122,11 @@ y = f(x)
 <h2>古典微积分, 导数</h2>
 <p>古典微积分求解曲线围成的面积的主要思想，就是把曲线下的面积划分成了无数个矩形面积之和</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-09-51.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-09-51.png" style="width: 480px;" />
 </div>
 <p>（显然）直觉告诉我们，如果  越大，则这个近似越准确</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-10-27.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-10-27.png" style="width: 480px;" />
 </div>
 <p>此时，无穷小量就出现了。
 在 <strong>古典微积分</strong> 学中，无穷小量是建立微积分的基础。
@@ -133,16 +138,16 @@ y = f(x)
 <dt>导数的古典定义</dt>
 <dd><p class="first">在曲线上取两点，连接起来所形成的直线，就称为曲线的割线：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-09-54-51.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-09-54-51.png" style="width: 480px;" />
 </div>
 <p>连续的割线可以反应曲线的平均变化率。</p>
 <p>也就是说，这一段曲线大概总的趋势是上升还是下降，上升了多少，用割线描述是并不是精确的。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-09-55-39.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-09-55-39.png" style="width: 480px;" />
 </div>
 <p>有了切线之后我们进一步去定义导数</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-09-57-03.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-09-57-03.png" style="width: 480px;" />
 </div>
 <p>从这张图得出 <strong>导数</strong> 的定义</p>
 <pre class="literal-block">
@@ -154,12 +159,12 @@ f'(x) = dy / dx
 <dt>无穷小量导致的麻烦</dt>
 <dd><p class="first">上图实际上是有矛盾的</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-00-06.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-00-06.png" style="width: 480px;" />
 </div>
 <p>所以就古典微积分中切线的定义而言，微积分的基础就是不牢固的。</p>
 <p>无穷小量的麻烦还远远不止这一些，x^2 的导数是这样计算的:</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-01-32.png" style="width: 240px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-01-32.png" style="width: 240px;" />
 </div>
 <p>dx 先在除法中当作不为 0 的变量被约掉,
 再在最后的加法中当作 0 被忽略.</p>
@@ -192,12 +197,12 @@ f'(x) = dy / dx
 一直拼命想要修补，但这个问题等了200年后，即19世纪极限概念的清晰之后才得到解决。</p>
 <p>解决办法是，完全摈弃无穷小量，基于极限的概念，重新建立了微积分。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-14-01.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-14-01.png" style="width: 480px;" />
 </div>
 <p>可以看到，极限的描述并没有用到什么无穷小量。</p>
 <p><strong>导数</strong> 的极限定义</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-14-49.png" style="width: 240px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-14-49.png" style="width: 240px;" />
 </div>
 <p>用极限重新严格定义了导数，此时已经脱离了微商的概念。也就是此时，导数应该被看成一个整体。
 不过我们仍然可以去定义什么是微分，说到这里，真是有点剧情反转:</p>
@@ -206,10 +211,10 @@ f'(x) = dy / dx
 <li>现在极限微积分是先定义了导数再有微分。</li>
 </ul>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-18-56.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-18-56.png" style="width: 480px;" />
 </div>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-02-20-10-23-55.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-02-20-10-23-55.png" style="width: 480px;" />
 </div>
 <dl class="docutils">
 <dt>相关概念</dt>
@@ -273,27 +278,27 @@ f'(x) = dy / dx
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 3 <strong>22</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-Conceptual-dom-document.html">Dom-Document对象</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-frame-jquery-jQuery-provided-methods.html">jQuery提供方法</a></h3>
-											<p><p class="first last">jQuery提供常用方法/函数</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-CSS-commonly-used-attributes-overflow.html">overflow</a></h3>
+											<p><p class="first last">overflow滚动条属性</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
-											<h3><a href="yq-doc-do-from-sp-to-pelican.html">记录将sphinx文档库迁移到pelican</a></h3>
-											<p><p class="first last">将旧的文档形式内容迁移到pelican做成博客</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-Pseudo-element.html">CSS伪元素</a></h3>
+											<p><p class="first last">CSS伪元素</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>19</strong></span>
-											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
-											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-font-file-import.html">字体文件导入</a></h3>
+											<p><p class="first last">字体文件导入</p>
 </p>
 										</li>
 									</ul>

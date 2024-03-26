@@ -10,6 +10,9 @@
 }
 pre{
 	color: #fbf7f7;
+
+	/* 代码超出边界时, 允许滚动 */
+	overflow-x: auto;
 }
 .kc{
 	color: #058e2c;

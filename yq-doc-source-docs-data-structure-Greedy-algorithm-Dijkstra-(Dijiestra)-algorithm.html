@@ -23,6 +23,11 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
 		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
 	</head>
 	<body class="no-sidebar">
 		<!-- Header Wrapper -->
@@ -164,7 +169,7 @@
 <!-- 此时，起点D到各个顶点的最短距离就计算出来了: A(22) B(13) C(3) D(0) E(4) F(6) G(12)。 -->
 <p>寻找 0 到其它每一个节点的最短路径.</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-32-47.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-32-47.png" style="width: 480px;" />
 </div>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -173,11 +178,11 @@
 <p>我们将会得到节点 0 到节点 1、节点 0 到节点 2、节点 0 到 节点 3……（以此类推）的最短路径。</p>
 <p>初始的距离列表如下：</p>
 <div class="figure align-center">
-<img alt="" src="../../../resources/images/2024-03-06-16-33-38.png" style="width: 240px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-33-38.png" style="width: 240px;" />
 </div>
 <p>还有一个列表用来记录哪些节点未被访问（即尚未被包含在路径中）</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-34-25.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-34-25.png" style="width: 480px;" />
 </div>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -186,14 +191,14 @@
 <p>我们选择了从节点 0 出发，可以直接将它标记为“已访问”，
 同样的，在未访问节点列表中把它划掉，并在图中给它加上红色的边框：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-35-27.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-35-27.png" style="width: 480px;" />
 </div>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-35-53.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-35-53.png" style="width: 480px;" />
 </div>
 <p>现在需要检查节点 0 到相邻节点的距离，两个相邻节点分别是节点 1 和节点 2（注意看红色的边）：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-37-16.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-37-16.png" style="width: 480px;" />
 </div>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -203,7 +208,7 @@
 </div>
 <p>更新节点 0 到节点 1、节点 0 到节点 2 的距离为它们之间的边的权重，分别为 2 和 6</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-53-43.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-53-43.png" style="width: 480px;" />
 </div>
 <p>更新了到相邻节点的距离之后：</p>
 <ul class="simple">
@@ -214,81 +219,81 @@
 <p>查看距离列表，发现节点 1 到源节点的距离是最短的（距离为 2），所以把它加入到路径中。</p>
 <p>在图中，以红色边来表示：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-55-03.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-55-03.png" style="width: 480px;" />
 </div>
 <p>在距离列表中用红色方块标记这个节点，表明它是“已访问”的、已经寻找到了访问这个节点的最短路径：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-55-34.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-55-34.png" style="width: 480px;" />
 </div>
 <p>在未访问节点列表中将它划掉：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-55-55.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-55-55.png" style="width: 480px;" />
 </div>
 <p>现在分析新的相邻节点，寻找访问它们的最短路径。
 只需要分析已经在最短路径（标记为红色边）中的节点的相邻节点。</p>
 <p>节点 2 和节点 3 都是最短路径包含的节点的相邻节点，
 因为它们分别与节点 0 和节点 1 直接相连，如下图所示。下一步将要分析这两个节点。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-56-52.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-56-52.png" style="width: 480px;" />
 </div>
 <p>之前已经计算过源节点到节点 2 的距离，并记录在了列表中，
 所以不用更新。这次只需要更新源节点到新的相邻节点（节点 3）的距离：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-57-17.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-57-17.png" style="width: 480px;" />
 </div>
 <p>这个距离是 7，来看看为什么。</p>
 <p>为了计算源节点到另一个节点（这里指节点 3）的距离，需要把访问该节点的最短路径的所有边权重相加：</p>
 <p>对于节点 3： 将构成路径 <cite>0 -&gt; 1 -&gt; 3</cite> 的所有边权重相加，
 得到总距离为 7（0 -&gt; 1 距离为 2，1 -&gt; 3 距离为 5）。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-57-56.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-57-56.png" style="width: 480px;" />
 </div>
 <p>现在得到了到相邻节点的距离，需要选择一个节点添加到路径中。
 我们必须 <strong>选择一个已知到源节点距离最短的未访问节点</strong>。
 即选择 Distance 中未确定最小值.</p>
 <p>从距离列表中可以看出，距离为 6 的节点 2 就是我们的选择：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-16-58-19.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-58-19.png" style="width: 480px;" />
 </div>
 <p>在图中为它加上红色边框，并将路径上的边标记为红色：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-07-07.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-07-07.png" style="width: 480px;" />
 </div>
 <p>在距离列表中用红色方块把它标记为“已访问”，在“未访问”节点列表中把它划掉：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-08-50.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-08-50.png" style="width: 480px;" />
 </div>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-09-07.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-09-07.png" style="width: 480px;" />
 </div>
 <p>重复前面的步骤，寻找源节点到新的相邻节点节点 3 的最短路径。</p>
 <p>可以看到，有两种可选的路径： <cite>0 -&gt; 1 -&gt; 3</cite> 或 <cite>0 -&gt; 2 -&gt; 3</cite>。一起看看我们是如何确定最短路径的。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-09-36.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-09-36.png" style="width: 480px;" />
 </div>
 <p>节点 3 在之前已经有了一个距离记录（距离为 7，参阅下表），
 这个距离是之前步骤中由路径 <cite>0 -&gt; 1 -&gt; 3</cite> 的两个边权重（分别为 5 和 2）相加得到的。</p>
 <p>不过现在有了一个新的可选路径： <cite>0 -&gt; 2 -&gt; 3</cite>，它途经权重分别为 6 和 8 的两条边 <cite>0 -&gt; 2</cite> 和 <cite>2 -&gt; 3</cite>，总距离为 14。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-10-23.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-10-23.png" style="width: 480px;" />
 </div>
 <p>显然，第一个路径的距离更短（7 vs. 14），
 所以选择第一个路径 <cite>0 -&gt; 1 -&gt; 3</cite>。只有在新的路径距离更短的情况下，才会更新距离列表。</p>
 <p>因此，使用第一种方案 <cite>0 -&gt; 1 -&gt; 3</cite>，将节点添加到路径中。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-11-33.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-11-33.png" style="width: 480px;" />
 </div>
 <p>把这个节点标记为“已访问”，在“未访问”节点列表中把它划掉：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-11-52.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-11-52.png" style="width: 480px;" />
 </div>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-12-09.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-12-09.png" style="width: 480px;" />
 </div>
 <p>重复前面的过程。</p>
 <p>检查尚未访问的相邻节点：节点 4 和节点 5，因为它们是节点 3 的相邻节点。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-12-36.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-12-36.png" style="width: 480px;" />
 </div>
 <p>更新它们到源节点的距离，尝试寻找更短的路径：</p>
 <ul class="simple">
@@ -301,23 +306,23 @@
 而不能途经未被包含在最短路径中的边（例如，不能构造经过边 2 -&gt; 3 的路径）。</p>
 </div>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-13-32.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-13-32.png" style="width: 480px;" />
 </div>
 <p>现在需要选择将哪个未访问节点标记为“已访问”，这里选择节点 4，因为在距离列表中它的距离最短。在图中做标记：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-14-00.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-14-00.png" style="width: 480px;" />
 </div>
 <p>在距离列表中用红色方块将它标记为“已访问”：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-14-23.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-14-23.png" style="width: 480px;" />
 </div>
 <p>在“未访问”节点列表中把它划掉：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-14-43.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-14-43.png" style="width: 480px;" />
 </div>
 <p>再次重复前面的过程。检查相邻节点：节点 5 和节点 6。分析每一种从已访问节点到它们之间的可能路径方案。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-15-07.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-15-07.png" style="width: 480px;" />
 </div>
 <p>对于节点 5：</p>
 <ul class="simple">
@@ -330,19 +335,19 @@
 <li>可选的路径是 <cite>0 -&gt; 1 -&gt; 3 -&gt; 4 -&gt; 6</cite>，到源节点的距离为 19（2 + 5 + 10 + 2）。</li>
 </ul>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-16-05.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-16-05.png" style="width: 480px;" />
 </div>
 <p>把距离最短（当前已知）的节点 6 标记为“已访问”。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-16-23.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-16-23.png" style="width: 480px;" />
 </div>
 <p>在“未访问”节点列表中把它划掉：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-16-44.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-16-44.png" style="width: 480px;" />
 </div>
 <p>现在得到了如下路径（标记为红色）：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-17-15.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-17-15.png" style="width: 480px;" />
 </div>
 <p>现在只剩下一个节点 5 还没被访问了，看看我们要如何把它添加到路径中。</p>
 <p>从已经添加到路径中的节点出发，有三种不同的路径可以访问节点 5：</p>
@@ -352,22 +357,22 @@
 <li>第三种选择： <cite>0 -&gt; 1 -&gt; 3 -&gt; 4 -&gt; 6 -&gt; 5</cite>，总距离为 25（2 + 5 + 10 + 2 + 6）。</li>
 </ul>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-17-49.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-17-49.png" style="width: 480px;" />
 </div>
 <p>选择总距离为 22 的最短路径： <cite>0 -&gt; 1 -&gt; 3 -&gt; 5</cite>。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-18-41.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-18-41.png" style="width: 480px;" />
 </div>
 <p>把这个节点标记为“已访问”，并在“未访问”节点列表中把它划掉：</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-19-00.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-19-00.png" style="width: 480px;" />
 </div>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-19-15.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-19-15.png" style="width: 480px;" />
 </div>
 <p>瞧！ 我们得到了从节点 0 到图中每个节点的最短路径。</p>
 <div class="figure">
-<img alt="" src="../../../resources/images/2024-03-06-17-19-34.png" style="width: 480px;" />
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-19-34.png" style="width: 480px;" />
 </div>
 <p>图中，标记为红色的边表示最短路径：连接节点 0 和目标节点的红色边即为从源节点出发访问目标节点的最短路径。</p>
 <p>例如，想要从节点 0 出发访问节点 6，连接它们的红色边就是最短路径，跟着走就行了。</p>
@@ -475,27 +480,27 @@ if __name__ == '__main__':
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 3 <strong>22</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-Conceptual-dom-document.html">Dom-Document对象</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-frame-jquery-jQuery-provided-methods.html">jQuery提供方法</a></h3>
-											<p><p class="first last">jQuery提供常用方法/函数</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-CSS-commonly-used-attributes-overflow.html">overflow</a></h3>
+											<p><p class="first last">overflow滚动条属性</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>21</strong></span>
-											<h3><a href="yq-doc-do-from-sp-to-pelican.html">记录将sphinx文档库迁移到pelican</a></h3>
-											<p><p class="first last">将旧的文档形式内容迁移到pelican做成博客</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-Pseudo-element.html">CSS伪元素</a></h3>
+											<p><p class="first last">CSS伪元素</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>19</strong></span>
-											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
-											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
+											<span class="date"> 3 <strong>25</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-CSS-font-file-import.html">字体文件导入</a></h3>
+											<p><p class="first last">字体文件导入</p>
 </p>
 										</li>
 									</ul>

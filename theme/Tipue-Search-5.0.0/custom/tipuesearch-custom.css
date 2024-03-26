@@ -89,6 +89,7 @@ http://www.tipue.com/search
 			margin-right: 7%;
 			float: right;
 			border: none;
+			cursor: pointer;
 		}
 		.row.page-head-search > form > button::before{
 			/* content: "f002"; */
