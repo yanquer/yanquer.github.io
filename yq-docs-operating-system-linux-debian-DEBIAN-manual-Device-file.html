@@ -1,0 +1,383 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>设备文件</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 27 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/debian.html">Debian</a></li>
+
+												<li><a class="button button-alt" href="tag/debianshou-ce.html">Debian手册</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-27</div>
+									<h2>设备文件</h2>
+									<p><a class="reference external" href="https://zh.wikipedia.org/wiki/Device_file">设备文件</a>
+包括系统的物理设备和虚拟设备，如硬盘、显卡、显示屏、键盘。
+虚拟设备的一个例子是控制台，用“<cite>/dev/console</cite>”来描述。</p>
+<p>设备文件有两种类型。</p>
+<dl class="docutils">
+<dt>字符设备</dt>
+<dd><ul class="first last simple">
+<li>每次访问一个字符</li>
+<li>一个字符等于一个字节</li>
+<li>如键盘、串口…</li>
+</ul>
+</dd>
+<dt>块设备</dt>
+<dd><ul class="first last simple">
+<li>通过更大的单元–块，进行访问</li>
+<li>一个块&gt;一个字节</li>
+<li>如硬盘等…</li>
+</ul>
+</dd>
+</dl>
+<p>你可以读写块设备文件，尽管该文件可能包含二进制数据，
+读取后显示出无法理解的乱码。
+向文件写入数据，有时可以帮助定位硬件连接故障。
+比如，你可以将文本文件导入打印机设备“<cite>/dev/lp0</cite>”，
+或者将调制解调命令发送到合适的串口“<cite>/dev/ttyS0</cite>”。
+但是，除非这些操作都小心完成，否则可能会导致一场大灾难。所以要特别小心。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">常规访问打印机，使用 <cite>lp</cite></p>
+</div>
+<p>设备的节点数可以通过执行 <cite>ls</cite> 得到，如下所示:</p>
+<pre class="literal-block">
+$ ls -l /dev/sda /dev/sr0 /dev/ttyS0 /dev/zero
+brw-rw---T  1 root disk     8,  0 Oct 16 20:57 /dev/sda
+brw-rw---T+ 1 root cdrom   11,  0 Oct 16 21:53 /dev/sr0
+crw-rw---T  1 root dialout  4, 64 Oct 16 20:57 /dev/ttyS0
+crw-rw-rw-  1 root root     1,  5 Oct 16 20:57 /dev/zero
+</pre>
+<ul class="simple">
+<li><cite>/dev/sda</cite> 的主设备号是8，次设备号是0。它可以被 <cite>disk</cite> 群组的用户读写。</li>
+<li><cite>/dev/sr0</cite> 的主设备号是11，次设备号是0。它可以被 <cite>cdrom</cite> 群组的用户读写。</li>
+<li><cite>/dev/ttyS0</cite> 的主设备号是4，次设备号是64。它可以被 <cite>dailout</cite> 群组的用户读写。</li>
+<li><cite>/dev/zero</cite> 的主设备号是1，次设备号是5。它可以被任意用户读写。</li>
+</ul>
+<p>在现代Linux系统中，处在 <cite>/dev</cite> 之下的文件系统会自动被 <cite>udev</cite> 机制填充。</p>
+<div class="section" id="section-2">
+<h2>特殊设备文件</h2>
+<p>还有一些特殊的设备文件。</p>
+<table border="1" class="docutils">
+<caption>特殊设备文件列表</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">设备文件</th>
+<th class="head">操作</th>
+<th class="head">响应描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>/dev/null</td>
+<td>读取</td>
+<td>返回 文件结尾字符（EOF）</td>
+</tr>
+<tr><td>/dev/null</td>
+<td>写入</td>
+<td>无返回（一个无底的数据转存深渊）</td>
+</tr>
+<tr><td>/dev/zero</td>
+<td>读取</td>
+<td>返回 <cite>0</cite> 空符（与ASCII中的数字0不同）</td>
+</tr>
+<tr><td>/dev/random</td>
+<td>读取</td>
+<td>从真随机数产生器返回一个随机字符，供应真熵（缓慢）</td>
+</tr>
+<tr><td>/dev/urandom</td>
+<td>读取</td>
+<td>从能够安全加密的伪随机数产生器返回一个随机字符</td>
+</tr>
+<tr><td>/dev/full</td>
+<td>写入</td>
+<td>返回磁盘已满（ENOSPC）错误</td>
+</tr>
+</tbody>
+</table>
+<p>这些特别设备文件经常和 shell 数据重定向联合使用</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    特殊设备文件
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

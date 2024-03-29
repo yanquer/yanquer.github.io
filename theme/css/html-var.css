@@ -60,6 +60,8 @@ html{
     --g-radius-border: 5px solid #a58243d1;
     --g-radius-border-no-color: 5px solid;
 
+    --g-tip-text-color: #e78585bf;
+
     --main-area-bg-color: #181a1b;	/* rgb(24, 26, 27) */
 
     /* // Font Awesome default icons */

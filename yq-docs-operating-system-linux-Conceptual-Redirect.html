@@ -1,0 +1,421 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>重定向</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 23 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xing.html">概念性</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-23</div>
+									<h2>重定向</h2>
+									<div class="section" id="section-2">
+<h2>文件描述符</h2>
+<p>当执行shell命令时，会默认打开3个文件，每个文件有对应的文件描述符来方便我们使用</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">类型</th>
+<th class="head">文件描述符</th>
+<th class="head">默认情况</th>
+<th class="head">对应文件句柄位置</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>标准输入（standard input）</td>
+<td>0</td>
+<td>从键盘获得输入</td>
+<td>/proc/self/fd/0</td>
+</tr>
+<tr><td>标准输出（standard output）</td>
+<td>1</td>
+<td>输出到屏幕（即控制台）</td>
+<td>/proc/self/fd/1</td>
+</tr>
+<tr><td>错误输出（error output）</td>
+<td>2</td>
+<td>输出到屏幕（即控制台）</td>
+<td>/proc/self/fd/2</td>
+</tr>
+</tbody>
+</table>
+<p>所以我们平时在执行shell命令中，都默认是从键盘获得输入，
+并且将结果输出到控制台上。但是我们可以通过更改文件描述符默认的指向，
+从而实现输入输出的重定向。比如我们将1指向文件，那么标准的输出就会输出到文件中。</p>
+</div>
+<div class="section" id="section-3">
+<h2>输出重定向</h2>
+<p>输出重定向的使用方式很简单，基本的一些命令如下:</p>
+<pre class="literal-block">
+command &gt;filename   把标准输出重定向到新文件中
+command 1&gt;filename  同上
+command &gt;&gt;filename  把标准输出追加到文件中
+command 1&gt;&gt;filename 同上
+command 2&gt;filename  把标准错误重定向到新文件中
+command 2&gt;&gt;filename 把标准错误追加到新文件中
+</pre>
+<p>我们使用&gt;或者&gt;&gt;对输出进行重定向。</p>
+<ul class="simple">
+<li>符号的左边表示文件描述符，如果没有的话表示1，也就是标准输出，</li>
+<li>符号的右边可以是一个文件，也可以是一个输出设备。</li>
+</ul>
+<p>当使用&gt;时，会判断右边的文件存不存在，
+如果存在的话就先删除，然后创建一个新的文件，
+不存在的话则直接创建。
+但是当使用&gt;&gt;进行追加时，则不会删除原来已经存在的文件。</p>
+<p>（这里&gt;的创建只能创建在已经存在的目录下，目录不存在则报错）</p>
+</div>
+<div class="section" id="section-4">
+<h2>输入重定向</h2>
+<p>在理解了输出重定向之后，理解输入重定向就会容易得多。对输入重定向的基本命令如下:</p>
+<pre class="literal-block">
+command &lt;filename    以filename文件作为标准输入
+command 0&lt;filename   同上
+command &lt;&lt;delimiter  从标准输入中读入，直到遇到delimiter分隔符
+command &lt;&lt;&lt;delimiter 从标准输入中读入变量
+</pre>
+<p>我们使用&lt;对输入做重定向，如果符号左边没有写值，那么默认就是0。</p>
+</div>
+<div class="section" id="section-5">
+<h2>重定向顺序</h2>
+<div class="section" id="command-log-txt-2-1">
+<h3>command &gt;log.txt 2&gt;&amp;1</h3>
+<p>将标准输出, 错误输出都输出到一个文件:</p>
+<pre class="literal-block">
+command &gt;log.txt 2&gt;&amp;1
+</pre>
+<p>理解的话可以按照顺序看, 先:</p>
+<pre class="literal-block">
+&gt;log.txt
+</pre>
+<p>此处省略了1, 即:</p>
+<pre class="literal-block">
+1&gt;log.txt
+</pre>
+<p>表示把标准输出重定向到 log.txt, 后面的:</p>
+<pre class="literal-block">
+2&gt;&amp;1
+</pre>
+<p>表示把标准错误重定向到标准输出.</p>
+</div>
+<div class="section" id="command-log-txt">
+<h3>command &amp;&gt;log.txt</h3>
+<p>官方提供了一个特殊的:</p>
+<pre class="literal-block">
+command &amp;&gt;log.txt
+</pre>
+<p>与上面含义一致, 表示把标准错误重定向到标准输出.</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    文件描述符
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    输出重定向
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    输入重定向
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    重定向顺序
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#command-log-txt-2-1">
+      command &gt;log.txt 2&gt;&amp;1
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#command-log-txt">
+      command &amp;&gt;log.txt
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,372 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>start</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/windows.html">Windows</a></li>
+
+												<li><a class="button button-alt" href="tag/windows_shell.html">Windows_shell</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>start</h2>
+									<p>启动一个单独的窗口以运行指定的程序或命令:</p>
+<pre class="literal-block">
+START [&quot;title&quot;] [/D path] [/I] [/MIN] [/MAX] [/SEPARATE | /SHARED]
+      [/LOW | /NORMAL | /HIGH | /REALTIME | /ABOVENORMAL | /BELOWNORMAL]
+      [/NODE &lt;NUMA node&gt;] [/AFFINITY &lt;hex affinity mask&gt;] [/WAIT] [/B]
+      [command/program] [parameters]
+</pre>
+<p>选项/参数说明:</p>
+<pre class="literal-block">
+&quot;title&quot;     在窗口标题栏中显示的标题。
+path        启动目录。
+B           启动应用程序，但不创建新窗口。
+            应用程序已忽略 ^C 处理。除非应用程序
+            启用 ^C 处理，否则 ^Break 是唯一可以中断
+            该应用程序的方式。
+I           新的环境将是传递
+            给 cmd.exe 的原始环境，而不是当前环境。
+MIN         以最小化方式启动窗口。
+MAX         以最大化方式启动窗口。
+SEPARATE    在单独的内存空间中启动 16 位 Windows 程序。
+SHARED      在共享内存空间中启动 16 位 Windows 程序。
+LOW         在 IDLE 优先级类中启动应用程序。
+NORMAL      在 NORMAL 优先级类中启动应用程序。
+HIGH        在 HIGH 优先级类中启动应用程序。
+REALTIME    在 REALTIME 优先级类中启动应用程序。
+ABOVENORMAL 在 ABOVENORMAL 优先级类中启动应用程序。
+BELOWNORMAL 在 BELOWNORMAL 优先级类中启动应用程序。
+NODE        将首选非一致性内存结构(NUMA)节点指定为
+            十进制整数。
+AFFINITY    将处理器关联掩码指定为十六进制数字。
+            进程被限制在这些处理器上运行。
+
+            将 /AFFINITY 和 /NODE 结合使用时，会对关联掩码
+            进行不同的解释。指定关联掩码，以便将零位作为起始位置(就如将 NUMA
+            节点的处理器掩码向右移位一样)。
+            进程被限制在指定关联掩码和 NUMA 节点之间的
+            那些通用处理器上运行。
+            如果没有通用处理器，则进程被限制在
+            指定的 NUMA 节点上运行。
+WAIT        启动应用程序并等待它终止。
+command/program
+            如果它是内部 cmd 命令或批文件，则
+            该命令处理器是使用 cmd.exe 的 /K 开关运行的。
+            这表示运行该命令之后，该窗口
+            将仍然存在。
+
+            如果它不是内部 cmd 命令或批文件，则
+            它就是一个程序，并将作为一个窗口化应用程序或
+            控制台应用程序运行。
+
+parameters  这些是传递给 command/program 的参数。
+</pre>
+<p>注意: 在 64 位平台上不支持 SEPARATE 和 SHARED 选项。</p>
+<p>通过指定 /NODE，可按照利用 NUMA 系统中的内存区域的方式创建进程。
+例如，可以创建两个完全通过共享内存互相通信的进程以共享相同的首选 NUMA 节点，从而最大限度地减少内存延迟。
+只要有可能，它们就会分配来自相同 NUMA 节点的内存，并且会在指定节点之外的处理器上自由运行:</p>
+<pre class="literal-block">
+start /NODE 1 application1.exe
+start /NODE 1 application2.exe
+</pre>
+<p>这两个进程可被进一步限制在相同 NUMA 节点内的指定处理器上运行。
+在以下示例中，application1 在节点的两个低位处理器上运行，而 application2在该节点的其后两个处理器上运行。
+该示例假定指定节点至少具有四个逻辑处理器。请注意，节点号可更改为该计算机的任何有效节点号，而无需更改关联掩码:</p>
+<pre class="literal-block">
+start /NODE 1 /AFFINITY 0x3 application1.exe
+start /NODE 1 /AFFINITY 0xc application2.exe
+</pre>
+<p>如果命令扩展被启用，通过命令行或 START 命令的外部命令调用会如下改变:</p>
+<dl class="docutils">
+<dt>将文件名作为命令键入，非可执行文件可以通过文件关联调用。</dt>
+<dd>(例如，WORD.DOC 会调用跟 .DOC 文件扩展名关联的应用程序)。
+关于如何从命令脚本内部创建这些关联，请参阅 ASSOC 和 FTYPE 命令。</dd>
+</dl>
+<p>执行的应用程序是 32 位 GUI 应用程序时，CMD.EXE 不等应用程序终止就返回命令提示符。
+如果在命令脚本内执行，该新行为则不会发生。</p>
+<p>如果执行的命令行的第一个符号是不带扩展名或路径修饰符的字符串 &quot;CMD&quot;，&quot;CMD&quot; 会被 COMSPEC 变量的数值所替换。
+这防止从当前目录提取 CMD.EXE。</p>
+<p>如果执行的命令行的第一个符号没有扩展名，CMD.EXE 会使用PATHEXT 环境变量的数值来决定要以什么顺序寻找哪些扩展名。
+PATHEXT 变量的默认值是:</p>
+<pre class="literal-block">
+.COM;.EXE;.BAT;.CMD
+</pre>
+<p>请注意，该语法跟 PATH 变量的一样，分号隔开不同的元素。</p>
+<p>查找可执行文件时，如果没有相配的扩展名，看一看该名称是否与目录名相配。
+如果确实如此，START 会在那个路径上调用Explorer。
+如果从命令行执行，则等同于对那个路径作 CD /D。</p>
+<p>批处理中调用外部程序的命令（该外部程序在新窗口中运行，批处理程序继续往下执行，不理会外部程序的运行状况），
+如果直接运行外部程序则必须等外部程序完成后才继续执行剩下的指令</p>
+<p>例:</p>
+<pre class="literal-block">
+start explorer d:\
+</pre>
+<p>调用图形界面打开D盘</p>
+<p>有一类似指令 call 与区别, 见 <a class="reference external" href="/yq-docs-operating-system-Windows-windows_shell-call.html">call</a></p>
+<p>注意: 有时候使用 start 启动时候无效:</p>
+<pre class="literal-block">
+start &quot;C:\user xx\xx.bat&quot;
+</pre>
+<p>是因为有个 title 参数, 这时候加个空标题即可:</p>
+<pre class="literal-block">
+start &quot;&quot; &quot;C:\user xx\xx.bat&quot;
+</pre>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

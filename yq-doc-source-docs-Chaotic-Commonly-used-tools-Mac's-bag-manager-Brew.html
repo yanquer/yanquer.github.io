@@ -89,6 +89,7 @@
 				</div>
 			</div>
 
+
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
 				<div class="container">
@@ -115,10 +116,9 @@
 <p>这里只谈brew, 官网: <a class="reference external" href="https://brew.sh/index_zh-cn">https://brew.sh/index_zh-cn</a></p>
 <div class="section" id="brew">
 <h2>安装brew</h2>
-<p>国内源下载:</p>
-<pre class="literal-block">
-/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;
-</pre>
+<p>国内源下载</p>
+<div class="highlight"><pre><span></span>/bin/zsh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
 <p>把脚本搞下来了, <em>/resources/code/homebrew_zh.sh</em></p>
 <p>一开始用的2清华源, 结果慢的要死. 然后换成1中科大的源, 快多了</p>
 </div>
@@ -152,6 +152,37 @@ cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v
 </pre>
 </div>
 <div class="section" id="section-3">
+<h2>选项/参数</h2>
+<dl class="docutils">
+<dt>install &lt;pack&gt;</dt>
+<dd>安装指定的 pack</dd>
+<dt>info &lt;pack&gt;</dt>
+<dd>查看已安装 pack 的信息</dd>
+<dt>search &lt;pack&gt;</dt>
+<dd><p class="first">从仓库搜索与 pack 相关的包信息</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>输出可能会有 Formulae 与 cask 两种,
+简单理解 , <cite>Formulae</cite> 列出的包, 是直接通过脚本安装 cli 命令行工具.
+<cite>cask</cite> 是简化的图形化GUI安装.</p>
+<ul class="last simple">
+<li>Formulae: 命令行工具</li>
+<li>cask: 图形化安装</li>
+</ul>
+</div>
+<p class="last">若要安装 cask 类型,  增加 <tt class="docutils literal"><span class="pre">--cask</span></tt> 即可</p>
+</dd>
+<dt>unlink</dt>
+<dd><p class="first">当安装的包存在多个版本, 可以使用此指令切换.</p>
+<p>如 dart 切换版本</p>
+<div class="last"><div class="highlight"><pre><span></span>brew<span class="w"> </span>unlink<span class="w"> </span>dart@&lt;old&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>brew<span class="w"> </span>unlink<span class="w"> </span>dart@&lt;new&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>brew<span class="w"> </span>link<span class="w"> </span>dart@&lt;new&gt;
+</pre></div>
+</div></dd>
+<dt>link</dt>
+<dd>见 unlink</dd>
+</dl>
+</div>
+<div class="section" id="section-4">
 <h2>常见报错</h2>
 <div class="section" id="command-failed-with-exit-128-git">
 <h3>Command failed with exit 128: git</h3>
@@ -198,6 +229,66 @@ yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/H
 				</div>
 			</div>
 
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#brew">
+    安装brew
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#brew-1">
+    卸载brew
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    一些说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    指令说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    选项/参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    常见报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#command-failed-with-exit-128-git">
+      Command failed with exit 128: git
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
 		<!-- Footer Wrapper -->
 			<div id="footer-wrapper">
 				<!-- Footer -->
@@ -210,27 +301,27 @@ yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/H
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-doc-source-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-doc-source-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>26</strong></span>
 											<h3><a href="yq-doc-source-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
 											<p><p class="first last">浏览器环境下的Window对象</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>25</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-CSS-CSS-commonly-used-attributes-overflow.html">overflow</a></h3>
-											<p><p class="first last">overflow滚动条属性</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>25</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-CSS-Pseudo-element.html">CSS伪元素</a></h3>
-											<p><p class="first last">CSS伪元素</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>25</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-CSS-font-file-import.html">字体文件导入</a></h3>
-											<p><p class="first last">字体文件导入</p>
 </p>
 										</li>
 									</ul>
@@ -310,6 +401,27 @@ yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/H
 		<script src="/theme/js/config.js"></script>
 		<script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
 	</body>
 </html>

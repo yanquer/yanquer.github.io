@@ -1,0 +1,809 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>使用</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 01 三月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/scrapy.html">Scrapy</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-03-01</div>
+									<h2>使用</h2>
+									<dl class="docutils">
+<dt>制作 Scrapy 爬虫 一共需要4步：</dt>
+<dd><ul class="first last simple">
+<li>新建项目 (scrapy startproject xxx)：新建一个新的爬虫项目</li>
+<li>明确目标 （编写items.py）：明确你想要抓取的目标</li>
+<li>制作爬虫 （spiders/xxspider.py）：制作爬虫开始爬取网页</li>
+<li>存储内容 （pipelines.py）：设计管道存储爬取内容</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="section-2">
+<h2>新建项目</h2>
+<p>创建一个工作目录workdir并进入:</p>
+<pre class="literal-block">
+mkdir workdir; cd workdir
+</pre>
+<p>创建虚拟环境(省略)并安装依赖:</p>
+<pre class="literal-block">
+pip install Scrapy
+</pre>
+<p>创建项目:</p>
+<pre class="literal-block">
+scrapy startproject mySpider
+</pre>
+<p>输出:</p>
+<pre class="literal-block">
+(.venv) yanque&#64;mbp16 StudyScrapy % scrapy startproject mySpider
+New Scrapy project 'mySpider', using template directory '/Users/yanque/Project/Code/Pycharm/StudyScrapy/.venv/lib/python3.11/site-packages/scrapy/templates/project', created in:
+    /Users/yanque/Project/Code/Pycharm/StudyScrapy/mySpider          scons                  sconsign               screen                 script                 scutil
+
+You can start your first spider with:
+    cd mySpider
+    scrapy genspider example example.com
+</pre>
+<p>查看目录结构:</p>
+<pre class="literal-block">
+(.venv) yanque&#64;mbp16 StudyScrapy % tree mySpider
+mySpider
+├── mySpider
+│   ├── __init__.py
+│   ├── items.py
+│   ├── middlewares.py
+│   ├── pipelines.py
+│   ├── settings.py
+│   └── spiders
+│       └── __init__.py
+└── scrapy.cfg
+
+2 directories, 7 files
+</pre>
+<p>这些文件分别是:</p>
+<ul class="simple">
+<li>scrapy.cfg: 项目的配置文件。</li>
+<li>mySpider/: 项目的Python模块，将会从这里引用代码。</li>
+<li>mySpider/items.py: 项目的目标文件。</li>
+<li>middlewares.py: 中间件文件</li>
+<li>mySpider/pipelines.py: 项目的管道文件。</li>
+<li>mySpider/settings.py: 项目的设置文件。</li>
+<li>mySpider/spiders/: 存储爬虫代码目录。</li>
+</ul>
+</div>
+<div class="section" id="myspider-items-py">
+<h2>明确目标(mySpider/items.py)</h2>
+<p>我们打算抓取 <a class="reference external" href="http://www.itcast.cn/channel/teacher.shtml">黑马</a> 网站里的所有讲师的姓名、职称和个人信息。</p>
+<p>打开 mySpider 目录下的 items.py。</p>
+<p>Item 定义结构化数据字段，用来保存爬取到的数据，有点像 Python 中的 dict，但是提供了一些额外的保护减少错误。</p>
+<p>可以通过创建一个 scrapy.Item 类， 并且定义类型为 scrapy.Field 的类属性来定义一个 Item（可以理解成类似于 ORM 的映射关系）。</p>
+<p>接下来，创建一个 ItcastItem 类，和构建 item 模型（model）:</p>
+<pre class="literal-block">
+import scrapy
+
+class ItcastItem(scrapy.Item):
+  head = scrapy.Field()
+  name = scrapy.Field()
+  level = scrapy.Field()
+  desc = scrapy.Field()
+</pre>
+</div>
+<div class="section" id="spiders-itcastspider-py">
+<h2>制作爬虫(spiders/itcastSpider.py)</h2>
+<div class="section" id="section-3">
+<h3>爬数据</h3>
+<p>在 mySpider/spiders 目录下输入命令:</p>
+<pre class="literal-block">
+scrapy genspider itcast &quot;itcast.cn&quot;
+</pre>
+<p>将在 mySpider/spiders 目录下创建一个名为 <cite>itcast</cite> 的爬虫，并指定爬取域的范围.
+mySpider/spiders 目录里的 itcast.py，默认代码:</p>
+<pre class="literal-block">
+import scrapy
+
+class ItcastSpider(scrapy.Spider):
+    name = &quot;itcast&quot;
+    allowed_domains = [&quot;itcast.cn&quot;]
+    start_urls = (
+        'http://www.itcast.cn/',
+    )
+
+    def parse(self, response):
+        pass
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">可以由我们自行创建itcast.py并编写上面的代码，只不过使用命令可以免去编写固定代码的麻烦</p>
+</div>
+<p>要建立一个Spider， 你必须用scrapy.Spider类创建一个子类，并确定了三个强制的属性 和 一个方法。</p>
+<dl class="docutils">
+<dt>name = &quot;&quot;</dt>
+<dd>这个爬虫的识别名称，必须是唯一的，在不同的爬虫必须定义不同的名字。</dd>
+<dt>allow_domains = []</dt>
+<dd><p class="first">是搜索的域名范围，也就是爬虫的约束区域，规定爬虫只爬取这个域名下的网页，不存在的URL会被忽略。</p>
+<p class="last"><strong>新版本貌似已经废弃</strong></p>
+</dd>
+</dl>
+<dl class="docutils" id="start-requests">
+<dt>start_urls = ()</dt>
+<dd><p class="first">爬取的URL元祖/列表。爬虫从这里开始抓取数据，所以，第一次下载的数据将会从这些urls开始。其他子URL将会从这些起始URL中继承性生成。</p>
+<p>或者不定义 start_urls, 直接重写 start_requests</p>
+<pre class="literal-block">
+def start_requests(self):
+      urls = [
+          &quot;https://quotes.toscrape.com/page/1/&quot;,
+          &quot;https://quotes.toscrape.com/page/2/&quot;,
+      ]
+      for url in urls:
+          yield scrapy.Request(url=url, callback=self.parse)
+</pre>
+<p class="last">注意 start_requests 返回结果需要是一个生成器</p>
+</dd>
+</dl>
+<!-- parse: -->
+<dl class="docutils">
+<dt>parse(self, response)</dt>
+<dd><p class="first">解析的方法，每个初始URL完成下载后将被调用，调用的时候传入从每一个URL传回的Response对象来作为唯一参数，
+主要作用如下：</p>
+<ul class="last simple">
+<li>负责解析返回的网页数据(response.body)，提取结构化数据(生成item)</li>
+<li>生成需要下一页的URL请求。</li>
+</ul>
+</dd>
+</dl>
+<p>将start_urls的值修改为需要爬取的第一个url:</p>
+<pre class="literal-block">
+start_urls = (&quot;http://www.itcast.cn/channel/teacher.shtml&quot;,)
+</pre>
+<p>修改parse()方法:</p>
+<pre class="literal-block">
+from scrapy.http import Request, Response
+
+def parse(self, response: Response):
+  filename = &quot;teacher.html&quot;
+  with open(filename, 'w') as f:
+      f.write(response.body.decode('utf-8'))
+</pre>
+<p>然后运行一下这个爬虫看看，在 mySpider 目录下执行( <strong>一定要确定正确的根目录</strong> ):</p>
+<pre class="literal-block">
+cd mySpider; scrapy crawl itcast
+</pre>
+<p>可以看到 mySpider 下生成了爬取的 teacher.html</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-28-13-42-57.png" style="width: 480px;" />
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">发生了什么?</p>
+<p>不管是否重新定义 <a class="reference internal" href="#start-requests">start_requests</a> ,
+start_requests 的返回结果都是 <cite>scrapy.Request</cite> 对象的生成器</p>
+<p>对于每一个生成器的 url, 都会调用 <cite>parse</cite> 方法, 处理拿到的数据</p>
+<p class="last">另外, <a class="reference internal" href="#start-requests">start_requests</a> 返回的 <cite>scrapy.Request</cite> 默认回调就是 <cite>parse</cite></p>
+</div>
+</div>
+<div class="section" id="shell">
+<h3>shell工具</h3>
+<p>最开始可以使用 <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-Scrapy-Scrapy-shell.html">Scrapy shell</a> 工具:</p>
+<pre class="literal-block">
+scrapy shell 'http://www.itcast.cn/channel/teacher.shtml'
+</pre>
+<p>来启动一个交互式终端</p>
+<p>可以选择使用了指定 CSS 标签, 示例寻找 <tt class="docutils literal">&lt;title&gt;</tt> 元素:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;title&quot;)
+[&lt;Selector query='descendant-or-self::title' data='&lt;title&gt;师资力量|讲师介绍_黑马程序员&lt;/title&gt;'&gt;]
+&gt;&gt;&gt;
+</pre>
+<p>输出结果是一个 <cite>SelectorList</cite> 对象, 代表所有查询到的元素的列表</p>
+<p>查看所有:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;title&quot;).getall()
+['&lt;title&gt;师资力量|讲师介绍_黑马程序员&lt;/title&gt;']
+</pre>
+<p>只需要文本:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;title::text&quot;).getall()
+['师资力量|讲师介绍_黑马程序员']
+</pre>
+<p>只获取第一个元素的文本:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;title::text&quot;).get()
+'师资力量|讲师介绍_黑马程序员'
+</pre>
+<p>等价于:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;title::text&quot;)[0].get()
+'师资力量|讲师介绍_黑马程序员'
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用索引的方式, 如果没有就报错索引越界, 所以还是直接用 get 获取第一个好点</p>
+</div>
+<p>还支持使用 re 进行正则:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;title::text&quot;).re(r&quot;.*&quot;)
+['师资力量|讲师介绍_黑马程序员', '']
+&gt;&gt;&gt;
+&gt;&gt;&gt; response.css(&quot;title::text&quot;).re(r&quot;\w*&quot;)
+['师资力量', '', '讲师介绍_黑马程序员', '']
+&gt;&gt;&gt;
+&gt;&gt;&gt; response.css(&quot;title::text&quot;).re(r&quot;(\w*)_(\w*)&quot;)
+['讲师介绍', '黑马程序员']
+</pre>
+<p>还可以从浏览器打开缓存的 HTML 页面:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; view(response)
+True
+</pre>
+</div>
+<div class="section" id="section-4">
+<h3>原始数据解析</h3>
+<p>我们可以研究下之前拿到的 <cite>teacher.html</cite>,
+可以看到, 老师信息都在一个 div 里面:</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-29-10-49-54.png" style="width: 480px;" />
+</div>
+<p>结构大概如下:</p>
+<pre class="literal-block">
+&lt;div class=&quot;tea_con&quot;&gt;
+  &lt;div class=&quot;tea_txt&quot;&gt; 第一部分老师信息的 li 列表 &lt;/div&gt;
+  &lt;div class=&quot;tea_txt&quot;&gt; 第二部分老师信息的 li 列表 &lt;/div&gt;
+  &lt;div class=&quot;tea_txt&quot;&gt; 第三部分老师信息的 li 列表 &lt;/div&gt;
+  ...
+&lt;/div&gt;
+</pre>
+<p>我们现在使用 CSS 选择器获取最外层:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;div.tea_con&quot;)
+[&lt;Selector query=&quot;descendant-or-self::div[&#64;class and contains(concat(' ', normalize-space(&#64;class), ' '), ' tea_con ')]&quot; data='&lt;div class=&quot;tea_con&quot;&gt;\n\t\t&lt;div class=&quot;t...'&gt;]
+&gt;&gt;&gt;
+</pre>
+<p>定位下一层(输出太多就不全贴):</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;div.tea_con div.tea_txt&quot;)
+[&lt;Selector query=&quot;descendant-or-self::div[&#64;class and contains(concat(' ', normalize-space(&#64;class), ' '), ' tea_con ')]...
+</pre>
+<p>这个时候获取的结果列表是所有的:</p>
+<pre class="literal-block">
+&lt;div class=&quot;tea_txt&quot;&gt;...
+&lt;div class=&quot;tea_txt&quot;&gt;...
+&lt;div class=&quot;tea_txt&quot;&gt;...
+...
+</pre>
+<p>继续, 如何获取每一部分的信息, 先观察html:</p>
+<pre class="literal-block">
+&lt;ul&gt;
+                              &lt;li&gt;
+                                      &lt;img src='images/teacher/javaee/20210126133739杜老师_讲师.jpg'&gt;
+                                      &lt;div class=&quot;li_txt&quot;&gt;
+                                              &lt;h3&gt;杜老师&lt;/h3&gt;
+                                              &lt;h4&gt;高级讲师&lt;/h4&gt;
+                                              &lt;p&gt;15年软件开发与教学经验，熟练掌握MySQL、Redis、SSM框架、Dubbo、ZooKeeper、SpringBoot、SpringCloud等技术,主持与参与过市级财务系统，企业管理等系统开发。熟悉分布式技术，了解微服务架构，具备多个行业项目产品开发与管理经验，对培训有深刻的理解和把握。&lt;/p&gt;
+                                      &lt;/div&gt;
+                              &lt;/li&gt;
+                              &lt;li&gt;
+                                      &lt;img src='images/teacher/javaee/2020080614171120200701111719姜涛.jpg'&gt;
+                                      &lt;div class=&quot;li_txt&quot;&gt;
+                                              &lt;h3&gt;姜老师&lt;/h3&gt;
+                                              &lt;h4&gt;高级讲师&lt;/h4&gt;
+                                              &lt;p&gt;擅长Java EE企业级应用，十余年项目管理经验，曾担任开发工程师，架构师等重要角色。主导多个大型项目的架构设计、管理等工作。在互联网项目领域具备丰富的经验，精通微服务架构，擅长解决高并发，亿级数据量等架构设计，拥有广泛的技术面与实践经验。&lt;/p&gt;
+                                      &lt;/div&gt;
+                              &lt;/li&gt;
+
+      ...
+&lt;/ul&gt;
+</pre>
+<p>到这里其实就不用考虑外部的循环了, 可以直接定位到每一个li标签:</p>
+<pre class="literal-block">
+response.css(&quot;div.tea_con div.tea_txt ul li&quot;)
+</pre>
+<p>先只考虑第一个(因为li内部结构一致, 后面的迭代就行):</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.css(&quot;div.tea_con div.tea_txt ul li&quot;)[0]
+&lt;Selector query=&quot;descendant-or-self::div[&#64;class and contains(concat(' ', normalize-space(&#64;class), ' '), ' tea_con ')]/descendant-or-self::*/div[&#64;class and contains(concat(' ', normalize-space(&#64;class), ' '), ' tea_txt ')]/descendant-or-self::*/ul/descendant-or-self::*/li&quot; data='&lt;li&gt;\n\t\t\t\t\t&lt;img src=&quot;images/teacher/ja...'&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; t1 = response.css(&quot;div.tea_con div.tea_txt ul li&quot;)[0]
+&gt;&gt;&gt;
+</pre>
+<p>获取老师照片:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; t1.css(&quot;img::attr(src)&quot;).get()
+'images/teacher/javaee/20210126133739杜老师_讲师.jpg'
+</pre>
+<p>获取老师名字:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; t1.css(&quot;h3::text&quot;).get()
+'杜老师'
+</pre>
+<p>级别:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; t1.css(&quot;h4::text&quot;).get()
+'高级讲师'
+</pre>
+<p>介绍:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; t1.css(&quot;p::text&quot;).get()
+'15年软件开发与教学经验，熟练掌握MySQL、Redis、SSM框架、Dubbo、ZooKeeper、SpringBoot、SpringCloud等技术,主持与参与过市级财务系统，企业管理等系统开发。熟悉分布式技术，了解微服务架构，具备多个行业项目产品开发与管理经验，对培训有深刻的理解和把握。'
+&gt;&gt;&gt;
+</pre>
+<p>那么对于所有的老师, 可以简单的循环处理:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; data = []
+&gt;&gt;&gt; from collections import namedtuple
+&gt;&gt;&gt; Teacher = namedtuple(&quot;Teacher&quot;, [&quot;image&quot;, &quot;name&quot;, &quot;level&quot;, &quot;desc&quot;])
+&gt;&gt;&gt; for t in response.css(&quot;div.tea_con div.tea_txt ul li&quot;):
+...     img = t.css(&quot;img::attr(src)&quot;).get()
+...     name = t.css(&quot;h3::text&quot;).get()
+...     level = t.css(&quot;h4::text&quot;).get()
+...     desc = t.css(&quot;p::text&quot;).get()
+...     data.append(Teacher(img, name, level, desc))
+</pre>
+<p>就获取到了所有数据, 可以简单看看结果:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; data[0]
+Teacher(image='images/teacher/javaee/20210126133739杜老师_讲师.jpg', name='杜老师', level='高级讲师', desc='15年软件开发与教学经验，熟练掌握MySQL、Redis、SSM框架、Dubbo、ZooKeeper、SpringBoot、SpringCloud等技务架构，具备多个行业项目产品开发与管理经验，对培训有深刻的理解和把握。')
+&gt;&gt;&gt; data[1]
+Teacher(image='images/teacher/javaee/2020080614171120200701111719姜涛.jpg', name='姜老师', level='高级讲师', desc='擅长Java EE企业级应用，十余年项目管理经验，曾担任开发工程师，架构师等重要角色。主导多个大型项构设计，拥有广泛的技术面与实践经验。')
+&gt;&gt;&gt; data.__len__()
+179
+</pre>
+<p>所以 parse 可以这么写:</p>
+<pre class="literal-block">
+def parse(self, response: Response):
+  # filename = &quot;teacher.html&quot;
+  # with open(filename, 'w') as f:
+  #     f.write(response.body.decode('utf-8'))
+
+  from collections import namedtuple
+  Teacher = namedtuple(&quot;Teacher&quot;, [&quot;image&quot;, &quot;name&quot;, &quot;level&quot;, &quot;desc&quot;])
+  data: [Teacher] = []
+  for t in response.css(&quot;div.tea_con div.tea_txt ul li&quot;):
+      img = t.css(&quot;img::attr(src)&quot;).get()
+      name = t.css(&quot;h3::text&quot;).get()
+      level = t.css(&quot;h4::text&quot;).get()
+      desc = t.css(&quot;p::text&quot;).get()
+      data.append(Teacher(img, name, level, desc))
+
+  with open(&quot;teacher.json&quot;, &quot;w&quot;) as f:
+      json.dump({&quot;data&quot;: data}, f, ensure_ascii=False, indent=4)
+</pre>
+<p>执行下看看结果:</p>
+<pre class="literal-block">
+cd mySpider; scrapy crawl itcast
+</pre>
+<p>teacher.json内容(部分):</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-29-13-35-29.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="section-5">
+<h3>解析数据转给框架</h3>
+<p>还是改 parse:</p>
+<pre class="literal-block">
+def parse(self, response: Response):
+  for t in response.css(&quot;div.tea_con div.tea_txt ul li&quot;):
+      img = t.css(&quot;img::attr(src)&quot;).get()
+      name = t.css(&quot;h3::text&quot;).get()
+      level = t.css(&quot;h4::text&quot;).get()
+      desc = t.css(&quot;p::text&quot;).get()
+
+      yield {
+          &quot;head&quot;: img,
+          &quot;name&quot;: name,
+          &quot;level&quot;: level,
+          &quot;desc&quot;: desc,
+      }
+</pre>
+<p>这个时候再启动就可以看到数据打印在日志了, 太多我就不放了.</p>
+<p>将框架获取到的数据导出到 t.json:</p>
+<pre class="literal-block">
+scrapy crawl itcast -O t.json
+</pre>
+<p>效果:</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-29-13-45-40.png" style="width: 480px;" />
+</div>
+<p>还可使用 <cite>-o t.jsonl</cite> 仅新增, 详细参考 <em>crawl &lt;CmdCrawl&gt;</em></p>
+<p>如果需要或许的数据是链接比如 href (即动态的):</p>
+<pre class="literal-block">
+&lt;ul class=&quot;pager&quot;&gt;
+    &lt;li class=&quot;next&quot;&gt;
+        &lt;a href=&quot;/page/2/&quot;&gt;Next &lt;span aria-hidden=&quot;true&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<p>可以在parse后增加后续的爬取:</p>
+<pre class="literal-block">
+def parse(...):
+  ...
+
+  next_page = response.css(&quot;li.next a::attr(href)&quot;).get()
+  if next_page is not None:
+      next_page = response.urljoin(next_page)
+      yield scrapy.Request(next_page, callback=self.parse)
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>urljoin 提供了自动拼接到上一层, 从而转换为绝对路径的功能</p>
+<p>或者也可以直接通过 <tt class="docutils literal">response.follow</tt> 使用相对路径:</p>
+<pre class="literal-block">
+for href in response.css(&quot;ul.pager a::attr(href)&quot;):
+  yield response.follow(href, callback=self.parse)
+</pre>
+<p>实际对于 a 标签, 提供了自动支持找href的功能:</p>
+<pre class="literal-block">
+for a in response.css(&quot;ul.pager a&quot;):
+  yield response.follow(a, callback=self.parse)
+</pre>
+<p>甚至可以直接一次性多匹配:</p>
+<pre class="last literal-block">
+anchors = response.css(&quot;ul.pager a&quot;)
+  yield from response.follow_all(anchors, callback=self.parse)
+
+# 简单点就是
+yield from response.follow_all(css=&quot;ul.pager a&quot;, callback=self.parse)
+</pre>
+</div>
+</div>
+<div class="section" id="xpath">
+<h3>XPath支持</h3>
+<p>XPath 参考 <a class="reference external" href="/yq-docs-rear-end-python-Tutorial-XPath-index.html">index</a></p>
+<p>除了 上面的使用 CSS选择器来做数据提取,
+Scrapy的 选择器 也支持 <cite>XPath</cite> 对象:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.xpath(&quot;//title&quot;)
+[&lt;Selector query='//title' data='&lt;title&gt;师资力量|讲师介绍_黑马程序员&lt;/title&gt;'&gt;]
+</pre>
+<p>返回的也是 <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-Scrapy-API-SelectOmerist.html">SelectorList</a> 对象:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.xpath(&quot;//title&quot;).get()
+'&lt;title&gt;师资力量|讲师介绍_黑马程序员&lt;/title&gt;'
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>举例, 如果有一个 div:</p>
+<pre class="literal-block">
+&lt;div class=&quot;quote&quot;&gt;&lt;/div&gt;
+</pre>
+<p>如何正确的选择此节点:</p>
+<pre class="last literal-block">
+response.css(&quot;div.quote&quot;)
+</pre>
+</div>
+<p>举例, 还是上面的老师信息获取:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; response.xpath(&quot;//div[&#64;class='tea_con']&quot;)
+[&lt;Selector query=&quot;//div[&#64;class='tea_con']&quot; data='&lt;div class=&quot;tea_con&quot;&gt;\n\t\t&lt;div class=&quot;t...'&gt;]
+</pre>
+<p>同样的, parse 文件</p>
+</div>
+</div>
+<div class="section" id="pipelines-py">
+<h2>存储内容 （pipelines.py）</h2>
+<p>设计管道存储爬取内容</p>
+<p>如果只是简单的获取某些数据, 那么上面的内容已经足够.</p>
+<p>但若想处理更复杂的事情, 那么就需要使用到 pipelines</p>
+<p>参考: <a class="reference external" href="https://docs.scrapy.org/en/latest/intro/tutorial.html">Scrapy Tutorial</a></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    新建项目
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#myspider-items-py">
+    明确目标(mySpider/items.py)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#spiders-itcastspider-py">
+    制作爬虫(spiders/itcastSpider.py)
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      爬数据
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#shell">
+      shell工具
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      原始数据解析
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      解析数据转给框架
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#xpath">
+      XPath支持
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#pipelines-py">
+    存储内容 （pipelines.py）
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

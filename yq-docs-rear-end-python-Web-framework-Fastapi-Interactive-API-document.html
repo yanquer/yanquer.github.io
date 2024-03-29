@@ -1,0 +1,371 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>交互式API文档</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/webkuang-jia.html">Web框架</a></li>
+
+												<li><a class="button button-alt" href="tag/fastapi.html">Fastapi</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>交互式API文档</h2>
+									<p>参考: <a class="reference external" href="https://www.runoob.com/fastapi/fastapi-api-doc.html">FastAPI 交互式 API 文档</a></p>
+<p>FastAPI 提供了内置的交互式 API 文档，使开发者能够轻松了解和测试 API 的各个端点。
+这个文档是自动生成的，基于 OpenAPI 规范，
+支持 <strong>Swagger UI</strong> 和 <strong>ReDoc</strong> 两种交互式界面。</p>
+<p>通过 FastAPI 的交互式 API 文档，开发者能够更轻松地理解和使用 API，提高开发效率</p>
+<p>在运行 FastAPI 应用时，Uvicorn 同时启动了交互式 API 文档服务。
+默认情况下，你可以通过访问:</p>
+<pre class="literal-block">
+http://127.0.0.1:8000/docs
+</pre>
+<p>来打开 <strong>Swagger UI</strong> 风格的文档</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-21-10-20-36.png" style="width: 480px;" />
+</div>
+<p>或者访问:</p>
+<pre class="literal-block">
+http://127.0.0.1:8000/redoc
+</pre>
+<p>来打开 <strong>ReDoc</strong> 风格的文档。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-21-10-21-53.png" style="width: 480px;" />
+</div>
+<p><strong>ReDoc</strong> 是另一种交互式文档界面，具有清晰简洁的外观。
+它使得开发者能够以可读性强的方式查看 API 的描述、请求和响应。
+与 <strong>Swagger UI</strong> 不同，<strong>ReDoc</strong> 的设计强调文档的可视化和用户体验。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">个人感觉 <strong>ReDoc</strong> 好看些, 不过 <strong>ReDoc</strong> 貌似不支持在文档调用API</p>
+</div>
+<div class="section" id="section-1">
+<h2>交互式文档的优势</h2>
+<dl class="docutils">
+<dt>实时更新</dt>
+<dd>交互式文档会实时更新，反映出应用代码的最新更改。</dd>
+<dt>自动验证</dt>
+<dd>输入参数的类型和格式会得到自动验证，降低了错误的可能性。</dd>
+<dt>便于测试</dt>
+<dd>可以直接在文档中进行 API 请求测试，避免使用其他工具。</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>升级实例</h2>
+<p>我们借助 Pydantic 来使用标准的 Python 类型声明请求体:</p>
+<pre class="literal-block">
+from typing import Union
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+class Item(BaseModel):
+    name: str
+    price: float
+    is_offer: Union[bool, None] = None
+
+
+&#64;app.get(&quot;/&quot;)
+def read_root():
+    return {&quot;Hello&quot;: &quot;World&quot;}
+
+
+&#64;app.get(&quot;/items/{item_id}&quot;)
+def read_item(item_id: int, q: Union[str, None] = None):
+    return {&quot;item_id&quot;: item_id, &quot;q&quot;: q}
+
+
+&#64;app.put(&quot;/items/{item_id}&quot;)
+def update_item(item_id: int, item: Item):
+    return {&quot;item_name&quot;: item.name, &quot;item_id&quot;: item_id}
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    交互式文档的优势
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    升级实例
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,385 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>ntpq</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 24 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-24</div>
+									<h2>ntpq</h2>
+									<p>ntpq指令使用NTP模式6数据包与NTP服务器通信,能够在允许的网络上查询的兼容的服务器。它以交互模式运行,或者通过命令行参数运行。</p>
+<p>此命令的适用范围：RedHat、RHEL、Ubuntu、CentOS、Fedora。</p>
+<p>语法格式:</p>
+<pre class="literal-block">
+ntpq [参数]
+</pre>
+<p>常用参数</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-4</span></kbd></td>
+<td>使用ipv4解析</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-6</span></kbd></td>
+<td>使用ipv6解析</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>打开调试模式</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td>使用交互模式</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>以十进制格式显示主机地址</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span></kbd></td>
+<td>显示服务器同级设备的列表</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>-c [command]</dt>
+<dd>添加执行的命令到指定主机的命令列表</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">设置ntp的时候，server表示对时服务器，restrict表示对服务器做限制</p>
+</div>
+<div class="section" id="restrict">
+<h2>restrict选项</h2>
+<p>restrict选项格式:</p>
+<pre class="literal-block">
+restrict [ 客户端IP ]  mask  [ IP掩码 ]  [参数]
+</pre>
+<p>“客户端IP” 和 “IP掩码” 指定了对网络中哪些范围的计算机进行控制，
+如果使用default关键字，则表示对所有的计算机进行控制，参数指定了具体的限制内容，常见的参数如下：</p>
+<dl class="docutils">
+<dt>◆ ignore</dt>
+<dd>拒绝连接到NTP服务器</dd>
+<dt>◆ nomodiy</dt>
+<dd>忽略所有改变NTP服务器配置的报文，但可以查询配置信息</dd>
+<dt>◆ noquery</dt>
+<dd>忽略所有mode字段为6或7的报文，客户端不能改变NTP服务器配置，也不能查询配置信息</dd>
+<dt>◆ notrap</dt>
+<dd>不提供trap远程登录功能，trap服务是一种远程时间日志服务。</dd>
+<dt>◆ notrust</dt>
+<dd>不作为同步的时钟源。</dd>
+<dt>◆ nopeer</dt>
+<dd>提供时间服务，但不作为对等体。</dd>
+<dt>◆ kod</dt>
+<dd>向不安全的访问者发送Kiss-Of-Death报文。</dd>
+</dl>
+</div>
+<div class="section" id="server">
+<h2>server选项</h2>
+<p>server选项格式:</p>
+<pre class="literal-block">
+server host  [ key n ] [ version n ] [ prefer ] [ mode n ] [ minpoll n ] [ maxpoll n ] [ iburst ]
+</pre>
+<p>其中host是上层NTP服务器的IP地址或域名，随后所跟的参数解释如下所示：</p>
+<dl class="docutils">
+<dt>◆ key</dt>
+<dd>表示所有发往服务器的报文包含有秘钥加密的认证信息，n是32位的整数，表示秘钥号。</dd>
+<dt>◆ version</dt>
+<dd>表示发往上层服务器的报文使用的版本号，n默认是3，可以是1或者2。</dd>
+<dt>◆ prefer</dt>
+<dd>如果有多个server选项，具有该参数的服务器有限使用。</dd>
+<dt>◆ mode</dt>
+<dd>指定数据报文mode字段的值。</dd>
+<dt>◆ minpoll</dt>
+<dd>指定与查询该服务器的最小时间间隔为2的n次方秒，n默认为6，范围为4-14。</dd>
+<dt>◆ maxpoll</dt>
+<dd>指定与查询该服务器的最大时间间隔为2的n次方秒，n默认为10，范围为4-14。</dd>
+<dt>◆ iburst</dt>
+<dd>当初始同步请求时，采用突发方式接连发送8个报文，时间间隔为2秒。</dd>
+</dl>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/wjciayf/article/details/51396144">ntp服务器restrict和server选项格式</a></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#restrict">
+    restrict选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#server">
+    server选项
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

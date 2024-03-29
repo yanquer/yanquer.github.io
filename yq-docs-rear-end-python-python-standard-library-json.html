@@ -1,0 +1,535 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>json</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 01 三月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-03-01</div>
+									<h2>json</h2>
+									<p>四大方法:</p>
+<ul class="simple">
+<li>json.load             将文件中的json的格式转化成python对象提取出来, 操作的是文件流</li>
+<li>json.loads    将Json字符串解码成python对象, 操作的是字符串</li>
+<li>json.dump     将python中的对象转化成json储存到文件中, 需要传入打开的文件流</li>
+<li>json.dumps    将python对象编码成Json字符串</li>
+</ul>
+<div class="section" id="dump">
+<h2>dump()及其参数</h2>
+</div>
+<div class="section" id="load">
+<h2>load()的参数</h2>
+<p>我们先看下json.loads方法的签名:</p>
+<pre class="literal-block">
+def loads(s, encoding=None, cls=None, object_hook=None, parse_float=None,
+        parse_int=None, parse_constant=None, object_pairs_hook=None, **kw):
+    &quot;&quot;&quot;Deserialize ``s`` (a ``str`` or ``unicode`` instance containing a JSON    # 把一个字符串反序列化为Python对象，这个字符串可以是str类型的，也可以是unicode类型的
+    document) to a Python object.
+
+
+    If ``s`` is a ``str`` instance and is encoded with an ASCII based encoding    # 如果参数s是以ASCII编码的字符串，那么需要手动通过参数encoding指定编码方式，
+    other than utf-8 (e.g. latin-1) then an appropriate ``encoding`` name         # 不是以ASCII编码的字符串，是不被允许的，你必须把它转为unicode
+    must be specified. Encodings that are not ASCII based (such as UCS-2)
+    are not allowed and should be decoded to ``unicode`` first.
+
+
+    ``object_hook`` is an optional function that will be called with the        # object_hook参数是可选的，它会将（loads的)返回结果字典替换为你所指定的类型
+    result of any object literal decode (a ``dict``). The return value of        # 这个功能可以用来实现自定义解码器，如JSON-RPC
+    ``object_hook`` will be used instead of the ``dict``. This feature
+    can be used to implement custom decoders (e.g. JSON-RPC class hinting).
+
+
+    ``object_pairs_hook`` is an optional function that will be called with the    # object_pairs_hook参数是可选的，它会将结果以key-value列表的形式返回
+    result of any object literal decoded with an ordered list of pairs.  The      # 形式如：[(k1, v1), (k2, v2), (k3, v3)]
+    return value of ``object_pairs_hook`` will be used instead of the ``dict``.   # 如果object_hook和object_pairs_hook同时指定的话优先返回object_pairs_hook
+    This feature can be used to implement custom decoders that rely on the
+    order that the key and value pairs are decoded (for example,
+    collections.OrderedDict will remember the order of insertion). If
+    ``object_hook`` is also defined, the ``object_pairs_hook`` takes priority.
+
+
+    ``parse_float``, if specified, will be called with the string                 # parse_float参数是可选的，它如果被指定的话，在解码json字符串的时候，
+    of every JSON float to be decoded. By default this is equivalent to           # 符合float类型的字符串将被转为你所指定的，比如说你可以指定为decimal.Decimal
+    float(num_str). This can be used to use another datatype or parser
+    for JSON floats (e.g. decimal.Decimal).
+
+
+    ``parse_int``, if specified, will be called with the string                   # parse_int参数是可选的，它如果被指定的话，在解码json字符串的时候，
+    of every JSON int to be decoded. By default this is equivalent to             # 符合int类型的字符串将被转为你所指定的，比如说你可以指定为float
+    int(num_str). This can be used to use another datatype or parser
+    for JSON integers (e.g. float).
+
+
+    ``parse_constant``, if specified, will be called with one of the              # parse_constant参数是可选的，它如果被指定的话，在解码json字符串的时候，
+    following strings: -Infinity, Infinity, NaN.                                  # 如果出现以以下字符串: -Infinity, Infinity, NaN 那么指定的parse_constant方法将会被调用到
+    This can be used to raise an exception if invalid JSON numbers
+    are encountered.
+
+
+    To use a custom ``JSONDecoder`` subclass, specify it with the ``cls``         # 你也可以用cls参数通过实现一个JSONDecoder的子类，来代替JSONDecoder,通过这个功能你可以自定义上面的那些parse_xxx参数,这里就不举例了
+    kwarg; otherwise ``JSONDecoder`` is used.
+
+
+    &quot;&quot;&quot;
+</pre>
+<p>以下参数说明是根据官方文档翻译的</p>
+<dl class="docutils">
+<dt>s参数</dt>
+<dd><p class="first">把一个字符串反序列化为Python对象，这个字符串可以是str类型的，也可以是unicode类型的，
+如果参数s是以ASCII编码的字符串，那么需要手动通过参数encoding指定编码方式，
+不是以ASCII编码的字符串，是不被允许的，你必须把它转为unicode</p>
+<p class="last">对于loads方法来说，s是一个字符串，而对于load方法来说，是一个数据流文件</p>
+</dd>
+<dt>object_hook参数</dt>
+<dd><p class="first">object_hook参数是可选的，它会将（loads的)返回结果字典替换为你所指定的类型,这个功能可以用来实现自定义解码器，如JSON-RPC</p>
+<p>这里先定义一个Person对象:</p>
+<pre class="literal-block">
+class Person:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+
+    def toJSON(self):
+        return {
+            &quot;name&quot;: self.name,
+            &quot;age&quot;: self.age,
+            &quot;gender&quot;: self.gender
+        }
+
+    &#64;staticmethod
+    def parseJSON(dct):
+        if isinstance(dct, dict):
+            p = Person(dct[&quot;name&quot;], int(dct['age']), dct['gender'])
+            return p
+        return dct
+</pre>
+<p>OK，试下object_hook参数吧:</p>
+<pre class="last literal-block">
+s = '{&quot;name&quot;: &quot;马云&quot;, &quot;age&quot;: 54, &quot;gender&quot;: &quot;man&quot;}'
+# 测试json.loads方法的object_hook参数
+p = json.loads(s, object_hook=Person.parseJSON)
+print(&quot;json.loads 是否将字符串转为字典了: --&gt; &quot; + str(isinstance(p, dict)))
+print(&quot;json.loads 是否将字符串转为Person对象了: --&gt; &quot; + str(isinstance(p, Person)))
+</pre>
+</dd>
+<dt>object_pairs_hook参数</dt>
+<dd><p class="first">object_pairs_hook参数是可选的，它会将结果以key-value有序列表的形式返回,
+形式如: <cite>[(k1, v1), (k2, v2), (k3, v3)]</cite> ,
+如果object_hook和object_pairs_hook同时指定的话优先返回object_pairs_hook:</p>
+<pre class="last literal-block">
+s = '{&quot;name&quot;: &quot;马云&quot;, &quot;age&quot;: 54, &quot;gender&quot;: &quot;man&quot;}'
+# 测试json.loads方法的object_pairs_hook参数
+print(&quot;-&quot; * 30 + &quot;&gt; test object_pairs_hook &lt;&quot; + &quot;-&quot; * 30)
+p = json.loads(s, object_hook=Person.parseJSON, object_pairs_hook=collections.OrderedDict)
+# p = json.loads(s, object_hook=Person.parseJSON, object_pairs_hook=Person.parseJSON)
+print(&quot;json.loads 测试同时指定object_hook和object_pairs_hook,最终调用哪个参数: --&gt; &quot; + str(type(p)))
+print(&quot;json.loads 指定object_pairs_hook结果将会返回一个有序列表 --&gt; {}&quot;.format(p))
+</pre>
+</dd>
+<dt>parse_float参数</dt>
+<dd><p class="first">parse_float参数是可选的，它如果被指定的话，在解码json字符串的时候，
+符合float类型的字符串将被转为你所指定的，比如说你可以指定为decimal.Decimal</p>
+<p>测试json.loads方法的parse_float参数:</p>
+<pre class="last literal-block">
+print(&quot;-&quot; * 30 + &quot;&gt; test parse_float &lt;&quot; + &quot;-&quot; * 30)
+p = json.loads(&quot;123.456&quot;, parse_float=decimal.Decimal)
+print(&quot;json.loads 通过parse_float参数将原本应该转为float类型的字符串转为decimal类型: type(json.loads(\&quot;123.456\&quot;, parse_float=decimal.Decimal)) --&gt; &quot; + str(type(p)))
+print(&quot;&quot;)
+</pre>
+</dd>
+<dt>parse_int参数</dt>
+<dd><p class="first">parse_int参数是可选的，它如果被指定的话，在解码json字符串的时候，
+符合int类型的字符串将被转为你所指定的，比如说你可以指定为float</p>
+<p>测试json.loads方法的parse_int参数:</p>
+<pre class="last literal-block">
+print(&quot;-&quot; * 30 + &quot;&gt; test parse_int &lt;&quot; + &quot;-&quot; * 30)
+p = json.loads(&quot;123&quot;, parse_int=float)
+print(&quot;json.loads 通过parse_int参数将原本应该转为int类型的字符串转为float类型: type(json.loads(\&quot;123\&quot;, parse_int=float)) --&gt; &quot; + str(type(p)))
+</pre>
+</dd>
+<dt>parse_constant参数</dt>
+<dd><p class="first">parse_constant参数是可选的，它如果被指定的话，在解码json字符串的时候，
+如果出现以以下字符串:-Infinity，Infinity，NaN那么指定的parse_constant方法将会被调用到:</p>
+<pre class="last literal-block">
+def transform(s):
+    &quot;&quot;&quot;
+    此方法作为参数传给json.load(s)方法的parse_转译NAN, -Infinity,Infinity
+    :param s:
+    :return:
+    &quot;&quot;&quot;
+    # NaN --&gt; not a number
+    if &quot;NaN&quot; == s:
+        return &quot;Not a Number&quot;
+    # 将负无穷大转为一个非常小的数
+    elif &quot;-Infinity&quot; == s:
+        return -999999
+    # 将正无穷大转为一个非常大的数
+    elif &quot;Infinity&quot; == s:
+        return 999999
+    else:
+        return s
+
+# 测试json.loads方法的parse_constant参数
+print(&quot;-&quot; * 30 + &quot;&gt; test parse_constant &lt;&quot; + &quot;-&quot; * 30)
+print(&quot;json.loads Infinity: --&gt; &quot; + str(json.loads('Infinity')))
+print(&quot;json.loads parse_constant convert Infinity: --&gt; &quot; + str(json.loads('Infinity', parse_constant=transform_constant)))
+
+print(&quot;json.loads -Infinity: --&gt; &quot; + str(json.loads('-Infinity')))
+print(&quot;json.loads parse_constant convert -Infinity: --&gt; &quot; + str(json.loads('-Infinity', parse_constant=transform_constant)))
+
+print(&quot;json.loads NaN: --&gt; &quot; + str(json.loads('NaN')))
+print(&quot;json.loads parse_constant convert NaN : --&gt; &quot; + str(json.loads('NaN', parse_constant=transform_constant)))
+print(&quot;&quot;)
+</pre>
+</dd>
+<dt>cls参数</dt>
+<dd>通过官方文档的注释我们可以知道json.load(s)方法具体的实现是通过JSONCoder类实现的，
+而cls参数是用于自定义一个JSONCoder的子类，用于替换JSONCoder类，,通过这个功能你可以自定义上面的那些parse_xxx参数，这里就不举例了</dd>
+</dl>
+<p>原文链接: <a class="reference external" href="https://blog.csdn.net/daerzei/article/details/100598901">https://blog.csdn.net/daerzei/article/details/100598901</a></p>
+</div>
+<div class="section" id="dumpdumps">
+<h2>dump和dumps的区别</h2>
+<dl class="docutils">
+<dt>json.dumps()</dt>
+<dd>是把python对象转换成json对象的一个过程，生成的是字符串。</dd>
+<dt>json.dump()</dt>
+<dd>是把python对象转换成json对象生成一个fp的文件流，和文件相关。</dd>
+</dl>
+</div>
+<div class="section" id="loadsload">
+<h2>loads和load</h2>
+<p>下面主要分析讲解一下json的loads和load方法。
+这两个方法中都是把其他类型的对象转为Python对象，这里先说明一下Python对象，
+Python对象包括：
+所有Python基本数据类型，列表，元组，字典，自己定义的类，等等等等，当然不包括Python的字符串类型，把字符串或者文件鎏中的字符串转为字符串会报错的</p>
+<p>先来一个例子，除了要转换的对象，其他什么参数都不传:</p>
+<pre class="literal-block">
+s = '{&quot;name&quot;: &quot;wade&quot;, &quot;age&quot;: 54, &quot;gender&quot;: &quot;man&quot;}'
+# json.loads读取字符串并转为Python对象
+print(&quot;json.loads将字符串转为Python对象: type(json.loads(s))
+      = {}&quot;.format(type(json.loads(s))))
+print(&quot;json.loads将字符串转为Python对象: json.loads(s)
+      = {}&quot;.format(json.loads(s)))
+
+# json.load读取文件并将文件内容转为Python对象
+# 数据文件要s.json的内容 --&gt; {&quot;name&quot;: &quot;wade&quot;, &quot;age&quot;: 54, &quot;gender&quot;: &quot;man&quot;}
+with open('s.json', 'r') as f:
+    s1 = json.load(f)
+    print(&quot;json.load将文件内容转为Python对象: type(json.load(f)) = {}&quot;.format(type(s1)))
+    print(&quot;json.load将文件内容转为Python对象: json.load(f) = {}&quot;.format(s1))
+</pre>
+<p>日常工作中最常见的就是把字符串通过json.loads转为字典，
+其实json的loads方法不仅可以把字符串转为字典，还可以转为任何Python对象。
+比如说，转成python基本数据类型:</p>
+<pre class="literal-block">
+print('json.loads 将整数类型的字符串转为int类型: type(json.loads(&quot;123456&quot;))) --&gt; {}'.format(type(json.loads(&quot;123456&quot;))))
+print('json.loads 将浮点类型的字符串转为float类型: type(json.loads(&quot;123.456&quot;)) --&gt; {}'.format(type(json.loads(&quot;123.456&quot;))))
+print('json.loads 将boolean类型的字符串转为bool类型: type(json.loads(&quot;true&quot;)) --&gt; {}'.format((type(json.loads(&quot;true&quot;)))))
+print('json.loads 将列表类型的字符串转为列表: type(json.loads(\'[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]\')) --&gt; {}'.format(type(json.loads('[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]'))))
+print('json.loads 将字典类型的字符串转为字典: type(json.loads(\'{&quot;a&quot;: 1, &quot;b&quot;: 1.2, &quot;c&quot;: true, &quot;d&quot;: &quot;ddd&quot;}\')) --&gt; %s' % str(type(json.loads('{&quot;a&quot;: 1, &quot;b&quot;: 1.2, &quot;c&quot;: true, &quot;d&quot;: &quot;ddd&quot;}'))))
+</pre>
+<p>json模块会根据你的字符串自动转为最符合的数据类型，
+但是需要注意的是不能转为字符串，否则会报json.decoder.JSONDecodeError错误:</p>
+<pre class="literal-block">
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#dump">
+    dump()及其参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#load">
+    load()的参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#dumpdumps">
+    dump和dumps的区别
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#loadsload">
+    loads和load
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

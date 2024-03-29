@@ -1,0 +1,690 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>一些使用问题/技巧</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/windows.html">Windows</a></li>
+
+												<li><a class="button button-alt" href="tag/windowszhi-xing-wen-jian-da-bao.html">Windows执行文件打包</a></li>
+
+												<li><a class="button button-alt" href="tag/nsis.html">Nsis</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>一些使用问题/技巧</h2>
+									<div class="section" id="bat-dos">
+<h2>执行 bat 不打开 dos窗口</h2>
+<div class="sidebar">
+这个玩意儿就是一个坑, 找了几乎一天的解决方案. 什么 start 启动等</div>
+<p>这里补充一个小技巧吧, 当在nsis脚本中执行 bat 指令时, 总是会打开 dos 黑窗口,</p>
+<p>不想要它显示, 可以使用:</p>
+<pre class="literal-block">
+ExecShell 'open' '$INSTDIR\t.bat' &quot;1 1 &gt;$INSTDIR/log.txt 2&gt;&amp;1&quot; SW_HIDE
+</pre>
+<p>找了很久的解决方案, 网上什么start啥的都无法执行, 最后终于实验出了这个, 一开始不知道 open 也支持打开 bat, 踏了很久的坑.</p>
+<p><tt class="docutils literal">SW_HIDE</tt> 表示隐藏dos窗口.</p>
+<p>详情见: <em>NSIS_ExecShell</em></p>
+</div>
+<div class="section" id="section-2">
+<h2>安装日志设置</h2>
+<p>如下:</p>
+<pre class="literal-block">
+!include &quot;LogicLib.nsh&quot;
+
+; 本区段必须放置在所有区段之前
+; 运行后会在安装目录生成一个install.log文件
+Section &quot;-LogSetOn&quot;
+      LogSet on
+SectionEnd
+</pre>
+<p>code:</p>
+<pre class="literal-block">
+!include &quot;LogicLib.nsh&quot;
+
+Section &quot;-LogSetOn&quot;
+      LogSet on
+SectionEnd
+</pre>
+<p>注意可能会有报错: <tt class="docutils literal">Error: LogSet specified, NSIS_CONFIG_LOG not defined.</tt></p>
+<p>这是因为当前安装版本的一些内置的东西有问题, 需要去官网下载对应版本的内容进行覆盖,</p>
+<p>下载地址: <a class="reference external" href="http://sourceforge.net/projects/nsis/files/">http://sourceforge.net/projects/nsis/files/</a></p>
+<p>比如安装版本是 3.06.1 , 且是log相关的部分, 就下载这个包:</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2023-03-22-16-12-33.png" style="width: 480px;" />
+</div>
+<p>下载后, 找到安装目录, 进行文件替换.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">github解决地址::</th><td class="field-body"><a class="reference external" href="https://github.com/electron-userland/electron-builder/pull/6730">chore(deploy): Release #6730</a>
+<a class="reference external" href="https://github.com/electron-userland/electron-builder/issues/6715">NSIS_CONFIG_LOG not defined</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-3">
+<h2>调试</h2>
+<p>调试只有依赖 <a class="reference internal" href="#section-2">安装日志设置</a> 或者 消息框(MessageBox)_ 了.</p>
+<p>使用 MessageBox:</p>
+<pre class="literal-block">
+MessageBox MB_OK &quot;变量\$0的值: $0&quot;
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>判断电脑位数</h2>
+<p>使用 x64.nsh</p>
+<pre class="literal-block">
+!include &quot;x64.nsh&quot;
+
+${If} ${RunningX64}
+  ; 是64位的
+${EndIf}
+</pre>
+</div>
+<div class="section" id="section-5">
+<h2>检查旧版本是否已安装</h2>
+<p>需要先下载好 nsProcess.dll, 然后使用:</p>
+<pre class="literal-block">
+nsProcess::_FindProcess &quot;xxx.exe&quot;
+</pre>
+<p>默认是没有这个dll的, 需要手动下载, 参考: <a class="reference external" href="https://www.cnblogs.com/yzhyingcool/p/16025864.html">【NSIS】安装或卸载时使用nsProcess检查程序是否正在运行</a></p>
+<p>下载地址: <a class="reference external" href="https://nsis.sourceforge.io/NsProcess_plugin">NsProcess plugin</a></p>
+</div>
+<div class="section" id="section-6">
+<h2>获取当前用户名</h2>
+<p>使用 GetUserName 函数。该函数接受一个指向缓冲区的指针和缓冲区的大小，并将当前用户的用户名写入缓冲区中。</p>
+<p>下面是示例代码:</p>
+<pre class="literal-block">
+!include LogicLib.nsh ;导入LogicLib插件
+
+Section
+    InitPluginsDir ;初始化插件目录
+
+    ;定义变量存储用户名
+    Var username
+
+    ;分配缓冲区的大小为256字节
+    StrCpy $0 256
+
+    ;调用 GetUserName 函数将用户名写入缓冲区中
+    System::Call 'advapi32::GetUserName(t r1, *i ${NSIS_MAX_STRLEN}) i.r0'
+
+    ;如果函数返回值不为0，表示成功获取到用户名
+    ${If} $0 != 0
+        ;将缓冲区中的用户名赋值给变量
+        StrCpy $username $1
+    ${EndIf}
+
+    ;打印用户名
+    DetailPrint &quot;Username: $username&quot;
+
+SectionEnd
+</pre>
+</div>
+<div class="section" id="nsis">
+<h2>NSIS打包安装程序时获取管理员权限</h2>
+<p>NSIS脚本添加以下代码:</p>
+<pre class="literal-block">
+RequestExecutionLevel admin
+</pre>
+</div>
+<div class="section" id="nsis-1">
+<h2>NSIS安装后的脚本自动使用管理员权限</h2>
+<p>写注册表的方式:</p>
+<pre class="literal-block">
+WriteRegStr HKCU \&quot;SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\&quot; \&quot;$INSTDIR\\program.exe\&quot; \&quot;RUNASADMIN\&quot;
+</pre>
+<p>其中program.exe为要执行的主程序的名称</p>
+</div>
+<div class="section" id="section-7">
+<h2>将文件(夹)加入到安装包</h2>
+<p>使用 <em>File &lt;NSIS_File&gt;</em> 指令, 如果是文件, 直接跟文件全名(包括后缀),
+如果是文件夹, 加 <tt class="docutils literal">/r</tt> 选项即可. 如下例的 other 文件夹:</p>
+<pre class="literal-block">
+Section Do
+  SetOutPath $INSTDIR
+  File /r other
+SectionEnd
+</pre>
+</div>
+<div class="section" id="section-8">
+<h2>释放对安装目录的占用</h2>
+<p>有时候在执行bat脚本时, 需要操作安装目录, 这时需要释放对安装目录的文件句柄占用,
+在执行前使用 <tt class="docutils literal">SetOutPath &quot;$TEMP&quot;</tt> 切换一下输出目录即可:</p>
+<pre class="literal-block">
+Section
+  SetOutPath &quot;$INSTDIR&quot;
+
+  ; do ...
+
+  SetOutPath &quot;$TEMP&quot;
+  ;执行批处理文件
+  ExecWait '&quot;$INSTDIR\your_batch_file.bat&quot;'
+SectionEnd
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>这里有一个点我一直没想明白, 暂且记下来吧:</p>
+<p>在 NSIS 脚本中调用 bat 指令时, 看任务管理器,
+实际是一个 cmd.exe 下启动的类似进程组(Windows貌似只有任务, 没有进程组的概念, 此处不做讨论).
+即使调用 bat 指令时, 使用的是 <em>ExecShell &lt;NSIS_ExecShell&gt;</em> 来后台执行, 且 NSIS 脚本已经执行完成退出.</p>
+<p>且此时的情况:</p>
+<ul class="simple">
+<li>NSIS 脚本退出</li>
+<li>NSIS 调用的后台执行的 bat 脚本仍在执行</li>
+</ul>
+<p>这时候会发现 bat 脚本还是拥有 <tt class="docutils literal">$INSTDIR</tt> 安装目录的占用, 其实是 <strong>SetOutPath</strong> 的占用.</p>
+<p>目前猜测有以下几种可能:</p>
+<ul class="simple">
+<li>NSIS 启动的子进程的句柄占用会传递给 bat 脚本</li>
+<li>NSIS 脚本的句柄占用会被 cmd.exe 给拿到</li>
+</ul>
+<p class="last">具体是什么情况, 暂时没看出来...</p>
+</div>
+</div>
+<div class="section" id="section-9">
+<h2>写卸载脚本</h2>
+<p>有时候可能像自己写一个卸载脚本:</p>
+<pre class="literal-block">
+WriteUninstaller &quot;$INSTDIR\uninstall.exe&quot;
+</pre>
+<p>注意这个时候必须存在 Uninstall 小节, 如:</p>
+<pre class="literal-block">
+Section Uninstall
+  ; 在这里添加卸载时要执行的操作
+
+  ;Delete other/xxx
+
+  ; SetOutPath &quot;$INSTDIR&quot;
+  ; RMDir /r &quot;$INSTDIR\other&quot;
+  RMDir /r &quot;$INSTDIR\other&quot;
+SectionEnd
+</pre>
+<p>Uninstall 小节是预定义名称的小节, 卸载时调用. 注意这时候不能直接设置输出路径, 然后使用相对路径删除.</p>
+<p>若有需要卸载时调用的函数, 函数名需以 <tt class="docutils literal">un.</tt> 开头. 卸载预定义函数见: <em>回调函数</em></p>
+</div>
+<div class="section" id="section-10">
+<h2>申请管理员权限</h2>
+<p>在nsis脚本开头写入:</p>
+<pre class="literal-block">
+RequestExecutionLevel admin
+</pre>
+<p>即可在执行安装程序时弹出申请管理员权限窗口.</p>
+<p>若没有, 看看后面是不是重复写了其他权限如:</p>
+<pre class="literal-block">
+RequestExecutionLevel user
+</pre>
+<p>再不行就是低版本nsis或操作系统版本低不支持.</p>
+</div>
+<div class="section" id="section-11">
+<h2>安装与卸载时变量共享</h2>
+<p>能共享的变量只有预定义的一些内置变量, 目前自己测试过可行的只有:</p>
+<pre class="literal-block">
+$INSTDIR
+</pre>
+<p>且只能是一开始定义的安装目录, 若后续在安装时有修改, 卸载时此修改不生效.</p>
+<p>故, 要想共享, 最简单的就是使用注册表了, 注意要申请管理员权限提权才能写注册表, 例:</p>
+<pre class="literal-block">
+RequestExecutionLevel user
+
+Var HomeDir
+
+Section Do1
+  WriteUninstaller &quot;$INSTDIR\uninstall.exe&quot;
+  StrCpy $HomeDir &quot;D:\Program Files\test\Example2&quot;
+
+  ; 将变量的值写入卸载程序
+  WriteRegStr HKLM &quot;Software\TNsis&quot; &quot;AppHomeDir&quot; &quot;$HomeDir&quot;
+SectionEnd
+
+Section Uninstall
+  ; 读取变量的值
+  ReadRegStr $HomeDir HKLM &quot;Software\TNsis&quot; &quot;AppHomeDir&quot;
+  MessageBox MB_OK &quot;The value of HomeDir is $HomeDir&quot;
+
+  ; 删除注册表键
+  DeleteRegKey HKLM &quot;Software\TNsis&quot;
+
+  RMDir /r &quot;$HomeDir&quot;
+SectionEnd
+</pre>
+<p>注册表相关操作可参考: <em>NSIS_注册表操作</em></p>
+<p>其他方式可以通过写文件的方式, 有点麻烦, 暂不表述</p>
+</div>
+<div class="section" id="gui">
+<h2>GUI界面选择安装路径</h2>
+<p>需要先导入 <tt class="docutils literal">MUI.nsh</tt> , 然后插入页面:</p>
+<pre class="literal-block">
+!include &quot;MUI.nsh&quot;
+
+!insertmacro MUI_PAGE_DIRECTORY     ; 选择安装路径页面
+!insertmacro MUI_PAGE_INSTFILES     ; 选择安装文件页面
+
+InstallDir &quot;$PROGRAMFILES\MyApp&quot;    ; 指定默认安装路径
+
+!insertmacro MUI_PAGE_FINISH        ; 安装完成页面
+</pre>
+<p>注意, 选择安装位置的执行时间在 init 之后, 所以要在 init 之后的 section 获取安装位置才是可靠的.</p>
+<p>此头文件详情可见: <a class="reference external" href="/yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></p>
+</div>
+<div class="section" id="nsis-2">
+<h2>NSIS 卸载程序参数</h2>
+<p>/q 表示静默安装</p>
+<p>_? 表示是否打开GUI确认卸载框</p>
+<ul class="simple">
+<li>_?=0：不需要用户确认，直接执行卸载操作;</li>
+<li>_?=1：需要用户确认，打开卸载确认对话框;</li>
+<li>_?=2：需要用户确认，但不需要显示卸载确认对话框.</li>
+</ul>
+<p>默认情况下，NSIS脚本会自动向卸载程序传递一个 <tt class="docutils literal"><span class="pre">_?=1</span></tt> 的命令行参数.</p>
+</div>
+<div class="section" id="section-12">
+<h2>卸载时的返回值</h2>
+<p><strong>暂时无解, 至少我目前没找到</strong></p>
+<p>SetUninstallReturnValue</p>
+<p>eg:</p>
+<pre class="literal-block">
+Function un.onUninstSuccess
+  ; 在这里执行卸载成功后的清理操作
+
+  SetUninstallReturnValue 1234 ; 手动抛出返回值
+
+  MessageBox MB_OK &quot;卸载程序返回值：$0&quot;
+FunctionEnd
+</pre>
+<p>这个貌似 <strong>只有旧版本的NSIS有指令</strong> ,
+新版本暂时没找到支持的方法, 暂时通过 <strong>判断安装目录是否存在确定是否卸载成功</strong> :</p>
+<p>卸载程序名称确定:</p>
+<pre class="literal-block">
+StrCpy $1 &quot;$INSTDIR\uninstall.exe&quot;
+</pre>
+<p>获取目录字符串的长度, 然后获取目录:</p>
+<pre class="literal-block">
+StrLen $9 $1
+IntOp $8 $9 - 14
+StrCpy $7 $1 $8
+MessageBox MB_OK &quot;dir: $7&quot;
+</pre>
+<p>确定目录是否存在:</p>
+<pre class="literal-block">
+IfFileExists &quot;$7&quot; +1 +2
+MessageBox MB_OK &quot;dir exists: $7 &quot;
+MessageBox MB_OK &quot;dir not exists: $7 &quot;
+</pre>
+<p>卸载成功的话文件是会被全部删除的. 除非特意留下某些残留, 那就需要自行兼容处理了.</p>
+</div>
+<div class="section" id="section-13">
+<h2>获取安装窗体句柄</h2>
+<p>使用变量 <strong>$HWNDPARENT</strong></p>
+</div>
+<div class="section" id="section-14">
+<h2>将窗体前台显示</h2>
+<p>使用 BringToFront 指令.</p>
+<p>不过存在一个问题, 有时候前台显示效果是:
+在任务栏闪烁, 点击闪烁图标后后才会前台显示</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#bat-dos">
+    执行 bat 不打开 dos窗口
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    安装日志设置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    调试
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    判断电脑位数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    检查旧版本是否已安装
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    获取当前用户名
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#nsis">
+    NSIS打包安装程序时获取管理员权限
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#nsis-1">
+    NSIS安装后的脚本自动使用管理员权限
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    将文件(夹)加入到安装包
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    释放对安装目录的占用
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    写卸载脚本
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    申请管理员权限
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    安装与卸载时变量共享
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#gui">
+    GUI界面选择安装路径
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#nsis-2">
+    NSIS 卸载程序参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-12">
+    卸载时的返回值
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-13">
+    获取安装窗体句柄
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-14">
+    将窗体前台显示
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

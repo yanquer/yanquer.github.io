@@ -1,0 +1,500 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>tcpdump</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>tcpdump</h2>
+									<p>一款sniffer工具，是Linux上的抓包工具，嗅探器
+文字接口的封包抓取</p>
+<p>一个功能强大的命令行数据包分析器，它是通过监听服务器的网卡来获取数据包，
+所有通过网络访问的数据包都能获取到。
+它也提供了过滤器的功能，可以获取指定的网络、端口或协议的数据包</p>
+<div class="section" id="section-1">
+<h2>选项</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td>尝试将网络和广播地址转换成名称；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c<var>&lt;count&gt;</var></span></kbd></td>
+<td>count表示数据包数目. 抓取数据包的数量达到count后结束命令，如果不使用-c 参数，会不停的抓取数据包，直到手动停止</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-C<var>&lt;file_size&gt;</var></span></kbd></td>
+<td>抓取数据包保存到文件时，通过该命令指定文件的大小。
+文件达到指定大小后，会创建一个在原文件名称后面加上序号的新文件，如：dump.txt，dump.txt1。
+file_size的单位是b</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>把编译过的数据包编码转换成可阅读的格式，并倾倒到标准输出；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d<var>d</var></span></kbd></td>
+<td>把编译过的数据包编码转换成C语言的格式，并倾倒到标准输出；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d<var>dd</var></span></kbd></td>
+<td>把编译过的数据包编码转换成十进制数字的格式，并倾倒到标准输出；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-D</span></kbd></td>
+<td>列出服务器所有网卡。
+tcpdump默认监听的是编号最小的那个网卡，一般是eth0。
+在进行抓包时可以通过 -i 参数指定监听的网卡，any表示监听所有网卡</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-e</span></kbd></td>
+<td>在每列倾倒资料上显示连接层级的文件头；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>用数字显示网际网络地址；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-F<var>&lt;表达文件&gt;</var></span></kbd></td>
+<td>指定内含表达方式的文件；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i<var>&lt;interface&gt;</var></span></kbd></td>
+<td>指定监听的网卡名称，any表示监听所有的网卡; 如eth0；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l</span></kbd></td>
+<td>使用标准输出列的缓冲区；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>输出结果中，不把ip转换成主机名（默认显示的是主机名）</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-N</span></kbd></td>
+<td>不列出域名；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-O</span></kbd></td>
+<td>不将数据包编码最佳化；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span></kbd></td>
+<td>不让网络界面进入混杂模式；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-q</span></kbd></td>
+<td>快速输出，仅列出少数的传输协议信息(简要的数据包信息)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r<var>&lt;file&gt;</var></span></kbd></td>
+<td>从指定的文件读取数据包数据, 不再从网络获取数据包</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-w<var>&lt;file&gt;</var></span></kbd></td>
+<td>将抓取的数据包保存到文件，-r 参数可以从文件中读取数据包</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-W<var>&lt;filecount&gt;</var></span></kbd></td>
+<td>指定文件的数量，当文件滚动到指定数量后会从第一个文件开始覆盖</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s<var>&lt;数据包大小&gt;</var></span></kbd></td>
+<td>设置每个数据包的大小；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-S</span></kbd></td>
+<td>用绝对而非相对数值列出TCP关联数；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t</span></kbd></td>
+<td>不输出时间戳</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t<var>t</var></span></kbd></td>
+<td>在每列倾倒资料上显示未经格式化的时间戳记；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-T<var>&lt;数据包类型&gt;</var></span></kbd></td>
+<td>强制将表达方式所指定的数据包转译成设置的数据包类型；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>详细显示指令执行过程；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v<var>v</var></span></kbd></td>
+<td>更详细显示指令执行过程；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-x</span></kbd></td>
+<td>用十六进制字码列出数据包资料；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-w<var>&lt;数据包文件&gt;</var></span></kbd></td>
+<td>把数据包数据写入指定的文件。</td></tr>
+</tbody>
+</table>
+<p>除了以上参数，还有一些关键字可以用来进行条件过滤，常用关键字如下:</p>
+<dl class="docutils">
+<dt>host</dt>
+<dd>过滤主机，如 tcpdump host 192.168.1.110 只抓取经过这个ip的数据包</dd>
+<dt>src</dt>
+<dd>用来过滤请求来源方的参数，如：tcpdump src host 192.168.1.110, 只抓取从这个ip过来的数据包</dd>
+<dt>dst</dt>
+<dd>用来过滤请求接收方的参数，如：tcpdump dst host 192.168.1.110, 只抓取发送到这个ip的数据包</dd>
+<dt>port</dt>
+<dd>过滤端口，如：tcpdump port 8080, 只抓取经过8080端口的数据包</dd>
+<dt>net</dt>
+<dd>过滤网络，如：tcpdump net 192.168, 只抓取经过这个网段的数据包</dd>
+<dt>and, not, or</dt>
+<dd>条件过滤，和字面意思一样。如：tcpdump net 192.168 and port 8080 抓取经过192.168网段并经过8080端口的数据包</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>数据包分析</h2>
+<p>抓取的数据包格式如下:</p>
+<pre class="literal-block">
+$ sudo tcpdump -i any port 443
+tcpdump: data link type PKTAP
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on any, link-type PKTAP (Apple DLT_PKTAP), snapshot length 524288 bytes
+
+18:23:05.458511 IP6 240e:399:299:b5e0:91fd:8c93:e300:58e0.63539 &gt; 240e:d9:a600:834::15.https: Flags [.], ack 2868012794, win 4096, length 0
+18:23:05.463866 IP6 240e:d9:a600:834::15.https &gt; 240e:399:299:b5e0:91fd:8c93:e300:58e0.63539: Flags [.], ack 1, win 285, length 0
+18:23:07.904922 IP 49.7.149.118.https &gt; 192.168.101.4.61893: Flags [P.], seq 3360794318:3360794350, ack 4281540851, win 65, length 32
+18:23:07.905058 IP 192.168.101.4.61893 &gt; 49.7.149.118.https: Flags [.], ack 32, win 4096, length 0
+</pre>
+<p>详细数据对应为:</p>
+<pre class="literal-block">
+18:23:07.905058 IP 192.168.101.4.61893 &gt; 49.7.149.118.https: Flags [.], ack 32, win 4096, length 0
+
+时间戳          IP请求发送方的ip和端口 &gt; 请求接收方的ip和端口         ack-包类型        length-报文体的长度
+                                                          Flags-标识和状态   win-表示当前窗口的可用大小
+</pre>
+<dl class="docutils">
+<dt>时间戳</dt>
+<dd>时:分:秒.微秒</dd>
+<dt>IP</dt>
+<dd>网际网络协议的名称</dd>
+<dt>请求发送方的ip和端口 &gt; 请求接收方的ip和端口</dt>
+<dd>端口有时会显示为某个网络协议，如http、ssh、mysql等*</dd>
+<dt>Flags [R]</dt>
+<dd><p class="first">flag标识和状态，可选的状态有:</p>
+<pre class="last literal-block">
+[S.] [.] [P.] [F.][R]
+</pre>
+</dd>
+<dt>seq、ack、fin</dt>
+<dd>表示tcp协议的3次握手和4次挥手的过程。
+seq表示请求的序列号，ack是回答的序列号，fin表示完成。
+这里显示的序列号是相对值，-S参数可以显示绝对值</dd>
+<dt>win</dt>
+<dd>表示当前窗口的可用大小</dd>
+<dt>length</dt>
+<dd>报文体的长度，从长度可以简单分析是否正确接收了请求</dd>
+</dl>
+<p>通过以上结果只能做简单的分析，可以使用 <cite>-w</cite> 参数把数据包写入文件，
+文件中记录的数据包比命令行要详细的多。
+借助分析工具可以对文件进一步分析，
+这里推荐使用Wireshark，这个工具是开源的，开箱即用使用简单，这里不做详细介绍了</p>
+</div>
+<div class="section" id="section-3">
+<h2>常用的命令组合</h2>
+<p>抓取8080端口的数据包:</p>
+<pre class="literal-block">
+tcpdump -i any port 8080
+</pre>
+<p>抓取从192.168.1.110发送到192.168.1.111的数据包:</p>
+<pre class="literal-block">
+tcpdump -i any src host 192.168.1.110 and dst host 192.168.1.111
+</pre>
+<p>抓取192.168网段除了192.168.1.110的请求的数据包:</p>
+<pre class="literal-block">
+tcpdump -i any src net 192.168 and 'src host not 192.168.1.110'
+</pre>
+<p>抓取8080端口的数据包并写入dump.log文件中:</p>
+<pre class="literal-block">
+tcpdump -i any port 8080 -w dump.log
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>注意事项</h2>
+<ul class="simple">
+<li>tcpdump需要用管理员权限运行，可以用sudo命令或者root用户</li>
+<li>抓取的数据包通过length字段只能做一些简单的判断，想要详细分析，需要借助数据包分析工具，如：Wireshark</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    数据包分析
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    常用的命令组合
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    注意事项
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

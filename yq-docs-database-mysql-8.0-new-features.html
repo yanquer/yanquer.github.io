@@ -1,0 +1,418 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Mysql8.0新特性</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/mysql.html">Mysql</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>Mysql8.0新特性</h2>
+									<dl class="docutils">
+<dt>新增降序索引</dt>
+<dd><p class="first">MySQL在语法上很早就已经支持降序索引，但实际上创建的仍然是升序索引，
+如下MySQL 5.7所示，c2字段降序，
+但是从show create table看c2仍然是升序。8.0可以看到，c2字段降序。只有Innodb存储引擎支持降序索引。</p>
+<div class="last figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-04-00-14-39.png" style="width: 480px;" />
+</div>
+</dd>
+<dt>group by不会自动排序</dt>
+<dd>5.7中分组查询时, 会自动按照分组的字段排序,
+8.0 中得手动 order by</dd>
+<dt>增加隐藏索引</dt>
+<dd><p class="first">使用 invisible 关键字在创建表或者进行表变更中设置索引为隐藏索引。
+索引隐藏只是不可见，但是数据库后台还是会维护隐藏索引的，在查询时优化器不使用该索引，
+即使用force index，优化器也不会使用该索引，同时优化器也不会报索引不存在的错误，
+因为索引仍然真实存在，必要时，也可以把隐藏索引快速恢复成可见。注意，主键不能设置为 invisible.</p>
+<p>软删除就可以使用隐藏索引，比如我们觉得某个索引没用了，删除后发现这个索引在某些时候还是有用的，
+于是又得把这个索引加回来，如果表数据量很大的话，这种操作耗费时间是很多的，
+成本很高，这时，我们可以将索引先设置为隐藏索引，等到真的确认索引没用了再删除。</p>
+<p>如创建t2表，里面的c2字段为隐藏索引:</p>
+<pre class="last literal-block">
+mysql › create table t2(c1 int, c2 int, index idx_c1(c1), index idx_c2(c2) invisible);
+</pre>
+</dd>
+<dt>新增函数索引</dt>
+<dd><p class="first">之前我们知道，如果在查询中加入了函数，索引不生效，
+所以MySQL 8引入了函数索引，MySQL 8.0.13开始支持在索引中使用函数（表达式）的值。</p>
+<p>函数索引基于虚拟列功能实现，在MySQL中相当于新增了一个列，
+这个列会根据你的函数来进行计算结果，
+然后使用函数索引的时候就会用这个计算后的列作为索引。</p>
+<p>如:</p>
+<pre class="last literal-block">
+# 给t3表的c1列创建普通索引
+create index idx_c1 on t3(c1);
+# 给t3表的c2列创建函数索引,  大写函数索引
+create index func_idx on t3((UPPER(c2)))
+</pre>
+</dd>
+<dt>窗口函数（Window Functions）：也称分析函数</dt>
+<dd><p class="first">从 MySQL 8.0开始，新增了一个叫窗口函数的概念，它可以用来实现若干新的查询方式。
+窗口函数与 SUM（）、COUNT（）这种分组聚合函数类似，在聚合函数后面加上over（）就变成窗口函数了，
+在括号里可以加上partition by等分组关键字指定如何分组，
+窗口函数即便分组也不会将多行查询结果合并为一行，而是将结果放回多行当中，即窗口函数不需要再使 GROUP BY.</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-04-23-16-34.png" style="width: 480px;" />
+<p class="caption">示例</p>
+</div>
+<div class="last figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-04-23-19-38.png" style="width: 480px;" />
+</div>
+</dd>
+<dt>默认字符集由latin1变为utf8mb4</dt>
+<dd>在8.0版本之前，默认字符集为latin1，utf8指向的是utf8mb3，
+8.0版本默认字符集为utf8mb4，utf8默认指向的也是utf8mb4。</dd>
+<dt>MyISAM系统表全部换成InnoDB表</dt>
+<dd>将系统表（mysql）和数据字典表全部改为InnoDB存储引擎，
+默认的MySQL实例将不包含MyISAM表，除非手动创建MyISAM表。</dd>
+<dt>元数据存储变动</dt>
+<dd>MySQL 8.0删除了之前版本的元数据文件，例如表结构.frm等文件，全部集中放入mysqlibd文件里。</dd>
+<dt>自增变量持久化</dt>
+<dd><p class="first">在8.0之前的版本，自增主键 AUTO_INCREMENT 的值如果大于max（primary key）+1，
+在MySQL重启后，会重置AUTO_INCREMENT=max（primary key）+1，
+这种现象在某些情况下会导致业务主键冲突或者其他难以发现的问题。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>通俗点说, mysql不会记录已经被删除的主键, 比如有索引值:</p>
+<pre class="literal-block">
+1, 2, 3, 4, 5
+</pre>
+<p>删除了4和5, 重启后新增数据, 自增id会从 4 开始</p>
+<p class="last">而且如果手动把1, 更改为其他的比如6, 主键自增的当前最大值不会变,
+后面再插入的时候就可能报错;
+Mysql8解决了这个问题, 会识别到最大自增id更新</p>
+</div>
+<p class="last">自增主键重启重置的问题很早就被发现（ <a class="reference external" href="https://bugs.mysql.com/bug.php?id=199">https://bugs.mysql.com/bug.php?id=199</a> ），
+一直到8.0才被解決，8.0版本将会对 AUTO_INCREMENT 值进行持久化，MySQL重启后，该值将不会改变。</p>
+</dd>
+<dt>innodb存储引擎select for update跳迹锁等待</dt>
+<dd><p class="first">对于 <tt class="docutils literal">select … for share</tt> （8.0新增加查询共享锁的语法）或 <tt class="docutils literal">select … for update</tt>，
+在语句后面添加
+NOWAIT、
+SKIP LOCKED 语法可以跳过锁等待，或者跳过锁定。</p>
+<ul class="simple">
+<li>NOWAIT, 报错返回</li>
+<li>SKIP LOCKED, 返回结果不包含加锁行</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><tt class="docutils literal">select … for update</tt> 表示查询的时候加一个排他锁</p>
+</div>
+<p>在5.7及之前的版本，select.for update，如果获取不到锁，会一直等待，直到innodb_lock_wait_timeout超时。</p>
+<p>在8.0版本，通过添加nowait，skip locked语法，能够立即返回。
+如果查询的行已经加锁，那么nowait会立即报错返回，而skip locked也会立即返回，只是返回的结果中不包含被锁定的行。</p>
+<p class="last">应用场景比如查询余票记录，如果某些记录已经被锁定，用skip locked可以跳过被锁定的记录，只返回没有锁定的记录，提高系统性能。</p>
+</dd>
+<dt>新增innodb_dedicated_server自适应参数</dt>
+<dd><p class="first">能够让InnoDB根据服务器上检测到的内存大小自动配置innodb_buffer_pool_size, innodb_log_file_size等参数，
+会尽可能多的占用系统可占用资源提升性能。
+解决非专业人员安装数据库后默认初始化数据库参数默认值偏低的问题，
+前提是服务器是专用来给MySQL数据库的，如果还有其他软件或者资源或者多实例MySQL使用，不建议开启该参数，不然会影响其它程序。</p>
+<p>默认是OFF关闭:</p>
+<pre class="last literal-block">
+show variables like '%innodb_dedicated_server%';
+</pre>
+</dd>
+<dt>死锁检查控制</dt>
+<dd><p class="first">MySQL 8.0 （MySQL 5.7.15）增加了一个新的动态变量 innodb_dgadlock_detect，
+用于控制系统是否执行 InnoDB死锁检查，默认是打开的。
+死锁检测会耗费数据库性能的，对于高并发的系统，我们可以关闭死锁检测功能，提高系统性能。</p>
+<p>但是我们要确保系统极少情况会发生死锁，同时要将锁等待超时参数调小一点，以防出现死锁等待过久的情况。</p>
+<p>默认打开的:</p>
+<pre class="last literal-block">
+show variables like '%innodb_deadlock_detect%'
+</pre>
+</dd>
+<dt>undo文件不再使用系统表空间</dt>
+<dd><p class="first">默认创建2个UNDO表空间，不再使用系统表空间。</p>
+<div class="last figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-04-22-54-34.png" style="width: 480px;" />
+</div>
+</dd>
+<dt>binlog日志过期时间精确到秒</dt>
+<dd><p class="first">之前是天，并且参数名称发生变化.</p>
+<p class="last">在8.0版本之前，binlog日志过期时间设置都是设置expire_logs_days参数，
+而在8.0版本中，MySQL默认使用binlog_expire_logs_seconds参数。</p>
+</dd>
+<dt>DDL原子化</dt>
+<dd><p class="first">InnoDB表的DDL文持事务完整性，要么成功要么回滚。</p>
+<p>MySQL 8.0开始支持原子DDL操作，其中与表相关的原子 DDL只支持 InnoDB 存储引擎。</p>
+<p>一个原子 DDL 操作内容包括：更新数据字典，存储引擎层的操作，在 binlog 中记录 DDL 操作。</p>
+<p>支持与表相关的DDL：数据库、表空间、表、索引的 CREATE、ALTER、DROP 以及 TRUNCATE TABLE。
+比如删除两个表, 即使t2报错, t1也会被成功删除:</p>
+<pre class="literal-block">
+drop tables t1, t2;
+</pre>
+<p>支持的其它DDL：存储程序、触发器、视图、UDF 的 CREATE、DROP 以及ALTER语句。</p>
+<p class="last">支持账户管理相关的 DDL：用户和角色的 CREATE、ALTER、DROP 以及适用的 RENAME等等。</p>
+</dd>
+<dt>参数修改持久化</dt>
+<dd><p class="first">MySQL 8.0版本支持在线修改全局参数并持久化，通过加上PERSIST关键字，
+可以将修改的参数持久化到新的配置文件（mysqld-auto.cnf）中，
+重启MySQL时，可以从该配置文件获取到最新的配置参数。set global 设置的变量参数在mysq重启后会失效。</p>
+<p>系统会在数据目录下生成一个包含json格式的mysqld-auto.cnf 的文件,
+当my.cnf 和mysqld-auto.cnf 同时存在时，后者具有更高优先级:</p>
+<pre class="last literal-block">
+set persist innodb_lock_wait_timeout=25;
+</pre>
+</dd>
+</dl>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

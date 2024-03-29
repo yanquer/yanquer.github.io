@@ -1,0 +1,460 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>浏览器加载选项</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/selenium.html">Selenium</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>浏览器加载选项</h2>
+									<div class="section" id="pageloadstrategy">
+<h2>pageLoadStrategy</h2>
+<p>页面加载策略:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="17%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">策略</th>
+<th class="head">就绪状态</th>
+<th class="head">备注</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>normal</td>
+<td>complete</td>
+<td>默认值, 等待所有资源下载</td>
+</tr>
+<tr><td>eager</td>
+<td>interactive</td>
+<td>DOM 访问已准备就绪, 但诸如图像的其他资源可能仍在加载</td>
+</tr>
+<tr><td>none</td>
+<td>Any</td>
+<td>完全不会阻塞 WebDriver</td>
+</tr>
+</tbody>
+</table>
+<p>示例(Options):</p>
+<pre class="literal-block">
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+
+# 阻塞等待页面资源加载
+options.page_load_strategy = 'normal'
+
+# WebDriver一直等到 DOMContentLoaded 事件触发并返回.
+# options.page_load_strategy = 'eager'
+
+# WebDriver 仅等待初始页面已下载.
+# options.page_load_strategy = 'none'
+
+driver = webdriver.Chrome(options=options)
+driver.get(&quot;http://www.google.com&quot;)
+driver.quit()
+</pre>
+</div>
+<div class="section" id="platformname">
+<h2>platformName</h2>
+<p>标识了远端的操作系统, 获取 platformName 将返回操作系统的名称</p>
+</div>
+<div class="section" id="acceptinsecurecerts">
+<h2>acceptInsecureCerts</h2>
+<p>检查在会话期间导航时 是否使用了过期的 (或) 无效的 TLS Certificate</p>
+<p>如果将功能设置为 false, 则页面浏览遇到任何域证书问题时, 将返回insecure certificate error .
+如果设置为 true, 则浏览器将信任无效证书.</p>
+<p>默认情况下, 此功能将信任所有自签名证书. 设置后, acceptInsecureCerts 功能将在整个会话中生效.</p>
+</div>
+<div class="section" id="timeouts">
+<h2>timeouts</h2>
+<p>WebDriver session 具有一定的 session timeout 间隔, 在此间隔内, 用户可以控制执行脚本或从浏览器检索信息的行为.</p>
+<p>每个会话超时都配置有不同 timeouts 的组合, 如下所述:</p>
+<ul class="simple">
+<li>Script Timeout:
+指定在当前浏览上下文中, 中断正在执行脚本的时机.
+WebDriver创建新会话时, 将设置默认的超时时间为 30,000 .</li>
+<li>Page Load Timeout:
+指定在当前浏览上下文中, 加载网页的时间间隔.
+WebDriver创建新会话时, 默认设置超时时间为 300,000 .
+如果页面加载限制了给定 (或默认) 的时间范围, 则该脚本将被 TimeoutException 停止.</li>
+<li>Implicit Wait Timeout
+指定在定位元素时, 等待隐式元素定位策略的时间.
+WebDriver创建新会话时, 将设置默认超时时间为 0 .</li>
+</ul>
+</div>
+<div class="section" id="unhandledpromptbehavior">
+<h2>unhandledPromptBehavior</h2>
+<p>指定当前会话 user prompt handler 的状态. 默认为 dismiss and notify state .</p>
+<dl class="docutils">
+<dt>User Prompt Handler</dt>
+<dd><p class="first">这定义了在远端出现用户提示时必须采取的措施. 该行为由unhandledPromptBehavior 功能定义, 具有以下状态:</p>
+<ul class="last simple">
+<li>dismiss</li>
+<li>accept</li>
+<li>dismiss and notify</li>
+<li>accept and notify</li>
+<li>ignore</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="setwindowrect">
+<h2>setWindowRect</h2>
+<p>用于所有支持 调整大小和重新定位 命令 的远程终端.</p>
+</div>
+<div class="section" id="strictfileinteractability">
+<h2>strictFileInteractability</h2>
+<p>用于是否对 类型为文件的输入(input type=file) 元素进行严格的交互性检查.
+默认关闭严格性检查, 在将 元素的Send Keys 方法作用于隐藏的文件上传时, 会有控制方面的行为区别.</p>
+</div>
+<div class="section" id="proxy">
+<h2>proxy</h2>
+<p>代理服务器充当客户端和服务器之间的请求中介. 简述而言, 流量将通过代理服务器流向您请求的地址, 然后返回.</p>
+<p>使用代理服务器用于Selenium的自动化脚本, 可能对以下方面有益:</p>
+<ul class="simple">
+<li>捕获网络流量</li>
+<li>模拟网站后端响应</li>
+<li>在复杂的网络拓扑结构或严格的公司限制/政策下访问目标站点.</li>
+</ul>
+<p>如果您在公司环境中, 并且浏览器无法连接到URL, 则最有可能是因为环境, 需要借助代理进行访问.</p>
+<p>设置代理的方式:</p>
+<pre class="literal-block">
+from selenium import webdriver
+
+PROXY = &quot;&lt;HOST:PORT&gt;&quot;
+webdriver.DesiredCapabilities.FIREFOX['proxy'] = {
+&quot;httpProxy&quot;: PROXY,
+&quot;ftpProxy&quot;: PROXY,
+&quot;sslProxy&quot;: PROXY,
+&quot;proxyType&quot;: &quot;MANUAL&quot;,
+
+}
+
+with webdriver.Firefox() as driver:
+# Open URL
+    driver.get(&quot;https://selenium.dev&quot;)
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#pageloadstrategy">
+    pageLoadStrategy
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#platformname">
+    platformName
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#acceptinsecurecerts">
+    acceptInsecureCerts
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#timeouts">
+    timeouts
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unhandledpromptbehavior">
+    unhandledPromptBehavior
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#setwindowrect">
+    setWindowRect
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#strictfileinteractability">
+    strictFileInteractability
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#proxy">
+    proxy
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

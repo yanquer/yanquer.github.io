@@ -4,6 +4,10 @@ Tipue Search 5.0
 Copyright (c) 2015 Tipue
 Tipue Search is released under the MIT License
 http://www.tipue.com/search
+
+// todo: 有个bug, 当搜索的text包含执行请求时, 会被当作代码执行. 貌似是match时候的bug
+//       目前我在后端简单过滤了一下, 这里等有空看看哪的毛病
+
 */
 
 
@@ -117,6 +121,7 @@ http://www.tipue.com/search
 
                function getTipueSearch(start, replace)
                {
+
                     $('#tipue_search_content').hide();
                     $('#tipue_search_content').html('<div class="tipue_search_spinner"><div class="tipue_search_rect1"></div><div class="tipue_search_rect2"></div><div class="rect3"></div></div>');
                     $('#tipue_search_content').show();
@@ -386,7 +391,7 @@ http://www.tipue.com/search
                                              {
                                                   s_u = s_u.slice(7);
                                              }
-                                             
+
                                              out += '<div class="tipue_search_content_url"><a href="' + found[i].url + '"' + tipue_search_w + '>' + s_u + '</a></div>';
                                         }
 
@@ -513,6 +518,10 @@ http://www.tipue.com/search
                     {
                          var id_v = $(this).attr('id');
                          var id_a = id_v.split('_');
+
+                         // 先滑动到搜索体顶部
+                         // window.scrollTo(0, $('#header-wrapper').height()+50);
+                         window.scrollTo(0, $('#header-wrapper').outerHeight());
 
                          getTipueSearch(parseInt(id_a[0]), id_a[1]);
                     });

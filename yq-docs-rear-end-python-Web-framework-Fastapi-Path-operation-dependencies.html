@@ -1,0 +1,486 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>路径操作依赖项</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/webkuang-jia.html">Web框架</a></li>
+
+												<li><a class="button button-alt" href="tag/fastapi.html">Fastapi</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>路径操作依赖项</h2>
+									<p>参考: <a class="reference external" href="https://www.runoob.com/fastapi/fastapi-path-operation-dependencies.html">FastAPI 路径操作依赖项</a></p>
+<p>FastAPI 提供了简单易用，但功能强大的依赖注入系统，
+这个依赖系统设计的简单易用，可以让开发人员轻松地把组件集成至 FastAPI。</p>
+<p>FastAPI 提供了路径操作依赖项（Path Operation Dependencies）的机制，
+允许你在路由处理函数执行之前或之后运行一些额外的逻辑。</p>
+<p>依赖项就是一个函数，且可以使用与路径操作函数相同的参数。</p>
+<p>路径操作依赖项提供了一种灵活的方式来组织代码、验证输入、进行身份验证等。</p>
+<p>接下来我们会具体介绍 FastAPI 路径操作依赖项的相关知识点。</p>
+<div class="section" id="dependencies">
+<h2>依赖项（Dependencies）</h2>
+<p>依赖项是在路由操作函数执行前或后运行的可复用的函数或对象。</p>
+<p>它们被用于执行一些通用的逻辑，如验证、身份验证、数据库连接等。
+在 FastAPI 中，依赖项通常用于两个方面：</p>
+<ul class="simple">
+<li>预处理（Before）依赖项： 在路由操作函数执行前运行，用于预处理输入数据，验证请求等。</li>
+<li>后处理（After）依赖项： 在路由操作函数执行后运行，用于执行一些后处理逻辑，如日志记录、清理等。</li>
+</ul>
+<div class="section" id="section-2">
+<h3>依赖注入</h3>
+<p>依赖注入是 <strong>将依赖项注入到路由操作函数中的过程</strong></p>
+<p>在 FastAPI 中，通过 <strong>在路由操作函数参数中声明依赖项</strong> 来实现依赖注入。</p>
+<p>FastAPI 将负责解析依赖项的参数，并确保在执行路由操作函数之前将其传递给函数。</p>
+</div>
+<div class="section" id="section-3">
+<h3>依赖项的使用</h3>
+<p>定义依赖项:</p>
+<pre class="literal-block">
+from fastapi import Depends, FastAPI
+
+app = FastAPI()
+
+# 依赖项函数
+def common_parameters(q: str = None, skip: int = 0, limit: int = 100):
+    return {&quot;q&quot;: q, &quot;skip&quot;: skip, &quot;limit&quot;: limit}
+</pre>
+<p>在这个例子中，common_parameters 是一个依赖项函数，用于预处理查询参数。
+在路由中使用依赖项:</p>
+<pre class="literal-block">
+from fastapi import Depends
+
+# 路由操作函数
+&#64;app.get(&quot;/items/&quot;)
+async def read_items(commons: dict = Depends(common_parameters)):
+    return commons
+</pre>
+<p>在这个例子中，read_items 路由操作函数中的参数 commons 使用了 Depends(common_parameters)，
+表示 common_parameters 是一个依赖项。
+FastAPI 将在执行路由操作函数之前运行 common_parameters 函数，并将其返回的结果传递给 read_items 函数。</p>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>路径操作依赖项的基本使用</h2>
+<div class="section" id="before">
+<h3>预处理（Before）</h3>
+<p>以下实例中，common_parameters 是一个依赖项函数，
+它接受查询参数 q、skip 和 limit，并返回一个包含这些参数的字典。</p>
+<p>在路由操作函数 read_items 中，通过传入 Depends(common_parameters)，
+我们使用了这个依赖项函数，实现了在路由执行前预处理输入数据的功能:</p>
+<pre class="literal-block">
+from fastapi import Depends, FastAPI, HTTPException
+
+app = FastAPI()
+
+# 依赖项函数
+def common_parameters(q: str = None, skip: int = 0, limit: int = 100):
+    return {&quot;q&quot;: q, &quot;skip&quot;: skip, &quot;limit&quot;: limit}
+
+# 路由操作函数
+&#64;app.get(&quot;/items/&quot;)
+async def read_items(commons: dict = Depends(common_parameters)):
+    return commons
+</pre>
+</div>
+<div class="section" id="after">
+<h3>后处理（After）</h3>
+<p>以下例子中, <strong>after_request</strong> 是一个后处理函数，用于在路由执行后执行一些逻辑。</p>
+<p>在路由操作函数 read_items_after 中，通过传入 <strong>Depends(after_request)</strong>，
+我们使用了这个后处理依赖项，实现了在路由执行后进行额外操作的功能:</p>
+<pre class="literal-block">
+from fastapi import Depends, FastAPI, HTTPException
+
+app = FastAPI()
+
+# 依赖项函数
+def common_parameters(q: str = None, skip: int = 0, limit: int = 100):
+    return {&quot;q&quot;: q, &quot;skip&quot;: skip, &quot;limit&quot;: limit}
+
+# 路由操作函数
+&#64;app.get(&quot;/items/&quot;)
+async def read_items(commons: dict = Depends(common_parameters)):
+    return commons
+
+# 后处理函数
+async def after_request():
+    # 这里可以执行一些后处理逻辑，比如记录日志
+    pass
+
+# 后处理依赖项
+&#64;app.get(&quot;/items/&quot;, response_model=dict)
+async def read_items_after(request: dict = Depends(after_request)):
+    return {&quot;message&quot;: &quot;Items returned successfully&quot;}
+</pre>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>多个依赖项的组合</h2>
+<p>以下例子中，common_parameters 和 verify_token 是两个不同的依赖项函数，
+verify_token 依赖于 common_parameters，这种组合依赖项的方式允许我们在路由执行前先验证一些参数，然后在进行身份验证:</p>
+<pre class="literal-block">
+from fastapi import Depends, FastAPI, HTTPException
+
+app = FastAPI()
+
+# 依赖项函数1
+def common_parameters(q: str = None, skip: int = 0, limit: int = 100):
+    return {&quot;q&quot;: q, &quot;skip&quot;: skip, &quot;limit&quot;: limit}
+
+# 依赖项函数2
+def verify_token(token: str = Depends(common_parameters)):
+    if token is None:
+        raise HTTPException(status_code=400, detail=&quot;Token required&quot;)
+    return token
+
+# 路由操作函数
+&#64;app.get(&quot;/items/&quot;)
+async def read_items(token: dict = Depends(verify_token)):
+    return token
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>异步依赖项</h2>
+<p>依赖项函数和后处理函数可以是异步的，允许在它们内部执行异步操作。
+以下例子中，get_token 是一个异步的依赖项函数，模拟了一个异步操作。
+在路由操作函数 read_items 中，我们使用了这个异步依赖项函数:</p>
+<pre class="literal-block">
+from fastapi import Depends, FastAPI, HTTPException
+from typing import Optional
+import asyncio
+
+app = FastAPI()
+
+# 异步依赖项函数
+async def get_token():
+    # 模拟异步操作
+    await asyncio.sleep(2)
+    return &quot;fake-token&quot;
+
+# 异步路由操作函数
+&#64;app.get(&quot;/items/&quot;)
+async def read_items(token: Optional[str] = Depends(get_token)):
+    return {&quot;token&quot;: token}
+</pre>
+<p>通过使用路径操作依赖项，你可以在路由执行前或后执行额外的逻辑，从而实现更灵活、可组合的代码组织方式。</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#dependencies">
+    依赖项（Dependencies）
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      依赖注入
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      依赖项的使用
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    路径操作依赖项的基本使用
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#before">
+      预处理（Before）
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#after">
+      后处理（After）
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    多个依赖项的组合
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    异步依赖项
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,1307 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>元编程</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/cookbook.html">Cookbook</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>元编程</h2>
+									<p>软件开发领域中最经典的口头禅就是“don’t repeat yourself”。也就是说，任何时
+候当你的程序中存在高度重复 (或者是通过剪切复制) 的代码时，都应该想想是否有更
+好的解决方案。在 Python 当中，通常都可以通过元编程来解决这类问题。简而言之，
+元编程就是关于创建操作源代码 (比如修改、生成或包装原来的代码) 的函数和类。主
+要技术是使用装饰器、类装饰器和元类。不过还有一些其他技术，包括签名对象、使用
+exec() 执行代码以及对内部函数和类的反射技术等。本章的主要目的是向大家介绍这
+些元编程技术，并且给出实例来演示它们是怎样定制化你的源代码行为的。</p>
+<div class="section" id="section-2">
+<h2>在函数上添加包装器</h2>
+<p>你想在函数上添加一个包装器，增加额外的操作处理 (比如日志、计时等)。</p>
+<ul class="simple">
+<li>使用装饰器函数</li>
+</ul>
+<p>顺便说一下，内置的装饰器比如 &#64;staticmethod, &#64;classmethod,&#64;property 原理
+也是一样的。例如，下面这两个代码片段是等价的:</p>
+<pre class="literal-block">
+class A:
+
+  &#64;classmethod
+  def method(cls):
+    pass
+
+class B:
+  # Equivalent definition of a class method
+  def method(cls):
+    pass
+
+  method = classmethod(method)
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>创建装饰器时保留函数元信息</h2>
+<p>你写了一个装饰器作用在某个函数上，但是这个函数的重要的元信息比如名字、文
+档字符串、注解和参数签名都丢失了。</p>
+<ul class="simple">
+<li>使用functools.wraps(fn) 保留元信息</li>
+</ul>
+<p>&#64;wraps 有一个重要特征是它能让你通过属性 __wrapped__ 直接访问被包装函数。</p>
+</div>
+<div class="section" id="section-4">
+<h2>解除一个装饰器</h2>
+<p>一个装饰器已经作用在一个函数上，你想撤销它，直接访问原始的未包装的那个函数</p>
+<p>假设装饰器是通过 &#64;wraps (参考 9.2 小节) 来实现的，那么你可以通过访问
+__wrapped__ 属性来访问原始函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; &#64;somedecorator
+&gt;&gt;&gt; def add(x, y):
+... return x + y
+...
+&gt;&gt;&gt; orig_add = add.__wrapped__
+&gt;&gt;&gt; orig_add(3, 4)
+7
+</pre>
+<p>直接访问未包装的原始函数在调试、内省和其他函数操作时是很有用的。但是我
+们这里的方案仅仅适用于在包装器中正确使用了 &#64;wraps 或者直接设置了 __wrapped__
+属性的情况。</p>
+<p>如果有多个包装器，那么访问 __wrapped__ 属性的行为是不可预知的，应该避免
+这样做</p>
+<p>在 Python3.3 中后，它会略过所有的包装层.</p>
+<p>最后要说的是，并不是所有的装饰器都使用了 &#64;wraps ，因此这里的方案并不全部
+适用。特别的，内置的装饰器 &#64;staticmethod 和 &#64;classmethod 就没有遵循这个约定
+(它们把原始函数存储在属性 __func__ 中)。</p>
+</div>
+<div class="section" id="section-5">
+<h2>定义一个带参数的装饰器</h2>
+</div>
+<div class="section" id="section-6">
+<h2>可自定义属性的装饰器</h2>
+<p>你想写一个装饰器来包装一个函数，并且允许用户提供参数在运行时控制装饰器
+行为。</p>
+<p>引入一个访问函数，使用 nonlocal 来修改内部变量。然后这个访问函数被 <strong>作为一
+个属性赋值给包装函数</strong></p>
+</div>
+<div class="section" id="section-7">
+<h2>带可选参数的装饰器</h2>
+<p>主要注意带参数区别, 见 <em>diff_warp_with_args</em></p>
+</div>
+<div class="section" id="section-8">
+<h2>利用装饰器强制函数上的类型检查</h2>
+<p>作为某种编程规约，你想在对函数参数进行强制类型检查。</p>
+<ul class="simple">
+<li>使用装饰器和 inspect.signature 函数</li>
+</ul>
+</div>
+<div class="section" id="section-9">
+<h2>将装饰器定义为类的一部分</h2>
+<p>你想在类中定义装饰器，并将其作用在其他函数或方法上。</p>
+<p>在类里面定义装饰器很简单，但是你首先要确认它的使用方式。比如到底是作为一
+个实例方法还是类方法</p>
+<p>例:</p>
+<pre class="literal-block">
+from functools import wraps
+
+class A:
+
+  # Decorator as an instance method
+  def decorator1(self, func):
+    &#64;wraps(func)
+    def wrapper(*args, **kwargs):
+      print('Decorator 1')
+      return func(*args, **kwargs)
+    return wrapper
+
+  # Decorator as a class method
+  &#64;classmethod
+  def decorator2(cls, func):
+    &#64;wraps(func)
+    def wrapper(*args, **kwargs):
+      print('Decorator 2')
+      return func(*args, **kwargs)
+    return wrapper
+</pre>
+<p>使用:</p>
+<pre class="literal-block">
+# As an instance method
+a = A()
+&#64;a.decorator1
+def spam():
+  pass
+
+# As a class method
+&#64;A.decorator2
+def grok():
+  pass
+</pre>
+<p>一个是实例调用，一个是类调用</p>
+<p>在类中定义装饰器初看上去好像很奇怪，但是在标准库中有很多这样的例子。特别
+的，&#64;property 装饰器实际上是一个类，它里面定义了三个方法 getter(), setter(),
+deleter() , 每一个方法都是一个装饰器。</p>
+<p>主要原因是各种不同的装饰器方法会在关联的 property 实
+例上操作它的状态。因此，任何时候只要你碰到需要在装饰器中记录或绑定信息，那么
+这不失为一种可行方法</p>
+<p>对于类里面定义的包装器还有一点比较难理解，就是在涉及到继承的时候。例如，
+假设你想让在 A 中定义的装饰器作用在子类 B 中。你需要像下面这样写:</p>
+<pre class="literal-block">
+class B(A):
+
+  &#64;A.decorator2
+  def bar(self):
+    pass
+</pre>
+<p>也就是说，装饰器要被定义成类方法并且你必须显式的使用父类名去调用它。你不
+能使用 &#64;B.decorator2 ，因为在方法定义时，这个类 B 还没有被创建。</p>
+</div>
+<div class="section" id="section-10">
+<h2>将装饰器定义为类</h2>
+<p>你想使用一个装饰器去包装函数，但是希望返回一个可调用的实例。你需要让你的
+装饰器可以同时工作在类定义的内部和外部</p>
+<p><strong>需要实现 __call__() 和 __get__() 方法</strong> , 如:</p>
+<pre class="literal-block">
+import types
+from functools import wraps
+
+class Profiled:
+  def __init__(self, func):
+    # 将自己设为装饰的对象
+    wraps(func)(self)
+    self.ncalls = 0
+
+  def __call__(self, *args, **kwargs):
+    self.ncalls += 1
+    return self.__wrapped__(*args, **kwargs)
+
+  # 描述器方法, 必须实现, 以补充所装饰类方法的第一个 self 参数
+  def __get__(self, instance, cls):
+    if instance is None:
+      return self
+    else:
+      return types.MethodType(self, instance)
+</pre>
+<p>__get__() 方法是为了确保绑定方法对象能被正确的创建。type.MethodType() 手
+动创建一个绑定方法来使用。只有当实例被使用的时候绑定方法才会被创建。如果这个
+方法是在类上面来访问，那么 __get__() 中的 instance 参数会被设置成 None 并直接
+返回 Profiled 实例本身。</p>
+</div>
+<div class="section" id="section-11">
+<h2>为类和静态方法提供装饰器</h2>
+<p>给类或静态方法提供装饰器是很简单的，不过要确保装饰器在 &#64;classmethod 或
+&#64;staticmethod 之后。不然被装饰的就是 &#64;classmethod 了,
+而其又没有返回可调用对象.</p>
+</div>
+<div class="section" id="section-12">
+<h2>装饰器为被包装函数增加参数</h2>
+<p>可以使用关键字参数来给被包装函数增加额外参数:</p>
+<pre class="literal-block">
+from functools import wraps
+def optional_debug(func):
+  &#64;wraps(func)
+  def wrapper(*args, debug=False, **kwargs):
+    if debug:
+      print('Calling', func.__name__)
+      return func(*args, **kwargs)
+    return wrapper
+</pre>
+<p>调用:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; &#64;optional_debug
+... def spam(a,b,c):
+... print(a,b,c)
+...
+&gt;&gt;&gt; spam(1,2,3)
+1 2 3
+&gt;&gt;&gt; spam(1,2,3, debug=True)
+Calling spam
+1 2 3
+&gt;&gt;&gt;
+</pre>
+<p>通过装饰器来给被包装函数增加参数的做法并不常见。尽管如此，有时候它可以避
+免一些重复代码。</p>
+<p>这种实现方案之所以行得通，在于强制关键字参数很容易被添加到接受*args 和**kwargs 参数的函数中。</p>
+<p>不过可能会与函数本来的参数冲突, 故可以在装饰器加入参数判断:</p>
+<pre class="literal-block">
+if 'debug' in inspect.getargspec(func).args:
+  raise TypeError('debug argument already defined')
+</pre>
+<p>如果要支持使用inspect检查原有参数时, 显示这个关键字参数, 装饰器函数增加:</p>
+<pre class="literal-block">
+&#64;wraps(func)
+def wrapper(*args, debug=False, **kwargs):
+  ...
+
+sig = inspect.signature(func)
+parms = list(sig.parameters.values())
+parms.append(inspect.Parameter('debug',
+    inspect.Parameter.KEYWORD_ONLY,
+    default=False))
+wrapper.__signature__ = sig.replace(parameters=parms)
+
+return wrapper
+</pre>
+</div>
+<div class="section" id="section-13">
+<h2>使用装饰器扩充类的功能</h2>
+<p>你想通过反省或者重写类定义的某部分来修改它的行为，但是你又不希望使用继
+承或元类的方式</p>
+<p>这种情况可能是类装饰器最好的使用场景了。例如，下面是一个重写了特殊方法__getattribute__的类装饰器，可以打印日志:</p>
+<pre class="literal-block">
+def log_getattribute(cls):
+  # Get the original implementation
+  orig_getattribute = cls.__getattribute__
+
+  # Make a new definition
+  def new_getattribute(self, name):
+    print('getting:', name)
+    return orig_getattribute(self, name)
+
+  # Attach to the class and return
+  cls.__getattribute__ = new_getattribute
+  return cls
+</pre>
+<p>如果你系想在一个类上面使用多个类装饰器，那么就需要注意下顺序问题。例如，
+一个装饰器 A 会将其装饰的方法完整替换成另一种实现，而另一个装饰器 B 只是简单
+的在其装饰的方法中添加点额外逻辑。那么这时候装饰器 A 就需要放在装饰器 B 的前
+面</p>
+</div>
+<div class="section" id="section-14">
+<h2>使用元类控制实例的创建</h2>
+<p>不允许实例:</p>
+<pre class="literal-block">
+class NoInstances(type):
+  def __call__(self, *args, **kwargs):
+    raise TypeError(&quot;Can't instantiate directly&quot;)
+
+# Example
+class Spam(metaclass=NoInstances):
+  &#64;staticmethod
+  def grok(x):
+    print('Spam.grok')
+</pre>
+<p>实现单例模式:</p>
+<pre class="literal-block">
+class Singleton(type):
+  def __init__(self, *args, **kwargs):
+    self.__instance = None
+    super().__init__(*args, **kwargs)
+
+  def __call__(self, *args, **kwargs):
+    if self.__instance is None:
+      self.__instance = super().__call__(*args, **kwargs)
+      return self.__instance
+    else:
+      return self.__instance
+</pre>
+<p>上述实现单例是错误的, 可能是古老的Python版本支持这样使用. 还是老老实实的:</p>
+<pre class="literal-block">
+class Single(object):
+    __instance: 'Single' = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+        return cls.__instance
+</pre>
+</div>
+<div class="section" id="section-15">
+<h2>捕获类的属性定义顺序</h2>
+<p>想自动记录一个类中属性和方法定义的顺序，然后可以利用它来做很多操作（比
+如序列化、映射到数据库等等）。</p>
+<p>利用元类可以很容易的捕获类的定义信息。下面是一个例子，使用了一个 OrderedDict 来记录描述器的定义顺序</p>
+<p>这里我没有看懂, 写的啥玩意儿, 跳过.</p>
+</div>
+<div class="section" id="section-16">
+<h2>定义有可选参数的元类</h2>
+<p>你想定义一个元类，允许类定义时提供可选参数，这样可以控制或配置类型的创建
+过程。</p>
+<p>在自定义元类中我们可以提供关键字参数:</p>
+<pre class="literal-block">
+class Spam(metaclass=MyMeta, debug=True, synchronize=True):
+  pass
+</pre>
+<p>为了使元类支持这些关键字参数, 你必须确保在__prepare__(),__new__()和__init__()方法
+中都使用强制关键字参数。就像下面这样:</p>
+<pre class="literal-block">
+class MyMeta(type):
+  # Optional
+  &#64;classmethod
+  def __prepare__(cls, name, bases, *, debug=False, synchronize=False):
+    # Custom processing
+    pass
+    return super().__prepare__(name, bases)
+
+  # Required
+  def __new__(cls, name, bases, ns, *, debug=False, synchronize=False):
+    # Custom processing
+    pass
+    return super().__new__(cls, name, bases, ns)
+
+  # Required
+  def __init__(self, name, bases, ns, *, debug=False, synchronize=False):
+    # Custom processing
+    pass
+    super().__init__(name, bases, ns)
+</pre>
+<p>给一个元类添加可选关键字参数需要你完全弄懂类创建的所有步骤，因为这些参
+数会被传递给每一个相关的方法。__prepare__() 方法在所有类定义开始执行前首先
+被调用，用来创建类命名空间。通常来讲，这个方法只是简单的返回一个字典或其他映
+射对象。__new__() 方法被用来实例化最终的类对象。它在类的主体被执行完后开始执
+行。__init__() 方法最后被调用，用来执行其他的一些初始化工作。</p>
+<p>当我们构造元类的时候，通常只需要定义一个 __new__() 或 __init__() 方法，但
+不是两个都定义。但是，如果需要接受其他的关键字参数的话，这两个方法就要同时提
+供，并且都要提供对应的参数签名。默认的 __prepare__() 方法接受任意的关键字参
+数，但是会忽略它们，所以只有当这些额外的参数可能会影响到类命名空间的创建时你
+才需要去定义 __prepare__() 方法。</p>
+<p>通过使用强制关键字参数，在类的创建过程中我们必须通过关键字来指定这些参
+数。</p>
+<p>使用关键字参数配置一个元类还可以视作对类变量的一种替代方式。例如:</p>
+<pre class="literal-block">
+class Spam(metaclass=MyMeta):
+  debug = True
+  synchronize = True
+</pre>
+<p>将这些属性定义为参数的好处在于它们不会污染类的名称空间，这些属性仅仅只
+从属于类的创建阶段，而不是类中的语句执行阶段。另外，它们在 __prepare__() 方
+法中是可以被访问的，因为这个方法会在所有类主体执行前被执行。但是类变量只能在
+元类的 __new__() 和 __init__() 方法中可见。</p>
+</div>
+<div class="section" id="args-kwargs">
+<h2>*args和**kwargs的强制参数签名</h2>
+<p>你有一个函数或方法，它使用*args 和**kwargs 作为参数，这样使得它比较通用，
+但有时候你想检查传递进来的参数是不是某个你想要的类型。</p>
+<p>对任何涉及到操作函数调用签名的问题，你都应该使用 inspect 模块中的签名特
+性。我们最主要关注两个类：Signature 和 Parameter 。下面是一个创建函数前面的交
+互例子:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from inspect import Signature, Parameter
+&gt;&gt;&gt; # Make a signature for a func(x, y=42, *, z=None)
+&gt;&gt;&gt; parms = [ Parameter('x', Parameter.POSITIONAL_OR_KEYWORD),
+...           Parameter('y', Parameter.POSITIONAL_OR_KEYWORD, default=42),
+...           Parameter('z', Parameter.KEYWORD_ONLY, default=None) ]
+&gt;&gt;&gt; sig = Signature(parms)
+&gt;&gt;&gt; print(sig)
+(x, y=42, *, z=None)
+&gt;&gt;&gt;
+</pre>
+<p>一旦你有了一个签名对象，你就可以使用它的 bind() 方法很容易的将它绑定
+到*args 和**kwargs 上去:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def func(*args, **kwargs):
+...   bound_values = sig.bind(*args, **kwargs)
+...   for name, value in bound_values.arguments.items():
+...     print(name,value)
+...
+&gt;&gt;&gt; # Try various examples
+&gt;&gt;&gt; func(1, 2, z=3)
+x 1
+y 2
+z 3
+&gt;&gt;&gt; func(1)
+x 1
+&gt;&gt;&gt; func(1, z=3)
+x 1
+z 3
+&gt;&gt;&gt; func(y=2, x=1)
+x 1
+</pre>
+<p>在我们需要构建通用函数库、编写装饰器或实现代理的时候，对于*args 和**kwargs
+的使用是很普遍的。但是，这样的函数有一个缺点就是当你想要实现自己的
+参数检验时，代码就会笨拙混乱。这时候我们可以
+通过一个签名对象来简化它。</p>
+<p>使用类实现:</p>
+<pre class="literal-block">
+from inspect import Signature, Parameter
+def make_sig(*names):
+  parms = [Parameter(name, Parameter.POSITIONAL_OR_KEYWORD)
+            for name in names]
+  return Signature(parms)
+
+class StructureMeta(type):
+  def __new__(cls, clsname, bases, clsdict):
+    clsdict['__signature__'] = make_sig(*clsdict.get('_fields',[]))
+    return super().__new__(cls, clsname, bases, clsdict)
+
+class Structure(metaclass=StructureMeta):
+  _fields = []
+
+  def __init__(self, *args, **kwargs):
+    bound_values = self.__signature__.bind(*args, **kwargs)
+    for name, value in bound_values.arguments.items():
+      setattr(self, name, value)
+
+# Example
+class Stock(Structure):
+  _fields = ['name', 'shares', 'price']
+
+class Point(Structure):
+  _fields = ['x', 'y']
+</pre>
+<p>当我们自定义签名的时候，将签名存储在特定的属性 __signature__ 中通常是很
+有用的。这样的话，在使用 inspect 模块执行内省的代码就能发现签名并将它作为调
+用约定:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import inspect
+&gt;&gt;&gt; print(inspect.signature(Stock))
+(name, shares, price)
+&gt;&gt;&gt; print(inspect.signature(Point))
+(x, y)
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-17">
+<h2>在类上强制使用编程规约</h2>
+<p>你的程序包含一个很大的类继承体系，你希望强制执行某些编程规约（或者代码
+诊断）来帮助程序员保持清醒。</p>
+<p>在元类中选择重新定义 __new__() 方法还是 __init__() 方法取决于你想怎样使
+用结果类。__new__() 方法在类创建之前被调用，通常用于通过某种方式（比如通过改
+变类字典的内容）修改类的定义。而 __init__() 方法是在类被创建之后被调用，当你
+需要完整构建类对象的时候会很有用。</p>
+<p>其实就是使用顶级父类, 因为新旧版本不一致就不走书上的例子了</p>
+</div>
+<div class="section" id="section-18">
+<h2>以编程方式定义类</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你在写一段代码，最终需要创建一个新的类对象。你考虑将类的定义源代码以字符
+串的形式发布出去。并且使用函数比如 exec() 来执行它，但是你想寻找一个更加优雅
+的解决方案。</dd>
+<dt>解决方案</dt>
+<dd>你可以使用函数 types.new_class() 来初始化新的类对象。你需要做的只是提供
+类的名字、父类元组、关键字参数，以及一个用成员变量填充类字典的回调函数。</dd>
+</dl>
+<p>如:</p>
+<pre class="literal-block">
+# stock.py
+# Example of making a class manually from parts
+# Methods
+
+def __init__(self, name, shares, price):
+  self.name = name
+  self.shares = shares
+  self.price = price
+
+def cost(self):
+  return self.shares * self.price
+
+cls_dict = { '__init__' : __init__, 'cost' : cost,
+}
+
+# Make a class
+import types
+Stock = types.new_class('Stock', (), {}, lambda ns: ns.update(cls_dict))
+Stock.__module__ = __name__
+</pre>
+<p>这种方式会构建一个普通的类对象，并且按照你的期望工作:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s = Stock('ACME', 50, 91.1)
+&gt;&gt;&gt; s
+&lt;stock.Stock object at 0x1006a9b10&gt;
+&gt;&gt;&gt; s.cost()
+4555.0
+&gt;&gt;&gt;
+</pre>
+<p><tt class="docutils literal">Stock.__module__ = __name__</tt> 用于生成 __repr__() 方法的输出。它同样也被用于很多库，比如 pickle
+。因此，为了让你创建的类是“正确”的，你需要确保这个属性也设置正确了。</p>
+<p>如果你想创建的类需要一个不同的元类，可以通过 types.new_class() 第三个参
+数传递给它:</p>
+<pre class="literal-block">
+Stock = types.new_class('Stock', (), {'metaclass': abc.ABCMeta}, lambda ns: ns.update(cls_dict))
+</pre>
+<p>第三个参数还可以包含其他的关键字参数. 比如，一个类的定义如下:</p>
+<pre class="literal-block">
+class Spam(Base, debug=True, typecheck=False):
+  pass
+</pre>
+<p>可以这样定义:</p>
+<pre class="literal-block">
+Spam = types.new_class('Spam', (Base,),
+                      {'debug': True, 'typecheck': False},
+                      lambda ns: ns.update(cls_dict))
+</pre>
+<p>new_class() 第四个参数，用来接受类命名空间的映射对象的函
+数。通常这是一个普通的字典，但是它实际上是 __prepare__() 方法返回的任意对象，</p>
+<p>讨论</p>
+<blockquote>
+<p>很 多 时 候 如 果 能 构 造 新 的 类 对 象 是 很 有 用 的。有 个 很 熟 悉 的 例 子 是 调 用
+collections.namedtuple() 函数</p>
+<p>namedtuple() 使用 exec() 而不是上面介绍的技术</p>
+</blockquote>
+</div>
+<div class="section" id="section-19">
+<h2>在定义的时候初始化类的成员</h2>
+</div>
+<div class="section" id="section-20">
+<h2>利用函数注解实现方法重载</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你已经学过怎样使用函数参数注解，那么你可能会想利用它来实现基于类型的方
+法重载。但是你不确定应该怎样去实现（或者到底行得通不）。</dd>
+<dt>解决方案</dt>
+<dd>基于一个简单的技术: Python 允许参数注解</dd>
+</dl>
+<p>如:</p>
+<pre class="literal-block">
+class Spam:
+  def bar(self, x:int, y:int):
+    print('Bar 1:', x, y)
+
+  def bar(self, s:str, n:int = 0):
+    print('Bar 2:', s, n)
+
+s = Spam()
+s.bar(2, 3) # Prints Bar 1: 2 3
+s.bar('hello') # Prints Bar 2: hello 0
+</pre>
+<p>得使用inspect检查然后判断用哪个. 不表.</p>
+</div>
+<div class="section" id="section-21">
+<h2>避免重复的属性方法</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你在类中需要重复的定义一些执行相同逻辑的属性方法，比如进行类型检查，怎样
+去简化这些重复代码呢</dd>
+<dt>解决方案</dt>
+<dd>使用自定义函数</dd>
+</dl>
+<p>如重复的属性访问器:</p>
+<pre class="literal-block">
+class Person:
+  def __init__(self, name ,age):
+    self.name = name
+    self.age = age
+
+  &#64;property
+  def name(self):
+    return self._name
+
+  &#64;name.setter
+  def name(self, value):
+    if not isinstance(value, str):
+      raise TypeError('name must be a string')
+    self._name = value
+
+  &#64;property
+  def age(self):
+    return self._age
+
+  &#64;age.setter
+  def age(self, value):
+    if not isinstance(value, int):
+      raise TypeError('age must be an int')
+    self._age = value
+</pre>
+<p>可以使用函数简化:</p>
+<pre class="literal-block">
+def typed_property(name, expected_type):
+  storage_name = '_' + name
+
+  &#64;property
+  def prop(self):
+    return getattr(self, storage_name)
+
+  &#64;prop.setter
+  def prop(self, value):
+    if not isinstance(value, expected_type):
+      raise TypeError('{} must be a {}'.format(name, expected_type))
+    setattr(self, storage_name, value)
+
+  return prop
+</pre>
+<p>使用:</p>
+<pre class="literal-block">
+# Example use
+class Person:
+  name = typed_property('name', str)
+  age = typed_property('age', int)
+
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+</pre>
+<dl class="docutils">
+<dt>讨论</dt>
+<dd>函数 typed_property() 看上去有点难理解，其实它所做的仅仅就是为你生成属性并
+返回这个属性对象。因此，当在一个类中使用它的时候，效果跟将它里面的代码放到
+类定义中去是一样的。</dd>
+</dl>
+<p>还可以使用 functools.partial() 来稍稍改变下:</p>
+<pre class="literal-block">
+from functools import partial
+String = partial(typed_property, expected_type=str)
+Integer = partial(typed_property, expected_type=int)
+
+# Example:
+class Person:
+  name = String('name')
+  age = Integer('age')
+
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+</pre>
+</div>
+<div class="section" id="section-22">
+<h2>定义上下文管理器的简单方法</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想自己去实现一个新的上下文管理器，以便使用 with 语句。</dd>
+<dt>解决方案</dt>
+<dd>实现一个新的上下文管理器的最简单的方法就是使用 contexlib 模块中的
+&#64;contextmanager 装饰器</dd>
+</dl>
+<p>如:</p>
+<pre class="literal-block">
+import time
+from contextlib import contextmanager
+
+&#64;contextmanager
+def timethis(label):
+  start = time.time()
+  try:
+    yield
+  finally:
+    end = time.time()
+    print('{}: {}'.format(label, end - start))
+
+# Example use
+with timethis('counting'):
+  n = 10000000
+  while n &gt; 0: n -= 1
+</pre>
+<p>在函数 timethis() 中，yield 之前的代码会在上下文管理器中作为 __enter__()
+方法执行，所有在 yield 之后的代码会作为 __exit__() 方法执行。如果出现了异常，
+异常会在 yield 语句那里抛出。</p>
+<p>更加高级一点的上下文管理器，实现了列表对象上的某种事务:</p>
+<pre class="literal-block">
+&#64;contextmanager
+def list_transaction(orig_list):
+  working = list(orig_list)
+  yield working
+  orig_list[:] = working
+</pre>
+<p>&#64;contextmanager 应该仅仅用来写自包含的上下文管理函数。如果你有一些对
+象 (比如一个文件、网络连接或锁)，需要支持 with 语句，那么你就需要单独实现
+__enter__() 方法和 __exit__() 方法。</p>
+</div>
+<div class="section" id="section-23">
+<h2>在局部变量域中执行代码</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想在使用范围内执行某个代码片段，并且希望在执行后所有的结果都不可见</dd>
+</dl>
+<p>为了理解这个问题，先试试一个简单场景。首先，在全局命名空间内执行一个代码
+片段:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = 13
+&gt;&gt;&gt; exec('b = a + 1')
+&gt;&gt;&gt; print(b)
+14
+&gt;&gt;&gt;
+</pre>
+<p>然后，再在一个函数中执行同样的代码:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def test():
+...   a = 13
+...   exec('b = a + 1')
+...   print(b)
+...
+&gt;&gt;&gt; test()
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+File &quot;&lt;stdin&gt;&quot;, line 4, in test
+NameError: global name 'b' is not defined
+&gt;&gt;&gt;
+</pre>
+<p>为了修正这样的错误，你需要在调用 exec() 之前使用 locals() 函数来得到一个
+局部变量字典。之后你就能从局部字典中获取修改过后的变量值了:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def test():
+...   a = 13
+...   loc = locals()
+...   exec('b = a + 1')
+...   b = loc['b']
+...   print(b)
+...
+&gt;&gt;&gt; test()
+14
+&gt;&gt;&gt;
+</pre>
+<dl class="docutils">
+<dt>讨论</dt>
+<dd>实际上对于 exec() 的正确使用是比较难的。大多数情况下当你要考虑使用 exec()
+的时候，还有另外更好的解决方案（比如装饰器、闭包、元类等等）。</dd>
+</dl>
+<p>默认情况下，exec() 会在调用者局部和全局范围内执行代码。然而，在函数里面，传递给
+exec() 的局部范围是拷贝实际局部变量组成的一个字典。因此，如果 exec() 如果执
+行了修改操作，这种修改后的结果对实际局部变量值是没有影响的:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def test1():
+...   x = 0
+...   exec('x += 1')
+...   print(x)
+...
+&gt;&gt;&gt; test1()
+0
+&gt;&gt;&gt;
+</pre>
+<p>另一个演示例子:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def test2():
+...   x = 0
+...   loc = locals()
+...   print('before:', loc)
+...   exec('x += 1')
+...   print('after:', loc)
+...   print('x =', x)
+...
+&gt;&gt;&gt; test2()
+before: {'x': 0}
+after: {'loc': {...}, 'x': 1}
+x = 0
+&gt;&gt;&gt;
+</pre>
+<p>仔细观察最后一步的输出，除非你将 loc 中被修改后的值手动赋值给 x，否则 x
+变量值是不会变的。</p>
+<p>在使用 locals() 的时候，你需要注意操作顺序。每次它被调用的时候，locals()
+会获取局部变量值中的值并覆盖字典中相应的变量。</p>
+<p>作为 locals() 的一个替代方案，你可以使用你自己的字典，并将它传递给 exec()
+。例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def test4():
+...   a = 13
+...   loc = { 'a' : a }
+...   glb = { }
+...   exec('b = a + 1', glb, loc)
+...   b = loc['b']
+...   print(b)
+...
+&gt;&gt;&gt; test4()
+14
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="python">
+<h2>解析与分析 Python 源码</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想写解析并分析 Python 源代码的程序</dd>
+<dt>解决方案</dt>
+<dd><p class="first">大部分程序员知道 Python 能够计算或执行字符串形式的源代码:</p>
+<pre class="last literal-block">
+&gt;&gt;&gt; x = 42
+&gt;&gt;&gt; eval('2 + 3*4 + x')
+56
+&gt;&gt;&gt; exec('for i in range(10): print(i)')  # 0123456789
+&gt;&gt;&gt;
+</pre>
+</dd>
+</dl>
+<p><strong>ast 模块能被用来将 Python 源码编译成一个可被分析的抽象语法树
+（AST）。</strong> 例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import ast
+&gt;&gt;&gt; ex = ast.parse('2 + 3*4 + x', mode='eval')
+&gt;&gt;&gt; ex
+&lt;_ast.Expression object at 0x1007473d0&gt;
+&gt;&gt;&gt; ast.dump(ex)
+&quot;Expression(body=BinOp(left=BinOp(left=Num(n=2), op=Add(),
+right=BinOp(left=Num(n=3), op=Mult(), right=Num(n=4))), op=Add(),
+right=Name(id='x', ctx=Load())))&quot;
+&gt;&gt;&gt; top = ast.parse('for i in range(10): print(i)', mode='exec')
+&gt;&gt;&gt; top
+&lt;_ast.Module object at 0x100747390&gt;
+&gt;&gt;&gt; ast.dump(top)
+&quot;Module(body=[For(target=Name(id='i', ctx=Store()),
+iter=Call(func=Name(id='range', ctx=Load()), args=[Num(n=10)],
+keywords=[], starargs=None, kwargs=None),
+body=[Expr(value=Call(func=Name(id='print', ctx=Load()),
+args=[Name(id='i', ctx=Load())], keywords=[], starargs=None,
+kwargs=None))], orelse=[])])&quot;
+&gt;&gt;&gt;
+</pre>
+<p>分析源码树需要你自己更多的学习，它是由一系列 AST 节点组成的。分析这些节点
+最简单的方法就是定义一个访问者类，实现很多 visit_NodeName() 方法，NodeName()
+匹配那些你感兴趣的节点。</p>
+<p>例如, 自定义记录了哪些名字被加载、存储和删除的信息类:</p>
+<pre class="literal-block">
+import ast
+
+class CodeAnalyzer(ast.NodeVisitor):
+  def __init__(self):
+    self.loaded = set()
+    self.stored = set()
+    self.deleted = set()
+
+  def visit_Name(self, node):
+    if isinstance(node.ctx, ast.Load):
+      self.loaded.add(node.id)
+    elif isinstance(node.ctx, ast.Store):
+      self.stored.add(node.id)
+    elif isinstance(node.ctx, ast.Del):
+      self.deleted.add(node.id)
+
+# Sample usage
+if __name__ == '__main__':
+  # Some Python code
+  code = '''
+  for i in range(10):
+    print(i)
+    del i
+  '''
+
+  # Parse into an AST
+  top = ast.parse(code, mode='exec')
+  # Feed the AST to analyze name usage
+  c = CodeAnalyzer()
+  c.visit(top)
+</pre>
+<p>最后，AST 可以通过 compile() 函数来编译并执行。例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; exec(compile(top,'&lt;stdin&gt;', 'exec'))
+</pre>
+</div>
+<div class="section" id="python-1">
+<h2>拆解 Python 字节码</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想通过将你的代码反编译成低级的字节码来查看它底层的工作机制。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">dis 模块可以被用来输出任何 Python 函数的反编译结果。例如:</p>
+<pre class="last literal-block">
+&gt;&gt;&gt; def countdown(n):
+...   while n &gt; 0:
+...     print('T-minus', n)
+...     n -= 1
+...   print('Blastoff!')
+...
+&gt;&gt;&gt; import dis
+&gt;&gt;&gt; dis.dis(countdown)
+...
+&gt;&gt;&gt;
+</pre>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">当你想要知道你的程序底层的运行机制的时候，dis 模块是很有用的。比如如果你
+想试着理解性能特征。被 dis() 函数解析的原始字节码如下所示:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; countdown.__code__.co_code
+b&quot;x'\x00|\x00\x00d\x01\x00k\x04\x00r)\x00t\x00\x00d\x02\x00|\x00\x00\x83
+\x02\x00\x01|\x00\x00d\x03\x008}\x00\x00q\x03\x00Wt\x00\x00d\x04\x00\x83
+\x01\x00\x01d\x00\x00S&quot;
+&gt;&gt;&gt;
+</pre>
+<p>如果你想自己解释这段代码，你需要使用一些在 opcode 模块中定义的常量。例如:</p>
+<pre class="last literal-block">
+&gt;&gt;&gt; c = countdown.__code__.co_code
+&gt;&gt;&gt; import opcode
+
+&gt;&gt;&gt; opcode.opname[c[0]]
+&gt;&gt;&gt; opcode.opname[c[0]]
+'SETUP_LOOP'
+&gt;&gt;&gt; opcode.opname[c[3]]
+'LOAD_FAST'
+&gt;&gt;&gt;
+</pre>
+</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    在函数上添加包装器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    创建装饰器时保留函数元信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    解除一个装饰器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    定义一个带参数的装饰器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    可自定义属性的装饰器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    带可选参数的装饰器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    利用装饰器强制函数上的类型检查
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    将装饰器定义为类的一部分
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    将装饰器定义为类
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    为类和静态方法提供装饰器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-12">
+    装饰器为被包装函数增加参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-13">
+    使用装饰器扩充类的功能
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-14">
+    使用元类控制实例的创建
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-15">
+    捕获类的属性定义顺序
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-16">
+    定义有可选参数的元类
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#args-kwargs">
+    *args和**kwargs的强制参数签名
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-17">
+    在类上强制使用编程规约
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-18">
+    以编程方式定义类
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-19">
+    在定义的时候初始化类的成员
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-20">
+    利用函数注解实现方法重载
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-21">
+    避免重复的属性方法
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-22">
+    定义上下文管理器的简单方法
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-23">
+    在局部变量域中执行代码
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#python">
+    解析与分析 Python 源码
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#python-1">
+    拆解 Python 字节码
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

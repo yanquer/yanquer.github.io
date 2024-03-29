@@ -1,0 +1,679 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>AMQP 入门</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/celery_more.html">Celery_more</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>AMQP 入门</h2>
+									<p>celery 基本上全部兼容了 AMQP 的实现, 所以此处对此作一个了解说明.</p>
+<div class="section" id="section-1">
+<h2>消息</h2>
+<p>一个消息由消息头和消息体组成。</p>
+<p>Celery 使用消息头来存储消息的内容类型以及内容的编码。
+内容类型通常是用来序列化消息的序列化格式，
+消息体包含要执行的任务的名称，任务ID(UUID)，执行任务的参数以及一些额外的元数据(比如重试次数和ETA(下次执行任务的时间))。</p>
+<p>这是通过一个 Python 的字典来表示的示例任务消息:</p>
+<pre class="literal-block">
+{'task': 'myapp.tasks.add',
+'id': '54086c5e-6193-4575-8308-dbab76798756',
+'args': [4, 4],
+'kwargs': {}}
+</pre>
+</div>
+<div class="section" id="section-2">
+<h2>生产者，消费者和中间人</h2>
+<p>发送消息的客户端通常被称为一个发布者，或一个生产者，而接收消息的实体被称为消费者。</p>
+<p>中间人是将消息从生产者路由到消费者的消息服务器。</p>
+<p>你可能在与AMQP相关的材料中看到这些术语被大量使用。</p>
+</div>
+<div class="section" id="section-3">
+<h2>交换机，队列和路由键</h2>
+<ul class="simple">
+<li>消息将被发送到交换机</li>
+<li>交换机将消息路由到一个或者多个队列。存在多种交换机类型来提供不同的消息路由方式，或实现不同的消息发送方案。</li>
+<li>消息将在队列中等待直到有人消费它。</li>
+<li>一旦消息被确认消费，将会从队列中删除。</li>
+</ul>
+<p>发送和接收消息所需要的步骤如下:</p>
+<ul class="simple">
+<li>创建一个交换机</li>
+<li>创建一个队列</li>
+<li>绑定队列到交换机。</li>
+</ul>
+<p>为了使 task_queues 中的队列工作， Celery 将会自动创建所需要的实体(除非队列的 auto_declare 选项被设置为 False )。</p>
+<p>下方是一个包含三个队列的示例队列配置; 一个用于视频，一个用于图片，另一个用于其他消息的默认队列:</p>
+<pre class="literal-block">
+from kombu import Exchange, Queue
+
+app.conf.task_queues = (
+    Queue('default', Exchange('default'), routing_key='default'),
+    Queue('videos',  Exchange('media'),   routing_key='media.video'),
+    Queue('images',  Exchange('media'),   routing_key='media.image'),
+)
+app.conf.task_default_queue = 'default'
+app.conf.task_default_exchange_type = 'direct'
+app.conf.task_default_routing_key = 'default'
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>交换机类型</h2>
+<ul class="simple">
+<li>直连交换机</li>
+<li>主题交换机</li>
+</ul>
+<p>交换机的类型定义了交换机将会如何路由消息。
+在正常情况下交换机被定义为 direct, topic, fanout。
+此外也可以通过 RabbitMQ 的插件来使用非标准的交换机类型，
+比如由 Michael Bridgen 实现的 last-value-cache plug-in 。</p>
+<div class="section" id="section-5">
+<h3>直连交换机</h3>
+<p>直连交换机通过精确的路由键来进行匹配，所以被路由键 video 绑定的队列只接收具有该路由键的消息。</p>
+</div>
+<div class="section" id="section-6">
+<h3>主题交换机</h3>
+<p>主题交换机通过以点分隔的单词和通配符来匹配路由键:</p>
+<pre class="literal-block">
+*(匹配单个单词)
+#(匹配零或多个单词)。
+</pre>
+<p>假如有如下路由键:</p>
+<pre class="literal-block">
+usa.news
+usa.weather
+norway.news
+norway.weather
+</pre>
+<p>可以通过绑定 <tt class="docutils literal">*.news</tt> 来接收所有的新闻，
+绑定 <tt class="docutils literal">usa.#</tt> 来接收与 USA 有关的所有消息，
+或绑定 <tt class="docutils literal">usa.weather</tt> 来接收所有与 USA 天气有关的消息。</p>
+</div>
+</div>
+<div class="section" id="api">
+<h2>相关的API命令</h2>
+<ul class="simple">
+<li><a class="reference internal" href="#declare">declare</a> 通过名称声明交换机</li>
+</ul>
+<div class="section" id="declare">
+<h3>declare</h3>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>声明并不代表创建，在你声明的时候，你可以断定这个实体已经存在，并且是可操作的。
+这里并没有规定消费者或生产者中的哪一方需要最先创建交换机/队列/绑定。</p>
+<p class="last">通常来说，最先需要它的哪一方就会创建它。</p>
+</div>
+</div>
+</div>
+<div class="section" id="api-1">
+<h2>使用 API</h2>
+<p>Celery 自带了一个名为 celery amqp 的工具，用于通过命令行来操作 AMQP API 去管理任务，
+比如说创建或者删除队列或交换机，清理队列或发送消息。
+该工具也可以用于 非 AMQP 的中间人，但是不一定实现了所有的命令操作。</p>
+<p>你可以直接在`celery amqp 的命令里写参数，或者无参数启动命令模式:</p>
+<pre class="literal-block">
+$ celery -A proj amqp
+-&gt; connecting to amqp://guest&#64;localhost:5672/.
+-&gt; connected.
+1&gt;
+</pre>
+<p>这里的 1&gt; 是命令提示。数字 1 表示到目前为止指定的命令数。</p>
+<p>输入 help 可以得到所有可用的命令列表。工具还支持自动补全，所以你可以输入一个命令然后按 tab 键来显示可能匹配到的命令列表。
+让我们创建一个你可以发送消息的队列:</p>
+<pre class="literal-block">
+1&gt; exchange.declare testexchange direct
+ok.
+2&gt; queue.declare testqueue
+ok. queue:testqueue messages:0 consumers:0.
+3&gt; queue.bind testqueue testexchange testkey
+ok.
+</pre>
+<p>上方的命令创建了一个直连交换机 testexchange 和一个名为 testqueue 的队列。该队列通过路由键 testkey 绑定到直连交换机。
+从现在开始，所有发送到 testexchange 交换机的带有路由键testkey 的消息将被移动到队列 testqueue 中。
+你可以通过 basic.publish 命令发送一条消息:</p>
+<pre class="literal-block">
+4&gt; basic.publish 'This is a message!' testexchange testkey
+ok.
+</pre>
+<p>现在消息已经发送出去，你可以去获取消息了。
+你可以在这里使用 basic.get 命令，该命令将会以同步轮询的方式去获取队列中的新消息
+(这种方式对于维护任务来说是还可以的，但是对于服务来说，你需要使用 basic.consume命令来代替它)
+从队列中弹出一条消息:</p>
+<pre class="literal-block">
+{'body': 'This is a message!',
+'delivery_info': {'delivery_tag': 1,
+                  'exchange': u'testexchange',
+                  'message_count': 0,
+                  'redelivered': False,
+                  'routing_key': u'testkey'},
+'properties': {}}
+</pre>
+<p>AMQP 使用确认来表明一条消息已经被接收并且成功处理。
+如果消息没有被确认并且消费者的通道关闭了，消息将被传递给另一个消费者。
+请注意上方结构中列出来的传递标记 delivery_tag ;
+再每个连接通道中，每个接收到的消息都有一个唯一的传递标记，这个标记用来确认消息。
+但是要注意，传递标记并不是跨连接唯一的，所以在另一个客户端中，传递标记为 1 的消息可能与当前连接中的消息是不一致的。</p>
+<p>你可以通过 basic.ack 命令来确认你收到的消息:</p>
+<pre class="literal-block">
+6&gt; basic.ack 1
+ok.
+</pre>
+<p>在我们的测试回话结束后，你应该清除你创建的实体:</p>
+<pre class="literal-block">
+7&gt; queue.delete testqueue
+ok. 0 messages deleted.
+8&gt; exchange.delete testexchange
+ok.
+</pre>
+</div>
+<div class="section" id="section-7">
+<h2>路由任务</h2>
+<div class="section" id="section-8">
+<h3>队列声明</h3>
+<p>在 Celery 存在的队列可以通过 task_queues 来设置。</p>
+<p>下方是一个包含三个队列的示例队列配置; 一个用于视频，一个用于图片，另一个用于其他消息的默认队列:</p>
+<pre class="literal-block">
+default_exchange = Exchange('default', type='direct')
+media_exchange = Exchange('media', type='direct')
+
+app.conf.task_queues = (
+    Queue('default', default_exchange, routing_key='default'),
+    Queue('videos', media_exchange, routing_key='media.video'),
+    Queue('images', media_exchange, routing_key='media.image')
+)
+app.conf.task_default_queue = 'default'
+app.conf.task_default_exchange = 'default'
+app.conf.task_default_routing_key = 'default'
+</pre>
+<p>在这里 task_default_queue 指定队列将被用于路由那些没有显示指定队列的任务。</p>
+<p>task_default_exchange，exchange type 以及routing key 将被用作于任务的默认值，
+并且也被用作于 task_queues 中的实体的默认值。</p>
+<p>对单个队列的多个绑定也是被支持的。如下一个两个路由键同时绑定于同一个队列的例子:</p>
+<pre class="literal-block">
+from kombu import Exchange, Queue, binding
+
+media_exchange = Exchange('media', type='direct')
+
+CELERY_QUEUES = (
+    Queue('media', [
+        binding(media_exchange, routing_key='media.video'),
+        binding(media_exchange, routing_key='media.image'),
+    ]),
+)
+</pre>
+</div>
+<div class="section" id="section-9">
+<h3>指定任务目标</h3>
+<p>任务的目标是通过如下的(按顺序)的方式决定的:</p>
+<ul class="simple">
+<li>Task.apply_async 的路由参数</li>
+<li>在任务本身定义的路由参数</li>
+<li>在 task_routes 中定义的 Routers</li>
+</ul>
+<p>最好的做法是不在配置中进行硬编码，而是将其作为 Routers 的配置。这是最灵活的，并且合理的默认值仍然可以设置为任务的属性。</p>
+</div>
+</div>
+<div class="section" id="section-10">
+<h2>路由器</h2>
+<p>路由器是决定任务的路由选项的函数。</p>
+<p>定义一个新的路由器，你所需要做的是通过签名 <tt class="docutils literal">(name, args, kwargs, options, task=None, **kw)</tt>
+定义一个函数:</p>
+<pre class="literal-block">
+def route_task(name, args, kwargs, options, task=None, **kw):
+        if name == 'myapp.tasks.compress_video':
+            return {'exchange': 'video',
+                    'exchange_type': 'topic',
+                    'routing_key': 'video.compress'}
+</pre>
+<p>如果你返回队列的键值，它将会带着在task_queues 中定义的配置展开:</p>
+<pre class="literal-block">
+{'queue': 'video', 'routing_key': 'video.compress'}
+</pre>
+<p>变成 -&gt;</p>
+<pre class="literal-block">
+{'queue': 'video',
+'exchange': 'video',
+'exchange_type': 'topic',
+'routing_key': 'video.compress'}
+</pre>
+<p>你可以通过将路由器的类添加到 task_routes 的配置中来安装路由器:</p>
+<pre class="literal-block">
+task_routes = (route_task,)
+</pre>
+<p>路由器方法也可以通过名称添加:</p>
+<pre class="literal-block">
+task_routes = ('myapp.routers.route_task',)
+</pre>
+<p>对于类似上方示例的简单的任务名称-&gt;路由映射，你可以简单地将字典放置在 task_routes 中来过的同样的行为效果:</p>
+<pre class="literal-block">
+task_routes = {
+    'myapp.tasks.compress_video': {
+        'queue': 'video',
+        'routing_key': 'video.compress',
+    },
+}
+</pre>
+<p>将会按照顺序遍历路由器，直到在第一个返回真的路由器处停止，并将该路由器用作为任务的最终路由器。
+你也可以将多个路由器定义在一个序列中:</p>
+<pre class="literal-block">
+task_routes = [
+    route_task,
+    {
+        'myapp.tasks.compress_video': {
+            'queue': 'video',
+            'routing_key': 'video.compress',
+    },
+]
+</pre>
+<p>路由器将会被按顺序访问，并选择第一个返回的值。
+如果你使用的是 Redis 或 RabbitMQ ，你也可以在路由器中指定队列的默认优先级:</p>
+<pre class="literal-block">
+task_routes = {
+    'myapp.tasks.compress_video': {
+        'queue': 'video',
+        'routing_key': 'video.compress',
+        'priority': 10,
+    },
+}
+</pre>
+<p>类似的，对任务使用 apply_async 调用时，传递的参数将会覆盖默认的优先级:</p>
+<pre class="literal-block">
+task.apply_async(priority=0)
+</pre>
+<p><strong>优先级顺序和集群响应</strong></p>
+<p>需要重视的是，因为职程(worker) 的预取机制，如果同一时间提交了一堆任务，那么它们的优先级顺序可能发生混乱。
+禁用职程的预取可以防止该问题，但是对于小而快的任务，这么做会导致达不到理想的性能。
+在大多数情况下，简单的将 worker_prefetch_multiplier 参数减少到 1，
+是一个简单而清晰的方式来提升系统的灵敏性，并且不会存在禁用预取带来的成本。
+要注意的是优先级的顺序是按照值的反序来排列的：0 是最高优先级。</p>
+</div>
+<div class="section" id="section-11">
+<h2>广播</h2>
+<p>Celery 也支持广播路由。下面是一个 broadcast_tasks 交换机的示例, 它将任务分发给所有连接到它的职程:</p>
+<pre class="literal-block">
+from kombu.common import Broadcast
+
+app.conf.task_queues = (Broadcast('broadcast_tasks'),)
+app.conf.task_routes = {
+    'tasks.reload_cache': {
+        'queue': 'broadcast_tasks',
+        'exchange': 'broadcast_tasks'
+    }
+}
+</pre>
+<p>现在任务 tasks.reload_cache 将会被被发送给从当前队列中消费的所有职程。
+如下是另一个关于广播路由的任务，这次使用了 celery beat 定时器:</p>
+<pre class="literal-block">
+from kombu.common import Broadcast
+from celery.schedules import crontab
+
+app.conf.task_queues = (Broadcast('broadcast_tasks'),)
+
+app.conf.beat_schedule = {
+    'test-task': {
+        'task': 'tasks.reload_cache',
+        'schedule': crontab(minute=0, hour='*/3'),
+        'options': {'exchange': 'broadcast_tasks'}
+    },
+}
+</pre>
+<p><strong>广播和结果</strong></p>
+<p>注意 Celery 结果并没有定义如果有两个任务使用同一个任务 ID 时会发生什么。
+如果同一个人任务被派发到多于一个职程，该任务的状态历史将不被保留。
+在这种情况下设置 task.ignore_result 属性忽略任务结果将会是个好主意。</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    消息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    生产者，消费者和中间人
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    交换机，队列和路由键
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    交换机类型
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      直连交换机
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      主题交换机
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#api">
+    相关的API命令
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#declare">
+      declare
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#api-1">
+    使用 API
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    路由任务
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      队列声明
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-9">
+      指定任务目标
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    路由器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    广播
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

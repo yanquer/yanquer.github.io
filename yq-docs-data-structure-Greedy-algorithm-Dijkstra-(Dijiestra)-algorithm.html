@@ -1,0 +1,702 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Dijkstra(迪杰斯特拉)算法</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 07 三月 2024
+      , Category:
+	  <a href="category/shu-ju-jie-gou.html">数据结构</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-jie-gou.html">数据结构</a></li>
+												<li><a class="button button-alt" href="tag/tan-xin-suan-fa.html">贪心算法</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-07</div>
+									<h2>Dijkstra(迪杰斯特拉)算法</h2>
+									<p>Dijkstra 算法是一个基于「贪心」、「广度优先搜索」、「动态规划」求一个图中一个点到其他所有点的最短路径的算法，时间复杂度 O(n^2)</p>
+<p><strong>典型最短路径算法</strong>，用于计算一个节点到其他节点的最短路径。
+它的主要特点是以起始点为中心向外层层扩展(广度优先遍历思想)，直到扩展到终点为止。</p>
+<p>基本步骤:</p>
+<ul class="simple">
+<li>Dijkstra 算法从指定的节点（源节点）出发，寻找它与图中所有其它节点之间的最短路径。</li>
+<li>Dijkstra 算法会记录当前已知的最短路径，并在寻找到更短的路径时更新。</li>
+<li>一旦找到源节点与其他节点之间的最短路径，那个节点会被标记为“已访问”并添加到路径中。</li>
+<li>重复寻找过程，直到图中所有节点都已经添加到路径中。
+这样，就可以得到从源节点出发访问所有其他节点的最短路径方案。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">Dijkstra 只能用在权重为正的图中，因为计算过程中需要将边的权重相加来寻找最短路径。</p>
+</div>
+<div class="section" id="dijkstra-1">
+<h2>Dijkstra 算法示例</h2>
+<!-- 1. 通过Dijkstra计算图G中的最短路径时，需要指定一个起点D(即从顶点D开始计算)。 -->
+<!-- 2. 此外，引进两个数组S和U。 -->
+<!-- S的作用是记录已求出最短路径的顶点(以及相应的最短路径长度)， -->
+<!-- 而U则是记录还未求出最短路径的顶点(以及该顶点到起点D的距离)。 -->
+<!-- 3. 初始时，数组S中只有起点D； -->
+<!-- 数组U中是除起点D之外的顶点，并且数组U中记录各顶点到起点D的距离。 -->
+<!-- 如果顶点与起点D不相邻，距离为无穷大。 -->
+<!-- 4. 然后，从数组U中找出路径最短的顶点K，并将其加入到数组S中； -->
+<!-- 同时，从数组U中移除顶点K。 -->
+<!-- 接着，更新数组U中的各顶点到起点D的距离。 -->
+<!-- 5. 重复第4步操作，直到遍历完所有顶点。 -->
+<!-- 图解 -->
+<!-- figure:\: ../../../resources/images/2024-03-06-15-48-03.png
+:width: 480px -->
+<!-- 初始状态: -->
+<!-- S是已计算出最短路径的顶点集合，U是未计算除最短路径的顶点的集合！ -->
+<!-- 第1步: -->
+<!-- 将顶点D加入到S中。 -->
+<!-- 此时，S={D(0)}, U={A(∞),B(∞),C(3),E(4),F(∞),G(∞)}。 注:C(3)表示C到起点D的距离是3。 -->
+<!-- 第2步: -->
+<!-- 将顶点C加入到S中。 -->
+<!-- 上一步操作之后，U中顶点C到起点D的距离最短；因此，将C加入到S中，同时更新U中顶点的距离。以顶点F为例，之前F到D的距离为∞；但是将C加入到S之后，F到D的距离为9=(F,C)+(C,D)。 -->
+<!-- 此时，S={D(0),C(3)}, U={A(∞),B(13),E(4),F(9),G(∞)}。 -->
+<!-- 第3步: -->
+<!-- 将顶点E加入到S中。 -->
+<!-- 上一步操作之后，U中顶点E到起点D的距离最短；因此，将E加入到S中，同时更新U中顶点的距离。还是以顶点F为例，之前F到D的距离为9；但是将E加入到S之后，F到D的距离为6=(F,E)+(E,D)。 -->
+<!-- 此时，S={D(0),C(3),E(4)}, U={A(∞),B(13),F(6),G(12)}。 -->
+<!-- 第4步: -->
+<!-- 将顶点F加入到S中。 -->
+<!-- 此时，S={D(0),C(3),E(4),F(6)}, U={A(22),B(13),G(12)}。 -->
+<!-- 第5步: -->
+<!-- 将顶点G加入到S中。 -->
+<!-- 此时，S={D(0),C(3),E(4),F(6),G(12)}, U={A(22),B(13)}。 -->
+<!-- 第6步: -->
+<!-- 将顶点B加入到S中。 -->
+<!-- 此时，S={D(0),C(3),E(4),F(6),G(12),B(13)}, U={A(22)}。 -->
+<!-- 第7步: -->
+<!-- 将顶点A加入到S中。 -->
+<!-- 此时，S={D(0),C(3),E(4),F(6),G(12),B(13),A(22)}。 -->
+<!-- 此时，起点D到各个顶点的最短距离就计算出来了: A(22) B(13) C(3) D(0) E(4) F(6) G(12)。 -->
+<p>寻找 0 到其它每一个节点的最短路径.</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-32-47.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">假定两个节点之间的权重表示它们之间的距离。</p>
+</div>
+<p>我们将会得到节点 0 到节点 1、节点 0 到节点 2、节点 0 到 节点 3……（以此类推）的最短路径。</p>
+<p>初始的距离列表如下：</p>
+<div class="figure align-center">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-33-38.png" style="width: 240px;" />
+</div>
+<p>还有一个列表用来记录哪些节点未被访问（即尚未被包含在路径中）</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-34-25.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">当所有节点都被添加到路径中时，算法的计算过程就完成了。</p>
+</div>
+<p>我们选择了从节点 0 出发，可以直接将它标记为“已访问”，
+同样的，在未访问节点列表中把它划掉，并在图中给它加上红色的边框：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-35-27.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-35-53.png" style="width: 480px;" />
+</div>
+<p>现在需要检查节点 0 到相邻节点的距离，两个相邻节点分别是节点 1 和节点 2（注意看红色的边）：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-37-16.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">这并不是说立即把这两个相邻节点加入到最短路径中。
+在把一个节点加入到最短路径之前，需要确认是否已经寻找到了访问它的最短路径。
+现在只是在对可选方案做初步检查。</p>
+</div>
+<p>更新节点 0 到节点 1、节点 0 到节点 2 的距离为它们之间的边的权重，分别为 2 和 6</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-53-43.png" style="width: 480px;" />
+</div>
+<p>更新了到相邻节点的距离之后：</p>
+<ul class="simple">
+<li>根据已知的距离列表选择距离源节点最近的节点。</li>
+<li>将它标记为“已访问”。</li>
+<li>将它添加到路径中。</li>
+</ul>
+<p>查看距离列表，发现节点 1 到源节点的距离是最短的（距离为 2），所以把它加入到路径中。</p>
+<p>在图中，以红色边来表示：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-55-03.png" style="width: 480px;" />
+</div>
+<p>在距离列表中用红色方块标记这个节点，表明它是“已访问”的、已经寻找到了访问这个节点的最短路径：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-55-34.png" style="width: 480px;" />
+</div>
+<p>在未访问节点列表中将它划掉：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-55-55.png" style="width: 480px;" />
+</div>
+<p>现在分析新的相邻节点，寻找访问它们的最短路径。
+只需要分析已经在最短路径（标记为红色边）中的节点的相邻节点。</p>
+<p>节点 2 和节点 3 都是最短路径包含的节点的相邻节点，
+因为它们分别与节点 0 和节点 1 直接相连，如下图所示。下一步将要分析这两个节点。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-56-52.png" style="width: 480px;" />
+</div>
+<p>之前已经计算过源节点到节点 2 的距离，并记录在了列表中，
+所以不用更新。这次只需要更新源节点到新的相邻节点（节点 3）的距离：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-57-17.png" style="width: 480px;" />
+</div>
+<p>这个距离是 7，来看看为什么。</p>
+<p>为了计算源节点到另一个节点（这里指节点 3）的距离，需要把访问该节点的最短路径的所有边权重相加：</p>
+<p>对于节点 3： 将构成路径 <cite>0 -&gt; 1 -&gt; 3</cite> 的所有边权重相加，
+得到总距离为 7（0 -&gt; 1 距离为 2，1 -&gt; 3 距离为 5）。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-57-56.png" style="width: 480px;" />
+</div>
+<p>现在得到了到相邻节点的距离，需要选择一个节点添加到路径中。
+我们必须 <strong>选择一个已知到源节点距离最短的未访问节点</strong>。
+即选择 Distance 中未确定最小值.</p>
+<p>从距离列表中可以看出，距离为 6 的节点 2 就是我们的选择：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-16-58-19.png" style="width: 480px;" />
+</div>
+<p>在图中为它加上红色边框，并将路径上的边标记为红色：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-07-07.png" style="width: 480px;" />
+</div>
+<p>在距离列表中用红色方块把它标记为“已访问”，在“未访问”节点列表中把它划掉：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-08-50.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-09-07.png" style="width: 480px;" />
+</div>
+<p>重复前面的步骤，寻找源节点到新的相邻节点节点 3 的最短路径。</p>
+<p>可以看到，有两种可选的路径： <cite>0 -&gt; 1 -&gt; 3</cite> 或 <cite>0 -&gt; 2 -&gt; 3</cite>。一起看看我们是如何确定最短路径的。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-09-36.png" style="width: 480px;" />
+</div>
+<p>节点 3 在之前已经有了一个距离记录（距离为 7，参阅下表），
+这个距离是之前步骤中由路径 <cite>0 -&gt; 1 -&gt; 3</cite> 的两个边权重（分别为 5 和 2）相加得到的。</p>
+<p>不过现在有了一个新的可选路径： <cite>0 -&gt; 2 -&gt; 3</cite>，它途经权重分别为 6 和 8 的两条边 <cite>0 -&gt; 2</cite> 和 <cite>2 -&gt; 3</cite>，总距离为 14。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-10-23.png" style="width: 480px;" />
+</div>
+<p>显然，第一个路径的距离更短（7 vs. 14），
+所以选择第一个路径 <cite>0 -&gt; 1 -&gt; 3</cite>。只有在新的路径距离更短的情况下，才会更新距离列表。</p>
+<p>因此，使用第一种方案 <cite>0 -&gt; 1 -&gt; 3</cite>，将节点添加到路径中。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-11-33.png" style="width: 480px;" />
+</div>
+<p>把这个节点标记为“已访问”，在“未访问”节点列表中把它划掉：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-11-52.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-12-09.png" style="width: 480px;" />
+</div>
+<p>重复前面的过程。</p>
+<p>检查尚未访问的相邻节点：节点 4 和节点 5，因为它们是节点 3 的相邻节点。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-12-36.png" style="width: 480px;" />
+</div>
+<p>更新它们到源节点的距离，尝试寻找更短的路径：</p>
+<ul class="simple">
+<li>对于节点 4： 路径是 <cite>0 -&gt; 1 -&gt; 3 -&gt; 4</cite>，距离为 17。</li>
+<li>对于节点 5： 路径是 <cite>0 -&gt; 1 -&gt; 3 -&gt; 5</cite>，距离为 22。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">我们只能从最短路径（红色边）上进行扩展，
+而不能途经未被包含在最短路径中的边（例如，不能构造经过边 2 -&gt; 3 的路径）。</p>
+</div>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-13-32.png" style="width: 480px;" />
+</div>
+<p>现在需要选择将哪个未访问节点标记为“已访问”，这里选择节点 4，因为在距离列表中它的距离最短。在图中做标记：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-14-00.png" style="width: 480px;" />
+</div>
+<p>在距离列表中用红色方块将它标记为“已访问”：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-14-23.png" style="width: 480px;" />
+</div>
+<p>在“未访问”节点列表中把它划掉：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-14-43.png" style="width: 480px;" />
+</div>
+<p>再次重复前面的过程。检查相邻节点：节点 5 和节点 6。分析每一种从已访问节点到它们之间的可能路径方案。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-15-07.png" style="width: 480px;" />
+</div>
+<p>对于节点 5：</p>
+<ul class="simple">
+<li>第一种选择是路径 <cite>0 -&gt; 1 -&gt; 3 -&gt; 5</cite>，到源节点的距离为 22（2 + 5 + 15），前面的步骤已经记录了这个距离。</li>
+<li>第二种选择是路径 <cite>0 -&gt; 1 -&gt; 3 -&gt; 4 -&gt; 5</cite>，到源节点的距离为 23（2 + 5 + 10 + 6）。</li>
+</ul>
+<p>显然，第一个路径距离更短，为节点 5 选择第一种方案。</p>
+<p>对于节点 6：</p>
+<ul class="simple">
+<li>可选的路径是 <cite>0 -&gt; 1 -&gt; 3 -&gt; 4 -&gt; 6</cite>，到源节点的距离为 19（2 + 5 + 10 + 2）。</li>
+</ul>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-16-05.png" style="width: 480px;" />
+</div>
+<p>把距离最短（当前已知）的节点 6 标记为“已访问”。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-16-23.png" style="width: 480px;" />
+</div>
+<p>在“未访问”节点列表中把它划掉：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-16-44.png" style="width: 480px;" />
+</div>
+<p>现在得到了如下路径（标记为红色）：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-17-15.png" style="width: 480px;" />
+</div>
+<p>现在只剩下一个节点 5 还没被访问了，看看我们要如何把它添加到路径中。</p>
+<p>从已经添加到路径中的节点出发，有三种不同的路径可以访问节点 5：</p>
+<ul class="simple">
+<li>第一种选择： <cite>0 -&gt; 1 -&gt; 3 -&gt; 5</cite>，总距离为 22（2 + 5 + 15）。</li>
+<li>第二种选择： <cite>0 -&gt; 1 -&gt; 3 -&gt; 4 -&gt; 5</cite>，总距离为 23（2 + 5 + 10 + 6）。</li>
+<li>第三种选择： <cite>0 -&gt; 1 -&gt; 3 -&gt; 4 -&gt; 6 -&gt; 5</cite>，总距离为 25（2 + 5 + 10 + 2 + 6）。</li>
+</ul>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-17-49.png" style="width: 480px;" />
+</div>
+<p>选择总距离为 22 的最短路径： <cite>0 -&gt; 1 -&gt; 3 -&gt; 5</cite>。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-18-41.png" style="width: 480px;" />
+</div>
+<p>把这个节点标记为“已访问”，并在“未访问”节点列表中把它划掉：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-19-00.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-19-15.png" style="width: 480px;" />
+</div>
+<p>瞧！ 我们得到了从节点 0 到图中每个节点的最短路径。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-06-17-19-34.png" style="width: 480px;" />
+</div>
+<p>图中，标记为红色的边表示最短路径：连接节点 0 和目标节点的红色边即为从源节点出发访问目标节点的最短路径。</p>
+<p>例如，想要从节点 0 出发访问节点 6，连接它们的红色边就是最短路径，跟着走就行了。</p>
+<p>上述例子Python实现</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">inf</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="c1"># 将 edges 转换为 图</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="p">[[</span><span class="n">inf</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
+
+        <span class="c1"># inf 当前已寻找好距离,</span>
+        <span class="c1"># False 是否作为必须点被寻找</span>
+        <span class="c1"># 索引直接表示点 0 - n-1</span>
+        <span class="n">dis</span> <span class="o">=</span> <span class="p">[(</span><span class="n">inf</span><span class="p">,</span> <span class="kc">False</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n</span>
+
+        <span class="c1"># 到自己的距离为0</span>
+        <span class="n">dis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="nb">any</span><span class="p">(</span><span class="ow">not</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dis</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">cur_d</span> <span class="o">=</span> <span class="n">inf</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">al_find</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dis</span><span class="p">):</span>
+                <span class="c1"># 找出当前 未访问 中最小的</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">al_find</span> <span class="ow">and</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">cur_d</span><span class="p">:</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="n">i</span>
+                    <span class="n">cur_d</span> <span class="o">=</span> <span class="n">d</span>
+            <span class="c1"># if x == -1: break</span>
+            <span class="c1"># 最后一个点的时候, 肯定已经有其他点先遍历过了(双向点), 所以可以直接退出</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="c1"># 标记为 当必经过当前点时 已找过</span>
+            <span class="n">dis</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="n">inf</span> <span class="ow">or</span> <span class="n">dis</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span> <span class="k">continue</span>   <span class="c1"># 不可达 或者 已经找过, 跳过</span>
+                <span class="n">new_d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="n">dis</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">new_d</span> <span class="o">&lt;</span> <span class="n">dis</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">dis</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_d</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dis</span><span class="p">]</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="mi">7</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
+</pre></div>
+<p>补充一个使用堆优化的.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">heapq</span>
+
+
+<span class="k">def</span> <span class="nf">find_with_heap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;使用堆优化&quot;&quot;&quot;</span>
+
+  <span class="c1"># 将 edges 转换为 图</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="p">[[</span><span class="n">inf</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+  <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+      <span class="n">g</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
+      <span class="n">g</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span>
+
+  <span class="n">dis</span> <span class="o">=</span> <span class="p">[</span><span class="n">inf</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+  <span class="n">dis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="c1"># 第一个 0 表示 点0到点0的举例为0,</span>
+  <span class="c1"># 第二个 0 表示 点0</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+
+  <span class="k">while</span> <span class="n">h</span><span class="p">:</span>
+      <span class="c1"># 拿到的是 d 最小的, 堆比直接循环节省时间</span>
+      <span class="n">d</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+      <span class="c1"># 这个时候拿到的 点 x 就已经是确定最小的了</span>
+      <span class="c1"># 堆优化不用记状态, 是因为出堆后就已经被确定为最小的了</span>
+
+      <span class="c1"># if d &gt; dis[x]:</span>
+      <span class="c1">#     continue</span>
+
+      <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+          <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="n">inf</span><span class="p">:</span> <span class="k">continue</span>  <span class="c1"># 不可达 或者 已经找过, 跳过</span>
+          <span class="n">new_d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="n">dis</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+          <span class="k">if</span> <span class="n">new_d</span> <span class="o">&lt;</span> <span class="n">dis</span><span class="p">[</span><span class="n">y</span><span class="p">]:</span>
+              <span class="n">dis</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_d</span>
+              <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="p">(</span><span class="n">new_d</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">dis</span>
+</pre></div>
+<p>堆优化不用记访问状态, 是因为出堆后就已经被确定为最小的了.</p>
+<p>至于会不会访问到上一个访问的结点, 比如 <cite>0-&gt;1</cite> 后 <cite>1-&gt;0</cite> 的时候, 为什么不会一直递归重复?
+因为当重复访问的时候, 路径长度也会变成原来的两倍, 会被 <tt class="docutils literal">new_d &lt; dis[y]</tt> 过滤掉.</p>
+<div class="highlight"><pre><span></span><span class="n">new_d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="n">dis</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">new_d</span> <span class="o">&lt;</span> <span class="n">dis</span><span class="p">[</span><span class="n">y</span><span class="p">]:</span>
+  <span class="o">...</span>
+</pre></div>
+<p>比如 <cite>0-1</cite> 距离为 2, 第一次, 更新节点 0 相邻的数据状态:</p>
+<pre class="literal-block">
+dis[0] = 0      (已访问过)
+dis[1] = 2
+dis[2] = 6
+</pre>
+<p>下一次找最小的, 也就是 节点 1, 当考虑 <cite>1-&gt;0</cite> 时:</p>
+<pre class="literal-block">
+# 即 y==1
+new_d = d + dis[x]
+# 结果为
+# new_d = d + dis[0]
+# 4 = 2 + 2
+</pre>
+<p>这个时候判断</p>
+<pre class="literal-block">
+new_d &lt; dis[y]
+# 即
+# 4 &lt; dis[0]
+# 4 &lt; 0
+</pre>
+<p>是不成立的, 也就避免了一直循环下去</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://www.freecodecamp.org/chinese/news/dijkstras-shortest-path-algorithm-visual-introduction/">图文详解 Dijkstra 最短路径算法</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/goldsunshine/p/12978305.html">https://www.cnblogs.com/goldsunshine/p/12978305.html</a> , 这个还没仔细看, 浅浏览了感觉图比较全, 本地见: <em>../../../resources/pdf/一篇文章讲透Dijkstra最短路径算法 - 金色旭光 - 博客园.pdf</em></li>
+</ul>
+<!-- - `Dijkstra算法详解 通俗易懂 <https://zhuanlan.zhihu.com/p/338414118>`_ -->
+<!-- - `最短路径算法-迪杰斯特拉(Dijkstra)算法 <https://zhuanlan.zhihu.com/p/346558578>`_ , 这篇的例子有点问题 -->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#dijkstra-1">
+    Dijkstra 算法示例
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

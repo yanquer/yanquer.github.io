@@ -1,0 +1,472 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>脚本结构</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/windows.html">Windows</a></li>
+
+												<li><a class="button button-alt" href="tag/windowszhi-xing-wen-jian-da-bao.html">Windows执行文件打包</a></li>
+
+												<li><a class="button button-alt" href="tag/nsis.html">Nsis</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>脚本结构</h2>
+									<ul class="simple">
+<li>属性定义: <em>NSIS_变量</em></li>
+<li>包的导入: <em>NSIS_导入其他脚本</em></li>
+<li>页面配置: <a class="reference internal" href="#section-2">向导页</a></li>
+<li><a class="reference internal" href="#target-1">区段</a></li>
+<li>函数: <a class="reference internal" href="#target-2">回调函数</a> ; <a class="reference internal" href="#section-6">自定义函数</a></li>
+</ul>
+<div class="section" id="section-2">
+<h2>向导页</h2>
+<p>向导页(Page)</p>
+<div class="section" id="section-3">
+<h3>古典页面</h3>
+<p>语法:</p>
+<pre class="literal-block">
+Page [Custom] &lt;name|function&gt;
+</pre>
+<p>如果使用 <tt class="docutils literal">Custom</tt> 后面跟自定义函数, 表示自定义的向导页面, 一个函数就是一个页面, 可直接根多个.</p>
+<p>非静默安装, 安装向导页面设置(设置显示哪些界面):</p>
+<pre class="literal-block">
+Page license
+Page components
+Page directory
+Page instfiles
+UninstPage uninstConfirm
+UninstPage instfiles
+</pre>
+</div>
+<div class="section" id="section-4">
+<h3>现代页面(宏定义)</h3>
+<p>例如:</p>
+<pre class="literal-block">
+; 欢迎页面
+!insertmacro MUI_PAGE_WELCOME
+; 许可协议页面
+!insertmacro MUI_PAGE_LICENSE &quot;LicenceDeclare.txt&quot;
+; 安装目录选择页面
+!insertmacro MUI_PAGE_DIRECTORY
+; 安装过程页面
+!insertmacro MUI_PAGE_INSTFILES
+; 安装完成页面
+!insertmacro MUI_PAGE_FINISH
+; 安装卸载过程页面
+!insertmacro MUI_UNPAGE_INSTFILES
+; 安装界面包含的语言设置
+!insertmacro MUI_LANGUAGE &quot;SimpChinese&quot;
+; 安装预释放文件
+!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
+; ------ MUI 现代界面定义结束 ------
+</pre>
+<p>还可以使用:</p>
+<pre class="literal-block">
+!insertmacro
+# 和
+!define
+</pre>
+<p>命令进行更多安装页面和安装功能的设置.</p>
+<p>如安装时对开始菜单、桌面快捷启动图标的设置等.</p>
+</div>
+</div>
+<div class="section" id="section-5">
+<span id="target-1"></span><h2>组件(自定义节/区段)</h2>
+<p><strong>对应某种安装/卸载选项的处理逻辑, 该段代码仅当用户选择相应的选项才被执行. 卸载程序的区段名用&quot;un.&quot;作为前缀.</strong></p>
+<p>有些应用程序允许安装额外的组件, 比如安装的时候, 显示可选的组件, 让用户选择哪些组件可以安装. 使用 <tt class="docutils literal">Section</tt></p>
+<pre class="literal-block">
+Section &quot;Installer Section&quot;
+SectionEnd
+</pre>
+<p>卸载的时候也支持可选卸载, 在名称前加 <tt class="docutils literal">un</tt> 即可:</p>
+<pre class="literal-block">
+Section &quot;un.Uninstaller Section&quot;
+SectionEnd
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><tt class="docutils literal">Section</tt> 支持设置多个, 表示多个组件部分可选</p>
+</div>
+<p>区段名的修饰符:</p>
+<pre class="literal-block">
+/o 表示该区段默认不选上
+- 表示隐藏区段(匿名区段也是隐藏区段)
+! 表示需要粗体显示的区段。
+</pre>
+<p>另外还有:</p>
+<ul>
+<li><p class="first">SectionIn 表示该区段和安装类型之间的关系</p>
+<p>语法:</p>
+<pre class="literal-block">
+SectionIn insttype_index [insttype_index] ... [RO]
+; RO 修饰符表示不可修改。
+</pre>
+</li>
+<li><p class="first">SubSection表示子区段</p>
+<p>语法:</p>
+<pre class="literal-block">
+SubSection [/e] Caption [subsection_name index output]
+;修饰符 /e 用于该子区段的所有区段是否默认展开。
+</pre>
+</li>
+</ul>
+</div>
+<div class="section" id="section-6">
+<span id="nsis"></span><h2>自定义函数</h2>
+<p>语法:</p>
+<pre class="literal-block">
+Function fun_name
+  # do something
+FunctionEnd
+</pre>
+<p>调用:</p>
+<pre class="literal-block">
+Call fun_name
+</pre>
+</div>
+<div class="section" id="section-7">
+<span id="target-2"></span><h2>预定义函数-回调函数</h2>
+<p>安装逻辑的回调函数:</p>
+<ul class="simple">
+<li>.onGUIInit</li>
+<li>.onInit</li>
+<li>.onInstFailed</li>
+<li>.onInstSuccess</li>
+<li>.onGUIEnd</li>
+<li>.onMouseOverSection</li>
+<li>.onRebootFailed</li>
+<li>.onSelChange</li>
+<li>.onUserAbort</li>
+<li>.onVerifyInstDir</li>
+</ul>
+<p>卸载逻辑回调函数:</p>
+<ul class="simple">
+<li>un.onGUIInit</li>
+<li>un.onInit</li>
+<li>un.onUninstFailed</li>
+<li>un.onUninstSuccess</li>
+<li>un.onGUIEnd</li>
+<li>un.onRebootFailed</li>
+<li>un.onUserAbort</li>
+</ul>
+</div>
+<div class="section" id="section-8">
+<h2>其他-内置字段</h2>
+<p>部分字段</p>
+<ul class="simple">
+<li><tt class="docutils literal">VIProductVersion &quot;$version&quot;</tt> : 定义鼠标放上去时, 显示的版本信息</li>
+<li><tt class="docutils literal">VIAddVersionKey <span class="pre">/LANG=${language}</span> &quot;CompanyName&quot; &quot;xxx公司&quot;</tt> : 鼠标放上去时, 显示的公司名称</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    向导页
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      古典页面
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      现代页面(宏定义)
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    组件(自定义节/区段)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    自定义函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    预定义函数-回调函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    其他-内置字段
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

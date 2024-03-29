@@ -1,0 +1,975 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>字符串操作</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/cookbook.html">Cookbook</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>字符串操作</h2>
+									<div class="section" id="section-2">
+<h2>分隔字符串为列表</h2>
+<ul class="simple">
+<li>str.split</li>
+<li>re.split , 见 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-hot.html">re</a></li>
+</ul>
+<p>split 用于 简单的字符串分割情形，它并不允许有 多个分隔符或者是分隔符周围不确定的空格。
+当你需要更加灵活的切割字符串的时候， 最好使用 re.split() 方法:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; line = 'asdf fjdk; afed, fjek,asdf, foo' &gt;&gt;&gt; import re
+&gt;&gt;&gt; re.split(r'[;,\s]\s*', line)
+['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+</pre>
+<p>当你使用 re.split() 函数时候，
+需要特别注意的是正则表达式中是否包含一个括 号捕获分组。
+如果使用了捕获分组，那么被匹配的文本也将出现在结果列表中:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; fields = re.split(r'(;|,|\s)\s*', line)
+&gt;&gt;&gt; fields
+['asdf', ' ', 'fjdk', ';', 'afed', ',', 'fjek', ',', 'asdf', ',', 'foo']
+&gt;&gt;&gt;
+</pre>
+<p>如果你不想保留分割字符串到结果列表中去，但仍然需要使用到括号来分组正则 表达式的话，
+确保你的分组是非捕获分组，形如 <strong>(?:...)</strong></p>
+<pre class="literal-block">
+&gt;&gt;&gt; re.split(r'(?:,|;|\s)\s*', line)
+['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>字符串首尾匹配</h2>
+<ul class="simple">
+<li>str.startswith</li>
+<li>str. endswith</li>
+<li>切片</li>
+<li>re.match, 见 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-hot.html">re</a></li>
+<li>fnmatch.fnmatch, 见 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-fnmatch.html">fnmatch</a></li>
+<li>fnmatch.fnmatchcase</li>
+</ul>
+</div>
+<div class="section" id="section-4">
+<h2>字符串搜索/匹配</h2>
+<ul class="simple">
+<li>str.find</li>
+<li>str.endswith</li>
+<li>str.startswith</li>
+<li>re.match</li>
+<li>re.findall</li>
+<li>re.finditer</li>
+</ul>
+<p>定义正则式的时候，通常会利用括号去捕获分组</p>
+<p>使用match:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; datepat = re.compile(r'(\d+)/(\d+)/(\d+)')
+
+&gt;&gt;&gt; m = datepat.match('11/27/2012')
+&gt;&gt;&gt; m
+&lt;_sre.SRE_Match object at 0x1005d2750&gt;
+&gt;&gt;&gt; # Extract the contents of each group
+&gt;&gt;&gt; m.group(0)
+'11/27/2012'
+&gt;&gt;&gt; m.group(1) '11'
+&gt;&gt;&gt; m.group(2) '27'
+&gt;&gt;&gt; m.group(3)
+'2012'
+&gt;&gt;&gt; m.groups()
+('11', '27', '2012')
+</pre>
+<p>使用 findall:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; text
+'Today is 11/27/2012. PyCon starts 3/13/2013.'
+&gt;&gt;&gt; datepat.findall(text)
+[('11', '27', '2012'), ('3', '13', '2013')]
+&gt;&gt;&gt; for month, day, year in datepat.findall(text): ... print('{}-{}-{}'.format(year, month, day)) ...
+2012-11-27
+2013-3-13
+&gt;&gt;&gt;
+</pre>
+<p>使用 finditer 获取迭代.</p>
+</div>
+<div class="section" id="section-5">
+<h2>字符串替换/搜索</h2>
+<ul class="simple">
+<li>str.replace</li>
+<li>re.sub, 见 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-hot.html">re</a></li>
+</ul>
+<p>sub:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; text = 'Today is 11/27/2012. PyCon starts 3/13/2013.'
+&gt;&gt;&gt; import re
+&gt;&gt;&gt; re.sub(r'(\d+)/(\d+)/(\d+)', r'\3-\1-\2', text)
+'Today is 2012-11-27. PyCon starts 2013-3-13.'
+&gt;&gt;&gt;
+</pre>
+<div class="section" id="section-6">
+<h3>忽略大小写</h3>
+<ul class="simple">
+<li>re.IGNORECASE</li>
+</ul>
+<p>re.IGNORECASE</p>
+<pre class="literal-block">
+&gt;&gt;&gt; text = 'UPPER PYTHON, lower python, Mixed Python'
+&gt;&gt;&gt; re.findall('python', text, flags=re.IGNORECASE)
+['PYTHON', 'python', 'Python']
+&gt;&gt;&gt; re.sub('python', 'snake', text, flags=re.IGNORECASE)
+'UPPER snake, lower snake, Mixed snake'
+&gt;&gt;&gt;
+</pre>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>最短匹配模式</h2>
+<p>这个问题一般出现在需要匹配一对分隔符之间的文本的时候 (比如引号包含的字符 串),
+原因是 在正 则表达式中 * 操作符是贪婪的，因此匹配操作会查找最长的可能匹配</p>
+<pre class="literal-block">
+&gt;&gt;&gt; str_pat = re.compile(r'\&quot;(.*)\&quot;')
+&gt;&gt;&gt; text1 = 'Computer says &quot;no.&quot;'
+&gt;&gt;&gt; str_pat.findall(text1)
+['no.']
+&gt;&gt;&gt; text2 = 'Computer says &quot;no.&quot; Phone says &quot;yes.&quot;'
+&gt;&gt;&gt; str_pat.findall(text2)
+['no.&quot; Phone says &quot;yes.']
+&gt;&gt;&gt;
+</pre>
+<p>为了修正这个问题，可以在模式中的 * 操作符后面加上? 修饰符:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; str_pat = re.compile(r'\&quot;(.*?)\&quot;')
+&gt;&gt;&gt; str_pat.findall(text2)
+['no.', 'yes.']
+&gt;&gt;&gt;
+</pre>
+<p>使得匹配变成非贪婪模式，从而得到最短的匹配</p>
+<p>在一 个模式字符串中，点 (.) 匹配除了换行外的任何字符。
+然而，如果你将点 (.) 号放在开始 与结束符 (比如引号) 之间的时候，那么匹配操作会查找符合模式的最长可能匹配。
+这 样通常会导致很多中间的被开始与结束符包含的文本被忽略掉，并最终被包含在匹配 结果字符串中返回。
+通过在 * 或者 + 这样的操作符后面添加一个 ? 可以强制匹配算法 改成寻找最短的可能匹配。</p>
+</div>
+<div class="section" id="section-8">
+<h2>多行匹配</h2>
+<p><strong>点 (.) 匹配除了换行外的任何字符</strong></p>
+<p>可以修改模式字符串，增加对换行的支持:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; text1 = '/* this is a comment */'
+&gt;&gt;&gt; text2 = '''/* this is a
+... multiline comment */
+... '''
+
+&gt;&gt;&gt; comment.findall(text1)
+[' this is a comment ']
+&gt;&gt;&gt; comment.findall(text2)
+[]
+&gt;&gt;&gt;
+&gt;&gt;&gt; comment = re.compile(r'/\*((?:.|\n)*?)\*/')
+&gt;&gt;&gt; comment.findall(text2)
+[' this is a\n multiline comment ']
+&gt;&gt;&gt;
+</pre>
+<p><strong>(?:.|n) 指定了一个非捕获组</strong> (也就是它定义了一个仅仅用来做 匹配，而不能通过单独捕获或者编号的组)。</p>
+<p><strong>re.compile() 函数接受一个标志参数叫 re.DOTALL ，可以让 正则表达式中的点 (.) 匹配包括换行符在内的任意字符</strong></p>
+</div>
+<div class="section" id="unicode">
+<h2>Unicode 文本标准化</h2>
+<p>在 Unicode 中，某些字符能够用多个合法的编码表示:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s1 = 'Spicy Jalape\u00f1o'
+&gt;&gt;&gt; s2 = 'Spicy Jalapen\u0303o'
+ &gt;&gt;&gt; s1
+'Spicy Jalapeño'
+&gt;&gt;&gt; s2
+'Spicy Jalapeño'
+&gt;&gt;&gt; s1 == s2
+False
+&gt;&gt;&gt; len(s1)
+14
+&gt;&gt;&gt; len(s2)
+15
+&gt;&gt;&gt;
+</pre>
+<p>文本”Spicy Jalapeño”使用了两种形式来表示。
+第一种使用整体字符”ñ” (U+00F1)，
+第二种使用拉丁字母”n”后面跟一个”~”的组合字符 (U+0303)。</p>
+<p>在需要比较字符串的程序中使用字符的多种表示会产生问题。为了修正这个问题， 你可以使用 unicodedata 模块先将文本标准化:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import unicodedata
+&gt;&gt;&gt; t1 = unicodedata.normalize('NFC', s1) &gt;&gt;&gt; t2 = unicodedata.normalize('NFC', s2) &gt;&gt;&gt; t1 == t2
+True
+&gt;&gt;&gt; print(ascii(t1))
+'Spicy Jalape\xf1o'
+&gt;&gt;&gt; t3 = unicodedata.normalize('NFD', s1) &gt;&gt;&gt; t4 = unicodedata.normalize('NFD', s2) &gt;&gt;&gt; t3 == t4
+True
+&gt;&gt;&gt; print(ascii(t3))
+'Spicy Jalapen\u0303o'
+&gt;&gt;&gt;
+</pre>
+<ul class="simple">
+<li>NFC 表示字符应该是整体组 成 (比如可能的话就使用单一编码)</li>
+<li>NFD 表示字符应该分解为多个组合字符表示</li>
+</ul>
+<p>同样支持扩展的标准化形式 NFKC 和 NFKD，它们在处理某些字符的时 候增加了额外的兼容特性。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s = '\ufb01' # A single character &gt;&gt;&gt; s
+''
+&gt;&gt;&gt; unicodedata.normalize('NFD', s) ''
+# Notice how the combined letters are broken apart here
+&gt;&gt;&gt; unicodedata.normalize('NFKD', s) 'fi'
+&gt;&gt;&gt; unicodedata.normalize('NFKC', s) 'fi'
+&gt;&gt;&gt;
+</pre>
+<p><strong>标准化对于任何需要以一致的方式处理 Unicode 文本的程序都是非常重要的</strong>,
+当 处理来自用户输入的字符串而你很难去控制编码的时候尤其如此。</p>
+<p>在清理和过滤文本的时候字符的标准化也是很重要的。
+比如，假设你想清除掉一些 文本上面的变音符的时候 (可能是为了搜索和匹配):</p>
+<pre class="literal-block">
+&gt;&gt;&gt; t1 = unicodedata.normalize('NFD', s1)
+&gt;&gt;&gt; ''.join(c for c in t1 if not unicodedata.combining(c)) 'Spicy Jalapeno'
+&gt;&gt;&gt;
+</pre>
+<p>combining() 函数可以测试一个字符是否为和音字符</p>
+<p>和音字符, 不知道为什书上这么定义, 实际就是是否为规范的数字字符:</p>
+<ul class="simple">
+<li>为规范数字字符返回数字</li>
+<li>否则返回0</li>
+</ul>
+</div>
+<div class="section" id="unicode-1">
+<h2>正则使用 Unicode</h2>
+<p>用于 <strong>使用正则表达式处理文本，但是关注的是 Unicode 字符处理</strong></p>
+<p>默认情况下 re 模块已经对一些 Unicode 字符类有了基本的支持。
+比如，<tt class="docutils literal">\\d</tt> 可表示匹配任意的 unicode 数字字符:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import re
+&gt;&gt;&gt; num = re.compile('\d+')
+&gt;&gt;&gt; # ASCII digits
+&gt;&gt;&gt; num.match('123')
+&lt;_sre.SRE_Match object at 0x1007d9ed0&gt;
+&gt;&gt;&gt; # Arabic digits
+&gt;&gt;&gt; num.match('\u0661\u0662\u0663')
+&lt;_sre.SRE_Match object at 0x101234030&gt;
+&gt;&gt;&gt;
+</pre>
+<p>匹配几个不同阿拉伯编码页 面中所有字符:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; arabic = re.compile('[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]+')
+&gt;&gt;&gt;
+</pre>
+<p>当执行匹配和搜索操作的时候，最好是先标准化并且清理所有文本为标准化格式.
+但是同样也应该注意一些特殊情况，比如在忽略大小写匹配和大小写 转换时的行为:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; pat = re.compile('stra\u00dfe', re.IGNORECASE)
+&gt;&gt;&gt; s = 'straße'
+&gt;&gt;&gt; pat.match(s) # Matches
+&lt;_sre.SRE_Match object at 0x10069d370&gt;
+&gt;&gt;&gt; pat.match(s.upper()) # Doesn't match
+&gt;&gt;&gt; s.upper() # Case folds
+'STRASSE'
+&gt;&gt;&gt;
+</pre>
+<p>混合使用 Unicode 和正则表达式通常会让你抓狂。
+如果你真的打算这样做的话，最 好考虑下安装第三方正则式库，
+它们会为 Unicode 的大小写转换和其他大量有趣特性 提供全面的支持，包括模糊匹配。</p>
+</div>
+<div class="section" id="section-9">
+<h2>删除字符串中字符</h2>
+<p>去掉文本字符串开头，结尾或者中间不想要的字符，比如空白</p>
+<ul class="simple">
+<li>str.strip 删除开始或结尾的字符</li>
+<li>str.lstrip 从左执行删除</li>
+<li>str.rstrip 从右执行删除</li>
+<li>str.replace 字符串替换</li>
+<li>re.sub 字符串正则替换</li>
+</ul>
+</div>
+<div class="section" id="section-10">
+<h2>清理文本字符串</h2>
+<p>除了上面的, 还有</p>
+<ul class="simple">
+<li>str.translate 自定义替换</li>
+</ul>
+<p>例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s = 'pýtĥöñ\fis\tawesome\r\n'
+&gt;&gt;&gt; s
+'pýtĥöñ\x0cis\tawesome\r\n'
+&gt;&gt;&gt;
+</pre>
+<p>第一步是清理空白字符, 空白字符 <tt class="docutils literal">\t</tt> 和 <tt class="docutils literal">\f</tt> 已经被重新映射到一个空格。
+回车字符 <tt class="docutils literal">\r</tt> 直 接被删除。:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; remap = {
+... ord('\t') : ' ',
+... ord('\f') : ' ',
+... ord('\r') : None # Deleted ... }
+&gt;&gt;&gt; a = s.translate(remap)
+&gt;&gt;&gt; a
+'pýtĥöñ is awesome\n'
+&gt;&gt;&gt;
+</pre>
+<p>使用 dict.fromkeys() 方法构造一个字典，每个 Unicode 和音 符作为键，对应的值全部为 None 。</p>
+<p>然后使用 unicodedata.normalize() 将原始输入标准化为分解形式字符。
+然后再 调用 translate 函数删除所有重音符:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import unicodedata
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; cmb_chrs = dict.fromkeys(c for c in range(sys.maxunicode)
+... if unicodedata.combining(chr(c)))
+...
+&gt;&gt;&gt; b = unicodedata.normalize('NFD', a)
+&gt;&gt;&gt; b
+'pýtĥöñ is awesome\n'
+&gt;&gt;&gt; b.translate(cmb_chrs)
+'python is awesome\n'
+&gt;&gt;&gt;
+</pre>
+<p>同样的技术也可以被用来删除其他类型的字符 (比如控制字符等)。</p>
+<p>另一种清理文本的技术涉及到 I/O 解码与编码函数。
+这里的思路是先对文本做一 些初步的清理，然后再结合 encode() 或者 decode() 操作来清除或修改它:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a
+'pýtĥöñ is awesome\n'
+&gt;&gt;&gt; b = unicodedata.normalize('NFD', a)
+&gt;&gt;&gt; b.encode('ascii', 'ignore').decode('ascii')
+'python is awesome\n'
+&gt;&gt;&gt;
+</pre>
+<p>这里的标准化操作将原来的文本分解为单独的和音符。
+接下来的 ASCII 编码/解码 只是简单的一下子丢弃掉那些字符。
+当然，这种方法仅仅只在最后的目标就是获取到文 本对应 ACSII 表示的时候生效。</p>
+<p>文本字符清理一个最主要的问题应该是运行的性能。
+一般来讲，代码越简单运行越 快。
+对于简单的替换操作，str.replace() 方法通常是最快的，甚至在你需要多次调用 的时候.</p>
+<p>另一方面，如果你需要执行任何复杂字符对字符的重新映射或者删除操作的话， tanslate() 方法会非常的快。</p>
+</div>
+<div class="section" id="section-11">
+<h2>字符串对齐</h2>
+<p>通过某种对齐方式来格式化字符串</p>
+<ul class="simple">
+<li>str.ljust</li>
+<li>str.rjust</li>
+<li>str.center</li>
+<li>format</li>
+</ul>
+<p>例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; text = 'Hello World'
+&gt;&gt;&gt; text.ljust(20)
+'Hello World '
+&gt;&gt;&gt; text.rjust(20)
+'         Hello World'
+&gt;&gt;&gt; text.center(20)
+' Hello World '
+&gt;&gt;&gt;
+</pre>
+<p>所有这些方法都能接受一个可选的填充字符:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; text.rjust(20,'=')
+'=========Hello World'
+
+&gt;&gt;&gt; text.center(20,'*')
+'****Hello World*****'
+&gt;&gt;&gt;
+</pre>
+<p>函数 format() 同样可以用来很容易的对齐字符串。你要做的就是使用 &lt;,&gt; 或者 ^ 字符后面紧跟一个指定的宽度:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; format(text, '&gt;20')
+' Hello World'
+&gt;&gt;&gt; format(text, '&lt;20')
+'Hello World '
+&gt;&gt;&gt; format(text, '^20')
+' Hello World '
+&gt;&gt;&gt;
+</pre>
+<p>如果你想指定一个非空格的填充字符，将它写到对齐字符的前面即可:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; format(text, '=&gt;20s')
+'=========Hello World'
+&gt;&gt;&gt; format(text, '*^20s')
+'****Hello World*****'
+&gt;&gt;&gt;
+</pre>
+<p>当格式化多个值的时候，这些格式代码也可以被用在 format() 方法中:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; '{:&gt;10s} {:&gt;10s}'.format('Hello', 'World')
+' Hello World'
+&gt;&gt;&gt;
+</pre>
+<p>format() 函数的一个好处是它不仅适用于字符串。它可以用来格式化任何值，使 得它非常的通用。比如，你可以用它来格式化数字:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 1.2345
+&gt;&gt;&gt; format(x, '&gt;10')
+' 1.2345'
+&gt;&gt;&gt; format(x, '^10.2f') ' 1.23 '
+&gt;&gt;&gt;
+</pre>
+<p>在老的代码中，你经常会看到被用来格式化文本的 % 操作符。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; '%-20s' % text
+'Hello World '
+&gt;&gt;&gt; '%20s' % text
+' Hello World'
+&gt;&gt;&gt;
+</pre>
+<p>但是，在新版本代码中，你应该优先选择 format() 函数或者方法。
+format() 要比 % 操作符的功能更为强大。
+并且 format() 也比使用 ljust() , rjust() 或 center() 方 法更通用，因为它可以用来格式化任意对象，而不仅仅是字符串</p>
+</div>
+<div class="section" id="section-12">
+<h2>合并/拼接字符串</h2>
+<p>将几个小的字符串合并为一个大的字符</p>
+<ul class="simple">
+<li>''.join(iter)</li>
+<li>str1 + str2</li>
+</ul>
+<p>只是合并少数几个字符串，使用加号 (+) 通常已经足够了:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = 'Is Chicago'
+&gt;&gt;&gt; b = 'Not Chicago?'
+&gt;&gt;&gt; a + ' ' + b
+'Is Chicago Not Chicago?'
+&gt;&gt;&gt;
+</pre>
+<p>在源码中将两个字面字符串合并:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = 'Hello' 'World'
+&gt;&gt;&gt; a
+'HelloWorld'
+&gt;&gt;&gt;
+</pre>
+<p><strong>使用加号 (+) 操作符去连接大量的字符串的 时候是非常低效率的，因为加号连接会引起内存复制以及垃圾回收操作</strong></p>
+<p>注意别使用没必要的字符串连接:</p>
+<pre class="literal-block">
+print(a + ':' + b + ':' + c) # Ugly
+print(':'.join([a, b, c])) # Still ugly
+print(a, b, c, sep=':') # Better
+</pre>
+<p>当混合使用 I/O 操作和字符串连接操作的时候，有时候需要仔细研究你的程序。比 如:</p>
+<pre class="literal-block">
+# Version 1 (string concatenation)
+f.write(chunk1 + chunk2)
+
+# Version 2 (separate I/O operations)
+f.write(chunk1)
+f.write(chunk2)
+</pre>
+<p>如果两个字符串很小，那么第一个版本性能会更好些，因为 I/O 系统调用天生就 慢。
+另外一方面，如果两个字符串很大，那么第二个版本可能会更加高效，因为它避免 了创建一个很大的临时结果并且要复制大量的内存块数据。</p>
+<p>编写构建大量小字符串的输出代码，你最好考虑下使用生 成器函数，利用 yield 语句产生输出片段:</p>
+<pre class="literal-block">
+def sample():
+  yield 'Is'
+  yield 'Chicago'
+  yield 'Not'
+  yield 'Chicago?'
+</pre>
+<p>支持直接join:</p>
+<pre class="literal-block">
+text = ''.join(sample())
+</pre>
+</div>
+<div class="section" id="section-13">
+<h2>字符串中插入变量</h2>
+<ul class="simple">
+<li>format</li>
+</ul>
+<p>使用 format:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s = '{name} has {n} messages.'
+&gt;&gt;&gt; s.format(name='Guido', n=37)
+'Guido has 37 messages.'
+&gt;&gt;&gt;
+</pre>
+<p>如果要被替换的变量能在变量域中找到，那么你可以结合使用 format_map() 和 vars()</p>
+<pre class="literal-block">
+&gt;&gt;&gt; name = 'Guido'
+&gt;&gt;&gt; n = 37
+&gt;&gt;&gt; s.format_map(vars())
+'Guido has 37 messages.'
+&gt;&gt;&gt;
+</pre>
+<p>也适用于对象实例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Info:
+... def __init__(self, name, n):
+...     self.name = name
+...     self.n = n
+&gt;&gt;&gt; a = Info('Guido',37)
+&gt;&gt;&gt; s.format_map(vars(a))
+'Guido has 37 messages.'
+&gt;&gt;&gt;
+</pre>
+<p>format 和 format_map() 的一个缺陷就是它们并不能很好的处理变量缺失的情况:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; s.format(name='Guido')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+KeyError: 'n'
+&gt;&gt;&gt;
+</pre>
+<p>一种避免这种错误的方法是另外定义一个含有 <tt class="docutils literal">__missing__()</tt> 方法的字典对象:</p>
+<pre class="literal-block">
+class safesub(dict):
+    &quot;&quot;&quot; 防止 key 找不到&quot;&quot;&quot;
+
+    def __missing__(self, key): return '{' + key + '}'
+
+&gt;&gt;&gt; del n # Make sure n is undefined
+&gt;&gt;&gt; s.format_map(safesub(vars()))
+'Guido has {n} messages.'
+&gt;&gt;&gt;
+</pre>
+<p>其他方式:</p>
+<p>%</p>
+<pre class="literal-block">
+&gt;&gt;&gt; name = 'Guido'
+&gt;&gt;&gt; n = 37
+&gt;&gt;&gt; '%(name) has %(n) messages.' % vars()
+'Guido has 37 messages.'
+&gt;&gt;&gt;
+</pre>
+<p>字符串模版:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import string
+&gt;&gt;&gt; s = string.Template('$name has $n messages.')
+&gt;&gt;&gt; s.substitute(vars())
+'Guido has 37 messages.'
+&gt;&gt;&gt;
+</pre>
+<p>format() 和 format_map() 相比较上面这些方案而已更加先进，因此应该 被优先选择。
+使用 format() 方法还有一个好处就是你可以获得对字符串格式化的所有 支持 (对齐，填充，数字格式化等待)，
+而这些特性是使用像模板字符串之类的方案不可 能获得的。</p>
+</div>
+<div class="section" id="section-14">
+<h2>指定列宽格式化</h2>
+<p>有一些长字符串，想以指定的列宽将它们重新格式化</p>
+<ul class="simple">
+<li><a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-Textwrap.html">textwrap</a></li>
+</ul>
+<p>使用 textwrap</p>
+<pre class="literal-block">
+s = &quot;Look into my eyes, look into my eyes, the eyes, the eyes, \ the eyes, not around the eyes, don't look around the eyes, \ look into my eyes, you're under.&quot;
+</pre>
+<p>格式化:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import textwrap
+&gt;&gt;&gt; print(textwrap.fill(s, 70))   # 每行最长 70
+&gt;&gt;&gt; print(textwrap.fill(s, 40))   # 每行最长 40
+&gt;&gt;&gt; print(textwrap.fill(s, 40, initial_indent=' '))
+</pre>
+<p>textwrap 模块对于字符串打印是非常有用的，特别是当你希望输出自动匹配终端 大小的时候。
+你可以使用 os.get_terminal_size() 方法来获取终端的大小尺寸。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.get_terminal_size().columns
+80
+&gt;&gt;&gt;
+</pre>
+<p>fill() 方法接受一些其他可选参数来控制 tab，语句结尾等。参阅 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-Textwrap.html">textwrap</a></p>
+</div>
+<div class="section" id="html-xml">
+<h2>处理 html 和 xml</h2>
+<p>将 HTML 或者 XML 实体如 &amp;entity; 或 &amp;#code; 替换为对应的文本。再者， 你需要转换文本中特定的字符 (比如 &lt;, &gt;, 或 &amp;)</p>
+<p>可以使用 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-html.html">html</a></p>
+<p>在生成 HTML 或者 XML 文本的时候，如果正确的转换特殊标记字符是一个很容 易被忽视的细节。
+特别是当你使用 print() 函数或者其他字符串格式化来产生输出的 时候。
+使用像 html.escape() 的工具函数可以很容易的解决这类问题。</p>
+<p>如果你想以其他方式处理文本，还有一些其他的工具函数比如 xml.sax.saxutils. unescapge() 可以帮助你。
+然而，你应该先调研清楚怎样使用一个合适的解析器。
+比 如，如果你在处理 HTML 或 XML 文本，
+使用某个解析模块比如 html.parse 或 xml. etree.ElementTree 已经帮你自动处理了相关的替换细节。</p>
+</div>
+<div class="section" id="section-15">
+<h2>字符串令牌解析</h2>
+<p>假如你有下面这样一个文本字符串:</p>
+<pre class="literal-block">
+text = 'foo = 23 + 42 * 10'
+</pre>
+<p>为了令牌化字符串，你不仅需要匹配模式，还得指定模式的类型. 例:</p>
+<pre class="literal-block">
+tokens = [('NAME', 'foo'), ('EQ','='), ('NUM', '23'), ('PLUS','+'),
+          ('NUM', '42'), ('TIMES', '*'), ('NUM', '10')]
+</pre>
+<p>利用命名捕获组的正则表达式来定 义所有可能的令牌，包括空格:</p>
+<pre class="literal-block">
+import re
+NAME = r'(?P&lt;NAME&gt;[a-zA-Z_][a-zA-Z_0-9]*)' NUM = r'(?P&lt;NUM&gt;\d+)'
+PLUS = r'(?P&lt;PLUS&gt;\+)'
+TIMES = r'(?P&lt;TIMES&gt;\*)'
+EQ = r'(?P&lt;EQ&gt;=)'
+WS = r'(?P&lt;WS&gt;\s+)'
+master_pat = re.compile('|'.join([NAME, NUM, PLUS, TIMES, EQ, WS]))
+</pre>
+<p>?P&lt;TOKENNAME&gt; 用于给一个模式命名，供后面使用</p>
+<p>使用 scanner()</p>
+<pre class="literal-block">
+&gt;&gt;&gt; scanner = master_pat.scanner('foo = 42')
+&gt;&gt;&gt; scanner.match()
+&lt;_sre.SRE_Match object at 0x100677738&gt;
+&gt;&gt;&gt; _.lastgroup, _.group()
+('NAME', 'foo')
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    分隔字符串为列表
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    字符串首尾匹配
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    字符串搜索/匹配
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    字符串替换/搜索
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      忽略大小写
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    最短匹配模式
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    多行匹配
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicode">
+    Unicode 文本标准化
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicode-1">
+    正则使用 Unicode
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    删除字符串中字符
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    清理文本字符串
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    字符串对齐
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-12">
+    合并/拼接字符串
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-13">
+    字符串中插入变量
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-14">
+    指定列宽格式化
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#html-xml">
+    处理 html 和 xml
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-15">
+    字符串令牌解析
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

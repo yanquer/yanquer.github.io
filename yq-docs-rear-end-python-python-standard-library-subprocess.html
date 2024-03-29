@@ -1,0 +1,558 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>subprocess</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>subprocess</h2>
+									<div class="section" id="call">
+<h2>call</h2>
+</div>
+<div class="section" id="check-call">
+<h2>check_call</h2>
+<p>例, check_call()正常执行命令:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import subprocess
+&gt;&gt;&gt; p = subprocess.check_call(['ping', '-c', '2', 'www.baidu.com'])
+PING www.baidu.com (39.156.66.14): 56 data bytes
+64 bytes from 39.156.66.14: icmp_seq=0 ttl=52 time=40.865 ms
+64 bytes from 39.156.66.14: icmp_seq=1 ttl=52 time=48.753 ms
+
+--- www.baidu.com ping statistics ---
+2 packets transmitted, 2 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 40.865/44.809/48.753/3.944 ms
+&gt;&gt;&gt; p
+0
+</pre>
+<p>例, check_call()错误执行命令:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; p = subprocess.check_call(['ping', '-c', '2', 'www.xxxxxdu.com'])
+ping: cannot resolve www.xxxxxdu.com: Unknown host
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/usr/local/Cellar/python&#64;3.9/3.9.10/Frameworks/Python.framework/Versions/3.9/lib/python3.9/subprocess.py&quot;, line 373, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['ping', '-c', '2', 'www.xxxxxdu.com']' returned non-zero exit status 68.
+&gt;&gt;&gt; p
+0
+</pre>
+</div>
+<div class="section" id="check-output">
+<h2>check_output</h2>
+<p>例, check_output() 调用的子进程正常与错误退出:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; subprocess.check_output([&quot;echo&quot;, &quot;Hello World!&quot;])
+b'Hello World!\n'
+
+&gt;&gt;&gt; subprocess.check_output(&quot;exit 1&quot;, shell=True)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/usr/local/Cellar/python&#64;3.9/3.9.10/Frameworks/Python.framework/Versions/3.9/lib/python3.9/subprocess.py&quot;, line 424, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File &quot;/usr/local/Cellar/python&#64;3.9/3.9.10/Frameworks/Python.framework/Versions/3.9/lib/python3.9/subprocess.py&quot;, line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command 'exit 1' returned non-zero exit status 1.
+&gt;&gt;&gt;
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用上面提到的三个方法: <tt class="docutils literal"><span class="pre">call(),</span> <span class="pre">check_call(),</span> check_output()</tt> 时,
+尽量不要将参数 <tt class="docutils literal">stderr</tt> 和 <tt class="docutils literal">stdout</tt> 设置为 <tt class="docutils literal">subprocess.PIPE</tt> ,
+这几个函数默认都会等待子进程完成, 子进程产生大量的输出数据如果造成管道堵塞, 父进程再等待子进程完成可能造成死锁。</p>
+</div>
+</div>
+<div class="section" id="popen">
+<h2>Popen</h2>
+<div class="sidebar">
+<p class="first sidebar-title">关于 <cite>shell: bool = False</cite> 参数</p>
+<p>有需求在linux下使用pkexec来申请权限, 如执行ls
+可以成功执行的两种调用:</p>
+<blockquote>
+subprocess.Popen('pkexec ls', shell=True)
+subprocess.Popen(['sh', '-c', 'pkexec ls'], shell=False)</blockquote>
+<p>不能生效的调用(弹出界面一闪而逝或者压根不显示):</p>
+<pre class="literal-block">
+subprocess.Popen(['pkexec', 'ls'], shell=False)
+</pre>
+<p>后面发现这个貌似实际是:</p>
+<pre class="literal-block">
+pkexec ls &amp;
+</pre>
+<p>与这个的区别:</p>
+<pre class="last literal-block">
+sh -c &quot;pkexec ls&quot;
+</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>对于的系统命令而言, 当存在关键词参数且参数的值有空格时, 不要使用:</p>
+<pre class="literal-block">
+Popen(['cmd', '--update=t t t'])
+</pre>
+<p>而是使用:</p>
+<pre class="literal-block">
+Popen(['cmd', '--update', 't t t'])
+</pre>
+<p>因为前者会把 <tt class="docutils literal"><span class="pre">'--update=t</span> t t'</tt> 解析为带引号的字符串:</p>
+<pre class="literal-block">
+&quot;--update=t t t&quot;
+</pre>
+<p class="last">从而导致识别不了关键字参数 <tt class="docutils literal"><span class="pre">--update</span></tt></p>
+</div>
+<p>例1:</p>
+<pre class="literal-block">
+import subprocess
+ret1 = subprocess.Popen([&quot;mkdir&quot;,&quot;t1&quot;])
+ret2 = subprocess.Popen(&quot;mkdir t2&quot;, shell=True)
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>终端输入的命令分为两种：</p>
+<ul class="last simple">
+<li>非交互式: 输入即可得到输出, 如 ifconfig</li>
+<li>交互式: 输入进行某环境, 依赖再输入, 如 python</li>
+</ul>
+</div>
+<p>例2:</p>
+<pre class="literal-block">
+import subprocess
+
+obj = subprocess.Popen(&quot;mkdir t3&quot;, shell=True, cwd='/home/dev',)     #在cwd目录下执行命令
+import subprocess
+
+obj = subprocess.Popen([&quot;python&quot;], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+obj.stdin.write(&quot;print(1)\n&quot;)
+obj.stdin.write(&quot;print(2)&quot;)
+obj.stdin.close()
+
+cmd_out = obj.stdout.read()
+obj.stdout.close()
+cmd_error = obj.stderr.read()
+obj.stderr.close()
+
+print(cmd_out)
+print(cmd_error)
+import subprocess
+
+obj = subprocess.Popen([&quot;python&quot;], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+obj.stdin.write(&quot;print(1)\n&quot;)
+obj.stdin.write(&quot;print(2)&quot;)
+
+out_error_list = obj.communicate()
+print(out_error_list)
+import subprocess
+
+obj = subprocess.Popen([&quot;python&quot;], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+out_error_list = obj.communicate('print(&quot;hello&quot;)')
+print(out_error_list)
+</pre>
+<p>例3:</p>
+<p>创建一个子进程, 然后执行一个简单的命令:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import subprocess
+&gt;&gt;&gt; p = subprocess.Popen('ls -l', shell=True)
+&gt;&gt;&gt; total 164
+-rw-r--r--  1 root root   133 Jul  4 16:25 admin-openrc.sh
+-rw-r--r--  1 root root   268 Jul 10 15:55 admin-openrc-v3.sh
+...
+&gt;&gt;&gt; p.returncode
+&gt;&gt;&gt; p.wait()
+0
+&gt;&gt;&gt; p.returncode
+0
+</pre>
+<p>这里也可以使用 <tt class="docutils literal">p = <span class="pre">subprocess.Popen(['ls',</span> <span class="pre">'-cl'])</span></tt> 来创建子进程。</p>
+<div class="section" id="section-1">
+<h3>属性</h3>
+<p>Popen创建的子进程有一些有用的属性, 假设 p 是 Popen 创建的子进程, p 的属性包括：</p>
+<ul>
+<li><p class="first">p.pid : 子进程的PID。</p>
+</li>
+<li><p class="first">p.returncode : 该属性表示子进程的返回状态.
+returncode可能有多重情况:</p>
+<pre class="literal-block">
+None  —— 子进程尚未结束；
+==0   —— 子进程正常退出；
+&gt; 0   —— 子进程异常退出, returncode 对应于出错码；
+&lt; 0   —— 子进程被信号杀掉了。
+</pre>
+</li>
+<li><p class="first">p.stdin, p.stdout, p.stderr : 子进程对应的一些初始文件,
+如果调用Popen()的时候对应的参数是subprocess.PIPE, 则这里对应的属性是一个包裹了这个管道的 file 对象,</p>
+</li>
+</ul>
+</div>
+<div class="section" id="section-2">
+<h3>方法</h3>
+</div>
+</div>
+<div class="section" id="subprocess-1">
+<h2>subprocess模块的其他属性</h2>
+<ul>
+<li><p class="first">subprocess.PIPE : 调用本模块提供的若干函数时, 可作为 <tt class="docutils literal">std</tt> 参数的值, 为标准流文件打开一个管道.
+例: 使用管道连接标准流文件:</p>
+<pre class="literal-block">
+import subprocess
+child1  = subprocess.Popen([ 'ls' ,  '-l' ], stdout = subprocess.PIPE)
+child2  = subprocess.Popen([ 'wc' ,  '-l' ], stdin = child1.stdout, stdout = subprocess.PIPE)
+out  = child2.communicate()
+child1.wait()
+child2.wait()
+print (out)
+</pre>
+<p>这里将子进程 child1 的标准输出作为子进程 child2 的标准输入, 父进程通过 communicate() 读取 child2 的标准输出后打印。</p>
+</li>
+<li><p class="first">subprocess.STDOUT : 调用本模块提供的若干函数时, 可作为 stderr 参数的值, 将子进程的标准错误输出打印到标准输出。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="subprocess-2">
+<h2>subprocess模块定义的异常</h2>
+</div>
+<div class="section" id="section-3">
+<h2>总结</h2>
+<p>使用 Popen 可以在Python进程中创建子进程</p>
+<ul class="simple">
+<li>如果只对子进程的执行退出状态感兴趣, 可以调用 subprocess.call() 函数</li>
+<li>如果想通过异常处理机制解决子进程异常退出的情形,
+可以考虑使用 subprocess.check_call() 和 subprocess.check_output。</li>
+<li>如果希望获得子进程的输出, 可以调用 subprocess.check_output(), 但 Popen() 无疑是功能最强大的。</li>
+</ul>
+<p>subprocess模块的缺陷在于默认提供的父子进程间通信手段有限, 只有管道；同时创建的子进程专门用来执行外部的程序或命令。</p>
+<p>Linux下进程间通信的手段很多, 子进程也完全可能从创建之后继续调用</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://blog.csdn.net/liuyingying0418/article/details/100939697">python - subprocess.Popen()多进程</a>
+<a class="reference external" href="http://www.cnblogs.com/Security-Darren/p/4733368.html">subprocess: 可以在当前程序中执行其他程序或命令</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#call">
+    call
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#check-call">
+    check_call
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#check-output">
+    check_output
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#popen">
+    Popen
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-1">
+      属性
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      方法
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#subprocess-1">
+    subprocess模块的其他属性
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#subprocess-2">
+    subprocess模块定义的异常
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    总结
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

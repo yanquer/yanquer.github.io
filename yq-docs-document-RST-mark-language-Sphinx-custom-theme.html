@@ -1,0 +1,446 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>sphinx自定义主题</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/wen-dang.html">文档</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/wen-dang.html">文档</a></li>
+												<li><a class="button button-alt" href="tag/rstbiao-ji-yu-yan.html">Rst标记语言</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>sphinx自定义主题</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">日期:</th><td class="field-body">2023.02.24 周五</td>
+</tr>
+<tr class="field"><th class="field-name">参考:</th><td class="field-body"><a class="reference external" href="https://www.sphinx-doc.org/zh_CN/master/development/theming.html">主题开发</a></td>
+</tr>
+</tbody>
+</table>
+<p>主题目录大概结构:</p>
+<pre class="literal-block">
+.
+├── __init__.py
+├── breadcrumbs.html
+├── footer.html
+├── layout.html
+├── search.html
+├── searchbox.html      以上几个html文件都是html模版
+├── static              静态资源路径
+└── theme.conf          主题配置, ini配置形式
+</pre>
+<div class="section" id="theme-conf">
+<h2>theme.conf 配置</h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">inherit:</th><td class="field-body">继承哪个主题, 主要用于查找缺失的模版</td>
+</tr>
+<tr class="field"><th class="field-name">stylesheet:</th><td class="field-body">main CSS name</td>
+</tr>
+<tr class="field"><th class="field-name">pygments_style:</th><td class="field-body">待补充</td>
+</tr>
+<tr class="field"><th class="field-name">sidebars:</th><td class="field-body">提供了用逗号分隔的侧边栏模板列表，用于构造提要栏。可以配置 <tt class="docutils literal">html_sidebars</tt> 覆盖此值.</td>
+</tr>
+</tbody>
+</table>
+<p><cite>[options]</cite> 模块用于配置变量的值, 此处设置的值可以被 config.py 定义的 <tt class="docutils literal">html_theme_options</tt> 覆盖.</p>
+<p>如:</p>
+<pre class="literal-block">
+[theme]
+inherit = base theme
+stylesheet = main CSS name
+pygments_style = stylename
+sidebars = localtoc.html, relations.html, sourcelink.html, searchbox.html
+
+[options]
+variable = default value
+</pre>
+</div>
+<div class="section" id="section-1">
+<h2>配置静态资源</h2>
+<p>默认情况下, static 目录下的文件会被复制到 _static</p>
+<p>若需要使用其他目录下的文件, 可参考此方法:</p>
+<pre class="literal-block">
+from os import path
+from sphinx.util.fileutil import copy_asset_file
+
+def copy_custom_files(app, exc):
+    if app.builder.format == 'html' and not exc:
+        staticdir = path.join(app.builder.outdir, '_static')
+        copy_asset_file('path/to/myextension/_static/myjsfile.js', staticdir)
+
+def setup(app):
+    app.connect('build-finished', copy_custom_files)
+</pre>
+</div>
+<div class="section" id="section-2">
+<h2>模版使用自定义函数</h2>
+<p>例, 定义函数:</p>
+<pre class="literal-block">
+# 注册方法
+def setup_my_func(app, pagename, templatename, context, doctree):
+    # 模版使用的方法
+    def my_func(mystring):
+        return &quot;Your string is %s&quot; % mystring
+    # 注册到上下文
+    context['my_func'] = my_func
+
+# 配置
+def setup(app):
+    app.connect(&quot;html-page-context&quot;, setup_my_func)
+</pre>
+<p>在模版中使用:</p>
+<pre class="literal-block">
+&lt;div&gt;
+{{ my_func(&quot;some string&quot;) }}
+&lt;/div&gt;
+</pre>
+</div>
+<div class="section" id="js">
+<h2>基于配置的js脚本</h2>
+<div class="section" id="js-t">
+<h3>方案一, 使用js_t模版</h3>
+<p>在 static 目录下配置js模版(以 js_t 为后缀的文件), 此文件最后将会转换为 _static 目录下去掉 _t 后的js文件</p>
+<p>如:</p>
+<pre class="literal-block">
+project/static/test.js_t -&gt; project/_buid/html/_static/test.js
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">本来就是js文件的会原样复制</p>
+</div>
+</div>
+<div class="section" id="python">
+<h3>方案二, 使用python函数配置</h3>
+<p>使用 Sphinx.add_js_file() , 需要先在 config.py 配置变量</p>
+<p>如, 在 config 配置了变量 my_javascript_variable, 使用以下方式注入</p>
+<pre class="literal-block">
+# 读取变量插入到js文件
+def add_js_variable(app):
+    # This is a configuration that you've specified for users in `conf.py`
+    js_variable = app.config['my_javascript_variable']
+    js_text = &quot;var my_variable = '%s';&quot; % js_variable
+    app.add_js_file(None, body=js_text)
+
+# builder初始化后 执行此方法
+def setup(app):
+    # 注入配置变量
+    app.add_config_value('my_javascript_variable', 0, 'html')
+    # Run the function after the builder is initialized
+    app.connect('builder-inited', add_js_variable)
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果自定义的js文件报错可能会使用基础模版的js</p>
+</div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#theme-conf">
+    theme.conf 配置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    配置静态资源
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    模版使用自定义函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#js">
+    基于配置的js脚本
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#js-t">
+      方案一, 使用js_t模版
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#python">
+      方案二, 使用python函数配置
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

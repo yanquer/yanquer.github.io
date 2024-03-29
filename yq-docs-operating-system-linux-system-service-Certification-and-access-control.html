@@ -1,0 +1,833 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>认证和访问控制</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 27 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/xi-tong-fu-wu.html">系统服务</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-27</div>
+									<h2>认证和访问控制</h2>
+									<div class="section" id="unix">
+<h2>一般的 Unix 认证</h2>
+<p>一般的 Unix 认证由
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Pluggable_Authentication_Modules">PAM(Pluggable Authentication Modules,即可插入的验证模块)</a>
+下的 <cite>pam_unix</cite> 模块提供。
+它的 3 个重要文件如下，其内的条目使用 “<cite>:</cite>” 分隔:</p>
+<pre class="literal-block">
+文件                    权限              用户              组               说明
+/etc/passwd   -rw-r--r--      root    root    （明文的）用户账号信息
+/etc/shadow   -rw-r-----      root    shadow  安全加密的用户账号信息
+/etc/group    -rw-r--r--      root    root    组信息
+</pre>
+<dl class="docutils">
+<dt>/etc/passwd`</dt>
+<dd><p class="first"><cite>/etc/passwd</cite> 包含下列内容:</p>
+<pre class="literal-block">
+user1:x:1000:1000:User1 Name,,,:/home/user1:/bin/bash user2:x:1001:1001:User2 Name,,,:/home/user2:/bin/bash
+</pre>
+<p>如 <cite>passwd</cite> 中所述，这个文件中被 “ <cite>:</cite> ” 分隔的每项含义如下。</p>
+<ul class="simple">
+<li>登录名</li>
+<li>密码形式说明</li>
+<li>数字形式的用户 ID</li>
+<li>数字形式的组 ID</li>
+<li>用户名或注释字段</li>
+<li>用户家目录</li>
+<li>可选的用户命令解释器</li>
+</ul>
+<p class="last"><cite>/etc/passwd</cite> 的第二项曾经被用来保存加密后的密码。在引入了 “ <cite>/etc/shadow</cite> ” 后，该项被用来说明密码形式。</p>
+</dd>
+<dt><cite>/etc/shadow</cite></dt>
+<dd><p class="first"><cite>/etc/shadow</cite> 包含下列内容:</p>
+<pre class="literal-block">
+user1:$1$Xop0FYH9$IfxyQwBe9b8tiyIkt2P4F/:13262:0:99999:7:::
+user2:$1$vXGZLVbS$ElyErNf/agUDsm1DehJMS/:13261:0:99999:7:::
+</pre>
+<p>如 <cite>shadow</cite> (5) 中所述，这个文件中被 “ <cite>:</cite> ” 分隔的每项含义如下。</p>
+<ul class="last simple">
+<li>登录名</li>
+<li>加密后的密码（开头的 “<cite>$1$</cite>” 表示使用 MD5 加密。“*” 表示无法登陆。）</li>
+<li>最后一次修改密码的时间，其表示从 1970 年 1 月 1 日起的天数</li>
+<li>允许用户再次修改密码的天数间隔</li>
+<li>用户必须修改密码的天数间隔密码失效前的天数，在此期间用户会被警告</li>
+<li>密码失效后的天数，在次期间密码依旧会被接受账号失效的时间，其表示从 1970 年 1 月 1 日起的天数</li>
+<li>…</li>
+</ul>
+</dd>
+<dt><cite>/etc/group</cite></dt>
+<dd><p class="first"><cite>/etc/group</cite> 包含下列内容:</p>
+<pre class="literal-block">
+group1:x:20:user1,user2
+</pre>
+<p>如 <cite>group</cite> (5) 中所述，这个文件中被 “ <cite>:</cite> ” 分隔的每项含义如下。</p>
+<ul class="simple">
+<li>组名称</li>
+<li>加密后的密码（不会被真正使用）</li>
+<li>数字形式的组 ID</li>
+<li>使用 “,” 分隔的用户名列表</li>
+</ul>
+<div class="admonition note last">
+<p class="first admonition-title">注解</p>
+<p>“ <cite>/etc/gshadow</cite> ” 为 “ <cite>/etc/group</cite> ” 提供了与 “ <cite>/etc/shadow</cite> ” 相似的功能，但没有被真正地使用。</p>
+<p>如果&quot; <cite>auth optional pam_group.so</cite> &quot; 这行添加到了&quot; <cite>/etc/pam.d/common-auth</cite> &quot;，
+并且在&quot; <cite>/etc/security/group.conf</cite> &quot; 里进行了设置，一个用户的实际组就可以被动态添加。参见 <cite>pam_group</cite> (8).</p>
+<p class="last"><cite>base-passwd</cite> 软件包包含了一份用户和组的官方文档：“<cite>/usr/share/doc/base-passwd/users-and-groups.html</cite>”。</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>设立加密的密码</h2>
+<p>下面是一些用于 <a class="reference external" href="https://zh.wikipedia.org/wiki/Salt_(cryptography)">生成加盐的加密密码</a> 的独立工具</p>
+<p>生成密码的工具:</p>
+<pre class="literal-block">
+软件包   流行度                             大小              命令                              功能
+whois V:32, I:371             364             mkpasswd                具备 crypt(3) 库所有特性的前端
+openssl       V:814, I:994    1465    openssl passwd  计算密码哈希 (OpenSSL). passwd(1ssl)
+</pre>
+</div>
+<div class="section" id="pam-nss">
+<h2>PAM 和 NSS</h2>
+<p>可参考: <a class="reference external" href="/yq-docs-operating-system-linux-system-service-PAM-module.html">PAM模块</a></p>
+<p>现代的 <a class="reference external" href="https://zh.wikipedia.org/wiki/Unix-like">类 Unix</a>
+系统（例如 Debian 系统）提供
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Pluggable_Authentication_Modules">PAM(Pluggable Authentication Modules,即可插入的验证模块)</a>
+和
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Name_Service_Switch">NSS（Name Service Switch，名称服务切换）</a>
+机制给本地系统管理员，使他们能够配置自己的系统。它们的功能可以概括为以下几点。</p>
+<ul class="simple">
+<li>PAM 给应用软件提供了一个灵活的认证机制，因此涉及到了密码数据的交换。</li>
+<li>NSS 提供了一个灵活的名称服务机制，
+它经常被 <a class="reference external" href="https://zh.wikipedia.org/wiki/C_standard_library">C 标准库</a> 使用，
+使例如 <cite>ls</cite> (1) 和 <cite>id</cite> (1) 这样的程序获得用户和组名称。</li>
+</ul>
+<p>PAM 和 NSS 系统必须保持配置一致。</p>
+<p>PAM 和 NSS 系统中重要的软件包如下:</p>
+<pre class="literal-block">
+软件包                           流行度                             大小              说明
+libpam-modules                V:813, I:999    1048    插入式验证模块（基础服务）
+libpam-ldap                   I:12                    249             允许 LDAP 接口的插入式验证模块
+libpam-cracklib               I:15                    117             启用 cracklib 支持的插入式验证模块
+libpam-systemd                V:484, I:869    574             用于 logind 注册用户会话的插入式验证模块（PAM）
+libpam-doc                    I:1                             1046    插入式验证模块（html 和 文本文档）
+libc6                         V:946, I:999    12772   GNU C 库：同样提供“名称服务切换”服务的共享库
+glibc-doc                     I:11                    3161    GNU C 库：帮助页面
+glibc-doc-reference   I:4                             12740   GNU C 库：参考手册，有 info、pdf 和 html 格式（non-free）
+libnss-mdns                   I:508                   150             用于解析组播 DNS 名称的 NSS 模块
+libnss-ldap                   I:11                    265             NSS 模块，用于使用 LDAP 作为一个名称服务的
+libnss-ldapd          I:14                    153             NSS 模块，用于使用 LDAP 作为一个名称服务的（libnss-ldap 的新 fork）
+</pre>
+<ul>
+<li><p class="first"><cite>libpam-doc</cite> 中 “The Linux-PAM System Administrators' Guide” 是了解 PAM 配置的必要文档。</p>
+</li>
+<li><p class="first"><cite>glibc-doc-reference</cite> 中的 “System Databases and Name Service Switch” 是了解 NSS 配置的重要文档。</p>
+<p>注意</p>
+<p>你可以使用 “ <cite>aptitude search 'libpam-|libnss-'</cite> ” 命令查看更多的相关软件包。
+NSS 缩写也可能意味着 “Network Security Service，网络安全服务”，它不同于 “Name Service Switch，名称服务切换”。</p>
+<p>PAM 是用来为每个程序使用系统范围的默认值来初始化环境变量的最基础方法。</p>
+</li>
+</ul>
+<p>在 <a class="reference external" href="https://zh.wikipedia.org/wiki/Systemd">systemd</a> 下,
+<cite>libpam-systemd</cite> 软件包被安装用来管理用户登录，
+通过为 <a class="reference external" href="https://zh.wikipedia.org/wiki/Systemd###logind">logind</a>
+在 <cite>systemd</cite> 控制组层级中注册用户会话来实现。</p>
+</div>
+<div class="section" id="pam-nss-1">
+<h2>PAM 和 NSS 访问的配置文件</h2>
+<p>下面是一些 PAM 和 NSS 访问的重要配置文件:</p>
+<pre class="literal-block">
+配置文件                                          功能
+/etc/pam.d/program_name               为 “program_name” 程序设置 PAM 配置；参加 pam(7) 和 pam.d(5)
+/etc/nsswitch.conf                    为每个服务条目设置 NSS 配置。参见 nsswitch.conf(5)
+/etc/nologin                          通过 pam_nologin(8) 模块限制用户登陆
+/etc/securetty                                通过 pam_securetty(8) 模块限制 root 访问 tty
+/etc/security/access.conf     通过 pam_access(8) 模块设置访问限制
+/etc/security/group.conf      通过 pam_group(8) 模块设置基于组的限制
+/etc/security/pam_env.conf    通过 pam_env(8) 模块设置环境变量
+/etc/environment                      通过带有 “readenv=1” 参数的 pam_env(8) 模块设置额外的环境变量
+/etc/default/locale                   通过带有 “readenv=1 envfile=/etc/default/locale” 参数的 pam_env(8) 模块设置语言环境值（在 Debian 系统中）
+/etc/security/limits.conf     通过 pam_linits(8) 模块设置资源限制（ulimit、core 等等）
+/etc/security/time.conf               通过 pam_time(8) 模块设置时间限制
+/etc/systemd/logind.conf      设置systemd 的登录管理器配置 (参见 logind.conf(5) 和 systemd-logind.service(8))
+</pre>
+<p>密码选择的限制是通过 PAM 模块 <cite>pam_unix</cite> (8) 和 <cite>pam_cracklib</cite> (8) 来实现的。它们可以通过各自的参数进行配置。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">PAM 模块在文件名中使用后缀 “<cite>.so</cite>”。</p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>现代的集中式系统管理</h2>
+<p>现代的集中式系统管理可以使用集中式的
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol">轻量目录访问协议（LDAP）</a>
+服务器进行部署，从而通过网络管理许多类 Unix 和 非类 Unix 系统。
+轻量目录访问协议的开源实现是 <a class="reference external" href="http://www.openldap.org/">OpenLDAP 软件</a></p>
+<p>LDAP 服务器使用带有 PAM 和 NSS 的 <cite>libpam-ldap</cite> 和 <cite>libnss-ldap</cite> 软件包为 Debian 系统提供账号信息。
+需要一些动作来启用 LDAP（我没有使用过这个设置，并且下面的信息纯粹是第二手的信息。请在这种前提下阅读下列内容。</p>
+<ul class="simple">
+<li>通过运行一个程序，例如独立的 LDAP 守护进程 <cite>slapd</cite> (8)，来建立集中式的 LDAP 服务器。</li>
+<li>你在 “ <cite>/etc/pam.d/</cite> ” 目录中的 PAM 配置文件里，使用 “ <cite>pam_ldap.so</cite> ” 替代默认值 “ <cite>pam_unix.so</cite> ”。
+- Debian 使用 “ <cite>/etc/pam_ldap.conf</cite> ” 作为 <cite>libpam-ldap</cite> 的配置文件，“ <cite>/etc/pam_ldap.secret</cite> ” 作为保存 root 密码的文件。</li>
+<li>你在 “ <cite>/etc/nsswitch.conf</cite> ” 文件中改变 NSS 配置，使用 “ <cite>ldap</cite> ” 替代默认值（“ <cite>compat</cite> ” 或 “ <cite>file</cite> ”）。
+- Debian 使用 “ <cite>/etc/libnss-ldap.conf</cite> ” 作为 <cite>libnss-ldap</cite> 的配置文件。</li>
+<li>为了密码的安全，你必须让 <cite>libpam-ldap</cite> 使用 <a class="reference external" href="https://zh.wikipedia.org/wiki/Transport_Layer_Security">SLL（或 TLS）</a> 连接。</li>
+<li>为了确保 LDAP 网络开销数据的完整性，你必须让 <cite>libpam-ldap</cite> 使用 <a class="reference external" href="https://zh.wikipedia.org/wiki/Transport_Layer_Security">SLL（或 TLS）</a> 连接。</li>
+<li>为了减少 LDAP 网络流量，你应该在本地运行 <cite>nscd</cite> (8) 来缓存任何 LDAP 搜索结果。</li>
+</ul>
+</div>
+<div class="section" id="gnu-su-wheel">
+<h2>为什么 GNU su 不支持 wheel 组</h2>
+<p>这是在旧的 “ <cite>info su</cite> ” 底部 Richard M. Stallman 所说的一句名言。
+别担心：Debian 系统中当前的 <cite>su</cite> 命令使用了 PAM，
+这样当在 “ <cite>/etc/pam.d/su</cite> ” 中启用了带有 “ <cite>pam_wheel.so</cite> ” 的行后，
+就能够限制非 wheel 组的用户 <cite>su</cite> 到 <cite>root</cite> 组的能力。</p>
+</div>
+<div class="section" id="section-4">
+<h2>确保互联网上的的密码安全</h2>
+<p>许多流行的传输层服务都使用纯文本来传输包括密码验证信息在内的各类消息。
+使用纯文本在公网上传输密码是很糟糕的做法，因为这样传输的密码很容易在网上被他人截获。
+为了确保整个沟通过程，包括密码信息在内都使用加密传输来确保安全，
+您可以在 <a class="reference external" href="https://zh.wikipedia.org/wiki/Transport_Layer_Security">传输层安全（Transport Layer Security，TLS）</a>
+协议或者其前身，“安全套接字层（Secure Sockets Layer，SSL）”协议之上运行这些服务:</p>
+<pre class="literal-block">
+不安全的服务名               端口              安全的服务名                  端口
+www (http)            80                      https                   443
+smtp (邮件)             25                      ssmtp (smtps)   465
+ftp-data              20                      ftps-data               989
+ftp                           21                      ftps                    990
+telnet                        23                      telnets                 992
+imap2                 143                     imaps                   993
+pop3                  110                     pop3s                   995
+ldap                  389                     ldaps                   636
+</pre>
+<p>加密消耗 CPU 时间。
+作为对 CPU 有益的替代方案，你可以保持使用纯文本通讯，
+仅仅使用安全认证协议加密密码，
+比如说：POP 使用&quot;Authenticated Post Office Protocol&quot; (APOP)，
+SMTP 和 IMAP 使用 &quot;Challenge-Response Authentication Mechanism MD5&quot; (CRAM-MD5)。
+（你的邮件客户端通过互联网上你的邮件服务器发送邮件时，
+最近流行使用新的递交端口 587 来代替传统的 SMTP 端口 25，
+这样可以避免在使用 CRAM-MD5 认证自己时，网络提供商阻塞 25 端口。）</p>
+</div>
+<div class="section" id="shell">
+<h2>安全 Shell</h2>
+<p><a class="reference external" href="https://zh.wikipedia.org/wiki/Secure_Shell">安全 Shell (SSH)</a>
+程序使用安全认证来提供不安全网络上两个不可信任主机之间的安全加密通讯。
+它由 <a class="reference external" href="http://www.openssh.org/">OpenSSH</a>
+客户端, <cite>ssh</cite> (1), 和
+<a class="reference external" href="http://www.openssh.org/">OpenSSH</a>
+后台守护进程（daemon）, <cite>sshd</cite> (8)组成.SSH 使用端口转发特性，
+可以给 POP 和 X 之类的不安全的协议通讯建立隧道，使其可以在互联网上安全传输。</p>
+<p>客户端可以使用如下方式来认证自己：</p>
+<ul class="simple">
+<li>基于主机的认证</li>
+<li>公钥认证</li>
+<li>质疑应答认证</li>
+<li>密码认证</li>
+</ul>
+<p>使用公钥认证，可以实现远程免密码登录。
+参见 <a class="reference external" href="https://www.debian.org/doc/manuals/debian-reference/ch06.zh-cn.html###_the_remote_access_server_and_utilities_ssh">第 6.3 节 “服务器远程访问和工具 (SSH)”</a></p>
+</div>
+<div class="section" id="root">
+<h2>root 密码安全</h2>
+<p>为阻止人们使用 root 权限访问你的机器，你需要做下面的操作。</p>
+<ul class="simple">
+<li>阻止对硬盘的物理访问</li>
+<li>锁住 UEFI/ BIOS 来阻止从可移动介质启动</li>
+<li>为 GRUB 交互式会话设置密码</li>
+<li>锁住 GRUB 菜单，禁止编辑</li>
+</ul>
+</div>
+<div class="section" id="sudo">
+<h2>sudo</h2>
+<p>参考: <a class="reference external" href="/yq-docs-operating-system-linux-Linux-instruction-SUDO.html">sudo</a></p>
+</div>
+<div class="section" id="policykit">
+<h2>PolicyKit</h2>
+<p><a class="reference external" href="https://zh.wikipedia.org/wiki/PolicyKit">PolicyKit</a>
+是在类 Unix 操作系统中控制整个系统权限的一个操作系统组件。</p>
+<p>较新的 GUI 图形界面程序设计时便考虑到了不作为特权进程来运行。
+它们通过 PolicyKit 来和特权进程通信，从而执行管理操作。</p>
+<p>在 Debian 系统中，PolicyKit 限制了属于 <cite>sudo</cite> 组的用户账号的这种操作。</p>
+</div>
+<div class="section" id="section-5">
+<h2>网络设置</h2>
+<dl class="docutils">
+<dt>主机名解析</dt>
+<dd><p class="first">主机名解析，目前也是由
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Name_Service_Switch">NSS (名字服务转换 Name Service Switch)</a>
+机制来支持。这个解析的流程如下</p>
+<ol class="last arabic simple">
+<li><cite>/etc/nsswitch.conf</cite> 文件里的 <cite>hosts: files dns</cite> 这段规定主机名解析顺序。
+(代替 <cite>/etc/host.conf</cite> 文件里的&quot; <cite>order</cite> 这段原有的功能。)</li>
+<li><cite>files</cite> 方式首先被调用。如果主机名在 <cite>/etc/hosts</cite> 文件里面发现，
+则返回所有有效地址并退出。 ( <cite>/etc/host.conf</cite> 文件包含 <cite>multi on</cite> .)</li>
+<li><cite>dns</cite> 方式被调用。如果主机名通过查询 <cite>/etc/resolv.conf</cite> 文件里面写的
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Domain_Name_System">互联网域名系统 Domain Name System (DNS)</a>
+来找到，则返回所有有效地址并退出</li>
+</ol>
+</dd>
+</dl>
+<ul class="simple">
+<li><cite>/etc/hosts</cite> 参考 <a class="reference external" href="/yq-docs-operating-system-linux-Configuration-file-ETC-HOSTS.html">etc-hosts</a></li>
+<li><cite>/etc/resolv.conf</cite> 参考 <a class="reference external" href="/yq-docs-operating-system-linux-Configuration-file-ETC-Resolv-CONF.html">etc-resolv-conf</a></li>
+</ul>
+<p>对于典型 adhoc 局域网环境下的 PC 工作站，除了基本的 <cite>files</cite> 和 <cite>dns</cite> 方式之外，
+主机名还能够通过组播 DNS <a class="reference external" href="https://zh.wikipedia.org/wiki/Zeroconf">mDNS, [零配置网络 Zeroconf</a>
+进行解析</p>
+<ul class="simple">
+<li><cite>Avahi &lt;https://zh.wikipedia.org/wiki/Avahi_(software)&gt;_</cite> 提供 Debian 下的组播 DNS 发现框架。</li>
+<li>它和 <a class="reference external" href="https://zh.wikipedia.org/wiki/Bonjour">Apple Bonjour / Apple Rendezvous</a> 相当.</li>
+<li><cite>libnss-mdns</cite> 插件包提供 mDNS 的主机名解析，GNU C 库 (glibc)的 GNU 名字服务转换 Name Service Switch (NSS) 功能支持 mDNS。</li>
+<li>&quot; <cite>/etc/nsswitch.conf</cite> &quot; 文件应当有像 &quot; <cite>hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4</cite> &quot; 这样的一段.</li>
+<li><a class="reference external" href="https://zh.wikipedia.org/wiki/.local">&quot;.local&quot;</a> 结尾的主机名，
+使用 <a class="reference external" href="https://zh.wikipedia.org/wiki/Pseudo-top-level_domain">pseudo-top-level domain</a> (TLD) 来解析.</li>
+<li>mDNS IPv4 本地连接组播地址 &quot; <cite>224.0.0.251</cite> &quot; 或它相应的 IPv6 地址 &quot; <cite>FF02::FB</cite> &quot; 被用来作为 &quot; <cite>.local</cite> &quot; 结尾名字的 DNS 查询。</li>
+</ul>
+<p>较老的 Windows 系统安装 <cite>winbind</cite> 软件包来提供旧的
+<a class="reference external" href="https://zh.wikipedia.org/wiki/NetBIOS_over_TCP/IP">NETBios over TCP/IP</a> 主机名解析。
+为启用这个功能，&quot; <cite>/etc/nsswitch.conf</cite> &quot; 文件应当有这样的一段：
+&quot; <cite>hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4 wins</cite> &quot;。 (现代 Windows 系统通常使用 <cite>dns</cite> 方式来进行主机名解析。)</p>
+</div>
+<div class="section" id="section-6">
+<h2>局域网网络地址范围</h2>
+<p>让我们重新提醒下在
+<a class="reference external" href="http://tools.ietf.org/html/rfc1918">rfc1918</a> 里规定的
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Local_area_network">局域网 local area networks (LANs)</a>
+IPv4 32 位地址在各类地址的保留范围. 这些地址保证不会与因特网上专有的地址冲突。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">IP 地址书写中有冒号的是 <a class="reference external" href="https://zh.wikipedia.org/wiki/IPv6">IPv6 地址</a> ，
+例如，&quot; <cite>::1</cite> &quot; 是 <cite>localhost 本地主机</cite></p>
+</div>
+<p>网络地址范围列表:</p>
+<pre class="literal-block">
+类别    网络地址                                    子网掩码            子网掩码/位数 子网数
+A     10.x.x.x                                        255.0.0.0               /8                      1
+B     172.16.x.x — 172.31.x.x         255.255.0.0             /16                     16
+C     192.168.0.x — 192.168.255.x     255.255.255.0   /24                     256
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果这些地址分配到一个主机，那么这个主机一定不能够直接访问互联网，
+必须通过一个作为网关的代理服务或通过
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Network_address_translation">网络地址转换 Network Address Translation (NAT)</a>.
+消费局域网环境，宽带路由器通常使用 NAT。</p>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>图形界面的网络配置工具</h2>
+<p>Debian 系统 NM 的官方文档位于 “ <cite>/usr/share/doc/network-manager/README.Debian</cite> ” 。</p>
+<p>本质上，如下操作即可完成桌面的网络配置。</p>
+<ol class="arabic">
+<li><p class="first">通过下列命令使桌面用户 <cite>foo</cite> 归属 “ <cite>netdev</cite> ” 组
+（另外，例如 GNOME 和 KDE 这样的现代桌面环境会通过 [D-bus &lt;<a class="reference external" href="https://zh.wikipedia.org/wiki/D-Bus">https://zh.wikipedia.org/wiki/D-Bus</a>) 自动完成该操作）:</p>
+<pre class="literal-block">
+$ sudo adduser foo netdev
+</pre>
+</li>
+<li><p class="first">使 “ <cite>/etc/network/interfaces</cite> ” 的
+配置保持下面那样简洁:</p>
+<pre class="literal-block">
+auto lo
+iface lo inet loopback
+</pre>
+</li>
+<li><p class="first">通过下列
+命令重新启动 NM:</p>
+<pre class="literal-block">
+$ sudo systemctl restart network-manager
+</pre>
+</li>
+<li><p class="first">通过图形界面配置网络
+注意,
+只有 <strong>不</strong> 列在 “ <cite>/etc/network/interfaces</cite> ” 中的接口会被 NM 管理，以避免与 <cite>ifupdown</cite> 的冲突。</p>
+<p>提示</p>
+<p>如果你想扩展 NM 的网络配置功能，请寻找适当的插件模块和补充软件包，
+例如 <cite>network-manager-openconnect</cite> 、
+<cite>network-manager-openvpn-gnome</cite> 、
+<cite>network-manager-pptp-gnome</cite> 、
+<cite>mobile-broadband-provider-info</cite> 、
+<cite>gnome-bluetooth</cite> 等等。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="section-8">
+<h2>底层网络配置</h2>
+<p>在 Linux 上的底层网络配置，使用
+<a class="reference external" href="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2">iproute2</a>
+程序 ( <cite>ip</cite> (8), …) .</p>
+</div>
+<div class="section" id="iproute2-1">
+<h2>Iproute2 命令</h2>
+<p><a class="reference external" href="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2">Iproute2</a>
+命令集提供完整的底层网络配置能力。
+有个从旧的
+<a class="reference external" href="http://www.linuxfoundation.org/collaborate/workgroups/networking/net-tools">net-tools</a>
+命令集到新的
+<a class="reference external" href="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2">iproute2</a>
+命令集的转换表</p>
+<p>从旧的 net-tools 命令集到新的 iproute2 命令集转换表:</p>
+<pre class="literal-block">
+旧的 net-tools  新的 iproute2                     操作
+ifconfig(8)                   ip addr                 一个设备上的协议（IP 或 IPv6）地址
+route(8)                      ip route                路由表条目
+arp(8)                                ip neigh                ARP 或 NDISC 缓存条目
+ipmaddr                               ip maddr                多播地址
+iptunnel                      ip tunnel               IP 隧道
+nameif(8)                     ifrename(8)             基于 MAC 地址的网络接口名
+mii-tool(8)                   ethtool(8)              以太网设备设置
+</pre>
+</div>
+<div class="section" id="section-9">
+<h2>安全的底层网络操作</h2>
+<p>你可以按下面的方式安全的使用底层网络命令，这些命令不会改变网络配置:</p>
+<pre class="literal-block">
+命令                                            说明
+ip addr show                  显示活动的网络接口连接和地址状态
+route -n                              用数字地址显示全部路由表
+ip route show                 用数字地址显示全部路由表
+arp                                           显示当前 ARP 缓存表的内容
+ip neigh                              显示当前 ARP 缓存表的内容
+plog                                  显示 ppp 后台守护进程（daemon）日志
+ping yahoo.com                        检查到 &quot;yahoo.com&quot; 的因特网连接
+whois yahoo.com                       在域名数据库里面检查谁注册了 &quot;yahoo.com&quot;
+traceroute yahoo.com  跟踪到 &quot;yahoo.com&quot; 的因特网连接
+tracepath yahoo.com           跟踪到 &quot;yahoo.com&quot; 的因特网连接
+mtr yahoo.com                 跟踪到 &quot;yahoo.com&quot; 的因特网连接（重复的）
+dig                                   查询由 &quot;dns-server.com&quot; 提供服务的 &quot;example.com&quot; 域名的 DNS 记录： &quot;a&quot;, &quot;mx&quot; 或 &quot;any&quot; 记录
+dig[&#64;dns-server.com] example.com [{a|mx|any}]
+iptables -L -n                        查看包过滤
+netstat -a                            找出所有打开的端口
+netstat -l --inet             找出监听端口
+netstat -ln --tcp             找出 TCP 监听端口（数字的）
+dlint example.com             查询 &quot;example.com&quot; 的 DNS zone 信息
+</pre>
+</div>
+<div class="section" id="mtu">
+<h2>找出最佳 MTU</h2>
+<p><a class="reference external" href="https://zh.wikipedia.org/wiki/Maximum_transmission_unit">最大传输单元 Maximum Transmission Unit (MTU)</a>
+的值能够通过加 &quot; <cite>-M do</cite> &quot; 选项的 <cite>ping</cite> (8) 实验来确定，
+它发送从 1500 字节（对于IP+ICMP 包头，有 28 字节的偏移）大小开始的 ICMP 包，来找出 IP 不分片的最大包大小。</p>
+<p>尝试下列例子:</p>
+<pre class="literal-block">
+$ ping -c 1 -s $((1500-28)) -M do www.debian.org
+PING www.debian.org (194.109.137.218) 1472(1500) bytes of data.
+From 192.168.11.2 icmp_seq=1 Frag needed and DF set (mtu = 1454)
+
+--- www.debian.org ping statistics ---
+0 packets transmitted, 0 received, +1 errors
+</pre>
+<p>尝试 MTU=1454 代替 MTU=1500</p>
+<p>你看到用 MTU=1454 <cite>ping</cite> (8) 成功了。</p>
+<p>如果 MTU 不是 1500，你可能想在 NM 里面配置 MTU 设置。</p>
+<p>这个过程是 <a class="reference external" href="https://zh.wikipedia.org/wiki/Path_MTU_discovery">路径 MTU (PMTU) 发现</a> ,
+<a class="reference external" href="http://tools.ietf.org/html/rfc1191">[RFC1191</a> ,
+<cite>tracepath</cite> (8) 命令能够自动完成这个。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">上面的列子，PMTU 的值是 1454，这是我先前的光纤到户提供商，
+使用了 <a class="reference external" href="https://zh.wikipedia.org/wiki/异步传输模式">异步传输模式 Asynchronous Transfer Mode</a> (ATM)
+作为他们的骨干网络，并使用
+<a class="reference external" href="https://zh.wikipedia.org/wiki/Point-to-Point_Protocol_over_Ethernet">PPPoE</a>
+作为客户端。实际 PMTU 值依赖于你的环境，比如说，我新的光纤到户提供商是 1500。</p>
+</div>
+</div>
+<div class="section" id="section-10">
+<h2>网络应用</h2>
+<p>浏览器配置</p>
+<p>在某些浏览器中，你可以使用下列特殊的 URL 来确认它们的设置。</p>
+<ul class="simple">
+<li>&quot;<cite>about:</cite>&quot;</li>
+<li>&quot;<cite>about:config</cite>&quot;</li>
+<li>&quot;<cite>about:plugins</cite>&quot;</li>
+<li><a class="reference external" href="/yq-docs-operating-system-linux-system-service-SSH.html">SSH</a></li>
+<li><a class="reference external" href="/yq-docs-operating-system-linux-system-service-Internationalization-and-localization.html">国际化和本地化</a></li>
+</ul>
+<dl class="docutils">
+<dt>系统技巧-任务安排</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="/yq-docs-operating-system-linux-question-Single-task.html">单次任务</a></li>
+<li><a class="reference external" href="/yq-docs-operating-system-linux-question-Timing-task.html">定时任务</a></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><a class="reference external" href="/yq-docs-operating-system-linux-question-Who-is-in-the-system.html">谁在系统</a></li>
+<li><a class="reference external" href="/yq-docs-operating-system-linux-question-Warning-everyone.html">警告所有人</a></li>
+<li><a class="reference external" href="/yq-docs-operating-system-linux-Tutorial-Hard-disk-partition-configuration.html">硬盘分区配置</a></li>
+<li><a class="reference external" href="/yq-docs-operating-system-linux-question-Dual--proof-data-access.html">二进制数据访问</a></li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#unix">
+    一般的 Unix 认证
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    设立加密的密码
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#pam-nss">
+    PAM 和 NSS
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#pam-nss-1">
+    PAM 和 NSS 访问的配置文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    现代的集中式系统管理
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#gnu-su-wheel">
+    为什么 GNU su 不支持 wheel 组
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    确保互联网上的的密码安全
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#shell">
+    安全 Shell
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#root">
+    root 密码安全
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#sudo">
+    sudo
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#policykit">
+    PolicyKit
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    网络设置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    局域网网络地址范围
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    图形界面的网络配置工具
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    底层网络配置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#iproute2-1">
+    Iproute2 命令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    安全的底层网络操作
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#mtu">
+    找出最佳 MTU
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    网络应用
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

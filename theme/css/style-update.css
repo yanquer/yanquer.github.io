@@ -144,6 +144,10 @@ dt{
 	font-weight: 800 !important;
 	color: #91ee58d9 !important;
 }
+/* todo:  dt dt 没用... 不知道为啥 */
+/* dt dt{
+	color: #6da64ad9 !important;
+} */
 dd{
 	margin-left: 1% !important;
 }
@@ -244,4 +248,139 @@ div.admonition > .simple{
 html, body{
 	overflow-x: hidden;
 }
+
+
+/* 正文 标题 */
+.is-post h2 {
+	padding: 0.9em 0 0.5em 0 !important;
+}
+
+/* 文章目录 */
+#top-toc-tree-container{
+    max-width: 300px;
+    min-width: 120px;
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: unset;
+	bottom: 120px;
+}
+	/* 所有弹出层容器 */
+	.fixed-container{
+		position: fixed;
+		z-index: 2;
+		background: #1b1b1b99;
+		right: 30px;
+		bottom: 100px;
+		padding: 5px;
+		border-radius: var(--g-border-radius);
+	}
+	#top-toc-tree-container li ul{
+		padding-left: 10px;
+		margin-bottom: 1px;
+	}
+	#top-toc-tree-container a{
+		color: #ade7ecd9;
+		text-decoration: none;
+	}
+	#top-toc-tree-container .toc-contents-title{
+
+	}
+	.tool-tip-text{
+		visibility: hidden;
+		width: 40px;
+		background-color: #00000090;
+		color: var(--g-tip-text-color);
+		text-align: center;
+		/* padding: 5px 0; */
+		border-radius: 6px;
+		font-size: 10px;
+
+		/* 定位 */
+		position: absolute;
+		z-index: 1;
+
+		margin-top: -10px;
+	}
+	#top-toc-tree-container .toc-contents-title > h4{
+		width: 70px;
+		cursor: pointer;
+	}
+	#top-toc-tree-container .toc-contents-title > h4:hover{
+		display: inline;
+	}
+	#top-toc-tree-container .toc-contents-title > h4:hover + .tool-tip-text{
+		visibility: visible;
+		display: inline;
+	}
+	.no-active{
+		display: none;
+	}
+
+	/* 目录隐藏后的工具栏 */
+	#sidebar-tools::before{
+		font-family: "Font Awesome 6 Free Web";
+		content: "\f550";
+	}
+	#sidebar-tools{
+		cursor: pointer;
+		bottom: 120px;
+		/* height: auto;
+		width: auto;
+		overflow: hidden; */
+		/* margin-right: 80px; */
+	}
+	#sidebar-tools:hover::after{
+		content: "目录";
+		width: 30px;
+		font-size: 10px;
+		margin-top: -10px;
+		color: var(--g-tip-text-color);
+		position: absolute;
+		/* right: 80px; */
+	}
+
+	/* 侧边工具 回滚/滚动 到顶部 */
+	#sidebar-tool-back-top{
+		cursor: pointer;
+		bottom: 80px;
+	}
+	#sidebar-tool-back-top::before{
+		font-family: "Font Awesome 6 Free Web";
+		content: "\f062";
+	}
+	#sidebar-tool-back-top:hover::after{
+		content: "顶部";
+		width: 30px;
+		font-size: 10px;
+		margin-top: -10px;
+		color: var(--g-tip-text-color);
+		position: absolute;
+	}
+
+/* 指令 参数 选项 */
+table.docutils.option-list{
+	border: none;
+    box-shadow: none;
+	border-left: var(--g-radius-border-no-color) #7fffd478;
+    border-radius: var(--g-border-radius);
+}
+	table.docutils.option-list::-webkit-scrollbar{
+		/* 取消滚动条, 避免对圆角影响 */
+		display: none;
+	}
+	.docutils.option-list td{
+		border: none;
+	}
+	/* 选项 */
+	.docutils.option-list td:first-child span{
+		color: #8affd7f0;
+		background-color: #191703;		/* 偏黄一点的黑 */
+	}
+	/* 选项参数 */
+	.docutils.option-list td:first-child var{
+		color: #36defff0;
+		background-color: #191703;		/* 偏黄一点的黑 */
+	}
+
+
 

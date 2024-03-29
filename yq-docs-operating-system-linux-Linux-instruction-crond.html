@@ -1,0 +1,416 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>crond</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>crond</h2>
+									<div class="section" id="crontab">
+<h2>crontab服务</h2>
+<p>Linux下的任务调度分为两类： <strong>系统任务调度</strong> 和 <strong>用户任务调度</strong></p>
+<div class="section" id="section-1">
+<h3>系统任务调度</h3>
+<p>系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。
+在 <cite>/etc</cite> 目录下有一个 crontab 文件，这个就是系统任务调度的配置文件。</p>
+<p><cite>/etc/crontab</cite> 文件包括下面几行:</p>
+<pre class="literal-block">
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=&quot;&quot;HOME=/
+
+# run-parts
+51 * * * * root run-parts /etc/cron.hourly
+24 7 * * * root run-parts /etc/cron.daily
+22 4 * * 0 root run-parts /etc/cron.weekly
+42 4 1 * * root run-parts /etc/cron.monthly
+</pre>
+<dl class="docutils">
+<dt>前四行是用来配置crond任务运行的环境变量</dt>
+<dd><ul class="first last simple">
+<li>第一行SHELL变量指定了系统要使用哪个shell，这里是bash</li>
+<li>第二行PATH变量指定了系统执行命令的路径</li>
+<li>第三行MAILTO变量指定了crond的任务执行信息将通过电子邮件发送给root用户，
+如果MAILTO变量的值为空，则表示不发送任务执行信息给用户，</li>
+<li>第四行的HOME变量指定了在执行命令或者脚本时使用的主目录。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h3>用户任务调度</h3>
+<p>用户定期要执行的工作，比如用户数据备份、定时邮件提醒等。
+用户可以使用 crontab 工具来定制自己的计划任务。
+所有用户定义的crontab文件都被保存在 <cite>/var/spool/cron</cite> 目录中。
+其文件名与用户名一致，使用者权限文件如下:</p>
+<pre class="literal-block">
+/etc/cron.deny     该文件中所列用户不允许使用crontab命令
+/etc/cron.allow    该文件中所列用户允许使用crontab命令
+/var/spool/cron/   所有用户crontab文件存放的目录,以用户名命名
+</pre>
+<dl class="docutils">
+<dt>crontab文件的含义</dt>
+<dd><p class="first">用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它
+的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如下:</p>
+<pre class="literal-block">
+minute   hour   day   month   week   command     顺序：分 时 日 月 周
+</pre>
+<p>其中：</p>
+<ul class="simple">
+<li>minute： 表示分钟，可以是从0到59之间的任何整数。</li>
+<li>hour：表示小时，可以是从0到23之间的任何整数。</li>
+<li>day：表示日期，可以是从1到31之间的任何整数。</li>
+<li>month：表示月份，可以是从1到12之间的任何整数。</li>
+<li>week：表示星期几，可以是从0到7之间的任何整数，这里的0或7代表星期日。</li>
+<li>command：要执行的命令，可以是系统命令，也可以是自己编写的脚本文件。</li>
+</ul>
+<p>在以上各个字段中，还可以使用以下特殊字符：</p>
+<ul class="last simple">
+<li>星号（*）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。</li>
+<li>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”</li>
+<li>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”</li>
+<li>正斜线（/）：可以用正斜线指定时间的间隔频率，例如“0-23/2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如*/10，如果用在minute字段，表示每十分钟执行一次。</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="crond-1">
+<h2>crond服务-指令</h2>
+<p>常用:</p>
+<pre class="literal-block">
+/sbin/service crond start    # 启动服务
+/sbin/service crond stop     # 关闭服务
+/sbin/service crond restart  # 重启服务
+/sbin/service crond reload   # 重新载入配置
+</pre>
+<p>查看crontab服务状态:</p>
+<pre class="literal-block">
+service crond status
+</pre>
+<p>手动启动crontab服务:</p>
+<pre class="literal-block">
+service crond start
+</pre>
+<p>查看crontab服务是否已设置为开机启动，执行命令:</p>
+<pre class="literal-block">
+ntsysv
+</pre>
+<p>加入开机自动启动:</p>
+<pre class="literal-block">
+chkconfig –level 35 crond on
+</pre>
+<p>centos版本适用</p>
+</div>
+<div class="section" id="cron">
+<h2>cron表达式中问号(?)的使用</h2>
+<p>cron表达式详解其中问号 <tt class="docutils literal">?</tt> 只能用在 <tt class="docutils literal">DayofMonth</tt> 和 <tt class="docutils literal">DayofWeek</tt> 两个域，
+由于指定日期( <tt class="docutils literal">DayofMonth</tt> )和指定星期( <tt class="docutils literal">DayofWeek</tt> )存在冲突，
+所以当指定了日期( <tt class="docutils literal">DayofMonth</tt> )后（包括每天），星期( <tt class="docutils literal">DayofWeek</tt> )必须使用 <tt class="docutils literal">?</tt>，
+同理，指定星期( <tt class="docutils literal">DayofWeek</tt> )后，日期( <tt class="docutils literal">DayofMonth</tt> )必须使用问号 <tt class="docutils literal">?</tt>.</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#crontab">
+    crontab服务
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-1">
+      系统任务调度
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      用户任务调度
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#crond-1">
+    crond服务-指令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#cron">
+    cron表达式中问号(?)的使用
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

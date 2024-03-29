@@ -1,0 +1,427 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li  class="active"><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>mac的包管理器brew</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>mac的包管理器brew</h2>
+									<p>自从升级到macos13之后, 使用brew下载就非常的慢, 稍微看了一下输出,
+大概是国内源没有13版本的包, 所以最后还是去外面下载...
+于是, 就找了一下有没有处理办法.</p>
+<p>mac下包管理器最常用的有brew与macport, 网上说后者的包要多很多.</p>
+<p>这里只谈brew, 官网: <a class="reference external" href="https://brew.sh/index_zh-cn">https://brew.sh/index_zh-cn</a></p>
+<div class="section" id="brew">
+<h2>安装brew</h2>
+<p>国内源下载</p>
+<div class="highlight"><pre><span></span>/bin/zsh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+<p>把脚本搞下来了, <em>/resources/code/homebrew_zh.sh</em></p>
+<p>一开始用的2清华源, 结果慢的要死. 然后换成1中科大的源, 快多了</p>
+</div>
+<div class="section" id="brew-1">
+<h2>卸载brew</h2>
+<p>卸载脚本:</p>
+<pre class="literal-block">
+/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)&quot;
+</pre>
+<p>同样拉下来了, <em>/resources/code/homebrew_uninstall_zh.sh</em></p>
+</div>
+<div class="section" id="section-1">
+<h2>一些说明</h2>
+<ul class="simple">
+<li>brew Homebrew 源代码仓库</li>
+<li>homebrew-core Homebrew 核心软件仓库</li>
+<li>homebrew-bottles Homebrew 预编译二进制软件包</li>
+<li>homebrew-cask MacOS 客户端应用</li>
+<li>Homebrew国内镜像源目前主要有中科大镜像、阿里镜像、清华镜像。</li>
+</ul>
+</div>
+<div class="section" id="section-2">
+<h2>指令说明</h2>
+<p>查看brew.git源:</p>
+<pre class="literal-block">
+cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v
+</pre>
+<p>查看 homebrew-core.git 当前源:</p>
+<pre class="literal-block">
+cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>选项/参数</h2>
+<dl class="docutils">
+<dt>install &lt;pack&gt;</dt>
+<dd>安装指定的 pack</dd>
+<dt>info &lt;pack&gt;</dt>
+<dd>查看已安装 pack 的信息</dd>
+<dt>search &lt;pack&gt;</dt>
+<dd><p class="first">从仓库搜索与 pack 相关的包信息</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>输出可能会有 Formulae 与 cask 两种,
+简单理解 , <cite>Formulae</cite> 列出的包, 是直接通过脚本安装 cli 命令行工具.
+<cite>cask</cite> 是简化的图形化GUI安装.</p>
+<ul class="last simple">
+<li>Formulae: 命令行工具</li>
+<li>cask: 图形化安装</li>
+</ul>
+</div>
+<p class="last">若要安装 cask 类型,  增加 <tt class="docutils literal"><span class="pre">--cask</span></tt> 即可</p>
+</dd>
+<dt>unlink</dt>
+<dd><p class="first">当安装的包存在多个版本, 可以使用此指令切换.</p>
+<p>如 dart 切换版本</p>
+<div class="last"><div class="highlight"><pre><span></span>brew<span class="w"> </span>unlink<span class="w"> </span>dart@&lt;old&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>brew<span class="w"> </span>unlink<span class="w"> </span>dart@&lt;new&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>brew<span class="w"> </span>link<span class="w"> </span>dart@&lt;new&gt;
+</pre></div>
+</div></dd>
+<dt>link</dt>
+<dd>见 unlink</dd>
+</dl>
+</div>
+<div class="section" id="section-4">
+<h2>常见报错</h2>
+<div class="section" id="command-failed-with-exit-128-git">
+<h3>Command failed with exit 128: git</h3>
+<p>详细报错:</p>
+<pre class="literal-block">
+fatal: not in a git directory
+Error: Command failed with exit 128: git
+</pre>
+<p>因为brew软件仓库实际是使用git来进行管理的, 所以会去本地的仓库目录
+去找, 但是它又不是一个git仓库.</p>
+<p>解决办法: 找到本地的安装仓库目录, 然后使用:</p>
+<pre class="literal-block">
+git config --global --add safe.directory 目录
+</pre>
+<p>即可.</p>
+<p>如果不知道自己安装在哪了, 可以使用find查找:</p>
+<pre class="literal-block">
+yanque&#64;yanquedembp ~ % find / -name &quot;homebrew&quot;  2&gt;/dev/null
+/usr/local/Homebrew/Library/Taps/homebrew
+</pre>
+<p>然后看看有哪些:</p>
+<pre class="literal-block">
+yanque&#64;yanquedembp ~ % ls /usr/local/Homebrew/Library/Taps/homebrew
+homebrew-cask         homebrew-core           homebrew-services
+</pre>
+<p>然后加进去:</p>
+<pre class="literal-block">
+yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask
+yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
+yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-services
+</pre>
+<p>试过不支持通配符.</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#brew">
+    安装brew
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#brew-1">
+    卸载brew
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    一些说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    指令说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    选项/参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    常见报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#command-failed-with-exit-128-git">
+      Command failed with exit 128: git
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

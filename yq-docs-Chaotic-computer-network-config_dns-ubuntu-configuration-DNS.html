@@ -1,0 +1,581 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>ubuntu配置dns服务器</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/ji-suan-ji-wang-luo.html">计算机网络</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/ji-suan-ji-wang-luo.html">计算机网络</a></li>
+												<li><a class="button button-alt" href="tag/config_dns.html">Config_dns</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>ubuntu配置dns服务器</h2>
+									<div class="section" id="dns">
+<h2>配置dns服务器</h2>
+<p>为了方便直接使用docker部署, 先配置一个dns机器(后续以 myubuntu_dns_server 代称):</p>
+<pre class="literal-block">
+# 默认latest版本是 20版本的 focal
+docker pull ubuntu
+docker run --name myubuntu_dns_server -itd ubuntu
+</pre>
+<p>然后就部署好一个ubuntu服务器了, 进入:</p>
+<pre class="literal-block">
+docker exec -it myubuntu_dns_server /bin/bash
+</pre>
+<p>配置apt源:</p>
+<pre class="literal-block">
+# 安装证书验证模块才可以配置源
+apt update &amp;&amp; apt install ca-certificates
+
+mv /etc/apt/sources.list /etc/apt/sources.list.bak
+
+echo &quot;deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+&quot; &gt; /etc/apt/sources.list
+
+apt update &amp;&amp; apt install vim
+
+# 安装查看ip工具
+apt install iproute2
+</pre>
+<p>查看ip为 172.17.0.5</p>
+<pre class="literal-block">
+ip a | grep inet
+</pre>
+</div>
+<div class="section" id="section-1">
+<h2>配置普通机器(可选)</h2>
+<p>再按照上述方式安装一个测试机器(后续以 myubuntu_g1 代称), 验证dns配置是否正确:</p>
+<pre class="literal-block">
+docker run --name myubuntu_g1 -itd ubuntu
+
+# 参考上面
+...
+
+# 查看ip为 172.17.0.4
+ip a | grep inet
+
+# 安装 bind9-utils 以使用host
+apt install bind9-utils host
+</pre>
+</div>
+<div class="section" id="dns-server">
+<h2>dns-server继续配置</h2>
+<p>实际还应该固定此服务器ip为静态ip, 此处docker部署忽略.</p>
+<p>dns服务器(myubuntu_dns_server)安装bind9(目前市面是最主流的开源DNS软件)</p>
+<pre class="literal-block">
+apt install bind9
+</pre>
+<p>bind9默认会有一些配置文件, 参见 <a class="reference external" href="/yq-docs-operating-system-linux-package-bind9-software-package.html">bind9软件包</a></p>
+</div>
+<div class="section" id="option">
+<h2>配置option</h2>
+<p>配置option:</p>
+<pre class="literal-block">
+// 允许进行普通查询的 IP 地址列表，默认允许所有；
+sed -ie &quot;3a \ \ \ \ \ \ \ \ listen-on port 53 { ${ip}; }; allow-query { any; };
+&quot;  /etc/bind/named.conf.options
+</pre>
+<p>其实就是加上:</p>
+<pre class="literal-block">
+listen-on port 53 { ${ip}; };
+allow-query { any; };
+</pre>
+<p>其中 listen-on 必须配置, 让named知道监听的端口与地址.</p>
+<p>allow-query 是默认 any 可以忽略</p>
+</div>
+<div class="section" id="section-2">
+<h2>配置正向解析</h2>
+<div class="sidebar">
+<p class="first sidebar-title">若配置type为slave</p>
+<p>若需要配置从服务器, 格式参考下面配置:</p>
+<pre class="last literal-block">
+zone &quot;aaa.com&quot; IN {
+    type slave;                 // 从模式
+    masters { 172.17.0.5; };    // 主服务器的IP
+    file &quot;slaves/aaa.localhost&quot;;
+    allow-update { none; };
+};
+</pre>
+</div>
+<p>在 <cite>/etc/bind/named.conf.local</cite> 添加以下内容:</p>
+<pre class="literal-block">
+zone &quot;study.edu&quot; IN {
+    type master;
+    file &quot;/var/cache/bind/named.study.com&quot;;
+};
+</pre>
+<p>表示配置一个 <cite>study.edu</cite> 域名, 作为master, 配置文件在 <cite>/var/cache/bind/named.study.com</cite></p>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>可直接:</p>
+<pre class="literal-block">
+cp /etc/bind/db.local /var/cache/bind/named.study.com
+</pre>
+<p class="last">然后修改</p>
+</div>
+<p>现在配置 <cite>/var/cache/bind/named.study.com</cite></p>
+<pre class="literal-block">
+;
+; BIND data file for study.com
+;
+$TTL        604800
+&#64;   IN      SOA     study.com. root.study.com. (
+                2           ; Serial
+            604800          ; Refresh
+            86400           ; Retry
+            2419200         ; Expire
+            604800 )        ; Negative Cache TTL
+;
+&#64;   IN      NS      localhost.
+&#64;   IN      A       172.17.0.4
+&#64;   IN      AAAA    ::1
+
+; A 表示ipv4地址 AAAA表示ipv6地址 NS表示使用的dns服务器
+; www 会自动加到 study.com. 实际为 www.study.com
+www IN      A       172.17.0.4
+; qq 会自动加到 study.com. 实际为 qq.study.com
+qq  IN      A       172.17.0.6
+</pre>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p>这种解析配置文件需要注意空格问题, 切记</p>
+<p class="last">否则可能会出现这种问题: <tt class="docutils literal">Host <span class="pre">5.0.17.172.in-addr.arpa</span> not found: 2(SERVFAIL)</tt></p>
+</div>
+<p>重启 bind9:</p>
+<pre class="literal-block">
+/etc/init.d/named restart
+</pre>
+<p>测试:</p>
+<pre class="literal-block">
+root&#64;e376019130d3:/# host www.study.edu 172.17.0.5
+Using domain server:
+Name: 172.17.0.5
+Address: 172.17.0.5#53
+Aliases:
+
+www.study.edu has address 172.17.0.4
+root&#64;e376019130d3:/#
+root&#64;e376019130d3:/#
+root&#64;e376019130d3:/# host qq.study.edu 172.17.0.5
+Using domain server:
+Name: 172.17.0.5
+Address: 172.17.0.5#53
+Aliases:
+
+qq.study.edu has address 172.17.0.6
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>配置反向解析</h2>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">多次配置不同的反向代理, 不用重复写 <cite>/etc/bind/named.conf.local</cite> 下的 <cite>zone &quot;0.17.172.in-addr.arpa&quot;</cite></p>
+</div>
+<p>在 <cite>/etc/bind/named.conf.local</cite> 增加以下内容:</p>
+<pre class="literal-block">
+zone &quot;0.17.172.in-addr.arpa&quot; {
+    type master;
+    file &quot;/var/cache/bind/named.reverse.db.xxx&quot;;
+};
+</pre>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>可直接:</p>
+<pre class="literal-block">
+cp /etc/bind/db.127 /var/cache/bind/named.reverse.db.xxx
+</pre>
+<p class="last">然后修改</p>
+</div>
+<p>现在配置 <cite>/var/cache/bind/named.reverse.db.xxx</cite></p>
+<pre class="literal-block">
+;
+; BIND reverse data file for 172.17.0
+;
+$TTL        604800
+&#64;   IN      SOA     study.com. admin.study.com. (
+                1           ; Serial
+            604800          ; Refresh
+            86400           ; Retry
+            2419200         ; Expire
+            604800 )        ; Negative Cache TTL
+;
+&#64;   IN      NS      study.com.
+; 表示 172.17.0.5 会被解析为 study.com. 注意这里都是倒着来
+5   IN      PTR     study.com.
+</pre>
+<p>重启:</p>
+<pre class="literal-block">
+/etc/init.d/named restart
+</pre>
+<p>测试反向解析:</p>
+<pre class="literal-block">
+root&#64;e376019130d3:/#
+root&#64;e376019130d3:/# host 172.17.0.5 172.17.0.5
+Using domain server:
+Name: 172.17.0.5
+Address: 172.17.0.5#53
+Aliases:
+
+5.0.17.172.in-addr.arpa domain name pointer study.com.
+root&#64;e376019130d3:/#
+</pre>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p class="last">配置dns解析在 <cite>/etc/resolv.conf</cite> 文件, 作用等同于上面的 <cite>172.17.0.5</cite>, 若存在相应配置就, 上述命令可以不用写此IP</p>
+</div>
+</div>
+<div class="section" id="dns-1">
+<h2>设置为DNS缓存服务器</h2>
+<p>在 <cite>/etc/bind/named.conf.options</cite> 增加以下内容:</p>
+<pre class="literal-block">
+allow-query { any; };
+allow-query-cache { any; };     // 允许查询缓存的IP地址列表；
+recursion yes;                  // 允许递归查询；
+allow-recursion { any; };       // 允许递归查询的IP地址列表；
+forward only;                   // 允许转发；
+forwarders { 172.17.0.5; };     // 转发列表，172.17.0.5 为前面配置的授权服务器；
+dnssec-validation no;           // 关闭 dnssec；
+</pre>
+<p>重启bind9:</p>
+<pre class="literal-block">
+/etc/init.d/named restart
+</pre>
+<p>验证:</p>
+<pre class="literal-block">
+# 清除dns缓存
+rndc flush
+
+# +norecurse 不允许递归查询
+dig &#64;172.17.0.4 www.study.com A +norecurse
+
+# 在授权服务器上抓包
+tcpdump -i eth1 port 53
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth1, link-type EN10MB (Ethernet), capture size 262144 bytes
+^C
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+</pre>
+<p>然后再基于允许递归查询抓包, 可以看出 缓存服务器向授权服务器进行递归查询.</p>
+<p>不允许递归查询时，DNS 缓存服务器会将缓存结果发送给客户端.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">此部分缓存参考::</th><td class="field-body"><a class="reference external" href="https://blog.csdn.net/xufuangchao/article/details/107558494">Bind9：配置 DNS 授权服务器和 DNS 缓存服务器</a></td>
+</tr>
+</tbody>
+</table>
+<p>附, 基础配置脚本, 功能: 配置本机为dns授权服务器</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#dns">
+    配置dns服务器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    配置普通机器(可选)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#dns-server">
+    dns-server继续配置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#option">
+    配置option
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    配置正向解析
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    配置反向解析
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#dns-1">
+    设置为DNS缓存服务器
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,402 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>浏览器Window对象</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 26 三月 2024
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/qian-duan.html">前端</a></li>
+												<li><a class="button button-alt" href="tag/gai-nian-xing.html">概念性</a></li>
+
+												<li><a class="button button-alt" href="tag/window.html">Window</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-26</div>
+									<h2>浏览器Window对象</h2>
+									<p>此文主要记录常用的 Window对象 提供的相关API.</p>
+<div class="section" id="window-matchmedia">
+<h2>Window matchMedia()</h2>
+<p>语法:</p>
+<pre class="literal-block">
+window.matchMedia(mediaQueryString)
+</pre>
+<dl class="docutils">
+<dt>mediaQueryString</dt>
+<dd>MediaQueryList 的字符串形式</dd>
+<dt>返回</dt>
+<dd>检测 <strong>CSS 媒体查询</strong>, 返回一个新的 MediaQueryList 对象，表示指定的媒体查询字符串解析后的结果</dd>
+</dl>
+<p>MediaQueryList 对象有以下两个属性</p>
+<blockquote>
+<ul class="simple">
+<li>media: 查询语句的内容。</li>
+<li>matches: 用于检测查询结果，如果文档匹配 media query 列表，值为 true，否则为 false。</li>
+</ul>
+</blockquote>
+<p>MediaQueryList 对象还可以监听事件。
+通过监听，在查询结果发生变化时，就调用指定的回调函数。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">方法</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>addListener(functionref)</td>
+<td>添加一个新的监听器函数，该函数在媒体查询的结果发生变化时执行。</td>
+</tr>
+<tr><td>removeListener(functionref)</td>
+<td>从媒体查询列表中删除之前添加的监听器。如果指定的监听器不在列表中，则不执行任何操作。</td>
+</tr>
+</tbody>
+</table>
+<p>参考: <a class="reference external" href="https://www.runoob.com/jsref/met-win-matchmedia.html">菜鸟-Window matchMedia() 方法</a></p>
+</div>
+<div class="section" id="window-scrollby">
+<h2>window.scrollBy()</h2>
+<p>window.scrollBy() 方法接受两个参数</p>
+<ul class="simple">
+<li>第一个参数是水平方向上的滚动量（可以是负值）</li>
+<li>第二个参数是垂直方向上的滚动量（也可以是负值）。如果你只想向下滚动，只关心第二个参数：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 向下滚动指定的像素数</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">scrollBy</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// 向下滚动100像素</span>
+<span class="w">  </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="c1">// 水平方向不滚动</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="window-scrollto">
+<h2>window.scrollTo()</h2>
+<p>window.scrollTo() 方法也可以用于精确控制滚动位置。
+与 scrollBy() 不同的是，scrollTo() 方法设置的是最终的滚动位置而不是滚动量。</p>
+<p>如果你知道想要滚动到的确切位置，可以使用这个方法：</p>
+<div class="highlight"><pre><span></span><span class="c1">// 滚动到相对于文档顶部的指定位置</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// 从当前位置向下滚动100像素</span>
+<span class="w">  </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// 水平方向不滚动</span>
+<span class="w">  </span><span class="nx">behavior</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;smooth&#39;</span><span class="w"> </span><span class="c1">// 可选，如果你想要平滑滚动</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="window-location">
+<h2>window.location</h2>
+<p>当前窗口相关.</p>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="c1">// 获取当前页面的URL</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
+
+<span class="c1">// 获取当前页面的协议</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span>
+
+<span class="c1">// 获取当前页面的域名</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span>
+
+<span class="c1">// 获取当前页面的端口号</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">port</span>
+
+<span class="c1">// 获取当前页面的完整路径</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span>
+
+<span class="c1">// 获取当前页面的查询字符串</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span>
+
+<span class="c1">// 获取当前页面的锚点</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span>
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#window-matchmedia">
+    Window matchMedia()
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#window-scrollby">
+    window.scrollBy()
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#window-scrollto">
+    window.scrollTo()
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#window-location">
+    window.location
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

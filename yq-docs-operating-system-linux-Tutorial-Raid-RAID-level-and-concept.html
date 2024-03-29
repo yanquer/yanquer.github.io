@@ -1,0 +1,507 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>RAID 的级别和概念</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 23 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+												<li><a class="button button-alt" href="tag/raid.html">Raid</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-23</div>
+									<h2>RAID 的级别和概念</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li>作者: <a class="reference external" href="http://www.tecmint.com/understanding-raid-setup-in-linux/">Babin Lonston</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/">LCTT</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/strugglingyouth">struggling</a></li>
+<li>评论: <a class="reference external" href="https://linux.cn/portal.php?mod=comment&amp;id=6085&amp;idtype=aid">https://linux.cn/portal.php?mod=comment&amp;id=6085&amp;idtype=aid</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>RAID 的意思是廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），
+但现在它被称为独立磁盘冗余阵列（Redundant Array of Independent Drives）。
+早先一个容量很小的磁盘都是非常昂贵的，但是现在我们可以很便宜的买到一个更大的磁盘。
+Raid 是一系列放在一起，成为一个逻辑卷的磁盘集合。</p>
+<div class="section" id="linux-raid">
+<h2>在 Linux 中理解 RAID 设置</h2>
+<p>RAID 包含一组或者一个集合甚至一个阵列。
+使用一组磁盘结合驱动器组成 RAID 阵列或 RAID 集。
+将至少两个磁盘连接到一个 RAID 控制器，而成为一个逻辑卷，也可以将多个驱动器放在一个组中。</p>
+<p>一组磁盘只能使用一个 RAID 级别。
+使用 RAID 可以提高服务器的性能。
+不同 RAID 的级别，性能会有所不同。它通过容错和高可用性来保存我们的数据。</p>
+<p>这个系列被命名为“在 Linux 下使用 RAID”，分为9个部分，包括以下主题：</p>
+<ul class="simple">
+<li>第1部分: <a class="reference external" href="https://linux.cn/article-6085-1.html">介绍 RAID 的级别和概念</a></li>
+<li>第2部分: <a class="reference external" href="https://linux.cn/article-6087-1.html">在Linux中如何设置 RAID0（条带化）</a></li>
+<li>第3部分: <a class="reference external" href="https://linux.cn/article-6093-1.html">在Linux中如何设置 RAID1（镜像化）</a></li>
+<li>第4部分: <a class="reference external" href="https://linux.cn/article-6102-1.html">在Linux中如何设置 RAID5（条带化与分布式奇偶校验）</a></li>
+<li>第5部分: <a class="reference external" href="https://linux.cn/article-6121-1.html">在Linux中如何设置 RAID6（条带双分布式奇偶校验）</a></li>
+<li>第6部分: <a class="reference external" href="https://linux.cn/article-6122-1.html">在Linux中设置 RAID 10 或1 + 0（嵌套）</a></li>
+<li>第7部分: <a class="reference external" href="https://linux.cn/article-6123-1.html">扩展现有的 RAID 阵列和删除故障的磁盘</a></li>
+<li>第8部分: <a class="reference external" href="https://linux.cn/article-6448-1.html">在 RAID 中恢复（重建）损坏的驱动器</a></li>
+<li>第9部分: <a class="reference external" href="https://linux.cn/article-6463-1.html">在 Linux 中管理 RAID</a></li>
+</ul>
+<p>这是9篇系列教程的第1部分，在这里我们将介绍 RAID 的概念和 RAID 级别，这是在 Linux 中构建 RAID 需要理解的。</p>
+</div>
+<div class="section" id="raid-raid">
+<h2>软件 RAID 和硬件 RAID</h2>
+<dl class="docutils">
+<dt>软件 RAID 的性能较低</dt>
+<dd>因为其使用主机的资源。
+需要加载 RAID 软件以从软件 RAID 卷中读取数据。
+在加载 RAID 软件前，操作系统需要引导起来才能加载 RAID 软件。
+在软件 RAID 中无需物理硬件。零成本投资。</dd>
+<dt>硬件 RAID 的性能较高</dt>
+<dd>他们采用 PCI Express 卡物理地提供有专用的 RAID 控制器。
+它不会使用主机资源。
+他们有 NVRAM 用于缓存的读取和写入。
+缓存用于 RAID 重建时，即使出现电源故障，它会使用后备的电池电源保持缓存。
+对于大规模使用是非常昂贵的投资。</dd>
+</dl>
+</div>
+<div class="section" id="raid-4">
+<h2>重要的 RAID 概念</h2>
+<dl class="docutils">
+<dt>校验</dt>
+<dd>方式用在 RAID 重建中从校验所保存的信息中重新生成丢失的内容。 RAID 5，RAID 6 基于校验。</dd>
+<dt>条带化</dt>
+<dd>是将切片数据随机存储到多个磁盘。它不会在单个磁盘中保存完整的数据。如果我们使用2个磁盘，则每个磁盘存储我们的一半数据。</dd>
+<dt>镜像</dt>
+<dd>被用于 RAID 1 和 RAID 10。镜像会自动备份数据。在 RAID 1 中，它会保存相同的内容到其他盘上。</dd>
+<dt>热备份</dt>
+<dd>只是我们的服务器上的一个备用驱动器，它可以自动更换发生故障的驱动器。在我们的阵列中，如果任何一个驱动器损坏，热备份驱动器会自动用于重建 RAID。</dd>
+<dt>块</dt>
+<dd>是 RAID 控制器每次读写数据时的最小单位，最小 4KB。通过定义块大小，我们可以增加 I/O 性能。</dd>
+</dl>
+<p>RAID有不同的级别。在这里，我们仅列出在真实环境下的使用最多的 RAID 级别。</p>
+<ul class="simple">
+<li>RAID0 = 条带化</li>
+<li>RAID1 = 镜像</li>
+<li>RAID5 = 单磁盘分布式奇偶校验</li>
+<li>RAID6 = 双磁盘分布式奇偶校验</li>
+<li>RAID10 = 镜像 + 条带。（嵌套RAID）</li>
+</ul>
+<p>RAID 在大多数 Linux 发行版上使用名为 mdadm 的软件包进行管理。让我们先对每个 RAID 级别认识一下。</p>
+</div>
+<div class="section" id="raid-0">
+<h2>RAID 0 / 条带化</h2>
+<p>条带化有很好的性能。
+在 RAID 0（条带化）中数据将使用切片的方式被写入到磁盘。
+一半的内容放在一个磁盘上，另一半内容将被写入到另一个磁盘。</p>
+<p>假设我们有2个磁盘驱动器，
+例如，如果我们将数据“TECMINT”写到逻辑卷中，
+“T”将被保存在第一盘中，“E”将保存在第二盘，
+'C'将被保存在第一盘，“M”将保存在第二盘，它会一直继续此循环过程。
+（LCTT 译注：实际上不可能按字节切片，是按数据块切片的。）</p>
+<p>在这种情况下，如果驱动器中的任何一个发生故障，我们就会丢失数据，
+因为一个盘中只有一半的数据，不能用于重建 RAID。
+不过，当比较写入速度和性能时，RAID 0 是非常好的。
+创建 RAID 0（条带化）至少需要2个磁盘。如果你的数据是非常宝贵的，那么不要使用此 RAID 级别。</p>
+<ul class="simple">
+<li>高性能。</li>
+<li>RAID 0 中容量零损失。</li>
+<li>零容错。</li>
+<li>写和读有很高的性能。</li>
+</ul>
+</div>
+<div class="section" id="raid-1-1">
+<h2>RAID 1 / 镜像化</h2>
+<p>镜像也有不错的性能。
+镜像可以对我们的数据做一份相同的副本。假设我们有两个2TB的硬盘驱动器，我们总共有4TB，
+但在镜像中，但是放在 RAID 控制器后面的驱动器形成了一个逻辑驱动器，我们只能看到这个逻辑驱动器有2TB。</p>
+<p>当我们保存数据时，它将同时写入这两个2TB驱动器中。
+创建 RAID 1（镜像化）最少需要两个驱动器。
+如果发生磁盘故障，我们可以通过更换一个新的磁盘恢复 RAID 。
+如果在 RAID 1 中任何一个磁盘发生故障，
+我们可以从另一个磁盘中获取相同的数据，因为另外的磁盘中也有相同的数据。所以是零数据丢失。</p>
+<ul class="simple">
+<li>良好的性能。</li>
+<li>总容量丢失一半可用空间。</li>
+<li>完全容错。</li>
+<li>重建会更快。</li>
+<li>写性能变慢。</li>
+<li>读性能变好。</li>
+<li>能用于操作系统和小规模的数据库。</li>
+</ul>
+</div>
+<div class="section" id="raid-5">
+<h2>RAID 5 / 分布式奇偶校验</h2>
+<p>RAID 5 多用于企业级。
+RAID 5 的以分布式奇偶校验的方式工作。
+奇偶校验信息将被用于重建数据。
+它从剩下的正常驱动器上的信息来重建。在驱动器发生故障时，这可以保护我们的数据。</p>
+<p>假设我们有4个驱动器，如果一个驱动器发生故障而后我们更换发生故障的驱动器后，
+我们可以从奇偶校验中重建数据到更换的驱动器上。
+奇偶校验信息存储在所有的4个驱动器上，如果我们有4个 1TB 的驱动器。
+奇偶校验信息将被存储在每个驱动器的256G中，而其它768GB是用户自己使用的。
+单个驱动器故障后，RAID 5 依旧正常工作，如果驱动器损坏个数超过1个会导致数据的丢失。</p>
+<ul class="simple">
+<li>性能卓越</li>
+<li>读速度将非常好。</li>
+<li>写速度处于平均水准，如果我们不使用硬件 RAID 控制器，写速度缓慢。</li>
+<li>从所有驱动器的奇偶校验信息中重建。</li>
+<li>完全容错。</li>
+<li>1个磁盘空间将用于奇偶校验。</li>
+<li>可以被用在文件服务器，Web服务器，非常重要的备份中。</li>
+</ul>
+</div>
+<div class="section" id="raid-6">
+<h2>RAID 6 双分布式奇偶校验磁盘</h2>
+<p>RAID 6 和 RAID 5 相似但它有两个分布式奇偶校验。
+大多用在大数量的阵列中。
+我们最少需要4个驱动器，即使有2个驱动器发生故障，我们依然可以更换新的驱动器后重建数据。</p>
+<p>它比 RAID 5 慢，因为它将数据同时写到4个驱动器上。
+当我们使用硬件 RAID 控制器时速度就处于平均水准。
+如果我们有6个的1TB驱动器，4个驱动器将用于数据保存，2个驱动器将用于校验。</p>
+<ul class="simple">
+<li>性能不佳。</li>
+<li>读的性能很好。</li>
+<li>如果我们不使用硬件 RAID 控制器写的性能会很差。</li>
+<li>从两个奇偶校验驱动器上重建。</li>
+<li>完全容错。</li>
+<li>2个磁盘空间将用于奇偶校验。</li>
+<li>可用于大型阵列。</li>
+<li>用于备份和视频流中，用于大规模。</li>
+</ul>
+</div>
+<div class="section" id="raid-10">
+<h2>RAID 10 / 镜像+条带</h2>
+<p>RAID 10 可以被称为1 + 0或0 +1。它将做镜像+条带两个工作。
+在 RAID 10 中首先做镜像然后做条带。在 RAID 01 上首先做条带，然后做镜像。RAID 10 比 01 好。</p>
+<p>假设，我们有4个驱动器。当我逻辑卷上写数据时，它会使用镜像和条带的方式将数据保存到4个驱动器上。</p>
+<p>如果我在 RAID 10 上写入数据“TECMINT”，数据将使用如下方式保存。
+首先将“T”同时写入两个磁盘，“E”也将同时写入另外两个磁盘，
+所有数据都写入两块磁盘。这样可以将每个数据复制到另外的磁盘。</p>
+<p>同时它将使用 RAID 0 方式写入数据，
+遵循将“T”写入第一组盘，“E”写入第二组盘。再次将“C”写入第一组盘，“M”到第二组盘。</p>
+<ul class="simple">
+<li>良好的读写性能。</li>
+<li>总容量丢失一半的可用空间。</li>
+<li>容错。</li>
+<li>从副本数据中快速重建。</li>
+<li>由于其高性能和高可用性，常被用于数据库的存储中。</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#linux-raid">
+    在 Linux 中理解 RAID 设置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-raid">
+    软件 RAID 和硬件 RAID
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-4">
+    重要的 RAID 概念
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-0">
+    RAID 0 / 条带化
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-1-1">
+    RAID 1 / 镜像化
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-5">
+    RAID 5 / 分布式奇偶校验
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-6">
+    RAID 6 双分布式奇偶校验磁盘
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-10">
+    RAID 10 / 镜像+条带
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

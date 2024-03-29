@@ -1,0 +1,454 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>迭代(生成器/式)</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xiang-guan.html">概念相关</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>迭代(生成器/式)</h2>
+									<p>字典生成式, 会立刻计算:</p>
+<pre class="literal-block">
+a = {id:0 for id in range(10)}
+</pre>
+<p>列表生成式, 会立刻计算:</p>
+<pre class="literal-block">
+[x for x in iter_obj]
+</pre>
+<p>生成器, 不会立刻计算, 返回一个生成器:</p>
+<pre class="literal-block">
+(x for x in iter_obj)
+</pre>
+<div class="section" id="section-2">
+<h2>可迭代对象</h2>
+<p>序列（Sequence）:</p>
+<pre class="literal-block">
+An iterable which supports efficient element access using integer indices via the **getitem**() special method and defines a **len**() method that returns the length of the sequence. Some built-in sequence types are list, str, tuple, and bytes. Note that dict also supports **getitem**() and **len**(), but is considered a mapping rather than a sequence because the lookups use arbitrary immutable keys rather than integers.
+The collections.abc.Sequence abstract base class defines a much richer interface that goes beyond just **getitem**() and **len**(), adding count(), index(), **contains**(), and **reversed**(). Types that implement this expanded interface can be registered explicitly using register().
+</pre>
+<p>提练重点如下：</p>
+<ul class="simple">
+<li>可迭代；</li>
+<li>支持下标访问，即实现了 <strong>getitem</strong> () 方法，同时定义了 <strong>len</strong> () 方法，可通过 len() 方法获取长度；</li>
+<li>内置的序列类型：list、str、tuple、bytes；</li>
+<li>dict 同样支持 <strong>getitem</strong> () 和 <strong>len</strong> () ，但它不归属于序列类型，它是映射类型，因为它不能根据下标查找，只能根据 key 来查找；</li>
+<li>抽象类 collections.abc.Sequence 还提供了很多方法，比如 count()、index()、 <strong>contains</strong> () 、 <strong>reversed</strong> () 可用于扩展；</li>
+</ul>
+<p>总结结论： <strong>序列一定是一个可迭代对象，但可迭代对象不一定是序列</strong>。</p>
+<div class="section" id="iterable">
+<h3>可迭代对象(Iterable)</h3>
+<p>在类里面定义__iter__方法，并使用该类创建的对象就是可迭代对象</p>
+<dl class="docutils">
+<dt>简单记忆</dt>
+<dd>使用for循环遍历取值的对象叫做可迭代对象, 比如：列表、元组、字典、集合、range、字符串</dd>
+</dl>
+<p>判断:</p>
+<pre class="literal-block">
+from collections import Iterable
+
+result = isinstance((3, 5), Iterable)
+print(&quot;是否是可迭代对象:&quot;, result)
+</pre>
+<ul class="simple">
+<li>它是能够一次返回一个成员的对象，也就是可以 for…in 遍历的；</li>
+<li>所有的序列类型（也就是后面要说到的 Sequence），都是可迭代对象，如 list、str、tuple，还有映射类型 dict、文件对象等非序列类型也是可迭代对象；</li>
+<li>自定义对象在实现了 <strong>iter</strong> () 方法或者实现了 <strong>getitem</strong> () 方法后，也可以成为可迭代对象；</li>
+<li><strong>iter()</strong> 方法接受一个可迭代对象，该方法的返回值是一个迭代器（Iterator）</li>
+</ul>
+<p>那么如何判断一个对象是可迭代对象呢？很容易想到的方法是 isinstance，这时候我们需要注意一点，文档介绍如下:</p>
+<pre class="literal-block">
+class collections.abc.Iterable
+ABC for classes that provide the **iter**() method.
+
+Checking isinstance(obj, Iterable) detects classes that are registered as Iterable or that have an **iter**() method, but it does not detect classes that iterate with the **getitem**() method. The only reliable way to determine whether an object is iterable is to call iter(obj).
+</pre>
+<dl class="docutils">
+<dt>简单解释就是:</dt>
+<dd><p class="first">通过 <strong>isinstance(obj, Iterable)</strong> 判断一个对象是否是可迭代对象时，
+只有当这个对象被注册为 Iterable 或者当它实现了 <strong>iter() ** 方法的时候，才返回 True，
+而对于实现了 **getitem</strong> () 方法的，返回的是 False。</p>
+<p class="last">所以当判断是否是可迭代对象的方式是调用 <strong>iter(obj)</strong>，如果不报错，说明是可迭代对象，反之则不是。</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="iterator">
+<h2>迭代器(Iterator)</h2>
+<p>迭代器:</p>
+<pre class="literal-block">
+An object representing a stream of data. Repeated calls to the iterator’s **next**() method (or passing it to the built-in function next()) return successive items in the stream. When no more data are available a StopIteration exception is raised instead. At this point, the iterator object is exhausted and any further calls to its **next**() method just raise StopIteration again. Iterators are required to have an **iter**() method that returns the iterator object itself so every iterator is also iterable and may be used in most places where other iterables are accepted. One notable exception is code which attempts multiple iteration passes. A container object (such as a list) produces a fresh new iterator each time you pass it to the iter() function or use it in a for loop. Attempting this with an iterator will just return the same exhausted iterator object used in the previous iteration pass, making it appear like an empty container.
+</pre>
+<ul class="simple">
+<li>一个表示**数据流**的对象，可通过重复调用 <strong>next</strong> （或使用内置函数 <strong>next()</strong> ）方法来获取元素。当没有元素存在时，抛出 StopIteration 异常；</li>
+<li><strong>iter(obj)</strong> 接受一个迭代器作为参数时，返回的是它本身。在可迭代对象里我们说过，iter(obj)方法不报错，说明它一定是一个可迭代对象。因此迭代器一定是一个可迭代对象；</li>
+<li>一个迭代器必须要实现 <strong>iter</strong> () 方法。但因为迭代器前提必须是一个可迭代对象，所以只实现 <strong>iter</strong> () 方法不一定是一个迭代器。</li>
+</ul>
+<p>在类里面定义 __iter__和 __next__方法，并使用该类创建的对象就是迭代器 (迭代器也属于可迭代对象)
+判断:</p>
+<pre class="literal-block">
+from collections import Iterator, Iterable
+
+result = isinstance((3, 5), Iterator)
+print(&quot;是否是迭代器:&quot;, result)
+result = isinstance((3, 5), Iterable)
+print(&quot;是否是可迭代对象:&quot;, result)
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>生成器</h2>
+<p>也是迭代器:</p>
+<pre class="literal-block">
+A function which returns a generator iterator. It looks like a normal function except that it contains yield expressions for producing a series of values usable in a for-loop or that can be retrieved one at a time with the next() function.
+Usually refers to a generator function, but may refer to a generator iterator in some contexts. In cases where the intended meaning isn’t clear, using the full terms avoids ambiguity.
+</pre>
+<p>定义：一边循坏一边计算的机制（generator）</p>
+<ul class="simple">
+<li>它是一个 <strong>迭代器</strong>；</li>
+<li>它是一个含有特殊关键字 <strong>yield</strong> 的 <strong>迭代器</strong>；</li>
+<li>每次生成一个值，可通过 <strong>next()</strong> 方法获取。</li>
+</ul>
+<p>创建一个生成器对象，</p>
+<p>方法一：只需要将列表生成式的 [] 换成 () 即可:</p>
+<pre class="literal-block">
+g = (x * x for x in range(10))
+</pre>
+<p>方法二：函数使用 yield 关键字，那么这个函数将是一个 generator:</p>
+<pre class="literal-block">
+def g():
+  a = {id:0 for id in range(10)}
+  for k, v in a.items():
+    yield k, v
+</pre>
+<p>原理：</p>
+<ul>
+<li><p class="first">生成器(generator)能够迭代的关键是它有一个next()方法，
+工作原理就是通过重复调用next()方法，直到捕获一个异常。</p>
+</li>
+<li><p class="first">带有 yield 的函数不再是一个普通函数，而是一个生成器generator。</p>
+<p>可用next()调用生成器对象来取值。next 两种方式 t.__next__() | next(t)。</p>
+<p>可用for 循环获取返回值（每执行一次，取生成器里面一个值）</p>
+<p>（基本上不会用`next()`来获取下一个返回值，而是直接使用`for`循环来迭代）。</p>
+</li>
+<li><p class="first">yield相当于 return 返回一个值，并且记住这个返回的位置，下次迭代时，代码从yield的下一条语句开始执行。</p>
+</li>
+<li><p class="first">send() 和next()一样，都能让生成器继续往下走一步（下次遇到yield停），但send()能传一个值，这个值作为yield表达式整体的结果</p>
+<p>——换句话说，就是send可以强行修改上一个yield表达式值。比如函数中有一个yield赋值，a = yield 5，第一次迭代到这里会返回（5）a还没有赋值。第二次迭代时，使用.send(10)，那么，就是强行修改yield 5表达式的值为10，本来是5的，那么a=10</p>
+</li>
+</ul>
+</div>
+<div class="section" id="section-4">
+<h2>总结</h2>
+<ul class="simple">
+<li>迭代的方式有两种，一种是通过下标，即实现 <strong>getitem</strong>，一种是直接获取值，
+即实现 <strong>iter</strong>，两种方式都可通过 <strong>**for…in**</strong> 方式进行遍历。也都是可迭代对象；</li>
+<li>isinstance 判断可迭代对象时，针对下标访问的判断有出入，需要特别注意；</li>
+<li>可迭代对象基本要求是可遍历获取值；</li>
+<li>序列一定是可迭代对象，它实现了 <strong>**len()**</strong> 和 <strong>getitem</strong>，可获取长度，可通过下标访问；</li>
+<li>迭代器一定是可迭代对象，它实现了 <strong>next</strong> ()；</li>
+<li>生成器是特殊的迭代器，它一定是迭代器，因此也一定是可迭代对象。</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    可迭代对象
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#iterable">
+      可迭代对象(Iterable)
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#iterator">
+    迭代器(Iterator)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    生成器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    总结
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

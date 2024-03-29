@@ -1,0 +1,429 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>smartctl</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>smartctl</h2>
+									<div class="section" id="section-1">
+<h2>功能</h2>
+<p>smartctl 工具用来实现操作系统上的 ATA/SATA 、SCSI/SAS、SSD 等物理设备的监控、分析及使用情况报告。</p>
+<p>SMART 指的是对硬盘等设备的可靠性监控及预测磁盘可能存在的故障，并根据硬盘形态进行不同程度的自检。</p>
+<p>smartctl 的版本可以兼容众多磁盘规范，例如 ACS-2、ATA8-ACS、ATA/ATAPI-7 及更早期的一些磁盘标准。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">大多发行版已经内置, 若没有, 可手动安装: <tt class="docutils literal">apt install smartmontools</tt></p>
+</div>
+<p>smartmontools 提供了两种使用模式</p>
+<ul class="simple">
+<li>以服务模式运行: 通过 smartd 服务及配置文件来对服务器上的磁盘按照规则进行自检，需要开启 smartd.service 服务</li>
+<li>以命令行模式运行: 以终端命令行的方式对磁盘进行自检，无需开启 smartd 服务</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>Mac可通过:</p>
+<pre class="literal-block">
+brew install smartmontools
+</pre>
+<p class="last">来安装, 并查看固态寿命</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>选项参数</h2>
+<table border="1" class="docutils align-center">
+<caption>基本命令参数选项(部分)</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">选项</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>-h, --help, --usage</td>
+<td>Display this help and exit</td>
+</tr>
+<tr><td>-V, --version, --copyright, --license</td>
+<td>Print license, copyright, and version information and exit</td>
+</tr>
+<tr><td>-i, --info</td>
+<td>显示设备基本信息</td>
+</tr>
+<tr><td>--identify[=[w][nvb]]</td>
+<td>Show words and bits from IDENTIFY DEVICE data (ATA)</td>
+</tr>
+<tr><td>-g NAME, --get=NAME</td>
+<td>Get device setting. all, aam, apm, dsn, lookahead, security, wcache, rcache, wcreorder, wcache-sct</td>
+</tr>
+<tr><td>-a, --all</td>
+<td>Show all SMART information for device</td>
+</tr>
+<tr><td>-x, --xall</td>
+<td>Show all information for device</td>
+</tr>
+<tr><td>--scan</td>
+<td>查看系统所有设备</td>
+</tr>
+<tr><td>--scan-open</td>
+<td>Scan for devices and try to open each device</td>
+</tr>
+<tr><td>-H, --health</td>
+<td>检查健康状态</td>
+</tr>
+<tr><td>-t TEST, --test=TEST</td>
+<td>Run test. TEST. offline, short, long, conveyance, force, vendor,N, select,M-N, pending,N, afterselect,[on|off]</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="a">
+<h3><tt class="docutils literal"><span class="pre">-a</span></tt> 输出信息说明</h3>
+<dl class="docutils">
+<dt>严重警告（Critical Warning）</dt>
+<dd>会显示控制器状态警告讯息，如果都显示0x00 就表示没事</dd>
+<dt>温度（Temperature）</dt>
+<dd>会显示当前SSD 温度资讯</dd>
+<dt>可用备用空间（Available Spare）</dt>
+<dd>SSD 剩余空间百分比</dd>
+<dt>可用备用临界值（Available Spare Threshold）</dt>
+<dd>临界值全由厂商定义</dd>
+<dt>寿命百分比（Percentage Used）</dt>
+<dd>目前SSD 寿命百分比数值，具体取决于实际设备使用情况和厂商对设备寿命的预测。</dd>
+<dt>资料读取（Data Units Read）</dt>
+<dd>记录电脑从SSD读取512字节数据单元的总量，每1000个单元记录一次，即这项Raw数据1的值等于500KB。</dd>
+<dt>资料写入（Data Units Read）</dt>
+<dd>如上，就是写入总量。</dd>
+<dt>主机读取命令（Host Read Commands）</dt>
+<dd>主控收到的读取命令数量。</dd>
+<dt>主机写入命令（Host Write Commands）</dt>
+<dd>主控收到的写入命令数量。</dd>
+<dt>控制器忙碌时间（Controller Busy Time）</dt>
+<dd>主控忙于I/O命令的时间。</dd>
+<dt>意外关机（Unsafe Shutdowns）</dt>
+<dd>纪录不正常断电次数</dd>
+<dt>媒体和资料完整性错误（Media and Data Integrity Errors）</dt>
+<dd>主控检测得到的未恢复的数据完整性错误次数。</dd>
+<dt>错误资料纪录（Number of Error Information Log Entries）</dt>
+<dd>主控总共收到的错误信息日志数量。</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>示例</h2>
+<div class="highlight"><pre><span></span><span class="c1"># 检查磁盘健康状态</span>
+smartctl<span class="w"> </span>-H<span class="w"> </span>/dev/sda
+
+<span class="c1"># 然后查看磁盘详细情况</span>
+smartctl<span class="w"> </span>-a<span class="w"> </span>/dev/sda
+
+<span class="c1"># 再对磁盘进行短期测试</span>
+smartctl<span class="w"> </span>-t<span class="w"> </span>short<span class="w"> </span>/dev/sda
+
+<span class="c1"># 查看磁盘测试结果, 基本磁盘健康状态就可以定位出来</span>
+smartctl<span class="w"> </span>-l<span class="w"> </span>selftest<span class="w"> </span>/dev/sda
+
+<span class="c1"># 最后检查磁盘错误日志</span>
+smartctl<span class="w"> </span>-l<span class="w"> </span>error<span class="w"> </span>/dev/sdb
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    功能
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    选项参数
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#a">
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    示例
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

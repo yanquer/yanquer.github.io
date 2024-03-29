@@ -14,8 +14,17 @@ pre{
 	/* 代码超出边界时, 允许滚动 */
 	overflow-x: auto;
 }
+.c1{
+	color: #7cc2d4;
+}
 .kc{
 	color: #058e2c;
+}
+.kt{
+	color: #f08c6f;
+}
+.m{
+	color: #53db97;
 }
 .na{
 	color: #bcd8f5;

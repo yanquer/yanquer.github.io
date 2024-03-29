@@ -1,0 +1,649 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>re</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>re</h2>
+									<p>通过正则表达式对字符串进⾏匹配</p>
+<dl class="docutils">
+<dt>r</dt>
+<dd>在带有 <cite>'r'</cite> 前缀的字符串字面值中，反斜杠不必做任何特殊处理。
+因此 <cite>r&quot;n&quot;</cite> 表示包含 <cite>''</cite> 和 <cite>'n'</cite> 两个字符的字符串，
+而 <cite>&quot;n&quot;</cite> 则表示只包含一个换行符的字符串。</dd>
+</dl>
+<div class="section" id="re-match">
+<h2>re.match函数</h2>
+</div>
+<div class="section" id="re-compile">
+<h2>re.compile 函数</h2>
+<p>compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用:</p>
+<pre class="literal-block">
+prog = re.compile(pattern)
+result = prog.match(string)
+</pre>
+<p>等价于:</p>
+<pre class="literal-block">
+result = re.match(pattern, string)
+</pre>
+<p>不过对于匹配使用的较多情况下, 可以使用全局的compile来节省时间.</p>
+<p>举例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt;import re
+&gt;&gt;&gt; pattern = re.compile(r'\d+')
+m = pattern.match('one12twothree34four', 3, 10) # 从'1'的位置开始匹配，正好匹配
+&gt;&gt;&gt; print m                                         # 返回一个 Match 对象
+&lt;_sre.SRE_Match object at 0x10a42aac0&gt;
+&gt;&gt;&gt; m.group(0)   # 可省略 0
+'12'
+&gt;&gt;&gt; m.start(0)   # 可省略 0
+3
+&gt;&gt;&gt; m.end(0)     # 可省略 0
+5
+&gt;&gt;&gt; m.span(0)    # 可省略 0
+(3, 5)
+</pre>
+<p>在上面，当匹配成功时返回一个 Match 对象，其中：</p>
+<ul class="simple">
+<li>group([group1, …]) 方法用于获得一个或多个分组匹配的字符串，当要获得整个匹配的子串时，可直接使用 group() 或 group(0)；</li>
+<li>start([group]) 方法用于获取分组匹配的子串在整个字符串中的起始位置（子串第一个字符的索引），参数默认值为 0；</li>
+<li>end([group]) 方法用于获取分组匹配的子串在整个字符串中的结束位置（子串最后一个字符的索引+1），参数默认值为 0；</li>
+<li>span([group]) 方法返回 (start(group), end(group))</li>
+</ul>
+</div>
+<div class="section" id="re-search">
+<h2>re.search函数</h2>
+<p>re.search 扫描整个字符串并返回第一个成功的匹配，如果没有匹配，就返回一个 None。</p>
+<p>re.match与re.search的区别:</p>
+<ul class="simple">
+<li>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None</li>
+<li>re.search匹配整个字符串，直到找到一个匹配</li>
+</ul>
+<p>举例:</p>
+<pre class="literal-block">
+import re
+ret = re.search(r&quot;\d+&quot;, &quot;阅读次数为9999&quot;)
+print(ret.group())
+#结果：9999
+</pre>
+</div>
+<div class="section" id="re-findall">
+<h2>re.findall函数</h2>
+<p>在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<p>注意： match 和 search 是匹配一次 findall 匹配所有。</p>
+<p>举例:</p>
+<pre class="literal-block">
+import re
+ret = re.findall(r&quot;\d+&quot;, &quot;python = 9999, c = 7890, c++ = 12345&quot;)
+print(ret)
+#结果：['9999', '7890', '12345']
+</pre>
+<p>举例2:</p>
+<pre class="literal-block">
+import re
+alist = ['a','b','c']
+if re.findall('.$','dfghc')[0] in alist:
+  print 'yes1'
+if re.findall('.$','dfgh')[0] in alist:
+  print 'yes2'
+print 'over'
+#输出：
+#yes1
+#over
+
+#re.findall('.$','dfghc')其实是返回一个列表
+#但是匹配是找出结尾的字符所以只有一个，使用[0]获取
+#然后判断是否存在于alist
+</pre>
+</div>
+<div class="section" id="re-finditer">
+<h2>re.finditer函数</h2>
+<p>和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回:</p>
+<pre class="literal-block">
+import re
+it = re.finditer(r&quot;\d+&quot;, &quot;12a32bc43jf3&quot;)
+for match in it:
+  print(match.group())
+
+#结果：
+#12
+#32
+#43
+#3
+</pre>
+</div>
+<div class="section" id="re-sub">
+<h2>re.sub函数</h2>
+<p>sub是substitute的所写，表示替换，将匹配到的数据进⾏替换。</p>
+<p>举例：将匹配到的阅读次数加1</p>
+<p>方法一:</p>
+<pre class="literal-block">
+import re
+ret = re.sub(r&quot;\d+&quot;, '998', &quot;python = 997&quot;)
+print(ret)
+</pre>
+<p>结果：python = 998</p>
+<p>方法二:</p>
+<pre class="literal-block">
+import re
+def add(temp):
+  #int（）参数必须是字符串，类似字节的对象或数字，而不是“re.Match”
+  strNum = temp.group()
+  num = int(strNum) + 1
+  return str(num)
+ret = re.sub(r&quot;\d+&quot;, add, &quot;python = 997&quot;)
+print(ret)
+ret = re.sub(r&quot;\d+&quot;, add, &quot;python = 99&quot;)
+print(ret)
+
+#这里不懂是怎么把后面的参数传递过去的，
+#好像python就是这样传递参数的？但是有尝试将temp打印，出来是一个地址好像，并不是预期的字符串
+#理解是正常情况下传递的应该是整个字符串，但是这里使用了正则表达式匹配数字，所以只传递了数字，然后使用group函数来获取
+#根据这个思路尝试了一下
+#将匹配规则更改为&quot;r&quot;.+&quot;,输出temp.group的值正常，temp为地址，re会将参数传递更改为地址传递
+</pre>
+<p>结果:</p>
+<pre class="literal-block">
+python = 998
+python = 100
+</pre>
+</div>
+<div class="section" id="re-subn">
+<h2>re.subn函数</h2>
+<p>行为与sub()相同，但是返回一个元组 (字符串, 替换次数):</p>
+<pre class="literal-block">
+re.subn(pattern, repl, string[, count])
+</pre>
+<p>返回:</p>
+<pre class="literal-block">
+(sub(repl, string[, count]), 替换次数)
+</pre>
+<p>例如:</p>
+<pre class="literal-block">
+import re
+pattern = re.compile(r'(\w+) (\w+)')
+s = 'i say, hello world!'
+print(re.subn(pattern, r'\2 \1', s))
+def func(m):
+  return m.group(1).title() + ' ' + m.group(2).title()
+print(re.subn(pattern, func, s))
+### output ###
+# ('say i, world hello!', 2)
+# ('I Say, Hello World!', 2)
+</pre>
+</div>
+<div class="section" id="re-split">
+<h2>re.split函数</h2>
+<p>根据匹配进⾏切割字符串，并返回⼀个列表。</p>
+<p>举例:</p>
+<pre class="literal-block">
+import re
+ret = re.split(r&quot;:| &quot;,&quot;info:xiaoZhang 33 shandong&quot;)
+print(ret)
+</pre>
+<p>结果：['info', 'xiaoZhang', '33', 'shandong']</p>
+</div>
+<div class="section" id="python">
+<h2>python贪婪和⾮贪婪</h2>
+<p>Python⾥数量词默认是贪婪的（在少数语⾔⾥也可能是默认⾮贪婪），总是尝试匹配尽可能多的字符；⾮贪婪则相反，总是尝试匹配尽可能少的字符。</p>
+<p>例如：正则表达式”ab*”如果用于查找”abbbc”，将找到”abbb”。而如果使用非贪婪的数量词”ab*?”，将找到”a”。</p>
+<p>注：我们一般使用非贪婪模式来提取。</p>
+<p>在&quot;*&quot;,&quot;?&quot;,&quot;+&quot;,&quot;{m,n}&quot;后⾯加上？，使贪婪变成⾮贪婪。</p>
+<p>举例1:</p>
+<pre class="literal-block">
+import re
+
+s=&quot;This is a number 234-235-22-423&quot;
+
+#正则表达式模式中使⽤到通配字，那它在从左到右的顺序求值时，会尽量“抓取”满⾜匹配最⻓字符串，在我们上⾯的例⼦⾥⾯，“.+”会从字符串的启始处抓取满⾜模式的最⻓字符，其中包括我们想得到的第⼀个整型字段的中的⼤部分，“\d+”只需⼀位字符就可以匹配，所以它匹配了数字“4”，⽽“.+”则匹配了从字符串起始到这个第⼀位数字4之前的所有字符
+
+r=re.match(&quot;.+(\d+-\d+-\d+-\d+)&quot;,s)
+print(r.group(1))
+
+#⾮贪婪操作符“？”，这个操作符可以⽤在&quot;*&quot;,&quot;+&quot;,&quot;?&quot;的后⾯，要求正则匹配的越少越好
+r=re.match(&quot;.+?(\d+-\d+-\d+-\d+)&quot;,s)
+print(r.group(1))
+</pre>
+<p>结果:</p>
+<pre class="literal-block">
+4-235-22-423
+234-235-22-423
+</pre>
+<p>举例2:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; re.match(r&quot;aa(\d+)&quot;,&quot;aa2343ddd&quot;).group(1)
+'2343'
+&gt;&gt;&gt; re.match(r&quot;aa(\d+?)&quot;,&quot;aa2343ddd&quot;).group(1)
+'2'
+&gt;&gt;&gt; re.match(r&quot;aa(\d+)ddd&quot;,&quot;aa2343ddd&quot;).group(1)
+'2343'
+&gt;&gt;&gt; re.match(r&quot;aa(\d+?)ddd&quot;,&quot;aa2343ddd&quot;).group(1)
+'2343'
+</pre>
+<p>举例3：提取图片地址:</p>
+<pre class="literal-block">
+import re
+test_str=&quot;&lt;img data-original=https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973.jpg&gt;&quot;
+ret = re.search(r&quot;https://.*?.jpg&quot;, test_str)
+print(ret.group())
+</pre>
+</div>
+<div class="section" id="r">
+<h2>r的作⽤</h2>
+<p>r：在带有 <cite>'r'</cite> 前缀的字符串字面值中，反斜杠不必做任何特殊处理。 因此 <cite>r&quot;n&quot;</cite> 表示包含 <cite>''</cite> 和 <cite>'n'</cite> 两个字符的字符串，而 <cite>&quot;n&quot;</cite> 则表示只包含一个换行符的字符串。</p>
+<p>与大多数编程语言相同，正则表达式里使用””作为转义字符，这就可能造成反斜杠困扰。假如你需要匹配文本中的字符””，那么使用编程语言表示的正则表达式里将需要4个反斜杠”\\”：前两个和后两个分别用于在编程语言里转义成反斜杠，转换成两个反斜杠后再在正则表达式里转义成一个反斜杠。Python里的原生字符串很好地解决了这个问题，Python中字符串前⾯加上 r 表示原⽣字符串。</p>
+<p>（前两个和后两个分别用于在编程语言里转义成反斜杠，转换成两个反斜杠后再在正则表达式里转义成一个反斜杠。）</p>
+<p>例:</p>
+<pre class="literal-block">
+import re
+mm = &quot;c:\\a\\b\\c&quot;
+print(mm)#c:\a\b\c
+ret = re.match(&quot;c:\\\\&quot;,mm).group()
+print(ret)#c:\
+ret = re.match(&quot;c:\\\\a&quot;,mm).group()
+print(ret)#c:\a
+ret = re.match(r&quot;c:\\a&quot;,mm).group()
+print(ret)#c:\a
+ret = re.match(r&quot;c:\a&quot;,mm).group()
+print(ret)#AttributeError: 'NoneType' object has no attribute 'group'
+</pre>
+</div>
+<div class="section" id="section-1">
+<h2>正则匹配规则(基本适用所有语言)</h2>
+<p>匹配单个字符</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="54%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">字符</th>
+<th class="head">功能</th>
+<th class="head">位置</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>.</td>
+<td>匹配任意1个字符（除了n）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>[ ]</td>
+<td>匹配[ ]中列举的字符</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>d</td>
+<td>匹配数字，即0-9</td>
+<td>可以写在字符集[...]中</td>
+</tr>
+<tr><td>D</td>
+<td>匹配⾮数字，即不是数字</td>
+<td>可以写在字符集[...]中</td>
+</tr>
+<tr><td>s</td>
+<td>匹配空⽩，即空格，tab键</td>
+<td>可以写在字符集[...]中</td>
+</tr>
+<tr><td>S</td>
+<td>匹配⾮空⽩字符</td>
+<td>可以写在字符集[...]中</td>
+</tr>
+<tr><td>w</td>
+<td>匹配单词字符，即a-z、A-Z、0-9、_</td>
+<td>可以写在字符集[...]中</td>
+</tr>
+<tr><td>W</td>
+<td>匹配⾮单词字符</td>
+<td>可以写在字符集[...]中</td>
+</tr>
+</tbody>
+</table>
+<p>使用括号匹配的内容, 可以用 <tt class="docutils literal">\1</tt> , <tt class="docutils literal">\2</tt> 表示, 如:</p>
+<pre class="literal-block">
+In [17]: re.sub(r'([a-z]+)([A-Z)]+)', r'\1_\2', 'distributeType').lower()
+Out[17]: 'distribute_type'
+
+# 这里不懂为什么加不加 + 一样
+# todo: +
+In [18]: re.sub(r'([a-z])([A-Z)])', r'\1_\2', 'distributeType').lower()
+Out[18]: 'distribute_type'
+</pre>
+<ul class="simple">
+<li><tt class="docutils literal">\s</tt>：表示匹配空白字符，包括空格、制表符、换行符等。它与[rntfv ]等效。</li>
+<li><tt class="docutils literal">\b</tt>：表示匹配单词边界。一个单词被定义为由字母或数字组成的字符序列。b匹配位于单词开头或结尾的位置，而不匹配任何实际字符。</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#re-match">
+    re.match函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#re-compile">
+    re.compile 函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#re-search">
+    re.search函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#re-findall">
+    re.findall函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#re-finditer">
+    re.finditer函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#re-sub">
+    re.sub函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#re-subn">
+    re.subn函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#re-split">
+    re.split函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#python">
+    python贪婪和⾮贪婪
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#r">
+    r的作⽤
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    正则匹配规则(基本适用所有语言)
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

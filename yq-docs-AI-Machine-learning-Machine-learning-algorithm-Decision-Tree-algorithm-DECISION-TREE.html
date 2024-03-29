@@ -1,0 +1,566 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li  class="active"><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>决策树算法 Decision Tree</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 17 三月 2023
+      , Category:
+	  <a href="category/ai.html">AI</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/ai.html">Ai</a></li>
+												<li><a class="button button-alt" href="tag/ji-qi-xue-xi.html">机器学习</a></li>
+
+												<li><a class="button button-alt" href="tag/ji-qi-xue-xi-suan-fa.html">机器学习算法</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-03-17</div>
+									<h2>决策树算法 Decision Tree</h2>
+									<!-- 决策树（Decision tree）是一种特殊的树结构， -->
+<!-- 由一个决策图和可能的结果（例如成本和风险）组成，用来辅助决策。 -->
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">属于监督学习(样本与对应结果已知)</p>
+</div>
+<p>决策树（Decision Tree），它是一种以树形数据结构来展示决策规则和分类结果的模型，
+作为一种归纳学习算法，其重点是将看似无序、杂乱的已知数据，
+通过某种技术手段将它们转化成可以预测未知数据的树状模型，
+每一条从根结点（对最终分类结果贡献最大的属性）到叶子结点（最终分类结果）的路径都代表一条决策的规则。
+决策树就是形如下图的结构（机器学习西瓜书的图）：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-04-22-58-24.png" style="width: 480px;" />
+</div>
+<p>机器学习中，
+决策树是一个预测模型，树中每个节点表示某个对象，而每个分叉路径则代表某个可能的属性值，
+而每个叶节点则对应从根节点到该叶节点所经历的路径所表示的对象的值。
+决策树仅有单一输出，通常该算法用于解决分类问题。</p>
+<p>一个决策树包含三种类型的节点：</p>
+<ul class="simple">
+<li>决策节点：通常用矩形框来表示</li>
+<li>机会节点：通常用圆圈来表示</li>
+<li>终结点：通常用三角形来表示</li>
+</ul>
+<p>简单决策树算法案例，确定人群中谁喜欢使用信用卡。
+考虑人群的年龄和婚姻状况，如果年龄在30岁或是已婚，
+人们更倾向于选择信用卡，反之则更少。
+通过确定合适的属性来定义更多的类别，可以进一步扩展此决策树。</p>
+<p>在这个例子中，如果一个人结婚了，他超过30岁，他们更有可能拥有信用卡（100% 偏好）。
+测试数据用于生成决策树。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-04-22-43-01.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-04-22-43-23.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">对于那些各类别样本数量不一致的数据，在决策树当中信息增益的结果偏向于那些具有更多数值的特征。</p>
+</div>
+<div class="section" id="section-1">
+<h2>构建决策树</h2>
+<p>训练阶段：从给定的训练数据集DB，构造出一颗决策树:</p>
+<pre class="literal-block">
+class = DecisionTree(DB)
+</pre>
+<p>分类阶段：从根开始，按照决策树的分类属性，
+从上往下，逐层划分。直到叶子节点，便能获得结果:</p>
+<pre class="literal-block">
+y = DecisionTree(x)
+</pre>
+</div>
+<div class="section" id="section-2">
+<h2>熵</h2>
+<p>信息熵（Information Entropy）</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-04-23-25-39.png" style="width: 480px;" />
+</div>
+<p>条件熵</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-04-23-25-52.png" style="width: 480px;" />
+</div>
+<p>决策树的划分依据是 <strong>信息增益</strong>:
+所谓的信息增益是指 特征A对训练数据集D的信息增益g（D,A）
+定义为 集合D的信息熵H(D) 与 特征A给定条件下D的信息条件熵H(D|A) 之差，
+即公式为:</p>
+<pre class="literal-block">
+g(D, A) = H(D) - H(D|A)
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">信息增益表示得知特征X的信息而使得类Y的信息的不确定性减少的程度。</p>
+</div>
+<div class="section" id="section-3">
+<h3>构造依据-熵</h3>
+<p><strong>熵</strong> 表示数据的混乱程度, 理科的可以参考化学的 <cite>熵</cite></p>
+<ul class="simple">
+<li>熵越大, 数据越混乱, 不确定性越大, 越不确定</li>
+<li>熵越小, 数据越不混乱, 不确定性越小, 越确定</li>
+</ul>
+<p>我们用 Entropy 表示熵</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-04-23-13-19.png" style="width: 480px;" />
+</div>
+<p>所以当 Entropy 最大为1的时候，是分类效果最差的状态，当它最小为0的时候，是完全分类的状态。</p>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>决策树算法</h2>
+<p>上面也提到了, 构建决策树的过程就是寻找最优分割属性,
+然后以 最大化信息增益(ID3, C4.5) 或 基尼不纯度(CART) 的方式一直递归划分下去</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">算法</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>ID3</td>
+<td>其核心是在决策树的各级节点上，
+使用信息增益方法作为属性的选择标准，
+来帮助确定生成每个节点时所采用的合适属性</td>
+</tr>
+<tr><td>C4.5</td>
+<td>C4.5决策树生成算法相对于ID3算法的重要改进
+是使用信息增益率来选择节点属性。
+C4.5算法可以売服ID3算法存在的不足：
+ID3算法只适用于离散的描述属性，
+而C4.5算法既能够处理离散的描述属性，
+也可以处理连续的描述属性</td>
+</tr>
+<tr><td>CART</td>
+<td>CART决策树是一种十分有效的非参数分类和回归方法，
+通过构建树、修剪树、评估树 来构建一个二叉树。
+当终结点是连续变量时，该数为回归树；
+当终结点是分类变量，该数为分类树</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>决策树算法-ID3</h2>
+<p>最大化信息增益, 基于信息熵和信息增益做分类；</p>
+<!-- figure:\: ../../../../resources/images/2024-03-05-10-15-13.png
+:width: 480px -->
+<p>信息增益等于未划分时数据集的信息熵，减去划分之后所有子数据集的信息熵之和。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-05-10-28-25.png" style="width: 480px;" />
+</div>
+<p>( Gain(D,A)表示用特征A划分得到的信息增益，H(D)表示未划分时D的信息熵，H(D|A)表示用特征A划分得到的所有子数据集的信息熵之和 )</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-05-10-29-42.png" style="width: 480px;" />
+</div>
+<p>( Di 表示划分之后得到的子数据集数量，H(D|A) 就是各个子数据集信息熵 H(Di) 的加权求和,权重为子样本数占全部样本的比例 )</p>
+<p>决策树每次对数据集进行划分需要选择最优的划分特征，
+ID3就是对每个特征进行遍历，然后计算按此特征划分后得到的信息增益，
+选择增益最大的特征进行数据集的划分。然后再对每个子数据集进行同样的划分操作。</p>
+<p>缺点：</p>
+<ol class="arabic simple">
+<li>ID3信息增益准则对可取值数目较多的特征有所偏好，比如ID类特征的信息增益可接近于1；</li>
+<li>只能用于处理离散分布的特征，不能处理连续值与缺失值；</li>
+<li>只能用于分类。</li>
+</ol>
+</div>
+<div class="section" id="c4-5">
+<h2>决策树算法-C4.5</h2>
+<p>最大化信息增益率, 基于信息增益率做分类，是ID3的改进版；</p>
+<p>C4.5是为了解决ID3的一个缺点而产生的。
+缺点是啥？如果某个属性的分类很多，也就是分叉超多，那么该属性下的样本就很少，
+此时的信息增益就非常高，ID3这个愣头青就会认为这个属性适合用作划分。
+是，它确实是能划分，但取值较多的属性用作划分依据时，它的泛化能力弱，
+没法对新样本有效预测，所以C4.5不依靠信息增益划分样本，而是依靠“信息增益率”。</p>
+<!-- figure:\: ../../../../resources/images/2024-03-05-10-17-00.png
+:width: 480px -->
+<p>为了克服ID3倾向于取值数目较多的特征的缺陷，
+C4.5在信息增益的基础上添加了分母项，引入了信息增益率，计算公式如下：</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-05-10-57-42.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-05-10-57-54.png" style="width: 480px;" />
+</div>
+<p>分母项Ha会对取值数目较多的特征进行惩罚，
+特征取值数目越多，Ha越大，信息增益率就越小。
+所以很好的解决了ID3的缺点1。
+信息增益率同信息增益，都是越大越好。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">信息增益率虽然解决了倾向于取值较大的特征，但是又引入了倾向于取值较少特征的缺陷，
+所以其选择特征时不是直接选取信息增益率最大的特征，
+而是先从候选特征中找到信息增益高于平均值的特征，再从中选择使增益率最高的作为最优划分特征。</p>
+</div>
+<p>优点：</p>
+<ol class="arabic simple">
+<li>改进ID3倾向于选择取值较多的特征的缺点；</li>
+<li>可处理连续值与缺失值。</li>
+</ol>
+<p>缺点：</p>
+<ol class="arabic simple">
+<li>跟ID3一样只能用于分类；</li>
+<li>计算量较大，计算信息熵有大量的对数运算，以及选取最优特征时，对连续值的排序等。</li>
+</ol>
+</div>
+<div class="section" id="cart">
+<h2>决策树算法-CART</h2>
+<p>基尼不纯度, 基于基尼系数，既可以做分类也可以做回归</p>
+<p>CART决策树（Classification and Regression Tree）独立于另外两种决策树，
+一方面它使用基尼指数（Gini Index）作为划分依据，
+另一方面它既可以做分类，也可以做回归。
+Python中的sklearn决策树模型就是采用的CART来选择分支的。</p>
+<ul class="simple">
+<li>分类树 (Classification Tree)：目标是分类数据、离散数据。例如：动物种类、人的性别。</li>
+<li>回归树 (Regression Tree)：目标是连续的数据。例如：人的年龄、收入</li>
+</ul>
+<p><strong>基尼指数Gini(D)</strong> 反映的是数据集中随机抽取两个样本，
+而他们类别标志不一致的概率。
+（e.g.从100封邮件中随机抽两个，而这两个邮件“是垃圾邮件”和“不是垃圾邮件”的概率）
+基尼指数越小，代表数据集D的纯度越高。</p>
+<!-- figure:\: ../../../../resources/images/2024-03-05-10-18-27.png
+:width: 480px -->
+<p>C5.0又称为CART(分类回归树)，C5.0抛弃了用信息熵来衡量数据集的纯净度，
+使用了一种更简单的计算方式，称为基尼系数，其公式如下</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-05-11-01-41.png" style="width: 480px;" />
+</div>
+<p>Gini(D)表示从D中随机抽取两个样本，这两个样本的标签不一样的概率。
+概率越小，表示同类的样本数越多，数据集D越纯净，这性质与信息熵越大样本越纯净相反。</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-05-11-02-28.png" style="width: 480px;" />
+</div>
+<p>C5.0不再是考量划分前后信息熵的差距，而是基尼系数的差距。
+C5.0的计算过程没有引入log对数计算，所以它的计算复杂度要优于ID3与C4.5。</p>
+<p>优点：</p>
+<ol class="arabic simple">
+<li>使用 Gini 系数来度量样本纯净度，减少了大量的对数运算；</li>
+<li>可同时用于分类与回归；</li>
+</ol>
+<p>缺点：</p>
+<ol class="arabic simple">
+<li>跟ID3一样，都倾向于多取值特征。</li>
+</ol>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-03-05-11-03-36.png" style="width: 480px;" />
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/197476119">【非常详细】通俗易懂的讲解决策树（Decision Tree）</a></li>
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/133838427">一文看懂决策树（Decision Tree）</a></li>
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/361464944">决策树（Decision Tree）（三种原理+步骤）</a></li>
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/162970649">《机器学习》之 深入浅出决策树(原理+代码)</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    构建决策树
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    熵
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      构造依据-熵
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    决策树算法
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#id3">
+    决策树算法-ID3
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#c4-5">
+    决策树算法-C4.5
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#cart">
+    决策树算法-CART
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

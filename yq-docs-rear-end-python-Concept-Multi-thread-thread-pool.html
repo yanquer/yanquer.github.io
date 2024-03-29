@@ -1,0 +1,445 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>多线程-线程池</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xiang-guan.html">概念相关</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>多线程-线程池</h2>
+									<p>参考: <a class="reference external" href="https://c.biancheng.net/view/2627.html">Python线程池及其原理和使用（超级详细）</a></p>
+<p>系统启动一个新线程的成本是比较高的，因为它涉及与操作系统的交互。
+在这种情形下，使用线程池可以很好地提升性能，
+尤其是当程序中需要创建大量生存期很短暂的线程时，更应该考虑使用线程池。</p>
+<p>线程池在系统启动时即创建大量空闲的线程，程序只要将一个函数提交给线程池，
+线程池就会启动一个空闲的线程来执行它。
+当该函数执行结束后，该线程并不会死亡，而是再次返回到线程池中变成空闲状态，等待执行下一个函数。</p>
+<p>此外，使用线程池可以有效地控制系统中并发线程的数量。
+当系统中包含有大量的并发线程时，会导致系统性能急剧下降，
+甚至导致 Python 解释器崩溃，而线程池的最大线程数参数可以控制系统中并发线程的数量不超过此数。</p>
+<div class="section" id="section-2">
+<h2>线程池的使用</h2>
+<p>线程池的基类是 <tt class="docutils literal">concurrent.futures</tt> 模块中的 <tt class="docutils literal">Executor</tt>, <tt class="docutils literal">Executor</tt> 提供了两个子类，
+即 <tt class="docutils literal">ThreadPoolExecutor</tt> 和 <tt class="docutils literal">ProcessPoolExecutor，</tt>
+其中 <tt class="docutils literal">ThreadPoolExecutor</tt> 用于创建线程池，而 <tt class="docutils literal">ProcessPoolExecutor</tt> 用于创建进程池.
+详细参考: <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-Concurrent.html">concurrent</a></p>
+<p>如果使用线程池/进程池来管理并发编程，
+那么只要将相应的 task 函数提交给线程池/进程池，剩下的事情就由线程池/进程池来搞定。</p>
+<p>Exectuor提供的常用方法:</p>
+<pre class="literal-block">
+submit(fn, *args, **kwargs)：
+    将 fn 函数提交给线程池。*args 代表传给 fn 函数的参数，*kwargs 代表以关键字参数的形式为 fn 函数传入参数。
+map(func, *iterables, timeout=None, chunksize=1)
+    该函数类似于全局函数 map(func, *iterables)，只是该函数将会启动多个线程，以异步方式立即对 iterables 执行 map 处理。
+shutdown(wait=True)
+    关闭线程池。
+</pre>
+<p>详见: <em>concurrent-Executor-funs</em></p>
+<p>程序将 task 函数提交（submit）给线程池后，submit 方法会返回一个 Future 对象，
+Future 类主要用于获取线程任务函数的返回值。
+由于线程任务会在新线程中以异步方式执行，
+因此，线程执行的函数相当于一个“将来完成”的任务，所以 Python 使用 Future 来代表。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">实际上，在 Java 的多线程编程中同样有 Future，此处的 Future 与 Java 的 Future 大同小异。</p>
+</div>
+<dl class="docutils">
+<dt>Future 提供了的方法(详见: <em>concurrent-Future</em>)</dt>
+<dd><ul class="first last simple">
+<li>cancel()：取消该 Future 代表的线程任务。如果该任务正在执行，不可取消，则该方法返回 False；否则，程序会取消该任务，并返回 True。</li>
+<li>cancelled()：返回 Future 代表的线程任务是否被成功取消。</li>
+<li>running()：如果该 Future 代表的线程任务正在执行、不可被取消，该方法返回 True。</li>
+<li>done()：如果该 Funture 代表的线程任务被成功取消或执行完成，则该方法返回 True。</li>
+<li>result(timeout=None)：获取该 Future 代表的线程任务最后返回的结果。如果 Future 代表的线程任务还未完成，该方法将会阻塞当前线程，其中 timeout 参数指定最多阻塞多少秒。</li>
+<li>exception(timeout=None)：获取该 Future 代表的线程任务所引发的异常。如果该任务成功完成，没有异常，则该方法返回 None。</li>
+<li>add_done_callback(fn)：为该 Future 代表的线程任务注册一个“回调函数”，当该任务成功完成时，程序会自动触发该 fn 函数。</li>
+</ul>
+</dd>
+</dl>
+<p>在用完一个线程池后，应该调用该线程池的 shutdown() 方法，该方法将启动线程池的关闭序列。
+调用 shutdown() 方法后的线程池不再接收新任务，但会将以前所有的已提交任务执行完成。
+当线程池中的所有任务都执行完成后，该线程池中的所有线程都会死亡。</p>
+<dl class="docutils">
+<dt>使用线程池来执行线程任务的步骤如下:</dt>
+<dd><ul class="first last simple">
+<li>调用 ThreadPoolExecutor 类的构造器创建一个线程池。</li>
+<li>定义一个普通函数作为线程任务。</li>
+<li>调用 ThreadPoolExecutor 对象的 submit() 方法来提交线程任务。</li>
+<li>当不想提交任何任务时，调用 ThreadPoolExecutor 对象的 shutdown() 方法来关闭线程池。</li>
+</ul>
+</dd>
+</dl>
+<p>把 action() 函数提交给线程池时，submit() 方法会返回该任务所对应的 Future 对象，
+程序立即判断 futurel 的 done() 方法，该方法将会返回 False（表明此时该任务还未完成）。
+接下来主程序暂停 3 秒，然后判断 future2 的 done() 方法，如果此时该任务已经完成，那么该方法将会返回 True。
+程序最后通过 Future 的 result() 方法来获取两个异步任务返回的结果。
+当程序使用 Future 的 result() 方法来获取结果时，该方法会阻塞当前线程，
+如果没有指定 timeout 参数，当前线程将一直处于阻塞状态，直到 Future 代表的任务返回:</p>
+<pre class="literal-block">
+from concurrent.futures import ThreadPoolExecutor
+import threading
+import time
+
+# 定义一个准备作为线程任务的函数
+def action(max):
+    my_sum = 0
+    for i in range(max):
+        print(threading.current_thread().name + '  ' + str(i))
+        my_sum += i
+    return my_sum
+# 创建一个包含2条线程的线程池
+pool = ThreadPoolExecutor(max_workers=2)
+# 向线程池提交一个task, 50会作为action()函数的参数
+future1 = pool.submit(action, 50)
+# 向线程池再提交一个task, 100会作为action()函数的参数
+future2 = pool.submit(action, 100)
+# 判断future1代表的任务是否结束
+print(future1.done())
+time.sleep(3)
+# 判断future2代表的任务是否结束
+print(future2.done())
+# 查看future1代表的任务返回的结果
+print(future1.result())
+# 查看future2代表的任务返回的结果
+print(future2.result())
+# 关闭线程池
+pool.shutdown()
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>获取执行结果</h2>
+<p>还是靠 <em>concurrent-Future</em></p>
+<p>调用 Future 的 result() 方法来获取线程任务的运回值，
+但该方法会阻塞当前主线程，只有等到钱程任务完成后，result() 方法的阻塞才会被解除</p>
+<p>如果程序不希望直接调用 result() 方法阻塞线程，
+则可通过 Future 的 add_done_callback() 方法来添加回调函数，
+该回调函数形如 fn(future)。
+当线程任务完成后，程序会自动触发该回调函数，并将对应的 Future 对象作为参数传给该回调函数:</p>
+<pre class="literal-block">
+# 定义一个准备作为线程任务的函数
+def action(max):
+    my_sum = 0
+    for i in range(max):
+        print(threading.current_thread().name + '  ' + str(i))
+        my_sum += i
+    return my_sum
+
+# 创建一个包含2条线程的线程池
+with ThreadPoolExecutor(max_workers=2) as pool:
+    # 向线程池提交一个task, 50会作为action()函数的参数
+    future1 = pool.submit(action, 50)
+    # 向线程池再提交一个task, 100会作为action()函数的参数
+    future2 = pool.submit(action, 100)
+    def get_result(future):
+        print(future.result())
+    # 为future1添加线程完成的回调函数
+    future1.add_done_callback(get_result)
+    # 为future2添加线程完成的回调函数
+    future2.add_done_callback(get_result)
+    print('--------------')
+</pre>
+<p>由于线程池实现了 <strong>上下文管理协议（Context Manage Protocol）</strong> ，
+因此，程序可以使用 with 语句来管理线程池，这样即可避免手动关闭线程池，如上面的程序所示。</p>
+<p>此外，Exectuor 还提供了一个 <tt class="docutils literal">map(func, *iterables, timeout=None, chunksize=1)</tt> 方法，
+该方法的功能类似于全局函数 map()，
+区别在于线程池的 map() 方法会为 iterables 的每个元素启动一个线程，
+以并发方式来执行 func 函数。
+这种方式相当于启动 len(iterables) 个线程，井收集每个线程的执行结果:</p>
+<pre class="literal-block">
+# 创建一个包含4条线程的线程池
+with ThreadPoolExecutor(max_workers=4) as pool:
+    # 使用线程执行map计算
+    # 后面元组有3个元素，因此程序启动3条线程来执行action函数
+    results = pool.map(action, (50, 100, 150))
+    print('--------------')
+    for r in results:
+        print(r)
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    线程池的使用
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    获取执行结果
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,532 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>docker</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+												<li><a class="button button-alt" href="tag/docker.html">Docker</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>docker</h2>
+									<p>对进程进行封装隔离，属于操作系统层面的虚拟化技术。</p>
+<p>利用Docker可以实现开发，测试，生产环境的部署一致性，极大的减少运维成本。</p>
+<p>结构</p>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-07-19-00-07.png" style="width: 480px;" />
+</div>
+<p>简而言之</p>
+<ul class="simple">
+<li>最上层是可写层(容器层), 操作都是在这里进行</li>
+<li>下面的镜像层只读</li>
+<li><dl class="first docutils">
+<dt>容器层的操作遵循 <strong>写时复制</strong>; 当在这里修改一个文件时, 会自顶向下的找文件,</dt>
+<dd>找到后复制到容器层然后修改;
+如果是删除, 也不会删除底层镜像内容, 而只是标记为删除状态.</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="section-1">
+<h2>概述</h2>
+<div class="section" id="section-2">
+<h3>三个基本概念</h3>
+<dl class="docutils">
+<dt>镜像（Image）</dt>
+<dd>Docker 镜像（Image）, 就相当于是一个 root 文件系统。
+比如官方镜像 ubuntu:16.04 就包含了完整的一套 Ubuntu16.04 最小系统的 root 文件系统。</dd>
+<dt>容器（Container）</dt>
+<dd>镜像（Image）和容器（Container）的关系,
+就像是面向对象程序设计中的类和实例一样,
+镜像是静态的定义, 容器是镜像运行时的实体。
+容器可以被创建、启动、停止、删除、暂停等。</dd>
+<dt>仓库（Repository）</dt>
+<dd>仓库可看成一个代码控制中心, 用来保存镜像。</dd>
+</dl>
+<p>Docker 使用客户端-服务器 (C/S) 架构模式, 使用远程API来管理和创建Docker容器。</p>
+<p>Docker 容器通过 Docker 镜像来创建。</p>
+<p>容器与镜像的关系类似于面向对象编程中的对象与类。</p>
+<table border="1" class="docutils align-center">
+<caption>容器与镜像的关系</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Docker</th>
+<th class="head">面向对象</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>容器</td>
+<td>对象</td>
+</tr>
+<tr><td>镜像</td>
+<td>类</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">有个误解, Docker不完全代表容器;
+Docker只是实现了容器技术的一种方式</p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h3>官方一些的释义</h3>
+<p>正式一些说明</p>
+<table border="1" class="docutils align-center">
+<caption>相对官方一些的说明</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">概念</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Docker 镜像(Images)</td>
+<td>Docker 镜像是用于创建 Docker 容器的模板, 比如 Ubuntu 系统。</td>
+</tr>
+<tr><td>Docker 容器(Container)</td>
+<td>容器是独立运行的一个或一组应用, 是镜像运行时的实体。</td>
+</tr>
+<tr><td>Docker 客户端(Client)</td>
+<td>Docker 客户端通过命令行或者其他工具使用 Docker SDK (<a class="reference external" href="https://docs.docker.com/develop/sdk/">https://docs.docker.com/develop/sdk/</a>) 与 Docker 的守护进程通信。</td>
+</tr>
+<tr><td>Docker 主机(Host)</td>
+<td>一个物理或者虚拟的机器用于执行 Docker 守护进程和容器。</td>
+</tr>
+<tr><td>Docker Registry</td>
+<td>Docker 仓库用来保存镜像, 可以理解为代码控制中的代码仓库。Docker Hub([<a class="reference external" href="https://hub.docker.com](https://hub.docker.com/">https://hub.docker.com](https://hub.docker.com/</a>)) 提供了庞大的镜像集合供使用。一个 Docker Registry 中可以包含多个仓库（Repository）；每个仓库可以包含多个标签（Tag）；每个标签对应一个镜像。通常, 一个仓库会包含同一个软件不同版本的镜像, 而标签就常用于对应该软件的各个版本。我们可以通过 <strong>&lt;仓库名&gt;:&lt;标签&gt;</strong> 的格式来指定具体是这个软件哪个版本的镜像。如果不给出标签, 将以 <strong>latest</strong> 作为默认标签。</td>
+</tr>
+<tr><td>Docker Machine</td>
+<td>Docker Machine是一个简化Docker安装的命令行工具, 通过一个简单的命令行即可在相应的平台上安装Docker, 比如VirtualBox、 Digital Ocean、Microsoft Azure。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>安装-服务器版</h2>
+<div class="section" id="section-5">
+<h3>自动安装</h3>
+<div class="topic">
+<p class="topic-title">使用官方安装脚本自动安装</p>
+<p><tt class="docutils literal">curl <span class="pre">-fsSL</span> <span class="pre">https://get.docker.com</span> | bash <span class="pre">-s</span> docker <span class="pre">--mirror</span> Aliyun</tt></p>
+</div>
+<div class="topic">
+<p class="topic-title">使用国内 daocloud 一键安装命令：</p>
+<p><tt class="docutils literal">curl <span class="pre">-sSL</span> <span class="pre">https://get.daocloud.io/docker</span> | sh</tt></p>
+</div>
+</div>
+<div class="section" id="section-6">
+<h3>手动安装</h3>
+<div class="topic">
+<p class="topic-title">卸载旧版本</p>
+<p>Docker 的旧版本被称为 docker, docker.io 或 docker-engine 。如果已安装, 请卸载它们：</p>
+<p><tt class="docutils literal">sudo <span class="pre">apt-get</span> remove docker <span class="pre">docker-engine</span> docker.io containerd runc</tt></p>
+</div>
+<p>当前称为 Docker Engine-Community 软件包 docker-ce 。</p>
+<div class="section" id="docker-1">
+<h4>使用 Docker 仓库进行安装</h4>
+<p>在新主机上首次安装 Docker Engine-Community 之前, 需要设置 Docker 仓库。之后, 您可以从仓库安装和更新 Docker 。</p>
+<div class="topic">
+<p class="topic-title">设置仓库</p>
+<p>更新 apt 包索引: <tt class="docutils literal">$ sudo <span class="pre">apt-get</span> update</tt></p>
+<p>安装 apt 依赖包, 用于通过HTTPS来获取仓库:</p>
+<pre class="code sh literal-block">
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\
+</span>apt-transport-https<span class="w"> </span><span class="se">\
+</span>ca-certificates<span class="w"> </span><span class="se">\
+</span>curl<span class="w"> </span><span class="se">\
+</span>gnupg-agent<span class="w"> </span><span class="se">\
+</span>software-properties-common
+</pre>
+<p>添加 Docker 的官方 GPG 密钥： <tt class="docutils literal">$ curl <span class="pre">-fsSL</span> <span class="pre">https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg</span> | sudo <span class="pre">apt-key</span> add -</tt></p>
+<p>9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88 通过搜索指纹的后8个字符, 验证您现在是否拥有带有指纹的密钥。</p>
+<pre class="code sh literal-block">
+$<span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>fingerprint<span class="w"> </span>0EBFCD88<span class="w">
+
+</span>pub<span class="w">   </span>rsa4096<span class="w"> </span><span class="m">2017</span>-02-22<span class="w"> </span><span class="o">[</span>SCEA<span class="o">]</span><span class="w">
+        </span>9DC8<span class="w"> </span><span class="m">5822</span><span class="w"> </span>9FC7<span class="w"> </span>DD38<span class="w"> </span>854A<span class="w">  </span>E2D8<span class="w"> </span>8D81<span class="w"> </span>803C<span class="w"> </span>0EBF<span class="w"> </span>CD88<span class="w">
+</span>uid<span class="w">           </span><span class="o">[</span><span class="w"> </span>unknown<span class="o">]</span><span class="w"> </span>Docker<span class="w"> </span>Release<span class="w"> </span><span class="o">(</span>CE<span class="w"> </span>deb<span class="o">)</span><span class="w"> </span>&lt;docker&#64;docker.com&gt;<span class="w">
+</span>sub<span class="w">   </span>rsa4096<span class="w"> </span><span class="m">2017</span>-02-22<span class="w"> </span><span class="o">[</span>S<span class="o">]</span>
+</pre>
+<p>使用以下指令设置稳定版仓库</p>
+<pre class="code sh literal-block">
+$<span class="w"> </span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span><span class="se">\
+</span><span class="s2">&quot;deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/ \
+</span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> \
+stable&quot;</span>
+</pre>
+</div>
+<div class="topic">
+<p class="topic-title">安装 Docker Engine-Community</p>
+<p>更新 apt 包索引: <tt class="docutils literal">$ sudo <span class="pre">apt-get</span> update</tt></p>
+<p>安装最新版本的 Docker Engine-Community 和 containerd , 或者转到下一步安装特定版本： <tt class="docutils literal">$ sudo <span class="pre">apt-get</span> install <span class="pre">docker-ce</span> <span class="pre">docker-ce-cli</span> containerd.io</tt></p>
+<p>要安装特定版本的 Docker Engine-Community, 请在仓库中列出可用版本, 然后选择一种安装。列出您的仓库中可用的版本：</p>
+<pre class="code sh literal-block">
+$<span class="w"> </span>apt-cache<span class="w"> </span>madison<span class="w"> </span>docker-ce<span class="w">
+
+</span>docker-ce<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">5</span>:18.09.1~3-0~ubuntu-xenial<span class="w"> </span><span class="p">|</span><span class="w"> </span>https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu<span class="w">  </span>xenial/stable<span class="w"> </span>amd64<span class="w"> </span>Packages<span class="w">
+</span>docker-ce<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">5</span>:18.09.0~3-0~ubuntu-xenial<span class="w"> </span><span class="p">|</span><span class="w"> </span>https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu<span class="w">  </span>xenial/stable<span class="w"> </span>amd64<span class="w"> </span>Packages<span class="w">
+</span>docker-ce<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">18</span>.06.1~ce~3-0~ubuntu<span class="w">       </span><span class="p">|</span><span class="w"> </span>https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu<span class="w">  </span>xenial/stable<span class="w"> </span>amd64<span class="w"> </span>Packages<span class="w">
+</span>docker-ce<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">18</span>.06.0~ce~3-0~ubuntu<span class="w">       </span><span class="p">|</span><span class="w"> </span>https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu<span class="w">  </span>xenial/stable<span class="w"> </span>amd64<span class="w"> </span>Packages<span class="w">
+</span>...
+</pre>
+<p>使用第二列中的版本字符串安装特定版本, 例如 5:18.09.1~3-0~ubuntu-xenial: <tt class="docutils literal">$ sudo <span class="pre">apt-get</span> install <span class="pre">docker-ce=&lt;VERSION_STRING&gt;</span> <span class="pre">docker-ce-cli=&lt;VERSION_STRING&gt;</span> containerd.io</tt></p>
+<p>测试 Docker 是否安装成功, 输入以下指令, 打印出以下信息则安装成功:</p>
+<pre class="code sh literal-block">
+$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world<span class="w">
+
+</span>Unable<span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>image<span class="w"> </span><span class="s1">'hello-world:latest'</span><span class="w"> </span>locally<span class="w">
+</span>latest:<span class="w"> </span>Pulling<span class="w"> </span>from<span class="w"> </span>library/hello-world<span class="w">
+</span>1b930d010525:<span class="w"> </span>Pull<span class="w"> </span><span class="nb">complete</span><span class="w">                                                                                                                                  </span>Digest:<span class="w"> </span>sha256:c3b4ada4687bbaa170745b3e4dd8ac3f194ca95b2d0518b417fb47e5879d9b5f<span class="w">
+</span>Status:<span class="w"> </span>Downloaded<span class="w"> </span>newer<span class="w"> </span>image<span class="w"> </span><span class="k">for</span><span class="w"> </span>hello-world:latest<span class="w">
+
+
+</span>Hello<span class="w"> </span>from<span class="w"> </span>Docker!<span class="w">
+</span>This<span class="w"> </span>message<span class="w"> </span>shows<span class="w"> </span>that<span class="w"> </span>your<span class="w"> </span>installation<span class="w"> </span>appears<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>working<span class="w"> </span>correctly.<span class="w">
+
+
+</span>To<span class="w"> </span>generate<span class="w"> </span>this<span class="w"> </span>message,<span class="w"> </span>Docker<span class="w"> </span>took<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>steps:<span class="w">
+</span><span class="m">1</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>client<span class="w"> </span>contacted<span class="w"> </span>the<span class="w"> </span>Docker<span class="w"> </span>daemon.<span class="w">
+</span><span class="m">2</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>daemon<span class="w"> </span>pulled<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;hello-world&quot;</span><span class="w"> </span>image<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>Docker<span class="w"> </span>Hub.<span class="w">
+        </span><span class="o">(</span>amd64<span class="o">)</span><span class="w">
+</span><span class="m">3</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>daemon<span class="w"> </span>created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>container<span class="w"> </span>from<span class="w"> </span>that<span class="w"> </span>image<span class="w"> </span>which<span class="w"> </span>runs<span class="w"> </span>the<span class="w">
+        </span>executable<span class="w"> </span>that<span class="w"> </span>produces<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>currently<span class="w"> </span>reading.<span class="w">
+</span><span class="m">4</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>daemon<span class="w"> </span>streamed<span class="w"> </span>that<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>Docker<span class="w"> </span>client,<span class="w"> </span>which<span class="w"> </span>sent<span class="w"> </span>it<span class="w">
+        </span>to<span class="w"> </span>your<span class="w"> </span>terminal.<span class="w">
+
+
+</span>To<span class="w"> </span>try<span class="w"> </span>something<span class="w"> </span>more<span class="w"> </span>ambitious,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>run<span class="w"> </span>an<span class="w"> </span>Ubuntu<span class="w"> </span>container<span class="w"> </span>with:<span class="w">
+</span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>ubuntu<span class="w"> </span>bash<span class="w">
+
+
+</span>Share<span class="w"> </span>images,<span class="w"> </span>automate<span class="w"> </span>workflows,<span class="w"> </span>and<span class="w"> </span>more<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>free<span class="w"> </span>Docker<span class="w"> </span>ID:<span class="w">
+</span>https://hub.docker.com/<span class="w">
+
+
+</span>For<span class="w"> </span>more<span class="w"> </span>examples<span class="w"> </span>and<span class="w"> </span>ideas,<span class="w"> </span>visit:<span class="w">
+</span>https://docs.docker.com/get-started/
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    概述
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      三个基本概念
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      官方一些的释义
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    安装-服务器版
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      自动安装
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      手动安装
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#docker-1">
+        使用 Docker 仓库进行安装
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

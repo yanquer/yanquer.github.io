@@ -1,0 +1,526 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>使用 mdadm 工具创建软件 RAID 0 (条带化)</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 23 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+												<li><a class="button button-alt" href="tag/raid.html">Raid</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-23</div>
+									<h2>使用 mdadm 工具创建软件 RAID 0 (条带化)</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li>作者: <a class="reference external" href="http://www.tecmint.com/create-raid0-in-linux/">&lt;Babin Lonston</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/">LCTT</a></li>
+<li>译者: <a class="reference external" href="https://linux.cn/lctt/strugglingyouth">struggling</a></li>
+<li>&lt;<a class="reference external" href="https://linux.cn/portal.php?mod=comment&amp;id=6087&amp;idtype=aid">https://linux.cn/portal.php?mod=comment&amp;id=6087&amp;idtype=aid</a>&gt;`_</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模环境中，相比正常使用，数据更需要被保护。
+RAID 是一些磁盘的集合，是包含一个阵列的逻辑卷。驱动器可以组合起来成为一个阵列或称为（组的）集合。</p>
+<p>创建 RAID 最少应使用2个连接到 RAID 控制器的磁盘组成，来构成逻辑卷，
+可以根据定义的 RAID 级别将更多的驱动器添加到一个阵列中。
+不使用物理硬件创建的 RAID 被称为软件 RAID。软件 RAID 也叫做穷人 RAID。</p>
+<p>使用 RAID 的主要目的是为了在发生单点故障时保存数据，
+如果我们使用单个磁盘来存储数据，如果它损坏了，
+那么就没有机会取回我们的数据了，
+为了防止数据丢失我们需要一个容错的方法。
+所以，我们可以使用多个磁盘组成 RAID 阵列。</p>
+<div class="section" id="raid-0">
+<h2>在 RAID 0 中条带是什么</h2>
+<p>条带是通过将数据在同时分割到多个磁盘上。
+假设我们有两个磁盘，如果我们将数据保存到该逻辑卷上，它会将数据保存在两个磁盘上。
+使用 RAID 0 是为了获得更好的性能，但是如果驱动器中一个出现故障，我们将不能得到完整的数据。
+因此，使用 RAID 0 不是一种好的做法。唯一的解决办法就是安装有 RAID 0 逻辑卷的操作系统来提高重要文件的安全性。</p>
+<ul class="simple">
+<li>RAID 0 性能较高。</li>
+<li>在 RAID 0 上，空间零浪费。</li>
+<li>零容错（如果硬盘中的任何一个发生故障，无法取回数据）。</li>
+<li>写和读性能都很好。</li>
+</ul>
+</div>
+<div class="section" id="section-1">
+<h2>要求</h2>
+<p>创建 RAID 0 允许的最小磁盘数目是2个，但你可以添加更多的磁盘，
+不过数目应该是2，4，6，8等的偶数。
+如果你有一个物理 RAID 卡并且有足够的端口，你可以添加更多磁盘。</p>
+<p>在这里，我们没有使用硬件 RAID，此设置只需要软件 RAID。
+如果我们有一个物理硬件 RAID 卡，我们可以从它的功能界面访问它。
+有些主板默认内建 RAID 功能，还可以使用 Ctrl + I 键访问它的界面。</p>
+<p>关于 RAID 基本的概念: <a class="reference external" href="/yq-docs-operating-system-linux-Tutorial-Raid-RAID-level-and-concept.html">RAID 的级别和概念</a></p>
+<p>我的服务器设置:</p>
+<pre class="literal-block">
+- 操作系统  :  CentOS 6.5 FinalIP
+- 地址      :  192.168.0.225
+- 两块盘    :  20 GB each
+</pre>
+<p>这是9篇系列教程的第2部分，在这部分，我们将看看如何能够在 Linux 上创建和使用 RAID 0（条带化），以名为 sdb 和 sdc 两个 20GB 的硬盘为例。</p>
+</div>
+<div class="section" id="raid-mdadm">
+<h2>第1步：更新系统和安装管理 RAID 的 mdadm 软件</h2>
+<p>在 Linux 上设置 RAID 0 前，我们先更新一下系统，然后安装 <cite>mdadm</cite> 包。
+mdadm 是一个小程序，这将使我们能够在Linux下配置和管理 RAID 设备:</p>
+<pre class="literal-block">
+yum clean all &amp;&amp; yum update### yum install mdadm -y
+</pre>
+</div>
+<div class="section" id="gb">
+<h2>第2步：确认连接了两个 20GB 的硬盘</h2>
+<p>在创建 RAID 0 前，请务必确认两个硬盘能被检测到，使用下面的命令确认:</p>
+<pre class="literal-block">
+ls -l /dev | grep sd
+</pre>
+<p>一旦检测到新的硬盘驱动器，
+同时检查是否连接的驱动器已经被现有的 RAID 使用，使用下面的 <cite>mdadm</cite> 命令来查看:</p>
+<pre class="literal-block">
+mdadm --examine /dev/sd[b-c]
+</pre>
+<!-- 从上面的输出我们可以看到，没有任何 RAID 使用 sdb 和 sdc 这两个驱动器。 -->
+</div>
+<div class="section" id="raid">
+<h2>第3步：创建 RAID 分区</h2>
+<p>现在用 sdb 和 sdc 创建 RAID 的分区，使用 fdisk 命令来创建。
+在这里，我将展示如何创建 sdb 驱动器上的分区:</p>
+<pre class="literal-block">
+fdisk /dev/sdb
+</pre>
+<p>请按照以下说明创建分区。</p>
+<ul class="simple">
+<li>按 <cite>n</cite> 创建新的分区。</li>
+<li>然后按 <cite>P</cite> 选择主分区。</li>
+<li>接下来选择分区号为1。</li>
+<li>只需按两次回车键选择默认值即可。</li>
+<li>然后，按 <cite>P</cite> 来显示创建好的分区。</li>
+</ul>
+<p>请按照以下说明将分区创建为 Linux 的 RAID 类型。</p>
+<ul class="simple">
+<li>按 <cite>L</cite>，列出所有可用的类型。</li>
+<li>按 <cite>t</cite> 去修改分区。</li>
+<li>键入 <cite>fd</cite> 设置为 Linux 的 RAID 类型，然后按回车确认。</li>
+<li>然后再次使用 <cite>p</cite> 查看我们所做的更改。</li>
+<li>使用 <cite>w</cite> 保存更改。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">请使用上述步骤同样在 sdc 驱动器上创建分区。</p>
+</div>
+<p>创建分区后，验证这两个驱动器是否正确定义 RAID，使用下面的命令:</p>
+<pre class="literal-block">
+mdadm --examine /dev/sd[b-c]### mdadm --examine /dev/sd[b-c]1
+</pre>
+</div>
+<div class="section" id="raid-md">
+<h2>第4步：创建 RAID md 设备</h2>
+<p>现在使用以下命令创建 md 设备（即 /dev/md0），并选择 RAID 合适的级别:</p>
+<pre class="literal-block">
+mdadm -C /dev/md0 -l raid0 -n 2 /dev/sd[b-c]1### mdadm --create /dev/md0 --level=stripe --raid-devices=2 /dev/sd[b-c]1
+</pre>
+<ul class="simple">
+<li>-C – 创建</li>
+<li>-l – 级别</li>
+<li>-n – RAID 设备数</li>
+</ul>
+<p>一旦 md 设备已经建立，使用如下命令可以查看 RAID 级别，设备和阵列的使用状态:</p>
+<pre class="literal-block">
+cat /proc/mdstat
+</pre>
+<p>查看 RAID 级别:</p>
+<pre class="literal-block">
+mdadm -E /dev/sd[b-c]1
+</pre>
+<p>查看 RAID 设备:</p>
+<pre class="literal-block">
+mdadm --detail /dev/md0
+</pre>
+<p>查看 RAID 阵列</p>
+</div>
+<div class="section" id="raid-1">
+<h2>第5步：给 RAID 设备创建文件系统</h2>
+<p>将 RAID 设备 /dev/md0 创建为 ext4 文件系统，并挂载到 /mnt/raid0 下:</p>
+<pre class="literal-block">
+mkfs.ext4 /dev/md0
+</pre>
+<p>在 RAID 设备上创建好 ext4 文件系统后，现在创建一个挂载点（即 /mnt/raid0），并将设备 /dev/md0 挂载在它下:</p>
+<pre class="literal-block">
+mkdir /mnt/raid0### mount /dev/md0 /mnt/raid0/
+</pre>
+<p>下一步，使用 df 命令验证设备 /dev/md0 是否被挂载在 /mnt/raid0 下:</p>
+<pre class="literal-block">
+df -h
+</pre>
+<p>接下来，在挂载点 /mnt/raid0 下创建一个名为 <cite>tecmint.txt</cite> 的文件，
+为创建的文件添加一些内容，并查看文件和目录的内容:</p>
+<pre class="literal-block">
+touch /mnt/raid0/tecmint.txt
+echo &quot;Hi everyone how you doing ?&quot; &gt; /mnt/raid0/tecmint.txt
+cat /mnt/raid0/tecmint.txt
+ls -l /mnt/raid0/
+</pre>
+<p>当你验证挂载点后，就可以将它添加到 /etc/fstab 文件中(<em>添加设备到 fstab 文件中</em>):</p>
+<pre class="literal-block">
+vim /etc/fstab
+</pre>
+<p>添加以下条目，根据你的安装位置和使用文件系统的不同，自行做修改:</p>
+<pre class="literal-block">
+/dev/md0                /mnt/raid0              ext4    deaults         0 0
+</pre>
+<p>使用 mount 命令的 <cite>-a</cite> 来检查 fstab 的条目是否有误:</p>
+<pre class="literal-block">
+mount -av
+</pre>
+</div>
+<div class="section" id="raid-2">
+<h2>第6步：保存 RAID 配置</h2>
+<p>最后，保存 RAID 配置到一个文件中，以供将来使用。
+我们再次使用带有 <cite>-s</cite> (scan) 和 <cite>-v</cite> (verbose) 选项的 <cite>mdadm</cite></p>
+<pre class="literal-block">
+mdadm -E -s -v &gt;&gt; /etc/mdadm.conf### mdadm --detail --scan --verbose &gt;&gt; /etc/mdadm.conf  ### cat /etc/mdadm.conf
+</pre>
+<p>就这样，我们在这里看到，如何通过使用两个硬盘配置具有条带化的 RAID 0 。在接下来的文章中，我们将看到如何设置 RAID 1。</p>
+<p>最新评论:</p>
+<pre class="literal-block">
+- 来自北京的 Chrome 43.0|Windows 7 用户 2015-12-02 12:46.4 赞
+  `&lt;https://linux.cn/portal.php?mod=review&amp;action=postreview&amp;do=support&amp;idtype=aid&amp;tid=6087&amp;pid=36536&amp;hash=5522402f&gt;`_
+  `回复 &lt;https://linux.cn/portal.php?mod=portalcp&amp;ac=comment&amp;op=reply&amp;cid=36536&amp;aid=6087&amp;idtype=&gt;`_
+  这年头还搞软raid，让硬件生产商如何生活
+
+- `XYJK1002 [Chrome 42.0|Windows 7\] &lt;https://linux.cn/space/20893/&gt;`_ 2015-10-03 19:139 赞
+  `&lt;https://linux.cn/portal.php?mod=review&amp;action=postreview&amp;do=support&amp;idtype=aid&amp;tid=6087&amp;pid=35399&amp;hash=5522402f&gt;`_
+  `回复 &lt;https://linux.cn/portal.php?mod=portalcp&amp;ac=comment&amp;op=reply&amp;cid=35399&amp;aid=6087&amp;idtype=&gt;`_
+  讨论的这么激烈。。。
+
+- `linux [Chrome 44.0|Mac 10.10\] &lt;https://linux.cn/space/1/&gt;`_ 2015-08-28 09:013 赞
+  `&lt;https://linux.cn/portal.php?mod=review&amp;action=postreview&amp;do=support&amp;idtype=aid&amp;tid=6087&amp;pid=34761&amp;hash=5522402f&gt;`_
+  `回复 &lt;https://linux.cn/portal.php?mod=portalcp&amp;ac=comment&amp;op=reply&amp;cid=34761&amp;aid=6087&amp;idtype=&gt;`_
+  系统崩溃时，输出的数据没准都是错误的，硬件 RAID 卡也无法防范这点。只是避免了在 IO 系统将数据送到 RAID 卡后的错误。
+
+- 来自云南昆明的 Chrome 41.0|Windows 7 用户 2015-08-26 11:274 赞
+  `&lt;https://linux.cn/portal.php?mod=review&amp;action=postreview&amp;do=support&amp;idtype=aid&amp;tid=6087&amp;pid=34719&amp;hash=5522402f&gt;`_
+  `回复 &lt;https://linux.cn/portal.php?mod=portalcp&amp;ac=comment&amp;op=reply&amp;cid=34719&amp;aid=6087&amp;idtype=&gt;`_
+  以前建 RAID5 时，重启后 /dev/md0 名字就变了，也不知道怎么改回来，后面才知道是 /etc/mdadm.conf 的问题
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#raid-0">
+    在 RAID 0 中条带是什么
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    要求
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-mdadm">
+    第1步：更新系统和安装管理 RAID 的 mdadm 软件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#gb">
+    第2步：确认连接了两个 20GB 的硬盘
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid">
+    第3步：创建 RAID 分区
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-md">
+    第4步：创建 RAID md 设备
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-1">
+    第5步：给 RAID 设备创建文件系统
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#raid-2">
+    第6步：保存 RAID 配置
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,432 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>psutil</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>psutil</h2>
+									<p>便捷的系统监控工具.</p>
+<p>安装:</p>
+<pre class="literal-block">
+pip install psutil
+</pre>
+<div class="section" id="cpu">
+<h2>获取cpu信息</h2>
+<p>获取cpu信息:</p>
+<pre class="literal-block">
+psutil.cpu_times()
+</pre>
+</div>
+<div class="section" id="section-1">
+<h2>获取内存信息</h2>
+<p>使用psutil获取物理内存和交换内存信息，分别使用:</p>
+<pre class="literal-block">
+psutil.virtual_memory()
+psutil.swap_memory()
+</pre>
+</div>
+<div class="section" id="section-2">
+<h2>获取磁盘信息</h2>
+<p>可以通过psutil获取磁盘分区、磁盘使用率和磁盘IO信息:</p>
+<pre class="literal-block">
+psutil.disk_partitions() # 磁盘分区信息
+psutil.disk_usage('/') # 磁盘使用情况
+psutil.disk_io_counters() # 磁盘IO
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>获取网络信息</h2>
+<p>psutil可以获取网络接口和网络连接信息:</p>
+<pre class="literal-block">
+psutil.net_io_counters() # 获取网络读写字节／包的个数
+psutil.net_if_addrs() # 获取网络接口信息
+psutil.net_if_stats() # 获取网络接口状态
+</pre>
+<p>要获取当前网络连接信息，使用net_connections():</p>
+<pre class="literal-block">
+psutil.net_connections()
+</pre>
+<p>若权限不足需要获取权限, 如 <tt class="docutils literal">sudo</tt> 启动 (因为会调用系统的接口)</p>
+</div>
+<div class="section" id="section-4">
+<h2>获取进程信息</h2>
+<p>通过psutil可以获取到所有进程的详细信息:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; psutil.pids() # 所有进程ID
+[3865, 3864, 3863, 3856, 3855, 3853, 3776, ..., 45, 44, 1, 0]
+&gt;&gt;&gt; p = psutil.Process(3776) # 获取指定进程ID=3776，其实就是当前Python交互环境
+&gt;&gt;&gt; p.name() # 进程名称
+'python3.6'
+&gt;&gt;&gt; p.exe() # 进程exe路径
+'/Users/michael/anaconda3/bin/python3.6'
+&gt;&gt;&gt; p.cwd() # 进程工作目录
+'/Users/michael'
+&gt;&gt;&gt; p.cmdline() # 进程启动的命令行
+['python3']
+&gt;&gt;&gt; p.ppid() # 父进程ID
+3765
+&gt;&gt;&gt; p.parent() # 父进程
+&lt;psutil.Process(pid=3765, name='bash') at 4503144040&gt;
+&gt;&gt;&gt; p.children() # 子进程列表
+[]
+&gt;&gt;&gt; p.status() # 进程状态
+'running'
+&gt;&gt;&gt; p.username() # 进程用户名
+'michael'
+&gt;&gt;&gt; p.create_time() # 进程创建时间
+1511052731.120333
+&gt;&gt;&gt; p.terminal() # 进程终端
+'/dev/ttys002'
+&gt;&gt;&gt; p.cpu_times() # 进程使用的CPU时间
+pcputimes(user=0.081150144, system=0.053269812, children_user=0.0, children_system=0.0)
+&gt;&gt;&gt; p.memory_info() # 进程使用的内存
+pmem(rss=8310784, vms=2481725440, pfaults=3207, pageins=18)
+&gt;&gt;&gt; p.open_files() # 进程打开的文件
+[]
+&gt;&gt;&gt; p.connections() # 进程相关网络连接
+[]
+&gt;&gt;&gt; p.num_threads() # 进程的线程数量
+1
+&gt;&gt;&gt; p.threads() # 所有线程信息
+[pthread(id=1, user_time=0.090318, system_time=0.062736)]
+&gt;&gt;&gt; p.environ() # 进程环境变量
+{'SHELL': '/bin/bash', 'PATH': '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:...', 'PWD': '/Users/michael', 'LANG': 'zh_CN.UTF-8', ...}
+&gt;&gt;&gt; p.terminate() # 结束进程
+Terminated: 15 &lt;-- 自己把自己结束了
+</pre>
+<p>和获取网络连接类似，获取一个root用户的进程需要root权限，启动Python交互环境或者.py文件时，需要sudo权限。</p>
+<p>psutil还提供了一个test()函数，可以模拟出ps命令的效果:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import psutil
+&gt;&gt;&gt; psutil.test()
+USER         PID %MEM     VSZ     RSS TTY           START    TIME  COMMAND
+root           0 24.0 74270628 2016380 ?             Nov18   40:51  kernel_task
+root           1  0.1 2494140    9484 ?             Nov18   01:39  launchd
+root          44  0.4 2519872   36404 ?             Nov18   02:02  UserEventAgent
+root          45    ? 2474032    1516 ?             Nov18   00:14  syslogd
+root          47  0.1 2504768    8912 ?             Nov18   00:03  kextd
+root          48  0.1 2505544    4720 ?             Nov18   00:19  fseventsd
+_appleeven    52  0.1 2499748    5024 ?             Nov18   00:00  appleeventsd
+root          53  0.1 2500592    6132 ?             Nov18   00:02  configd
+...
+</pre>
+</div>
+<div class="section" id="section-5">
+<h2>使用技巧</h2>
+<p>例如用来回收自己残留的子进程:</p>
+<pre class="literal-block">
+_pid = os.getpid()
+
+pro = psutil.Process(_pid)
+pro.terminate()
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#cpu">
+    获取cpu信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    获取内存信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    获取磁盘信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    获取网络信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    获取进程信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    使用技巧
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

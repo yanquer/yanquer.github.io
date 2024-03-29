@@ -1,0 +1,1267 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>数字/日期/时间</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/cookbook.html">Cookbook</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>数字/日期/时间</h2>
+									<div class="section" id="section-2">
+<h2>数字的四舍五入</h2>
+<ul class="simple">
+<li>round(value, ndigits), 不过当取数的值为5时有点特殊, 见 <a class="reference external" href="/yq-docs-rear-end-python-Built--in-function-round.html">round</a></li>
+</ul>
+<p>当一个值刚好在两个边界的中间的时候，round 函数返回离它最近的偶数。也就是 说，对 1.5 或者 2.5 的舍入运算都会得到 2。</p>
+<p>传给 round() 函数的 ndigits 参数可以是负数，这种情况下，舍入运算会作用在 十位、百位、千位等上面。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = 1627731
+&gt;&gt;&gt; round(a, -1)
+1627730
+&gt;&gt;&gt; round(a, -2)
+1627700
+&gt;&gt;&gt; round(a, -3)
+1628000
+&gt;&gt;&gt;
+</pre>
+<p>如果你的目的只是简单的输出一定宽度的数， 你不需要使用 round() 函数。而仅仅只需要在格式化的时候指定精度即可:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 1.23456
+&gt;&gt;&gt; format(x, '0.2f')
+'1.23'
+&gt;&gt;&gt; format(x, '0.3f')
+'1.235'
+&gt;&gt;&gt; 'value is {:0.3f}'.format(x)
+'value is 1.235'
+&gt;&gt;&gt;
+</pre>
+<p>不要试着去舍入浮点值来”修正”表面上看起来正确的问题。比如，你可能 倾向于这样做:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = 2.1
+&gt;&gt;&gt; b = 4.2
+&gt;&gt;&gt; c = a + b
+&gt;&gt;&gt; c
+6.300000000000001
+&gt;&gt;&gt; c = round(c, 2) # &quot;Fix&quot; result (???)
+&gt;&gt;&gt; c
+6.3
+&gt;&gt;&gt;
+</pre>
+<p>对于大多数使用到浮点的程序，没有必要也不推荐这样做。
+尽管在计算的时候会有 一点点小的误差，但是这些小的误差是能被理解与容忍的。
+如果不能允许这样的小误差 (比如涉及到金融领域)，那么就得考虑使用 decimal 模块了</p>
+</div>
+<div class="section" id="section-3">
+<h2>精确的浮点数运算</h2>
+<ul class="simple">
+<li>decimal</li>
+<li>math</li>
+</ul>
+<p>需要对浮点数执行精确的计算操作，并且不希望有任何小误差的出现</p>
+<p>浮点数的一个普遍问题是它们并不能精确的表示十进制数。并且，即使是最简单的 数学运算也会产生小的误差，比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = 4.2
+&gt;&gt;&gt; b = 2.1
+&gt;&gt;&gt; a + b
+6.300000000000001
+&gt;&gt;&gt; (a + b) == 6.3
+False
+&gt;&gt;&gt;
+</pre>
+<p>这些错误是由底层 CPU 和 IEEE 754 标准通过自己的浮点单位去执行算术时的特 征。
+由于 Python 的浮点数据类型使用底层表示存储数据，因此你没办法去避免这样的 误差。</p>
+<p>如果你想更加精确 (并能容忍一定的性能损耗)，你可以使用 decimal 模块:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from decimal import Decimal
+&gt;&gt;&gt; a = Decimal('4.2')
+&gt;&gt;&gt; b = Decimal('2.1')
+&gt;&gt;&gt; a + b
+Decimal('6.3')
+&gt;&gt;&gt; print(a + b)
+6.3
+&gt;&gt;&gt; (a + b) == Decimal('6.3')
+True
+</pre>
+<p>有个看起来比较奇怪的是 用字符串来表示数字.</p>
+<p>decimal 模块的一个主要特征是允许你控制计算的每一方面，包括数字位数和四 舍五入运算。
+为了这样做，你先得创建一个本地上下文并更改它的设置:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from decimal import localcontext
+&gt;&gt;&gt; a = Decimal('1.3')
+&gt;&gt;&gt; b = Decimal('1.7')
+&gt;&gt;&gt; print(a / b)
+0.7647058823529411764705882353
+&gt;&gt;&gt; with localcontext() as ctx:
+... ctx.prec = 3
+... print(a / b) ...
+0.765
+&gt;&gt;&gt; with localcontext() as ctx:
+... ctx.prec = 50
+... print(a / b)
+... 0.76470588235294117647058823529411764705882352941176
+&gt;&gt;&gt;
+</pre>
+<p>新手会倾向于使用 decimal 模块来处理浮点数的精确运算。
+然而，先理解 你的应用程序目的是非常重要的。
+如果你是在做科学计算或工程领域的计算、电脑绘 图，或者是科学领域的大多数运算，那么使用普通的浮点类型是比较普遍的做法。
+其中 一个原因是，在真实世界中很少会要求精确到普通浮点数能提供的 17 位精度。
+因此， 计算过程中的那么一点点的误差是被允许的。
+第二点就是，原生的浮点数计算要快的 多-有时候你在执行大量运算的时候速度也是非常重要的。
+即便如此，你却不能完全忽略误差。</p>
+<p>数学家花了大量时间去研究各类算法，有些处 理误差会比其他方法更好。你也得注意下减法删除以及大数和小数的加分运算所带来
+的影响。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; nums = [1.23e+18, 1, -1.23e+18]
+&gt;&gt;&gt; sum(nums) # Notice how 1 disappears
+0.0
+&gt;&gt;&gt;
+</pre>
+<p>上面的错误可以利用 math.fsum() 所提供的更精确计算能力来解决:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; math.fsum(nums) 1.0
+&gt;&gt;&gt;
+</pre>
+<p>math详情见: <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-math.html">math</a></p>
+<p>然而，对于其他的算法，你应该仔细研究它并理解它的误差产生来源。</p>
+<p>总的来说，decimal 模块主要用在涉及到金融的领域。
+在这类程序中，哪怕是一点 小小的误差在计算过程中蔓延都是不允许的。
+因此，decimal 模块为解决这类问题提供 了方法。
+当 Python 和数据库打交道的时候也通常会遇到 Decimal 对象，并且，通常也 是在处理金融数据的时候。</p>
+</div>
+<div class="section" id="section-4">
+<h2>数字的格式化输出</h2>
+<p>将数字格式化后输出，并控制数字的位数、对齐、千位分隔符和其他的细节。</p>
+<p>格式化输出单个数字的时候，可以使用内置的 format() 函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 1234.56789
+&gt;&gt;&gt; # Two decimal places of accuracy
+&gt;&gt;&gt; format(x, '0.2f')
+'1234.57'
+&gt;&gt;&gt; # 右对齐10个字符，一位数精度
+&gt;&gt;&gt; format(x, '&gt;10.1f')
+' 1234.6'
+&gt;&gt;&gt; # Left justified
+&gt;&gt;&gt; format(x, '&lt;10.1f')
+'1234.6 '
+&gt;&gt;&gt; # Centered
+&gt;&gt;&gt; format(x, '^10.1f')
+' 1234.6 '
+&gt;&gt;&gt; # Inclusion of thousands separator
+&gt;&gt;&gt; format(x, ',')
+'1,234.56789'
+&gt;&gt;&gt; format(x, '0,.1f')
+'1,234.6'
+&gt;&gt;&gt;
+</pre>
+<p>使用指数记法，将 f 改成 e 或者 E(取决于指数输出的大小写形式):</p>
+<pre class="literal-block">
+&gt;&gt;&gt; format(x, 'e')
+'1.234568e+03'
+&gt;&gt;&gt; format(x, '0.2E')
+'1.23E+03'
+&gt;&gt;&gt;
+</pre>
+<p>同时指定宽度和精度的一般形式是 '[&lt;&gt;^]?width[,]?(.digits)?' ，
+其中 width 和 digits 为整数，?代表可选部分。
+同样的格式也被用在字符串的 format() 方法中:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; 'The value is {:0,.2f}'.format(x)
+'The value is 1,234.57'
+&gt;&gt;&gt;
+</pre>
+<p>数字格式化输出通常是比较简单的。上面演示的技术同时适用于浮点数和decimal 模块中的 Decimal 数字对象。</p>
+<p>当指定数字的位数后，结果值会根据 round() 函数同样的规则进行四舍五入后返 回:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x
+1234.56789
+&gt;&gt;&gt; format(x, '0.1f')
+'1234.6'
+&gt;&gt;&gt; format(-x, '0.1f')
+'-1234.6'
+&gt;&gt;&gt;
+</pre>
+<p>包含千位符的格式化跟本地化没有关系。如果你需要根据地区来显示千位符，你 需要自己去调查下 locale 模块中的函数了。
+同样也可以使用字符串的 translate() 方法来交换千位符:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; swap_separators = { ord('.'):',', ord(','):'.' }
+&gt;&gt;&gt; format(x, ',').translate(swap_separators)
+'1.234,56789'
+&gt;&gt;&gt;
+</pre>
+<p>使用 % 来格式化数字也是可行的，不过比更加先进的 format() 要差一点。
+比如，在使 用 % 操作符格式化数字的时候，一些特性 (添加千位符) 并不能被支持:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; '%0.2f' % x
+'1234.57'
+&gt;&gt;&gt; '%10.1f' % x
+' 1234.6'
+&gt;&gt;&gt; '%-10.1f' % x
+'1234.6 '
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-5">
+<h2>二/八/十六进制整数</h2>
+<p>需要转换或者输出使用二进制，八进制或十六进制表示的整数</p>
+<p>bin, 十进制整数转二进制:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 1234
+&gt;&gt;&gt; bin(x)
+'0b10011010010'
+</pre>
+<p>oct, 十进制整数转八进制:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; oct(x)
+'0o2322'
+</pre>
+<dl class="docutils">
+<dt>hex, 十进制整数转十六进制::</dt>
+<dd><pre class="first last doctest-block">
+&gt;&gt;&gt; hex(x)
+'0x4d2'
+&gt;&gt;&gt;
+</pre>
+</dd>
+</dl>
+<p>如果你不想输出 0b , 0o 或者 0x 的前缀的话，可以使用 format() 函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; format(x, 'b')
+'10011010010'
+&gt;&gt;&gt; format(x, 'o')
+'2322'
+&gt;&gt;&gt; format(x, 'x')
+'4d2'
+&gt;&gt;&gt;
+</pre>
+<p>如果你想产生一个无符号值，你需要增加一个指示最大位长度的值。比如为了显示 32 位的值:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = -1234
+&gt;&gt;&gt; format(2**32 + x, 'b')
+'11111111111111111111101100101110'
+&gt;&gt;&gt; format(2**32 + x, 'x')
+'fffffb2e'
+&gt;&gt;&gt;
+</pre>
+<p>为了以不同的进制转换整数字符串，简单的使用带有进制的 int() 函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; int('4d2', 16)
+1234
+&gt;&gt;&gt; int('10011010010', 2)
+1234
+&gt;&gt;&gt;
+</pre>
+<p>Python 指定八进制数的语法跟其 他语言稍有不同。比如，如果你像下面这样指定八进制，会出现语法错误:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.chmod('script.py', 0755)
+    File &quot;&lt;stdin&gt;&quot;, line 1
+        os.chmod('script.py', 0755)
+                            ^
+SyntaxError: invalid token
+&gt;&gt;&gt;
+</pre>
+<p>需确保八进制数的前缀是 0o</p>
+<pre class="literal-block">
+os.chmod('script.py', 0o755)
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>字节到大整数的打包与解包</h2>
+<p>有一个字节字符串并想将它解压成一个整数。或者，你需要将一个大整数转换为 一个字节字符串。</p>
+<p>将 bytes 解析为整数，使用 int.from_bytes() 方法，并像下面这样指定字节 顺序:</p>
+<pre class="literal-block">
+# 128 bit , 16 元素
+data = b'\x00\x124V\x00x\x90\xab\x00\xcd\xef\x01\x00#\x004'
+
+&gt;&gt;&gt; len(data)
+16
+&gt;&gt;&gt; int.from_bytes(data, 'little')
+69120565665751139577663547927094891008
+&gt;&gt;&gt; int.from_bytes(data, 'big')
+94522842520747284487117727783387188
+&gt;&gt;&gt;
+</pre>
+<p>了将一个大整数转换为一个字节字符串，使用 int.to_bytes() 方法，并像下面 这样指定字节数和字节顺序:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 94522842520747284487117727783387188
+&gt;&gt;&gt; x.to_bytes(16, 'big')
+b'\x00\x124V\x00x\x90\xab\x00\xcd\xef\x01\x00#\x004'
+&gt;&gt;&gt; x.to_bytes(16, 'little')
+b'4\x00#\x00\x01\xef\xcd\x00\xab\x90x\x00V4\x12\x00'
+&gt;&gt;&gt;
+</pre>
+<p>大整数和字节字符串之间的转换操作并不常见。
+然而，在一些应用领域有时候也会 出现，比如密码学或者网络。
+例如，IPv6 网络地址使用一个 128 位的整数表示。
+如果 你要从一个数据记录中提取这样的值的时候，你就会面对这样的问题。</p>
+<p>作为一种替代方案，你可能想使用 struct 模块来解压字节。
+这样也行得通，不过利用 struct 模块来解压对于整数的大小是有限制的。
+因此，你可 能想解压多个字节串并将结果合并为最终的结果:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; data b'\x00\x124V\x00x\x90\xab\x00\xcd\xef\x01\x00#\x004'
+&gt;&gt;&gt; import struct
+&gt;&gt;&gt; hi, lo = struct.unpack('&gt;QQ', data)
+&gt;&gt;&gt; (hi &lt;&lt; 64) + lo
+94522842520747284487117727783387188
+&gt;&gt;&gt;
+</pre>
+<p>字节顺序规则 (little 或 big) 仅仅指定了构建整数时的字节的低位高位排列方式。 我们从下面精心构造的 16 进制数的表示中可以很容易的看出来:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 0x01020304
+&gt;&gt;&gt; x.to_bytes(4, 'big')
+b'\x01\x02\x03\x04'
+&gt;&gt;&gt; x.to_bytes(4, 'little')
+b'\x04\x03\x02\x01'
+&gt;&gt;&gt;
+</pre>
+<p>如果你试着将一个整数打包为字节字符串，那么它就不合适了，你会得到一个错 误。
+如果需要的话，你可以使用 int.bit_length() 方法来决定需要多少字节位来存储 这个值。:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 523 ** 23
+&gt;&gt;&gt; x
+335381300113661875107536852714019056160355655333978849017944067
+&gt;&gt;&gt; x.to_bytes(16, 'little')
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+OverflowError: int too big to convert
+&gt;&gt;&gt; x.bit_length()
+208
+&gt;&gt;&gt; nbytes, rem = divmod(x.bit_length(), 8)
+&gt;&gt;&gt; if rem:
+... nbytes += 1
+...
+&gt;&gt;&gt;
+&gt;&gt;&gt; x.to_bytes(nbytes, 'little')
+b'\x03X\xf1\x82iT\x96\xac\xc7c\x16\xf3\xb9\xcf...\xd0'
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-7">
+<h2>复数</h2>
+<p>复数可以用使用函数 complex(real, imag) 或者是带有后缀 j 的浮点数来指定:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = complex(2, 4)
+&gt;&gt;&gt; b = 3 - 5j
+&gt;&gt;&gt; a
+(2+4j)
+&gt;&gt;&gt; b
+(3-5j)
+&gt;&gt;&gt;
+</pre>
+<p>对应的实部、虚部和共轭复数可以很容易的获取:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a.real
+2.0
+&gt;&gt;&gt; a.imag
+4.0
+&gt;&gt;&gt; a.conjugate()
+(2-4j)
+&gt;&gt;&gt;
+</pre>
+<p>所有常见的数学运算:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a + b
+(5-1j)
+&gt;&gt;&gt; a * b
+(26+2j)
+&gt;&gt;&gt; a / b
+(-0.4117647058823529+0.6470588235294118j)
+&gt;&gt;&gt; abs(a)
+4.47213595499958
+&gt;&gt;&gt;
+</pre>
+<p>如果要执行其他的复数函数比如正弦、余弦或平方根，使用 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-cmath.html">cmath</a> 模块:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import cmath
+&gt;&gt;&gt; cmath.sin(a)
+(24.83130584894638-11.356612711218174j)
+&gt;&gt;&gt; cmath.cos(a)
+(-11.36423470640106-24.814651485634187j)
+&gt;&gt;&gt; cmath.exp(a)
+(-4.829809383269385-5.5920560936409816j)
+&gt;&gt;&gt;
+</pre>
+<p>Python 中大部分与数学相关的模块都能处理复数。
+比如使用 <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-numpy.html">numpy</a> ，可以 很容易的构造一个复数数组并在这个数组上执行各种操作:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; a = np.array([2+3j, 4+5j, 6-7j, 8+9j])
+&gt;&gt;&gt; a
+array([ 2.+3.j, 4.+5.j, 6.-7.j, 8.+9.j])
+&gt;&gt;&gt; a + 2
+array([ 4.+3.j, 6.+5.j, 8.-7.j, 10.+9.j])
+&gt;&gt;&gt; np.sin(a)
+array([ 9.15449915 -4.16890696j, -56.16227422 -48.50245524j,
+  -153.20827755-526.47684926j, 4008.42651446-589.49948373j])
+&gt;&gt;&gt;
+</pre>
+<p>Python 的标准数学函数确实情况下并不能产生复数值，因此你的代码中不可能会 出现复数返回值:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; math.sqrt(-1)
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt; ValueError: math domain error
+&gt;&gt;&gt;
+</pre>
+<p>如果你想生成一个复数返回结果，你必须显示的使用 cmath 模块，或者在某个支 持复数的库中声明复数类型的使用:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import cmath
+&gt;&gt;&gt; cmath.sqrt(-1)
+1j
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="nan">
+<h2>无穷大与 NaN</h2>
+<p>创建或测试正无穷、负无穷或 NaN(非数字) 的浮点数</p>
+<p>Python 并没有特殊的语法来表示这些特殊的浮点值，但是可以使用 float() 来创 建它们:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = float('inf')
+&gt;&gt;&gt; b = float('-inf')
+&gt;&gt;&gt; c = float('nan')
+&gt;&gt;&gt; a
+inf
+&gt;&gt;&gt; b
+-inf
+&gt;&gt;&gt; c
+nan
+&gt;&gt;&gt;
+</pre>
+<p>为了测试这些值的存在，使用 math.isinf() 和 math.isnan() 函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; math.isinf(a)
+True
+&gt;&gt;&gt; math.isnan(c)
+True
+&gt;&gt;&gt;
+</pre>
+<p>有一些地 方需要你特别注意，特别是跟比较和操作符相关的时候。
+无穷大数在执行数学计算的时候会传播:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = float('inf')
+&gt;&gt;&gt; a + 45
+inf
+&gt;&gt;&gt; a * 10
+inf
+&gt;&gt;&gt; 10 / a
+0.0
+&gt;&gt;&gt;
+</pre>
+<p>但是有些操作时未定义的并会返回一个 NaN 结果:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = float('inf')
+&gt;&gt;&gt; a/a
+nan
+&gt;&gt;&gt; b = float('-inf')
+&gt;&gt;&gt; a + b
+nan
+&gt;&gt;&gt;
+</pre>
+<p>NaN 值会在所有操作中传播，而不会产生异常:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; c = float('nan')
+&gt;&gt;&gt; c + 23
+nan
+&gt;&gt;&gt; c / 2
+nan
+&gt;&gt;&gt; c * 2
+nan
+&gt;&gt;&gt; math.sqrt(c) nan
+&gt;&gt;&gt;
+</pre>
+<p>NaN 值的一个特别的地方时它们之间的比较操作总是返回 False:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; c = float('nan')
+&gt;&gt;&gt; d = float('nan')
+&gt;&gt;&gt; c == d
+False
+&gt;&gt;&gt; c is d
+False
+&gt;&gt;&gt;
+</pre>
+<p>有时候程序员想改变 Python 默认行为，在返回无穷大或 NaN 结果的操作中抛出 异常。
+fpectl 模块可以用来改变这种行为，但是它在标准的 Python 构建中并没有被 启用，它是平台相关的，并且针对的是专家级程序员。</p>
+</div>
+<div class="section" id="section-8">
+<h2>分数运算</h2>
+<p><a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-frames.html">fractions</a> 模块可以被用来执行包含分数的数学运算:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from fractions import Fraction
+&gt;&gt;&gt; a = Fraction(5, 4)
+&gt;&gt;&gt; b = Fraction(7, 16)
+&gt;&gt;&gt; print(a + b)
+27/16
+&gt;&gt;&gt; print(a * b) 35/64
+&gt;&gt;&gt; # Getting numerator/denominator
+&gt;&gt;&gt; c = a * b
+&gt;&gt;&gt; c.numerator
+35
+&gt;&gt;&gt; c.denominator 64
+&gt;&gt;&gt; # Converting to a float
+&gt;&gt;&gt; float(c)
+0.546875
+&gt;&gt;&gt; # Limiting the denominator of a value
+&gt;&gt;&gt; print(c.limit_denominator(8))
+4/7
+&gt;&gt;&gt; # Converting a float to a fraction &gt;&gt;&gt; x = 3.75
+&gt;&gt;&gt; y = Fraction(*x.as_integer_ratio()) &gt;&gt;&gt; y
+Fraction(15, 4)
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-9">
+<h2>大型数组运算</h2>
+<p>使用 <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-numpy.html">numpy</a> .:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; # Python lists
+&gt;&gt;&gt; x = [1, 2, 3, 4]
+&gt;&gt;&gt; y = [5, 6, 7, 8]
+&gt;&gt;&gt; x * 2
+[1, 2, 3, 4, 1, 2, 3, 4]
+&gt;&gt;&gt; x + 10
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: can only concatenate list (not &quot;int&quot;) to list
+&gt;&gt;&gt; x + y
+[1, 2, 3, 4, 5, 6, 7, 8]
+&gt;&gt;&gt; # Numpy arrays
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; ax = np.array([1, 2, 3, 4])
+&gt;&gt;&gt; ay = np.array([5, 6, 7, 8])
+&gt;&gt;&gt; ax * 2
+array([2, 4, 6, 8])
+&gt;&gt;&gt; ax + 10
+array([11, 12, 13, 14])
+&gt;&gt;&gt; ax + ay
+array([ 6, 8, 10, 12])
+&gt;&gt;&gt; ax * ay
+array([ 5, 12, 21, 32])
+&gt;&gt;&gt;
+</pre>
+<p>NumPy 中的标 量运算 (比如 ax * 2 或 ax + 10 ) 会作用在每一个元素上.
+另外，当两个操作数都是 数组的时候执行元素对等位置计算，并最终生成一个新的数组.</p>
+<p>NumPy 还为数组操作提供了大量的通用函数，这些函数可以作为 math 模块中类似 函数的替代:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; np.sqrt(ax)
+array([ 1. , 1.41421356, 1.73205081, 2. ])
+&gt;&gt;&gt; np.cos(ax)
+array([ 0.54030231, -0.41614684, -0.9899925 , -0.65364362])
+&gt;&gt;&gt;
+</pre>
+<p>底层实现中，NumPy 数组使用了 C 或者 Fortran 语言的机制分配内存。也就是说， 它们是一个非常大的连续的并由同类型数据组成的内存区域。
+所以，你可以构造一个比 普通 Python 列表大的多的数组。比如，如果你想构造一个 10,000*10,000 的浮点数二 维网格，很轻松:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; grid = np.zeros(shape=(10000,10000), dtype=float)
+</pre>
+<p>它扩展 Python 列表的索引功能 - 特别 是对于多维数组:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+&gt;&gt;&gt; a
+array([[ 1, 2, 3, 4],
+[ 5, 6, 7, 8],
+[ 9, 10, 11, 12]])
+&gt;&gt;&gt; # Select row 1
+&gt;&gt;&gt; a[1]
+array([5, 6, 7, 8])
+&gt;&gt;&gt; # Select column 1
+&gt;&gt;&gt; a[:,1]
+array([ 2, 6, 10])
+</pre>
+</div>
+<div class="section" id="section-10">
+<h2>矩阵与线性代数运算</h2>
+<p>执行矩阵和线性代数运算，比如矩阵乘法、寻找行列式、求解线性方程组等 等</p>
+<p>NumPy 库( <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-numpy.html">numpy</a> )有一个矩阵对象可以用来解决这个问题:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; m = np.matrix([[1,-2,3],[0,4,5],[7,8,-9]])
+&gt;&gt;&gt; m
+matrix([[ 1, -2, 3],
+        [ 0, 4, 5],
+        [ 7, 8, -9]])
+&gt;&gt;&gt; # Return transpose
+&gt;&gt;&gt; m.T
+matrix([[ 1, 0, 7],
+        [-2, 4, 8],
+        [ 3, 5, -9]])
+
+&gt;&gt;&gt; # Return inverse
+&gt;&gt;&gt; m.I
+matrix([[ 0.33043478, -0.02608696, 0.09565217],
+        [-0.15217391, 0.13043478, 0.02173913],
+        [ 0.12173913, 0.09565217, -0.0173913 ]])
+&gt;&gt;&gt; # Create a vector and multiply
+&gt;&gt;&gt; v = np.matrix([[2],[3],[4]])
+&gt;&gt;&gt; v
+matrix([[2],
+[3],
+[4]])
+&gt;&gt;&gt; m * v matrix([[ 8],
+[32],
+[ 2]])
+&gt;&gt;&gt;
+</pre>
+<p>可以在 numpy.linalg 子包中找到更多的操作函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import numpy.linalg
+&gt;&gt;&gt; # Determinant
+&gt;&gt;&gt; numpy.linalg.det(m)
+-229.99999999999983
+&gt;&gt;&gt; # Eigenvalues
+&gt;&gt;&gt; numpy.linalg.eigvals(m)
+array([-13.11474312, 2.75956154, 6.35518158])
+&gt;&gt;&gt; # Solve for x in mx = v
+&gt;&gt;&gt; x = numpy.linalg.solve(m, v)
+&gt;&gt;&gt; x
+matrix([[ 0.96521739],
+        [ 0.17391304],
+        [ 0.46086957]])
+&gt;&gt;&gt; m * x matrix([[ 2.],
+[ 3.],
+[ 4.]])
+&gt;&gt;&gt; v matrix([[2],
+[3],
+[4]])
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-11">
+<h2>随机选择</h2>
+<p>从一个序列中随机抽取若干元素，或者想生成几个随机数</p>
+<p>random 模块有大量的函数用来产生随机数和随机选择元素。
+比如，要想从一个序 列中随机的抽取一个元素，可以使用 random.choice:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import random
+&gt;&gt;&gt; values = [1, 2, 3, 4, 5, 6]
+&gt;&gt;&gt; random.choice(values)
+2
+&gt;&gt;&gt; random.choice(values)
+3
+</pre>
+<p>为了提取出 N 个不同元素的样本用来做进一步的操作，可以使用 random.sample</p>
+<pre class="literal-block">
+&gt;&gt;&gt; random.sample(values, 2)
+[6, 2]
+&gt;&gt;&gt; random.sample(values, 2)
+[4, 3]
+&gt;&gt;&gt; random.sample(values, 3)
+[4, 3, 1]
+&gt;&gt;&gt; random.sample(values, 3)
+[5, 4, 1]
+&gt;&gt;&gt;
+</pre>
+<p>仅仅只是想打乱序列中元素的顺序，可以使用 random.shuffle</p>
+<pre class="literal-block">
+&gt;&gt;&gt; random.shuffle(values)
+&gt;&gt;&gt; values
+
+[2, 4, 6, 5, 3, 1]
+&gt;&gt;&gt; random.shuffle(values)
+&gt;&gt;&gt; values
+[3, 5, 2, 1, 6, 4]
+&gt;&gt;&gt;
+</pre>
+<p>生成随机整数，请使用 random.randint</p>
+<pre class="literal-block">
+&gt;&gt;&gt; random.randint(0,10)
+2
+&gt;&gt;&gt; random.randint(0,10)
+5
+&gt;&gt;&gt; random.randint(0,10)
+0
+&gt;&gt;&gt; random.randint(0,10)
+7
+&gt;&gt;&gt; random.randint(0,10)
+10
+&gt;&gt;&gt; random.randint(0,10)
+3
+&gt;&gt;&gt;
+</pre>
+<p>为了生成 0 到 1 范围内均匀分布的浮点数，使用 random.random</p>
+<pre class="literal-block">
+&gt;&gt;&gt; random.random()
+0.9406677561675867
+&gt;&gt;&gt; random.random()
+0.133129581343897
+&gt;&gt;&gt; random.random()
+0.4144991136919316
+&gt;&gt;&gt;
+</pre>
+<p>获取 N 位随机位 (二进制) 的整数，使用 random.getrandbits</p>
+<pre class="literal-block">
+&gt;&gt;&gt; random.getrandbits(200)
+335837000776573622800628485064121869519521710558559406913275
+&gt;&gt;&gt;
+</pre>
+<p>andom 模块使用 Mersenne Twister 算法来计算生成随机数。
+这是一个确定性算 法，但是你可以通过 random.seed() 函数修改初始化种子:</p>
+<pre class="literal-block">
+random.seed() # Seed based on system time or os.urandom()
+random.seed(12345) # Seed based on integer given
+random.seed(b'bytedata') # Seed based on byte data
+</pre>
+<p>random 模块还包含基于均匀分布、高斯分布和其他分布的 随机数生成函数。
+比如，random.uniform() 计算均匀分布随机数，random.gauss() 计算正态分布随机数。
+对于其他的分布情况请参考在线文档。</p>
+<p>在 random 模块中的函数不应该用在和密码学相关的程序中。
+如果你确实需要类似 的功能，可以使用 ssl 模块中相应的函数。
+比如，ssl.RAND_bytes() 可以用来生成一 个安全的随机字节序列。</p>
+</div>
+<div class="section" id="section-12">
+<h2>基本的日期与时间转换</h2>
+<p>执行简单的时间转换，比如天到秒，小时到分钟等的转换</p>
+<p>为了执行不同时间单位的转换和计算，请使用 datetime 模块。比如，为了表示一 个时间段，可以创建一个 timedelta 实例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from datetime import timedelta
+&gt;&gt;&gt; a = timedelta(days=2, hours=6)
+&gt;&gt;&gt; b = timedelta(hours=4.5)
+&gt;&gt;&gt; c = a + b
+&gt;&gt;&gt; c.days
+2
+&gt;&gt;&gt; c.seconds 37800
+&gt;&gt;&gt; c.seconds / 3600
+10.5
+&gt;&gt;&gt; c.total_seconds() / 3600
+58.5
+&gt;&gt;&gt;
+</pre>
+<p>如果你想表示指定的日期和时间，先创建一个 datetime 实例然后使用标准的数学 运算来操作它们:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; a = datetime(2012, 9, 23)
+&gt;&gt;&gt; print(a + timedelta(days=10))
+2012-10-03 00:00:00
+&gt;&gt;&gt;
+&gt;&gt;&gt; b = datetime(2012, 12, 21)
+&gt;&gt;&gt; d = b - a
+&gt;&gt;&gt; d.days
+89
+&gt;&gt;&gt; now = datetime.today()
+&gt;&gt;&gt; print(now)
+2012-12-21 14:54:43.094063
+&gt;&gt;&gt; print(now + timedelta(minutes=10))
+2012-12-21 15:04:43.094063
+&gt;&gt;&gt;
+</pre>
+<p>计算的时候，需要注意的是 datetime 会自动处理闰年:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = datetime(2012, 3, 1)
+&gt;&gt;&gt; b = datetime(2012, 2, 28)
+&gt;&gt;&gt; a - b datetime.timedelta(2)
+&gt;&gt;&gt; (a - b).days
+2
+&gt;&gt;&gt; c = datetime(2013, 3, 1)
+&gt;&gt;&gt; d = datetime(2013, 2, 28)
+&gt;&gt;&gt; (c - d).days
+1
+&gt;&gt;&gt;
+</pre>
+<p>对大多数基本的日期和时间处理问题，datetime 模块已经足够了。
+如果你需要执 行更加复杂的日期操作，比如处理时区，模糊时间范围，节假日计算等等，可以考虑使 用 dateutil 模块</p>
+<p>许多类似的时间计算可以使用 dateutil.relativedelta() 函数代替。
+但是，有一 点需要注意的就是，它会在处理月份 (还有它们的天数差距) 的时候填充间隙
+, 即有些月有30天, 有些有31天:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = datetime(2012, 9, 23)
+&gt;&gt;&gt; a + timedelta(months=1)
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: 'months' is an invalid keyword argument for this function
+&gt;&gt;&gt;
+&gt;&gt;&gt; from dateutil.relativedelta import relativedelta
+&gt;&gt;&gt; a + relativedelta(months=+1)
+datetime.datetime(2012, 10, 23, 0, 0)
+&gt;&gt;&gt; a + relativedelta(months=+4)
+datetime.datetime(2013, 1, 23, 0, 0)
+&gt;&gt;&gt;
+&gt;&gt;&gt; # Time between two dates
+&gt;&gt;&gt; b = datetime(2012, 12, 21)
+&gt;&gt;&gt; d = b - a
+&gt;&gt;&gt; d
+datetime.timedelta(89)
+&gt;&gt;&gt; d = relativedelta(b, a)
+&gt;&gt;&gt; d
+relativedelta(months=+2, days=+28)
+&gt;&gt;&gt; d.months
+2
+&gt;&gt;&gt; d.days
+28
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-13">
+<h2>计算最后一个周五的日期</h2>
+<p>需要查找星期中某一天最后出现的日期，比如星期五</p>
+</div>
+<div class="section" id="section-14">
+<h2>计算当前月份的日期范围</h2>
+<p>在当前月份中循环每一天，想找到一个计算这个日期范围的高效方 法。</p>
+<p>在这样的日期上循环并需要事先构造一个包含所有日期的列表。
+你可以先计算出 开始日期和结束日期，然后在你步进的时候使用 datetime.timedelta 对象递增这个日 期变量即可。</p>
+<p>下面是一个接受任意 datetime 对象并返回一个由当前月份开始日和下个月开始日 组成的元组对象:</p>
+<pre class="literal-block">
+from datetime import datetime, date, timedelta
+import calendar
+
+def get_month_range(start_date=None):
+  if start_date is None:
+    start_date = date.today().replace(day=1)
+  _, days_in_month = calendar.monthrange(start_date.year, start_date.month)
+  end_date = start_date + timedelta(days=days_in_month)
+  return (start_date, end_date)
+</pre>
+</div>
+<div class="section" id="section-15">
+<h2>字符串转换为日期</h2>
+<p>应用程序接受字符串格式的输入，但是你想将它们转换为 datetime 对象以便 在上面执行非字符串操作。</p>
+<p>使用 Python 的标准模块 datetime 可以很容易的解决这个问题。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; text = '2012-09-20'
+&gt;&gt;&gt; y = datetime.strptime(text, '%Y-%m-%d')
+&gt;&gt;&gt; z = datetime.now()
+&gt;&gt;&gt; diff = z - y
+&gt;&gt;&gt; diff
+datetime.timedelta(3, 77824, 177393)
+&gt;&gt;&gt;
+</pre>
+<p>datetime.strptime() 方法支持很多的格式化代码，比如 %Y 代表 4 位数年份，%m 代表两位数月份。
+还有一点值得注意的是这些格式化占位符也可以反过来使用，将日期
+输出为指定的格式字符串形式。</p>
+<p>strptime() 的性能要比你想象中的差很多，因为它是使 用纯 Python 实现，并且必须处理所有的系统本地设置。
+如果你要在代码中需要解析大 量的日期并且已经知道了日期字符串的确切格式，可以自己实现一套解析方案来获取 更好的性能。
+比如，如果你已经知道所以日期格式是 YYYY-MM-DD ，你可以像下面这样 实现一个解析函数:</p>
+<pre class="literal-block">
+from datetime import datetime
+
+def parse_ymd(s):
+  year_s, mon_s, day_s = s.split('-')
+  return datetime(int(year_s), int(mon_s), int(day_s))
+</pre>
+</div>
+<div class="section" id="section-16">
+<h2>结合时区的日期操作</h2>
+<p>你有一个安排在 2012 年 12 月 21 日早上 9:30 的电话会议，地点在芝加哥。
+而你 的朋友在印度的班加罗尔，那么他应该在当地时间几点参加这个会议呢?</p>
+<p>对几乎所有涉及到时区的问题，你都应该使用 pytz 模块。
+这个包提供了 Olson 时 区数据库，它是时区信息的事实上的标准，在很多语言和操作系统里面都可以找到。</p>
+<p>pytz 模块一个主要用途是将 datetime 库创建的简单日期对象本地化。比如，下 面如何表示一个芝加哥时间的示例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; from pytz import timezone
+&gt;&gt;&gt; d = datetime(2012, 12, 21, 9, 30, 0)
+&gt;&gt;&gt; print(d)
+2012-12-21 09:30:00
+&gt;&gt;&gt;
+&gt;&gt;&gt; # Localize the date for Chicago
+
+&gt;&gt;&gt; central = timezone('US/Central')
+&gt;&gt;&gt; loc_d = central.localize(d)
+&gt;&gt;&gt; print(loc_d)
+2012-12-21 09:30:00-06:00
+&gt;&gt;&gt;
+</pre>
+<p>如果你打算在本地化日期上执行计算，你需要特别注意夏令时转换和其他细节。
+比 如，在 2013 年，美国标准夏令时时间开始于本地时间 3 月 13 日凌晨 2:00(在那时，时 间向前跳过一小时)。
+如果你正在执行本地计算，你会得到一个错误。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; d = datetime(2013, 3, 10, 1, 45)
+&gt;&gt;&gt; loc_d = central.localize(d)
+&gt;&gt;&gt; print(loc_d)
+2013-03-10 01:45:00-06:00
+&gt;&gt;&gt; later = loc_d + timedelta(minutes=30)
+&gt;&gt;&gt; print(later)
+2013-03-10 02:15:00-06:00 # WRONG! WRONG!
+&gt;&gt;&gt;
+</pre>
+<p>结果错误是因为它并没有考虑在本地时间中有一小时的跳跃。为了修正这个错误， 可以使用时区对象 normalize() 方法。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from datetime import timedelta
+&gt;&gt;&gt; later = central.normalize(loc_d + timedelta(minutes=30))
+&gt;&gt;&gt; print(later)
+2013-03-10 03:15:00-05:00
+&gt;&gt;&gt;
+</pre>
+<p>为了不让你被这些东东弄的晕头转向，处理本地化日期的通常的策略先将所有日 期转换为 UTC 时间，并用它来执行所有的中间存储和操作:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; print(loc_d)
+2013-03-10 01:45:00-06:00
+&gt;&gt;&gt; utc_d = loc_d.astimezone(pytz.utc)
+&gt;&gt;&gt; print(utc_d)
+2013-03-10 07:45:00+00:00
+&gt;&gt;&gt;
+</pre>
+<p>一旦转换为 UTC，你就不用去担心跟夏令时相关的问题了。
+因此，你可以跟之前 一样放心的执行常见的日期计算。
+当你想将输出变为本地时间的时候，使用合适的时区 去转换下就行了。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; later_utc = utc_d + timedelta(minutes=30)
+&gt;&gt;&gt; print(later_utc.astimezone(central))
+2013-03-10 03:15:00-05:00
+&gt;&gt;&gt;
+</pre>
+<p>得到时区名, 使用 ISO 3166 国家代码作为关键字去查阅字典 pytz.country_timezones:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; pytz.country_timezones['IN']
+['Asia/Kolkata']
+&gt;&gt;&gt;
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    数字的四舍五入
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    精确的浮点数运算
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    数字的格式化输出
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    二/八/十六进制整数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    字节到大整数的打包与解包
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    复数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#nan">
+    无穷大与 NaN
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    分数运算
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    大型数组运算
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    矩阵与线性代数运算
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    随机选择
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-12">
+    基本的日期与时间转换
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-13">
+    计算最后一个周五的日期
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-14">
+    计算当前月份的日期范围
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-15">
+    字符串转换为日期
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-16">
+    结合时区的日期操作
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

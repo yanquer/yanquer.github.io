@@ -1,0 +1,505 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>gettext模块</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>gettext模块</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">官网文档::</th><td class="field-body"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/gettext.html">gettext</a></td>
+</tr>
+</tbody>
+</table>
+<p>多语种国际化服务</p>
+<p>为 Python 模块和应用程序提供国际化 (Internationalization, I18N)
+和本地化 (Localization, L10N) 服务.</p>
+<ul class="simple">
+<li>支持 GNU gettext 消息编目 API. <a class="reference internal" href="#gun-gettext-api">GUN_gettext_API</a></li>
+<li>支持 高级的、基于类的 API. 可能更适合于 Python 文件</li>
+</ul>
+<div class="section" id="gnu-gettext-api">
+<span id="gun-gettext-api"></span><h2>GNU gettext API</h2>
+<p>使用该 API，将会对整个应用程序产生全局的影响。</p>
+<p>如果你的应用程序支持多语种，而语言选择取决于用户的语言环境设置，这通常正是你所想要的。</p>
+<p>而如果你正在本地化某个 Python 模块，或者你的应用程序需要在运行时切换语言，相反你或许想用基于类的API: <a class="reference internal" href="#api-base-class">api_base_class</a> 。</p>
+<p>API:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#bindtextdomain">bindtextdomain</a></li>
+<li><a class="reference internal" href="#textdomain">textdomain</a></li>
+<li><a class="reference external" href="https://docs.python.org/zh-cn/3/library/gettext.html">gettext</a></li>
+<li><a class="reference internal" href="#dgettext">dgettext</a></li>
+<li><a class="reference internal" href="#ngettext">ngettext</a></li>
+<li><a class="reference internal" href="#dngettext">dngettext</a></li>
+<li><a class="reference internal" href="#pgettext">pgettext</a></li>
+<li><a class="reference internal" href="#dpgettext">dpgettext</a></li>
+<li><a class="reference internal" href="#npgettext">npgettext</a></li>
+<li><a class="reference internal" href="#dnpgettext">dnpgettext</a></li>
+</ul>
+<div class="section" id="bindtextdomain">
+<h3>bindtextdomain</h3>
+</div>
+<div class="section" id="textdomain">
+<h3>textdomain</h3>
+</div>
+<div class="section" id="gettext-2">
+<h3>gettext</h3>
+</div>
+<div class="section" id="dgettext">
+<h3>dgettext</h3>
+</div>
+<div class="section" id="ngettext">
+<h3>ngettext</h3>
+</div>
+<div class="section" id="dngettext">
+<h3>dngettext</h3>
+</div>
+<div class="section" id="pgettext">
+<h3>pgettext</h3>
+<blockquote>
+</blockquote>
+</div>
+<div class="section" id="dpgettext">
+<h3>dpgettext</h3>
+</div>
+<div class="section" id="npgettext">
+<h3>npgettext</h3>
+</div>
+<div class="section" id="dnpgettext">
+<h3>dnpgettext</h3>
+<p>注意，GNU gettext 还定义了 dcgettext() 方法，但它被认为不实用，因此目前没有实现它。</p>
+<p>这是该 API 的典型用法示例:</p>
+<pre class="literal-block">
+import gettext
+gettext.bindtextdomain('myapplication', '/path/to/my/language/directory')
+gettext.textdomain('myapplication')
+_ = gettext.gettext
+# ...
+print(_('This is a translatable string.'))
+</pre>
+</div>
+</div>
+<div class="section" id="api">
+<span id="api-base-class"></span><h2>基于类的 API</h2>
+<p>与 GNU gettext API ( <a class="reference internal" href="#gun-gettext-api">GUN_gettext_API</a> ) 相比，gettext 模块的基于类的 API 提供了更多的灵活性和更强的便利性。
+这是本地化 Python 应用程序和模块的推荐方法。
+gettext 定义了一个 GNUTranslations 类，该类实现了 GNU .mo 格式文件的解析，并且具有用于返回字符串的方法。
+本类的实例也可以将自身作为函数 _() 安装到内建命名空间中。</p>
+<p>API:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#find">find</a></li>
+<li><a class="reference internal" href="#translation">translation</a></li>
+<li><a class="reference internal" href="#install">install</a></li>
+</ul>
+<div class="section" id="find">
+<h3>find</h3>
+</div>
+<div class="section" id="translation">
+<h3>translation</h3>
+</div>
+<div class="section" id="install">
+<h3>install</h3>
+</div>
+</div>
+<div class="section" id="section-1">
+<h2>本地化</h2>
+<p>部分本地化:</p>
+<pre class="literal-block">
+import gettext
+t = gettext.translation('spam', '/usr/share/locale')
+_ = t.gettext
+</pre>
+<p>全局本地化:</p>
+<pre class="literal-block">
+import gettext
+
+lang1 = gettext.translation('myapplication', languages=['en'])
+lang2 = gettext.translation('myapplication', languages=['fr'])
+lang3 = gettext.translation('myapplication', languages=['de'])
+
+# start by using language1
+lang1.install()
+
+# ... time goes by, user selects language 2
+lang2.install()
+
+# ... more time goes by, user selects language 3
+lang3.install()
+</pre>
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>不同系统的默认语言环境目录是不同的；
+比如在 RedHat Linux 上是 /usr/share/locale，
+在 Solaris 上是 /usr/lib/locale。
+gettext 模块不会支持这些基于不同系统的默认值；
+而它的默认值为 sys.base_prefix/share/locale （请参阅 sys.base_prefix）。
+基于上述原因，最好每次都在应用程序的开头使用明确的绝对路径来调用 <a class="reference internal" href="#bindtextdomain">bindtextdomain</a> 。</td></tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#gnu-gettext-api">
+    GNU gettext API
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#bindtextdomain">
+      bindtextdomain
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#textdomain">
+      textdomain
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#gettext-2">
+      gettext
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dgettext">
+      dgettext
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ngettext">
+      ngettext
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dngettext">
+      dngettext
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#pgettext">
+      pgettext
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dpgettext">
+      dpgettext
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#npgettext">
+      npgettext
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dnpgettext">
+      dnpgettext
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#api">
+    基于类的 API
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#find">
+      find
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#translation">
+      translation
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#install">
+      install
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    本地化
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

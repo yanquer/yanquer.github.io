@@ -1,0 +1,458 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>debian/ubuntu字体说明</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>debian/ubuntu字体说明</h2>
+									<p>Ubuntu字体及配置说明: <cite>https://wiki.ubuntu.org.cn/字体#.E9.85.8D.E7.BD.AE.fonts.conf</cite></p>
+<p>参考: <cite>https://catcat.cc/post/2020-10-31/</cite></p>
+<p>Linux 桌面程序使用字体的方式，受 fontconfig 的影响和控制。</p>
+<p>一个字体文件，可以提供多个字体族名 (family)。
+比如 Arch Linux 用户在 安装 wqy-microhei 后，
+系统端增加了 wqy-microhei.ttc 这个 字体文件，
+分别提供「WenQuanYi Micro Hei」「文泉驛微米黑」,「文泉驿微米黑」 三个字体族名，
+它们是一个意思。可以运行 fontconfig 提供的命令行工具 fc-list
+去查看系统上 已安装的字体已经它们对应的字体族名。</p>
+<p>至于 sans-serif，serif，monospace，则是三个通用字体族名 (generic family)，
+它们不是真实存在的字体，而是分别指示程序去使用无衬线、衬线、等宽字体。
+那么桌面程序又是如何知道具体使用哪些字体呢？
+它只需要去查询 fontconfig 就行了。
+由于它们必定要经过 fontconfig 的查询流程后才能使用字体，
+所以我们可以通过 fontconfig 的配置去精准控制程序使用的字体。</p>
+<div class="section" id="section-1">
+<h2>配置文件流向</h2>
+<p>fontconfig 主要读取</p>
+<ul class="simple">
+<li><tt class="docutils literal">/etc/fonts/fonts.conf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/fonts/conf.d/*.conf</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">~/.config/fontconfig/fonts.conf</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">~/config/fontconfig/conf.d/*.conf</span></tt></li>
+<li>至于那些历史遗留的目录位置 <tt class="docutils literal"><span class="pre">~/.fonts.conf.d/*.conf</span></tt> 和 <tt class="docutils literal"><span class="pre">~/.fonts.conf</span></tt> ， 由于不遵守 XDG 规范，我们就不要再使用它们了。</li>
+</ul>
+<p>fontconfig 并非固定读取这些位置，它首先读取 /etc/fonts/fonts.conf，该文件中有句:</p>
+<pre class="literal-block">
+&lt;include ignore_missing=&quot;yes&quot;&gt;conf.d&lt;/include&gt;
+</pre>
+<p>表示将 <cite>/etc/fonts/conf.d/</cite> 目录中的文件纳入读取中,
+在这个目录中的配置文件，按照文件名前的数字的顺序进行读取。
+而当读取到50-user.conf的时候，其中的语句:</p>
+<pre class="literal-block">
+&lt;include ignore_missing=&quot;yes&quot; prefix=&quot;xdg&quot;&gt;fontconfig/conf.d&lt;/include&gt;
+&lt;include ignore_missing=&quot;yes&quot; prefix=&quot;xdg&quot;&gt;fontconfig/fonts.conf&lt;/include&gt;
+&lt;include ignore_missing=&quot;yes&quot; deprecated=&quot;yes&quot;&gt;~/.fonts.conf.d&lt;/include&gt;
+&lt;include ignore_missing=&quot;yes&quot; deprecated=&quot;yes&quot;&gt;~/.fonts.conf&lt;/include&gt;
+</pre>
+<p>指示 fontconfig 开始读取用户家目录下的配置文件。
+语句中的属性值prefix=&quot;xdg&quot;，代表 XDG_CONFIG_HOME 目录， 默认是我们熟悉的~/.config/目录。</p>
+</div>
+<div class="section" id="section-2">
+<h2>字体文件位置</h2>
+<p>fontconfig 的很多配置文件是先从/etc/fonts/fonts.conf引入的。
+其实，fontconfig 获取字体文件的位置，也是该文件定义的。
+你会发现 该文件的开头就在指定字体目录:</p>
+<pre class="literal-block">
+&lt;dir&gt;/usr/share/fonts&lt;/dir&gt;
+&lt;dir&gt;/usr/local/share/fonts&lt;/dir&gt;
+&lt;dir prefix=&quot;xdg&quot;&gt;fonts&lt;/dir&gt;
+&lt;!-- the following element will be removed in the future --&gt;
+&lt;dir&gt;~/.fonts&lt;/dir&gt;
+</pre>
+<p>当我们安装字体软件包时，软件包把字体文件放在了/usr/share/fonts/目录下</p>
+</div>
+<div class="section" id="section-3">
+<h2>配置自己的规则</h2>
+<p>比如我已经提前安装好了 <cite>inconsolata</cite> 字体,
+然后在家目录下设置了配置文件,
+新建文件 <cite>~/.config/fontconfig/fonts.conf</cite>:</p>
+<pre class="literal-block">
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE fontconfig SYSTEM &quot;/etc/fonts/conf.d/fonts.dtd&quot;&gt;
+&lt;fontconfig&gt;
+&lt;match target=&quot;pattern&quot;&gt;
+  &lt;test qual=&quot;any&quot; name=&quot;family&quot;&gt;
+    &lt;string&gt;monospace&lt;/string&gt;
+  &lt;/test&gt;
+  &lt;edit name=&quot;family&quot; mode=&quot;prepend&quot; binding=&quot;strong&quot;&gt;
+    &lt;string&gt;inconsolata&lt;/string&gt;
+    &lt;string&gt;Iosevka Custom&lt;/string&gt;
+    &lt;string&gt;Noto Sans Mono CJK SC&lt;/string&gt;
+    &lt;string&gt;Blobmoji&lt;/string&gt;
+    &lt;string&gt;Symbols Nerd Font&lt;/string&gt;
+  &lt;/edit&gt;
+&lt;/match&gt;
+&lt;/fontconfig&gt;
+</pre>
+<p>这个时候查询等宽字体的结果就是我设置的这个:</p>
+<pre class="literal-block">
+$ fc-match &quot;monospace&quot;
+Inconsolata.otf: &quot;Inconsolata&quot; &quot;Medium&quot;
+</pre>
+<p>解释一下这里配置含义</p>
+<dl class="docutils">
+<dt>fontconfig</dt>
+<dd>表示是一个字体查询配置</dd>
+<dt>match</dt>
+<dd><p class="first">匹配规则, <tt class="docutils literal">&lt;match <span class="pre">target=&quot;pattern&quot;&gt;</span></tt>，被操作对象是 font pattern;</p>
+<p class="last">如果是 <tt class="docutils literal">&lt;match <span class="pre">target=&quot;font&quot;&gt;</span></tt>, 则是对单个字体的操作</p>
+</dd>
+<dt>test</dt>
+<dd><p class="first">定义匹配规则, 可选的测试条件。只有当满足测试条件的时候，才执行&lt;edit&gt;;</p>
+<p class="last">这里表示匹配 <cite>monospace</cite> 家族</p>
+</dd>
+<dt>edit</dt>
+<dd><p class="first">表示匹配的字体结果</p>
+<p>此处完整含义:</p>
+<pre class="literal-block">
+在这里，test 语句针对了 font pattern 中的 monospace。
+也就是说， 接下来的 edit 语句就在 font pattern 的 monospace 这个位置上进行操作。
+mode=&quot;prepend&quot;的意思是在 monospace 前添加四个字体：
+等宽字体 inconsolata，
+英文等宽字体 Iosevka Custom，
+中文字体 Noto Sans Mono CJK SC，
+以及通用字体族名 emoji。
+binding=&quot;strong&quot;，是强绑定的意思， 它会影响 font pattern 的排序结果，
+</pre>
+<ul>
+<li><p class="first">name=&quot;family&quot; 表明被操作对象是是 font pattern 中的 family。</p>
+</li>
+<li><p class="first">mode=&quot;prepend&quot; 表示在结果之前插入;
+如果是 mode=&quot;assign&quot; , 表示对test中的String修改替换.</p>
+<p>如向 fc-match 传入的 font pattern 是可以有多个字体的。 现在我们要运行:</p>
+<pre class="literal-block">
+FC_DEBUG=4 fc-match 'cantarell, WenQuanYi Micro Hei'
+</pre>
+<p>经过这段配置会变成什么呢:</p>
+<pre class="literal-block">
+&lt;match target=&quot;pattern&quot;&gt;
+  &lt;test name=&quot;family&quot;&gt;
+    &lt;string&gt;Cantarell&lt;/string&gt;
+  &lt;/test&gt;
+  &lt;edit name=&quot;family&quot; mode=&quot;assign&quot; binding=&quot;strong&quot;&gt;
+    &lt;string&gt;Noto Sans&lt;/string&gt;
+  &lt;/edit&gt;
+&lt;/match&gt;
+</pre>
+<p>这里的mode=&quot;assign&quot;，表示 将 font pattern 中的 Cantarell 修改成 Noto Sans。
+没有对 WenQuanYi Micro Hei 的操作，所以结果是:</p>
+<pre class="literal-block">
+family: &quot;Noto Sans&quot;(s) &quot;WenQuanYi Micro Hei&quot;(s)
+</pre>
+</li>
+<li><p class="first">binding=&quot;strong&quot; 表示强绑定</p>
+</li>
+</ul>
+<p>下面的 String 的内容的是结果列表, 支持多个</p>
+<p class="last">先后顺序就是设置的优先使用的字体顺序。
+最先尝试使用 <cite>inconsolata</cite> 字体作为英文等宽字体,
+然后才是 <cite>Iosevka</cite> ， 中日韩字体使用 <cite>Noto Sans Mono CJK SC</cite>，
+剩下的 <cite>emoji</cite> 和特殊符号 优先使用 <cite>Blobmoji</cite> 和 <cite>Nerd font</cite>。</p>
+</dd>
+</dl>
+<p>完整属性说明可参考: <cite>https://www.cnblogs.com/jacker1979/p/4695169.html</cite></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>旧版是使用的alias:</p>
+<pre class="last literal-block">
+&lt;match&gt;...&lt;test&gt;...&lt;edit name=&quot;family&quot; mode=&quot;prepend&quot;&gt;...
+
+等价于
+
+&lt;alias&gt;...&lt;family&gt;...&lt;prefer&gt;...
+</pre>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    配置文件流向
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    字体文件位置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    配置自己的规则
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

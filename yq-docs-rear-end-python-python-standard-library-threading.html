@@ -1,0 +1,493 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>threading模块</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>threading模块</h2>
+									<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">官网文档::</th><td class="field-body"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/threading.html#threading.Thread">threading</a></td>
+</tr>
+</tbody>
+</table>
+<!-- threading.Thread的 run, start, join方法 -->
+<p>threading.Thread的常见方法</p>
+<dl class="docutils">
+<dt>run()</dt>
+<dd>线程的主要执行体, 用于子类重写, 直接调用不会触发多线程</dd>
+<dt>start()</dt>
+<dd>启动新线程的方式, 开启一个新线程去执行run方法(实现多线程),
+每个定义的线程只能start一次, 如果调用多次，则会报RuntimeError错误</dd>
+<dt>join(timeout=None)</dt>
+<dd>阻塞当前线程, 等待子进程执行结束</dd>
+<dt>setDaemon(True)</dt>
+<dd>将线程设置为守护线程, 如果主线程退出, 那么子线程也退出(若需要等待则使用join)</dd>
+<dt>is_alive()</dt>
+<dd>线程是否存活，返回True或者False。
+在线程的run()运行之后直到run()结束，该方法返回True。</dd>
+<dt>threading.Condition(lock=None)</dt>
+<dd>一个条件变量对象允许一个或多个线程等待，直到被另一个线程通知。
+lock参数必须是一个Lock对象或者RLock对象，
+并且会作为底层锁使用，默认使用RLock。</dd>
+<dt>acquire(*args)</dt>
+<dd>请求底层锁。此方法调用底层锁对应的方法和返回对应方法的返回值。</dd>
+<dt>release()</dt>
+<dd>释放底层锁。此方法调用底层所对应的方法，没有返回值。</dd>
+<dt>wait(timeout=None)</dt>
+<dd>释放锁，等待直到被通知（再获取锁）或者发生超时事件。
+如果线程在调用此方法时本身并没有锁（即线程首先得有锁），
+则会报RuntimeError错误。这个方法释放底层锁，然后阻塞线程，
+直到另一个线程中的同一个条件变量使用notify()或notify_all()唤醒，
+或者超时事件发生，一旦被唤醒或者超时，
+则会重新去获取锁并返回（成功返回True，否则返回False）。
+timeout参数为浮点类型的秒数。
+在RLock中使用一次release方法，可能并不能释放锁，
+因为锁可能被acquire()了多次，但是在条件变量对象中，
+它调用了RLock类的内部方法，可以一次就完全释放锁，
+重新获取锁时也会重置锁的递归等级。</dd>
+<dt>wait_for(predicate, timeout=None)</dt>
+<dd>与wait方法相似，等待，直到条件计算为True，
+返回最后一次的predicate的返回值。
+predicate参数为一个返回值为布尔值的可调用对象。
+调用此方法的时候会先调用predicate对象，
+如果返回的就是True，则不会释放锁，直接往后执行。
+另一个线程通知后，在它释放锁时，
+才会触发wait_for方法等待事件，
+这时如果predicate结果为True，则尝试获取锁，
+获取成功后则继续往后执行，
+如果为False，则会一直阻塞下去。此方法如果忽略timeout参数，
+就相当于：while not predicate(): condition_lock.wait()。</dd>
+<dt>notify(n=1)</dt>
+<dd>唤醒一个等待这个条件的线程，
+如果调用这个方法的线程在没有获得锁的情况下调用这个方法，
+会报RuntimeError错误。
+默认唤醒一个线程，可以通过参数n设置唤醒n个正在等待这个条件变量的线程，
+如果没有线程在等待，调用这个方法不会发生任何事。
+如果等待的线程中正好有n个线程，那么这个方法可以准确的唤醒这n个线程，
+但是等待的线程超过指定的n个，有时候可能会唤醒超过n个的线程，
+所以依赖参数n是不安全的行为。</dd>
+<dt>notify_all()</dt>
+<dd>唤醒所有等待这个条件的线程。
+这个方法与notify()不同之处在于它唤醒所有线程，而不是特定n个。</dd>
+</dl>
+<!-- todo: 看有些地方写的是 False 则 主线程会等待子线程退出后再退出 -->
+<p>默认为False(换而言之, 默认, 主线程,子线程互不影响)</p>
+<p>同时个人建议设置为True, 可以保证对子线程的控制权, 否则可能会出现, 主线程结束后, 子线程成为孤儿进程, 被托管给系统的init进程, 直到完成后被回收</p>
+<p>其他变量:</p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>线程的名称字符串，并没有什么实际含义，多个线程可以赋予相同的名称，
+初始值由初始化方法来设置。</dd>
+<dt>ident</dt>
+<dd>线程的标识符，如果线程还没有启动，
+则为None。ident是一个非零整数，
+参见threading.get_ident()函数。
+当线程结束后，它的ident可能被其他新创建的线程复用，
+当然就算该线程结束了，它的ident依旧是可用的。</dd>
+<dt>daemon</dt>
+<dd>表示该线程是否是守护线程，True或者False。设置一个线程的daemon必须在线程的start()方法之前，否则会报RuntimeError错误。这个值默认继承自创建它的线程，主线程默认是非守护线程的，所以在主线程中创建的线程默认都是非守护线程的，即daemon=False。</dd>
+</dl>
+<div class="section" id="lock">
+<h2>Lock()</h2>
+<p>互斥锁</p>
+<p>获取一个互斥锁, 用于多线程时互斥访问.</p>
+<p>不过会降低效率(类似写成了单任务)</p>
+</div>
+<div class="section" id="semaphore">
+<h2>Semaphore()</h2>
+<p>信号量Semaphore</p>
+<p>与 Lock()_ 的区别是, Semaphore 支持同时对多个使用.</p>
+<p>Semaphore 内部维护了一个计数器.</p>
+<p>获取锁的时候, 计数器减一, 释放锁的时候加一</p>
+</div>
+<div class="section" id="section-1">
+<h2>一些坑</h2>
+<p>__new__方法是支持多线程的，
+所以对于使用__new__实现的单例对象, 不存在多线程的线程安全问题,
+更详细的说明, 知识在 __new__内部的操作没有线程安全问题, 可以保证多线程环境下返回的都是同一个对象, 但是其他方法, 存在同时访问的对象, 该加锁还是要加锁</p>
+<div class="highlight"><pre><span></span>class Single(object):
+
+  &quot;&quot;&quot;
+      single instance, attention son class&#39;s __init__ will exec once
+  &quot;&quot;&quot;
+
+  __instance = None
+
+  def __new__(cls, *args, **kwargs):
+      if cls.__instance is None:
+          cls.__instance = super().__new__(cls, )
+      return cls.__instance
+
+
+if __name__ == &#39;__main__&#39;:
+
+  class P(Single):
+      p = 0
+      # _instance = None
+
+      # @classmethod
+      # def instance(cls,):
+      #     if cls._instance is None:
+      #         cls._instance = cls()
+      #     return cls._instance
+
+      def __init__(self):
+          time.sleep(random.randint(0, 5))
+
+      def set_p(self):
+          self.p += 1
+          print(f&#39;p={self.p}&#39;, )
+
+  def set_p():
+      time.sleep(random.randint(0, 5))
+      pp = P()
+      print(pp)
+      pp.set_p()
+
+  t_list = []
+  for _ in range(20):
+      t_list.append(threading.Thread(target=set_p))
+  for t in t_list:
+      t.start()
+</pre></div>
+<p>输出(某些顺序 kennel不一样):</p>
+<pre class="literal-block">
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=1
+&lt;__main__.P object at 0x1107de4c0&gt;&lt;__main__.P object at 0x1107de4c0&gt;
+
+p=2
+p=3
+&lt;__main__.P object at 0x1107de4c0&gt;
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=4
+p=5
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=6
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=7
+&lt;__main__.P object at 0x1107de4c0&gt;&lt;__main__.P object at 0x1107de4c0&gt;
+p=8
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=9
+
+p=10
+&lt;__main__.P object at 0x1107de4c0&gt;&lt;__main__.P object at 0x1107de4c0&gt;
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=11&lt;__main__.P object at 0x1107de4c0&gt;
+p=12
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=13
+
+p=14
+
+p=15
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=16
+&lt;__main__.P object at 0x1107de4c0&gt;&lt;__main__.P object at 0x1107de4c0&gt;
+p=17
+
+p=18
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=19
+&lt;__main__.P object at 0x1107de4c0&gt;
+p=20
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#lock">
+    Lock()
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#semaphore">
+    Semaphore()
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    一些坑
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

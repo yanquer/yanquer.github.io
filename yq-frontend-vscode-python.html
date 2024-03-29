@@ -89,6 +89,7 @@
 				</div>
 			</div>
 
+
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
 				<div class="container">
@@ -155,6 +156,92 @@ The Python path in your debug configuration is invalid.
 </pre></div>
 <p>没有提供设置环境变量的方式</p>
 </div>
+<div class="section" id="section-4">
+<h2>解决</h2>
+<p>找个 py 文件, 进去后手动选一个匹配的解释器.</p>
+<p>选择解释器的功能也是由插件实现的. 命令位置大致在 <cite>src/client/interpreter/configuration/interpreterSelector/commands/setInterpreter.ts</cite>
+的</p>
+<div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">manualEntrySuggestion</span><span class="o">:</span><span class="w"> </span><span class="kt">ISpecialQuickPickItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">Octicons</span><span class="p">.</span><span class="nx">Folder</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">InterpreterQuickPickList</span><span class="p">.</span><span class="nx">enterPath</span><span class="p">.</span><span class="nx">label</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">alwaysShow</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="vscode-pythontheia">
+<h2>浅谈一下vscode-python插件与theia的通信</h2>
+<p>主要是解释器选择这一块.
+这一块实际的交互位置大概是在 <cite>node_modules/&#64;theia/plugin-ext/src/main/browser/quick-open-main.ts</cite>
+的 <cite>QuickOpenMainImpl.$createOrUpdate</cite> , 此处只贴出关键部分</p>
+<div class="highlight"><pre><span></span><span class="nx">$createOrUpdate</span><span class="p">(</span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="kt">TransferQuickInput</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">sessionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">session</span><span class="o">:</span><span class="w"> </span><span class="kt">QuickInputSession</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">candidate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">sessions</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">candidate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;quickPick&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">quickPick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">quickInputService</span><span class="p">.</span><span class="nx">createQuickPick</span><span class="p">();</span>
+<span class="w">                </span><span class="nx">quickPick</span><span class="p">.</span><span class="nx">onDidAccept</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$acceptOnDidAccept</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">);</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">                </span><span class="nx">quickPick</span><span class="p">.</span><span class="nx">onDidChangeActive</span><span class="p">((</span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="nx">IQuickPickItem</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$onDidChangeActive</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">TransferQuickPickItems</span><span class="p">).</span><span class="nx">handle</span><span class="p">));</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">                </span><span class="nx">quickPick</span><span class="p">.</span><span class="nx">onDidChangeSelection</span><span class="p">((</span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="nx">IQuickPickItem</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$onDidChangeSelection</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">TransferQuickPickItems</span><span class="p">).</span><span class="nx">handle</span><span class="p">));</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">                </span><span class="nx">quickPick</span><span class="p">.</span><span class="nx">onDidTriggerButton</span><span class="p">((</span><span class="nx">button</span><span class="o">:</span><span class="w"> </span><span class="kt">QuickInputButtonHandle</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$acceptOnDidTriggerButton</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span><span class="w"> </span><span class="nx">button</span><span class="p">);</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">                </span><span class="nx">quickPick</span><span class="p">.</span><span class="nx">onDidTriggerItemButton</span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$onDidTriggerItemButton</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">item</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">TransferQuickPickItems</span><span class="p">).</span><span class="nx">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">button</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">TransferQuickPickItems</span><span class="p">).</span><span class="nx">handle</span><span class="p">);</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">                </span><span class="nx">quickPick</span><span class="p">.</span><span class="nx">onDidChangeValue</span><span class="p">((</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$acceptDidChangeValue</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">);</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">                </span><span class="nx">quickPick</span><span class="p">.</span><span class="nx">onDidHide</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">$acceptOnDidHide</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">);</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">                </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">quickPick</span><span class="p">,</span>
+<span class="w">                    </span><span class="nx">handlesToItems</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">()</span>
+<span class="w">                </span><span class="p">};</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+<p>这里把theia内部 <cite>quickPick</cite> 的事件进行一个转发, 从而做到交互.</p>
+<p><cite>quickPick</cite> 又是通过 <cite>node_modules/&#64;theia/monaco/src/browser/monaco-quick-input-service.ts</cite>
+的 <cite>MonacoQuickInputService.createQuickPick</cite> 服务进行转发的.</p>
+<div class="highlight"><pre><span></span><span class="nx">createQuickPick</span><span class="o">&lt;</span><span class="nx">T</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">QuickPickItem</span><span class="o">&gt;</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">QuickPick</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">quickPick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">monacoService</span><span class="p">.</span><span class="nx">createQuickPick</span><span class="o">&lt;</span><span class="nx">MonacoQuickPickItem</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">wrapQuickPick</span><span class="p">(</span><span class="nx">quickPick</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果要手动调用插件的设置py解释器, 可以基于转发这一点, 在 <cite>MonacoQuickInputService</cite> 服务 做个拦截.
+然后手动将需要的解析器给过去.</p>
+</div>
+<p>而这个 <cite>quickPick</cite> 实现定义在 <cite>node_modules/&#64;theia/monaco-editor-core/src/vs/base/parts/quickinput/browser/quickInput.ts</cite>
+的 <cite>QuickPick</cite> 类.</p>
+<!-- `QuickPick` 的每一个选择框又绑定了 -->
+<!-- 位于 `node_modules/@theia/monaco-editor-core/src/vs/base/parts/quickinput/browser/quickInput.ts` -->
+<!-- 的 `QuickPick` -->
+</div>
+<div class="section" id="python">
+<h2>配置默认的Python解释器</h2>
+<ul class="simple">
+<li>尝试过在theia劫持跟 vscode-python 的通信, 但是失败了. 东西是拿到了, 但是后面貌似被刷新了还是怎的, 无效.</li>
+<li>尝试直接启动时设置首选项, 勉强算成功. 不过有个缺点是, 更新设置时, 会提示配置更新需要重启.</li>
+</ul>
+<p>如何实现启动时设置首选项?</p>
+<p>调用 <tt class="docutils literal">PreferenceService</tt> 服务的 set 方法即可.</p>
+<div class="highlight"><pre><span></span><span class="kd">@inject</span><span class="p">(</span><span class="nx">PreferenceService</span><span class="p">)</span>
+<span class="k">protected</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">preferenceService</span><span class="o">:</span><span class="w"> </span><span class="kt">PreferenceService</span><span class="p">;</span>
+
+<span class="c1">// &quot;python.defaultInterpreterPath&quot;: &quot;python&quot;</span>
+<span class="nx">preferenceService</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;python.defaultInterpreterPath&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/usr/local/bin/mypython&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -166,6 +253,59 @@ The Python path in your debug configuration is invalid.
 
 				</div>
 			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    问题
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    原因
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    源码调用
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    解决
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#vscode-pythontheia">
+    浅谈一下vscode-python插件与theia的通信
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#python">
+    配置默认的Python解释器
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
 
 		<!-- Footer Wrapper -->
 			<div id="footer-wrapper">
@@ -179,27 +319,27 @@ The Python path in your debug configuration is invalid.
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>26</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
 											<p><p class="first last">浏览器环境下的Window对象</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>25</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-CSS-CSS-commonly-used-attributes-overflow.html">overflow</a></h3>
-											<p><p class="first last">overflow滚动条属性</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>25</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-CSS-Pseudo-element.html">CSS伪元素</a></h3>
-											<p><p class="first last">CSS伪元素</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>25</strong></span>
-											<h3><a href="yq-doc-source-docs-front-end-CSS-font-file-import.html">字体文件导入</a></h3>
-											<p><p class="first last">字体文件导入</p>
 </p>
 										</li>
 									</ul>
@@ -279,6 +419,27 @@ The Python path in your debug configuration is invalid.
 		<script src="/theme/js/config.js"></script>
 		<script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
 	</body>
 </html>

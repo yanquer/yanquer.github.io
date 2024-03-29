@@ -1,0 +1,723 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>pytest</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>pytest</h2>
+									<p>使用见: <a class="reference external" href="/yq-docs-rear-end-python-Tutorial-Pytest.html">Pytest</a></p>
+<p>语法:</p>
+<pre class="literal-block">
+pytest [options] [file_or_dir] [file_or_dir] [...]
+
+# positional arguments:
+#   file_or_dir
+</pre>
+<div class="section" id="section-1">
+<h2>选项参数</h2>
+<div class="section" id="general">
+<h3>general:</h3>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--capture=<var>method</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>捕获消息的类型 fd|sys|no|tee-sys.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>上面为no时的简写 --capture=no. 后面看到一个说法是输出包含stdout与stderr.
+正常情况下,pytest会捕获测试中的stdout和stderr,并只在测试失败时才将其打印出来。
+使用-s选项后,pytest将不会捕获stdout和stderr,而是直接打印。
+这在调试测试用例时非常有用,可以直接在控制台看到print的输出,而不需要添加失败的断言来查看输出。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--show-capture=<var>&lt;{no,stdout,stderr,log,all}&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Controls how captured stdout/stderr/log is shown on
+Write captured log messages to JUnit report: one of</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m<var>&lt;some_test&gt;</var></span></kbd></td>
+<td>指定要运行哪些测试</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m <var>MARKEXPR</var></span></kbd></td>
+<td>仅运行 &#64;pytest.mark.MARKEXPR 装饰的测试.
+如: -m 'mark1 and not mark2'.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-k <var>EXPRESSION</var></span></kbd></td>
+<td>仅执行匹配 EXPRESSION 的测试, 支持通配符, 多个使用引号包裹, or 隔开.
+如: -k 'test_method or test_other' 表示
+会执行所有 函数名/类名包含 'test_method' or 'test_other' 的测试;
+-k 'not test_method' 表示仅执行不包含 'test_method' 的测试;
+-k 'not test_method and not test_other' 表示两者之一被包含的测试会被排除.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--markers</span></kbd></td>
+<td>show markers, 即上面 -m 的 MARKEXPR</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-x</span>, <span class="option">--exitfirst</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>当测试错误/执行失败, 立即退出执行, 不会运行后面的测试</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--fixtures</span>, <span class="option">--funcargs</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>show available fixtures, sorted by plugin appearance
+(fixtures with leading '_' are only shown with '-v')</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--fixtures-per-test</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>show fixtures per test</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--pdb</span></kbd></td>
+<td>在错误或者键盘中断(Ctrl + C)时候, 开始一个交互式的 pdb debugger (终端).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--pdbcls=<var>&lt;modulename:classname&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>使用 --pdb 来开启一个 debug 终端.
+此时可加此选项来指定终端类型,
+如:
+--pdbcls=IPython.terminal.debugger:TerminalPdb</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--trace</span></kbd></td>
+<td>在运行每项测试时立即中断, 用于 debug.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--runxfail</span></kbd></td>
+<td>报告标记 XFAIL 测试的结果, 就像他们没有被标记一样.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--lf</span>, <span class="option">--last-failed</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>在最后一次运行时, 仅重新运行失败的测试(如果没有失败，则全部运行)</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--ff</span>, <span class="option">--failed-first</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>运行所有测试，但先运行最后的失败。
+这可能会重新安排测试，从而导致
+固件的重复 安装/卸载.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--nf</span>, <span class="option">--new-first</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>首先运行最新的文件的测试,
+然后按照文件的 mtime (修改时间) 顺序执行.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--cache-show=<var>&lt;[CACHESHOW]&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>不执行测试收集/测试, 显示缓存内容.
+Optional argument: glob (default: '*').</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cache-clear</span></kbd></td>
+<td>测试开始前移除所有的缓存内容.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--lfnf=<var>&lt;{all,none}&gt;</var></span>, <span class="option">--last-failed-no-failures=<var>&lt;{all,none}&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>在之前没有（已知）故障的情况下运行哪些测试?
+原句:
+which tests to run with no previously (known) failures.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--sw</span>, <span class="option">--stepwise</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>当测试失败时退出, 下一次从次失败的测试开始执行</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--sw-skip</span>, <span class="option">--stepwise-skip</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>仅忽略第一个失败的测试, 即后续还有失败会停止
+隐式启用 --stepwise.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>启用冗长日志记录,会打印更详细的测试结果。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v<var>v</var></span></kbd></td>
+<td>启用更加详细的日志,会打印测试相关的所有输出,包括:
+测试开始和结束的日志;
+测试文件路径;
+通过的测试用例名称;
+失败的测试用例名称及失败原因;
+跳过的测试用例名称及跳过原因;
+所有打印的输出(类似-s选项);
+用于记录测试结果的文件路径;</td></tr>
+</tbody>
+</table>
+<p><strong>``-m MARKEXPR`` 说明</strong>:</p>
+<p>作用为指定运行哪些测试用例, MARKEXPR 表示装饰器的标记, 多个使用引号包裹, or 隔开:</p>
+<pre class="literal-block">
+pytest -m &quot;test_run1 or test_run2 or test_run3&quot;
+</pre>
+<p>表示仅运行以下装饰器修饰的测试:</p>
+<pre class="literal-block">
+&#64;pytest.mark.test_run1
+&#64;pytest.mark.test_run2
+&#64;pytest.mark.test_run3
+</pre>
+<p><strong>捕获方式 capture 说明</strong> :</p>
+<ul class="simple">
+<li>fd, 文件描述符级别的捕获, 也就是写入到 <tt class="docutils literal">1</tt> , <tt class="docutils literal">2</tt> 标准输出/错误的内容会被捕获</li>
+<li>sys, 使用 <tt class="docutils literal">sys.stdout</tt> , <tt class="docutils literal">sys.stderr</tt> 输出的消息会被捕获</li>
+<li>no, 禁止捕获所有输出.</li>
+<li>tee-sys</li>
+</ul>
+<p>个人理解:</p>
+<p>这里的捕获, 即将本来应该立即输出到到控制台/文件的信息截取, 可以加一些自定义的操作.</p>
+<p>默认是 all , 捕获所有信息, 所以不会实时输出而是结束后一起输出</p>
+<p>如果想 <strong>实时输出信息</strong> 那么需要使用, <tt class="docutils literal"><span class="pre">-s</span></tt> 或者 <tt class="docutils literal"><span class="pre">--capture=no</span></tt>, 实际测试也不是必须</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>日志选项</h2>
+<p>可以 <tt class="docutils literal">pytest <span class="pre">-h</span></tt> 查看帮助文档, logging 相关部分内容如下:</p>
+<pre class="literal-block">
+logging:
+--log-level=LEVEL     level of messages to catch/display.
+                      Not set by default, so it depends on the root/parent log handler's effective level, where it is &quot;WARNING&quot; by default.
+--log-format=LOG_FORMAT
+                      log format as used by the logging module.
+--log-date-format=LOG_DATE_FORMAT
+                      log date format as used by the logging module.
+--log-cli-level=LOG_CLI_LEVEL
+                      cli logging level.
+--log-cli-format=LOG_CLI_FORMAT
+                      log format as used by the logging module.
+--log-cli-date-format=LOG_CLI_DATE_FORMAT
+                      log date format as used by the logging module.
+--log-file=LOG_FILE   path to a file when logging will be written to.
+--log-file-level=LOG_FILE_LEVEL
+                      log file logging level.
+--log-file-format=LOG_FILE_FORMAT
+                      log format as used by the logging module.
+--log-file-date-format=LOG_FILE_DATE_FORMAT
+                      log date format as used by the logging module.
+--log-auto-indent=LOG_AUTO_INDENT
+                      Auto-indent multiline messages passed to the logging module. Accepts true|on, false|off or an integer.
+</pre>
+<p>有三种使用方式:</p>
+<p>A:</p>
+<pre class="literal-block">
+pytest test_xxx.py --log-cli-level=info
+</pre>
+<p>B, 编辑pytest.ini或tox.ini或setup.cfg文件:</p>
+<pre class="literal-block">
+[pytest]
+log_cli = 1
+log_cli_level = INFO
+log_cli_format = %(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)
+log_cli_date_format=%Y-%m-%d %H:%M:%S
+</pre>
+<p>C, 用pytest -o方式重写(pytest 3.4之后):</p>
+<pre class="literal-block">
+pytest test_xxx.py -o log_cli=true -o log_cli_level=INF
+</pre>
+<p>警告相关:</p>
+<pre class="literal-block">
+pytest-warnings:
+-W PYTHONWARNINGS, --pythonwarnings=PYTHONWARNINGS
+                      Set which warnings to report, see -W option of Python itself
+--maxfail=num         Exit after first num failures or errors
+--strict-config       Any warnings encountered while parsing the `pytest` section of the configuration file raise errors
+--strict-markers      Markers not registered in the `markers` section of the configuration file raise errors
+--strict              (Deprecated) alias to --strict-markers
+-c file               Load configuration from `file` instead of trying to locate one of the implicit configuration files
+--continue-on-collection-errors
+                      Force test execution even if collection errors occur
+--rootdir=ROOTDIR     Define root directory for tests. Can be relative path: 'root_dir', './root_dir', 'root_dir/another_dir/'; absolute path:
+                      '/home/user/root_dir'; path with variables: '$HOME/root_dir'.
+</pre>
+</div>
+<div class="section" id="pytest-ini">
+<h2>使用pytest.ini文件</h2>
+<p>使用 <strong>pytest.ini</strong> 文件配置测试用例</p>
+<p>文件一般建立在项目根目录下. 也不是强制性, 在哪个目录下执行 pytest 命令,
+就在哪个目录下寻找 <strong>pytest.ini</strong> , 不支持放在子目录下(除非去子目录跑测试)</p>
+<p>一般配置模版:</p>
+<blockquote>
+[pytest]
+# 然后写配置项</blockquote>
+<p>支持的配置选项(部分):</p>
+<ul class="simple">
+<li>addopts, 额外命令行选项, 可以更改默认命令行选项, 即在命令行补充参数, 如果有一样的选项, 尽量合并(看效果是)</li>
+<li>testpaths, 执行用例的目录</li>
+<li>python_file, 执行文件名</li>
+<li>python_classes, 执行的类名</li>
+<li>python_functions, 执行方法名</li>
+<li>usefixtures, 指定使用哪些固件.</li>
+<li>cache_dir, 缓存目录</li>
+<li>log_level, 日志等级, 默认是 --log-level 的 warring</li>
+<li>log_format, 日志格式</li>
+<li>log_file_date_format, 日志日期格式</li>
+<li>log_auto_indent, 日志缩进</li>
+<li>pythonpath, 将路径加入到 sys.path</li>
+<li>minversion, pytest最低版本</li>
+<li>required_plugins, 需要加载的插件</li>
+</ul>
+</div>
+<div class="section" id="section-3">
+<h2>支持的环境变量</h2>
+<p>environment variables:</p>
+<ul class="simple">
+<li>PYTEST_ADDOPTS,   额外命令行选项</li>
+<li>PYTEST_PLUGINS,   启动时加载的插件, 多个使用逗号分隔</li>
+<li>PYTEST_DISABLE_PLUGIN_AUTOLOAD,   设置不加载的插件</li>
+<li>PYTEST_DEBUG,     调试相关, set to enable debug tracing of pytest's internals</li>
+</ul>
+</div>
+<div class="section" id="mark">
+<h2>自定义mark装饰器</h2>
+<p>比如:</p>
+<pre class="literal-block">
+&#64;pytest.mark.mytest
+</pre>
+<p>直接使用这种自定义的mark表示, 会有警告:</p>
+<pre class="literal-block">
+pytest.unknown_mark_warning
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用 pycharm测试时, 会自动加上 -q 等参数, 所以看不到警告, 暂时没找到怎么覆盖这些配置,
+只有手动跑才能看到了</p>
+</div>
+<p>但是实际是自己有使用的, 这个时候需要将这个配置项添加到pytest.ini文件:</p>
+<pre class="literal-block">
+[pytest]
+markers =
+  mytest: 表示一个自定义mark标记
+</pre>
+<p>格式为自定义表示的名称name, 与含义说明.</p>
+<p>若不方便配置ini文件, 可以在conftest.py中手动使用config写入:</p>
+<pre class="literal-block">
+# conftest.py
+# coding: utf-8
+from _pytest.config import Config
+
+def pytest_configure(config: Config):
+    config.addinivalue_line(
+        'markers',
+        'mytest1: mark_mytest1',
+    )
+</pre>
+<p>第一个参数就是上面说的name, 第二个参数就是描述,</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">像这种在代码中补充配置的, 必须在插件的注册阶段使用, 所以
+必使用pytest_configure定义在conftest.py,
+无法写在具体的固件&#64;fixture中, 即使fixture定义在conftest.</p>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>一些其他指令</h2>
+<p>查看所有预定义固件:</p>
+<pre class="literal-block">
+pytest --fixtures
+</pre>
+<p>查看所有预定义标记:</p>
+<pre class="literal-block">
+pytest --markers
+</pre>
+</div>
+<div class="section" id="section-5">
+<h2>一些使用技巧</h2>
+<div class="section" id="section-6">
+<h3>跳过所有测试用例</h3>
+<p>直接命令行设置:</p>
+<pre class="literal-block">
+pytest -m &quot;&quot;
+</pre>
+<p>但是有时候不方便直接修改命令行, 还可以在 <strong>pytest.ini</strong> 设置:</p>
+<pre class="literal-block">
+[pytest]
+addopts = -m &quot;&quot;
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">实际使用中发现, 在有些版本 <tt class="docutils literal"><span class="pre">-m</span> &quot;&quot;</tt> 表示会执行所有的测试用例,
+而有些版本全都不会运行.</p>
+</div>
+<p>有时禁用所有测试会导致测试错误, 这时候也可使用 <tt class="docutils literal"><span class="pre">-k</span></tt> 指定一个耗时少的测试:</p>
+<pre class="literal-block">
+-k &quot;测试函数名/文件名&quot;
+</pre>
+</div>
+<div class="section" id="section-7">
+<h3>实时打印日志</h3>
+<p>日志使用可参考: <a class="reference internal" href="#section-2">日志选项</a></p>
+<p>还是使用 <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-logging.html">logging</a> 模块. 与平时使用无差别,
+测试时加启动参数 <tt class="docutils literal"><span class="pre">--capture=no</span></tt> 即可, 或者 <tt class="docutils literal"><span class="pre">-s</span></tt> 效果一致:</p>
+<pre class="literal-block">
+_logger = logging.getLogger(__name__)
+
+_logger.setlevel(logging.INFO)
+_logger.info('xxx')
+</pre>
+<p>实际就是:</p>
+<pre class="literal-block">
+pytest test_xxx.py --log-cli-level=info --capture=no
+pytest test_xxx.py --log-cli-level=info -s
+</pre>
+<p>打印乱码问题</p>
+<p>在最高级别的conftest.py添加如下代码即可:</p>
+<pre class="literal-block">
+def pytest_collection_modifyitems(items):
+    &quot;&quot;&quot;
+    测试用例收集完成时，将收集到的item的name和nodeid的中文显示在控制台上
+    :return:
+    &quot;&quot;&quot;
+    for item in items:
+        item.name = item.name.encode(&quot;utf-8&quot;).decode(&quot;unicode_escape&quot;)
+        item._nodeid = item.nodeid.encode(&quot;utf-8&quot;).decode(&quot;unicode_escape&quot;)
+</pre>
+</div>
+<div class="section" id="section-8">
+<h3>隐藏警告</h3>
+<p>可在 <strong>pytest.ini</strong> 文件中添加以下行来隐藏警告:</p>
+<pre class="literal-block">
+addopts = -p no:warnings
+</pre>
+<p>这将禁用所有警告.</p>
+<p>如果您只想隐藏特定的警告，可以使用filterwarnings选项。
+例如，以下配置将忽略所有用户警告和与正则表达式匹配的特定弃用警告，但将所有其他警告转换为错误:</p>
+<pre class="literal-block">
+filterwarnings = ignore::UserWarning regex:DeprecationWarning
+</pre>
+</div>
+</div>
+<div class="section" id="section-9">
+<h2>其他后续补充...</h2>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-python-three--party-library-pytest-index.html">pytest</a></div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    选项参数
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#general">
+      general:
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    日志选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#pytest-ini">
+    使用pytest.ini文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    支持的环境变量
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#mark">
+    自定义mark装饰器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    一些其他指令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    一些使用技巧
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      跳过所有测试用例
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      实时打印日志
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      隐藏警告
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    其他后续补充...
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,465 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>configparser</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>configparser</h2>
+									<div class="section" id="section-1">
+<h2>介绍</h2>
+<p>configparser 模块主要是用来读写配置文件的, 比如 <em>ini</em> 类型的文件.</p>
+<p>读取结果以节的形式展示, 每一个节下含选项字典</p>
+</div>
+<div class="section" id="section-2">
+<h2>用例</h2>
+<div class="highlight"><pre><span></span><span class="k">[default]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+
+<span class="k">[dev]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">11</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">33</span>
+
+<span class="k">[test]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">111</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">222</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">333</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="c1">#  coding: utf-8</span>
+<span class="c1">#</span>
+<span class="c1">#  Copyright (C) 2022-2022, Inc. All Rights Reserved</span>
+<span class="c1">#</span>
+<span class="c1">#  @Time    : 2022/12/14 下午1:41</span>
+<span class="c1">#  @Author  : yan que</span>
+<span class="c1">#  @Email   : yanquer@qq.com</span>
+<span class="c1">#  @File    : t_configparser.py</span>
+<span class="c1">#  @Project : mytest</span>
+
+<span class="kn">import</span> <span class="nn">configparser</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+
+<span class="k">class</span> <span class="nc">MyConfig</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="n">_config_path</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="n">_config_parser</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">_write_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_write_file</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">_read_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_config_path</span> <span class="o">=</span> <span class="n">config_path</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_read_file</span><span class="p">()</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">config_parser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span>
+
+        <span class="nd">@property</span>
+        <span class="k">def</span> <span class="nf">selections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">sections</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">has_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">has_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">add_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_selection</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">add_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_selection</span><span class="p">(</span><span class="n">selection</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">remove_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">remove_section</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">remove_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_selection</span><span class="p">(</span><span class="n">selection</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_config_parser</span><span class="o">.</span><span class="n">remove_option</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+        <span class="n">my_config</span> <span class="o">=</span> <span class="n">MyConfig</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s1">&#39;./setting.ini&#39;</span><span class="p">)</span>
+
+        <span class="c1"># 获取所有的节</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;获取所有的节&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">selections</span><span class="p">)</span>
+
+        <span class="c1"># 判断是否存在 dev 节</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;判断是否存在 dev 节&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">has_selection</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 判断是否存在 tt 节</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;判断是否存在 tt 节&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">has_selection</span><span class="p">(</span><span class="s1">&#39;tt&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 判断 dev 节是否存在 a 选项</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;判断 dev 节是否存在 a 选项&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 判断 dev 节是否存在 aa 选项</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;判断 dev 节是否存在 aa 选项&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="s1">&#39;aa&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 添加一个 tt 节</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;添加一个 tt 节&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="s1">&#39;tt&#39;</span><span class="p">),</span> <span class="n">my_config</span><span class="o">.</span><span class="n">selections</span><span class="p">)</span>
+
+        <span class="c1"># tt节添加选项</span>
+        <span class="n">my_config</span><span class="o">.</span><span class="n">add_options</span><span class="p">(</span><span class="s1">&#39;tt&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+
+        <span class="c1"># 读取一个节</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;读取 dev 节所有选项&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 读取一个节的某个选项</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;读取 dev 节 a 选项&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;读取 dev 节 a 选项&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 读取一个节所有配置</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;读取 dev 节所有配置&#39;</span><span class="p">,</span> <span class="n">my_config</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 支持直接以字典的形式写入</span>
+        <span class="n">my_config</span><span class="o">.</span><span class="n">config_parser</span><span class="p">[</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;ServerAliveInterval&#39;</span><span class="p">:</span> <span class="s1">&#39;45&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Compression&#39;</span><span class="p">:</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;CompressionLevel&#39;</span><span class="p">:</span> <span class="s1">&#39;9&#39;</span><span class="p">}</span>
+
+        <span class="c1"># 保存, 只有保存才会持久化写入到硬盘</span>
+        <span class="n">my_config</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+<div class="highlight"><pre><span></span>获取所有的节 [&#39;default&#39;, &#39;dev&#39;, &#39;test&#39;, &#39;tt&#39;]
+判断是否存在 dev 节 True
+判断是否存在 tt 节 True
+判断 dev 节是否存在 a 选项 True
+判断 dev 节是否存在 aa 选项 False
+添加一个 tt 节 None [&#39;default&#39;, &#39;dev&#39;, &#39;test&#39;, &#39;tt&#39;]
+读取 dev 节所有选项 [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+读取 dev 节 a 选项 11
+读取 dev 节 a 选项 11
+读取 dev 节所有配置 [(&#39;a&#39;, &#39;11&#39;), (&#39;b&#39;, &#39;22&#39;), (&#39;c&#39;, &#39;33&#39;)]
+</pre></div>
+<div class="highlight"><pre><span></span><span class="k">[DEFAULT]</span>
+<span class="na">serveraliveinterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">45</span>
+<span class="na">compression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
+<span class="na">compressionlevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">9</span>
+
+<span class="k">[default]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+
+<span class="k">[dev]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">11</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">22</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">33</span>
+
+<span class="k">[test]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">111</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">222</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">333</span>
+
+<span class="k">[tt]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">123</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">123</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">123</span>
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    介绍
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    用例
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

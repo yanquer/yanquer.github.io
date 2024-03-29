@@ -1,0 +1,855 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>迭代器/生成器</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 01 三月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/cookbook.html">Cookbook</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-03-01</div>
+									<h2>迭代器/生成器</h2>
+									<div class="section" id="section-2">
+<h2>手动遍历迭代器</h2>
+<p>使用 next() 函数并在代码中捕获 StopIteration 异 常:</p>
+<pre class="literal-block">
+def manual_iter():
+  with open('/etc/passwd') as f:
+    try:
+      while True:
+        line = next(f)
+        print(line, end='')
+    except StopIteration:
+      pass
+</pre>
+<p>通常来讲，StopIteration 用来指示迭代的结尾。
+然而，还可以通过返回一个指定值来标记结尾，比如 None 。下面是 示例:</p>
+<pre class="literal-block">
+with open('/etc/passwd') as f:
+  while True:
+    line = next(f, None)
+    if line is None:
+      break
+    print(line, end='')
+</pre>
+<p>大多数情况下，我们会使用 for 循环语句用来遍历一个可迭代对象。
+但是，偶尔也 需要对迭代做更加精确的控制，这时候了解底层迭代机制就显得尤为重要了:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; items = [1, 2, 3]
+&gt;&gt;&gt; # Get the iterator
+&gt;&gt;&gt; it = iter(items) # Invokes items.__iter__()
+&gt;&gt;&gt; # Run the iterator
+&gt;&gt;&gt; next(it) # Invokes it.__next__()
+1
+&gt;&gt;&gt; next(it)
+2
+&gt;&gt;&gt; next(it)
+3
+&gt;&gt;&gt; next(it)
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt; StopIteration
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>代理迭代</h2>
+<p>你构建了一个自定义容器对象，里面包含有列表、元组或其他可迭代对象。你想直 接在你的这个新容器对象上执行迭代操作</p>
+<p>实际上你只需要定义一个 <tt class="docutils literal">__iter__()</tt> 方法，将迭代操作代理到容器内部的对象上 去。比如:</p>
+<pre class="literal-block">
+class Node:
+  def __init__(self, value):
+    self._value = value
+    self._children = []
+  def __repr__(self):
+    return 'Node({!r})'.format(self._value)
+
+  def add_child(self, node):
+    self._children.append(node)
+
+  def __iter__(self):
+    return iter(self._children)
+</pre>
+<p>Python 的迭代器协议需要 <tt class="docutils literal">__iter__()</tt> 方法返回一个实现了 <tt class="docutils literal">__next__()</tt> 方法的 迭代器对象。
+如果你只是迭代遍历其他容器的内容，你无须担心底层是怎样实现的。你 所要做的只是传递迭代请求既可。</p>
+<p>这里的 iter() 函数的使用简化了代码，iter(s) 只是简单的通过调用 <tt class="docutils literal">s. __iter__()</tt> 方法来返回对应的迭代器对象，
+就跟 len(s) 会调用 <tt class="docutils literal">s.__len__()</tt> 原理 是一样的。</p>
+</div>
+<div class="section" id="section-4">
+<h2>使用生成器创建新的迭代模式</h2>
+<p>你想实现一个自定义迭代模式，跟普通的内置函数比如 range() , reversed() 不 一样:</p>
+<pre class="literal-block">
+def frange(start, stop, increment):
+  x = start
+  while x &lt; stop:
+    yield x
+    x += increment
+</pre>
+<p>一个函数中需要有一个 yield 语句即可将其转换为一个生成器。跟普通函数不同 的是，生成器只能用于迭代操作。</p>
+<p>一个生成器函数主要特征是它只会回应在迭代中使用到的 next 操作。一旦生成器 函数返回退出，迭代终止。
+我们在迭代中通常使用的 for 语句会自动处理这些细节，所 以你无需担心。</p>
+</div>
+<div class="section" id="section-5">
+<h2>实现迭代器协议</h2>
+<p>构建一个能支持迭代操作的自定义对象，并希望找到一个能实现迭代协议的 简单方法。</p>
+<p>目前为止，在一个对象上实现迭代最简单的方式是使用一个生成器函数.
+你可能想实现一个以深度优先方式遍历树形 节点的生成器。下面是代码示例:</p>
+<pre class="literal-block">
+class Node:
+  def __init__(self, value):
+        self._value = value
+        self._children = []
+
+  def __repr__(self):
+    return 'Node({!r})'.format(self._value)
+
+  def add_child(self, node):
+    self._children.append(node)
+
+  def __iter__(self):
+    return iter(self._children)
+
+  def depth_first(self):
+    yield self
+    for c in self:
+      yield from c.depth_first()
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>反向迭代</h2>
+<p>反方向迭代一个序列</p>
+<p>使用内置的 reversed() 函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; a = [1, 2, 3, 4]
+&gt;&gt;&gt; for x in reversed(a):
+...   print(x)
+...
+4
+3
+2
+1
+</pre>
+<p>反向迭代仅仅当对象的大小可预先确定或者对象实现了 <tt class="docutils literal">__reversed__()</tt> 的特殊 方法时才能生效。
+如果两者都不符合，那你必须先将对象转换为一个列表才行:</p>
+<pre class="literal-block">
+# Print a file backwards
+f = open('somefile')
+for line in reversed(list(f)):
+  print(line, end='')
+</pre>
+<p>要注意的是如果可迭代对象元素很多的话，将其预先转换为一个列表要消耗大量 的内存</p>
+<p>很多程序员并不知道可以通过在自定义类上实现 <tt class="docutils literal">__reversed__()</tt> 方法来实现反 向迭代。比如:</p>
+<pre class="literal-block">
+class Countdown:
+  def __init__(self, start):
+    self.start = start
+
+  # Forward iterator
+  def __iter__(self):
+    n = self.start
+    while n &gt; 0:
+      yield n
+      n -= 1
+
+  # Reverse iterator
+  def __reversed__(self):
+    n=1
+    while n &lt;= self.start:
+      yield n
+      n += 1
+</pre>
+<p>定义一个反向迭代器可以使得代码非常的高效，因为它不再需要将数据填充到一 个列表中然后再去反向迭代这个列表:</p>
+<pre class="literal-block">
+from collections import deque
+
+class linehistory:
+  def __init__(self, lines, histlen=3):
+    self.lines = lines
+    self.history = deque(maxlen=histlen)
+
+  def __iter__(self):
+    for lineno, line in enumerate(self.lines, 1):
+      self.history.append((lineno, line))
+      yield line
+
+  def clear(self): self.history.clear()
+</pre>
+</div>
+<div class="section" id="section-7">
+<h2>带有外部状态的生成器函数</h2>
+<p>定义一个生成器函数，但是它会调用某个你想暴露给用户使用的外部状态值</p>
+<p>如果你想让你的生成器暴露外部状态给用户，别忘了你可以简单的将它实现为一 个类，然后把生成器函数放到 <tt class="docutils literal">__iter__()</tt> 方法中过去</p>
+</div>
+<div class="section" id="section-8">
+<h2>迭代器切片</h2>
+<p>你想得到一个由迭代器生成的切片对象，但是标准切片操作并不能做到。</p>
+<p>函数 itertools.islice() 正好适用于在迭代器和生成器上做切片操作。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def count(n):
+...  while True:
+...    yield n
+...    n += 1
+...
+&gt;&gt;&gt; c = count(0)
+&gt;&gt;&gt; c[10:20]
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt; TypeError: 'generator' object is not subscriptable
+&gt;&gt;&gt; # Now using islice()
+&gt;&gt;&gt; import itertools
+&gt;&gt;&gt; for x in itertools.islice(c, 10, 20): ... print(x)
+...
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+&gt;&gt;&gt;
+</pre>
+<p>迭代器和生成器不能使用标准的切片操作，因为它们的长度事先我们并不知道 (并 且也没有实现索引)。
+函数 islice() 返回一个可以生成指定元素的迭代器，它通过遍 历并丢弃直到切片开始索引位置的所有元素。
+然后才开始一个个的返回元素，并直到切 片结束索引位置。</p>
+<p>这里要着重强调的一点是 islice() 会消耗掉传入的迭代器中的数据。
+必须考虑到 迭代器是不可逆的这个事实。所以如果你需要之后再次访问这个迭代器的话，那你就得 先将它里面的数据放入一个列表中。</p>
+</div>
+<div class="section" id="section-9">
+<h2>跳过可迭代对象的开始部分</h2>
+<p>你想遍历一个可迭代对象，但是它开始的某些元素你并不感兴趣，想跳过它们。</p>
+<p>itertools 模块中有一些函数可以完成这个任务。首先介绍的是 itertools. dropwhile() 函数。
+使用时，你给它传递一个函数对象和一个可迭代对象。
+它会返 回一个迭代器对象，丢弃原有序列中直到函数返回 Flase 之前的所有元素，然后返回后 面所有元素。</p>
+<p>如果你想跳过开始部分的注释行的话，可以这样做:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from itertools import dropwhile
+&gt;&gt;&gt; with open('/etc/passwd') as f:
+...   for line in dropwhile(lambda line: line.startswith('#'), f):
+...     print(line, end='')
+...
+nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false
+root:*:0:0:System Administrator:/var/root:/bin/sh
+...
+&gt;&gt;&gt;
+</pre>
+<p>这个例子是基于根据某个测试函数跳过开始的元素。
+如果你已经明确知道了要跳 过的元素的个数的话，那么可以使用 itertools.islice() 来代替。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from itertools import islice
+&gt;&gt;&gt; items = ['a', 'b', 'c', 1, 4, 10, 15]
+&gt;&gt;&gt; for x in islice(items, 3, None):
+...   print(x)
+...
+1
+4
+10
+15
+</pre>
+<p>islice() 函数最后那个 None 参数指定了你要获取从第 3 个到最 后的所有元素，
+如果 None 和 3 的位置对调，意思就是仅仅获取前三个元素恰恰相反， (这个跟切片的相反操作 [3:] 和 [:3] 原理是一样的)。</p>
+</div>
+<div class="section" id="section-10">
+<h2>排列组合的迭代</h2>
+<p>你想迭代遍历一个集合中元素的所有可能的排列或组合, 即 <strong>全排列</strong> 问题.</p>
+<p>itertools 模块提供了三个函数来解决这类问题。
+其中一个是 itertools.permutations() ，它接受一个集合并产生一个元组序列，每个元组由集合中所有 元素的一个可能排列组成。
+也就是说通过打乱集合中元素排列顺序生成一个元组，比 如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; items = ['a', 'b', 'c']
+&gt;&gt;&gt; from itertools import permutations
+&gt;&gt;&gt; for p in permutations(items):
+...   print(p)
+...
+('a', 'b', 'c')
+('a', 'c', 'b')
+('b', 'a', 'c')
+('b', 'c', 'a')
+('c', 'a', 'b')
+('c', 'b', 'a')
+&gt;&gt;&gt;
+</pre>
+<p>如果你想得到指定长度的所有排列，你可以传递一个可选的长度参数。就像这样:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; for p in permutations(items, 2):
+...   print(p)
+...
+('a', 'b')
+('a', 'c')
+('b', 'a')
+('b', 'c')
+('c', 'a')
+('c', 'b')
+&gt;&gt;&gt;
+</pre>
+<p>使用 itertools.combinations() 可得到输入集合中元素的所有的组合。比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from itertools import combinations
+&gt;&gt;&gt; for c in combinations(items, 3):
+...   print(c)
+...
+('a', 'b', 'c')
+&gt;&gt;&gt; for c in combinations(items, 2):
+...   print(c)
+...
+('a', 'b')
+('a', 'c')
+('b', 'c')
+
+&gt;&gt;&gt; for c in combinations(items, 1):
+...   print(c)
+...
+('a',)
+('b',)
+('c',)
+&gt;&gt;&gt;
+</pre>
+<p>对于 combinations() 来讲，元素的顺序已经不重要了。
+也就是说，组合 ('a', 'b') 跟 ('b', 'a') 其实是一样的 (最终只会输出其中一个)。</p>
+<p>在计算组合的时候，一旦元素被选取就会从候选中剔除掉 (比如如果元 素’a’已经被选取了，那么接下来就不会再考虑它了)。
+而函数 itertools. combinations_with_replacement() 允许同一个元素被选择多次，比如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; for c in combinations_with_replacement(items, 3):
+...   print(c)
+...
+('a', 'a', 'a')
+('a', 'a', 'b')
+('a', 'a', 'c')
+('a', 'b', 'b')
+('a', 'b', 'c')
+('a', 'c', 'c')
+('b', 'b', 'b')
+('b', 'b', 'c')
+('b', 'c', 'c')
+('c', 'c', 'c')
+&gt;&gt;&gt;
+</pre>
+<p>当我们碰到看上去有些复杂的迭 代问题时，最好可以先去看看 itertools 模块。
+如果这个问题很普遍，那么很有可能会在 里面找到解决方案!</p>
+</div>
+<div class="section" id="section-11">
+<h2>序列上索引值迭代</h2>
+<p>你想在迭代一个序列的同时跟踪正在被处理的元素索引。</p>
+<p>内置的 enumerate() 函数可以很好的解决这个问题, enumerate 接受一个参数作为起始序号, 默认为0:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; my_list = ['a', 'b', 'c']
+&gt;&gt;&gt; for idx, val in enumerate(my_list, 1):
+...   print(idx, val)
+...
+1a
+2b
+3c
+</pre>
+<p>enumerate() 函数返回的是一个 enumerate 对象实例，它是一个迭代器，返回连 续的包含一个计数和一个值的元组，
+元组中的值通过在传入序列上调用 next() 返回。</p>
+<p>还有一点可能并不很重要，但是也值得注意，有时候当你在一个已经解压后的元组 序列上使用 enumerate() 函数时很容易调入陷阱。
+你得像下面正确的方式这样写:</p>
+<pre class="literal-block">
+data = [ (1, 2), (3, 4), (5, 6), (7, 8) ]
+
+# Correct!
+for n, (x, y) in enumerate(data): ...
+
+# Error!
+for n, x, y in enumerate(data): ...
+</pre>
+</div>
+<div class="section" id="section-12">
+<h2>同时迭代多个序列</h2>
+<p>你想同时迭代多个序列，每次分别从一个序列中取一个元素。</p>
+<p>使用 zip() 函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; xpts = [1, 5, 4, 2, 10, 7]
+&gt;&gt;&gt; ypts = [101, 78, 37, 15, 62, 99]
+&gt;&gt;&gt; for x, y in zip(xpts, ypts):
+...   print(x,y)
+...
+1 101
+5 78
+4 37
+2 15
+10 62
+7 99
+&gt;&gt;&gt;
+</pre>
+<p>zip(a, b) 会生成一个可返回元组 (x, y) 的迭代器，其中 x 来自 a，y 来自 b。
+一 旦其中某个序列到底结尾，迭代宣告结束。因此迭代长度跟参数中最短序列长度一致。</p>
+<p>如果这个不是你想要的效果，那么还可以使用 itertools.zip_longest() 函数来 代替:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from itertools import zip_longest
+&gt;&gt;&gt; for i in zip_longest(a,b):
+...   print(i)
+...
+(1, 'w')
+(2, 'x')
+(3, 'y')
+(None, 'z')
+&gt;&gt;&gt; for i in zip_longest(a, b, fillvalue=0):
+...   print(i)
+...
+(1, 'w')
+(2, 'x')
+(3, 'y')
+(0, 'z')
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="section" id="section-13">
+<h2>不同集合上元素的迭代</h2>
+<p>你想在多个对象执行相同的操作，但是这些对象在不同的容器中，你希望代码在不 失可读性的情况下避免写重复的循环。</p>
+<p>itertools.chain() 方法可以用来简化这个任务。
+它接受一个可迭代对象列表作 为输入，并返回一个迭代器，有效的屏蔽掉在多个容器中迭代细节。
+为了演示清楚，考 虑下面这个例子:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from itertools import chain
+&gt;&gt;&gt; a = [1, 2, 3, 4]
+&gt;&gt;&gt; b = ['x', 'y', 'z']
+&gt;&gt;&gt; for x in chain(a, b):
+...   print(x)
+...
+1
+2
+3 4 x y z
+&gt;&gt;&gt;
+</pre>
+<p>tertools.chain() 接受一个或多个可迭代对象最为输入参数。
+然后创建一个迭 代器，依次连续的返回每个可迭代对象中的元素。
+这种方式要比先将序列合并再迭代要 高效的多。</p>
+</div>
+<div class="section" id="section-14">
+<h2>创建数据处理管道</h2>
+<p>以数据管道 (类似 Unix 管道) 的方式迭代处理数据。比如，你有个大量的数据 需要处理，但是不能将它们一次性放入内存中。</p>
+<p>生成器函数是一个实现管道机制的好办法</p>
+<p>函数内使用 yield 作为生产者, 外部 for 作为 消费者, 来组成处理管道.</p>
+</div>
+<div class="section" id="section-15">
+<h2>展开嵌套的序列</h2>
+<p>你想将一个多层嵌套的序列展开成一个单层列表</p>
+<p>yield from 在你想在生成器中调用其他生成器作为子例程的时候非常有用</p>
+</div>
+<div class="section" id="section-16">
+<h2>顺序迭代合并后的排序迭代对象</h2>
+<p>有一系列排序序列，想将它们合并后得到一个排序序列并在上面迭代遍历。</p>
+<p>heapq.merge() 函数:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import heapq
+&gt;&gt;&gt; a = [1, 4, 7, 10]
+&gt;&gt;&gt; b = [2, 5, 6, 11]
+&gt;&gt;&gt; for c in heapq.merge(a, b):
+...   print(c)
+...
+1
+2
+4
+5
+6
+7
+10
+11
+</pre>
+<p>heapq.merge 可迭代特性意味着它不会立马读取所有序列。这就意味着你可以在 非常长的序列中使用它，而不会有太大的开销。
+比如，下面是一个例子来演示如何合并 两个排序文件:</p>
+<pre class="literal-block">
+with open('sorted_file_1', 'rt') as file1, \
+    open('sorted_file_2', 'rt') as file2, \
+    open('merged_file', 'wt') as outf:
+
+  for line in heapq.merge(file1, file2):
+    outf.write(line)
+</pre>
+<p>有一点要强调的是 heapq.merge() 需要所有输入序列必须是排过序的。
+特别的， 它并不会预先读取所有数据到堆栈中或者预先排序，也不会对输入做任何的排序检测。
+它仅仅是检查所有序列的开始部分并返回最小的那个，这个过程一直会持续直到所有 输入序列中的元素都被遍历完。</p>
+</div>
+<div class="section" id="while">
+<h2>迭代器代替 while 无限循环</h2>
+<p>你在代码中使用 while 循环来迭代处理数据，因为它需要调用某个函数或者和一 般迭代模式不同的测试条件。
+能不能用迭代器来重写这个循环呢?</p>
+<p>一个常见的 IO 操作程序可能会想下面这样:</p>
+<pre class="literal-block">
+CHUNKSIZE = 8192
+def reader(s):
+  while True:
+    data = s.recv(CHUNKSIZE)
+    if data == b'':
+      break
+    process_data(data)
+</pre>
+<p>这种代码通常可以使用 iter() 来代替，如下所示:</p>
+<pre class="literal-block">
+def reader2(s):
+  for chunk in iter(lambda: s.recv(CHUNKSIZE), b''):
+    pass
+    # process_data(data)
+</pre>
+<p>iter 函数一个鲜为人知的特性是它接受一个可选的 callable 对象和一个标记 (结 尾) 值作为输入参数。
+当以这种方式使用的时候，它会创建一个迭代器，这个迭代器会 不断调用 callable 对象直到返回值和标记值相等为止。</p>
+</div>
+<div class="section" id="section-17">
+<h2>迭代器与生成器区别</h2>
+<ul class="simple">
+<li>迭代器提供一种顺序访问集合或序列元素的方式，使用 next() 方法获取每个元素。</li>
+<li>生成器是一种特殊类型的函数，通过使用 yield 关键字生成序列值，
+每次调用生成器函数返回一个迭代器对象，通过迭代器对象可以按需获取生成的序列值。</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    手动遍历迭代器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    代理迭代
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    使用生成器创建新的迭代模式
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    实现迭代器协议
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    反向迭代
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    带有外部状态的生成器函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    迭代器切片
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    跳过可迭代对象的开始部分
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    排列组合的迭代
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    序列上索引值迭代
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-12">
+    同时迭代多个序列
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-13">
+    不同集合上元素的迭代
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-14">
+    创建数据处理管道
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-15">
+    展开嵌套的序列
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-16">
+    顺序迭代合并后的排序迭代对象
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#while">
+    迭代器代替 while 无限循环
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-17">
+    迭代器与生成器区别
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

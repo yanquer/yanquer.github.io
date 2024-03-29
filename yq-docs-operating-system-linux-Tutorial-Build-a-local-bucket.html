@@ -1,0 +1,563 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>本地构建deb包</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>本地构建deb包</h2>
+									<p>debian官方文档: <a class="reference external" href="https://www.debian.org/releases/stable/amd64/index.zh-cn.html">https://www.debian.org/releases/stable/amd64/index.zh-cn.html</a></p>
+<p>control文件说明: <a class="reference external" href="https://www.debian.org/doc/debian-policy/ch-controlfields.html">https://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+<div class="section" id="section-1">
+<h2>文件结构</h2>
+<div class="sidebar">
+<cite>DEBIAN</cite> 下的这些文件, 安装后一般都可以在 <cite>/var/lib/info</cite> 下找到,
+如 <cite>/var/lib/info/xxx.prerm*</cite></div>
+<p>大概包目录结构如下:</p>
+<pre class="literal-block">
+|----DEBIAN
+      |-------control
+      |-------postinst(postinstallation)
+      |-------postrm(postremove)
+      |-------preinst(preinstallation)
+      |-------prerm(preremove)
+      |-------copyright(版权)
+      |-------changlog(修订记录)
+      |-------conffiles
+|----etc
+|----usr
+|----opt
+|----tmp
+|----boot
+      |-----initrd-vstools.img
+</pre>
+<div class="sidebar">
+DEBIAN 下的文件大多都需要可执行权限</div>
+</div>
+<div class="section" id="control">
+<h2>control文件</h2>
+<p>官方字段说明见: <cite>https://www.debian.org/doc/debian-policy/ch-controlfields.html</cite></p>
+<p>deb包必须具备的描述性文件，以便于软件的安装管理和索引</p>
+<p>内容字段说明</p>
+<ul class="simple">
+<li>Package 程序名称 中间不能有空格</li>
+<li>Version 版本</li>
+<li>Section 软件类别 utils, net, mail, text, x11</li>
+<li>Priority 软件对于系统的重要程度 required, standard, optional, extra等</li>
+<li>Essential 是否是系统最基本的软件包 yes/no，若为yes,则不允许卸载（除非强制性卸载）</li>
+<li>Architecture 软件所支持的平台架构 all, i386, amd64, m68k, sparc, alpha, powerpc等,
+支持的架构可参考: <a class="reference external" href="https://www.debian.org/releases/stable/amd64/ch02s01.zh-cn.html">https://www.debian.org/releases/stable/amd64/ch02s01.zh-cn.html</a></li>
+<li>Source 软件包的源代码名称</li>
+<li>Depends 软件所依赖的其他软件包和库文件 若依赖多个软件包和库文件，采用逗号隔开</li>
+<li>Pre-Depends 软件安装前必须安装、配置依赖性的软件包和库文件 常用于必须的预运行脚本需求</li>
+<li>Recommends 推荐安装的其他软件包和库文件</li>
+<li>Suggests 建议安装的其他软件包和库文件</li>
+<li>Maintainer 维护者</li>
+<li>Description 程序说明</li>
+<li>Homepage 主页</li>
+<li>Installed-Size: 安装大概消耗的空间(预估值, 实际可能有所不同), 只写数字即可, 单位字节</li>
+<li>Download-Size: 大小需要下载的包的大小, 只写数字大小即可, 单位字节</li>
+<li>MimeType: 关联的文件类型, 比如vscode设置了 <cite>inode/directory</cite> 就可以右键选择其他应用打开的时候有vscode</li>
+</ul>
+<p>MimeType支持的部分类型:</p>
+<ul class="simple">
+<li>inode/directory：普通文件夹</li>
+<li>text/plain: 文本文件</li>
+<li>application/x-gnome-saved-search：GNOME 桌面环境中保存的搜索结果文件夹</li>
+<li>inode/mount-point：挂载点，表示一个已挂载的设备或文件系统</li>
+<li>inode/blockdevice：块设备文件夹</li>
+<li>inode/chardevice：字符设备文件夹</li>
+<li>inode/socket：套接字文件夹</li>
+<li>inode/fifo：命名管道文件夹</li>
+<li>application/Xcode-workspace: xcode项目, 主要是苹果下面的</li>
+</ul>
+</div>
+<div class="section" id="postinst">
+<h2>postinst文件</h2>
+<p>在Deb包文件解包之前（即软件安装前），将会运行该脚本。可以停止作用于待升级软件包的服务，直到软件包安装或升级完成。</p>
+</div>
+<div class="section" id="preinst">
+<h2>preinst文件</h2>
+<p>负责完成安装包时的配置工作。如新安装或升级的软件重启服务。软件安装完后，执行该Shell脚本，一般用来配置软件执行环境，必须以“#!/bin/sh”为首行。</p>
+</div>
+<div class="section" id="prerm">
+<h2>prerm文件</h2>
+<p>该脚本负责停止与软件包相关联的daemon服务。它在删除软件包关联文件之前执行</p>
+</div>
+<div class="section" id="postrm">
+<h2>postrm文件</h2>
+<p>负责修改软件包链接或文件关联，或删除由它创建的文件。软件卸载后，执行该Shell脚本，一般作为清理收尾工作，必须以“#!/bin/sh”为首行</p>
+</div>
+<div class="section" id="copyright">
+<h2>copyright文件</h2>
+</div>
+<div class="section" id="changlog">
+<h2>changlog文件</h2>
+</div>
+<div class="section" id="conffiles">
+<h2>conffiles文件</h2>
+</div>
+<div class="section" id="section-2">
+<h2>用例</h2>
+<p>大概目录结构:</p>
+<pre class="literal-block">
+.dist/deb_ev-deb/
+|-- DEBIAN
+|   `-- control
+|   `-- postinit
+`-- usr
+    |-- local
+    |   `-- life
+    |       `-- ev-deb-1.0.1
+    |           `-- main.bin
+    `-- share
+        |-- applications
+        |   `-- life
+        |       `-- ev-deb.desktop
+        `-- icons
+            `-- life
+              `-- ic.png
+</pre>
+<p>其中:</p>
+<ul>
+<li><p class="first"><cite>DEBIAN/control</cite> 是包相关信息, 必有.
+配置内容大概:</p>
+<pre class="literal-block">
+Package: ev-deb
+Version: 1.0.1
+Architecture: amd64
+Maintainer: yq
+Description: desc a every deb
+</pre>
+</li>
+<li><p class="first"><cite>DEBIAN/control</cite> 这里用来做桌面图标设置相关脚本, 有GUI界面才需要设置
+内容:</p>
+<pre class="literal-block">
+#!/bin/bash
+cp /usr/share/applications/life/ev-deb.desktop ~/Desktop
+</pre>
+</li>
+<li><p class="first">其他的比如 <cite>usr</cite> 是模仿linux系统结构来进行布局, 比如这里的是 <cite>usr/local/life/ev-deb-1.0.1</cite>,
+那么实际的安装位置就是 <cite>/usr/local/life/ev-deb-1.0.1</cite>.</p>
+</li>
+<li><p class="first"><cite>usr/share/applications/life/ev-deb.desktop</cite> , 主要是需要在 <cite>/usr/share/applications</cite> 创建一个
+<cite>.desktop</cite> 文件, 以便于在 GUI 界面的时候可以在桌面活着任务栏看到, 若是GUI应用必有. 配置内容大概:</p>
+<pre class="literal-block">
+[Desktop Entry]
+Name=ev-deb
+Comment=desc a every deb
+Exec=.dist/deb_ev-deb/ev-deb-1.0.1/main.bin
+Icon=.dist/deb_ev-deb/usr/share/icons/life/ic.png
+Terminal=true
+Type=Application
+X-Ubuntu-Touch=true
+Categories=Development
+</pre>
+<p>且必有可执行权限.</p>
+<p>Name 表示在桌面上显示的名称</p>
+</li>
+<li><p class="first"><cite>usr/share/icons</cite> , 图标位置, GUI界面必有, 用于 <cite>.desktop</cite> 文件.
+特别说明,</p>
+<ul class="simple">
+<li>Exec字段指定的路径如果有空格, 可以用引号代替</li>
+<li>Icon字段指定的图标路径不能有引号与空格, 否则 <tt class="docutils literal">dpkg <span class="pre">-b</span></tt>
+打包的时候校验不通过(但是实际安装好后可以用空格, 不能用引号).</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p><cite>usr/share/applications/</cite> 下是系统的启动器默认的应用(桌面文件)存放位置,
+若放在其他位置如 <cite>~/.local/share/applications/</cite>, 可使用指令更新:</p>
+<pre class="literal-block">
+update-desktop-database ~/.local/share/applications/
+</pre>
+<p class="last">这样就不需要手动 <cite>右键 - 允许启动</cite> 了</p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>官方文档建议的打包工具</h2>
+<ul>
+<li><p class="first">debmake: deb目录结构生成工具 (好像需要手动装)</p>
+</li>
+<li><p class="first">debbuild: 根据上一步构建好的结构, 生成包, 与 <tt class="docutils literal">dpkg <span class="pre">-b</span></tt> 类似, 不过 <cite>dpkg</cite> 更底层.
+<cite>debbuild</cite> 读取软件包的源代码目录中的 <cite>debian/rules`</cite> 文件来执行构建过程，
+并自动处理构建过程中的许多步骤，例如配置、编译和安装.
+<cite>debuild</cite> 还会检查构建依赖关系并确保它们已满足，以及生成符合 Debian 软件包规范的二进制和源代码软件包.</p>
+<p><tt class="docutils literal">dpkg <span class="pre">-b</span></tt> 是一个更底层的工具，用于将已经构建好的二进制文件打包成一个 Debian 格式的软件包.
+它不会自动执行构建过程，而是需要手动提供已经构建好的文件和必要的控制信息（例如包名、版本号、依赖关系等）.
+<tt class="docutils literal">dpkg <span class="pre">-b</span></tt> 的优点是灵活性，允许用户手动控制软件包的构建流程和细节.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="deb-1">
+<h2>deb包配置右键单击支持使用其他应用打开</h2>
+<p>只需配置 <cite>desktop</cite> 文件, 如上面的 <cite>usr/share/applications/life/ev-deb.desktop</cite>
+还是用上面的例子:</p>
+<pre class="literal-block">
+[Desktop Entry]
+Name=ev-deb
+Comment=desc a every deb
+Exec=.dist/deb_ev-deb/ev-deb-1.0.1/main.bin
+Icon=.dist/deb_ev-deb/usr/share/icons/life/ic.png
+Terminal=true
+Type=Application
+X-Ubuntu-Touch=true
+Categories=Development
+</pre>
+<p>有两个地方要改,  <strong>一个是Exec改为需要增加参数</strong></p>
+<pre class="literal-block">
+Exec=.dist/deb_ev-deb/ev-deb-1.0.1/main.bin %F
+</pre>
+<p>部分支持的参数:</p>
+<ul class="simple">
+<li>%F: 选中文件夹或文件的路径</li>
+<li>%U: 选中文件夹的路径</li>
+</ul>
+<p><strong>另一个是增加 `MimeType`</strong>, 与 <a class="reference internal" href="#control">control文件</a> 的 <cite>MimeType</cite> 一致,
+需要说明的是, 即使已经在 <a class="reference internal" href="#control">control文件</a> 写了 <cite>MimeType</cite>,
+还是得在 <cite>desktop</cite> 文件再写一次(多个用分号隔开), 两个地方的不共享.
+表示哪些类型的文件可以右键选择用此应用打开.
+比如:</p>
+<pre class="literal-block">
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    文件结构
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#control">
+    control文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#postinst">
+    postinst文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#preinst">
+    preinst文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#prerm">
+    prerm文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#postrm">
+    postrm文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#copyright">
+    copyright文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#changlog">
+    changlog文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#conffiles">
+    conffiles文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    用例
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    官方文档建议的打包工具
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#deb-1">
+    deb包配置右键单击支持使用其他应用打开
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

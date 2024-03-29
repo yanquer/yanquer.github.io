@@ -1,0 +1,1344 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>nsis 指令</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/windows.html">Windows</a></li>
+
+												<li><a class="button button-alt" href="tag/windowszhi-xing-wen-jian-da-bao.html">Windows执行文件打包</a></li>
+
+												<li><a class="button button-alt" href="tag/nsis.html">Nsis</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>nsis 指令</h2>
+									<div class="section" id="section-1">
+<h2>文件、目录操作</h2>
+<div class="section" id="fileopen-filewrite-fileclose">
+<h3>FileOpen/FileWrite/FileClose</h3>
+<p>可用于创建文件, 写入文件:</p>
+<pre class="literal-block">
+FileOpen $9 apachesrvin.bat w ;Opens a Empty File and fills it
+FileWrite $9 &quot;cd $INSTDIR\apache$\r$\n&quot;
+FileWrite $9 &quot;apache -n Apache -k install$\r$\n&quot;
+FileWrite $9 &quot;net start Apache$\r$\n&quot;
+FileWrite $9 &quot;exit$\r$\n&quot;
+FileClose $9 ;Closes the filled file
+</pre>
+<p>上面这段代码里的 <tt class="docutils literal">$9</tt> 表示创建的文件指针赋给此变量, 类似:</p>
+<pre class="literal-block">
+$9 = open('apachesrvin.bat')
+</pre>
+</div>
+<div class="section" id="file">
+<span id="nsis-file"></span><h3>File</h3>
+<p>作用: 释放文件到当前输出路径。</p>
+<p>选项:</p>
+<pre class="literal-block">
+/nonfatal 且当文件未找到时使用警告来代替错误
+/a        被添加的文件的属性将会保持
+/r        匹配的文件将会在子目录里被递归的搜索。如果目录名匹配则所有包含的内容都会被递归添加, 目录结构也会被保持
+/x        排除文件或目录
+</pre>
+</div>
+<div class="section" id="delete">
+<h3>Delete</h3>
+<p>作用: 从目标系统删除文件</p>
+<p>例, 删除文件:</p>
+<pre class="literal-block">
+Delete &quot;$SMPROGRAMS\Test.exe&quot;
+</pre>
+</div>
+<div class="section" id="rename">
+<h3>Rename</h3>
+<p>作用: 把源文件重命名为目标文件</p>
+<p>例, 重命名文件:</p>
+<pre class="literal-block">
+Rename $INSTDIR\file1 $INSTDIR\file2
+</pre>
+</div>
+<div class="section" id="createdirectory">
+<h3>CreateDirectory</h3>
+<p>作用: 创建 (递归创建) 指定的目录。当目录不能创建时会放置一个错误标记。你也可以指定一个绝对路径。</p>
+<p>例, 在默认Program Files目录下创建一个Temp目录:</p>
+<pre class="literal-block">
+CreateDirectory &quot;$SMPROGRAMS\Temp&quot;
+</pre>
+</div>
+<div class="section" id="rmdir">
+<h3>RMDir</h3>
+<p>作用: 删除目录</p>
+<p>例, 删除Resources及其子目录:</p>
+<pre class="literal-block">
+RMDir /r $INSTDIR\Resources
+</pre>
+</div>
+<div class="section" id="setoutpath">
+<h3>SetOutPath</h3>
+<p>作用: 设置输出路径($OUTDIR)且当路径不存在时创建(需要时会递归创建)。必须为绝对路径名, 通常都使用 $INSTDIR。</p>
+<p>例, 将用户定义的解压路径作为输出目录:</p>
+<pre class="literal-block">
+SetOutPath $INSTDIR
+</pre>
+</div>
+<div class="section" id="createshortcut">
+<h3>CreateShortCut</h3>
+<p>作用: 创建快捷文件.lnk 目标文件</p>
+<p>例, 设置Test.exe的快捷方式Test.lnk, 图标为Test.ico:</p>
+<pre class="literal-block">
+CreateShortCut &quot;$DESKTOP\Test.lnk&quot; &quot;$DESKTOP\Test.exe&quot; &quot;$DESKTOP\Icon\Test.ico&quot;
+</pre>
+</div>
+</div>
+<div class="section" id="section-2">
+<span id="nsis-1"></span><h2>注册表操作</h2>
+<div class="section" id="writeregstr-writeregexpandstr">
+<h3>WriteRegStr/WriteRegExpandStr</h3>
+<div class="sidebar">
+<p class="first sidebar-title">关于Win64下写注册表时候的一些问题</p>
+<p>当使用nsis写入到 <tt class="docutils literal">HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall</tt> 下时,
+系统的注册表编辑器并不会显示此项, 而是显示在
+<tt class="docutils literal">HKLM\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall</tt>,
+这是因为控制面板的“程序和功能”是基于注册表反射来实现的。对于64位系统,它只显示 Wow6432Node 下的注册表键,而不显示原生的64位键.</p>
+<p>要让卸载信息显示在控制面板中,nsis 在 64位系统下需要同时写入 Wow6432Node 下的对应键。一般的方法是:</p>
+<ol class="last arabic simple">
+<li>首先写入原生键,如 HKLMSoftwareMicrosoftWindowsCurrentVersionUninstallApp</li>
+<li>调用 SetRegView 64 来切换到 32位视图</li>
+<li>写入 <tt class="docutils literal">Wow6432Node\Software\Microsoft\Windows\CurrentVersion\Uninstall\App</tt></li>
+<li>调用 SetRegView last 恢复注册表视图</li>
+<li>继续写入原生的其他键</li>
+</ol>
+</div>
+<p>作用: 把字符串写入注册表。根键必须为下面列表之一:</p>
+<ul class="simple">
+<li>HKCR 或 HKEY_CLASSES_ROOT</li>
+<li>HKLM 或HKEY_LOCAL_MACHINE</li>
+<li>HKCU 或HKEY_CURRENT_USER</li>
+<li>HKU 或HKEY_USERS</li>
+<li>HKCC 或HKEY_CURRENT_CONFIG</li>
+<li>HKDD 或HKEY_DYN_DATA</li>
+<li>HKPD 或HKEY_PERFORMANCE_DATA</li>
+<li>SHCTX 或SHELL_CONTEXT</li>
+</ul>
+<p>如果字串不能写入注册表则放置一个错误的标记。
+字串的类型为 REG_SZ 对应 WriteRegStr, 或 REG_EXPAND_STR 对应 WriteRegExpandStr。
+如果注册表键不存在则会自动创建。</p>
+<p>例, 将程序信息写入注册表:</p>
+<pre class="literal-block">
+Section -Post
+
+  WriteUninstaller &quot;$INSTDIR\uninst.exe&quot;
+  WriteRegStr HKLM &quot;PRODUCT_DIR_REGKEY&quot; &quot;&quot; &quot;$INSTDIR\Test.exe&quot;
+  WriteRegStr PRODUCT_UNINST_ROOT_KEY &quot;{PRODUCT_UNINST_KEY}&quot; &quot;DisplayName&quot; &quot;$(^Name)&quot;
+  WriteRegStr PRODUCT_UNINST_ROOT_KEY &quot;{PRODUCT_UNINST_KEY}&quot; &quot;UninstallString&quot; &quot;$INSTDIR\uninst.exe&quot;
+  WriteRegStr PRODUCT_UNINST_ROOT_KEY &quot;{PRODUCT_UNINST_KEY}&quot; &quot;DisplayIcon&quot; &quot;$INSTDIR\Test.exe&quot;
+  WriteRegStr PRODUCT_UNINST_ROOT_KEY &quot;{PRODUCT_UNINST_KEY}&quot; &quot;DisplayVersion&quot; &quot;${PRODUCT_VERSION}&quot;
+  WriteRegStr PRODUCT_UNINST_ROOT_KEY &quot;{PRODUCT_UNINST_KEY}&quot; &quot;URLInfoAbout&quot; &quot;${PRODUCT_WEB_SITE}&quot;
+  WriteRegStr PRODUCT_UNINST_ROOT_KEY &quot;{PRODUCT_UNINST_KEY}&quot; &quot;Publisher&quot; &quot;${PRODUCT_PUBLISHER}&quot;
+
+SectionEnd
+</pre>
+</div>
+<div class="section" id="readregdword-readregstr">
+<h3>ReadRegDWORD/ReadRegStr</h3>
+<p>作用: 读取注册表信息</p>
+<p>例, 在注册表中读取.net 版本:</p>
+<pre class="literal-block">
+Function GetNetFrameworkVersion
+
+  Push $1
+  Push $0
+
+  ReadRegDWORD $0 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full&quot; &quot;Install&quot;
+  ReadRegDWORD $1 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full&quot; &quot;Version&quot;
+
+  StrCmp $0 1 KnowNetFrameworkVersion +1
+
+  ReadRegDWORD $0 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5&quot; &quot;Install&quot;
+  ReadRegDWORD $1 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5&quot; &quot;Version&quot;
+
+  StrCmp $0 1 KnowNetFrameworkVersion +1
+
+  ReadRegDWORD $0 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.0\Setup&quot; &quot;InstallSuccess&quot;
+  ReadRegDWORD $1 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.0\Setup&quot; &quot;Version&quot;
+
+  StrCmp $0 1 KnowNetFrameworkVersion +1
+
+  ReadRegDWORD $0 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727&quot; &quot;Install&quot;
+  ReadRegDWORD $1 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727&quot; &quot;Version&quot;
+
+  StrCmp $1 &quot;&quot; +1 +2
+  StrCpy $1 &quot;2.0.50727.832&quot;
+  StrCmp $0 1 KnowNetFrameworkVersion +1
+
+  ReadRegDWORD $0 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v1.1.4322&quot; &quot;Install&quot;
+  ReadRegDWORD $1 HKLM &quot;SOFTWARE\Microsoft\NET Framework Setup\NDP\v1.1.4322&quot; &quot;Version&quot;
+
+  StrCmp $1 &quot;&quot; +1 +2
+  StrCpy $1 &quot;1.1.4322.573&quot;
+  StrCmp $0 1 KnowNetFrameworkVersion +1
+
+  ReadRegDWORD $0 HKLM &quot;SOFTWARE\Microsoft\.NETFramework\policy\v1.0&quot; &quot;Install&quot;
+  ReadRegDWORD $1 HKLM &quot;SOFTWARE\Microsoft\.NETFramework\policy\v1.0&quot; &quot;Version&quot;
+
+  StrCmp $1 &quot;&quot; +1 +2
+  StrCpy $1 &quot;1.0.3705.0&quot;
+  StrCmp $0 1 KnowNetFrameworkVersion +1
+  StrCpy $1 &quot;not .NetFramework&quot;
+
+  KnowNetFrameworkVersion:
+
+  Pop $0
+  Exch $1
+
+FunctionEnd
+</pre>
+</div>
+<div class="section" id="deleteregkey">
+<h3>DeleteRegKey</h3>
+<p>作用: 删除一个注册表键。如果指定了 /ifempty, 则该注册表键仅当它无子键时才会被删除(否则, 整个注册表键将被删除).
+有效的根键值在后面的 WriteRegStr 列出。如果该键不能被删除(或如果它不存在)则会放置一个错误的标记。</p>
+<p>例, 清除注册表信息:</p>
+<pre class="literal-block">
+DeleteRegKey PRODUCT_UNINST_ROOT_KEY &quot;{PRODUCT_UNINST_KEY}&quot;
+DeleteRegKey HKLM &quot;${PRODUCT_DIR_REGKEY}&quot;
+SetAutoClose true
+</pre>
+</div>
+</div>
+<div class="section" id="ini">
+<h2>INI文件操作</h2>
+<div class="section" id="readinistr">
+<h3>ReadINIStr</h3>
+<p>语法:</p>
+<pre class="literal-block">
+ReadINIStr 用户变量(输出) INI文件 区段 项
+</pre>
+<p>作用: 读取INI文件。从 “INI文件” 的 “区段” 区段读取 “项” 的值并把该值输出到用户变量。
+如果该项未找到时会放置一个错误标记且该用户变量被赋为空值。</p>
+<p>例, 读取TimeZoneZh.ini文件中Field 1区段的State项, 将值输出到$0:</p>
+<pre class="literal-block">
+ReadINIStr $0 &quot;PLUGINSDIR\TimeZoneZh.ini&quot; &quot;Field 1&quot; &quot;State&quot;
+</pre>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>调用外部程序</h2>
+<div class="section" id="exec">
+<h3>Exec</h3>
+<p>作用: 执行一个指定的程序并且立即继续安装, 就是直接执行一个程序。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>指定的文件必须存在于目标系统上, 而不是编译系统上</li>
+<li><tt class="docutils literal">$OUTDIR</tt> 设置工作目录. 如果无法启动进程，则会设置错误标志</li>
+<li>如果命令可以有空格, 则应将其放在引号中以从参数中分隔它</li>
+</ul>
+</div>
+<p>例, 安装Microsoft.NET.exe, 程序不等待继续执行下个步骤:</p>
+<pre class="literal-block">
+Exec '$INSTDIR\Microsoft.NET.exe'
+</pre>
+</div>
+<div class="section" id="execshell">
+<span id="nsis-execshell"></span><h3>ExecShell</h3>
+<p>启动 ShellExecute 执行.</p>
+<p>语法:</p>
+<pre class="literal-block">
+ExecShell action command [parameters] [SW_SHOWNORMAL | SW_SHOWMAXIMIZED | SW_SHOWMINIMIZED | SW_HIDE]
+</pre>
+<p>action有:</p>
+<ul class="simple">
+<li>open  ,  正常打开, 支持exe文件, bat脚本等能直接运行的文件</li>
+<li>print</li>
+<li>runas ,  以管理员权限打开文件(会弹出一个申请提权的弹窗)</li>
+</ul>
+<p>若 action 为空表示使用默认动作</p>
+<p><tt class="docutils literal">command</tt> 表示执行命令, 内容为 <strong>可执行文件全路径</strong> .</p>
+<p>parameters 为 <tt class="docutils literal">command</tt> 的参数, 可为重定向符号如:</p>
+<pre class="literal-block">
+2&gt;&amp;1 &gt; log.txt
+</pre>
+<ul class="simple">
+<li>SW_HIDE 隐藏执行命令打开的窗口</li>
+</ul>
+</div>
+<div class="section" id="execwait">
+<h3>ExecWait</h3>
+<p>执行一个指定的程序并且 <strong>等待运行处理结束</strong></p>
+<p>语法:</p>
+<pre class="literal-block">
+ExecWait command [user_var(exit code)]
+</pre>
+<p>例, 静默安装并等待结束:</p>
+<pre class="literal-block">
+ExecWait '&quot;$INSTDIR\someprogram.exe /quiet /norestart&quot;' $0
+</pre>
+<p>若执行产生错误, 可使用 <a class="reference internal" href="#iferrors">IfErrors</a> 来进行判断, 此时:</p>
+<ul class="simple">
+<li>若指定了 <tt class="docutils literal">[user_var(exit code)]</tt> , 则 ExecWait 会把变量设为返回代码.
+即 <tt class="docutils literal">user_var = exit code</tt></li>
+<li>若未指定 <tt class="docutils literal">[user_var(exit code)]</tt> , 则 ExecWait 会放置一个错误标记.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">若命令存在空格, 使用引号包裹</p>
+</div>
+</div>
+<div class="section" id="reservefile">
+<h3>ReserveFile</h3>
+<p>作用: 把文件保存在稍后使用的数据区块用于下面的调用。有时, 预先打包文件, 方便安装加速释放之用。</p>
+<p>语法:</p>
+<pre class="literal-block">
+ReserveFile [/nonfatal] [/r] [/x file|wildcard [...]] file [file...]
+</pre>
+<p>例:</p>
+<pre class="literal-block">
+ReserveFile &quot;TimeZoneZh.ini&quot;
+</pre>
+</div>
+<div class="section" id="regdll">
+<h3>RegDLL</h3>
+<p>作用: 载入指定的 DLL 并且调用 DllRegisterServer (或入口点名称, 当指定之后).
+当产生一个错误的时候会置一个错误标记
+(例如不能载入 DLL, 不能初始化 OLE, 不能找到入口点, 或者函数返回任何其它错误 ERROR_SUCCESS (=0)).</p>
+<p>其实就是注册或加载你要的插件!</p>
+<p>例:</p>
+<pre class="literal-block">
+SetOutPath $INSTDIR
+RegDLL $INSTDIR\foo.dll
+</pre>
+</div>
+<div class="section" id="unregdll">
+<h3>UnRegDLL</h3>
+<p>作用: 注销DLL插件</p>
+<p>例, 注销TIMProxy.dll插件:</p>
+<pre class="literal-block">
+UnRegDLL $INSTDIR\foo.dll
+</pre>
+</div>
+<div class="section" id="include">
+<h3>!include</h3>
+<p>作用: 包含头文件</p>
+<p>例, 引用&quot;MUI.nsh&quot;头文件:</p>
+<pre class="literal-block">
+!include &quot;MUI.nsh&quot;
+</pre>
+</div>
+<div class="section" id="insertmacro">
+<h3>!insertmacro</h3>
+<p>作用: 插入宏</p>
+<p>例, 通过宏插入欢迎页面:</p>
+<pre class="literal-block">
+!insertmacro MUI_PAGE_WELCOME
+</pre>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>字符串操作</h2>
+<div class="section" id="strcpy">
+<h3>StrCpy</h3>
+<p>作用: 复制字符串</p>
+<p>语法:</p>
+<pre class="literal-block">
+StrCpy user_var(destination) str [maxlen] [start_offset]
+</pre>
+<ul class="simple">
+<li>str 可以包含其他变量</li>
+<li>maxlen 设置截取 str 的长度, 默认全部长度;
+为负数表示截取至此位置.</li>
+</ul>
+<p>maxlen为负数表示截取至此位置, eg:</p>
+<pre class="literal-block">
+StrCpy $1 &quot;D:\Program Files\test\Example One\uninstall.exe&quot;
+
+StrCpy $6 $1 -13
+MessageBox MB_OK &quot;0 res $6&quot;
+</pre>
+<p>结果就是:</p>
+<pre class="literal-block">
+D:\Program Files\test\Example One\
+</pre>
+</div>
+<div class="section" id="strcmp">
+<h3>StrCmp</h3>
+<p>作用: 比较(不区分大小写)“字串1”和“字串2”, 如果两者相等, 跳转到“相同时跳转的标记”, 否则跳转到“不相同时跳转的标记”。</p>
+<p>语法:</p>
+<pre class="literal-block">
+StrCmp str1 str2 jump_if_equal [jump_if_not_equal]
+</pre>
+</div>
+<div class="section" id="strlen">
+<h3>StrLen</h3>
+<p>作用：获取str的长度</p>
+<p>例如:</p>
+<pre class="literal-block">
+StrLen $0 &quot;123456&quot;  # $0 = 6
+</pre>
+<p>其他字符串操作, 需要先导入 WordFunc.nsh:</p>
+<pre class="literal-block">
+!include WordFunc.nsh
+</pre>
+</div>
+<div class="section" id="wordfind">
+<h3>WordFind</h3>
+<p>WordFind, 在给定字符串中查找使用指定的分隔符分隔的字符串, 如从字符串 &quot;first;second;third;forth&quot; 中查找第二个字符串:</p>
+<pre class="literal-block">
+${WordFind} &quot;first;second;third;forth&quot; &quot;;&quot; +2 $R0   # $R0 = second
+</pre>
+</div>
+<div class="section" id="wordfind2x">
+<h3>WordFind2X</h3>
+<p>WordFind2X, 在给定字符串中查找使用指定的两个分隔符包围的字符串, 如
+从字符串 <tt class="docutils literal"><span class="pre">&lt;System&gt;|&lt;Guest&gt;|&lt;User&gt;</span></tt> 中查找第三个字符串，也就是倒数第一个，即User:</p>
+<pre class="literal-block">
+${WordFind2X} &quot;&lt;System&gt;|&lt;Guest&gt;|&lt;User&gt;&quot; &quot;&lt;&quot; &quot;&gt;&quot; -1 $R0
+</pre>
+</div>
+<div class="section" id="wordfind3x">
+<h3>WordFind3X</h3>
+<p>WordFind3X, 与WordFind2X比较相似，用于在给定字符串中查找使用指定的两个分隔符包围且含有指定字符串的字符串</p>
+<p>语法:</p>
+<pre class="literal-block">
+${WordFind3X} &quot;[string]&quot; &quot;[delimiter1]&quot; &quot;[center]&quot; &quot;[delimiter2]&quot; &quot;[E][options]&quot; $var
+</pre>
+<p>如查找 <tt class="docutils literal">[/install=11], [/update=22], [/start=33]</tt> 中 <tt class="docutils literal">/update</tt> 的整个内容:</p>
+<pre class="literal-block">
+${WordFind3X} &quot;[/install=11], [/update=22], [/start=33]&quot; &quot;[&quot; &quot;/update&quot; &quot;]&quot; +1 $0
+# $0 = &quot;/update=22&quot;
+</pre>
+<p>见: <a class="reference external" href="https://nsis.sourceforge.io/WordFind3X">nsis:WordFind3X</a></p>
+</div>
+<div class="section" id="wordreplace">
+<h3>WordReplace</h3>
+<p>WordReplace, 从字符串中替换或删除词语, 语法:</p>
+<pre class="literal-block">
+# ${WordReplace} &quot;[字符串]&quot; &quot;[词语1]&quot; &quot;[词语2]&quot; &quot;[E][选项]&quot; $输出变量
+${WordReplace} &quot;[string]&quot; &quot;[word1]&quot; &quot;[word2]&quot; &quot;[E][options]&quot; $var
+</pre>
+<p>选项这里的第几个下标从1开始, 例:</p>
+<pre class="literal-block">
+Section
+  ${WordReplace} &quot;C:\io.sys C:\logo.sys C:\WINDOWS&quot; &quot;SYS&quot; &quot;bmp&quot; &quot;+2&quot; $R0
+  ; $R0=&quot;C:\io.sys C:\logo.bmp C:\WINDOWS&quot;
+SectionEnd
+</pre>
+<p>见: <a class="reference external" href="https://nsis.sourceforge.io/WordReplace">nsis:WordReplace</a></p>
+</div>
+<div class="section" id="wordadd">
+<h3>WordAdd</h3>
+<p>WordAdd, 从选项中指定的 字符串2 添加词语到 字符串1(如果不存在)，或删除词语(如果存在)。语法:</p>
+<pre class="literal-block">
+${WordAdd} &quot;[字符串1]&quot; &quot;[分隔符]&quot; &quot;[E][选项]]&quot; $输出变量
+</pre>
+</div>
+<div class="section" id="wordinsert">
+<h3>WordInsert</h3>
+<p>WordInsert, 在字符串中插入词语。语法:</p>
+<pre class="literal-block">
+${WordInsert} &quot;[字符串]&quot; &quot;[分隔符]&quot; &quot;[词语]&quot; &quot;[E][选项]]&quot; $输出变量
+</pre>
+</div>
+<div class="section" id="strfilter">
+<h3>StrFilter</h3>
+<p>StrFilter, 转换字符串为大写或小写；设置符号过滤。语法:</p>
+<pre class="literal-block">
+${StrFilter} &quot;[字符串]&quot; &quot;[选项]&quot; &quot;[符号1]&quot; &quot;[符号2]&quot; $输出变量
+</pre>
+</div>
+<div class="section" id="versioncompare">
+<h3>VersionCompare</h3>
+<p>VersionCompare, 用来比较版本号的大小。例如，比较1.1.0.1和1.1.1.0的大小。语法:</p>
+<pre class="literal-block">
+${VersionCompare} &quot;[版本1]&quot; &quot;[版本2]&quot; $输出变量
+</pre>
+</div>
+<div class="section" id="versionconvert">
+<h3>VersionConvert</h3>
+<p>VersionConvert, 将带字母的版本转换为可用于比较的十进制数版本号。语法:</p>
+<pre class="literal-block">
+${VersionConvert} &quot;[版本]&quot; &quot;[字符列表]&quot; $输出变量
+</pre>
+<p>用法示例:</p>
+<pre class="literal-block">
+${VersionConvert} &quot;9.0c&quot; &quot;&quot; $R0  # $R0 = 9.0.03 .这样转换后可以用于和别的版本如9.0a比较。
+</pre>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>数学计算</h2>
+<div class="section" id="intop">
+<h3>IntOp</h3>
+<p>10减去2, eg:</p>
+<pre class="literal-block">
+IntOp $0 10 - 2
+</pre>
+<p>效果是计算 <tt class="docutils literal"><span class="pre">10-2</span></tt> , 将结果8赋值给 <tt class="docutils literal">$0</tt>.</p>
+</div>
+</div>
+<div class="section" id="section-6">
+<h2>文件目录遍历</h2>
+<div class="section" id="findfirst-findnext-findclose">
+<h3>FindFirst/FindNext/FindClose</h3>
+<p>这三个一般一起使用</p>
+<p>FindFirst语法:</p>
+<pre class="literal-block">
+FindFirst user_var(handle output) user_var(filename output) filespec
+</pre>
+<ul class="simple">
+<li>第一个 handle output 是搜索的文件句柄</li>
+<li>第二个 filename output 是找到的文件名(不包含前缀目录)</li>
+<li>filespec 是搜索的路径描述, 支持简单通配符</li>
+</ul>
+<p>eg:</p>
+<pre class="literal-block">
+FindFirst $0 $1 $INSTDIR\*.txt
+loop:
+  StrCmp $1 &quot;&quot; done
+  DetailPrint $1
+  FindNext $0 $1
+  Goto loop
+done:
+FindClose $0
+</pre>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>逻辑操作</h2>
+<div class="section" id="ifabort">
+<h3>IfAbort</h3>
+<p>如果调用abort，它将“返回”为true。</p>
+<p>语法:</p>
+<pre class="literal-block">
+IfAbort label_to_goto_if_abort [label_to_goto_if_no_abort]
+</pre>
+<p>如果用户选择对无法创建（或覆盖）的文件进行中止，或者用户手动中止，则会发生这种情况。只能从instfiles 页面的leave函数调用此函数:</p>
+<pre class="literal-block">
+Function instfilesLeave
+  IfAbort 0 +2
+    MessageBox MB_OK &quot;user aborted&quot;
+FunctionEnd
+</pre>
+</div>
+<div class="section" id="iferrors">
+<span id="nsis-iferrors"></span><h3>IfErrors</h3>
+<p>错误时跳转</p>
+<p>语法:</p>
+<pre class="literal-block">
+jumpto_iferror [jumpto_ifnoerror]
+</pre>
+<p>检测并清除错误标记, 如果设了错误标记, 则跳转到“错误时跳转的标记”, 否则跳转到“没有错误时跳转的标记”。</p>
+<p>可使用 <a class="reference internal" href="#clearerrors">ClearErrors</a> 在之前清除其他地方的错误标记</p>
+</div>
+<div class="section" id="iffileexists">
+<h3>IfFileExists</h3>
+<p>语法:</p>
+<pre class="literal-block">
+IfFileExists file_to_check_for jump_if_present [jump_otherwise]
+</pre>
+<p>检测 <tt class="docutils literal">file_to_check_for</tt> 是否存在(可以用通配符, 或目录)</p>
+<ul class="simple">
+<li>当文件存在时跳转到 <tt class="docutils literal">file_to_check_for</tt></li>
+<li>否则跳转到 <tt class="docutils literal">jump_otherwise</tt> .</li>
+</ul>
+<p>例1, 官网例子:</p>
+<pre class="literal-block">
+IfFileExists $WINDIR\notepad.exe 0 +2
+MessageBox MB_OK &quot;notepad is installed&quot;
+</pre>
+<p id="goto-example">例2:</p>
+<pre class="literal-block">
+IfFileExists $WINDIR\notepad.exe fileExists fileNotExists
+
+fileExists:
+  # do something
+  Goto done
+fileNotExists:
+  Abort
+done:
+</pre>
+</div>
+<div class="section" id="goto">
+<h3>Goto</h3>
+<p>作用: 跳转到指定标记。</p>
+<p>nsi脚本常常使用相对跳转表示条件分枝</p>
+<p>语法:</p>
+<pre class="literal-block">
+Goto label_to_jump_to | +offset| -offset| user_var(target)
+</pre>
+<ul class="simple">
+<li><tt class="docutils literal">+offset</tt>  表示从当前位置往前跳转 <tt class="docutils literal">offset</tt> 条语句,</li>
+<li><tt class="docutils literal"><span class="pre">-offset</span></tt>  表示从当前位置往后跳转 <tt class="docutils literal">offset</tt> 条语句.</li>
+<li><tt class="docutils literal">user_var</tt> 表示跳转到指定变量标记位置.</li>
+</ul>
+<p>例, 按数字跳转:</p>
+<pre class="literal-block">
+Goto +4 ; 跳转以下4条语句
+Goto -3 ; 跳转到前3条语句
+</pre>
+<p>例, 按标记跳转: <a class="reference internal" href="#goto-example">goto_example</a></p>
+</div>
+</div>
+<div class="section" id="clearerrors">
+<h2>ClearErrors</h2>
+<p>当程序运行产生错误时, 可以使用 <em>NSIS_IfErrors</em> 判断, 返回 true/false , 表示存在错误.</p>
+<p>ClearErrors 可以清除当前已有的错误标记</p>
+</div>
+<div class="section" id="section-8">
+<h2>堆栈操作</h2>
+<p>其实 也属于逻辑操作</p>
+<p>NSIS 脚本没有 reture 这种返回值, 只能使用 栈 的方式在函数之前传递参数(或者全局变量)</p>
+<ul class="simple">
+<li><a class="reference internal" href="#pop">Pop</a></li>
+<li><a class="reference internal" href="#push">Push</a></li>
+<li><a class="reference internal" href="#exch">Exch</a></li>
+</ul>
+<div class="section" id="pop">
+<h3>Pop</h3>
+<p>从栈顶取出一个参数.</p>
+<p>如将栈顶元素取出, 赋值给 <tt class="docutils literal">$0</tt></p>
+<pre class="literal-block">
+Pop $0
+</pre>
+</div>
+<div class="section" id="push">
+<h3>Push</h3>
+<p>向栈种压入参数.</p>
+<p>如压入 <tt class="docutils literal">&quot;change&quot;</tt></p>
+<pre class="literal-block">
+Push &quot;change&quot;
+</pre>
+</div>
+<div class="section" id="exch">
+<h3>Exch</h3>
+<p>语法:</p>
+<pre class="literal-block">
+Exch [user_var|stack_index]
+</pre>
+<p>默认交换栈顶的两个元素, 如:</p>
+<pre class="literal-block">
+Push 1
+Push 2
+Exch
+Pop $0 # = 1
+</pre>
+<p>若指定了 <tt class="docutils literal">[user_var|stack_index]</tt> :</p>
+<ul>
+<li><p class="first">若指定了用户变量, 使用用户变量与栈顶元素交换</p>
+<p>如:</p>
+<pre class="literal-block">
+Push 2
+Exch $0 # = 2
+</pre>
+</li>
+<li><p class="first">若指定了整型(int), 即栈的索引, 使用索引位置的元素与栈顶元素交换</p>
+<p>注意, 索引从0开始, 栈顶索引为0</p>
+<p>如:</p>
+<pre class="literal-block">
+Push 1
+Push 2
+Push 3
+Exch 2
+Pop $0 # = 1
+</pre>
+</li>
+</ul>
+<p>如果需要交换的元素个数不足, 如索引越界等, 报错</p>
+</div>
+</div>
+<div class="section" id="section-9">
+<h2>获取命令行参数</h2>
+<p>官网地址: <a class="reference external" href="https://nsis.sourceforge.io/GetOptions">GetOptions</a></p>
+<ul class="simple">
+<li>GetParameters</li>
+<li>GetOptions</li>
+</ul>
+<p><tt class="docutils literal">GetParameters</tt> 语法:</p>
+<pre class="literal-block">
+${GetParameters} $var
+</pre>
+<p>例:</p>
+<pre class="literal-block">
+${GetParameters} $R0 ; $R0=&quot;[parameters]&quot;
+</pre>
+<p><tt class="docutils literal">GetOptions</tt> 语法:</p>
+<pre class="literal-block">
+${GetOptions} &quot;[Parameters]&quot; &quot;[Option]&quot; $var
+&quot;[Parameters]&quot;     ; command line parameters
+                   ;
+&quot;[Option]&quot;         ; option name
+                   ;
+$var               ; Result: option string
+</pre>
+<p>例:</p>
+<pre class="literal-block">
+!include &quot;FileFunc.nsh&quot;
+!insertmacro GetOptions
+!insertmacro GetParameters
+
+Section
+  ${GetOptions} &quot;-INSTDIR=C:\Program Files\Common Files -SILENT=yes&quot; &quot;-INSTDIR=&quot;  $R0
+  ;$R0=C:\Program Files\Common Files
+SectionEnd
+</pre>
+<p>不能写到一起, 比如以下这条语句是错误的:</p>
+<pre class="literal-block">
+${GetOptions} ${GetParameters} &quot;-INSTDIR=&quot;  $R0
+</pre>
+<p>例2, 命令行为:</p>
+<pre class="literal-block">
+foo.exe /S /USERNAME=Bar /D=C:\Program Files\Foo
+</pre>
+<p>脚本内容为:</p>
+<pre class="literal-block">
+!include FileFunc.nsh
+!insertmacro GetParameters
+!insertmacro GetOptions
+
+Function .onInit
+  ${GetParameters} $R0
+  ClearErrors
+  ${GetOptions} $R0 /USERNAME= $0
+FunctionEnd
+</pre>
+<p>效果: 将 <tt class="docutils literal">/USERNAME=</tt> 后的值赋值给 <tt class="docutils literal">$0</tt> , 这样就支持了自定义命令行参数.</p>
+</div>
+<div class="section" id="s">
+<h2>关于 <cite>/S</cite> (静默安装参数)的判断</h2>
+<p>静默安装系统有提供默认的判断, 不需要手动去获取命令行了:</p>
+<pre class="literal-block">
+Function .onInit
+  IfSilent jumpToSlient jumpNotSilent
+  jumpToSlient:
+    ; 静默安装的操作
+    Goto done
+  jumpNotSilent:
+    ; 非静默安装操作
+    Goto done
+  done:
+FunctionEnd
+</pre>
+<p>也可以直接定义全局变量吧</p>
+</div>
+<div class="section" id="section-10">
+<h2>静默安装实现</h2>
+<ul class="simple">
+<li><tt class="docutils literal">/S</tt> 参数 执行的时候使用, 如 <tt class="docutils literal">xxx.exe /S</tt></li>
+<li><a class="reference internal" href="#setsilent">SetSilent</a></li>
+<li><a class="reference internal" href="#silentinstall">SilentInstall</a> and <a class="reference internal" href="#silentuninstall">SilentUninstall</a></li>
+</ul>
+<div class="section" id="setsilent">
+<h3>SetSilent</h3>
+<p>脚本里设置:</p>
+<pre class="literal-block">
+SetSilent silent | normal
+</pre>
+<p>只能在 <tt class="docutils literal">.onInit.</tt> 被使用</p>
+</div>
+<div class="section" id="silentinstall">
+<h3>SilentInstall</h3>
+<p>用法:</p>
+<pre class="literal-block">
+SilentInstall normal|silent|silentlog
+</pre>
+</div>
+<div class="section" id="silentuninstall">
+<h3>SilentUninstall</h3>
+<p>用法:</p>
+<pre class="literal-block">
+SilentUnInstall normal|silent
+</pre>
+</div>
+<div class="section" id="section-11">
+<h3>判断是否是静默安装</h3>
+<p>使用 <tt class="docutils literal">IfSilent</tt></p>
+<pre class="literal-block">
+IfSilent +2
+  ExecWait '&quot;$INSTDIR\nonsilentprogram.exe&quot;'
+</pre>
+<p>这里没懂 <tt class="docutils literal">+2</tt> 是什么意思</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    文件、目录操作
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#fileopen-filewrite-fileclose">
+      FileOpen/FileWrite/FileClose
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#file">
+      File
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#delete">
+      Delete
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#rename">
+      Rename
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#createdirectory">
+      CreateDirectory
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#rmdir">
+      RMDir
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#setoutpath">
+      SetOutPath
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#createshortcut">
+      CreateShortCut
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    注册表操作
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#writeregstr-writeregexpandstr">
+      WriteRegStr/WriteRegExpandStr
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#readregdword-readregstr">
+      ReadRegDWORD/ReadRegStr
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#deleteregkey">
+      DeleteRegKey
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#ini">
+    INI文件操作
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#readinistr">
+      ReadINIStr
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    调用外部程序
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#exec">
+      Exec
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#execshell">
+      ExecShell
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#execwait">
+      ExecWait
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#reservefile">
+      ReserveFile
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#regdll">
+      RegDLL
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#unregdll">
+      UnRegDLL
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#include">
+      !include
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#insertmacro">
+      !insertmacro
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    字符串操作
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#strcpy">
+      StrCpy
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#strcmp">
+      StrCmp
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#strlen">
+      StrLen
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#wordfind">
+      WordFind
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#wordfind2x">
+      WordFind2X
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#wordfind3x">
+      WordFind3X
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#wordreplace">
+      WordReplace
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#wordadd">
+      WordAdd
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#wordinsert">
+      WordInsert
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#strfilter">
+      StrFilter
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#versioncompare">
+      VersionCompare
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#versionconvert">
+      VersionConvert
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    数学计算
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#intop">
+      IntOp
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    文件目录遍历
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#findfirst-findnext-findclose">
+      FindFirst/FindNext/FindClose
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    逻辑操作
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#ifabort">
+      IfAbort
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#iferrors">
+      IfErrors
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#iffileexists">
+      IfFileExists
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#goto">
+      Goto
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#clearerrors">
+    ClearErrors
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    堆栈操作
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#pop">
+      Pop
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#push">
+      Push
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exch">
+      Exch
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    获取命令行参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#s">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    静默安装实现
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#setsilent">
+      SetSilent
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#silentinstall">
+      SilentInstall
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#silentuninstall">
+      SilentUninstall
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-11">
+      判断是否是静默安装
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

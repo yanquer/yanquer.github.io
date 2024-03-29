@@ -1,0 +1,479 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>file</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>file</h2>
+									<p>辨识文件类型</p>
+<p>语法:</p>
+<pre class="literal-block">
+file [-bcLvz][-f &lt;名称文件&gt;][-m &lt;魔法数字文件&gt;...][文件或目录...]
+</pre>
+<div class="section" id="section-1">
+<h2>选项参数</h2>
+<p>常用:</p>
+<pre class="literal-block">
+-b              列出辨识结果时，不显示文件名称。
+-c              详细显示指令执行过程，便于排错或分析程序执行的情形。
+-f&lt;名称文件&gt;                指定名称文件，其内容有一个或多个文件名称时，让file依序辨识这些文件，格式为每列一个文件名称。
+-L                              直接显示符号连接所指向的文件的类别。
+-m&lt;魔法数字文件&gt;      指定魔法数字文件。
+-v                              显示版本信息。
+-z                              尝试去解读压缩文件的内容。
+[文件或目录...]      要确定类型的文件列表，多个文件之间使用空格分开，可以使用shell通配符匹配多个文件。
+</pre>
+<p>所有</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--help</span></kbd></td>
+<td>display this help and exit</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span>, <span class="option">--version</span></kbd></td>
+<td>output version information and exit</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-m</span>, <span class="option">--magic-file <var>LIST</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>use LIST as a colon-separated list of magic
+number files</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-M <var>LIST</var></span></kbd></td>
+<td><dl class="first last docutils">
+<dt>use LIST as a colon-separated list of magic</dt>
+<dd>number files in place of default</dd>
+<dt>LIST                    use LIST as a colon-separated list of magic</dt>
+<dd>number files in place of default</dd>
+</dl>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-z</span>, <span class="option">--uncompress</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>try to look inside compressed files</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-Z</span>, <span class="option">--uncompress-noreport</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>only print the contents of compressed files</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b</span>, <span class="option">--brief</span></kbd></td>
+<td>do not prepend filenames to output lines</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-c</span>, <span class="option">--checking-printout</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>print the parsed form of the magic file, use in
+conjunction with -m to debug a new magic file
+before installing it</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>use default magic file
+use default magic file</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-e</span>, <span class="option">--exclude <var>TEST</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>exclude TEST from the list of test to be
+performed for file. Valid tests are:
+apptype, ascii, cdf, compress, csv, elf,
+encoding, soft, tar, json, text,
+tokens</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--exclude-quiet <var>TEST</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>like exclude, but ignore unknown tests</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-f</span>, <span class="option">--files-from <var>FILE</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>read the filenames to be examined from FILE</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-F</span>, <span class="option">--separator <var>STRING</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>use string as separator instead of :</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td>do not further classify regular files
+do not further classify regular files</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-I</span>, <span class="option">--mime</span></kbd></td>
+<td>output MIME type strings (--mime-type and
+--mime-encoding)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--extension</span></kbd></td>
+<td>output a slash-separated list of extensions</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--mime-type</span></kbd></td>
+<td>output the MIME type</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--mime-encoding</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>output the MIME encoding</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-k</span>, <span class="option">--keep-going</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>don't stop at the first match</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l</span>, <span class="option">--list</span></kbd></td>
+<td>list magic strength</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-L</span>, <span class="option">--dereference</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>follow symlinks</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-h</span>, <span class="option">--no-dereference</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>don't follow symlinks (default)</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-n</span>, <span class="option">--no-buffer</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>do not buffer output</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-N</span>, <span class="option">--no-pad</span></kbd></td>
+<td>do not pad output</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-0</span>, <span class="option">--print0</span></kbd></td>
+<td>terminate filenames with ASCII NUL</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-p</span>, <span class="option">--preserve-date</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>preserve access times on files</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-P</span>, <span class="option">--parameter</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>set file engine parameter limits
+bytes 1048576 max bytes to look inside file
+elf_notes     256 max ELF notes processed
+elf_phnum    2048 max ELF prog sections processed
+elf_shnum   32768 max ELF sections processed
+encoding   65536 max bytes to scan for encoding
+indir      50 recursion limit for indirection
+name      60 use limit for name/use magic
+regex    8192 length limit for REGEX searches</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span>, <span class="option">--raw</span></kbd></td>
+<td>don't translate unprintable chars to ooo</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-s</span>, <span class="option">--special-files</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>treat special (block/char devices) files as
+ordinary ones</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-S</span>, <span class="option">--no-sandbox</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>disable system call sandboxing</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-C</span>, <span class="option">--compile</span></kbd></td>
+<td>compile file specified by -m</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-D</span>, <span class="option">--debug</span></kbd></td>
+<td>print debugging messages</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-2">
+<h2>用例</h2>
+<p>查看文件相关信息:</p>
+<pre class="literal-block">
+yanque&#64;yanquedembp Downloads % file *
+$RECYCLE.BIN:  directory
+movie:         directory
+mushenji2.txt: Non-ISO extended-ASCII text, with very long lines (638), with CRLF line terminators
+</pre>
+<p>查看文件编码:</p>
+<pre class="literal-block">
+yanque&#64;yanquedembp Downloads % file --mime-encoding *
+
+$RECYCLE.BIN:  binary
+movie:         binary
+mushenji2.txt: unknown-8bit
+mushenji.txt:  utf-8
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    选项参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    用例
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

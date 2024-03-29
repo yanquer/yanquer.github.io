@@ -1,0 +1,1525 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>基本语法</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/swift.html">Swift</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>基本语法</h2>
+									<div class="section" id="section-2">
+<h2>常识了解</h2>
+<dl class="docutils">
+<dt>Swift Playground</dt>
+<dd>可视为一个可交互的文档， 所写即所得</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h2>内置关键字</h2>
+<dl class="docutils">
+<dt>let</dt>
+<dd>常量定义</dd>
+<dt>var</dt>
+<dd>变量定义</dd>
+<dt>print</dt>
+<dd>打印输出</dd>
+<dt>typealias</dt>
+<dd><p class="first">定义类型别名</p>
+<p>如定义了 Int 的类型别名为 Feet:</p>
+<pre class="last literal-block">
+typealias Feet = Int
+</pre>
+</dd>
+<dt>guard</dt>
+<dd><p class="first">guard语句和if语句有点类似，都是根据其关键字之后的表达式的布尔值决定下一步执行什么。
+但与if语句不同的是，guard语句只会有一个代码块，不像if语句可以if else多个代码块。</p>
+<p>那么guard语句的作用到底是什么呢？顾名思义，就是守护。
+guard语句判断其后的表达式布尔值为false时，才会执行之后代码块里的代码，
+如果为true，则跳过整个guard语句:</p>
+<pre class="last literal-block">
+// 检查身份证，如果身份证没带，则不能进入考场
+guard let id = person[&quot;id&quot;] else {
+    print(&quot;没有身份证，不能进入考场!&quot;)
+    return
+}
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-4">
+<h2>内置数据类型</h2>
+<dl class="docutils">
+<dt>Int</dt>
+<dd>整型</dd>
+<dt>UInt</dt>
+<dd><p class="first">无符号整型</p>
+<p class="last">尽量不要使用UInt，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。
+除了这种情况，最好使用Int，即使你要存储的值已知是非负的。
+统一使用Int可以提高代码的可复用性，避免不同类型数字之间的转换，并且匹配数字的类型推断。</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>整数类型需要注意以下几点：</p>
+<ul class="last simple">
+<li>在 32 位系统上, Int 和 Int32 长度相同。</li>
+<li>在 64 位系统上, Int 和 Int64 长度相同。</li>
+<li>在 32 位系统上, UInt 和 UInt32 长度相同。</li>
+<li>在 64 位系统上, UInt 和 UInt64 长度相同。</li>
+<li>Int8, Int16, Int32, Int64 分别表示 8 位, 16 位, 32 位, 和 64 位的有符号整数形式。</li>
+<li>UInt8, UInt16, UInt32, UInt64 分别表示 8 位, 16 位, 32 位 和 64 位的无符号整数形式。</li>
+</ul>
+</div>
+<dl class="docutils">
+<dt>Float</dt>
+<dd><p class="first">32浮点数，精度要求不高的话可以使用此类型。</p>
+<p class="last">浮点类型比整数类型表示的范围更大，可以存储比 Int 类型更大或者更小的数字</p>
+</dd>
+<dt>Double</dt>
+<dd>64位浮点数，当你需要存储很大或者很高精度的浮点数时请使用此类型。</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">Double精确度很高，至少有15位数字，
+而 Float 最少只有6位数字。
+选择哪个类型取决于你的代码需要处理的值的范围。</p>
+</div>
+<dl class="docutils">
+<dt>Bool</dt>
+<dd><p class="first">布尔值</p>
+<p class="last">基本的布尔（Boolean）类型，叫做 Bool。布尔值指逻辑上的值，因为它们只能是真或者假。
+Swift 有两个布尔常量，true 和 false。</p>
+</dd>
+<dt>String</dt>
+<dd>字符串是字符的序列集合</dd>
+<dt>Character</dt>
+<dd>字符指的是单个字母</dd>
+<dt>Optional</dt>
+<dd><p class="first">使用可选类型来处理值可能缺失的情况。可选类型表示有值或没有值。</p>
+<p>如以下两种声明相等:</p>
+<pre class="literal-block">
+var optionalInteger: Int?
+var optionalInteger: Optional&lt;Int&gt;
+</pre>
+<p>当你声明一个可选变量或者可选属性的时候没有提供初始值，它的值会默认为 nil</p>
+<p>若为布尔， 貌似默认为true</p>
+<p>如果一个可选类型的实例包含一个值，你可以用后缀操作符 ！来访问这个值:</p>
+<pre class="literal-block">
+optionalInteger = 42
+optionalInteger! // 42
+</pre>
+<p>当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号（!）来获取值，
+这被称为可选值的 <strong>强制解析（forced unwrapping）</strong></p>
+<p>这部分(问号/叹号)的使用, 与ts基本一致</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用!来获取一个不存在的可选值会导致运行时错误。
+使用!来强制解析值之前，一定要确定可选包含一个非nil的值。</p>
+</div>
+<dl class="last docutils">
+<dt>可选绑定</dt>
+<dd><p class="first">使用可选绑定（optional binding）来判断可选类型是否包含值，
+如果包含就把值赋给一个临时常量或者变量。</p>
+<p>可选绑定可以用在if和while语句中来对可选类型的值进行判断并把值赋给一个常量或者变量。</p>
+<p>实例:</p>
+<pre class="literal-block">
+import Cocoa
+
+var myString:String?
+
+myString = &quot;Hello, Swift!&quot;
+
+if let yourString = myString {
+  print(&quot;你的字符串值为 - \(yourString)&quot;)
+}else{
+  print(&quot;你的字符串没有值&quot;)
+}
+</pre>
+<p>以上程序执行结果为:</p>
+<pre class="last literal-block">
+你的字符串值为 - Hello, Swift!
+</pre>
+</dd>
+</dl>
+</dd>
+<dt>Array</dt>
+<dd>todo</dd>
+<dt>Dictionary</dt>
+<dd>todo</dd>
+<dt>Struct</dt>
+<dd>todo</dd>
+<dt>Class</dt>
+<dd>todo</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h2>类型安全</h2>
+<p>Swift 是一个类型安全（type safe）的语言。</p>
+<p>由于 Swift 是类型安全的，
+所以它会在编译你的代码时进行类型检查（type checks），并把不匹配的类型标记为错误。
+这可以让你在开发的时候尽早发现并修复错误。</p>
+</div>
+<div class="section" id="section-6">
+<h2>类型推断</h2>
+<p>不需要每次声明常量和变量的时候都显式指定类型</p>
+<p>如果你没有显式指定类型，Swift 会使用类型推断（type inference）来选择合适的类型。</p>
+<ul class="simple">
+<li>当推断浮点数的类型时，Swift 总是会选择Double而不是Float。</li>
+<li>如果表达式中同时出现了整数和浮点数，会被推断为Double类型</li>
+</ul>
+</div>
+<div class="section" id="swift">
+<h2>Swift 变量</h2>
+<p>变量是一种使用方便的占位符，用于引用计算机内存地址。</p>
+<p>声明:</p>
+<pre class="literal-block">
+var variableName = &lt;initial value&gt;
+
+var varB:Float
+</pre>
+<ul class="simple">
+<li>变量名可以由字母，数字和下划线组成</li>
+<li>变量名需要以字母或下划线开始</li>
+<li>区分大小写</li>
+</ul>
+</div>
+<div class="section" id="swift-1">
+<h2>Swift 常量</h2>
+<p>设定后不可变</p>
+<p>声明常量或者变量的时候可以加上类型标注（type annotation），
+说明常量或者变量中要存储的值的类型:</p>
+<pre class="literal-block">
+var constantName:&lt;data type&gt; = &lt;optional initial value&gt;
+</pre>
+</div>
+<div class="section" id="swift-2">
+<h2>Swift 运算符</h2>
+<dl class="docutils">
+<dt>算术运算符</dt>
+<dd><tt class="docutils literal">+ - * / %</tt>, 分别表示 加 减 乘 除 求余</dd>
+<dt>比较运算符</dt>
+<dd><ul class="first last simple">
+<li>== 等于</li>
+<li>!=  不等于</li>
+<li>&gt;   大于</li>
+<li>&lt;   小于</li>
+<li>&gt;=  大于等于</li>
+<li>&lt;=  小于等于</li>
+</ul>
+</dd>
+<dt>逻辑运算符</dt>
+<dd><ul class="first last simple">
+<li>&amp;&amp;  逻辑与。如果运算符两侧都为 TRUE 则为 TRUE。</li>
+<li>||  逻辑或。 如果运算符两侧至少有一个为 TRUE 则为 TRUE。</li>
+<li>!   逻辑非。布尔值取反，使得true变false，false变true。</li>
+</ul>
+</dd>
+<dt>位运算符</dt>
+<dd>位运算符用来对二进制位进行操作，
+<tt class="docutils literal">~ &amp; | ^ &lt;&lt; &gt;&gt;</tt> 分别为取反，按位与与，按位与或，按位与异或运算, 按位左移， 按位右移</dd>
+<dt>赋值运算符</dt>
+<dd><ul class="first last simple">
+<li>=   简单的赋值运算，指定右边操作数赋值给左边的操作数</li>
+<li>+=  相加后再赋值，将左右两边的操作数相加后再赋值给左边的操作数。</li>
+<li>-=  相减后再赋值，将左右两边的操作数相减后再赋值给左边的操作数。</li>
+<li>*= 相乘后再赋值，将左右两边的操作数相乘后再赋值给左边的操作数。</li>
+<li>/=  相除后再赋值，将左右两边的操作数相除后再赋值给左边的操作数</li>
+<li>%=  求余后再赋值，将左右两边的操作数求余后再赋值给左边的操作数</li>
+<li>&lt;&lt;= 按位左移后再赋值</li>
+<li>&gt;&gt;= 按位右移后再赋值</li>
+<li>&amp;=  按位与运算后赋值</li>
+<li>^=  按位异或运算符后再赋值</li>
+<li>|= 按位或运算后再赋值</li>
+</ul>
+</dd>
+<dt>区间运算符</dt>
+<dd><ul class="first last simple">
+<li>闭区间运算符: 闭区间运算符 <tt class="docutils literal"><span class="pre">（a...b）</span></tt> 定义一个包含从a到b(包括a和b)的所有值的区间,
+必须大于等于a。 闭区间运算符在迭代一个区间的所有值时是非常有用的，
+如在for-in循环中: <tt class="docutils literal"><span class="pre">1...5</span> 区间值为 1, 2, 3, 4 和 5</tt></li>
+<li>半开区间运算符     半开区间（a..&lt;b）定义一个从a到b但不包括b的区间。 之所以称为半开区间，
+是因为该区间包含第一个值而不包括最后的值。 如： <tt class="docutils literal"><span class="pre">1..&lt;</span> 5 区间值为 1, 2, 3, 和 4</tt></li>
+</ul>
+</dd>
+<dt>其他运算符</dt>
+<dd><p class="first">其他类型的的运算符，如一元、二元和三元运算符</p>
+<ul class="last simple">
+<li>一元减:        数字前添加 - 号前缀,    -3 或 -4</li>
+<li>一元加:        数字前添加 + 号前缀,    +6 结果为 6</li>
+<li>三元运算符:      condition ? X : Y,      如果 condition 为 true ，值为 X ，否则为 Y</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<p>运算符优先级</p>
+<p>优先级从上到下依次递减，最上面具有最高的优先级，逗号操作符具有最低的优先级。</p>
+<p>相同优先级中，按结合顺序计算。大多数运算是从左至右计算，只有三个优先级是从右至左结合的，
+它们是单目运算符、条件运算符、赋值运算符。</p>
+<p>基本的优先级需要记住：</p>
+<ul class="last simple">
+<li>指针最优，单目运算优于双目运算。如正负号。</li>
+<li>先乘除（模），后加减。</li>
+<li>先算术运算，后移位运算，最后位运算。
+特别注意： <tt class="docutils literal">1 &lt;&lt; 3 + 2 &amp; 7 等价于 (1 &lt;&lt; (3 + <span class="pre">2))&amp;7</span></tt></li>
+<li>逻辑运算最后计算</li>
+</ul>
+</div>
+<dl class="docutils">
+<dt>合并空值运算符：??</dt>
+<dd><ul class="first last simple">
+<li>合并空值运算符 a ?? b 如果可选项 a 有值则展开，如果没有值，是 nil，则返回默认值 b。</li>
+<li>表达式 a 必须是一个可选类型，表达式 b 必须与 a 的存储类型相同</li>
+<li>合并空值运算符，实际上是三元运算符作用到 Optional 上的缩写 a != nil ? a! : b</li>
+<li>如果 a 的值是非空，b的值将不会被考虑，也就是合并空值运算符是短路的。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-3">
+<h2>Swift 条件语句</h2>
+<ul class="simple">
+<li>if</li>
+<li>switch</li>
+</ul>
+<p>最简便的就是三目:</p>
+<pre class="literal-block">
+Exp1 ? Exp2 : Exp3;
+</pre>
+</div>
+<div class="section" id="swift-4">
+<h2>Swift 循环</h2>
+<dl class="docutils">
+<dt>for-in</dt>
+<dd>遍历一个集合里面的所有元素，例如由数字表示的区间、数组中的元素、字符串中的字符。</dd>
+<dt>for 循环</dt>
+<dd><p class="first">该循环方式在 Swift 3 中已经弃用。</p>
+<p class="last">用来重复执行一系列语句直到达成特定条件达成，
+一般通过在每次循环完成后增加计数器的值来实现。</p>
+</dd>
+<dt>while 循环</dt>
+<dd>运行一系列语句，如果条件为true，会重复运行，直到条件变为false。</dd>
+<dt>repeat...while 循环</dt>
+<dd>类似 while 语句区别在于判断循环条件之前，先执行一次循环的代码块。</dd>
+<dt>循环控制语句</dt>
+<dd><ul class="first last simple">
+<li>continue 语句: 告诉一个循环体立刻停止本次循环迭代，重新开始下次循环迭代。</li>
+<li>break 语句: 中断当前循环。</li>
+<li>fallthrough 语句: 如果在一个case执行完后，继续执行下面的case，
+需要使用fallthrough(贯穿)关键字。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-5">
+<h2>Swift 字符串</h2>
+<dl class="docutils">
+<dt>创建</dt>
+<dd><p class="first">可以通过使用字符串字面量或 String 类的实例来创建一个字符串:</p>
+<pre class="last literal-block">
+import Cocoa
+
+// 使用字符串字面量
+var stringA = &quot;Hello, World!&quot;
+print( stringA )
+
+// String 实例化
+var stringB = String(&quot;Hello, World!&quot;)
+print( stringB )
+</pre>
+</dd>
+<dt>初始化空的字符串</dt>
+<dd><p class="first">可以使用空的字符串字面量赋值给变量或初始化一个String类的实例来初始值一个空的字符串,
+使用字符串属性 isEmpty 来判断字符串是否为空:</p>
+<pre class="last literal-block">
+import Cocoa
+
+// 使用字符串字面量创建空字符串
+var stringA = &quot;&quot;
+// 实例化 String 类来创建空字符串
+// let stringB = String()
+
+if stringA.isEmpty {
+  print( &quot;stringA 是空的&quot; )
+} else {
+  print( &quot;stringA 不是空的&quot; )
+</pre>
+</dd>
+<dt>字符串中插入值</dt>
+<dd><p class="first">插入的字符串字面量的每一项都在以反斜线为前缀的圆括号中:</p>
+<pre class="last literal-block">
+import Cocoa
+
+var varA   = 20
+let constA = 100
+var varC:Float = 20.0
+
+var stringA = &quot;\(varA) 乘于 \(constA) 等于 \(varC * 100)&quot;
+print( stringA )
+</pre>
+</dd>
+<dt>字符串连接</dt>
+<dd>字符串可以通过 + 号来连接</dd>
+<dt>字符串长度</dt>
+<dd>字符串长度使用 String.count 属性来计算</dd>
+<dt>字符串比较</dt>
+<dd>使用 == 来比较两个字符串是否相等</dd>
+<dt>Unicode 字符串</dt>
+<dd><p class="first">Unicode 是一个国际标准，用于文本的编码，Swift 的 String 类型是基于 Unicode建立的。
+你可以循环迭代出字符串中 UTF-8 与 UTF-16 的编码:</p>
+<pre class="last literal-block">
+import Cocoa
+
+var unicodeString   = &quot;菜鸟教程&quot;
+
+print(&quot;UTF-8 编码: &quot;)
+for code in unicodeString.utf8 {
+  print(&quot;\(code) &quot;)
+}
+
+print(&quot;\n&quot;)
+
+print(&quot;UTF-16 编码: &quot;)
+for code in unicodeString.utf16 {
+  print(&quot;\(code) &quot;)
+}
+</pre>
+</dd>
+<dt>字符串函数及运算符</dt>
+<dd><ul class="first last simple">
+<li>isEmpty: 判断字符串是否为空，返回布尔值</li>
+<li>hasPrefix(prefix: String): 检查字符串是否拥有特定前缀</li>
+<li>hasSuffix(suffix: String): 检查字符串是否拥有特定后缀。</li>
+<li>Int(String): 转换字符串数字为整型</li>
+<li>String.count: Swift 3 版本使用的是 String.characters.count, 计算字符串的长度</li>
+<li>utf8: 您可以通过遍历 String 的 utf8 属性来访问它的 UTF-8 编码</li>
+<li>utf16: 您可以通过遍历 String 的 utf16 属性来访问它的 utf16 编码</li>
+<li>unicodeScalars: 您可以通过遍历String值的unicodeScalars属性来访问它的 Unicode 标量编码.</li>
+<li>+: 连接两个字符串，并返回一个新的字符串</li>
+<li>+=: 连接操作符两边的字符串并将新字符串赋值给左边的操作符变量</li>
+<li>==: 判断两个字符串是否相等</li>
+<li>&lt;: 比较两个字符串，对两个字符串的字母逐一比较。</li>
+<li>!=: 比较两个字符串是否不相等。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-character">
+<h2>Swift 字符(Character)</h2>
+<dl class="docutils">
+<dt>空字符变量</dt>
+<dd>Swift 中不能创建空的 Character（字符） 类型变量或常量</dd>
+<dt>遍历字符串中的字符</dt>
+<dd><p class="first">Swift 3 中的 String 需要通过 characters 去调用的属性方法，
+在 Swift 4 中可以通过 String 对象本身直接调用，例如:</p>
+<pre class="last literal-block">
+import Cocoa
+
+for ch in &quot;Runoob&quot; {
+    print(ch)
+}
+</pre>
+</dd>
+<dt>字符串连接字符</dt>
+<dd>使用 String 的 append() 方法来实现字符串连接字符</dd>
+</dl>
+</div>
+<div class="section" id="swift-6">
+<h2>Swift 数组</h2>
+<p>如果创建一个数组，并赋值给一个变量，则创建的集合就是可以修改的。这意味着在创建数组后，可以通过添加、删除、修改的方式改变数组里的项目。</p>
+<p>如果将一个数组赋值给常量，数组就不可更改，并且数组的大小和内容都不可以修改。</p>
+<dl class="docutils">
+<dt>创建数组</dt>
+<dd>可以使用构造语法来创建一个由特定数据类型构成的空数组：</dd>
+<dt>var someArray = [SomeType]()</dt>
+<dd><p class="first">以下是创建一个初始化大小数组的语法:</p>
+<pre class="literal-block">
+var someArray = [SomeType](repeating: InitialValue, count: NumbeOfElements)
+</pre>
+<p>以下实例创建了一个类型为 Int ，数量为 3，初始值为 0 的空数组:</p>
+<pre class="literal-block">
+var someInts = [Int](repeating: 0, count: 3)
+</pre>
+<p>以下实例创建了含有三个元素的数组:</p>
+<pre class="last literal-block">
+var someInts:[Int] = [10, 20, 30]
+</pre>
+</dd>
+<dt>访问数组</dt>
+<dd><p class="first">根据数组的索引来访问数组的元素，语法如下:</p>
+<pre class="last literal-block">
+var someVar = someArray[index]
+</pre>
+</dd>
+<dt>修改数组</dt>
+<dd><p class="first">可以使用 append() 方法或者赋值运算符 += 在数组末尾添加元素</p>
+<p class="last">也可以通过索引修改数组元素的值</p>
+</dd>
+<dt>遍历数组</dt>
+<dd>可以使用for-in循环来遍历所有数组中的数据项</dd>
+<dt>合并数组</dt>
+<dd>可以使用加法操作符（+）来合并两种已存在的相同类型数组</dd>
+<dt>count 属性</dt>
+<dd>使用 count 属性来计算数组元素个数</dd>
+<dt>isEmpty 属性</dt>
+<dd>通过只读属性 isEmpty 来判断数组是否为空</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>创建数组的方法</p>
+<p>推荐:</p>
+<pre class="literal-block">
+var names: [String] = []
+var lookup: [String: Int] = [:]
+</pre>
+<p>不推荐:</p>
+<pre class="last literal-block">
+var names = [String]()
+var lookup = [String: Int]()
+</pre>
+</div>
+</div>
+<div class="section" id="swift-7">
+<h2>Swift 字典</h2>
+<p>Swift 字典用来存储无序的相同类型数据的集合，Swift 字典会强制检测元素的类型，如果类型不同则会报错。</p>
+<p>Swift 字典每个值（value）都关联唯一的键（key），键作为字典中的这个值数据的标识符</p>
+<p>如果创建一个字典，并赋值给一个变量，则创建的字典就是可以修改的。这意味着在创建字典后，可以通过添加、删除、修改的方式改变字典里的项目。</p>
+<p>如果将一个字典赋值给常量，字典就不可修改，并且字典的大小和内容都不可以修改。</p>
+<dl class="docutils">
+<dt>创建字典</dt>
+<dd><p class="first">可以使用以下语法来创建一个特定类型的空字典:</p>
+<pre class="literal-block">
+// var someDict =  [KeyType: ValueType]()
+var someDict: [KeyType: ValueType] = ()
+</pre>
+<p>以下是创建一个空字典，键的类型为 Int，值的类型为 String 的简单语法:</p>
+<pre class="literal-block">
+// var someDict = [Int: String]()
+var someDict: [Int: String] = ()
+</pre>
+<p>以下为创建一个字典的实例:</p>
+<pre class="last literal-block">
+var someDict:[Int:String] = [1:&quot;One&quot;, 2:&quot;Two&quot;, 3:&quot;Three&quot;]
+</pre>
+</dd>
+<dt>访问字典</dt>
+<dd><p class="first">我们可以根据字典的索引来访问数组的元素，语法如下:</p>
+<pre class="last literal-block">
+var someVar = someDict[key]
+</pre>
+</dd>
+<dt>修改字典</dt>
+<dd><p class="first">可以使用 updateValue(forKey:) 增加或更新字典的内容。
+如果 key 不存在，则添加值，如果存在则修改 key 对应的值。</p>
+<p>updateValue(_:forKey:)方法返回被修改的Optional值</p>
+<p class="last">也可以通过指定的 key 来修改字典的值</p>
+</dd>
+<dt>移除 Key-Value 对</dt>
+<dd><p class="first">可以使用 removeValueForKey() 方法来移除字典 key-value 对</p>
+<p class="last">如果 key 存在该方法返回移除的值，如果不存在返回 nil</p>
+</dd>
+<dt>遍历字典</dt>
+<dd><p class="first">我们可以使用 for-in 循环来遍历某个字典中的键值对:</p>
+<pre class="last literal-block">
+import Cocoa
+
+var someDict:[Int:String] = [1:&quot;One&quot;, 2:&quot;Two&quot;, 3:&quot;Three&quot;]
+
+for (key, value) in someDict {
+  print(&quot;字典 key \(key) -  字典 value \(value)&quot;)
+}
+</pre>
+</dd>
+<dt>字典转换为数组</dt>
+<dd><p class="first">可以提取字典的键值(key-value)对，并转换为独立的数组:</p>
+<pre class="last literal-block">
+import Cocoa
+
+var someDict:[Int:String] = [1:&quot;One&quot;, 2:&quot;Two&quot;, 3:&quot;Three&quot;]
+
+let dictKeys = [Int](someDict.keys)
+let dictValues = [String](someDict.values)
+</pre>
+</dd>
+<dt>count 属性</dt>
+<dd>可以使用只读的 count 属性来计算字典有多少个键值对</dd>
+<dt>isEmpty 属性</dt>
+<dd>可以通过只读属性 isEmpty 来判断字典是否为空</dd>
+</dl>
+</div>
+<div class="section" id="swift-8">
+<h2>Swift 函数</h2>
+<p>函数定义:</p>
+<pre class="literal-block">
+func funcname(形参) -&gt; returntype
+{
+  Statement1
+  Statement2
+  ……
+  Statement N
+  return parameters
+}
+</pre>
+<dl class="docutils">
+<dt>可变参数</dt>
+<dd>可变参数可以接受零个或多个值. 通过在变量类型名后面加入（...）的方式来定义</dd>
+<dt>常量，变量及 I/O 参数</dt>
+<dd><p class="first">一般默认在函数中定义的参数都是常量参数，也就是这个参数你只可以查询使用，不能改变它的值。
+如果想要声明一个变量参数，可以在参数定义前加 inout 关键字，这样就可以改变这个参数的值了</p>
+<p>例如:</p>
+<pre class="literal-block">
+func  getName(_ name: inout String).........
+</pre>
+<p>一般默认的参数传递都是传值调用的，而不是传引用。所以传入的参数在函数内改变，并不影响原来的那个参数。传入的只是这个参数的副本。</p>
+<p>当传入的参数作为输入输出参数时，需要在参数名前加 &amp; 符，表示这个值可以被函数修改。</p>
+<p>实例:</p>
+<pre class="last literal-block">
+import Cocoa
+
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+
+var x = 1
+var y = 5
+swapTwoInts(&amp;x, &amp;y)
+print(&quot;x 现在的值 \(x), y 现在的值 \(y)&quot;)
+</pre>
+</dd>
+<dt>使用函数类型</dt>
+<dd><p class="first">可以定义一个类型为函数的常量或变量，并将适当的函数赋值给它:</p>
+<pre class="last literal-block">
+var addition: (Int, Int) -&gt; Int = sum
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-9">
+<h2>Swift 闭包</h2>
+<p>闭包(Closures)是自包含的功能代码块，可以在代码中使用或者用来作为参数传值。</p>
+<p>Swift 中的闭包与 C 和 Objective-C 中的代码块（blocks）以及其他一些编程语言中的 匿名函数比较相似。</p>
+<p><strong>全局函数和嵌套函数其实就是特殊的闭包</strong></p>
+<p>大多数情况下, Swift的闭包相当于匿名函数, 比如:</p>
+<pre class="literal-block">
+let driver = {
+  print(&quot;is driver&quot;)
+}
+</pre>
+<p>调用:</p>
+<pre class="literal-block">
+driver
+</pre>
+<p>但是这并不意味着不能使用参数,
+<strong>需要的参数是被写在花括号里面的</strong>:
+为了让一个闭包接收参数，
+需要在 <strong>花括号之后把这些参数列出来，然后跟上一个 in 关键字</strong>。
+这样就告诉Swift，闭包的主体是从哪里开始的:</p>
+<pre class="literal-block">
+let driver = { (place: String) in
+  print(&quot;is driver in \(place)&quot;)
+}
+</pre>
+<p>函数和闭包的一个区别是运行闭包的时候你不会用到参数标签,
+直接调用即可:</p>
+<pre class="literal-block">
+driver(&quot;秋名山&quot;)
+</pre>
+<p>若需要指定返回值:</p>
+<pre class="literal-block">
+let driver = { (place: String) -&gt; String in
+  return &quot;is driver in \(place)&quot;
+}
+</pre>
+<div class="section" id="section-7">
+<h3>拖尾闭包语法</h3>
+<p>如果一个函数的最后一个参数是闭包，
+Swift允许你采用一种被称为 “拖尾闭包语法” 的方式来调用这个闭包。
+你可以把闭包传入函数之后的花括号里，而不必像传入参数那样。</p>
+<p>以下为例:</p>
+<pre class="literal-block">
+func travel(action: () -&gt; Void) {
+  print(&quot;我准备开车了。&quot;)
+  action()
+  print(&quot;我已抵达。&quot;)
+}
+</pre>
+<p>正常一般会这样调用:</p>
+<pre class="literal-block">
+travel(action: driver)
+</pre>
+<p>由于函数的最后一个参数是闭包，我们可以用拖尾闭包语法来调用
+上一节的driver:</p>
+<pre class="literal-block">
+travel() {
+  print(&quot;is driver&quot;)
+}
+</pre>
+<p>或者:</p>
+<pre class="literal-block">
+travel() {
+  print(&quot;is driver&quot;)
+}
+</pre>
+<p>实际上，由于函数没有别的参数了，我们还可以将圆括号完全移除:</p>
+<pre class="literal-block">
+travel {
+  print(&quot;is driver&quot;)
+}
+</pre>
+<p>若要接受参数:</p>
+<pre class="literal-block">
+func travel(action: (String) -&gt; Void)
+...
+</pre>
+<p>若需要带返回值:</p>
+<pre class="literal-block">
+travel { (place: String) -&gt; String in
+  return &quot;is driver in \(place)&quot;
+}
+</pre>
+<p>若知道place与返回类型, 可以去掉注解,
+同时因为主体只有一行代码, 所以return也可以去掉,
+即:</p>
+<pre class="literal-block">
+travel { place in
+  &quot;is driver in \(place)&quot;
+}
+</pre>
+<p>Swift还提供一种速记语法，让你可以把代码变得更短。
+我们可以让Swift为闭包的参数自动提供一个名字，而不必自行写下 place in。
+这些自动生成的名字以$开头，然后跟着一个从0开始的整数，就像下面这样:</p>
+<pre class="literal-block">
+travel {
+  &quot;is driver in \($0)。&quot;
+}
+</pre>
+</div>
+</div>
+<div class="section" id="swift-10">
+<h2>Swift 枚举</h2>
+<p>枚举简单的说也是一种数据类型，只不过是这种数据类型只包含自定义的特定数据，它是一组有共同特性的数据的集合。</p>
+<p>Swift 的枚举类似于 Objective C 和 C 的结构，枚举的功能为:</p>
+<ul class="simple">
+<li>它声明在类中，可以通过实例化类来访问它的值。</li>
+<li>枚举也可以定义构造函数（initializers）来提供一个初始成员值；可以在原始的实现基础上扩展它们的功能。</li>
+<li>可以遵守协议（protocols）来提供标准的功能。</li>
+</ul>
+<p>定义:</p>
+<pre class="literal-block">
+enum enumname {
+  // 枚举定义放在这里
+  case 变量
+}
+</pre>
+<p>case关键词表示一行新的成员值将被定义。</p>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<p class="last">和 C 和 Objective-C 不同，Swift 的枚举成员在被创建时不会被赋予一个默认的整型值</p>
+</div>
+</div>
+<div class="section" id="swift-11">
+<h2>Swift 结构体</h2>
+<p>Swift 结构体是构建代码所用的一种通用且灵活的构造体。</p>
+<p>我们可以为结构体定义属性（常量、变量）和添加方法，从而扩展结构体的功能。</p>
+<p>与 C 和 Objective C 不同的是：</p>
+<blockquote>
+<ul class="simple">
+<li>结构体不需要包含实现文件和接口。</li>
+<li>结构体允许我们创建一个单一文件，且系统会自动生成面向其它代码的外部接口。</li>
+</ul>
+</blockquote>
+<p>结构体总是通过被复制的方式在代码中传递，因此它的值是不可修改的。 <strong>值传递</strong></p>
+<p>通过关键字 struct 来定义结构体:</p>
+<pre class="literal-block">
+struct nameStruct {
+  Definition 1
+  Definition 2
+  ……
+  Definition N
+}
+</pre>
+</div>
+<div class="section" id="swift-12">
+<h2>Swift 类</h2>
+<p>在一个单一文件中定义一个类，系统会自动生成面向其它代码的外部接口。</p>
+<dl class="docutils">
+<dt>恒等运算符</dt>
+<dd><p class="first">判定两个常量或者变量是否引用同一个类实例，Swift 内建了两个恒等运算符</p>
+<ul class="last simple">
+<li>=== : 两个常量或者变量引用同一个类实例则返回 true</li>
+<li>!== : 两个常量或者变量引用不同一个类实例则返回 true</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-13">
+<h2>Swift 属性</h2>
+<dl class="docutils">
+<dt>存储属性</dt>
+<dd>一个存储属性就是存储在特定类或结构体的实例里的一个常量或变量</dd>
+<dt>延迟存储属性</dt>
+<dd><p class="first">当第一次被调用的时候才会计算其初始值的属性</p>
+<p>在属性声明前使用 lazy 来标示一个延迟存储属性,
+且必须声明为var变量</p>
+<p>一般用于：</p>
+<ul class="last simple">
+<li>延迟对象的创建。</li>
+<li>当属性的值依赖于其他未知类</li>
+</ul>
+</dd>
+<dt>计算属性</dt>
+<dd>除存储属性外，类、结构体和枚举可以定义计算属性，计算属性不直接存储值，
+而是提供一个 getter 来获取值，一个可选的 setter 来间接设置其他属性或变量的值。</dd>
+<dt>只读计算属性</dt>
+<dd>只有 getter 没有 setter 的计算属性就是只读计算属性</dd>
+<dt>属性观察器</dt>
+<dd><p class="first">属性观察器监控和响应属性值的变化</p>
+<p>不需要为无法重载的计算属性添加属性观察器，因为可以通过 setter 直接监控和响应值的变化。</p>
+<p>可以为属性添加如下的一个或全部观察器：</p>
+<ul class="last simple">
+<li>willSet在设置新的值之前调用</li>
+<li>didSet在新的值被设置之后立即调用</li>
+<li>willSet和didSet观察器在属性初始化过程中不会被调用</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-14">
+<h2>Swift 方法</h2>
+<dl class="docutils">
+<dt>self 属性</dt>
+<dd>类型的每一个实例都有一个隐含属性叫做self，self 完全等同于该实例本身，
+相当于Java的this</dd>
+<dt>在实例方法中修改值类型</dt>
+<dd><p class="first">Swift 语言中结构体和枚举是值类型。一般情况下，值类型的属性不能在它的实例方法中被修改</p>
+<p class="last">若确实需要修改， 可以选择变异(mutating)这个方法，然后方法就可以从方法内部改变它的属性；
+并且它做的任何改变在方法结束时还会保留在原始结构中。
+方法还可以给它隐含的self属性赋值一个全新的实例，这个新实例在方法结束后将替换原来的实例</p>
+</dd>
+<dt>在可变方法中给 self 赋值</dt>
+<dd>可变方法能够赋给隐含属性 self 一个全新的实例。</dd>
+<dt>类型方法</dt>
+<dd>就是类方法</dd>
+</dl>
+</div>
+<div class="section" id="swift-15">
+<h2>Swift 下标</h2>
+<p>某些方面也可以理解为增加类似数组的功能</p>
+<p>下标脚本允许你通过在实例后面的方括号中传入一个或者多个的索引值来对实例进行访问和赋值。</p>
+<p>语法类似于实例方法和计算型属性的混合。</p>
+<p>与定义实例方法类似，定义下标脚本使用subscript关键字，显式声明入参（一个或多个）和返回类型。</p>
+<p>与实例方法不同的是下标脚本可以设定为读写或只读。这种方式又有点像计算型属性的getter和setter:</p>
+<pre class="literal-block">
+subscript(index: Int) -&gt; Int {
+    get {
+        // 用于下标脚本值的声明
+    }
+    set(newValue) {
+        // 执行赋值操作
+    }
+}
+</pre>
+<p>参考: <a class="reference external" href="https://www.runoob.com/swift/swift-subscripts.html">https://www.runoob.com/swift/swift-subscripts.html</a></p>
+<p>实例:</p>
+<pre class="literal-block">
+import Cocoa
+
+struct subexample {
+    let decrementer: Int
+    subscript(index: Int) -&gt; Int {
+        return decrementer / index
+    }
+}
+let division = subexample(decrementer: 100)
+
+print(&quot;100 除以 9 等于 \(division[9])&quot;)
+print(&quot;100 除以 2 等于 \(division[2])&quot;)
+print(&quot;100 除以 3 等于 \(division[3])&quot;)
+print(&quot;100 除以 5 等于 \(division[5])&quot;)
+print(&quot;100 除以 7 等于 \(division[7])&quot;)
+</pre>
+<dl class="docutils">
+<dt>用法</dt>
+<dd><p class="first">根据使用场景不同下标脚本也具有不同的含义。</p>
+<p>通常下标脚本是用来访问集合（collection），列表（list）或序列（sequence）中元素的快捷方式。</p>
+<p class="last">你可以在你自己特定的类或结构体中自由的实现下标脚本来提供合适的功能。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-16">
+<h2>Swift 继承</h2>
+<dl class="docutils">
+<dt>继承</dt>
+<dd>使用冒号</dd>
+<dt>重写（Overriding）</dt>
+<dd><p class="first">子类可以通过继承来的实例方法，类方法，实例属性，
+或下标脚本来实现自己的定制功能，我们把这种行为叫重写（overriding）。</p>
+<p class="last">子类可以通过继承来的实例方法，类方法，实例属性，或下标脚本来实现自己的定制功能，
+把这种行为叫重写（overriding）。</p>
+</dd>
+<dt>防止重写</dt>
+<dd>使用 final 关键字防止它们被重写。</dd>
+</dl>
+</div>
+<div class="section" id="swift-17">
+<h2>Swift 构造过程</h2>
+<p>构造函数使用 init() 方法</p>
+<p>类实例也可以通过定义析构器（deinitializer）在类实例释放之前执行清理内存的工作。</p>
+<dl class="docutils">
+<dt>存储型属性的初始赋值</dt>
+<dd><p class="first">类和结构体在实例创建时，必须为所有存储型属性设置合适的初始值。</p>
+<p>存储属性在构造器中赋值时，它们的值是被直接设置的，不会触发任何属性观测器。</p>
+<p>存储属性在构造器中赋值流程：</p>
+<ul class="last simple">
+<li>创建初始值。</li>
+<li>在属性定义中指定默认属性值。</li>
+<li>初始化实例，并调用 init() 方法。</li>
+</ul>
+</dd>
+<dt>构造过程中修改常量属性</dt>
+<dd><p class="first">只要在构造过程结束前常量的值能确定，你可以在构造过程中的任意时间点修改常量属性的值</p>
+<p class="last">对某个类实例来说，它的常量属性只能在定义它的类的构造过程中修改；不能在子类中修改。</p>
+</dd>
+<dt>默认构造器</dt>
+<dd>默认构造器将简单的创建一个所有属性值都设置为默认值的实例:</dd>
+<dt>结构体的逐一成员构造器</dt>
+<dd><p class="first">如果结构体对所有存储型属性提供了默认值且自身没有提供定制的构造器，
+它们能自动获得一个逐一成员构造器</p>
+<p>如:</p>
+<pre class="last literal-block">
+struct Rectangle {
+    var length = 100.0, breadth = 200.0
+}
+let area = Rectangle(length: 24.0, breadth: 32.0)
+
+print(&quot;矩形的面积: \(area.length)&quot;)
+print(&quot;矩形的面积: \(area.breadth)&quot;)
+</pre>
+</dd>
+<dt>值类型的构造器代理</dt>
+<dd>构造器可以通过调用其它构造器来完成实例的部分构造过程。
+这一过程称为构造器代理，它能减少多个构造器间的代码重复。</dd>
+<dt>构造器的继承和重载</dt>
+<dd><p class="first">Swift 中的子类不会默认继承父类的构造器。</p>
+<p>父类的构造器仅在确定和安全的情况下被继承。</p>
+<p class="last">当你重写一个父类指定构造器时，你需要写override修饰符</p>
+</dd>
+<dt>可失败构造器</dt>
+<dd>可以在一个类，结构体或是枚举类型的定义中，添加一个或多个可失败构造器。
+其语法为在init关键字后面加添问号(init?)。</dd>
+</dl>
+</div>
+<div class="section" id="swift-18">
+<h2>Swift 析构过程</h2>
+<p>在一个类的实例被释放之前，析构函数被立即调用。</p>
+<p>用关键字deinit来标示析构函数，类似于初始化函数用init来标示。析构函数只适用于类类型。</p>
+</div>
+<div class="section" id="swift-19">
+<h2>Swift 可选链</h2>
+<p>参考: <a class="reference external" href="https://www.runoob.com/swift/swift-optional-chaining.html">https://www.runoob.com/swift/swift-optional-chaining.html</a></p>
+<p>调用时候使用问号/叹号，</p>
+<ul class="simple">
+<li>问号表示可能为空， 为空则不继续调用</li>
+<li>叹号表示强制调用（最好确定一定可以调用）</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">这点与ts基本一致</p>
+</div>
+</div>
+<div class="section" id="swift-arc">
+<h2>Swift 自动引用计数（ARC）</h2>
+<p>Swift 使用自动引用计数（ARC）这一机制来跟踪和管理应用程序的内存</p>
+<p>通常情况下我们不需要去手动释放内存，因为 ARC 会在类的实例不再被使用时，自动释放其占用的内存。</p>
+<p>但在有些时候我们还是需要在代码中实现内存管理。</p>
+<dl class="docutils">
+<dt>ARC 功能</dt>
+<dd><ul class="first last simple">
+<li>当每次使用 init() 方法创建一个类的新的实例的时候，ARC 会分配一大块内存用来储存实例的信息。</li>
+<li>内存中会包含实例的类型信息，以及这个实例所有相关属性的值。</li>
+<li>当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。</li>
+<li>为了确保使用中的实例不会被销毁，ARC 会跟踪和计算每一个实例正在被多少属性，常量和变量所引用。</li>
+<li>实例赋值给属性、常量或变量，它们都会创建此实例的强引用，只要强引用还在，实例是不允许被销毁的。</li>
+</ul>
+</dd>
+<dt>类实例之间的循环强引用</dt>
+<dd><p class="first">循环引用， 永远不会被回收</p>
+<p>Swift 提供了两种办法用来解决你在使用类的属性时所遇到的循环强引用问题</p>
+<ul class="simple">
+<li>弱引用: <tt class="docutils literal">weak var 变量</tt></li>
+<li>无主引用: <tt class="docutils literal">unowned let 变量</tt></li>
+</ul>
+<p>弱引用和无主引用允许循环引用中的一个实例引用另外一个实例而不保持强引用。
+这样实例能够互相引用而不产生循环强引用。</p>
+<p>对于生命周期中会变为nil的实例使用弱引用。
+相反的，对于初始化赋值后再也不会被赋值为nil的实例，使用无主引用。</p>
+<p class="last">循环强引用还会发生在当你将一个闭包赋值给类实例的某个属性，
+并且这个闭包体中又使用了实例</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-20">
+<h2>Swift 类型转换</h2>
+<p>Swift 语言类型转换可以判断实例的类型。也可以用于检测实例类型是否属于其父类或者子类的实例。</p>
+<ul class="simple">
+<li>is: 检测值的类型</li>
+<li>as: 转换类型</li>
+</ul>
+<dl class="docutils">
+<dt>向下转型</dt>
+<dd><p class="first">向下转型，用类型转换操作符(as? 或 as!)</p>
+<p>当你不确定向下转型可以成功时，用类型转换的条件形式(as?)。
+条件形式的类型转换总是返回一个可选值（optional value），
+并且若下转是不可能的，可选值将是 nil。</p>
+<p class="last">只有你可以确定向下转型一定会成功时，才使用强制形式(as!)。
+当你试图向下转型为一个不正确的类型时，强制形式的类型转换会触发一个运行时错误。</p>
+</dd>
+<dt>Any和AnyObject的类型转换</dt>
+<dd><p class="first">Swift为不确定类型提供了两种特殊类型别名：</p>
+<ul class="simple">
+<li>AnyObject可以代表任何class类型的实例。</li>
+<li>Any可以表示任何类型，包括方法类型（function types）。</li>
+</ul>
+<p class="last">只有当你明确的需要它的行为和功能时才使用Any和AnyObject。
+在你的代码里使用你期望的明确的类型总是更好的。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-21">
+<h2>Swift 扩展</h2>
+<p>扩展就是向一个已有的类、结构体或枚举类型添加新功能。</p>
+<p>扩展可以对一个类型添加新的功能，但是不能重写已有的功能。</p>
+<dl class="docutils">
+<dt>语法</dt>
+<dd><p class="first">扩展声明使用关键字 extension:</p>
+<pre class="literal-block">
+extension SomeType {
+    // 加到SomeType的新功能写到这里
+}
+</pre>
+<p>一个扩展可以扩展一个已有类型，使其能够适配一个或多个协议，语法格式如下:</p>
+<pre class="literal-block">
+extension SomeType: SomeProtocol, AnotherProctocol {
+    // 协议实现写到这里
+}
+</pre>
+<p>下面的例子向 Int 类型添加了 5 个计算型实例属性并扩展其功能:</p>
+<pre class="last literal-block">
+extension Int {
+  var add: Int {return self + 100 }
+  var sub: Int { return self - 10 }
+  var mul: Int { return self * 10 }
+  var div: Int { return self / 5 }
+}
+
+let addition = 3.add
+print(&quot;加法运算后的值：\(addition)&quot;)
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-22">
+<h2>Swift 协议</h2>
+<p>应该就是接口吧</p>
+<p>协议的语法格式如下:</p>
+<pre class="literal-block">
+protocol SomeProtocol {
+    // 协议内容
+}
+</pre>
+<p>要使类遵循某个协议，需要在类型名称后加上协议名称，中间以冒号:分隔.
+遵循多个协议时，各协议之间用逗号,分隔:</p>
+<pre class="literal-block">
+struct SomeStructure: FirstProtocol, AnotherProtocol {
+    // 结构体内容
+}
+</pre>
+<p>如果类在遵循协议的同时拥有父类，应该将父类名放在协议名之前，以逗号分隔:</p>
+<pre class="literal-block">
+class SomeClass: SomeSuperClass, FirstProtocol, AnotherProtocol {
+    // 类的内容
+}
+</pre>
+<dl class="docutils">
+<dt>类专属协议</dt>
+<dd><p class="first">可以在协议的继承列表中,通过添加class关键字,限制协议只能适配到类（class）类型。</p>
+<p>该class关键字必须是第一个出现在协议的继承列表中，其后，才是其他继承协议。格式如下:</p>
+<pre class="last literal-block">
+protocol SomeClassOnlyProtocol: class, SomeInheritedProtocol {
+    // 协议定义
+}
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="swift-23">
+<h2>Swift 泛型</h2>
+<p>类型约束</p>
+<dl class="docutils">
+<dt>关联类</dt>
+<dd>使用 associatedtype 关键字来设置关联类型实例</dd>
+<dt>Where 语句</dt>
+<dd>可以在参数列表中通过where语句定义参数的约束</dd>
+</dl>
+</div>
+<div class="section" id="swift-24">
+<h2>Swift 访问控制</h2>
+<ul class="simple">
+<li>public        可以访问自己模块中源文件里的任何实体，别人也可以通过引入该模块来访问源文件里的所有实体。</li>
+<li>internal      可以访问自己模块中源文件里的任何实体，但是别人不能访问该模块中源文件里的实体。</li>
+<li>fileprivate   文件内私有，只能在当前源文件中使用。</li>
+<li>private       只能在类中访问，离开了这个类或者结构体的作用域外面就无法访问。</li>
+</ul>
+<dl class="docutils">
+<dt>枚举类型访问权限</dt>
+<dd>枚举中成员的访问级别继承自该枚举，你不能为枚举中的成员单独申明不同的访问级别。</dd>
+<dt>子类访问权限</dt>
+<dd>子类的访问级别不得高于父类的访问级别。
+比如说，父类的访问级别是 internal，子类的访问级别就不能申明为 public。</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    常识了解
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    内置关键字
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    内置数据类型
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    类型安全
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    类型推断
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift">
+    Swift 变量
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-1">
+    Swift 常量
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-2">
+    Swift 运算符
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-3">
+    Swift 条件语句
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-4">
+    Swift 循环
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-5">
+    Swift 字符串
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-character">
+    Swift 字符(Character)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-6">
+    Swift 数组
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-7">
+    Swift 字典
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-8">
+    Swift 函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-9">
+    Swift 闭包
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      拖尾闭包语法
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-10">
+    Swift 枚举
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-11">
+    Swift 结构体
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-12">
+    Swift 类
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-13">
+    Swift 属性
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-14">
+    Swift 方法
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-15">
+    Swift 下标
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-16">
+    Swift 继承
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-17">
+    Swift 构造过程
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-18">
+    Swift 析构过程
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-19">
+    Swift 可选链
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-arc">
+    Swift 自动引用计数（ARC）
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-20">
+    Swift 类型转换
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-21">
+    Swift 扩展
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-22">
+    Swift 协议
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-23">
+    Swift 泛型
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#swift-24">
+    Swift 访问控制
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,437 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>beautifulsoup4</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-20</div>
+									<h2>beautifulsoup4</h2>
+									<p>是解析、遍历、维护、“标签树“的功能库</p>
+<p>相关资源</p>
+<blockquote>
+<ul class="simple">
+<li>pypi地址: <a class="reference external" href="https://pypi.org/project/beautifulsoup4/">https://pypi.org/project/beautifulsoup4/</a></li>
+<li>源码: <tt class="docutils literal">git clone <span class="pre">https://git.launchpad.net/beautifulsoup</span></tt>, 仓库: <a class="reference external" href="https://code.launchpad.net/beautifulsoup/">https://code.launchpad.net/beautifulsoup/</a></li>
+<li>官网中文文档: <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/">https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/</a></li>
+</ul>
+</blockquote>
+<p>安装:</p>
+<pre class="literal-block">
+pip install beautifulsoup4
+</pre>
+<p>可以算是一个爬虫模块, 比如对 HTML 进行解析, 便于后续操作</p>
+<p>支持的解析器:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="45%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">解析器</th>
+<th class="head">使用方法</th>
+<th class="head">优势</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Python标准库</td>
+<td>BeautifulSoup(html, &quot;html.parser&quot;)</td>
+<td>1、Python的内置标准库
+2、执行速度适中
+3、文档容错能力强</td>
+</tr>
+<tr><td>lxml HTML</td>
+<td>BeautifulSoup(html, &quot;lxml&quot;)</td>
+<td>1、速度快
+2、文档容错能力强</td>
+</tr>
+<tr><td>lxml XML</td>
+<td>BeautifulSoup(html, [&quot;lxml&quot;, &quot;xml&quot;])
+BeautifulSoup(html, &quot;xml&quot;)</td>
+<td>1、速度快
+2、唯一支持XML的解析器</td>
+</tr>
+<tr><td>html5lib</td>
+<td>BeautifulSoup(html, &quot;html5lib&quot;)</td>
+<td>1、最好的容错性
+2、以浏览器的方式解析文档
+3、生成HTML5格式的文档</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="section-1">
+<h2>使用说明</h2>
+<p>当使用 <cite>BeautifulSoup</cite> 来格式化的时候,
+返回的是 <cite>BeautifulSoup</cite> 对象(废话), 但是如果要对启动的内容进行操作,
+最好用 <cite>Tag</cite> 对象, 可由 <cite>soup.元素</cite> 获取</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">  &lt;head&gt;</span>
+<span class="s2">    &lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;</span>
+<span class="s2">  &lt;/head&gt;</span>
+<span class="s2">  &lt;body&gt;</span>
+<span class="s2">    &lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;</span>
+<span class="s2">    &lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were&lt;/p&gt;</span>
+<span class="s2">    &lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister“&gt;&lt;/a&gt;</span>
+<span class="s2">  &lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+<span class="c1"># 获取 body</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">body</span>
+</pre></div>
+</div>
+<div class="section" id="api">
+<h2>API参考</h2>
+<div class="section" id="beautifulsoup">
+<h3>BeautifulSoup</h3>
+<p>实例方法</p>
+<blockquote>
+<dl class="docutils">
+<dt>new_tag</dt>
+<dd><p class="first">创建一个新的标签, 使用当前实例的格式, 比如 <cite>html.parser</cite></p>
+<p>源码</p>
+<div class="highlight"><pre><span></span><span class="n">new_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nsprefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{},</span> <span class="n">sourceline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sourcepos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwattrs</span><span class="p">)</span>
+</pre></div>
+<p>参数说明</p>
+<dl class="last docutils">
+<dt>name</dt>
+<dd>标签名, 比如 <cite>div</cite></dd>
+<dt>attrs</dt>
+<dd>需要设置的属性字典</dd>
+</dl>
+</dd>
+</dl>
+</blockquote>
+<p>类方法</p>
+</div>
+<div class="section" id="beautifulsoup-element-tag">
+<h3>BeautifulSoup/element.Tag</h3>
+<p>实例方法</p>
+<blockquote>
+<dl class="docutils">
+<dt>find_all</dt>
+<dd><p class="first">查找所有符合条件的标签</p>
+<p>源定义</p>
+<div class="highlight"><pre><span></span><span class="n">find_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{},</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+<dl class="last docutils">
+<dt>recursive=True</dt>
+<dd>默认会递归找所有的, 如果只想找最外层的, 设置为 False</dd>
+</dl>
+</dd>
+<dt>find</dt>
+<dd>只找第一个</dd>
+<dt>append</dt>
+<dd><p class="first">添加标签</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="n">tag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_tag</span><span class="p">)</span>
+</pre></div>
+</div></dd>
+</dl>
+</blockquote>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    使用说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#api">
+    API参考
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#beautifulsoup">
+      BeautifulSoup
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#beautifulsoup-element-tag">
+      BeautifulSoup/element.Tag
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

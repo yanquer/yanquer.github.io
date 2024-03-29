@@ -1,0 +1,432 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>chroot</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 24 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-24</div>
+									<h2>chroot</h2>
+									<p>参考: <a class="reference external" href="https://www.cnblogs.com/sparkdev/p/8556075.html">https://www.cnblogs.com/sparkdev/p/8556075.html</a></p>
+<p>即 change root directory (更改 root 目录)。</p>
+<p>在 linux 系统中，系统默认的目录结构都是以 /，即以根 (root) 开始的。
+而在使用 chroot 之后，系统的目录结构将以指定的位置作为 / 位置。</p>
+<p>可以用它来简单的实现文件系统的隔离。
+但在一个容器技术繁荣的时代，用 chroot 来进行资源的隔离实在是 low 了点。
+所以 chroot 的主要用途还是集中在系统救援、维护等一些特殊的场景中。</p>
+<p>语法:</p>
+<pre class="literal-block">
+chroot NEWROOT [COMMAND [ARG]...]
+</pre>
+<div class="sidebar">
+<p class="first sidebar-title">为什么要使用 chroot 命令</p>
+<ul class="last simple">
+<li>增加了系统的安全性，限制了用户的权力:
+在经过 chroot 之后，在新根下将访问不到旧系统的根目录结构和文件，这样就增强了系统的安全性。
+一般会在用户登录前应用 chroot，把用户的访问能力控制在一定的范围之内。</li>
+<li>建立一个与原系统隔离的系统目录结构，方便用户的开发:
+使用 chroot 后，系统读取的是新根下的目录和文件，这是一个与原系统根下文件不相关的目录结构。
+在这个新的环境中，可以用来测试软件的静态编译以及一些与系统不相关的独立开发。</li>
+<li>切换系统的根目录位置，引导 Linux 系统启动以及急救系统等:
+chroot 的作用就是切换系统的根位置，而这个作用最为明显的是在系统初始引导磁盘的处理过程中使用，
+从初始 RAM 磁盘 (initrd) 切换系统的根位置并执行真正的 init. 比如文末的用例.</li>
+</ul>
+</div>
+<div class="section" id="section-1">
+<h2>参数选项</h2>
+<p>如果不给 chroot 指定执行的命令，默认它会执行 '${SHELL} -i'，而我的系统中 ${SHELL} 为 /bin/bash。</p>
+</div>
+<div class="section" id="chroot-busybox">
+<h2>通过 chroot 运行 busybox 工具</h2>
+<p>busybox 包含了丰富的工具，我们可以把这些工具放置在一个目录下，然后通过 chroot 构造出一个 mini 系统。</p>
+<p>简单起见我们直接使用 docker 的 busybox 镜像打包的文件系统。先在当前目录下创建一个目录 rootfs:</p>
+<pre class="literal-block">
+$ mkdir rootfs
+</pre>
+<p>然后把 busybox 镜像中的文件释放到这个目录中:</p>
+<pre class="literal-block">
+$ (docker export $(docker create busybox) | tar -C rootfs -xvf -)
+</pre>
+<p>通过 ls 命令查看 rootfs 文件夹下的内容:</p>
+<pre class="literal-block">
+$ ls rootfs
+</pre>
+<p>执行 chroot 后的 ls 命令:</p>
+<pre class="literal-block">
+$ sudo chroot rootfs /bin/ls
+</pre>
+<p>虽然输出结果与刚才执行的 ls rootfs 命令形同，但是这次运行的命令却是 rootfs/bin/ls。</p>
+<p>运行 chroot 后的 pwd 命令:</p>
+<pre class="literal-block">
+$ sudo chroot rootfs /bin/pwd
+/
+</pre>
+<p>可以看出直接把rootfs当作根目录.</p>
+</div>
+<div class="section" id="chroot-1">
+<h2>检查程序是否运行在 chroot 环境下</h2>
+<p>通过 /proc 目录下的文件检查进程的中的根目录</p>
+<p>如当打开一个sh会话:</p>
+<pre class="literal-block">
+sudo chroot rootfs /bin/sh
+</pre>
+<p>检查/bin/sh根目录:</p>
+<pre class="literal-block">
+pid=$(pidof -s sh)
+sudo ls -ld /proc/$pid/root
+</pre>
+<p>结果会打印实际的链接地址.</p>
+</div>
+<div class="section" id="chroot-root">
+<h2>实例：通过 chroot 重新设置 root 密码</h2>
+<p>systemd 的管理机制中，rescure 模式和 emeryency 模式是无法直接取得 root 权限的，
+需要使用 root 密码才能进入 rescure 和 emeryency 环境。</p>
+<p>可以为内核的启动指定 &quot;rd.break&quot; 参数，从而让系统在启动的早期停下来，
+此时我们可以通过使用 root 权限并结合 chroot 命令完成设置 root 密码的操作。</p>
+<ul>
+<li><p class="first">在系统启动过程中进入开机菜单时按下字母键 e 进程开机菜单的编辑模式</p>
+</li>
+<li><p class="first">找到以 &quot;linux16 /vmlinuz-&quot; 开头的行。如果默认没有看到该行，需要按向下键把它滚动出来。
+然后定位到该行结尾处，输入一个空格和字符串 &quot; rd.break&quot;</p>
+</li>
+<li><p class="first">接着按下 ctrl + x 以该设置继续启动，启动过程中操作系统会停下来，这是系统启动过程中的一个非常早的时间点
+所以系统的根目录还挂载在 RAM disk 上(就是内存中的一个文件系统)，
+我们可以通过 mount 命令检查系统当前挂载的文件系统:</p>
+<pre class="literal-block">
+mount
+</pre>
+<p>该时间点的最大优势是我们具有 root 权限！开始设置新的 root 密码。</p>
+</li>
+<li><p class="first">把 /sysroot 重新挂载为
+可读写的模式:</p>
+<pre class="literal-block">
+mount -o remount,rw /sysroot
+</pre>
+</li>
+<li><p class="first">chroot 命令把根目录切换到我们原来的
+环境中:</p>
+<pre class="literal-block">
+chroot /sysroot
+</pre>
+<p>此时可以理解为：我们以 root 权限登录了原来的系统，修改密码就很容易</p>
+</li>
+<li><p class="first">为 root 用户设置新的
+密码:</p>
+<pre class="literal-block">
+echo &quot;new_root_pw&quot; | passwd --stdin root
+</pre>
+</li>
+<li><p class="first">接下来还要处理 SELinux 相关的问题。由于当前的环境中 SELinux 并未启动，
+所以我们对文件的修改可能造成文件的 context 不正确。
+为了确保开机时重新设定 SELinux context，必須在根目录下添加隐藏文件 .autorelabel:</p>
+<pre class="literal-block">
+touch /.autorelabel
+</pre>
+</li>
+<li><p class="first">从 chroot 中退出，
+并重启系统:</p>
+<pre class="literal-block">
+exit
+reboot
+</pre>
+<p>重新进入登陆界面时就可以使用刚才设置的密码以 root 登陆了</p>
+</li>
+</ul>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    参数选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#chroot-busybox">
+    通过 chroot 运行 busybox 工具
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#chroot-1">
+    检查程序是否运行在 chroot 环境下
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#chroot-root">
+    实例：通过 chroot 重新设置 root 密码
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

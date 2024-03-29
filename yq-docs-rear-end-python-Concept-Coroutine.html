@@ -1,0 +1,391 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>协程</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 21 二月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xiang-guan.html">概念相关</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-02-21</div>
+									<h2>协程</h2>
+									<p>常用的异步库见: <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-asyncio.html">asyncio</a></p>
+<p>基于python特性, 于是有了单线程内多任务, 即协程, 是一种轻量级线程 (另一方面, 避免了线程在内核的切换, 而是用户态类似函数的快捷切换)</p>
+<p>这里主要适用于 python3.5 以上的版本(asyncio是3.5以后才引入的)</p>
+<p>定义一个异步函数:</p>
+<pre class="literal-block">
+async def say_hello():
+  print(aa := 'hello')
+  return aa
+</pre>
+<p>同步函数中使用 run_until_complete 同步获取结果:</p>
+<pre class="literal-block">
+import asyncio
+def test_a():
+  loop = asyncio.get_event_loop()
+  # 使用 run_until_complete 同步获取结果
+  res = loop.run_until_complete(say_hello())
+  print(f'end {res}',)
+</pre>
+<p>在协程函数中使用await也可以获取结果，但是最终还是需要一个look来进行获取结果:</p>
+<pre class="literal-block">
+async def some_a_a():
+  res = await say_hello()
+
+  # 多个协程并发执行
+  # 方法1：使用 asyncio.gather
+  res1, res2 = await asyncio.gather(say_hello(), say_hello())
+
+  # 方法2：使用 asyncio.ensure_future 创建 task，或者使用 asyncio.create_task(), 暂时还不确定区别，不过前者在某些情况下会触发后者，
+  #   还可以调用future对象
+  # 此时进入 pending 状态， 可以通过 task.done() -&gt; done 获取是否执行
+  task1, task2 = asyncio.ensure_future(say_hello()), asyncio.ensure_future(say_hello())
+
+  # await task1, task2
+  # res11, res22 = task1.result(), task2.result()
+
+  res11, res22 = await task1, await task2
+
+  print(res, res1, res2, res11, 'res11', res22)
+
+  return 1
+</pre>
+<p>同步函数中直接通过 run调用获取结果:</p>
+<pre class="literal-block">
+def test_run():
+  # 直接通过 run调用获取结果， 将 some_a_a 转换为一个task
+  aa = asyncio.run(some_a_a())
+  print(aa)
+</pre>
+<div class="section" id="asyncio-wait-asyncio-gather">
+<h2>asyncio.wait 和 asyncio.gather</h2>
+<p>详情可参考: <a class="reference external" href="/yq-docs-rear-end-python-python-standard-library-asyncio.html">asyncio</a></p>
+<pre class="literal-block">
+await asyncio.wait(task_list)
+await asyncio.gather(*task_list)
+</pre>
+<dl class="docutils">
+<dt>相同</dt>
+<dd>从功能上看，asyncio.wait 和 asyncio.gather 实现的效果是相同的，都是把所有 Task 任务结果收集起来。</dd>
+<dt>不同</dt>
+<dd><p class="first">asyncio.wait 会返回两个值：
+done 和 pending，
+done 为已完成的协程 Task，pending 为超时未完成的协程 Task，
+需通过 future.result 调用 Task 的 result；</p>
+<p class="last">而asyncio.gather 返回的是所有已完成 Task 的 result，
+不需要再进行调用或其他操作，就可以得到全部结果。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="asyncio-awaitcreate-task">
+<h2>asyncio 中await和create_task的区别</h2>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/luchengtao11/article/details/124527729">https://blog.csdn.net/luchengtao11/article/details/124527729</a></p>
+<dl class="docutils">
+<dt>await的理解</dt>
+<dd>立即开始执行协程对象，并允许它被挂起。--如果没有可被挂起的逻辑，则不会让出执行权</dd>
+<dt>与 task的不同之处</dt>
+<dd><ul class="first last simple">
+<li>create_task，是在loop里执行的，所以在loop调度该task之前，其他的task还是有机会运行的。</li>
+<li>await使用的当前的context，而create_task会拷贝一份context</li>
+</ul>
+</dd>
+</dl>
+<p>总结就是：create_task的消耗会更高一些。await执行过程中如果没有可以被挂起的地方，则其他任务就永远不会被执行。</p>
+<p>简而言之, 在任务调度执行中, 由于无法在同步任务中再使用时间循环获取结果, 所以只有定义为异步方法使用await,
+或者在同步任务中创建一个任务, 并给他足够时间以得到执行, 创建任务会放到事件循环中, 等待异步自动调度执行.</p>
+</div>
+<div class="section" id="section-2">
+<h2>多线程的事件循环</h2>
+<p>一般而言, 只能是主线程拥有自己的事件循环, 子线程无法获取主线程的loop, 若子线程需要, 可以在新建一个loop给子线程使用,</p>
+<p>尤其是gui编程的时候, gui线程只能在主线程跑, 那么当存在全局的非gui能处理的实时监听时, 那么就只能在子线程跑了(或者新建一个进程, 至少目前我是没有其他办法)</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#asyncio-wait-asyncio-gather">
+    asyncio.wait 和 asyncio.gather
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#asyncio-awaitcreate-task">
+    asyncio 中await和create_task的区别
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    多线程的事件循环
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

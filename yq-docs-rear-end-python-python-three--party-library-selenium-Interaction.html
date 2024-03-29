@@ -1,0 +1,614 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>交互</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/selenium.html">Selenium</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>交互</h2>
+									<div class="section" id="section-2">
+<h2>获取浏览器信息</h2>
+<dl class="docutils">
+<dt>获取标题</dt>
+<dd><p class="first">从浏览器中读取当前页面的标题:</p>
+<pre class="literal-block">
+driver.title
+</pre>
+<p>获取当前 URL:</p>
+<pre class="last literal-block">
+driver.current_url
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h2>浏览器导航</h2>
+<p>启动浏览器后的第一件事就是打开网站:</p>
+<pre class="literal-block">
+// 简便的方法
+driver.get(&quot;https://selenium.dev&quot;);
+
+// 更长的方法
+driver.navigate().to(&quot;https://selenium.dev&quot;);
+</pre>
+<p>按下浏览器的后退按钮:</p>
+<pre class="literal-block">
+driver.navigate().back();
+</pre>
+<p>按下浏览器的前进键:</p>
+<pre class="literal-block">
+driver.navigate().forward();
+</pre>
+<p>刷新页面:</p>
+<pre class="literal-block">
+driver.navigate().refresh();
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>警告框</h2>
+<dl class="docutils">
+<dt>Alerts 警告框</dt>
+<dd><p class="first">其中最基本的称为警告框, 它显示一条自定义消息, 以及一个用于关闭该警告的按钮,
+在大多数浏览器中标记为&quot;确定&quot;(OK).
+在大多数浏览器中, 也可以通过按&quot;关闭&quot;(close)按钮将其关闭, 但这始终与“确定”按钮具有相同的作用</p>
+<p>WebDriver可以从弹窗获取文本并接受或关闭这些警告.:</p>
+<pre class="last literal-block">
+# Click the link to activate the alert
+driver.find_element(By.LINK_TEXT, &quot;See an example alert&quot;).click()
+
+# Wait for the alert to be displayed and store it in a variable
+alert = wait.until(expected_conditions.alert_is_present())
+
+# Store the alert text in a variable
+text = alert.text
+
+# Press the OK button
+alert.accept()
+</pre>
+</dd>
+<dt>Confirm 确认框</dt>
+<dd><p class="first">确认框类似于警告框, 不同之处在于用户还可以选择取消消息.
+此示例还呈现了警告的另一种实现:</p>
+<pre class="last literal-block">
+# Click the link to activate the alert
+driver.find_element(By.LINK_TEXT, &quot;See a sample confirm&quot;).click()
+
+# Wait for the alert to be displayed
+wait.until(expected_conditions.alert_is_present())
+
+# Store the alert in a variable for reuse
+alert = driver.switch_to.alert
+
+# Store the alert text in a variable
+text = alert.text
+
+# Press the Cancel button
+alert.dismiss()
+</pre>
+</dd>
+<dt>Prompt 提示框</dt>
+<dd><p class="first">提示框与确认框相似, 不同之处在于它们还包括文本输入.
+与处理表单元素类似, 您可以使用WebDriver的sendKeys来填写响应.
+这将完全替换占位符文本. 按下取消按钮将不会提交任何文本:</p>
+<pre class="last literal-block">
+# Click the link to activate the alert
+driver.find_element(By.LINK_TEXT, &quot;See a sample prompt&quot;).click()
+
+# Wait for the alert to be displayed
+wait.until(expected_conditions.alert_is_present())
+
+# Store the alert in a variable for reuse
+alert = Alert(driver)
+
+# Type your message
+alert.send_keys(&quot;Selenium&quot;)
+
+# Press the OK button
+alert.accept()
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="cookies">
+<h2>cookies</h2>
+<p>Cookie是从网站发送并存储在您的计算机中的一小段数据. Cookies主要用于识别用户并加载存储的信息.</p>
+<p>WebDriver API提供了一种使用内置的方法与Cookie进行交互:</p>
+<dl class="docutils">
+<dt>添加 Cookie</dt>
+<dd><p class="first">这个方法常常用于将cookie添加到当前访问的上下文中. 添加Cookie仅接受一组已定义的可序列化JSON对象
+首先, 您需要位于有效Cookie的域上. 如果您在开始与网站进行交互之前尝试预设cookie,
+并且您的首页很大或需要一段时间才能加载完毕, 则可以选择在网站上找到一个较小的页面:</p>
+<pre class="last literal-block">
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.get(&quot;http://www.example.com&quot;)
+
+# Adds the cookie into current browser context
+driver.add_cookie({&quot;name&quot;: &quot;key&quot;, &quot;value&quot;: &quot;value&quot;})
+</pre>
+</dd>
+<dt>获取命名的 Cookie</dt>
+<dd><p class="first">此方法返回与cookie名称匹配的序列化cookie数据中所有关联的cookie.:</p>
+<pre class="last literal-block">
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+# Navigate to url
+driver.get(&quot;http://www.example.com&quot;)
+
+# Adds the cookie into current browser context
+driver.add_cookie({&quot;name&quot;: &quot;foo&quot;, &quot;value&quot;: &quot;bar&quot;})
+
+# Get cookie details with named cookie 'foo'
+print(driver.get_cookie(&quot;foo&quot;))
+</pre>
+</dd>
+<dt>获取全部 Cookies</dt>
+<dd><p class="first">此方法会针对当前访问上下文返回“成功的序列化cookie数据”.
+如果浏览器不再可用, 则返回错误.:</p>
+<pre class="last literal-block">
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+# Navigate to url
+driver.get(&quot;http://www.example.com&quot;)
+
+driver.add_cookie({&quot;name&quot;: &quot;test1&quot;, &quot;value&quot;: &quot;cookie1&quot;})
+driver.add_cookie({&quot;name&quot;: &quot;test2&quot;, &quot;value&quot;: &quot;cookie2&quot;})
+
+# Get all available cookies
+print(driver.get_cookies())
+</pre>
+</dd>
+<dt>删除 Cookie</dt>
+<dd><p class="first">此方法删除与提供的cookie名称匹配的cookie数据.:</p>
+<pre class="last literal-block">
+from selenium import webdriver
+driver = webdriver.Chrome()
+
+# Navigate to url
+driver.get(&quot;http://www.example.com&quot;)
+driver.add_cookie({&quot;name&quot;: &quot;test1&quot;, &quot;value&quot;: &quot;cookie1&quot;})
+driver.add_cookie({&quot;name&quot;: &quot;test2&quot;, &quot;value&quot;: &quot;cookie2&quot;})
+
+# Delete a cookie with name 'test1'
+driver.delete_cookie(&quot;test1&quot;)
+</pre>
+</dd>
+<dt>删除所有 Cookies</dt>
+<dd><p class="first">此方法删除当前访问上下文的所有cookie.:</p>
+<pre class="last literal-block">
+from selenium import webdriver
+driver = webdriver.Chrome()
+
+# Navigate to url
+driver.get(&quot;http://www.example.com&quot;)
+driver.add_cookie({&quot;name&quot;: &quot;test1&quot;, &quot;value&quot;: &quot;cookie1&quot;})
+driver.add_cookie({&quot;name&quot;: &quot;test2&quot;, &quot;value&quot;: &quot;cookie2&quot;})
+
+#  Deletes all cookies
+driver.delete_all_cookies()
+</pre>
+</dd>
+<dt>Same-Site Cookie属性</dt>
+<dd><p class="first">此属性允许用户引导浏览器控制cookie, 是否与第三方站点发起的请求一起发送.
+引入其是为了防止CSRF（跨站请求伪造）攻击.</p>
+<p>Same-Site cookie属性接受以下两种参数作为指令:</p>
+<ul class="simple">
+<li>Strict: 当sameSite属性设置为 Strict, cookie不会与来自第三方网站的请求一起发送.</li>
+<li>Lax: 当您将cookie sameSite属性设置为 Lax, cookie将与第三方网站发起的GET请求一起发送.
+注意: 到目前为止, 此功能已在Chrome(80+版本), Firefox(79+版本)中提供, 并适用于Selenium 4以及更高版本.</li>
+</ul>
+<p>用例:</p>
+<pre class="last literal-block">
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.get(&quot;http://www.example.com&quot;)
+# Adds the cookie into current browser context with sameSite 'Strict' (or) 'Lax'
+driver.add_cookie({&quot;name&quot;: &quot;foo&quot;, &quot;value&quot;: &quot;value&quot;, 'sameSite': 'Strict'})
+driver.add_cookie({&quot;name&quot;: &quot;foo1&quot;, &quot;value&quot;: &quot;value&quot;, 'sameSite': 'Lax'})
+cookie1 = driver.get_cookie('foo')
+cookie2 = driver.get_cookie('foo1')
+print(cookie1)
+print(cookie2)
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="iframesframes">
+<h2>与IFrames和frames一起工作</h2>
+<p>框架是一种现在已被弃用的方法，用于从同一域中的多个文档构建站点布局。
+除非你使用的是 HTML5 之前的 webapp，否则你不太可能与他们合作。
+内嵌框架允许插入来自完全不同领域的文档，并且仍然经常使用。</p>
+<p>如果您需要使用框架或 iframe, WebDriver 允许您以相同的方式使用它们。
+考虑 iframe 中的一个按钮。 如果我们使用浏览器开发工具检查元素，我们可能会看到以下内容:</p>
+<pre class="literal-block">
+&lt;div id=&quot;modal&quot;&gt;
+  &lt;iframe id=&quot;buttonframe&quot;name=&quot;myframe&quot;src=&quot;https://seleniumhq.github.io&quot;&gt;
+  &lt;button&gt;Click here&lt;/button&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
+</pre>
+<p>如果不是 iframe，我们可能会使用如下方式点击按钮:</p>
+<pre class="literal-block">
+// 这不会工作
+driver.find_element(By.TAG_NAME, 'button').click()
+</pre>
+<p>但是，如果 iframe 之外没有按钮，那么您可能会得到一个 no such element 无此元素 的错误。
+这是因为 Selenium 只知道顶层文档中的元素。
+为了与按钮进行交互，我们需要首先 <strong>切换到框架</strong>， 这与切换窗口的方式类似。</p>
+<p>WebDriver 提供了三种切换到帧的方法。</p>
+<dl class="docutils">
+<dt>使用 WebElement</dt>
+<dd><p class="first">使用 WebElement 进行切换是最灵活的选择:</p>
+<pre class="last literal-block">
+    # 存储网页元素
+iframe = driver.find_element(By.CSS_SELECTOR, &quot;#modal &gt; iframe&quot;)
+
+    # 切换到选择的 iframe
+driver.switch_to.frame(iframe)
+
+    # 单击按钮
+driver.find_element(By.TAG_NAME, 'button').click()
+</pre>
+</dd>
+<dt>使用 name 或 id</dt>
+<dd><p class="first">如果您的 frame 或 iframe 具有 id 或 name 属性，则可以使用该属性。
+如果名称或 id 在页面上不是唯一的， 那么将切换到找到的第一个。:</p>
+<pre class="last literal-block">
+    # 通过 id 切换框架
+driver.switch_to.frame('buttonframe')
+
+    # 单击按钮
+driver.find_element(By.TAG_NAME, 'button').click()
+</pre>
+</dd>
+<dt>使用索引</dt>
+<dd><p class="first">还可以使用frame的索引， 例如可以使用JavaScript中的 window.frames 进行查询.:</p>
+<pre class="last literal-block">
+    # 基于索引切换到第 2 个 iframe
+iframe = driver.find_elements(By.TAG_NAME,'iframe')[1]
+
+    # 切换到选择的 iframe
+driver.switch_to.frame(iframe)
+</pre>
+</dd>
+<dt>离开框架</dt>
+<dd><p class="first">离开 iframe 或 frameset，切换回默认内容，如下所示:</p>
+<pre class="last literal-block">
+    # 切回到默认内容
+driver.switch_to.default_content()
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h2>同窗口和标签一起工作</h2>
+<p>参考: <a class="reference external" href="https://www.selenium.dev/zh-cn/documentation/webdriver/interactions/windows/">https://www.selenium.dev/zh-cn/documentation/webdriver/interactions/windows/</a></p>
+<p>窗口切换/关闭, 屏幕截图, 执行脚本</p>
+</div>
+<div class="section" id="section-6">
+<h2>虚拟身份验证器</h2>
+<p>参考: <a class="reference external" href="https://www.selenium.dev/zh-cn/documentation/webdriver/interactions/virtual_authenticator/">https://www.selenium.dev/zh-cn/documentation/webdriver/interactions/virtual_authenticator/</a></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    获取浏览器信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    浏览器导航
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    警告框
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#cookies">
+    cookies
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#iframesframes">
+    与IFrames和frames一起工作
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    同窗口和标签一起工作
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    虚拟身份验证器
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -1,0 +1,695 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>linux 系统信号</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 24 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-xing.html">概念性</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-24</div>
+									<h2>linux 系统信号</h2>
+									<p>Linux系统有两大类信号</p>
+<ul class="simple">
+<li>POSIX标准的规则信号(regular signal 1-31编号)</li>
+<li>实时信号(real-time signal 32-63)</li>
+</ul>
+<div class="section" id="section-1">
+<h2>系统信号</h2>
+<p>一些常见的的 linux 系统信号。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">信号</th>
+<th class="head">值</th>
+<th class="head">描述</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>SIGHUP</td>
+<td>挂起进程</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>2</td>
+<td>SIGINT</td>
+<td>终止进程(ctrl+c)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>3</td>
+<td>SIGQUIT</td>
+<td>停止进程</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>9</td>
+<td>SIGKILL</td>
+<td>无条件终止进程</td>
+<td>强制杀死进程</td>
+<td>这个信号进程无法忽视</td>
+<td>直接在系统层面把进程杀掉. 所以在Python中他的不能监听的</td>
+</tr>
+<tr><td>15</td>
+<td>SIGTERM</td>
+<td>尽可能终止进程</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>17</td>
+<td>SIGSTOP</td>
+<td>无条件停止进程，但不是终止进程</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>18</td>
+<td>SIGTSTP</td>
+<td>停止或暂停进程，但不终止进程(ctrl+z)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>19</td>
+<td>SIGCONT</td>
+<td>继续运行停止的进程</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://blog.csdn.net/qq_55723966/article/details/122304011">https://blog.csdn.net/qq_55723966/article/details/122304011</a></td>
+</tr>
+</tbody>
+</table>
+<p>规则信号(包括了上面的常用信号)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">信号编号</th>
+<th class="head">名称</th>
+<th class="head">默认动作</th>
+<th class="head">说明</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>SIGHUP</td>
+<td>终止</td>
+<td>终止控制终端或进程. 终端挂起或者控制进程终止</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>2</td>
+<td>SIGINT</td>
+<td>终止</td>
+<td>由键盘引起的中断(Ctrl-c)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>3</td>
+<td>SIGQUIT</td>
+<td>dump</td>
+<td>控制终端发送给进程的信号</td>
+<td>键盘产生的退出(Ctrl-)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>4</td>
+<td>GIGILL</td>
+<td>dusmp</td>
+<td>非法指令引起</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>5</td>
+<td>SIGTRAP</td>
+<td>dump</td>
+<td>debug中断</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>6</td>
+<td>SIGABRT/SIGIOT</td>
+<td>dump</td>
+<td>异常中止. 由abort(3)发出的退出指令</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>7</td>
+<td>SIGBUS/SIGEMT</td>
+<td>dump</td>
+<td>总线异常/EMT指令</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>8</td>
+<td>SIGFPE</td>
+<td>dump</td>
+<td>浮点运算溢出</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>9</td>
+<td>SIGKILL</td>
+<td>终止</td>
+<td>强制杀死进程(大招. 进程不可捕获). 这个信号进程无法忽视</td>
+<td>直接在系统层面把进程杀掉. 所以在Python中他的不能监听的</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>10</td>
+<td>SIGUSR1</td>
+<td>终止</td>
+<td>用户信号. 进程可自定义用途</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>11</td>
+<td>SIGSEGV</td>
+<td>dump</td>
+<td>非法内存地址. 无效的内存引用</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>12</td>
+<td>SIGUSR2</td>
+<td>终止</td>
+<td>用户信号. 进程可自定义用途</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>13</td>
+<td>SIGPIPE</td>
+<td>终止</td>
+<td>向某个没有读取的管道中写入数据. 管道破裂: 写一个没有读端口的管道</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>14</td>
+<td>SIGALRM</td>
+<td>终止</td>
+<td>时钟中断(闹钟). 由alarm(2)发出的信号</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>15</td>
+<td>SIGTERM</td>
+<td>终止</td>
+<td>进程终止(进程可捕获)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>16</td>
+<td>SIGSTKFLT</td>
+<td>终止</td>
+<td>协处理器栈错误</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>17</td>
+<td>SIGCHLD</td>
+<td>忽略</td>
+<td>子进程退出或中断</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>18</td>
+<td>SIGCONT</td>
+<td>继续</td>
+<td>如进程停止状态则开始运行</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>19</td>
+<td>SIGSTOP</td>
+<td>停止</td>
+<td>停止进程运行</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>20</td>
+<td>SIGSTP</td>
+<td>停止</td>
+<td>键盘产生的停止</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>21</td>
+<td>SIGTTIN</td>
+<td>停止</td>
+<td>后台进程请求输入</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>22</td>
+<td>SIGTTOU</td>
+<td>停止</td>
+<td>后台进程请求输出</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>23</td>
+<td>SIGURG</td>
+<td>忽略</td>
+<td>socket发送紧急情况</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>24</td>
+<td>SIGXCPU</td>
+<td>dump</td>
+<td>CPU时间限制被打破</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>25</td>
+<td>SIGXFSZ</td>
+<td>dump</td>
+<td>文件大小限制被打破</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>26</td>
+<td>SIGVTALRM</td>
+<td>终止</td>
+<td>虚拟定时时钟</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>27</td>
+<td>SIGPROF</td>
+<td>终止</td>
+<td>profile timer clock</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>28</td>
+<td>SIGWINCH</td>
+<td>忽略</td>
+<td>窗口尺寸调整</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>29</td>
+<td>SIGIO/SIGPOLL</td>
+<td>终止</td>
+<td>I/O可用</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>30</td>
+<td>SIGPWR</td>
+<td>终止</td>
+<td>电源异常</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>31</td>
+<td>SIGSYS/SYSUNUSED</td>
+<td>dump</td>
+<td>系统调用异常</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>由于不同系统中同一个数值对应的信号类型不一样, 所以最好使用信号名称.</p>
+<p class="last">信号的数值越小, 优先级越高.</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>信号量说明(参考)</h2>
+<!-- .. csv-table:\: -->
+<!-- :header: 编号, 名称, 默认动作, 说明 -->
+<!-- SIGHUP,    终止进程,           终端线路挂断 -->
+<!-- SIGINT,    终止进程,           中断进程 -->
+<!-- SIGQUIT,   建立CORE文件,       终止进程，并且生成core文件 -->
+<!-- SIGILL,    建立CORE文件,       非法指令 -->
+<!-- SIGTRAP,   建立CORE文件,       跟踪自陷 -->
+<!-- SIGBUS,    建立CORE文件,       总线错误 -->
+<!-- SIGSEGV,   建立CORE文件,       段非法错误 -->
+<!-- SIGFPE,    建立CORE文件,       浮点异常 -->
+<!-- SIGIOT,    建立CORE文件,       执行I/O自陷 -->
+<!-- SIGKILL,   终止进程,           杀死进程 -->
+<!-- SIGPIPE,   终止进程,           向一个没有读进程的管道写数据 -->
+<!-- SIGALarm,  终止进程,           计时器到时 -->
+<!-- SIGTERM,   终止进程,           软件终止信号 -->
+<!-- SIGSTOP,   停止进程,           非终端来的停止信号 -->
+<!-- SIGTSTP,   停止进程,           终端来的停止信号 -->
+<!-- SIGCONT,   忽略信号,           继续执行一个停止的进程 -->
+<!-- SIGURG,    忽略信号,           I/O紧急信号 -->
+<!-- SIGIO,             忽略信号,           描述符上可以进行I/O -->
+<!-- SIGCHLD,   忽略信号,           当子进程停止或退出时通知父进程 -->
+<!-- SIGTTOU,   停止进程,           后台进程写终端 -->
+<!-- SIGTTIN,   停止进程,           后台进程读终端 -->
+<!-- SIGXGPU,   终止进程,           CPU时限超时 -->
+<!-- SIGXFSZ,   终止进程,           文件长度过长 -->
+<!-- SIGWINCH,  忽略信号,           窗口大小发生变化 -->
+<!-- SIGPROF,   终止进程,           统计分布图用计时器到时 -->
+<!-- SIGUSR1,   终止进程,           用户定义信号1 -->
+<!-- SIGUSR2,   终止进程,           用户定义信号2 -->
+<!-- SIGVTALRM,         终止进程,           虚拟计时器到时 -->
+<ul class="simple">
+<li>SIGHUP 本信号在用户终端连接(正常或非正常)结束时发出, 通常是在终端的控制进程结束时, 通知同一session内的各个作业, 这时它们与控制终端不再关联.</li>
+<li>SIGINT 程序终止(interrupt)信号, 在用户键入INTR字符(通常是Ctrl-C)时发出</li>
+<li>SIGQUIT 和SIGINT类似, 但由QUIT字符(通常是Ctrl-)来控制. 进程在因收到SIGQUIT退出时会产生core文件, 在这个意义上类似于一个程序错误信号.</li>
+<li>SIGILL 执行了非法指令. 通常是因为可执行文件本身出现错误, 或者试图执行数据段. 堆栈溢出时也有可能产生这个信号.</li>
+<li>SIGTRAP 由断点指令或其它trap指令产生. 由debugger使用.</li>
+<li>SIGABRT 程序自己发现错误并调用abort时产生.</li>
+<li>SIGIOT 在PDP-11上由iot指令产生, 在其它机器上和SIGABRT一样.</li>
+<li>SIGBUS 非法地址, 包括内存地址对齐(alignment)出错. eg: 访问一个四个字长的整数, 但其地址不是4的倍数.</li>
+<li>SIGFPE 在发生致命的算术运算错误时发出. 不仅包括浮点运算错误, 还包括溢出及除数为0等其它所有的算术的错误.</li>
+<li>SIGKILL 用来立即结束程序的运行. 本信号不能被阻塞, 处理和忽略.</li>
+<li>SIGUSR1 留给用户使用</li>
+<li>SIGSEGV 试图访问未分配给自己的内存, 或试图往没有写权限的内存地址写数据.</li>
+<li>SIGUSR2 留给用户使用</li>
+<li>SIGPIPE Broken pipe</li>
+<li>SIGALRM 时钟定时信号, 计算的是实际的时间或时钟时间. alarm函数使用该信号.</li>
+<li>SIGTERM 程序结束(terminate)信号, 与SIGKILL不同的是该信号可以被阻塞和处理. 通常用来要求程序自己正常退出. shell命令kill缺省产生这个信号.</li>
+<li>SIGCHLD 子进程结束时, 父进程会收到这个信号.</li>
+<li>SIGCONT 让一个停止(stopped)的进程继续执行. 本信号不能被阻塞. 可以用一个handler来让程序在由stopped状态变为继续执行时完成特定的工作. 例如, 重新显示提示符.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://www.jianshu.com/p/1a9ea7f4d46e">https://www.jianshu.com/p/1a9ea7f4d46e</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    系统信号
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    信号量说明(参考)
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

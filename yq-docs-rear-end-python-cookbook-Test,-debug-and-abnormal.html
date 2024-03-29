@@ -1,0 +1,829 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>测试、调试和异常</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/cookbook.html">Cookbook</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>测试、调试和异常</h2>
+									<p>试验还是很棒的，但是调试？就没那么有趣了。事实是，在 Python 测试代码之前
+没有编译器来分析你的代码，因此使的测试成为开发的一个重要部分。本章的目标是讨
+论一些关于测试、调试和异常处理的常见问题。但是并不是为测试驱动开发或者单元测
+试模块做一个简要的介绍。因此，笔者假定读者熟悉测试概念。</p>
+<div class="section" id="stdout">
+<h2>测试 stdout 输出</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你的程序中有个方法会输出到标准输出中（sys.stdout）。也就是说它会将文本打印
+到屏幕上面。你想写个测试来证明它，给定一个输入，相应的输出能正常显示出来。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">使用 unittest.mock 模块中的 patch() 函数，使用起来非常简单，可以为单个测
+试模拟 sys.stdout 然后回滚，并且不产生大量的临时变量或在测试用例直接暴露状态
+变量。</p>
+<p>作为一个例子，我们在 mymodule 模块中定义如下一个函数:</p>
+<pre class="literal-block">
+# mymodule.py
+def urlprint(protocol, host, domain):
+  url = '{}://{}.{}'.format(protocol, host, domain)
+  print(url)
+</pre>
+<p>使用unitetest相关工具测试:</p>
+<pre class="last literal-block">
+from io import StringIO
+from unittest import TestCase
+from unittest.mock import patch
+import mymodule
+
+class TestURLPrint(TestCase):
+
+  def test_url_gets_to_stdout(self):
+    protocol = 'http'
+    host = 'www'
+    domain = 'example.com'
+    expected_url = '{}://{}.{}\n'.format(protocol, host, domain)
+
+    with patch('sys.stdout', new=StringIO()) as fake_out:
+      mymodule.urlprint(protocol, host, domain)
+      self.assertEqual(fake_out.getvalue(), expected_url)
+</pre>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">urlprint() 函数接受三个参数，测试方法开始会先设置每一个参数的值。
+expected_url 变量被设置成包含期望的输出的字符串。</p>
+<p class="last">unittest.mock.patch() 函数被用作一个上下文管理器，使用 StringIO 对象来代
+替 sys.stdout . fake_out 变量是在该进程中被创建的模拟对象。在 with 语句中使用
+它可以执行各种检查。当 with 语句结束时，patch 会将所有东西恢复到测试开始前的
+状态。有一点需要注意的是某些对 Python 的 C 扩展可能会忽略掉 sys.stdout 的配
+置二直接写入到标准输出中。限于篇幅，本节不会涉及到这方面的讲解，它适用于纯
+Python 代码。如果你真的需要在 C 扩展中捕获 I/O，你可以先打开一个临时文件，然
+后将标准输出重定向到该文件中。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>在单元测试中给对象打补丁</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你写的单元测试中需要给指定的对象打补丁，用来断言它们在测试中的期望行为
+（比如，断言被调用时的参数个数，访问指定的属性等）。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">unittest.mock.patch() 函数可被用来解决这个问题。patch() 还可被用作一个
+装饰器、上下文管理器或单独使用，尽管并不常见。例如，下面是一个将它当做装饰器
+使用的例子:</p>
+<pre class="literal-block">
+from unittest.mock import patch
+import example
+
+&#64;patch('example.func')
+def test1(x, mock_func):
+  example.func(x) # Uses patched example.func
+  mock_func.assert_called_with(x)
+</pre>
+<p>它还可以被当做一个上下文管理器:</p>
+<pre class="literal-block">
+with patch('example.func') as mock_func:
+  example.func(x) # Uses patched example.func
+  mock_func.assert_called_with(x)
+</pre>
+<p>最后，你还可以手动的使用它打补丁:</p>
+<pre class="literal-block">
+p = patch('example.func')
+mock_func = p.start()
+example.func(x)
+mock_func.assert_called_with(x)
+p.stop()
+</pre>
+<p class="last">如果可能的话，你能够叠加装饰器和上下文管理器来给多个对象打补丁</p>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">patch() 接受一个已存在对象的全路径名，将其替换为一个新的值。原来的值会在
+装饰器函数或上下文管理器完成后自动恢复回来。默认情况下，所有值会被 MagicMock
+实例替代。例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x = 42
+&gt;&gt;&gt; with patch('__main__.x'):
+...   print(x)
+...
+&lt;MagicMock name='x' id='4314230032'&gt;
+&gt;&gt;&gt; x
+42
+&gt;&gt;&gt;
+</pre>
+<p>不过，你可以通过给 patch() 提供第二个参数来将值替换成任何你想要的:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; x
+42
+&gt;&gt;&gt; with patch('__main__.x', 'patched_value'):
+...   print(x)
+...
+patched_value
+&gt;&gt;&gt; x
+42
+&gt;&gt;&gt;
+</pre>
+<p class="last">被用来作为替换值的 MagicMock 实例能够模拟可调用对象和实例。他们记录对象
+的使用信息并允许你执行断言检查，</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h2>在单元测试中测试异常情况</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想写个测试用例来准确的判断某个异常是否被抛出。</dd>
+<dt>解决方案</dt>
+<dd>对于异常的测试可使用 assertRaises() 方法。</dd>
+<dt>讨论</dt>
+<dd><p class="first">assertRaises() 方法为测试异常存在性提供了一个简便方法。一个常见的陷阱是
+手动去进行异常检测。</p>
+<p>比如:</p>
+<pre class="literal-block">
+class TestConversion(unittest.TestCase):
+
+  def test_bad_int(self):
+    try:
+      r = parse_int('N/A')
+    except ValueError as e:
+      self.assertEqual(type(e), ValueError)
+</pre>
+<p>这种方法的问题在于它很容易遗漏其他情况，比如没有任何异常抛出的时候。那么
+你还得需要增加另外的检测过程，如下面这样:</p>
+<pre class="literal-block">
+class TestConversion(unittest.TestCase):
+
+  def test_bad_int(self):
+
+    try:
+      r = parse_int('N/A')
+    except ValueError as e:
+      self.assertEqual(type(e), ValueError)
+    else:
+      self.fail('ValueError not raised')
+</pre>
+<p>assertRaises() 方法会处理所有细节，因此你应该使用它。</p>
+<p>assertRaises() 的一个缺点是它测不了异常具体的值是多少。为了测试异常值，
+可以使用 assertRaisesRegex() 方法，它可同时测试异常的存在以及通过正则式匹配
+异常的字符串表示。</p>
+<p>assertRaises() 和 assertRaisesRegex() 还有一个容易忽略的地方就是它们还
+能被当做上下文管理器使用:</p>
+<pre class="last literal-block">
+class TestConversion(unittest.TestCase):
+  def test_bad_int(self):
+    with self.assertRaisesRegex(ValueError, 'invalid literal .*'):
+      r = parse_int('N/A')
+</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-4">
+<h2>将测试输出用日志记录到文件中</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你希望将单元测试的输出写到到某个文件中去，而不是打印到标准输出。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">运行单元测试一个常见技术就是在测试文件底部加入下面这段代码片段:</p>
+<pre class="literal-block">
+import unittest
+
+class MyTest(unittest.TestCase):
+  pass
+
+if __name__ == '__main__':
+  unittest.main()
+</pre>
+<p>这样的话测试文件就是可执行的，并且会将运行测试的结果打印到标准输出上。如
+果你想重定向输出，就需要像下面这样修改 main() 函数:</p>
+<pre class="last literal-block">
+import sys
+
+def main(out=sys.stderr, verbosity=2):
+  loader = unittest.TestLoader()
+  suite = loader.loadTestsFromModule(sys.modules[__name__])
+  unittest.TextTestRunner(out,verbosity=verbosity).run(suite)
+
+if __name__ == '__main__':
+  with open('testing.out', 'w') as f:
+    main(f)
+</pre>
+</dd>
+<dt>讨论</dt>
+<dd>本节感兴趣的部分并不是将测试结果重定向到一个文件中，而是通过这样做向你
+展示了 unittest 模块中一些值得关注的内部工作原理。</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h2>忽略或期望测试失败</h2>
+</div>
+<div class="section" id="section-6">
+<h2>处理多个异常</h2>
+</div>
+<div class="section" id="section-7">
+<h2>捕获所有异常</h2>
+<p>想要捕获所有的异常，可以直接捕获 Exception</p>
+<p>将会捕获除了 SystemExit 、KeyboardInterrupt 和 GeneratorExit 之外的
+所有异常。如果你还想捕获这三个异常，将 Exception 改成 BaseException 即可</p>
+<p>应该尽可能将异常处理器定义的精准一些。</p>
+</div>
+<div class="section" id="section-8">
+<h2>创建自定义异常</h2>
+<p>自定义异常类应该总是继承自内置的 Exception 类，或者是继承自那些本身就是
+从 Exception 继承而来的类。</p>
+</div>
+<div class="section" id="section-9">
+<h2>捕获异常后抛出另外的异常</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想捕获一个异常后抛出另外一个不同的异常，同时还得在异常回溯中保留两个
+异常的信息。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">为了链接异常，使用 raise from 语句来代替简单的 raise 语句。它会让你同时保
+留两个异常的信息。例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def example():
+...   try:
+...     int('N/A')
+...   except ValueError as e:
+...     raise RuntimeError('A parsing error occurred') from e
+...
+&gt;&gt;&gt; example()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 3, in example
+ValueError: invalid literal for int() with base 10: 'N/A'
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&lt;stdin&gt;&quot;, line 5, in example
+RuntimeError: A parsing error occurred
+&gt;&gt;&gt;
+</pre>
+<p class="last">如果，你想忽略掉异常链，可使用 raise from None</p>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">在设计代码时，在另外一个 except 代码块中使用 raise 语句的时候你要特别小心
+了。大多数情况下，这种 raise 语句都应该被改成 raise from 语句。也就是说你应该
+使用下面这种形式:</p>
+<pre class="literal-block">
+try:
+  ...
+except SomeException as e:
+  raise DifferentException() from e
+</pre>
+<p class="last">这样做的原因是你应该显示的将原因链接起来。也就是说，DifferentException
+是直接从 SomeException 衍生而来。这种关系可以从回溯结果中看出来。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-10">
+<h2>重新抛出被捕获的异常</h2>
+<p>简单的使用一个单独的 rasie 语句即可</p>
+</div>
+<div class="section" id="section-11">
+<h2>输出警告信息</h2>
+<p>使用 warning.warn() 函数</p>
+<p>warn() 的参数是一个警告消息和一个警告类，警告类有如下几种：</p>
+<ul class="simple">
+<li>UserWarning</li>
+<li>DeprecationWarning</li>
+<li>SyntaxWarning</li>
+<li>RuntimeWarning</li>
+<li>ResourceWarning</li>
+<li>FutureWarning.</li>
+</ul>
+<p>对警告的处理取决于你如何运行解释器以及一些其他配置。例如，如果你使用 -W
+all 选项去运行 Python，你会得到如下的输出:</p>
+<pre class="literal-block">
+bash % python3 -W all example.py
+example.py:5: DeprecationWarning: logfile argument is deprecated
+warnings.warn('logfile argument is deprecated', DeprecationWarning)
+</pre>
+<p>通常来讲，警告会输出到标准错误上。如果你想讲警告转换为异常，可以使用 -W error 选项:</p>
+<pre class="literal-block">
+bash % python3 -W error example.py
+Traceback (most recent call last):
+File &quot;example.py&quot;, line 10, in &lt;module&gt;
+func(2, 3, logfile='log.txt')
+File &quot;example.py&quot;, line 5, in func
+warnings.warn('logfile argument is deprecated', DeprecationWarning)
+DeprecationWarning: logfile argument is deprecated
+bash %
+</pre>
+<p>默认情况下，并不是所有警告消息都会出现. -W 选项能控制警告消息的输出.</p>
+<ul class="simple">
+<li>-W all 会输出所有警告消息</li>
+<li>-W ignore 忽略掉所有警告</li>
+<li>-W error 将警告转换成异常</li>
+</ul>
+<p>另外一种选择，你还可以使用 warnings.simplefilter() 函数控制输出:</p>
+<ul class="simple">
+<li>always 参数会让所有警告消息出现</li>
+<li>ignore 忽略调所有的警告</li>
+<li>error 将警告转换成异常。</li>
+</ul>
+</div>
+<div class="section" id="section-12">
+<h2>调试基本的程序崩溃错误</h2>
+<p>使用:</p>
+<pre class="literal-block">
+python3 -i sample.py
+</pre>
+<p>在执行结束时打开交互式窗口查看环境</p>
+<p>也可以在程序崩溃后打开 Python 的调试器。例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import pdb
+&gt;&gt;&gt; pdb.pm()
+&gt; sample.py(4)func()
+-&gt; return n + 10
+(Pdb) w
+sample.py(6)&lt;module&gt;()
+-&gt; func('Hello')
+&gt; sample.py(4)func()
+-&gt; return n + 10
+(Pdb) print n
+'Hello'
+(Pdb) q
+&gt;&gt;&gt;
+</pre>
+<p>如果你的代码所在的环境很难获取交互 shell（比如在某个服务器上面），通常可以
+捕获异常后自己打印跟踪信息。例如:</p>
+<pre class="literal-block">
+import traceback
+import sys
+
+try:
+  func(arg)
+except:
+  print('**** AN ERROR OCCURRED ****')
+  traceback.print_exc(file=sys.stderr)
+</pre>
+<p>要是你的程序没有崩溃，而只是产生了一些你看不懂的结果，你在感兴趣的地方插
+入一下 print() 语句也是个不错的选择。不过，要是你打算这样做，有一些小技巧可
+以帮助你。首先，traceback.print_stack() 函数会你程序运行到那个点的时候创建
+一个跟踪栈。</p>
+<p><strong>可使用 pdb.set_trace() 在任何地方手动的启动调试器</strong></p>
+</div>
+<div class="section" id="section-13">
+<h2>给你的程序做性能测试</h2>
+<p>问题
+·你想测试你的程序运行所花费的时间并做性能测试。</p>
+<dl class="docutils">
+<dt>解决方案</dt>
+<dd><p class="first">如果你只是简单的想测试下你的程序整体花费的时间，通常使用 Unix 时间函数time就
+行了:</p>
+<pre class="literal-block">
+bash % time python3 someprogram.py
+real 0m13.937s
+user 0m12.162s
+sys 0m0.098s
+bash %
+</pre>
+<p>如果你还需要一个程序各个细节的详细报告，可以使用 cProfile 模块:</p>
+<pre class="literal-block">
+bash % python3 -m cProfile someprogram.py
+859647 function calls in 16.016 CPU seconds
+Ordered by: standard name
+ncalls tottime percall cumtime percall filename:lineno(function)
+263169 0.080 0.000 0.080 0.000 someprogram.py:16(frange)
+513 0.001 0.000 0.002 0.000 someprogram.py:30(generate_
+,
+→mandel)
+262656 0.194 0.000 15.295 0.000 someprogram.py:32(&lt;genexpr&gt;) 1 0.036 0.036 16.077 16.077 someprogram.py:4(&lt;module&gt;)
+262144 15.021 0.000 15.021 0.000 someprogram.py:4(in_mandelbrot)
+1 0.000 0.000 0.000 0.000 os.py:746(urandom)
+1 0.000 0.000 0.000 0.000 png.py:1056(_readable)
+1 0.000 0.000 0.000 0.000 png.py:1073(Reader)
+1 0.227 0.227 0.438 0.438 png.py:163(&lt;module&gt;)
+512 0.010 0.000 0.010 0.000 png.py:200(group)
+...
+bash %
+</pre>
+<p>不过通常情况是介于这两个极端之间。比如你已经知道代码运行时在少数几个函
+数中花费了绝大部分时间。对于这些函数的性能测试，可以使用一个简单的装饰器:</p>
+<pre class="literal-block">
+start = time.perf_counter()
+r = func(*args, **kwargs)
+end = time.perf_counter()
+</pre>
+<p>对于测试很小的代码片段运行性能，使用 timeit 模块会很方便，例如:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from timeit import timeit
+&gt;&gt;&gt; timeit('math.sqrt(2)', 'import math')
+0.1432319980012835
+&gt;&gt;&gt; timeit('sqrt(2)', 'from math import sqrt')
+0.10836604500218527
+&gt;&gt;&gt;
+</pre>
+<p>timeit 会执行第一个参数中语句 100 万次并计算运行时间。第二个参数是运行测
+试之前配置环境。如果你想改变循环执行次数，可以像下面这样设置 number 参数的值:</p>
+<pre class="last literal-block">
+&gt;&gt;&gt; timeit('math.sqrt(2)', 'import math', number=10000000)
+1.434852126003534
+&gt;&gt;&gt; timeit('sqrt(2)', 'from math import sqrt', number=10000000)
+1.0270336690009572
+&gt;&gt;&gt;
+</pre>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">当执行性能测试的时候，需要注意的是你获取的结果都是近似值。time.
+perf_counter() 函数会在给定平台上获取最高精度的计时值。不过，它仍然还是
+基于时钟时间，很多因素会影响到它的精确度，比如机器负载。如果你对于执行时间更
+感兴趣，使用 time.process_time() 来代替它。</p>
+<p class="last">最后，如果你想进行更深入的性能分析，那么你需要详细阅读 time 、timeit 和其
+他相关模块的文档。这样你可以理解和平台相关的差异以及一些其他陷阱。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-14">
+<h2>加速程序运行</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你的程序运行太慢，你想在不使用复杂技术比如 C 扩展或 JIT 编译器的情况下加
+快程序运行速度。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">关于程序优化的第一个准则是“不要优化”，第二个准则是“不要优化那些无关紧
+要的部分”。如果你的程序运行缓慢，首先你得使用上一节的技术先对它进行性能
+测试找到问题所在。</p>
+<p>通常来讲你会发现你得程序在少数几个热点地方花费了大量时间，比如内存的数
+据处理循环。一旦你定位到这些点，你就可以使用下面这些实用技术来加速程序运行:</p>
+<ul class="last simple">
+<li>使用函数代替全局代码, 这是因为定义在全局范围的代码运行起来要比定义在函数中运行慢
+的多。这种速度差异是由于局部变量和全局变量的实现方式（使用局部变量要更快些）</li>
+<li>尽可能去掉属性访问. 每一次使用点 (.) 操作符来访问属性的时候会带来额外的开销。
+它会触发特定的方法，比如 __getattribute__() 和 __getattr__() ，
+这些方法会进行字典操作操作. (主要是使用导入的模块吧)</li>
+<li>理解局部变量, 例如实例函数内, 一开始就将self.value赋值给value(局部变量)</li>
+<li>避免不必要的抽象. 任何时候当你使用额外的处理层（比如装饰器、属性访问、描述器）去包装你的代
+码时，都会让程序运行变慢。</li>
+<li>使用内置的容器. 内置的数据类型比如字符串、元组、列表、集合和字典都是使用 C 来实现的，运
+行起来非常快。如果你想自己实现新的数据结构（比如链接列表、平衡树等），那么要
+想在性能上达到内置的速度几乎不可能</li>
+<li>避免创建不必要的数据结构或复制.</li>
+</ul>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">在优化之前，有必要先研究下使用的算法。选择一个复杂度为 O(n log n) 的算法
+要比你去调整一个复杂度为 O(n**2) 的算法所带来的性能提升要大得多。</p>
+<p>如果你觉得你还是得进行优化，那么请从整体考虑。作为一般准则，不要对程序的
+每一个部分都去优化, 因为这些修改会导致代码难以阅读和理解。你应该专注于优化产
+生性能瓶颈的地方，比如内部循环。</p>
+<p>你还要注意微小优化的结果。例如考虑下面创建一个字典的两种方式:</p>
+<pre class="literal-block">
+a = {'name' : 'AAPL', 'shares' : 100, 'price' : 534.22}
+b = dict(name='AAPL', shares=100, price=534.22)
+</pre>
+<p>后面一种写法更简洁一些（你不需要在关键字上输入引号）。不过，如果你将这两
+个代码片段进行性能测试对比时，会发现使用 dict() 的方式会慢了 3 倍。看到这个，
+你是不是有冲动把所有使用 dict() 的代码都替换成第一种。不够，聪明的程序员只会
+关注他应该关注的地方，比如内部循环。在其他地方，这点性能损失没有什么影响。</p>
+<p class="last">最后我引用 John Ousterhout 说过的话作为结尾：“最好的性能优化是从不工作到
+工作状态的迁移”。直到你真的需要优化的时候再去考虑它。确保你程序正确的运行通
+常比让它运行更快要更重要一些（至少开始是这样的）</p>
+</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#stdout">
+    测试 stdout 输出
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    在单元测试中给对象打补丁
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    在单元测试中测试异常情况
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    将测试输出用日志记录到文件中
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    忽略或期望测试失败
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    处理多个异常
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    捕获所有异常
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    创建自定义异常
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    捕获异常后抛出另外的异常
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    重新抛出被捕获的异常
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    输出警告信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-12">
+    调试基本的程序崩溃错误
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-13">
+    给你的程序做性能测试
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-14">
+    加速程序运行
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

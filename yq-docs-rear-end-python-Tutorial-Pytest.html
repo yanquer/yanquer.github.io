@@ -1,0 +1,538 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Pytest使用</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>Pytest使用</h2>
+									<div class="section" id="section-1">
+<h2>搜索范围</h2>
+<p>先找到当前目录下以test_为前缀和以_test为后缀的文件,</p>
+<p>然后在其中搜索:</p>
+<ul class="simple">
+<li>以test为前缀的函数</li>
+<li>以Test为前缀的类(注意一般测试类不应包含__init__()函数)中以test为前缀的函数</li>
+<li>继承unittest.TestCase单元测试类中, 以test为前缀的函数</li>
+</ul>
+</div>
+<div class="section" id="section-2">
+<h2>选项参数</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-v</span>, <span class="option">-q</span></kbd></td>
+<td>打印用例执行的详细/简略过程, pytest -v , pytest -q</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-k</span></kbd></td>
+<td>指定具体执行哪一个测试用例, 可以是文件名, 也可以是函数名, 都有则需要严格指定py文件名</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-x</span></kbd></td>
+<td>测试用例执行失败则立刻停止</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>需要执行 print 函数, 默认不执行</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r<var>&lt;option&gt;</var></span></kbd></td>
+<td><p class="first">生成简略的指定需求的报告, 支持参数如下</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">option</th>
+<th class="head">Des</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>f</td>
+<td>failed</td>
+</tr>
+<tr><td>E</td>
+<td>error</td>
+</tr>
+<tr><td>s</td>
+<td>skipped</td>
+</tr>
+<tr><td>x</td>
+<td>xfailed</td>
+</tr>
+<tr><td>X</td>
+<td>passed</td>
+</tr>
+<tr><td>P</td>
+<td>passed</td>
+</tr>
+<tr><td>p</td>
+<td>passed with output</td>
+</tr>
+<tr><td>a</td>
+<td>all except passed</td>
+</tr>
+<tr><td>A</td>
+<td>all</td>
+</tr>
+</tbody>
+</table>
+<!-- +- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+ -->
+<!-- | option             | f                  | E                  | s                  | x                  | X                  | P                  | p                  | a                  | A                  | -->
+<!-- +====================+====================+====================+====================+====================+====================+====================+====================+====================+====================+ -->
+<!-- | Des                | failed             | error              | skipped            | xfailed            | passed             | passed             | passed with output | all except passed  | all                | -->
+<!-- +- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+- - - - - - - - - - - - - - - - - - - -+ -->
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--tb=<var>&lt;option&gt;</var></span></kbd></td>
+<td><p class="first">option: 'auto', 'long', 'short', 'no', 'line', 'native'</p>
+<p class="last">用例运行失败时, 展示错误的详细程度</p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-l</span>, <span class="option">--showlocals</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>用例运行失败时, 打印相关的局部变量, pytest -l</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--lf</span>, <span class="option">--last-failed</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>只执行上次执行失败的测试</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--ff</span>, <span class="option">--failed-first</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>先执行完上次失败的测试后, 再执行上次正常的测试</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--durations=<var>&lt;num&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first">num为0时则倒序显示所有的用例, 为具体值则显示耗时最长的对应该数量的用例, -vv 显示持续时间为0秒的用例</p>
+<p>会按用例执行耗时时长：从长到短 显示结果, 用于调优测试代码</p>
+<p class="last">比如显示运行耗时最长的3个用例且包含持续时间为0秒的：pytest --durations=3 -vv</p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--maxfail=<var>&lt;num&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>用例运行时 允许的最大失败次数, 超过则立即停止, pytest --maxfail=3</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--collect-only</span></kbd></td>
+<td>收集测试用例但不执行</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n<var>&lt;num&gt;</var></span></kbd></td>
+<td>当使用pytest-xdist插件时, 可以指定运行处理器进程数, 可为个数或者'auto'</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cov=<var>&lt;path&gt;</var></span></kbd></td>
+<td>统计指定路径的代码测试覆盖率, 需要先安装cov模块: <cite>pip install pytest-cov</cite></td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--cov-report=<var>&lt;TYPE&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>生成指定格式的测试报告, 支持多个值, 支持以下测试报告类型: term, term-missing, annotate, html, xml</td></tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="first admonition-title">技巧</p>
+<p>运行指定的函数</p>
+<p class="last">pytest 模块名::类名::函数名, pytest test.py::check_ui</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>代码内部执行</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="n">pytest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div></div>
+</div>
+<div class="section" id="section-3">
+<h2>支持的装饰器</h2>
+</div>
+<div class="section" id="section-4">
+<h2>支持的其他</h2>
+<ul>
+<li><p class="first">rerunfailure
+失败重跑</p>
+<p>安装, <tt class="docutils literal">pip install <span class="pre">pytest-rerunfailure</span></tt></p>
+<p>在设置文件pytest.ini中添加命令
+reruns = 重跑次数
+addopts= --reruns =10</p>
+<p>参见: <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-pytest-everunfailures.html">pytest-rerunfailures</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="mock">
+<h2>使用Mock模拟对象</h2>
+<p>使用mock对象替代掉指定的python对象, 以达到模拟对象的行为的目的。</p>
+<p>可以用在测试时, 存在一些依赖对象时, 使用mock模拟一些依赖对象;</p>
+<p>也可以用在存在接口调用但接口未完善时.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">Mock</span>
+
+<span class="n">something</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">()</span>
+<span class="n">something</span><span class="o">.</span><span class="n">do</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="kc">True</span>
+</pre></div>
+<p>其他见: <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-pytest.html">pytest</a></p>
+</div>
+<div class="section" id="section-5">
+<h2>关于装饰器的一些使用</h2>
+<p>有此节主要是因为, 有需求需要将一个固件重用, 但是变动的地方很小</p>
+<p>引入需要用到的模块:</p>
+<pre class="literal-block">
+import pytest
+from _pytest.fixtures import SubRequest
+from _pytest.mark import Mark
+</pre>
+<p>定义一个r_server固件, 作用范围为方法域, yield表示会先在yield处返回给测试函数执行直到其结束:</p>
+<pre class="literal-block">
+&#64;pytest.fixture(scope='function')
+def r_server(request: SubRequest):
+    print()
+    k_kwargs = {k: v for k, v in request.keywords.items()}
+    print(
+        f'keywords: {k_kwargs}',
+          sep='\n')
+    yield k_kwargs
+    print('end')
+</pre>
+<p>其中, request是一个特殊的fixture，它提供了有关当前测试运行上下文的信息.</p>
+<p>传递多个普通参数, 给了几组参数就会执行几次当前测试:</p>
+<pre class="literal-block">
+&#64;pytest.mark.parametrize(
+    &quot;param1, param2&quot;,   # 参数字符串, 注意, 这些参数需要在修饰的方法中定义,
+                        # 如此处的 test_r_use_params(param1, param2
+    [
+        ('p1', 'p2'),   # 第一组参数
+        ('p2', 'p3'),   # 第二组参数
+        ('p5', 'p4'),   # 第三组参数
+                        # 多组参数表示执行多次, 每次使用不同的参数
+                        # 这里三组会执行三次, 每次使用本次参数
+    ],
+    # indirect=['r_server'],  # 要传递的fixture name的list,
+                              # 指定哪些个固件使用这些参数
+)
+def test_r_use_params(param1, param2, r_server):
+    result: dict = r_server
+    assert 'parametrize' in result
+    _a: Mark = result['parametrize']
+    assert _a.args == ('param1, param2', [('p1', 'p2'), ('p2', 'p3'), ('p5', 'p4')])
+</pre>
+<p>这里原本想用 indirect 来指定固件, 不知道为什么使用 indirect 会导致找不到固件而执行失败, 所以放弃.</p>
+<p>传递关键字参数:</p>
+<pre class="literal-block">
+# 这里表示传递给 r_server 关键字参数
+# 这里实际传入的是: 'name': Mark(name='name', *args, **kwargs)
+&#64;pytest.mark.key_word_one('1')
+&#64;pytest.mark.key_word_two('2')
+def test_r_use_keywords(r_server):
+    result: dict = r_server
+
+    assert 'key_word_one' in result
+    assert type(_a := result['key_word_one']) == Mark and _a.args[0] == '1'
+
+    assert 'key_word_two' in result
+    assert type(_a := result['key_word_two']) == Mark and _a.args[0] == '2'
+</pre>
+<p>可以看出, 不论是关键字参数还是普通参数, 其实都会被 Mark 修饰, 存储到 request.keywords 内.</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    搜索范围
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    选项参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    支持的装饰器
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    支持的其他
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#mock">
+    使用Mock模拟对象
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    关于装饰器的一些使用
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

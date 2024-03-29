@@ -1,0 +1,397 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>binlog</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/mysql.html">Mysql</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-ji-chu.html">概念基础</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>binlog</h2>
+									<p>binlog是Mysql sever层维护的一种二进制日志，
+与innodb引擎中的redo/undo log是完全不同的日志；</p>
+<p>其主要是用来记录对mysql数据更新或潜在发生更新的SQL语句，并以&quot;事务&quot;的形式保存在磁盘中；</p>
+<p>作用主要有：</p>
+<ul class="simple">
+<li>复制：MySQL Replication在Master端开启binlog，
+Master把它的二进制日志传递给slaves并回放来达到master-slave数据一致的目的</li>
+<li>数据恢复：通过mysqlbinlog工具恢复数据</li>
+<li>增量备份</li>
+</ul>
+<p>Binlog 包括两类文件：</p>
+<ul class="simple">
+<li>二进制日志索引文件(.index)：记录所有的二进制文件。</li>
+<li>二进制日志文件(.00000*)：记录所有 DDL 和 DML 语句事件。</li>
+</ul>
+<dl class="docutils">
+<dt><strong>redo log</strong></dt>
+<dd>保证一致性（将修改后的数据记录，当前语句）</dd>
+<dt><strong>undo log</strong></dt>
+<dd>保证原子性（将修改前的数据记录，与当前语句相反的语句）</dd>
+</dl>
+<div class="section" id="binlog-1">
+<h2>binlog的清除/不记录</h2>
+<dl class="docutils">
+<dt>不记录</dt>
+<dd>在 配置文件的 mysqld 下写入 skip-log-bin</dd>
+<dt>清除</dt>
+<dd><p class="first"><strong>手动清理</strong>,
+查看主从库使用的是哪个binlog文件:</p>
+<pre class="literal-block">
+show master status;
+show slave status;
+</pre>
+<p>删除之前可以先做个备份</p>
+<p>清除指定日期的备份:</p>
+<pre class="literal-block">
+purge master logs before '2016-09-01 17:20:00'; //删除指定日期以前的日志索引中binlog日志文件
+</pre>
+<p>或者:</p>
+<pre class="literal-block">
+purge master logs to'mysql-bin.000022'; //删除指定日志文件的日志索引中binlog日志文件
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>使用该语法，会将对应的文件和mysql-bin.index中对应路径删除</p>
+<p class="last">时间和文件名一定不可以写错，尤其是时间中的年和文件名中的序号，
+以防不小心将正在使用的binlog删除！！！切勿删除正在使用的binlog</p>
+</div>
+<ul class="last simple">
+<li>reset master:将删除日志索引文件中记录的所有binlog文件，创建一个新的日志文件，起始值从000001开始。不要轻易使用该命令，这个命令通常仅仅用于第一次用于搭建主从关系的时的主库。</li>
+<li>reset slave:清除master.info文件、relay-log.info文件，以及所有的relay log文件,并重新启用一个新的relaylog文件</li>
+</ul>
+</dd>
+<dt>自动清理</dt>
+<dd><p class="first">设置binlog过期时间，使系统自动删除binlog文件</p>
+<p><strong>在mysql中修改</strong>,
+查看binlog过期时间，这个值默认是0天，也就是说不自动清理，可以根据生产情况修改，本例修改为7天:</p>
+<pre class="literal-block">
+mysql&gt; show variables like 'expire_logs_days';
++------------------------+-------+
+| Variable_name  | Value |
++------------------------+-------+
+| expire_logs_days |   0  |
++------------------------+-------+
+mysql&gt; set global expire_logs_days = 7;    #设置binlog多少天过期
+</pre>
+<p>设置之后不会立即清除，触发条件是以下之一：</p>
+<ul class="simple">
+<li>binlog大小超过max_binlog_size，max_binlog_size默认为1G</li>
+<li>手动执行flush logs</li>
+</ul>
+<p>如果binlog非常多，不要轻易设置该参数，有可能导致IO争用，这个时候可以使用purge命令予以清除：</p>
+<p>将bin.000055之前的binlog清掉:</p>
+<pre class="literal-block">
+mysql&gt;purge binary logs to 'bin.000055';
+</pre>
+<p>将指定时间之前的binlog清掉:</p>
+<pre class="last literal-block">
+mysql&gt;purge binary logs before '2017-05-01 13:09:51';
+</pre>
+</dd>
+<dt>配置文件中修改</dt>
+<dd><p class="first">mysqld在每个二进制日志名后面添加一个数字扩展名。
+每次你启动服务器或刷新日志时该数字则增加。
+如果当前日志大小达到max_binlog_size,还会自动创建新的二进制日志。
+如果你正使用大的事务，二进制日志还会超过max_binlog_size:事务全写入一个二进制日志中，绝对不要写入不同的二进制日志中。</p>
+<dl class="docutils">
+<dt>expire_logs_days</dt>
+<dd>定义了mysql清除过期日志的时间。默认值为0,表示“没有自动删除”。</dd>
+<dt>max_binlog_size</dt>
+<dd>二进制日志最大大小，如果二进制日志写入的内容超出给定值，日志就会发生滚动。
+你不能将该变量设置为大于1GB或小于4096字节。 默认值是1GB。</dd>
+</dl>
+<p>在my.cnf中添加配置,设置过期时间为30天:</p>
+<pre class="literal-block">
+expire_logs_days = 30
+</pre>
+<p>max_binlog_size使用默认值即可</p>
+<div class="admonition note last">
+<p class="first admonition-title">注解</p>
+<p class="last">过期时间设置的要适当，对于主从复制，要看从库的延迟决定过期时间，
+避免主库binlog还未传到从库便因过期而删除，导致主从不一致！！！</p>
+</div>
+</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#binlog-1">
+    binlog的清除/不记录
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

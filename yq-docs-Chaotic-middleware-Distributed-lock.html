@@ -1,0 +1,520 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>分布式锁</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/zhong-jian-jian.html">中间件</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/zhong-jian-jian.html">中间件</a></li>
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>分布式锁</h2>
+									<!-- 参考: `秒懂消息队列MQ，万字总结带你全面了解消息队列MQ <https://developer.aliyun.com/article/953777>`_ -->
+<p>参考: <a class="reference external" href="https://developer.aliyun.com/article/1432395?spm=a2c6h.14164896.0.0.224e47c524hkTm&amp;scm=20140722.S_community&#64;&#64;文章&#64;&#64;1432395._.ID_1432395-RL_分布式锁-LOC_search~UND~community~UND~item-OR_ser-V_3-P0_2">Redis 分布式锁的正确实现原理演化历程与 Redisson 实战总结</a></p>
+<p>分布式锁应该满足哪些特性</p>
+<ul class="simple">
+<li>互斥：在任何给定时刻，只有一个客户端可以持有锁；</li>
+<li>无死锁：任何时刻都有可能获得锁，即使获取锁的客户端崩溃；</li>
+<li>容错：只要大多数 Redis的节点都已经启动，客户端就可以获取和释放锁。</li>
+</ul>
+<p>如何设置?</p>
+<div class="section" id="section-2">
+<h2>普通排他锁</h2>
+<p>利用 <a class="reference external" href="/yq-docs-database-redis-redis.html">redis</a> 的特性:
+使用 <tt class="docutils literal">SETNX key value</tt> 命令是实现「互斥」特性</p>
+<p>如获取一个订单锁:</p>
+<pre class="literal-block">
+127.0.0.1:6379&gt; setnx lock:order_1 1
+(integer) 1
+</pre>
+<p>重复获取就失败:</p>
+<pre class="literal-block">
+127.0.0.1:6379&gt; setnx lock:order_1 2
+(integer) 0
+</pre>
+<p>但是会存在一个问题, 会出现如果客户端异常, 锁无法释放,
+就会有死锁.</p>
+<p>这个时候可以设置超时, 如30秒过期:</p>
+<pre class="literal-block">
+127.0.0.1:6379&gt; expire lock:order_1 30
+(integer) 1
+</pre>
+<p>但是这样写有个问题, 因为是两个命令, 不能保证同时执行成功(原子性)</p>
+<p>所有可以这样写:</p>
+<pre class="literal-block">
+127.0.0.1:6379&gt; set lock:order_1 1 NX EX 30
+OK
+</pre>
+<p>这样写还不够，我们还要防止不能释放不是自己加的锁, 比如是A设置的,
+B给del了. 考虑以下场景:</p>
+<ol class="arabic simple">
+<li>A 获取锁成功并设置设置 30 秒超时；</li>
+<li>A 因为一些原因导致执行很慢（网络问题、发生 FullGC……），过了 30 秒依然没执行完，但是锁过期「自动释放了」；</li>
+<li>B 申请加锁成功；</li>
+<li>A 执行完成，执行 DEL 释放锁指令，这个时候就把 B 的锁给释放了。</li>
+</ol>
+<p>有个关键问题需要解决：自己的锁只能自己来释放</p>
+<p>这个时候可以从value上入手, 比如设置其前缀为自己的标识,
+<strong>del前检查一下是不是自己的锁</strong></p>
+<p>这个时候已经比较完美了, 一般都是如此使用</p>
+</div>
+<div class="section" id="section-3">
+<h2>正确设置锁超时</h2>
+<dl class="docutils">
+<dt>锁的超时时间怎么计算合适呢？</dt>
+<dd>这个时间不能瞎写，一般要根据在测试环境多次测试，然后压测多轮之后，比如计算出平均执行时间 200 ms。
+那么锁的超时时间就放大为平均执行时间的 3~5 倍。</dd>
+<dt>为啥要放放大呢？</dt>
+<dd>因为如果锁的操作逻辑中有网络 IO 操作、JVM FullGC 等，线上的网络不会总一帆风顺，我们要给网络抖动留有缓冲时间。</dd>
+<dt>那我设置更大一点，比如设置 1 小时不是更安全？</dt>
+<dd><p class="first">不要钻牛角，多大算大？</p>
+<p class="last">设置时间过长，一旦发生宕机重启，就意味着 1 小时内，分布式锁的服务全部节点不可用。
+你要让运维手动删除这个锁么？
+只要运维真的不会打你。</p>
+</dd>
+<dt>有没有完美的方案呢？不管时间怎么设置都不大合适。</dt>
+<dd><p class="first">我们可以让获得锁的线程开启一个守护线程，用来给快要过期的锁「续航」。</p>
+<p>加锁的时候设置一个过期时间，同时客户端开启一个「守护线程」，定时去检测这个锁的失效时间。</p>
+<p class="last">如果快要过期，但是业务逻辑还没执行完成，自动对这个锁进行续期，重新设置过期时间。</p>
+</dd>
+<dt>这个道理行得通，可我写不出。</dt>
+<dd>别慌，已经有一个库把这些工作都封装好了他叫 <strong>Redisson</strong>.
+在使用分布式锁时，它就采用了 <strong>自动续期</strong> 的方案来避免锁过期，这个守护线程我们一般也把它叫做 <strong>看门狗</strong> 线程。</dd>
+<dt>一路优化下来，方案似乎比较「严谨」了，抽象出对应的模型如下</dt>
+<dd><ol class="first last arabic simple">
+<li>通过 SET lock_resource_name random_value NX EX expire_time，同时启动守护线程为快要过期但还没执行完的客户端的锁续命;</li>
+<li>客户端执行业务逻辑操作共享资源；</li>
+<li>通过脚本释放锁，先 get 判断锁是否是自己加的，再执行 DEL。</li>
+</ol>
+</dd>
+</dl>
+<p>但是还是有以下问题</p>
+<ul class="simple">
+<li>可重入锁如何实现？</li>
+<li>主从架构崩溃恢复导致锁丢失如何解决？</li>
+<li>客户端加锁的位置有门道么？</li>
+</ul>
+</div>
+<div class="section" id="section-4">
+<h2>实现可重入锁</h2>
+<p>当一个线程执行一段代码成功获取锁之后，继续执行时，
+又遇到加锁的代码，可重入性就就保证线程能继续执行，
+而不可重入就是需要等待锁释放之后，再次获取锁成功，才能继续往下执行。</p>
+<div class="section" id="redis-hash">
+<h3>Redis Hash 可重入锁</h3>
+<p><strong>Redisson</strong> 类库就是通过 Redis Hash 来实现可重入锁</p>
+<ul class="simple">
+<li>当线程拥有锁之后，往后再遇到加锁方法，直接将加锁次数加 1，然后再执行方法逻辑。</li>
+<li>退出加锁方法之后，加锁次数再减 1，当加锁次数为 0 时，锁才被真正的释放。</li>
+<li>可以看到可重入锁最大特性就是计数，计算加锁的次数。</li>
+<li>所以当可重入锁需要在分布式环境实现时，我们也就需要统计加锁次数。</li>
+</ul>
+<p>大致逻辑:</p>
+<ul class="simple">
+<li>首先 Redis <tt class="docutils literal">exists</tt> 命令判断当前 lock 这个锁是否存在</li>
+<li>如果锁不存在的话，直接使用 <tt class="docutils literal">hincrby</tt> 创建一个键为 lock hash 表，
+并且为 Hash 表中键为 uuid 初始化为 0，然后再次加 1，最后再设置过期时间</li>
+<li>如果当前锁存在，则使用 <tt class="docutils literal">hexists</tt> 判断当前 lock 对应的 hash 表中是否存在 uuid 这个键，
+如果存在，再次使用 hincrby 加 1，最后再次设置过期时间</li>
+<li>最后如果上述两个逻辑都不符合，说明别人拿了锁.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>主从架构带来的问题</h2>
+<p>之前分析的场景都是，锁在「单个」Redis 实例中可能产生的问题，并没有涉及到 Redis 主从模式导致的问题。
+我们通常使用「Cluster 集群」或者「哨兵集群」的模式部署保证高可用。</p>
+<p>这两个模式都是基于「主从架构数据同步复制」实现的数据同步，而 Redis 的主从复制默认是异步的。</p>
+<p>以下内容来自于官方文档 <a class="reference external" href="https://redis.io/topics/distlock">Redis官方</a></p>
+<p>我们试想下如下场景会发生什么问题：</p>
+<ol class="arabic simple">
+<li>客户端 A 在 master 节点获取锁成功。</li>
+<li>还没有把获取锁的信息同步到 slave 的时候，master 宕机。</li>
+<li>slave 被选举为新 master，这时候没有客户端 A 获取锁的数据。</li>
+<li>客户端 B 就能成功的获得客户端 A 持有的锁，违背了分布式锁定义的互斥。</li>
+</ol>
+<p>虽然这个概率极低，但是我们必须得承认这个风险的存在。</p>
+<p>❝Redis 的作者提出了一种解决方案，叫 Redlock（红锁）</p>
+<p>Redis 的作者为了统一分布式锁的标准，搞了一个 Redlock，
+算是 Redis 官方对于实现分布式锁的指导规范, <a class="reference external" href="https://redis.io/topics/distlock">Redis官方</a> ,
+但是这个 Redlock 也被国外的一些分布式专家给喷了。
+因为它也不完美，有“漏洞”。</p>
+<div class="section" id="redlock">
+<h3>什么是 Redlock</h3>
+<p>可以看官方文档( <a class="reference external" href="https://redis.io/topics/distlock">Redis官方</a> )，以下来自官方文档的翻译。</p>
+<p>想用使用 Redlock，官方建议在不同机器上部署 5 个 Redis 主节点，
+节点都是完全独立，也不使用主从复制，使用多个节点是为容错。
+一个客户端要获取锁有 5 个步骤：</p>
+<ol class="arabic">
+<li><p class="first">客户端获取当前时间 T1（毫秒级别）；</p>
+</li>
+<li><p class="first">使用相同的 key和 value顺序尝试从 N个 Redis实例上获取锁。</p>
+</li>
+<li><p class="first">每个请求都设置一个超时时间（毫秒级别），该超时时间要远小于锁的有效时间，这样便于快速尝试与下一个实例发送请求。
+比如锁的自动释放时间 10s，则请求的超时时间可以设置 5~50 毫秒内，这样可以防止客户端长时间阻塞。</p>
+</li>
+<li><p class="first">客户端获取当前时间 T2 并减去步骤 1 的 T1 来计算出获取锁所用的时间（T3 = T2 -T1）。
+当且仅当客户端在大多数实例（N/2 + 1）获取成功，且获取锁所用的总时间 T3 小于锁的有效时间，才认为加锁成功，否则加锁失败。</p>
+</li>
+<li><p class="first">如果第 3 步加锁成功，则执行业务逻辑操作共享资源，
+key 的真正有效时间等于有效时间减去获取锁所使用的时间（步骤 3 计算的结果）。</p>
+<p>如果因为某些原因，获取锁失败（没有在至少 N/2+1 个 Redis 实例取到锁或者取锁时间已经超过了有效时间），
+客户端应该在所有的 Redis 实例上进行解锁（即便某些 Redis 实例根本就没有加锁成功）。</p>
+</li>
+</ol>
+<blockquote>
+另外部署实例的数量要求是奇数，为了能很好的满足过半原则，
+如果是 6 台则需要 4 台获取锁成功才能认为成功，所以奇数更合理</blockquote>
+<p>事情可没这么简单，Redis 作者把这个方案提出后，受到了业界著名的分布式系统专家的质疑。
+两人好比神仙打架，两人一来一回论据充足的对一个问题提出很多论断……:</p>
+<pre class="literal-block">
+• Martin Kleppmann 提出质疑的博客：https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html
+• Redlock 设计者的回复：http://antirez.com/news/101
+</pre>
+</div>
+<div class="section" id="redlock-1">
+<h3>Redlock 是与非</h3>
+<p>Martin Kleppmann 认为锁定的目的是为了保护对共享资源的读写，而分布式锁应该「高效」和「正确」</p>
+<ul class="simple">
+<li>高效性：分布式锁应该要满足高效的性能，Redlock 算法向 5 个节点执行获取锁的逻辑性能不高，成本增加，复杂度也高；</li>
+<li>正确性：分布式锁应该防止并发进程在同一时刻只能有一个线程能对共享数据读写。</li>
+</ul>
+<p>出于这两点，我们没必要承担 Redlock 的成本和复杂，运行 5 个 Redis 实例并判断加锁是否满足大多数才算成功。
+主从架构崩溃恢复极小可能发生，这没什么大不了的。使用单机版就够了，Redlock 太重了，没必要。</p>
+<p>Martin 认为 Redlock 根本达不到安全性的要求，也依旧存在锁失效的问题！</p>
+<p>Martin 的结论</p>
+<ol class="arabic simple">
+<li>Redlock 不伦不类：对于偏好效率来讲，Redlock 比较重，没必要这么做，而对于偏好正确性来说，Redlock 是不够安全的。</li>
+<li>时钟假设不合理：该算法对系统时钟做出了危险的假设（假设多个节点机器时钟都是一致的），如果不满足这些假设，锁就会失效。</li>
+<li>无法保证正确性：Redlock 不能提供类似 fencing token 的方案，所以解决不了正确性的问题。为了正确性，请使用有「共识系统」的软件，例如 Zookeeper。</li>
+</ol>
+<p>Redis 作者 Antirez 的反驳</p>
+<p>在 Redis 作者的反驳文章中，有 3 个重点：</p>
+<ul class="simple">
+<li>时钟问题：Redlock 并不需要完全一致的时钟，只需要大体一致就可以了，允许有「误差」，
+只要误差不要超过锁的租期即可，这种对于时钟的精度要求并不是很高，而且这也符合现实环境。</li>
+<li>网络延迟、进程暂停问题：</li>
+<li>客户端在拿到锁之前，无论经历什么耗时长问题，Redlock 都能够在第 3 步检测出来</li>
+<li>客户端在拿到锁之后，发生 NPC，那 Redlock、Zookeeper 都无能为力</li>
+<li>质疑 fencing token 机制。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="redisson">
+<h2>Redisson 分布式锁</h2>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    普通排他锁
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    正确设置锁超时
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    实现可重入锁
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#redis-hash">
+      Redis Hash 可重入锁
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    主从架构带来的问题
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#redlock">
+      什么是 Redlock
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#redlock-1">
+      Redlock 是与非
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#redisson">
+    Redisson 分布式锁
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

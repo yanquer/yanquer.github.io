@@ -1,0 +1,774 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>本地镜像管理</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+												<li><a class="button button-alt" href="tag/docker.html">Docker</a></li>
+
+												<li><a class="button button-alt" href="tag/docker_command.html">Docker_command</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>本地镜像管理</h2>
+									<div class="section" id="images">
+<h2>images</h2>
+<div class="line-block">
+<div class="line">docker images : 列出本地镜像</div>
+</div>
+<p>语法:</p>
+<pre class="literal-block">
+docker images [OPTIONS] [REPOSITORY[:TAG]]
+</pre>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td>列出本地所有的镜像（含中间映像层，默认情况下，过滤掉中间映像层）；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--digests</span></kbd></td>
+<td>显示镜像的摘要信息；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>显示满足条件的镜像；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--format</span></kbd></td>
+<td><p class="first">指定返回值的模板文件；</p>
+<p>比如只显示ID:</p>
+<pre class="literal-block">
+docker images --format &quot;{{.ID}}&quot;
+</pre>
+<p>以表格形式美化显示(默认就是表格):</p>
+<pre class="last literal-block">
+docker images --format &quot;table {{.ID}}\t{{.Repository}}\t{{.Tag}}&quot;
+</pre>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-trunc</span></kbd></td>
+<td>显示完整的镜像信息；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-q</span></kbd></td>
+<td>只显示镜像ID。</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-2">
+<h3>示例</h3>
+<p>显示本地镜像列表</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images
+REPOSITORY<span class="w">               </span>TAG<span class="w">                </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">         </span>SIZE
+yanquer/kali<span class="w">             </span>config_apt_list2<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">2</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">      </span>236MB
+whyour/qinglong<span class="w">          </span>latest<span class="w">             </span>a5db91bf7c98<span class="w">   </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">     </span>322MB
+kalilinux/kali-rolling<span class="w">   </span>latest<span class="w">             </span>c2fadbc65f8d<span class="w">   </span><span class="m">11</span><span class="w"> </span>months<span class="w"> </span>ago<span class="w">   </span>126MB
+python<span class="w">                   </span>latest<span class="w">             </span>26acbad26a2c<span class="w">   </span><span class="m">5</span><span class="w"> </span>years<span class="w"> </span>ago<span class="w">     </span>690MB
+java<span class="w">                     </span>latest<span class="w">             </span>d23bdf5b1b1b<span class="w">   </span><span class="m">5</span><span class="w"> </span>years<span class="w"> </span>ago<span class="w">     </span>643MB
+</pre></div>
+<p>显示仓库为 <em>yanquer/kali</em> 镜像信息以及摘要信息</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images<span class="w"> </span>--digests<span class="w"> </span>yanquer/kali
+REPOSITORY<span class="w">     </span>TAG<span class="w">                </span>DIGEST<span class="w">                                                                    </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">      </span>SIZE
+yanquer/kali<span class="w">   </span>config_apt_list2<span class="w">   </span>sha256:161c0ffd5197fa4a4a88d00e53ccf43500da3b075f1793d9a3722c6c0bdf15ff<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">2</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>236MB
+</pre></div>
+</div>
+</div>
+<div class="section" id="rmi">
+<h2>rmi</h2>
+<div class="line-block">
+<div class="line">删除image</div>
+</div>
+<div class="section" id="section-3">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker rmi [OPTIONS] IMAGE <span class="pre">[IMAGE...]</span></tt></p>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<ul class="simple">
+<li>-f :强制删除；</li>
+<li>--no-prune :不移除该镜像的过程镜像，默认移除；</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-4">
+<h3>示例</h3>
+<p>强制删除本地镜像 kali:config_apt_list1。</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images
+REPOSITORY<span class="w">               </span>TAG<span class="w">                </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">         </span>SIZE
+kali<span class="w">                     </span>config_apt_list2<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">3</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>236MB
+kali<span class="w">                     </span>config_apt_list1<span class="w">   </span>167a6460c75d<span class="w">   </span><span class="m">9</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>236MB
+kalilinux/kali-rolling<span class="w">   </span>latest<span class="w">             </span>ae8b160e1ecb<span class="w">   </span><span class="m">9</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">     </span>140MB
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>kali:config_apt_list1
+Untagged:<span class="w"> </span>kali:config_apt_list1
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images
+REPOSITORY<span class="w">               </span>TAG<span class="w">                </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">         </span>SIZE
+kali<span class="w">                     </span>config_apt_list2<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">6</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>236MB
+kalilinux/kali-rolling<span class="w">   </span>latest<span class="w">             </span>ae8b160e1ecb<span class="w">   </span><span class="m">9</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">     </span>140MB
+</pre></div>
+</div>
+</div>
+<div class="section" id="tag">
+<h2>tag</h2>
+<div class="line-block">
+<div class="line">标记本地镜像，将其归入某一仓库。 可用于更新名称然后删除旧的.</div>
+</div>
+<div class="section" id="section-5">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker tag [OPTIONS] <span class="pre">IMAGE[:TAG]</span> <span class="pre">[REGISTRYHOST/][USERNAME/]NAME[:TAG]</span></tt></p>
+</div>
+<div class="section" id="section-6">
+<h3>示例</h3>
+<p>将镜像 kali:config_apt_list1 标记为 yanquer/kali:config_apt_list2 镜像。</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images
+REPOSITORY<span class="w">               </span>TAG<span class="w">                </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">         </span>SIZE
+kali<span class="w">                     </span>config_apt_list2<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">6</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>236MB
+kalilinux/kali-rolling<span class="w">   </span>latest<span class="w">             </span>ae8b160e1ecb<span class="w">   </span><span class="m">9</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">     </span>140MB
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>tag<span class="w"> </span>24b7cbbe11fb<span class="w"> </span>yanquer/kali:config_apt_list2
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images
+REPOSITORY<span class="w">               </span>TAG<span class="w">                </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">          </span>SIZE
+kali<span class="w">                     </span>config_apt_list2<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">25</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>236MB
+yanquer/kali<span class="w">             </span>config_apt_list2<span class="w">   </span>24b7cbbe11fb<span class="w">   </span><span class="m">25</span><span class="w"> </span>minutes<span class="w"> </span>ago<span class="w">   </span>236MB
+kalilinux/kali-rolling<span class="w">   </span>latest<span class="w">             </span>ae8b160e1ecb<span class="w">   </span><span class="m">10</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">     </span>140MB
+<span class="o">(</span>dev_venv<span class="o">)</span><span class="w"> </span>yanque@yanquedeMacBook-Pro<span class="w"> </span>project<span class="w"> </span>%
+</pre></div>
+</div>
+</div>
+<div class="section" id="build">
+<h2>build</h2>
+<div class="line-block">
+<div class="line">docker build 命令用于使用 Dockerfile 创建镜像。</div>
+</div>
+<p>语法:</p>
+<pre class="literal-block">
+docker build [OPTIONS] PATH | URL | -
+</pre>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--build-arg</span></kbd></td>
+<td>设置镜像创建时的变量 <tt class="docutils literal"><span class="pre">--build-arg=[]</span></tt>；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cpu-shares</span></kbd></td>
+<td>设置 cpu 使用权重；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cpu-period</span></kbd></td>
+<td>限制 CPU CFS周期；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cpu-quota</span></kbd></td>
+<td>限制 CPU CFS配额；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cpuset-cpus</span></kbd></td>
+<td>指定使用的CPU id；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--cpuset-mems</span></kbd></td>
+<td>指定使用的内存 id；</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--disable-content-trust</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>忽略校验，默认开启；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>指定要使用的Dockerfile路径；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--force-rm</span></kbd></td>
+<td>设置镜像过程中删除中间容器；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--isolation</span></kbd></td>
+<td>使用容器隔离技术；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--label</span></kbd></td>
+<td>设置镜像使用的元数据, <tt class="docutils literal"><span class="pre">--label=[]</span></tt> ；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m</span></kbd></td>
+<td>设置内存最大值；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--memory-swap</span></kbd></td>
+<td>设置 Swap (交换) 的最大值为内存+ Swap (交换) ，&quot;-1&quot;表示不限 Swap (交换) ；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-cache</span></kbd></td>
+<td>创建镜像的过程不使用缓存；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--pull</span></kbd></td>
+<td>尝试去更新镜像的新版本；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--quiet</span>, <span class="option">-q</span></kbd></td>
+<td>安静模式，成功后只输出镜像 ID；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--rm</span></kbd></td>
+<td>设置镜像成功后删除中间容器；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--shm-size</span></kbd></td>
+<td>设置/dev/shm的大小，默认值是64M；</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-u<var>limit</var></span></kbd></td>
+<td>Ulimit配置。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--squash</span></kbd></td>
+<td>将 Dockerfile 中所有的操作压缩为一层。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--tag</span>, <span class="option">-t</span></kbd></td>
+<td>镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--network</span></kbd></td>
+<td>默认 default。在构建期间设置RUN指令的网络模式</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-7">
+<h3>示例</h3>
+<p>使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>runoob/ubuntu:v1<span class="w"> </span>.
+</pre></div>
+<p>使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>github.com/creack/docker-firefox
+</pre></div>
+<p>也可以通过 -f Dockerfile 文件的位置：</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>/path/to/a/Dockerfile<span class="w"> </span>.
+</pre></div>
+<p>在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>test/myapp<span class="w"> </span>.
+Sending<span class="w"> </span>build<span class="w"> </span>context<span class="w"> </span>to<span class="w"> </span>Docker<span class="w"> </span>daemon<span class="w"> </span><span class="m">2</span>.048<span class="w"> </span>kB
+Error<span class="w"> </span>response<span class="w"> </span>from<span class="w"> </span>daemon:<span class="w"> </span>Unknown<span class="w"> </span>instruction:<span class="w"> </span>RUNCMD
+</pre></div>
+</div>
+</div>
+<div class="section" id="history">
+<h2>history</h2>
+<div class="line-block">
+<div class="line">docker history : 查看指定镜像的创建历史</div>
+</div>
+<div class="section" id="section-8">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker history [OPTIONS] IMAGE</tt></p>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<ul class="simple">
+<li>-H :以可读的格式打印镜像大小和日期，默认为true；</li>
+<li>--no-trunc :显示完整的提交记录；</li>
+<li>-q :仅列出提交记录ID。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-9">
+<h3>示例</h3>
+<p>查看本地镜像 <em>yanquer/kali:config_apt_list2</em> 的创建历史</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span><span class="nb">history</span><span class="w"> </span>yanquer/kali:config_apt_list2
+IMAGE<span class="w">          </span>CREATED<span class="w">      </span>CREATED<span class="w"> </span>BY<span class="w">                                      </span>SIZE<span class="w">      </span>COMMENT
+24b7cbbe11fb<span class="w">   </span><span class="m">2</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>bash<span class="w">                                            </span>526B<span class="w">      </span>kali<span class="w"> </span>image<span class="w"> </span>with<span class="w"> </span>config<span class="w"> </span>ustc<span class="w"> </span>apt<span class="w"> </span>list
+&lt;missing&gt;<span class="w">      </span><span class="m">2</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>bash<span class="w">                                            </span><span class="m">96</span>.3MB
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) CMD [&quot;bash&quot;]                  140MB</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ENV LANG=C.UTF-8              0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ADD file:cc482abaa0a3211e9…   0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) LABEL org.opencontainers.i…   0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ARG BUILD_DATE PROJECT_URL…   0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ARG BUILD_DATE PROJECT_URL…   0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ARG BUILD_DATE PROJECT_URL…   0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ARG BUILD_DATE PROJECT_URL…   0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ARG BUILD_DATE VERSION        0B</span>
+&lt;missing&gt;<span class="w">      </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">   </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="c1">#(nop) ARG BUILD_DATE                0B</span>
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%
+</pre></div>
+</div>
+</div>
+<div class="section" id="save">
+<span id="docker-save"></span><h2>save</h2>
+<div class="line-block">
+<div class="line">docker save : 将指定镜像保存成 tar 归档文件</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">docker export 也可以导出, 但是其针对的是容器, save针对的是镜像</p>
+</div>
+<div class="section" id="section-10">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker save [OPTIONS] IMAGE <span class="pre">[IMAGE...]</span></tt></p>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<ul class="simple">
+<li>-o :输出到的文件</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-11">
+<h3>示例</h3>
+<p>将镜像 <em>yanquer/kali</em> 生成归档文件.</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>save<span class="w"> </span>-o<span class="w"> </span>mykali_image.tar<span class="w"> </span>yanquer/kali
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>ls
+<span class="m">1</span>.txt<span class="w">                   </span>c++<span class="w">                     </span>dd<span class="w">                      </span>mykali-20221228.tar<span class="w">     </span>mykali_image.tar
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span>mykali_image.tar
+-rw-------@<span class="w"> </span><span class="m">1</span><span class="w"> </span>yanque<span class="w">  </span>staff<span class="w">   </span>232M<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">16</span>:47<span class="w"> </span>mykali_image.tar
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%
+</pre></div>
+</div>
+</div>
+<div class="section" id="load">
+<h2>load</h2>
+<div class="line-block">
+<div class="line">docker load : 导入使用 <em>docker save</em> 命令导出的镜像</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">docker export 导出归档的加载见 <em>docker import</em> .</p>
+</div>
+<div class="section" id="section-12">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker load [OPTIONS]</tt></p>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<ul class="simple">
+<li>--input , -i : 指定导入的文件，代替 STDIN。</li>
+<li>--quiet , -q : 精简输出信息。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-13">
+<h3>示例</h3>
+<p><cite>-i</cite> 的效果与 <cite>&lt;</cite> 一样(懂shell重定向的都知道). 导入 <em>yanquer/kali:config_apt_list2</em></p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>load<span class="w"> </span>&lt;<span class="w"> </span>mykali_image.tar
+Loaded<span class="w"> </span>image:<span class="w"> </span>yanquer/kali:config_apt_list2
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>load<span class="w"> </span>--input<span class="w"> </span>mykali_image.tar
+Loaded<span class="w"> </span>image:<span class="w"> </span>yanquer/kali:config_apt_list2
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%
+</pre></div>
+</div>
+</div>
+<div class="section" id="import">
+<span id="docker-import"></span><h2>import</h2>
+<div class="line-block">
+<div class="line">docker import : 从归档文件中创建镜像</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>除了导出 <em>docker save</em></p>
+<p class="last">还可用于导入 docker export 导出的容器归档文件.</p>
+</div>
+<div class="section" id="section-14">
+<h3>语法</h3>
+<p><tt class="docutils literal">docker import [OPTIONS] file|URL|- <span class="pre">[REPOSITORY[:TAG]]</span></tt></p>
+<div class="topic">
+<p class="topic-title">OPTIONS说明：</p>
+<ul class="simple">
+<li>-c :应用docker 指令创建镜像；</li>
+<li>-m :提交时的说明文字；</li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-15">
+<h3>示例</h3>
+<p>从 <em>mykali-20221228.tar</em> 归档文件创建 <em>yanquer/mykali</em> 镜像</p>
+<div class="highlight"><pre><span></span>yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>import<span class="w"> </span>mykali-20221228.tar<span class="w"> </span>yanquer/mykali
+sha256:514ae6d5ab88157b978b729520e30c687a5b1b2e3ff2200de88c827bf5ec5ec8
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%
+yanque@yanquedembp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>%<span class="w"> </span>docker<span class="w"> </span>images
+REPOSITORY<span class="w">               </span>TAG<span class="w">                </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">         </span>SIZE
+yanquer/mykali<span class="w">           </span>latest<span class="w">             </span>514ae6d5ab88<span class="w">   </span><span class="m">6</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">   </span>235MB
+</pre></div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#images">
+    images
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#rmi">
+    rmi
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      语法
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#tag">
+    tag
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      语法
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#build">
+    build
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#history">
+    history
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      语法
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-9">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#save">
+    save
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-10">
+      语法
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-11">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#load">
+    load
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-12">
+      语法
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-13">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#import">
+    import
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-14">
+      语法
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-15">
+      示例
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

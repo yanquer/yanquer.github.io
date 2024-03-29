@@ -1,0 +1,423 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>pytorch</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+												<li><a class="button button-alt" href="tag/pytorch.html">Pytorch</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>pytorch</h2>
+									<p>参考: <a class="reference external" href="https://zhuanlan.zhihu.com/p/66543791">60分钟快速入门 PyTorch</a></p>
+<p>PyTorch 是由 Facebook 开发，基于 Torch 开发，
+从并不常用的 Lua 语言转为 Python 语言开发的深度学习框架，
+Torch 是 TensorFlow 开源前非常出名的一个深度学习框架，
+而 PyTorch 在开源后由于其使用简单，
+动态计算图的特性得到非常多的关注，并且成为了 TensorFlow 的 最大竞争对手。</p>
+<p>安装:</p>
+<pre class="literal-block">
+pip3 install torch torchvision torchaudio
+</pre>
+<p>检测是否适用于当前机器显卡:</p>
+<pre class="literal-block">
+import torch
+
+print(torch.cuda.is_available())
+</pre>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-python-three--party-library-pytorch-API.html">API</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-python-three--party-library-pytorch-autoGrad.html">autograd</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-python-three--party-library-pytorch-Neural-Networks.html">神经网络</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-python-three--party-library-pytorch-Example-Training-Classifier.html">实例-训练分类器</a><div class="section" id="tensors">
+<h2>张量(Tensors)</h2>
+<p>相当于 Numpy 的多维数组(ndarrays)。两者的区别就是 Tensors 可以应用到 GPU 上加快计算速度</p>
+<p>声明与定义</p>
+<ul class="simple">
+<li>torch.empty() 声明一个未初始化的 Tensors 矩阵</li>
+<li>torch.rand() 随机初始化一个矩阵</li>
+<li>torch.zeros() 创建数值皆为 0 的矩阵</li>
+<li>torch.ones() 创建数值皆为 1 的矩阵</li>
+<li>torch.tensor() 直接传递 tensor 数值来创建</li>
+<li>tensor.new_ones() 根据已有的 tensor 变量创建新的 tensor 变量</li>
+<li>torch.randn_like(old_tensor) 保留相同的尺寸大小</li>
+<li>tensor.size() 获取张量大小</li>
+</ul>
+<p>关于API的详细说明, 见 <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-pytorch-API.html">API</a></p>
+</div>
+<div class="section" id="numpy">
+<h2>和 Numpy 数组的转换</h2>
+<p>Tensor 和 Numpy 的数组可以相互转换，
+并且两者转换后共享在 CPU 下的内存空间，
+即改变其中一个的数值，另一个变量也会随之改变。</p>
+<div class="section" id="tensor-numpy">
+<h3>Tensor 转换为 Numpy 数组</h3>
+<p>实现 Tensor 转换为 Numpy 数组的例子如下所示，
+调用 tensor.numpy() 可以实现这个转换操作:</p>
+<pre class="literal-block">
+a = torch.ones(5)
+print(a)
+b = a.numpy()
+print(b)
+</pre>
+<p>输出结果:</p>
+<pre class="literal-block">
+tensor([1., 1., 1., 1., 1.])
+[1. 1. 1. 1. 1.]
+</pre>
+<p>b 也随着 a 的改变而改变:</p>
+<pre class="literal-block">
+a.add_(1)
+print(a)
+print(b)
+</pre>
+<p>输出结果:</p>
+<pre class="literal-block">
+tensor([2., 2., 2., 2., 2.])
+[2. 2. 2. 2. 2.]
+</pre>
+</div>
+<div class="section" id="numpy-tensor">
+<h3>Numpy 数组转换为 Tensor</h3>
+<p>转换的操作是调用 torch.from_numpy(numpy_array) 方法。
+例子如下所示:</p>
+<pre class="literal-block">
+import numpy as np
+a = np.ones(5)
+b = torch.from_numpy(a)
+np.add(a, 1, out=a)
+print(a)
+print(b)
+</pre>
+<p>输出结果:</p>
+<pre class="literal-block">
+[2. 2. 2. 2. 2.]
+tensor([2., 2., 2., 2., 2.], dtype=torch.float64)
+</pre>
+<p>在 CPU 上，除了 CharTensor 外的所有 Tensor 类型变量，都支持和 Numpy数组的相互转换操作</p>
+</div>
+</div>
+<div class="section" id="cuda">
+<h2>CUDA 张量</h2>
+<p>Tensors 可以通过 .to 方法转换到不同的设备上，即 CPU 或者 GPU 上。
+例子如下所示:</p>
+<pre class="literal-block">
+# 当 CUDA 可用的时候，可用运行下方这段代码，采用 torch.device() 方法来改变 tensors 是否在 GPU 上进行计算操作
+if torch.cuda.is_available():
+    device = torch.device(&quot;cuda&quot;)          # 定义一个 CUDA 设备对象
+    y = torch.ones_like(x, device=device)  # 显示创建在 GPU 上的一个 tensor
+    x = x.to(device)                       # 也可以采用 .to(&quot;cuda&quot;)
+    z = x + y
+    print(z)
+    print(z.to(&quot;cpu&quot;, torch.double))       # .to() 方法也可以改变数值类型
+</pre>
+<p>输出结果，第一个结果就是在 GPU 上的结果，
+打印变量的时候会带有 device='cuda:0'，而第二个是在 CPU 上的变量:</p>
+<pre class="literal-block">
+tensor([1.4549], device='cuda:0')
+tensor([1.4549], dtype=torch.float64)
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#tensors">
+    张量(Tensors)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#numpy">
+    和 Numpy 数组的转换
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#tensor-numpy">
+      Tensor 转换为 Numpy 数组
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#numpy-tensor">
+      Numpy 数组转换为 Tensor
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#cuda">
+    CUDA 张量
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

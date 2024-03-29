@@ -1,0 +1,549 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>自定义函数</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/shu-ju-ku.html">数据库</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/shu-ju-ku.html">数据库</a></li>
+												<li><a class="button button-alt" href="tag/mysql.html">Mysql</a></li>
+
+												<li><a class="button button-alt" href="tag/gai-nian-ji-chu.html">概念基础</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>自定义函数</h2>
+									<p>可能会遇到内置函数 <a class="reference external" href="/yq-docs-database-mysql-Conceptual-foundation-Function-API.html">函数API</a>
+满足不了使用场景的问题, 这时候自定义函数就有用了</p>
+<p>自定义函数是一种与存储过程十分相似的过程式数据库对象。
+它与存储过程一样，都是由 SQL 语句和过程式语句组成的代码片段，并且可以被应用程序和其他 SQL 语句调用。</p>
+<p>自定义函数与存储过程之间存在几点区别：</p>
+<ul class="simple">
+<li>自定义函数不能拥有输出参数，这是因为自定义函数自身就是输出参数；而存储过程可以拥有输出参数。</li>
+<li>自定义函数中必须包含一条 RETURN 语句，而这条特殊的 SQL 语句不允许包含于存储过程中。</li>
+<li>可以直接对自定义函数进行调用而不需要使用 CALL 语句，而对存储过程的调用需要使用 CALL 语句。</li>
+</ul>
+<div class="section" id="section-2">
+<h2>创建</h2>
+<p>语法:</p>
+<pre class="literal-block">
+CREATE FUNCTION &lt;函数名&gt; ( [ &lt;参数1&gt; &lt;类型1&gt; [ , &lt;参数2&gt; &lt;类型2&gt;] ] … )
+RETURNS &lt;类型&gt;
+&lt;函数主体&gt;
+</pre>
+<ul class="simple">
+<li>函数名: 应该合法的标识符，并且不应该与已有的关键字冲突, 包括已有函数名, 已有存储过程名称
+一个函数应该属于某数据库，可以使用 db_name.funciton_name 的形式执行当前函数所属数据库, 否则默认为当前数据库。</li>
+<li>参数列表: 可以有一个或者多个函数参数，甚至是没有参数也是可以的。对于每个参数，由参数名和参数类型组成。</li>
+<li>返回值: 指明返回值类类型</li>
+<li>函数体: 自定义函数的函数体由多条可用的MySQL语句，流程控制，变量声明等语句构成。
+需要指明的是函数体中一定要含有return 返回语句。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">创建函数时, 若不指定库名, 会创建在当前库, 使用时也是</p>
+</div>
+<p>示例-无参函数:</p>
+<pre class="literal-block">
+mysql&gt; DROP FUNCTION IF EXISTS hello;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql&gt; DELIMITER $$
+mysql&gt; CREATE FUNCTION hello()
+    -&gt;  RETURNS VARCHAR(255)
+    -&gt; BEGIN
+    -&gt;  RETURN 'Hello  world,i am mysql';
+    -&gt; END $$
+Query OK, 0 rows affected (0.11 sec)
+
+mysql&gt; DELIMITER ;
+mysql&gt; SELECT hello();
++-------------------------+
+| hello()                 |
++-------------------------+
+| Hello  world,i am mysql |
++-------------------------+
+1 row in set (0.00 sec)
+</pre>
+<p>示例-含有参数的自定义函数:</p>
+<pre class="literal-block">
+mysql&gt; DELIMITER $$
+mysql&gt; DROP FUNCTION IF EXISTS test.formatDate $$
+Query OK, 0 rows affected, 1 warning (0.07 sec)
+
+mysql&gt; CREATE FUNCTION   test.formatDate(fdate datetime)
+    -&gt;  RETURNS VARCHAR(255)
+    -&gt; BEGIN
+    -&gt;  DECLARE x VARCHAR(255) DEFAULT '';
+    -&gt;  SET x= date_format(fdate,'%Y年%m月%d日%h时%i分%s秒');
+    -&gt;  RETURN x;
+    -&gt; END $$
+Query OK, 0 rows affected (0.11 sec)
+
+mysql&gt; DELIMITER ;
+mysql&gt; SELECT   formatDate(now());
++----------------------------+
+| formatDate(now())          |
++----------------------------+
+| 2014年11月21日03时41分21秒 |
++----------------------------+
+1 row in set (0.18 sec)
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>查询自定义函数</h2>
+<p>查看数据库中存在哪些自定义函数:</p>
+<pre class="literal-block">
+SHOW FUNCTION STATUS
+</pre>
+<p>若要查看数据库中某个具体的自定义函数:</p>
+<pre class="literal-block">
+SHOW CREATE FUNCTION&lt;函数名&gt;
+</pre>
+<p>查看函数状态, 比如创建时间之类:</p>
+<pre class="literal-block">
+SHOW FUCNTION STATUS LIKE '函数名'
+</pre>
+<p>其中&lt;函数名&gt;用于指定该自定义函数的名称。</p>
+</div>
+<div class="section" id="section-4">
+<h2>修改自定义函数</h2>
+<p>修改函数相关特征:</p>
+<pre class="literal-block">
+ALTER FUNCTION func_name [characteristic ...]
+
+characteristic:
+    COMMENT 'string'
+  | LANGUAGE SQL
+  | { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA }
+  | SQL SECURITY { DEFINER | INVOKER }
+</pre>
+<p>上面这个语法结构是MySQL官方给出的，修改的内容可以包含SQL语句也可以不包含，
+既可以是读数据的SQL也可以是修改数据的SQL还有权限。
+此外在修改function的时候还需要注意你不能使用这个语句来修改函数的参数以及函数体，
+如果你想改变这些的话你就需要删除掉这个函数然后重新创建。</p>
+<p>例子:</p>
+<pre class="literal-block">
+mysql&gt; SELECT hello();
++-------------------------+
+| hello()                 |
++-------------------------+
+| Hello  world,i am mysql |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; ALTER FUNCTION hello
+    -&gt;
+    -&gt; READS SQL DATA
+    -&gt; COMMENT 'print  hello';
+Query OK, 0 rows affected (0.23 sec)
+
+mysql&gt;  SELECT SPECIFIC_NAME,SQL_DATA_ACCESS,
+    -&gt; ROUTINE_COMMENT FROM information_schema.Routines
+    -&gt; WHERE ROUTINE_NAME='hello';
++---------------+-----------------+-----------------+
+| SPECIFIC_NAME | SQL_DATA_ACCESS | ROUTINE_COMMENT |
++---------------+-----------------+-----------------+
+| hello         | READS SQL DATA  | print  hello    |
++---------------+-----------------+-----------------+
+1 row in set (0.21 sec)
+</pre>
+<p>若要修改自定义函数的内容，则需要先删除该自定义函数，然后重新创建。</p>
+<p>参考: <a class="reference external" href="https://www.cnblogs.com/zhangminghui/p/4113160.html">MySQL之自定义函数</a></p>
+</div>
+<div class="section" id="section-5">
+<h2>删除自定义函数</h2>
+<p>自定义函数被创建后，一直保存在数据库服务器上以供使用，直至被删除。
+删除自定义函数的方法与删除存储过程的方法基本一样，可以使用 DROP FUNCTION 语句来实现。</p>
+<p>语法:</p>
+<pre class="literal-block">
+DROP FUNCTION [ IF EXISTS ] &lt;自定义函数名&gt;
+</pre>
+</div>
+<div class="section" id="section-6">
+<h2>自定义函数相关语法及变量</h2>
+<div class="section" id="section-7">
+<h3>变量声明</h3>
+<p>语法:</p>
+<pre class="literal-block">
+DECLARE var_name[,...] type [DEFAULT value]
+</pre>
+<p>声明局部变量。要给变量提供一个默认值，请包含一个DEFAULT子句。
+值可以被指定为一个表达式，不需要为一个常数。
+如果没有DEFAULT子句，初始值为NULL。
+使用语序使用 set 和 select into语句为变量赋值:</p>
+<pre class="literal-block">
+set var_name = '';
+</pre>
+</div>
+<div class="section" id="if">
+<h3>IF  条件语句</h3>
+<p>语法:</p>
+<pre class="literal-block">
+IF search_conditionTHEN
+
+statement_list
+
+[ELSEIF search_conditionTHENstatement_list]
+
+...
+
+[ELSE statement_list]
+
+ENDIF;
+</pre>
+</div>
+<div class="section" id="case">
+<h3>CASE语句</h3>
+<p>语法:</p>
+<pre class="literal-block">
+CASE case_value
+
+WHEN when_valueTHENstatement_list
+
+[WHEN when_value THENstatement_list]
+
+...
+
+[ELSE statement_list]
+
+END CASE;
+</pre>
+</div>
+<div class="section" id="section-8">
+<h3>循环语句</h3>
+<p>语法:</p>
+<pre class="literal-block">
+While
+
+[begin_label:]WHILEsearch_conditionDO
+
+statement_list
+
+END WHILE [end_label];
+</pre>
+<ul class="simple">
+<li>退出整个循环使用 leave, 相当于break</li>
+<li>退出当前循环使用 iterate, 相当于 continue</li>
+</ul>
+<p>通过退出的标签决定退出哪个循环。</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    创建
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    查询自定义函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    修改自定义函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    删除自定义函数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    自定义函数相关语法及变量
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      变量声明
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#if">
+      IF  条件语句
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#case">
+      CASE语句
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      循环语句
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

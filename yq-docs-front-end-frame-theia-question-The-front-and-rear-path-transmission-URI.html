@@ -1,0 +1,395 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>前后端路径传递URI/URL</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 08 三月 2024
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/qian-duan.html">前端</a></li>
+												<li><a class="button button-alt" href="tag/kuang-jia.html">框架</a></li>
+
+												<li><a class="button button-alt" href="tag/theia.html">Theia</a></li>
+
+												<li><a class="button button-alt" href="tag/wen-ti.html">问题</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-08</div>
+									<h2>前后端路径传递URI/URL</h2>
+									<ul class="simple">
+<li>URI: 资源标识符</li>
+<li>URL: 具体的URI,包含了网络协议信息,如http,https等</li>
+</ul>
+<p>前后端通信传递资源路径时,通常都建议使用 URI 而不是 URL</p>
+<p>主要原因有:</p>
+<ol class="arabic simple">
+<li>URI表示资源标识符,只关注标识资源,而不限定使用的协议。这更通用。</li>
+<li>URL是一种具体的URI,包含了网络协议信息,如http,https等。这对资源标识来说是非必需的。</li>
+<li>前后端可以使用不同的协议访问同一个资源标识符,URI可以兼容。</li>
+<li>URI有一个通用的语法格式,方便解析处理。并且可以包含非网络资源,如本地文件路径。</li>
+<li>URL编码有些字符如空格等会被编码,而URI可以保留原始字符。</li>
+<li>URI可以方便地映射到不同的具体URL,为应用带来更大灵活性。</li>
+<li>许多程序库和框架也推荐使用URI格式表示资源标识符。</li>
+</ol>
+<div class="section" id="uriurl">
+<h2>URI与URL的相互转换</h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>此处的URI为 <cite>vscode-uri</cite> 模块下的 <cite>URI</cite></p>
+<p class="last">theia框架的URI为 <tt class="docutils literal">import URI from '&#64;theia/core/lib/common/uri'</tt></p>
+</div>
+<p>URI字符串, <cite>scheme + path</cite> 的形式, 如:</p>
+<pre class="literal-block">
+const uriStr = file:///c:/users/bob
+</pre>
+<p>URL路径字符串, 如:</p>
+<pre class="literal-block">
+const urlStr = /c:/users/bob
+</pre>
+<p>本地路径字符串, 纯路径如:</p>
+<pre class="literal-block">
+const localPathStr = c:/users/bob
+</pre>
+<p>URI字符串 ==&gt; URI对象:</p>
+<pre class="literal-block">
+const uriIns = URI.parse(uriStr)
+</pre>
+<p>URI字符串 ==&gt; URL对象:</p>
+<pre class="literal-block">
+const urlIns = new URL(uriStr)
+
+// 如果要获取url字符串
+const urlStr = urlIns.pathname
+</pre>
+<p>URI对象转换为本地路径字符串, 比如theia框架有提供Path对象,
+是对 <tt class="docutils literal">import URI from <span class="pre">'vscode-uri'</span></tt> 进行的一个封装,
+那么在theia中可以直接:</p>
+<pre class="literal-block">
+const convertedStr = uriIns.path.fspath()
+</pre>
+<p>若非框架环境, 后面再说</p>
+<p>URL字符串 ==&gt; URI对象:</p>
+<pre class="literal-block">
+const uriIns = URI.file(urlStr)
+
+// theia框架提供了
+const uriIns = URI.fromFilePath(urlStr)
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>有时候字符串可能是被URI编码了, 需要解码:</p>
+<pre class="last literal-block">
+// 两种好像都可以, 不记得了
+decodeURIComponent(urlStr)
+decodeURIComponent(uriStr)
+</pre>
+</div>
+<!-- todo:
+有个 ``import {format} from 'util'``
+格式化字符串。它可以替换字符串中的占位符为对应的参数值
+const msg = util.format('Log: %s %d', 'Message', 123);
+// Log: Message 123 -->
+<p>什么时候需要转换?</p>
+<p>当URI字符串有问题的时候, 先生成个URL对象, 然后再转换为URI对象:</p>
+<pre class="literal-block">
+// 有个有问题的URI字符串, 比如 file:/c:/users/bob
+const issuesUriStr = 'file:/c:/users/bob'
+
+const urlStr = decodeURIComponent((new URL(issuesUriStr)).pathname)
+
+const uriIns = URI.file(urlStr)
+</pre>
+</div>
+<div class="section" id="theia">
+<h2>theia不通过后端拼接路径</h2>
+<p>theia的URI封装的Path对象提供此功能:</p>
+<pre class="literal-block">
+const _uriIns: URI
+const _baseName: string
+
+// 主要是这一步
+_path: Path = _uriIns.path.join(_baseName)
+
+_newUriIns: URI = URI.fromFilePath(_path.fspath())
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#uriurl">
+    URI与URL的相互转换
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#theia">
+    theia不通过后端拼接路径
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

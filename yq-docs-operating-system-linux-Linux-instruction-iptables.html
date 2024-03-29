@@ -1,0 +1,578 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>iptables</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>iptables</h2>
+									<p>iptables其实不是真正的防火墙，可以理解为一个客户端代理，
+用户通过iptables这个代理，将用户的安全设定到对应的安全框架，
+而这个安全框架才是真正的防火墙，这个框架是 netfilter</p>
+<p>netfilter 才是防火墙真正的安全框架，位于内核空间.
+netfilter 是linux操作系统核心层内部的一个数据包处理模块，具有如下功能：</p>
+<ul class="simple">
+<li>网络地址转换（network address translate）</li>
+<li>数据包内容修改</li>
+<li>以及数据包过滤的防火墙功能</li>
+</ul>
+<p>netfilter/iptables 组成linux平台下的包过滤防火墙。
+免费，可以替代昂贵的商业防火墙解决方案，完成封包过滤、封包重定向、网络地址转换（NAT）等功能。</p>
+<p>虽然使用 service iptables restart 来启动服务，更准确的说，
+iptables并没有一个守护进程，所以并不算是真正意义上的服务，而应该是内核提供的服务。</p>
+<div class="section" id="section-1">
+<h2>语法-选项</h2>
+<p>语法:</p>
+<pre class="literal-block">
+iptables -t 表名 &lt;-A/I/D/R&gt; 规则链名 [规则号] &lt;-i/o 网卡名&gt; -p 协议名 &lt;-s 源IP/源子网&gt; --sport 源端口 &lt;-d 目标IP/目标子网&gt; --dport 目标端口 -j 动作
+
+#-A 指定链的末尾新增一个指定的规则
+#-I 链的指定位置插入一条或多条规则
+#-D 指定链的chain中删除一条或者多条规则
+#-R num 替换/修改第几条规则
+
+#-P 设置默认规则
+</pre>
+<p>选项</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-P</span></kbd></td>
+<td>设置默认策略:iptables -P INPUT (DROP</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-F</span></kbd></td>
+<td>清空规则链</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-L</span></kbd></td>
+<td>查看规则链</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-A</span></kbd></td>
+<td>在规则链的末尾加入新规则</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-I</span></kbd></td>
+<td>num 在规则链的头部加入新规则</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-D</span></kbd></td>
+<td>num 删除某一条规则</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>匹配来源地址IP/MASK，加叹号&quot;!&quot;表示除这个IP外。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>匹配目标地址</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td>网卡名称 匹配从这块网卡流入的数据</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-o</span></kbd></td>
+<td>网卡名称 匹配从这块网卡流出的数据</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span></kbd></td>
+<td>匹配协议,如tcp,udp,icmp</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--dport <var>num</var></span></kbd></td>
+<td>匹配目标端口号</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--sport <var>num</var></span></kbd></td>
+<td>匹配来源端口号</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>表示不对 IP 地址进行反查，加上这个参数显示速度将会加快。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>表示输出详细信息，包含通过该规则的数据包数量、总字节数以及相应的网络接口。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m</span></kbd></td>
+<td>表示使用模块</td></tr>
+</tbody>
+</table>
+<p>参考: <a class="reference external" href="https://www.zsythink.net/archives/1199">https://www.zsythink.net/archives/1199</a></p>
+<p>如:</p>
+<pre class="literal-block">
+iptables -t nat -A PERROUTING -p tcp -s 10.10.10.10 --sport 67 -d 10.10.10.11 --dport 67 -j ACCEPT
+
+# 这里如果是多端口可能会出现不能识别sport的情况 需搭配multiport
+# multiport多端口，“，”表示或，“：”表示区间
+iptables -t nat -A PERROUTING -p tcp -s 10.10.10.10 -m multiport --sport 67，68 -d 10.10.10.11 --dport 67 -j ACCEPT
+</pre>
+<div class="section" id="j">
+<h3>-j 的几种动作</h3>
+<p>ACCEPT        #接收数据包
+DROP        #丢弃数据包
+REDIRECT    #重定向，映射,透明代理
+SNAT        #源地址转换
+DNAT        #目标地址转换
+MASQUERADE    #IP伪装（NAT），用于ADSL
+LOG            #日志记录</p>
+</div>
+</div>
+<div class="section" id="iptables-1">
+<h2>iptables默认链</h2>
+<dl class="docutils">
+<dt>INPUT</dt>
+<dd>处理输入数据包</dd>
+<dt>OUTPUT</dt>
+<dd>处理输出数据包</dd>
+<dt>FORWARD</dt>
+<dd>处理转发数据包</dd>
+<dt>PERROUTING</dt>
+<dd>用于目标地址转换（DNAT）</dd>
+<dt>POSTROUTING</dt>
+<dd>用于源地址转换（SNAT）</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>过滤框架</h2>
+<div class="figure">
+<img alt="as you see" src="doc-raw/resources/images/2024-02-13-19-31-16.png" style="width: 480px;" />
+</div>
+<ul class="simple">
+<li>如果是外部主机发送数据包给防火墙本机，数据将会经过 PREROUTING 链与 INPUT 链；</li>
+<li>如果是防火墙本机发送数据包到外部主机，数据将会经过 OUTPUT 链与 POSTROUTING 链；</li>
+<li>如果防火墙作为路由负责转发数据，则数据将经过 PREROUTING 链、FORWARD 链以及 POSTROUTING 链。</li>
+</ul>
+</div>
+<div class="section" id="section-3">
+<h2>四种表</h2>
+<dl class="docutils">
+<dt>filter</dt>
+<dd>过滤功能，只能作用在三个链上面：INPUT,FORWARD,OUTPUT</dd>
+<dt>nat</dt>
+<dd>地址转换，只能作用在：PREROUTING,OUTPUT,POSTROUTING(centos 7中还有INPUT)</dd>
+<dt>mangle</dt>
+<dd>修改报文原数据，五个链都可以</dd>
+<dt>raw</dt>
+<dd>关闭nat启用的追踪机制，PREROUTING,OUTPUT</dd>
+</dl>
+<p>换种方式:</p>
+<pre class="literal-block">
+# 链                表
+prerouting        raw --&gt; mangle --&gt; nat
+input            mangle --&gt; filter (centos7 has nat, 6 not)
+forward            mangle --&gt; filter
+output            raw --&gt; mangle --&gt; nat --&gt; filter
+postrouting        mangle --&gt; nat
+</pre>
+</div>
+<div class="section" id="section-4">
+<h2>常用的一些命令</h2>
+<p>常用的一些命令:</p>
+<pre class="literal-block">
+iptables -F        # 清空所有的防火墙规则
+iptables -nvL      # 查看三个链
+
+iptables -X INPUT  # 删除指定的链，这个链必须没有被其它任何规则引用，而且这条上必须没有任何规则。
+                   # 如果没有指定链名，则会删除该表中所有非内置的链。
+iptables -Z INPUT  # 把指定链，或者表中的所有链上的所有计数器清零。
+
+iptables -L [-t 表名] [链名]    # 列出已设置的规则
+</pre>
+</div>
+<div class="section" id="m">
+<h2>-m的一些模块</h2>
+<dl class="docutils">
+<dt>multiport</dt>
+<dd><p class="first">多端口匹配</p>
+<p>可用于匹配非连续或连续端口；最多指定15个端口；</p>
+<p>实例:</p>
+<pre class="last literal-block">
+iptables -A INPUT -p tcp -m multiport --dport 22,80 -j ACCEPT
+iptables -A OUTPUT -p tcp -m multiport --sport 22,80 -j ACCEPT
+</pre>
+</dd>
+<dt>iprange</dt>
+<dd><p class="first">匹配指定范围内的地址</p>
+<p>匹配一段连续的地址而非整个网络时有用</p>
+<p>实例:</p>
+<pre class="last literal-block">
+iptables -A INPUT -p tcp -m iprange --src-range 192.168.118.0-192.168.118.60 --dport 22 -j ACCEPT
+iptables -A OUTPUT -p tcp -m iprange --dst-range 192.168.118.0-192.168.118.60 --sport 22 -j ACCEPT
+</pre>
+</dd>
+<dt>string</dt>
+<dd><p class="first">字符串匹配，能够检测报文应用层中的字符串</p>
+<p>字符匹配检查高效算法：kmp, bm,
+能够屏蔽非法字符</p>
+<p>实例:</p>
+<pre class="last literal-block">
+#注意该条规则需要添加到OUTPUT链，当服务端返回数据报文检查到有关键字&quot;sex&quot;时，则丢弃该报文，可用于web敏感词过滤
+iptables -A OUTPUT -p tcp --dport 80 -m string --algo kmp --string &quot;sex&quot; -j DROP
+</pre>
+</dd>
+<dt>connlimit</dt>
+<dd><p class="first">连接数限制，对每IP所能够发起并发连接数做限制；</p>
+<p>默认INPUT 为 DROP. 每个ip对ssh服务的访问最大为3个并发连接，超过则丢弃:</p>
+<pre class="last literal-block">
+iptables -A INPUT -p tcp  --dport 22 -m connlimit ! --connlimit-above 3 -j ACCEPT
+</pre>
+</dd>
+<dt>limit</dt>
+<dd>速率限制</dd>
+<dt>limit-burst</dt>
+<dd><p class="first">设置默认阀值</p>
+<p>默认放行10个，当到达limit-burst阀值后，平均6秒放行1个:</p>
+<pre class="last literal-block">
+iptables -A INPUT -p icmp -m limit --limit 10/minute --limit-burst 10 -j ACCEPT
+</pre>
+</dd>
+<dt>state</dt>
+<dd><p class="first">状态检查</p>
+<p>连接追踪中的状态：</p>
+<ul class="simple">
+<li>NEW: 新建立一个会话</li>
+<li>ESTABLISHED：已建立的连接</li>
+<li>RELATED: 有关联关系的连接</li>
+<li>INVALID: 无法识别的连接</li>
+</ul>
+<p>放行ssh的首次连接状态:</p>
+<pre class="literal-block">
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
+</pre>
+<p>详细点</p>
+<ul class="last simple">
+<li>INVALID：无效的封包，例如数据破损的封包状态</li>
+<li>ESTABLISHED：已经联机成功的联机状态；</li>
+<li>NEW：想要新建立联机的封包状态；</li>
+<li>RELATED：这个最常用！表示这个封包是与我们主机发送出去的封包有关， 可能是响应封包或者是联机成功之后的传送封包！这个状态很常被设定，因为设定了他之后，只要未来由本机发送出去的封包，即使我们没有设定封包的 INPUT 规则，该有关的封包还是可以进入我们主机， 可以简化相当多的设定规则。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h2>相关指令</h2>
+<p><a class="reference external" href="/yq-docs-operating-system-linux-Linux-instruction-iptables-save.html">iptables-save</a>
+<a class="reference external" href="/yq-docs-operating-system-linux-Linux-instruction-iptables-restore.html">iptables-restore</a></p>
+</div>
+<div class="section" id="sport">
+<h2>问题--sport不能识别</h2>
+<p>--sport一直不能识别，百度也没查到原因</p>
+<p>询问才知道。需要配合指定协议与multiport来匹配多端口才可以</p>
+<p>端口如果使用 冒号 表示连续端口</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    语法-选项
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#j">
+      -j 的几种动作
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#iptables-1">
+    iptables默认链
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    过滤框架
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    四种表
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    常用的一些命令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#m">
+    -m的一些模块
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    相关指令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#sport">
+    问题--sport不能识别
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

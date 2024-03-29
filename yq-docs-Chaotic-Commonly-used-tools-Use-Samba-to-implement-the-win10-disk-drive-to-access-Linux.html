@@ -1,0 +1,596 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li  class="active"><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>使用samba实现win10映射磁盘驱动访问linux</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 三月 2024
+      , Category:
+	  <a href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-09</div>
+									<h2>使用samba实现win10映射磁盘驱动访问linux</h2>
+									<div class="section" id="section-1">
+<h2>安装</h2>
+<p>安装samba:</p>
+<pre class="literal-block">
+sudo apt install samba
+</pre>
+<p>这里可能会提示获取dhcp的配置信息，以及安装dhcp-client客户端，确认就好</p>
+</div>
+<div class="section" id="section-2">
+<h2>配置</h2>
+<p>samba的配置文件一般在:</p>
+<pre class="literal-block">
+/etc/samba/smb.conf
+</pre>
+<p>简单配置smb.conf:</p>
+<pre class="literal-block">
+sudo vim /etc/samba/smb.conf
+</pre>
+<p>最后添加配置信息, 如:</p>
+<pre class="literal-block">
+[user]     #共享名称database
+    comment = &quot;comment&quot;     # 描述信息
+    path = /tmp/user1       # 共享目录
+    public = no             # 关闭所有人可见
+    writable = yes          # 是否有写权限
+</pre>
+<p>自己机器的配置:</p>
+<pre class="literal-block">
+[luyi]
+    comment = &quot;luyi&quot;
+    path = /home/luyi
+    writable = yes
+</pre>
+</div>
+<div class="section" id="section-3">
+<h2>添加用户</h2>
+<p>添加用户并设置密码:</p>
+<pre class="literal-block">
+pdbedit -a luyi
+</pre>
+<p>最后打开win10的计算机映射网络驱动器</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">使用 pdbedit 新建的用户名, 必须是当前系统已存在的用户名.</p>
+</div>
+<p>over</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>lz使用的是debian10，samba版本为4.9.5-debian，samba服务名为smbd.
+所以启动之类的需要 service smdb start，之前用samba tab出来的一直报错找了半天原因......</p>
+<p>虚拟机要保证跟宿主机之间可以相互ping通</p>
+<p>win10宿主机建议开启以下配置：
+我的电脑右键 --&gt; 管理 --&gt; 服务和应用程序 --&gt; 服务, 找到TCP/IP NetBIOS Helper，将启动类型修改为自动并且启动它</p>
+<p class="last">安装虚拟机，还是使用workstation吧，vitrualbox一直有问题，后续版本还跟win10不兼容</p>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>资料了解</h2>
+<p>Samba是一个能让Linux系统应用Microsoft网络通讯协议的软件，
+而SMB是Server Message Block的缩写，即为服务器消息块 ，
+SMB主要是作为Microsoft的网络通讯协议，后来Samba将SMB通信协议应用到了Linux系统上，
+就形成了现在的Samba软件。后来微软又把 SMB 改名为 CIFS（Common Internet File System），
+即公共 Internet 文件系统，并且加入了许多新的功能，这样一来，使得Samba具有了更强大的功能。</p>
+</div>
+<div class="section" id="section-5">
+<h2>主要配置介绍</h2>
+<p><strong>配置文件的大概组成global、homes、printers</strong></p>
+<div class="section" id="global">
+<h3>global</h3>
+<p>global定义全局的配置:</p>
+<pre class="literal-block">
+[global]
+    workgroup = MYGROUP                                                     # 工作组，按win下的理解即可
+                                                # win默认为WORKGROUP
+    server string = Samba Server Version %v
+    security = user                                                         # security默认(user)用户级别，
+                                                # 详见下关于security级别
+    passdb backend = tdbsam                                         # passdb backend （用户后台），
+                                                # samba有三种用户后台：
+                                                # smbpasswd, tdbsam和ldapsam
+                                                # 详见下关于samba三种用户后台
+    load printers = yes                                                     # 设置打印机相关
+    cups options = raw                                                      # 设置打印机相关
+    masks = 0700                                # 设置文件掩码, 如700表示新建文件的权限,
+</pre>
+<p>global其他的参数:</p>
+<pre class="literal-block">
+netbios name = MYSERVER                     # 设置出现在“网上邻居”中的主机名
+hosts allow = 127. 192.168.12. 192.168.13.  # 用来设置允许的主机，如果在前面加”;”则表示允许所有主机
+log file = /var/log/samba/%m.log            # 定义samba的日志，这里的%m是上面的netbios name
+max log size = 50                           # 指定日志的最大容量，单位是K
+</pre>
+</div>
+<div class="section" id="homes">
+<h3>homes</h3>
+<p>homes是共享用户自己的家目录, 针对共享目录个别的设置，只对当前的共享资源起作用,
+也就是说，当用户登录到samba服务器上时实际上是进入到了该用户的家目录，
+用户登陆后，共享名不是homes而是用户自己的标识符，对于单纯的文件共享的环境来说，这部分可以注视掉:</p>
+<pre class="literal-block">
+[homes]
+    comment = Home Directories
+    browseable = no
+    writable = yes
+    mask = 0700                         # 设置文件掩码, 如700表示新建文件的权限,
+</pre>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p>再次申明, 此处的 <tt class="docutils literal">homes</tt> 表示用户名, 比如我系统有一个 <cite>luyi</cite> 用户, 那么
+使用 <a class="reference internal" href="#pdbedit">pdbedit命令</a> 创建的用户也需要是 <cite>luyi</cite></p>
+<pre class="literal-block">
+pdbedit -a luyi
+</pre>
+<p>这里的 <cite>homes</cite> 的值也为 <cite>luyi</cite></p>
+<pre class="literal-block">
+[luyi]
+    comment = &quot;luyi&quot;
+    path = /home/luyi
+    writable = yes
+    ...
+</pre>
+<p class="last">表示针对 <cite>luyi</cite> 这一个用户做更详细的配置.</p>
+</div>
+</div>
+<div class="section" id="printers">
+<h3>printers</h3>
+<p>printers设置该部分内容设置打印机共享:</p>
+<pre class="literal-block">
+[printers]
+    comment = All Printers
+    path = /var/spool/samba
+    browseable = no
+    guest ok = no
+    writable = no
+    printable = yes
+</pre>
+</div>
+</div>
+<div class="section" id="security">
+<h2>关于security级别</h2>
+<p>安全级别解析：</p>
+<ol class="arabic simple">
+<li>share模式：不用进行权限匹配检查即可访问共享资源，安全性比较差；</li>
+<li>user模式：需要对用户名和密码进行验证，通过后才能访问共享资源，具有一定的安全性；</li>
+<li>server模式：通过指定的服务器对用户名和密码进行验证，如果不通过，客户端会用user级别访问；</li>
+<li>domain模式：domain级别的Samba服务器只作为域的成员客户端加入Windows域中，由Windows域控制器来完成对用户名和密码的验证；</li>
+<li>ads模式：如果Samba服务器以ads方式加入Windows域中，将具备domian级别的所有功能，并且可以完成对用户名和密码的验证工作。</li>
+</ol>
+</div>
+<div class="section" id="samba">
+<h2>关于samba三种用户后台</h2>
+<div class="section" id="smbpasswd">
+<h3>smbpasswd</h3>
+<p>该方式是使用smb工具smbpasswd给系统用户（真实用户或者虚拟用户）设置一个Samba 密码，
+客户端就用此密码访问Samba资源。smbpasswd在/etc/samba中，有时需要手工创建该文件:</p>
+<pre class="literal-block">
+-a: 添加
+-x: 删除
+-d: 禁用
+-e: 启用
+-L: 列出相关信息
+-v: 与L搭配使用，列出更多信息
+-w: 搭配L，使用旧版格式
+-r: 修改一个账户的相关信息
+-m: 后接机器代码(machine account)，与 domain model 有关！
+</pre>
+</div>
+<div class="section" id="tdbsam">
+<h3>tdbsam</h3>
+<p>使用数据库文件创建用户数据库。
+数据库文件叫passdb.tdb，在/etc/samba中。
+passdb.tdb用户数据库可使用smbpasswd –a创建Samba用户，要创建的Samba用户必须先是系统用户。
+也可使用pdbedit创建Samba账户。pdbedit参数很多，列出几个主要的:</p>
+<pre class="literal-block">
+pdbedit –a username：新建Samba账户。
+pdbedit –x username：删除Samba账户。
+pdbedit –L：列出Samba用户列表，读取passdb.tdb数据库文件。
+pdbedit –Lv：列出Samba用户列表详细信息。
+pdbedit –c “[D]”–u username：暂停该Samba用户账号。
+pdbedit –c “[]”–u username：恢复该Samba用户账号。
+</pre>
+</div>
+<div class="section" id="ldapsam">
+<h3>ldapsam</h3>
+<p>基于LDAP账户管理方式验证用户。首先要建立LDAP服务，
+设置:</p>
+<pre class="literal-block">
+passdb backend = ldapsam:ldap://LDAP Server
+</pre>
+</div>
+</div>
+<div class="section" id="pdbedit">
+<h2>pdbedit命令</h2>
+<p><strong>pdbedit</strong> 参数及功能：pdbedit命令是samba的用户管理命令</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head" rowspan="2">参数</th>
+<th class="head" rowspan="2">作用</th>
+</tr>
+<tr></tr>
+</thead>
+<tbody valign="top">
+<tr><td rowspan="2">-a user</td>
+<td rowspan="2">建立samba的用户user</td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2">-r user</td>
+<td rowspan="2">修改samba的用户user</td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2">-x user</td>
+<td rowspan="2">删除samba的用户user</td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2">-L</td>
+<td rowspan="2">列出用户列表</td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2">-Lv</td>
+<td rowspan="2">列出用户详细信息的列表</td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2">-c &quot;[D]&quot; -u user</td>
+<td rowspan="2">暂停该samba用户user</td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2">-c &quot;[D]&quot; -u user</td>
+<td rowspan="2">恢复该samba用户user</td>
+</tr>
+<tr></tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用pdbedit创建好用户后, 输出会提示链接的网络路径.</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    安装
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    配置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    添加用户
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    资料了解
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    主要配置介绍
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#global">
+      global
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#homes">
+      homes
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#printers">
+      printers
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#security">
+    关于security级别
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#samba">
+    关于samba三种用户后台
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#smbpasswd">
+      smbpasswd
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#tdbsam">
+      tdbsam
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ldapsam">
+      ldapsam
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#pdbedit">
+    pdbedit命令
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

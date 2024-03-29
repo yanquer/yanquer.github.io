@@ -1,0 +1,1070 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>并发编程</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 二月 2023
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+												<li><a class="button button-alt" href="tag/cookbook.html">Cookbook</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2023-02-20</div>
+									<h2>并发编程</h2>
+									<p>对于并发编程, Python 有多种长期支持的方法, 包括多线程, 调用子进程, 以及各种
+各样的关于生成器函数的技巧. 这一章将会给出并发编程各种方面的技巧, 包括通用的
+多线程技术以及并行计算的实现方法</p>
+<div class="section" id="section-2">
+<h2>启动与停止线程</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你要为需要并发执行的代码创建/销毁线程</dd>
+<dt>解决方案</dt>
+<dd><p class="first">threading 库可以在单独的线程中执行任何的在 Python 中可以调用的对象。你可
+以创建一个 Thread 对象并将你要执行的对象以 target 参数的形式提供给该对象。</p>
+<p>例子:</p>
+<pre class="literal-block">
+def countdown(n): ...
+
+from threading import Thread
+t = Thread(target=countdown, args=(10,))
+t.start()
+</pre>
+<p>当你创建好一个线程对象后，该对象并不会立即执行，除非你调用它的 start()
+方法（当你调用 start() 方法时，它会调用你传递进来的函数，并把你传递进来的参
+数传递给该函数）。Python 中的线程会在一个单独的系统级线程中执行（比如说一个
+POSIX 线程或者一个 Windows 线程），这些线程将由操作系统来全权管理。线程一旦
+启动，将独立执行直到目标函数返回。</p>
+<p>也可以将一个线程加入到当前线程，并等待它终止:</p>
+<pre class="literal-block">
+t.join()
+</pre>
+<p>Python 解释器直到所有线程都终止前仍保持运行。对于需要长时间运行的线程或
+者需要一直运行的后台任务，你应当考虑使用后台线程:</p>
+<pre class="literal-block">
+t = Thread(target=countdown, args=(10,), daemon=True)
+t.start()
+</pre>
+<p>后台线程无法等待，不过，这些线程会在主线程终止时自动销毁。除了如上所示的
+两个操作，并没有太多可以对线程做的事情。你无法结束一个线程，无法给它发送信
+号，无法调整它的调度，也无法执行其他高级操作。如果需要这些特性，你需要自己添
+加。比如说，如果你需要终止线程，那么这个线程必须通过编程在某个特定点轮询来退
+出。你可以像下边这样把线程放入一个类中:</p>
+<pre class="literal-block">
+class CountdownTask:
+  def __init__(self):
+    self._running = True
+
+  def terminate(self):
+    self._running = False
+
+  def run(self, n):
+    while self._running and n &gt; 0:
+      print('T-minus', n)
+      n -= 1
+      time.sleep(5)
+
+c = CountdownTask()
+t = Thread(target=c.run, args=(10,))
+t.start()
+c.terminate() # Signal termination
+t.join() # Wait for actual termination (if needed)
+</pre>
+<p>如果线程执行一些像 I/O 这样的阻塞操作，那么通过轮询来终止线程将使得线程
+之间的协调变得非常棘手。比如，如果一个线程一直阻塞在一个 I/O 操作上，它就永
+远无法返回，也就无法检查自己是否已经被结束了。要正确处理这些问题，你需要利用
+超时循环来小心操作线程:</p>
+<pre class="last literal-block">
+def run(self, sock):
+  # sock is a socket
+  sock.settimeout(5) # Set timeout period
+  while self._running:
+    # Perform a blocking I/O operation w/ timeout
+    try:
+      data = sock.recv(8192)
+      break
+    except socket.timeout:
+      continue
+  return
+</pre>
+</dd>
+<dt>讨论</dt>
+<dd>由于全局解释锁（GIL）的原因，Python 的线程被限制到同一时刻只允许一个线
+程执行这样一个执行模型。所以，Python 的线程更适用于处理 I/O 和其他需要并发执
+行的阻塞操作（比如等待 I/O、等待从数据库获取数据等等），而不是需要多处理器并
+行的计算密集型任务。</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h2>判断线程是否已经启动</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你已经启动了一个线程，但是你想知道它是不是真的已经开始运行了。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">线程的一个关键特性是每个线程都是独立运行且状态不可预测。如果程序中的其
+他线程需要通过判断某个线程的状态来确定自己下一步的操作，这时线程同步问题就
+会变得非常棘手。为了解决这些问题，我们需要使用 threading 库中的 Event 对象。
+Event 对象包含一个可由线程设置的信号标志，它允许线程等待某些事件的发生。在初
+始情况下，event 对象中的信号标志被设置为假。如果有线程等待一个 event 对象，而
+这个 event 对象的标志为假，那么这个线程将会被一直阻塞直至该标志为真。一个线程
+如果将一个 event 对象的信号标志设置为真，它将唤醒所有等待这个 event 对象的线
+程。如果一个线程等待一个已经被设置为真的 event 对象，那么它将忽略这个事件，继
+续执行。下边的代码展示了如何使用 Event 来协调线程的启动:</p>
+<pre class="literal-block">
+from threading import Thread, Event
+import time
+
+# Code to execute in an independent thread
+def countdown(n, started_evt):
+  print('countdown starting')
+  started_evt.set()
+  while n &gt; 0:
+    print('T-minus', n)
+    n -= 1
+    time.sleep(5)
+
+# Create the event object that will be used to signal startup
+started_evt = Event()
+
+# Launch the thread and pass the startup event
+print('Launching countdown') t = Thread(target=countdown, args=(10,started_evt))
+t.start()
+
+# Wait for the thread to start
+started_evt.wait()
+print('countdown is running')
+</pre>
+<p class="last">当你执行这段代码，“countdown is running”总是显示在“countdown starting”之
+后显示。这是由于使用 event 来协调线程，使得主线程要等到 countdown() 函数输出
+启动信息后，才能继续执行</p>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">event 对象最好单次使用，就是说，你创建一个 event 对象，让某个线程等待这个
+对象，一旦这个对象被设置为真，你就应该丢弃它。尽管可以通过 clear() 方法来重
+置 event 对象，但是很难确保安全地清理 event 对象并对它重新赋值。很可能会发生错
+过事件、死锁或者其他问题（特别是，你无法保证重置 event 对象的代码会在线程再次
+等待这个 event 对象之前执行）。如果一个线程需要不停地重复使用 event 对象，你最
+好使用 Condition 对象来代替。</p>
+<p><strong>Condition直接使用with即可, 使用notify唤醒其他线程.</strong></p>
+<p>event 对象的一个重要特点是当它被设置为真时会唤醒所有等待它的线程。如果你
+只想唤醒单个线程，最好是使用信号量或者 Condition 对象来替代。</p>
+<p><strong>信号量Semaphore使用acquire和release</strong></p>
+<p class="last">编写涉及到大量的线程间同步问题的代码会让你痛不欲生。比较合适的方式是使
+用队列来进行线程间通信或者每个把线程当作一个 Actor，利用 Actor 模型来控制并
+发。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-4">
+<h2>线程间通信</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你的程序中有多个线程，你需要在这些线程之间安全地交换信息或数据</dd>
+<dt>解决方案</dt>
+<dd><p class="first">从一个线程向另一个线程发送数据最安全的方式可能就是使用 queue 库中的队列
+了。创建一个被多个线程共享的 Queue 对象，这些线程通过使用 put() 和 get() 操作
+来向队列中添加或者删除元素。</p>
+<p>Queue 对象已经包含了必要的锁，所以你可以通过它在多个线程间多安全地共享数
+据。当使用队列时，协调生产者和消费者的关闭问题可能会有一些麻烦。一个通用的解
+决方法是在队列中放置一个特殊的值，当消费者读到这个值的时候，终止执行。</p>
+<p>有一个特殊的地方：消费者在读到这个特殊值之后立即又把它放回到队列
+中，将之传递下去。这样，所有监听这个队列的消费者线程就可以全部关闭了。尽管队
+列是最常见的线程间通信机制，但是仍然可以自己通过创建自己的数据结构并添加所
+需的锁和同步机制来实现线程间通信。最常见的方法是使用 Condition 变量来包装你
+的数据结构。</p>
+<p>使用队列来进行线程间通信是一个单向、不确定的过程。通常情况下，你没有办法
+知道接收数据的线程是什么时候接收到的数据并开始工作的。不过队列对象提供一些
+基本完成的特性，比如下边这个例子中的 task_done() 和 join()</p>
+<pre class="literal-block">
+# A thread that consumes data
+def consumer(in_q):
+  while True:
+    # Get some data
+    data = in_q.get()
+    # Process the data
+    ...
+    # Indicate completion
+    in_q.task_done()
+
+q = Queue()
+t1 = Thread(target=consumer, args=(q,))
+# Wait for all produced items to be consumed
+q.join()
+</pre>
+<p>如果一个线程需要在一个“消费者”线程处理完特定的数据项时立即得到通知，
+你可以把要发送的数据和一个 Event 放到一起使用，这样“生产者”就可以通过这个
+Event 对象来监测处理的过程了:</p>
+<pre class="last literal-block">
+# Make an (data, event) pair and hand it to the consumer
+evt = Event()
+out_q.put((data, evt))
+...
+# Wait for the consumer to process the item
+evt.wait()
+</pre>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">基于简单队列编写多线程程序在多数情况下是一个比较明智的选择。从线程安全
+队列的底层实现来看，你无需在你的代码中使用锁和其他底层的同步机制，这些只会把
+你的程序弄得乱七八糟。此外，使用队列这种基于消息的通信机制可以被扩展到更大的
+应用范畴，比如，你可以把你的程序放入多个进程甚至是分布式系统而无需改变底层的
+队列结构。使用线程队列有一个要注意的问题是，向队列中添加数据项时并不会复制此
+数据项，线程间通信实际上是在线程间传递对象引用。如果你担心对象的共享状态，那
+你最好只传递不可修改的数据结构（如：整型、字符串或者元组）或者一个对象的深拷
+贝。</p>
+<p>Queue 对象提供一些在当前上下文很有用的附加特性。比如在创建 Queue 对象时
+提供可选的 size 参数来限制可以添加到队列中的元素数量。对于“生产者”与“消费
+者”速度有差异的情况，为队列中的元素数量添加上限是有意义的。比如，一个“生产
+者”产生项目的速度比“消费者”“消费”的速度快，那么使用固定大小的队列就可以
+在队列已满的时候阻塞队列，以免未预期的连锁效应扩散整个程序造成死锁或者程序
+运行失常。在通信的线程之间进行“流量控制”是一个看起来容易实现起来困难的问
+题。如果你发现自己曾经试图通过摆弄队列大小来解决一个问题，这也许就标志着你的
+程序可能存在脆弱设计或者固有的可伸缩问题。get() 和 put() 方法都支持非阻塞方
+式和设定超时，:</p>
+<pre class="literal-block">
+import queue
+q = queue.Queue()
+data = q.get(block=False)
+data = q.get(timeout=5.0)
+</pre>
+<p>get时为空或者超时没获取到是就是queue.Empty异常, put但是满了就是queue.Full异常.</p>
+<p class="last">最后，有 q.qsize() ，q.full() ，q.empty() 等实用方法可以获取一个队列的当前
+大小和状态。但要注意，这些方法都不是线程安全的。可能你对一个队列使用 empty()
+判断出这个队列为空，但同时另外一个线程可能已经向这个队列中插入一个数据项。所
+以，你最好不要在你的代码中使用这些方法。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h2>给关键部分加锁</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你需要对多线程程序中的临界区加锁以避免竞争条件。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">要在多线程程序中安全使用可变对象，你需要使用 threading 库中的 Lock 对象</p>
+<p class="last">Lock 对象和 with 语句块一起使用可以保证互斥执行，就是每次只有一个线程可
+以执行 with 语句包含的代码块。with 语句会在这个代码块执行前自动获取锁，在执行
+结束后自动释放锁。</p>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">线程调度本质上是不确定的，因此，在多线程程序中错误地使用锁机制可能会导致
+随机数据损坏或者其他的异常行为，我们称之为竞争条件。为了避免竞争条件，最好只
+在临界区（对临界资源进行操作的那部分代码）使用锁。在一些“老的”Python 代码
+中，显式获取和释放锁是很常见的:</p>
+<pre class="literal-block">
+self._value_lock = threading.Lock()
+self._value_lock.acquire()
+self._value += delta
+self._value_lock.release()
+</pre>
+<p>相比于这种显式调用的方法，with 语句更加优雅，也更不容易出错，特别是程序员
+可能会忘记调用 release() 方法或者程序在获得锁之后产生异常这两种情况（使用 with
+语句可以保证在这两种情况下仍能正确释放锁）。</p>
+<p>为了避免出现死锁的情况，使用锁机
+制的程序应该设定为每个线程一次只允许获取一个锁。如果不能这样做的话，你就需
+要更高级的死锁避免机制. 在 threading 库中还提供了其他的
+同步原语，比如 RLock 和 Semaphore 对象。但是根据以往经验，这些原语是用于一些
+特殊的情况，如果你只是需要简单地对可变对象进行锁定，那就不应该使用它们。一个
+RLock （可重入锁）可以被同一个线程多次获取，主要用来实现基于监测对象模式的锁
+定和同步。在使用这种锁的情况下，当锁被持有时，只有一个线程可以使用完整的函数
+或者类中的方法。</p>
+<p>一个类级RLOCK锁可以保证一次
+只有一个线程可以调用这个类方法。不过，与一个标准的锁不同的是，已经持有这个锁
+的方法在调用同样使用这个锁的方法时，无需再次获取锁。(与以前看到的好像有点不一样,
+以前的理解是每次递归都会加一次锁, 加了多少次就需要释放多少次)</p>
+<p class="last">尽管你可以在程序中像标准锁一样使用信号量来做线程同步，但是这种方式并不被
+推荐，因为使用信号量为程序增加的复杂性会影响程序性能。相对于简单地作为锁使
+用，信号量更适用于那些需要在线程之间引入信号或者限制的程序。比如，你需要限制
+一段代码的并发访问量</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-6">
+<h2>防止死锁的加锁机制</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你正在写一个多线程程序，其中线程需要一次获取多个锁，此时如何避免死锁问
+题。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">在多线程程序中，死锁问题很大一部分是由于线程同时获取多个锁造成的。举个例
+子：一个线程获取了第一个锁，然后在获取第二个锁的时候发生阻塞，那么这个线程就
+可能阻塞其他线程的执行，从而导致整个程序假死。解决死锁问题的一种方案是为程序
+中的每一个锁分配一个唯一的 id，然后只允许按照升序规则来使用多个锁，这个规则
+使用上下文管理器是非常容易实现的:</p>
+<pre class="literal-block">
+import threading
+from contextlib import contextmanager
+
+# Thread-local state to stored information on locks already acquired
+_local = threading.local()
+
+&#64;contextmanager
+def acquire(*locks):
+  # Sort locks by object identifier
+  locks = sorted(locks, key=lambda x: id(x))
+
+  # Make sure lock order of previously acquired locks is not violated
+  acquired = getattr(_local,'acquired',[])
+  if acquired and max(id(lock) for lock in acquired) &gt;= id(locks[0]):
+    raise RuntimeError('Lock Order Violation')
+  # Acquire all of the locks
+  acquired.extend(locks)
+  _local.acquired = acquired
+
+  try:
+    for lock in locks:
+      lock.acquire()
+      yield
+  finally:
+    # Release locks in reverse order of acquisition
+    for lock in reversed(locks):
+    lock.release()
+    del acquired[-len(locks):]
+</pre>
+<p>如何使用这个上下文管理器呢？你可以按照正常途径创建一个锁对象，但不论是
+单个锁还是多个锁中都使用 acquire() 函数来申请锁，示例如下:</p>
+<pre class="literal-block">
+import threading
+x_lock = threading.Lock()
+y_lock = threading.Lock()
+
+def thread_1():
+  while True:
+    with acquire(x_lock, y_lock):
+      print('Thread-1')
+
+def thread_2():
+  while True:
+    with acquire(y_lock, x_lock):
+    print('Thread-2')
+
+t1 = threading.Thread(target=thread_1)
+t1.daemon = True
+t1.start()
+
+t2 = threading.Thread(target=thread_2)
+t2.daemon = True
+t2.start()
+</pre>
+<p class="last">如果你执行这段代码，你会发现它即使在不同的函数中以不同的顺序获取锁也没
+有发生死锁。其关键在于，在第一段代码中，我们对这些锁进行了排序。通过排序，使
+得不管用户以什么样的顺序来请求锁，这些锁都会按照固定的顺序被获取。如果有多个
+acquire() 操作被嵌套调用，可以通过线程本地存储（TLS）来检测潜在的死锁问题。</p>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">死锁是每一个多线程程序都会面临的一个问题（就像它是每一本操作系统课本的
+共同话题一样）。根据经验来讲，尽可能保证每一个线程只能同时保持一个锁，这样程
+序就不会被死锁问题所困扰。一旦有线程同时申请多个锁，一切就不可预料了。
+死锁的检测与恢复是一个几乎没有优雅的解决方案的扩展话题。一个比较常用的
+死锁检测与恢复的方案是引入看门狗计数器。当线程正常运行的时候会每隔一段时间
+重置计数器，在没有发生死锁的情况下，一切都正常进行。一旦发生死锁，由于无法重
+置计数器导致定时器超时，这时程序会通过重启自身恢复到正常状态。</p>
+<p class="last">避免死锁是另外一种解决死锁问题的方式，在进程获取锁的时候会严格按照对象
+id 升序排列获取，经过数学证明，这样保证程序不会进入死锁状态。
+避免死锁的主要思想是，单纯地按照对象 id 递增的顺序加锁不会产生循环
+依赖，而循环依赖是死锁的一个必要条件，从而避免程序进入死锁状态。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-7">
+<h2>保存线程的状态信息</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你需要保存正在运行线程的状态，这个状态对于其他的线程是不可见的。</dd>
+<dt>解决方案</dt>
+<dd>有时在多线程编程中，你需要只保存当前运行线程的状态。要这么做，可使用
+thread.local() 创建一个本地线程存储对象。对这个对象的属性的保存和读取操作都
+只会对执行线程可见，而其他线程并不可见。</dd>
+<dt>讨论</dt>
+<dd><p class="first">在大部分程序中创建和操作线程特定状态并不会有什么问题。不过，当出了问题的
+时候，通常是因为某个对象被多个线程使用到，用来操作一些专用的系统资源，比如一
+个套接字或文件。你不能让所有线程贡献一个单独对象，因为多个线程同时读和写的时
+候会产生混乱。本地线程存储通过让这些资源只能在被使用的线程中可见来解决这个
+问题。</p>
+<p class="last">每个 threading.local() 实例为每个线程维护着一个单独的实例字典。
+所有普通实例操作比如获取、修改和删除值仅仅操作这个字典。每个线程使用一个独立
+的字典就可以保证数据的隔离了</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-8">
+<h2>创建一个线程池</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你创建一个工作者线程池，用来相应客户端请求或执行其他的工作。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">concurrent.futures 函数库有一个 ThreadPoolExecutor 类可以被用来完成这个
+任务。</p>
+<p>如果你想手动创建你自己的线程池，通常可以使用一个 Queue 来轻松实现.</p>
+<p>但使用 ThreadPoolExecutor 相对于手动实现的一个好处在于它使得任务提交者更
+方便的从被调用函数中获取返回值。</p>
+<p class="last">注意a.result() 操作会阻塞进程直到对应的函数执行完成并返回一个结果。</p>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">通常来讲，你应该避免编写线程数量可以无限制增长的程序.
+以抵御有人试图通过创建大量线程让你服务器资
+源枯竭而崩溃的攻击行为。通过使用预先初始化的线程池，你可以设置同时运行线程的
+上限数量。</p>
+<p>你可能会关心创建大量线程会有什么后果。现代操作系统可以很轻松的创建几千
+个线程的线程池。甚至，同时几千个线程等待工作并不会对其他代码产生性能影响。当
+然了，如果所有线程同时被唤醒并立即在 CPU 上执行，那就不同了——特别是有了全
+局解释器锁 GIL。通常，你应该只在 I/O 处理相关代码中使用线程池。</p>
+<p>创建大的线程池的一个可能需要关注的问题是内存的使用。例如，如果你在 OS X
+系统上面创建 2000 个线程，系统显示 Python 进程使用了超过 9GB 的虚拟内存。不
+过，这个计算通常是有误差的。当创建一个线程时，操作系统会预留一个虚拟内存区域
+来放置线程的执行栈（通常是 8MB 大小）。但是这个内存只有一小片段被实际映射到
+真实内存中。因此，Python 进程使用到的真实内存其实很小（比如，对于 2000 个线程
+来讲，只使用到了 70MB 的真实内存，而不是 9GB）。如果你担心虚拟内存大小，可以
+使用 threading.stack_size() 函数来降低它:</p>
+<pre class="literal-block">
+import threading
+threading.stack_size(65536)
+</pre>
+<p class="last">如果你加上这条语句并再次运行前面的创建 2000 个线程试验，你会发现 Python
+进程只使用到了大概 210MB 的虚拟内存，而真实内存使用量没有变。注意线程栈大小
+必须至少为 32768 字节，通常是系统内存页大小（4096、8192 等）的整数倍。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-9">
+<h2>简单的并行编程</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你有个程序要执行 CPU 密集型工作，你想让他利用多核 CPU 的优势来运行的快
+一点。</dd>
+<dt>解决方案</dt>
+<dd>concurrent.futures 库提供了一个 ProcessPoolExecutor 类，可被用来在一个单
+独的 Python 解释器中执行计算密集型函数。不过，要使用它，你首先要有一些计算密
+集型的任务。</dd>
+<dt>讨论</dt>
+<dd><p class="first">ProcessPoolExecutor 的典型用法如下:</p>
+<pre class="literal-block">
+from concurrent.futures import ProcessPoolExecutor
+  with ProcessPoolExecutor() as pool:
+  ...
+  do work in parallel using pool
+  ...
+</pre>
+<p>其原理是，一个 ProcessPoolExecutor 创建 N 个独立的 Python 解释器，N 是系
+统上面可用 CPU 的个数。你可以通过提供可选参数给 ProcessPoolExecutor(N) 来修
+改处理器数量。这个处理池会一直运行到 with 块中最后一个语句执行完成，然后处理
+池被关闭。不过，程序会一直等待直到所有提交的工作被处理完成。</p>
+<p>被提交到池中的工作必须被定义为一个函数。有两种方法去提交。如果你想让一个
+列表推导或一个 map() 操作并行执行的话，可使用 pool.map()</p>
+<p>另外，你可以使用 pool.submit() 来手动的提交单个任务</p>
+<p>如果你手动提交一个任务，结果是一个 Future 实例。要获取最终结果，你需要调
+用它的 result() 方法。它会阻塞进程直到结果被返回来。
+如果不想阻塞，你还可以使用一个回调函数:</p>
+<pre class="literal-block">
+def when_done(r): print('Got:', r.result())
+
+future_result = pool.submit(work, arg)
+future_result.add_done_callback(when_done)
+</pre>
+<p>回调函数接受一个 Future 实例，被用来获取最终的结果（比如通过调用它的
+result() 方法）。尽管处理池很容易使用，在设计大程序的时候还是有很多需要注意的
+地方，如下几点：</p>
+<p>· 这种并行处理技术只适用于那些可以被分解为互相独立部分的问题。
+· 被提交的任务必须是简单函数形式。对于方法、闭包和其他类型的并行执行还不
+支持。
+· 函数参数和返回值必须兼容 pickle，因为要使用到进程间的通信，所有解释器之
+间的交换数据必须被序列化
+· 被提交的任务函数不应保留状态或有副作用。除了打印日志之类简单的事情，</p>
+<p>一旦启动你不能控制子进程的任何行为，因此最好保持简单和纯洁——函数不要
+去修改环境。</p>
+<ul class="simple">
+<li>在 Unix 上进程池通过调用 fork() 系统调用被创建，</li>
+</ul>
+<p>它会克隆 Python 解释器，包括 fork 时的所有程序状态。而在 Windows 上，克隆解
+释器时不会克隆状态。实际的 fork 操作会在第一次调用 pool.map() 或 pool.submit()
+后发生。</p>
+<ul class="simple">
+<li>当你混合使用进程池和多线程的时候要特别小心。</li>
+</ul>
+<p class="last">你应该在创建任何线程之前先创建并激活进程池（比如在程序启动的 main 线程中
+创建进程池）。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="python">
+<h2>Python 的全局锁问题</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你已经听说过全局解释器锁 GIL，担心它会影响到多线程程序的执行性能。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">尽管 Python 完全支持多线程编程，但是解释器的 C 语言实现部分在完全并行执
+行时并不是线程安全的。实际上，解释器被一个全局解释器锁保护着，它确保任何时候
+都只有一个 Python 线程执行。GIL 最大的问题就是 Python 的多线程程序并不能利用
+多核 CPU 的优势（比如一个使用了多个线程的计算密集型程序只会在一个单 CPU 上
+面运行）。</p>
+<p>在讨论普通的 GIL 之前，有一点要强调的是 GIL 只会影响到那些严重依赖 CPU
+的程序（比如计算型的）。如果你的程序大部分只会涉及到 I/O，比如网络交互，那么
+使用多线程就很合适，因为它们大部分时间都在等待。实际上，你完全可以放心的创建
+几千个 Python 线程，现代操作系统运行这么多线程没有任何压力，没啥可担心的。</p>
+<p>而对于依赖 CPU 的程序，你需要弄清楚执行的计算的特点。例如，优化底层算法
+要比使用多线程运行快得多。类似的，由于 Python 是解释执行的，如果你将那些性能
+瓶颈代码移到一个 C 语言扩展模块中，速度也会提升的很快。如果你要操作数组，那
+么使用 NumPy 这样的扩展会非常的高效。最后，你还可以考虑下其他可选实现方案，
+比如 PyPy，它通过一个 JIT 编译器来优化执行效率（不过在写这本书的时候它还不能
+支持 Python 3）。</p>
+<p>还有一点要注意的是，线程不是专门用来优化性能的。一个 CPU 依赖型程序可能
+会使用线程来管理一个图形用户界面、一个网络连接或其他服务。这时候，GIL 会产生
+一些问题，因为如果一个线程长期持有 GIL 的话会导致其他非 CPU 型线程一直等待。
+事实上，一个写的不好的 C 语言扩展会导致这个问题更加严重，尽管代码的计算部分
+会比之前运行的更快些。</p>
+<p>说了这么多，现在想说的是我们有两种策略来解决 GIL 的缺点。首先，如果你完
+全工作于 Python 环境中，你可以使用 multiprocessing 模块来创建一个进程池，并
+像协同处理器一样的使用它。使用一个技巧利用进程池解决了 GIL 的问题。当一个线程想要执行 CPU
+密集型工作时，会将任务发给进程池。然后进程池会在另外一个进程中启动一个单独的
+Python 解释器来工作。当线程等待结果的时候会释放 GIL。并且，由于计算任务在单
+独解释器中执行，那么就不会受限于 GIL 了。在一个多核系统上面，你会发现这个技
+术可以让你很好的利用多 CPU 的优势。</p>
+<p>另外一个解决 GIL 的策略是使用 C 扩展编程技术。主要思想是将计算密集型任务
+转移给 C，跟 Python 独立，在工作的时候在 C 代码中释放 GIL。这可以通过在 C 代
+码中插入下面这样的特殊宏来完成:</p>
+<pre class="literal-block">
+#include &quot;Python.h&quot;
+...
+PyObject *pyfunc(PyObject *self, PyObject *args) {
+  ...
+  Py_BEGIN_ALLOW_THREADS
+  // Threaded C code
+  ...
+  Py_END_ALLOW_THREADS
+  ...
+}
+</pre>
+<p class="last">如果你使用其他工具访问 C 语言，比如对于 Cython 的 ctypes 库，你不需要做任
+何事。例如，ctypes 在调用 C 时会自动释放 GIL。</p>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">许多程序员在面对线程性能问题的时候，马上就会怪罪 GIL，什么都是它的问题。
+其实这样子太不厚道也太天真了点。作为一个真实的例子，在多线程的网络编程中神秘
+的 stalls 可能是因为其他原因比如一个 DNS 查找延时，而跟 GIL 毫无关系。最后你
+真的需要先去搞懂你的代码是否真的被 GIL 影响到。同时还要明白 GIL 大部分都应该
+只关注 CPU 的处理而不是 I/O.</p>
+<p>如果你准备使用一个处理器池，注意的是这样做涉及到数据序列化和在不同
+Python 解释器通信。被执行的操作需要放在一个通过 def 语句定义的 Python 函数中，
+不能是 lambda、闭包可调用实例等，并且函数参数和返回值必须要兼容 pickle。同样，
+要执行的任务量必须足够大以弥补额外的通信开销。</p>
+<p>另外一个难点是当混合使用线程和进程池的时候会让你很头疼。如果你要同时使
+用两者，最好在程序启动时，创建任何线程之前先创建一个单例的进程池。然后线程使
+用同样的进程池来进行它们的计算密集型工作。</p>
+<p>C 扩展最重要的特征是它们和 Python 解释器是保持独立的。也就是说，如果你准
+备将 Python 中的任务分配到 C 中去执行，你需要确保 C 代码的操作跟 Python 保持
+独立，这就意味着不要使用 Python 数据结构以及不要调用 Python 的 C API。另外一
+个就是你要确保 C 扩展所做的工作是足够的，值得你这样做。也就是说 C 扩展担负起
+了大量的计算任务，而不是少数几个计算。</p>
+<p class="last">这些解决 GIL 的方案并不能适用于所有问题。例如，某些类型的应用程序如果被
+分解为多个进程处理的话并不能很好的工作，也不能将它的部分代码改成 C 语言执行。
+对于这些应用程序，你就要自己需求解决方案了（比如多进程访问共享内存区，多解析
+器运行于同一个进程等）。或者，你还可以考虑下其他的解释器实现，比如 PyPy。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="actor">
+<h2>定义一个 Actor 任务</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想定义跟 actor 模式中类似“actors”角色的任务</dd>
+<dt>解决方案</dt>
+<dd>actor 模式是一种最古老的也是最简单的并行和分布式计算解决方案。事实上，它
+天生的简单性是它如此受欢迎的重要原因之一。简单来讲，一个 actor 就是一个并发执
+行的任务，只是简单的执行发送给它的消息任务。响应这些消息时，它可能还会给其他
+actor 发送更进一步的消息。actor 之间的通信是单向和异步的。因此，消息发送者不知
+道消息是什么时候被发送，也不会接收到一个消息已被处理的回应或通知。</dd>
+<dt>讨论</dt>
+<dd>actor 模式的魅力就在于它的简单性。</dd>
+</dl>
+</div>
+<div class="section" id="section-10">
+<h2>实现消息发布/订阅模型</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你有一个基于线程通信的程序，想让它们实现发布/订阅模式的消息通信</dd>
+<dt>解决方案</dt>
+<dd>要实现发布/订阅的消息通信模式，你通常要引入一个单独的“交换机”或“网关”
+对象作为所有消息的中介。也就是说，不直接将消息从一个任务发送到另一个，而是将
+其发送给交换机，然后由交换机将它发送给一个或多个被关联任务。</dd>
+<dt>讨论</dt>
+<dd><p class="first">通过队列发送消息的任务或线程的模式很容易被实现并且也非常普遍。不过，使用
+发布/订阅模式的好处更加明显。</p>
+<p>首先，使用一个交换机可以简化大部分涉及到线程通信的工作。无需去写通过多进
+程模块来操作多个线程，你只需要使用这个交换机来连接它们。某种程度上，这个就跟
+日志模块的工作原理类似。实际上，它可以轻松的解耦程序中多个任务。</p>
+<p>其次，交换机广播消息给多个订阅者的能力带来了一个全新的通信模式。例如，你
+可以使用多任务系统、广播或扇出。你还可以通过以普通订阅者身份绑定来构建调试和
+诊断工具。</p>
+<p>关于交换机的一个可能问题是对于订阅者的正确绑定和解绑。为了正确的管理资
+源，每一个绑定的订阅者必须最终要解绑。
+如:</p>
+<pre class="literal-block">
+exc = get_exchange('name')
+exc.attach(some_task)
+try:
+  ...
+finally:
+  exc.detach(some_task)
+</pre>
+<p>某种意义上，这个和使用文件、锁和类似对象很像。通常很容易会忘记最后的
+detach() 步骤。为了简化这个，你可以考虑使用上下文管理器协议。</p>
+<p class="last">最后还应该注意的是关于交换机的思想有很多种的扩展实现。例如，交换机可以实
+现一整个消息通道集合或提供交换机名称的模式匹配规则。交换机还可以被扩展到分
+布式计算程序中（比如，将消息路由到不同机器上面的任务中去）。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-11">
+<h2>使用生成器代替线程</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想使用生成器（协程）替代系统线程来实现并发。这个有时又被称为用户级线程
+或绿色线程。</dd>
+<dt>解决方案</dt>
+<dd>要使用生成器实现自己的并发，你首先要对生成器函数和 yield 语句有深刻理解。
+yield 语句会让一个生成器挂起它的执行，这样就可以编写一个调度器，将生成器当做
+某种“任务”并使用任务协作切换来替换它们的执行。</dd>
+<dt>讨论</dt>
+<dd><p class="first">在构建基于生成器的并发框架时，通常会使用更常见的 yield 形式:</p>
+<pre class="literal-block">
+def some_generator():
+  ...
+  result = yield data
+  ...
+</pre>
+<p>使用这种形式的 yield 语句的函数通常被称为“协程”。通过调度器，yield 语句在
+一个循环中被处理，如下:</p>
+<pre class="literal-block">
+f = some_generator()
+
+# Initial result. Is None to start since nothing has been computed
+result = None
+
+while True:
+  try:
+    data = f.send(result)
+    result = ... do some calculation ...
+  except StopIteration:
+    break
+</pre>
+<p>yield from 语句被用来实现协程，可以被其它生成器作为
+子程序或过程来调用。本质上就是将控制权透明的传输给新的函数。不像普通的生成
+器，一个使用 yield from 被调用的函数可以返回一个作为 yield from 语句结果的值。</p>
+<p class="last">如果使用生成器编程，要提醒你的是它还是有很多缺点的。特别是，你得不
+到任何线程可以提供的好处。例如，如果你执行 CPU 依赖或 I/O 阻塞程序，它会将整
+个任务挂起知道操作完成。为了解决这个问题，你只能选择将操作委派给另外一个可以
+独立运行的线程或进程。另外一个限制是大部分 Python 库并不能很好的兼容基于生成
+器的线程。如果你选择这个方案，你会发现你需要自己改写很多标准库函数。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-12">
+<h2>多个线程队列轮询</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你有一个线程队列集合，想为到来的元素轮询它们，就跟你为一个客户端请求去轮
+询一个网络连接集合的方式一样。</dd>
+<dt>解决方案</dt>
+<dd><p class="first">对于轮询问题的一个常见解决方案中有个很少有人知道的技巧，包含了一个隐藏
+的回路网络连接。本质上讲其思想就是：对于每个你想要轮询的队列，你创建一对连接
+的套接字。然后你在其中一个套接字上面编写代码来标识存在的数据，另外一个套接字
+被传给 select() 或类似的一个轮询数据到达的函数:</p>
+<pre class="last literal-block">
+# Compatibility on non-POSIX systems
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('127.0.0.1', 0))
+server.listen(1)
+self._putsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+self._putsocket.connect(server.getsockname())
+self._getsocket, _ = server.accept()
+server.close()
+</pre>
+</dd>
+<dt>讨论</dt>
+<dd><p class="first">对于轮询非类文件对象，比如队列通常都是比较棘手的问题。例如，如果你不使用
+上面的套接字技术，你唯一的选择就是编写代码来循环遍历这些队列并使用一个定时
+器。</p>
+<p class="last">这样做其实不合理，还会引入其他的性能问题。例如，如果新的数据被加入到一个
+队列中，至少要花 sleep的时间 才能被发现。如果你之前的轮询还要去轮询其他对象，比如
+网络套接字那还会有更多问题。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="unix">
+<h2>在 Unix 系统上面启动守护进程</h2>
+<dl class="docutils">
+<dt>问题</dt>
+<dd>你想编写一个作为一个在 Unix 或类 Unix 系统上面运行的守护进程运行的程序</dd>
+<dt>解决方案</dt>
+<dd><p class="first">创建一个正确的守护进程需要一个精确的系统调用序列以及对于细节的控制。</p>
+<p>创建一个守护进程的步骤看上去不是很易懂，但是大体思想是这样的，首先，一个
+守护进程必须要从父进程中脱离。这是由 os.fork() 操作来完成的，并立即被父进程
+终止。
+在子进程变成孤儿后，调用 os.setsid() 创建了一个全新的进程会话，并设置子
+进程为首领。它会设置这个子进程为新的进程组的首领，并确保不会再有控制终端。如
+果这些听上去太魔幻，因为它需要将守护进程同终端分离开并确保信号机制对它不起
+作用。调用 os.chdir() 和 os.umask(0) 改变了当前工作目录并重置文件权限掩码。修
+改目录通常是个好主意，因为这样可以使得它不再工作在被启动时的目录。
+另外一个调用 os.fork() 在这里更加神秘点。这一步使得守护进程失去了获取新
+的控制终端的能力并且让它更加独立（本质上，该 daemon 放弃了它的会话首领低位，
+因此再也没有权限去打开控制终端了）。尽管你可以忽略这一步，但是最好不要这么做。</p>
+<p class="last">一旦守护进程被正确的分离，它会重新初始化标准 I/O 流指向用户指定的文件。
+这一部分有点难懂。跟标准 I/O 流相关的文件对象的引用在解释器中多个地方被找到
+（sys.stdout, sys.__stdout__ 等）。仅仅简单的关闭 sys.stdout 并重新指定它是行不
+通的，因为没办法知道它是否全部都是用的是 sys.stdout 。这里，我们打开了一个单
+独的文件对象，并调用 os.dup2() ，用它来代替被 sys.stdout 使用的文件描述符。这
+样，sys.stdout 使用的原始文件会被关闭并由新的来替换。还要强调的是任何用于文
+件编码或文本处理的标准 I/O 流还会保留原状。
+守护进程的一个通常实践是在一个文件中写入进程 ID，可以被其他程序后面使用
+到。daemonize() 函数的最后部分写了这个文件，但是在程序终止时删除了它。atexit.
+register() 函数注册了一个函数在 Python 解释器终止时执行。一个对于 SIGTERM 的
+信号处理器的定义同样需要被优雅的关闭。信号处理器简单的抛出了 SystemExit() 异
+常。或许这一步看上去没必要，但是没有它，终止信号会使得不执行 atexit.register()
+注册的清理操作的时候就杀掉了解释器。一个杀掉进程的例子代码可以在程序最后的
+stop 命令的操作中看到。</p>
+</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    启动与停止线程
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    判断线程是否已经启动
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    线程间通信
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    给关键部分加锁
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    防止死锁的加锁机制
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    保存线程的状态信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    创建一个线程池
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    简单的并行编程
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#python">
+    Python 的全局锁问题
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#actor">
+    定义一个 Actor 任务
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    实现消息发布/订阅模型
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    使用生成器代替线程
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-12">
+    多个线程队列轮询
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unix">
+    在 Unix 系统上面启动守护进程
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>28</strong></span>
+											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
+											<p><p class="first last">Theia-拖动文件到编辑器</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
+											<p><p class="first last">浏览器环境下的Window对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

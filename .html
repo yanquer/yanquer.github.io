@@ -12,13 +12,22 @@
 			<meta charset="utf-8" />
 			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
 				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
 				<link rel="stylesheet" href="/theme/css/style.css" />
 				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
 			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
 		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
 	</head>
 	<body class="no-sidebar">
 		<!-- Header Wrapper -->
@@ -43,10 +52,10 @@
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/api.html">API</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
-														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li ><a href="/category/celery_more.html">celery_more</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -55,6 +64,14 @@
 
 						</div>
 					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
       <h2></h2>
@@ -62,15 +79,16 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 三月 2024
+      , 29 三月 2024
       , Category:
-	  <a href="category/doc-raw.html">doc-raw</a>
+	  <a href="category/mac.html">Mac</a>
     </div>
 	<div class="red-line">
     </div>
   </div>
 				</div>
 			</div>
+
 
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
@@ -85,30 +103,13 @@
 								<article class="box is-post">
 									<div class="post-infos">
 										<ul class="tags">
-											<li><a class="button" href="category/doc-raw.html">Doc-raw</a></li>
+											<li><a class="button" href="category/mac.html">Mac</a></li>
 										</ul>
 									</div>
 
-									<div class="pennant pennant-alt date">2024-03-20</div>
+									<div class="pennant pennant-alt date">2024-03-29</div>
 									<h2></h2>
-									<!-- Study Document documentation master file, created by
-sphinx-quickstart on Sun Nov 20 17:25:22 2022.
-You can adapt this file completely to your liking, but it should at least
-contain the root `toctree` directive. -->
-<div class="section" id="section-1">
-<h2>启程</h2>
-<div class="sidebar">
-编程语言并不会限制开发, 相反是开发者限制了语言</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h2>Indices and tables</h2>
-<ul class="simple">
-<li><em>genindex</em></li>
-<li><em>modindex</em></li>
-<li><em>search</em></li>
-</ul>
-</div>
-
+									
 								</article>
 						</div>
 					</div>
@@ -119,6 +120,13 @@ contain the root `toctree` directive. -->
 
 				</div>
 			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<div id="sidebar-tool-back-top" class="fixed-container">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
 
 		<!-- Footer Wrapper -->
 			<div id="footer-wrapper">
@@ -132,44 +140,25 @@ contain the root `toctree` directive. -->
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 3 <strong>20</strong></span>
-											<h3><a href=".html"></a></h3>
-											<p><!-- Study Document documentation master file, created by
-sphinx-quickstart on Sun Nov 20 17:25:22 2022.
-You can adapt this file completely to your liking, but it should at least
-contain the root `toctree` directive. -->
-<div class="section" id="section-1">
-<h2>启程</h2>
-<div class="sidebar">
-编程语言并不会限制开发, 相反是开发者限制了语言</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h2>Indices and tables</h2>
-<ul class="simple">
-<li><em>genindex</em></li>
-<li><em>modindex</em></li>
-<li><em>search</em></li>
-</ul>
-</div>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>19</strong></span>
-											<h3><a href="yq-doc-source-docs-version-control-git-issuses-clone-only-folder.html">仅克隆指定文件夹</a></h3>
-											<p><p class="first last">当前模块或子模块仅克隆指定文件夹</p>
-</p>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="./.html"></a></h3>
+											<p></p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>19</strong></span>
-											<h3><a href="yq-doc-source-docs-rear-end-python-python-three--party-library-googletrans.html">googletrans</a></h3>
-											<p><p class="first last">python实现翻译功能</p>
-</p>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="./.html"></a></h3>
+											<p></p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>18</strong></span>
-											<h3><a href="yq-os-linux-ubuntu-issues.html">gnome刷新desktop缓存</a></h3>
-											<p><p class="first last">gnome图标文件缓存刷新</p>
-</p>
+											<span class="date"> 3 <strong>29</strong></span>
+											<h3><a href="./.html"></a></h3>
+											<p></p>
 										</li>
 									</ul>
 								</section>
@@ -197,8 +186,8 @@ contain the root `toctree` directive. -->
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/api.html">API</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -248,6 +237,27 @@ contain the root `toctree` directive. -->
 		<script src="/theme/js/config.js"></script>
 		<script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth' 
+			});
+		})
+	}
+	addEvent()
+</script>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
 	</body>
 </html>
