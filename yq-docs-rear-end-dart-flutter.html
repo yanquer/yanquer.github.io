@@ -1,0 +1,716 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
+				<link rel="stylesheet" href="/theme/css/pygment.css" />
+				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/style-update.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Flutter</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 30 March 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button button-alt" href="tag/dart.html">Dart</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-03-30</div>
+									<h2>Flutter</h2>
+									<!-- 链接 -->
+<p>Flutter 框架</p>
+<blockquote>
+<ul class="simple">
+<li>Flutter 是一个开源的 UI 工具包，由 Google 开发，用于创建跨平台的原生应用程序。它使用 Dart 语言作为开发语言。</li>
+<li>Flutter 提供了一套丰富的基础组件和强大的 UI 创建能力，允许开发者以一种声明式的方式构建应用程序的用户界面。</li>
+<li>通过 Flutter，开发者可以编写一次代码，然后编译到本地代码，运行在 iOS、Android、web 以及桌面等多个平台上。</li>
+</ul>
+</blockquote>
+<div class="section" id="section-1">
+<h2>安装</h2>
+<div class="section" id="macos">
+<h3>MacOS</h3>
+<p>在 MacOS 下, 安装 <tt class="docutils literal">Flutter</tt> 后, 可以从输出看到, <cite>dart</cite>
+已经默认被捆绑安装</p>
+<div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>flutter
+
+<span class="c1"># 下面是输出</span>
+Running<span class="w"> </span><span class="sb">`</span>brew<span class="w"> </span>update<span class="w"> </span>--auto-update<span class="sb">`</span>...
+<span class="o">==</span>&gt;<span class="w"> </span>Auto-updated<span class="w"> </span>Homebrew!
+Updated<span class="w"> </span><span class="m">2</span><span class="w"> </span>taps<span class="w"> </span><span class="o">(</span>homebrew/core<span class="w"> </span>and<span class="w"> </span>homebrew/cask<span class="o">)</span>.
+<span class="o">==</span>&gt;<span class="w"> </span>New<span class="w"> </span>Formulae
+c-blosc2<span class="w">                 </span>dissent<span class="w">                  </span>ingress2gateway<span class="w">          </span>jnv<span class="w">                      </span>protoc-gen-js<span class="w">            </span>ratchet<span class="w">                  </span><span class="nv">rtabmap</span>
+<span class="o">==</span>&gt;<span class="w"> </span>New<span class="w"> </span>Casks
+galaxybudsclient<span class="w">     </span>godspeed<span class="w">             </span>ireal-pro<span class="w">            </span>irpf2024<span class="w">             </span>juxtacode<span class="w">            </span>lookaway<span class="w">             </span>loungy<span class="w">               </span>xcodepilot
+
+You<span class="w"> </span>have<span class="w"> </span><span class="m">91</span><span class="w"> </span>outdated<span class="w"> </span>formulae<span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>outdated<span class="w"> </span>cask<span class="w"> </span>installed.
+
+<span class="o">==</span>&gt;<span class="w"> </span>Downloading<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/homebrew-cask/2e01faa0b7127d4da8febacd0448062c147386af/Casks/f/flutter.rb
+<span class="c1">###################################################################################################################################################################### 100.0%</span>
+<span class="o">==</span>&gt;<span class="w"> </span>Downloading<span class="w"> </span>https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.19.5-stable.zip
+<span class="c1">###################################################################################################################################################################### 100.0%</span>
+<span class="o">==</span>&gt;<span class="w"> </span>Installing<span class="w"> </span>Cask<span class="w"> </span><span class="nv">flutter</span>
+<span class="o">==</span>&gt;<span class="w"> </span>Linking<span class="w"> </span>Binary<span class="w"> </span><span class="s1">&#39;dart&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;/usr/local/bin/dart&#39;</span>
+<span class="o">==</span>&gt;<span class="w"> </span>Linking<span class="w"> </span>Binary<span class="w"> </span><span class="s1">&#39;flutter&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;/usr/local/bin/flutter&#39;</span>
+🍺<span class="w">  </span>flutter<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>installed!
+</pre></div>
+<p>最后几行输出已说明</p>
+<p>补充, 当你从 Flutter 官网下载并安装 Flutter SDK 后，你将获得以下内容：</p>
+<ul class="simple">
+<li>Dart 运行时：这是执行 Dart 代码所需的环境。</li>
+<li>Flutter 框架：包含了构建用户界面所需的所有核心库和组件。</li>
+<li>命令行工具：如 flutter 命令行接口，它提供了创建项目、构建和运行应用程序等功能。</li>
+<li>编辑器和 IDE 支持：Flutter 插件和支持，以便在流行的代码编辑器和集成开发环境中使用。</li>
+</ul>
+<p>因此，如果你的目的是开发 Flutter 应用程序，你不需要单独安装 Dart。
+只需按照 Flutter 官方安装指南进行操作，即可同时获得 Dart 语言环境和 Flutter 框架。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>此处的介绍仅自己摸索, 因为刚开始, 有些可能不完善.
+官方的教程说明是自己手动下载安装,
+详见: <a class="reference external" href="https://docs.flutter.dev/get-started/install/macos/desktop">Start building Flutter native desktop apps on macOS</a></p>
+<p class="last">国内可以看这个官方推荐的中文教程(属于社区文档): <a class="reference external" href="https://flutter.cn/community/china">在中国网络环境下使用Flutter</a></p>
+</div>
+</div>
+<div class="section" id="windows">
+<h3>Windows</h3>
+<p>直接把仓库clone下来了</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/flutter/flutter.git
+<span class="nb">cd</span><span class="w"> </span>flutter<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w">  </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">3</span>.19.5<span class="w">    </span><span class="c1"># 切换到最新版</span>
+</pre></div>
+<p>vscode里面用的时候直接手动指定一下sdk包为clone的位置.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>拉下来的默认是主分支的, 可以手动切换到tag</p>
+<p class="last">记得可以直接把clone位置下的 <cite>bin</cite> 目录加到 <cite>PATH</cite> 环境变量.</p>
+</div>
+<p>因为是国内使用, 还需要给 flutter 配置使用时候的镜像源.
+可以在每次用的时候再手动设置以下镜像环境变量:</p>
+<pre class="literal-block">
+PUB_HOSTED_URL=&quot;https://pub.flutter-io.cn&quot;
+FLUTTER_STORAGE_BASE_URL=&quot;https://storage.flutter-io.cn&quot;
+</pre>
+<p>也可以手动去系统环境变量加入</p>
+<div class="figure">
+<img alt="加到用户环境变量" src="doc-raw/resources/images/2024-03-30-23-24-18.png" style="width: 480px;" />
+</div>
+<p>若需要完整的按照国内的教程使用, 详情参考 <a class="reference external" href="https://flutter.cn/community/china">在中国网络环境下使用Flutter</a> .</p>
+<!-- 这里只整理一下一个大致的流程 -->
+<!-- 手动去环境变量加入以下环境: -->
+<!-- PUB_HOSTED_URL="https://pub.flutter-io.cn" -->
+<!-- FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn" -->
+<!-- 按照 `Flutter SDK 归档列表 <https://flutter.cn/docs/release/archive?tab=windows>`_ -->
+<!-- 下载SDK包 -->
+<!-- 大致是需要找到想要版本的 `jsonl` 文件, 然后从这个文件下载 -->
+<!-- .. figure:: ../../../resources/images/2024-03-30-23-10-39.png -->
+<!-- :width: 480px -->
+<!-- :alt: 社区下载SDK指引 -->
+<!-- 比如我想下载这个最新版的, 就用指引的 `<https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.19.5-stable.zip.intoto.jsonl>`_ -->
+<!-- 至于提供的指令:\: -->
+<!-- curl [provenance URL] | jq -r .payload | base64 -d | jq -->
+<!-- 我本地没有 `jq` 就没研究怎么下了. -->
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>创建项目</h2>
+<p>参考: <a class="reference external" href="https://codelabs.developers.google.com/codelabs/flutter-codelab-first?hl=zh-cn#2">3. 创建项目</a></p>
+<p>此处仅介绍在 <cite>Vscode</cite> 中创建项目.
+<cite>Ctrl + Shift + P</cite> 打开命令面板, 输入 <cite>flutter</cite>. 选择 <cite>Flutter: New Project</cite></p>
+<div class="figure">
+<img alt="创建项目" src="doc-raw/resources/images/2024-03-30-23-51-18.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">需要先安装 <cite>Flutter</cite> 插件</p>
+</div>
+<p>然后选择项目名称, 项目位置, 项目模板</p>
+<p>创建好后, 你会发现下面有各个平台的文件夹, 不用去管这些平台文件夹.
+<cite>Flutter</cite> 开发, 是基于 <cite>Dart</cite> 语言的, 相关源码只用在 <cite>lib</cite> 文件夹下, <cite>main.dart</cite> 是入口文件.  默认输出到 <cite>build</cite> 文件夹下.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">用 <cite>lib</cite> 作为输出目录,
+有点奇葩, 一般貌似默认都叫 <cite>src</cite>...</p>
+</div>
+<p>当第一次打开 <cite>lib/main.dart</cite> 时候, 可能会有报错:</p>
+<pre class="literal-block">
+&quot;Target of URI doesn't exist: 'package:flutter/material.dart'.
+</pre>
+<p>说明是多半没把资源拉下来, 手动执行下</p>
+<div class="highlight"><pre><span></span><span class="c1"># flutter pub get     # 好像如果拉的别人的项目用这个?</span>
+flutter<span class="w"> </span>packages<span class="w"> </span>get
+</pre></div>
+<div class="section" id="section-3">
+<h3>配置文件介绍</h3>
+<dl class="docutils">
+<dt>pubspec.yaml</dt>
+<dd><cite>pubspec.yaml</cite> 是主配置文件.
+在 <cite>dependencies</cite> 中添加依赖, <cite>dev_dependencies</cite> 中添加开发依赖.</dd>
+<dt>analysis_options.yaml</dt>
+<dd>此文件决定了 Flutter 在分析代码时的严格程度(感觉就像tsconfig).</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>启动</h2>
+<div class="section" id="section-5">
+<h3>报错1: 版本不匹配</h3>
+<p>如果遇到报错:</p>
+<pre class="literal-block">
+lib/main.dart:1:1: Error: The specified language version is too high. The highest supported language version is 3.3.
+</pre>
+<p>可能是创建好后中途切过版本, 我是重新创建一个项目解决的.</p>
+<p>或者</p>
+<div class="highlight"><pre><span></span>flutter<span class="w"> </span>clean
+</pre></div>
+<p>后重新加载(没试过)</p>
+</div>
+<div class="section" id="dart-ui">
+<h3>报错2: &quot;dart:ui&quot; 不可用</h3>
+<p>错误信息:</p>
+<pre class="literal-block">
+flutter/packages/flutter/lib/src/material/animated_icons.dart:9:8: Error: Dart library 'dart:ui' is not available on this platform.
+</pre>
+<dl class="docutils">
+<dt>原因:</dt>
+<dd>直接将 <cite>lib/main.dart</cite> 当做普通的文件执行, 而不是作为 <cite>Flutter</cite> 项目启动.</dd>
+<dt>解决</dt>
+<dd><p class="first">不要直接点 <cite>Vscode</cite> 右上角的三角形 <cite>Run</cite> 按钮, 而是去到 <cite>Debug -&gt; Start Debugging</cite> 选项或直接按 <cite>F5</cite></p>
+<p>第一次点后会让你选择平台, 因为我用的 <cite>Windows</cite> 就选这个了</p>
+<div class="last figure">
+<img alt="Vscode选择Windows" src="doc-raw/resources/images/2024-03-31-13-04-28.png" style="width: 480px;" />
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="section-6">
+<h2>控件介绍</h2>
+<p>对于 <cite>Flutter</cite> 万物皆控件.</p>
+<ul class="simple">
+<li>Container: 容器, 类似div吧</li>
+<li>Row: 行</li>
+<li>Column: 列</li>
+<li>Text: 文本</li>
+<li>Image: 图片</li>
+<li>Icon: 图标</li>
+<li>ListView: 列表</li>
+<li>GridView: 网格</li>
+<li>Card: 卡片</li>
+<li>Button: 按钮</li>
+<li>TextField: 文本框</li>
+<li>Switch: 开关</li>
+<li>Checkbox: 复选框</li>
+<li>Radio: 单选框</li>
+<li>Slider: 滑动条</li>
+<li>ProgressIndicator: 进度条</li>
+<li>AppBar: 顶部栏</li>
+<li>Expanded: 扩展, 每个 Expanded 代表一个区块，可以包含任何你想要的 Widget</li>
+</ul>
+<div class="section" id="expanded">
+<h3>Expanded</h3>
+<p>布局组件. 使得布局能够自适应不同的屏幕尺寸和方向变化，同时简化了布局代码的编写</p>
+<dl class="docutils">
+<dt>均匀分配空间：</dt>
+<dd><cite>Expanded</cite> 会自动分配父容器中未使用的空间给它的子组件。这意味着如果有多个 <cite>Expanded</cite> 组件，它们会平分额外的空间。</dd>
+<dt>响应式布局：</dt>
+<dd>当父容器的大小变化时（例如，设备方向改变或键盘弹出）， <cite>Expanded</cite> 会响应这些变化并重新分配子组件的大小，保持布局的一致性和适应性。</dd>
+<dt>简化布局代码：</dt>
+<dd>使用 <cite>Expanded</cite> 可以减少手动计算和分配空间的需要，简化布局代码，使代码更加清晰和易于维护。</dd>
+<dt>保持宽高比：</dt>
+<dd>当 <cite>Expanded</cite> 用于 <cite>Row</cite> 或 <cite>Column</cite> 时，它可以保持子组件的宽高比，避免组件被拉伸或压缩。</dd>
+</dl>
+</div>
+<div class="section" id="flexible">
+<h3>Flexible</h3>
+<p>布局组件. 使得布局能够自适应不同的屏幕尺寸和方向变化，同时简化了布局代码的编写</p>
+<dl class="docutils">
+<dt>灵活的空间分配：</dt>
+<dd><cite>Flexible</cite> 提供了比 <cite>Expanded</cite> 更灵活的空间分配方式。通过 flex 属性，可以指定子组件占据的额外空间的比例。</dd>
+<dt>优先级控制：</dt>
+<dd><cite>Flexible</cite> 允许您通过 fit 属性（FlexFit.tight 或 FlexFit.loose）来控制子组件填充空间的优先级，从而实现更精细的布局控制。</dd>
+<dt>嵌套使用：</dt>
+<dd><cite>Flexible</cite> 可以嵌套使用，创建复杂的布局结构，同时保持子组件之间的空间分配比例。</dd>
+<dt>与 Expanded 配合使用：</dt>
+<dd><cite>Flexible</cite> 可以与 <cite>Expanded</cite> 配合使用，创建复杂的布局，其中一些子组件均匀分配空间，而其他子组件根据比例分配空间。</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>控件风格</h2>
+<p>Material  与 非 Material(Cupertino)</p>
+<p>以下源于AI</p>
+<p>Material Design</p>
+<blockquote>
+设计理念：Material Design 是 Google 设计语言的一部分，它模仿了现实世界中的材料和光影效果，强调平面化、简洁和动态反馈。
+视觉元素：Material Design 使用扁平化的设计元素，如按钮、卡片、浮动操作按钮（FloatingActionButton）等，这些元素通常具有阴影效果，以模拟纸张的厚度和层次。
+交互反馈：Material Design 强调直观的交互反馈，如按钮按下时的阴影变化、滑动操作时的动态效果等。
+导航：Material Design 提供了多种导航模式，如底部导航栏（BottomNavigationBar）、标签导航（TabBar）和抽屉导航（Drawer）等。
+适用场景：Material Design 适用于需要现代化、简洁风格的应用，它在 Android 和 Web 应用中非常流行。</blockquote>
+<p>Cupertino（非 Material）</p>
+<blockquote>
+设计理念：Cupertino 设计风格是 Apple 的设计语言，它模仿了 iOS 的用户界面元素和交互模式，强调清晰、直观和一致性。
+视觉元素：Cupertino 风格使用更加立体的设计元素，如带有圆角的按钮、列表视图（ListView）和导航栏（NavigationBar）等，这些元素通常没有阴影效果，以模拟玻璃的质感。
+交互反馈：Cupertino 风格也提供了丰富的交互反馈，如按钮按下时的背景色变化、滑动列表时的弹性效果等。
+导航：Cupertino 风格提供了类似 iOS 的导航模式，如分段控件（SegmentedControl）、弹出菜单（ActionSheet）和模态弹出（Modal）等。
+适用场景：Cupertino 风格适用于需要符合 iOS 设计规范的应用，它在 iOS 和 macOS 应用中非常受欢迎。</blockquote>
+<p>简单理解,</p>
+<ul class="simple">
+<li>Material 是偏Android的UI风格</li>
+<li>Cupertino 是偏iOS的UI风格</li>
+</ul>
+</div>
+<div class="section" id="section-8">
+<h2>控件状态</h2>
+<p>默认提供了 有状态控件 <cite>StatefulWidget</cite> 和 无状态控件 <cite>StatelessWidget</cite></p>
+<p>简单来说, 有状态控件 <cite>StatefulWidget</cite> 可以根据控件自动刷新, <cite>setState</cite> 方法可以触发控件刷新</p>
+</div>
+<div class="section" id="section-9">
+<h2>增加包依赖</h2>
+<p>类似node 的 <cite>package.json</cite> , flutter 是通过 <cite>pubspec.yaml</cite> 来管理依赖包.</p>
+<p>比如加入 路径处理模块的依赖.</p>
+<div class="highlight"><pre><span></span><span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">path_provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^2.0.0</span>
+</pre></div>
+<p>然后运行 <tt class="docutils literal">flutter pub get</tt> 来安装依赖</p>
+</div>
+<div class="section" id="flutter-2">
+<h2>flutter指令选项参考</h2>
+<div class="section" id="pub">
+<h3>pub</h3>
+<dl class="docutils">
+<dt>get</dt>
+<dd><p class="first">安装依赖, 类似node的 <tt class="docutils literal">npm install</tt></p>
+<div class="last"><div class="highlight"><pre><span></span>flutter<span class="w"> </span>pub<span class="w"> </span>get
+</pre></div>
+</div></dd>
+<dt>add</dt>
+<dd><p class="first">命令行添加依赖, 类似node的 <tt class="docutils literal">npm install xxx</tt>,
+这样就不用手动改 <cite>pubspec.yaml</cite> 文件了.</p>
+<p>比如增加 <cite>add path_provider</cite> 和 <cite>file_selector</cite> 两个包.</p>
+<div class="last"><div class="highlight"><pre><span></span>flutter<span class="w"> </span>pub<span class="w"> </span>add<span class="w"> </span>path_provider<span class="w"> </span>file_selector
+</pre></div>
+</div></dd>
+</dl>
+</div>
+<div class="section" id="packages">
+<h3>packages</h3>
+<p>早期版本就有的指令</p>
+<dl class="docutils">
+<dt>get</dt>
+<dd><p class="first">与 <cite>pub get</cite> 类似, 都可以获取依赖</p>
+<div class="highlight"><pre><span></span>flutter<span class="w"> </span>packages<span class="w"> </span>get
+</pre></div>
+<p class="last">功能基本相同, 早期版本只有 <cite>packages get</cite>.
+新版本中, 貌似即使使用的是 <cite>flutter packages get</cite>, 也会转换为 <cite>flutter pub get</cite></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="section-10">
+<h2>一些模块/插件参考</h2>
+<dl class="docutils">
+<dt>path_provider</dt>
+<dd>文件读取功能</dd>
+<dt>file_selector</dt>
+<dd>打开文件/目录选择器来选择文件/目录</dd>
+</dl>
+</div>
+<div class="section" id="section-11">
+<h2>可能遇到的问题</h2>
+<div class="section" id="error-not-a-constant-expression">
+<h3>Error: Not a constant expression</h3>
+<p>我这里的原因是使用了 <cite>const</cite>, 但是上面传递的值不是 <cite>const</cite> 类型, 删掉  <cite>const</cite> 即可.</p>
+<div class="figure">
+<img alt="报错常量不可用" src="doc-raw/resources/images/2024-03-31-20-15-26.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="section-12">
+<h3>使用状态组件时, 状态类获取父类信息</h3>
+<p>使用 <cite>widget</cite>:</p>
+<p><cite>widget</cite> 是一个特殊的变量，它是当前 <cite>State</cite> 对象所关联的 <cite>StatefulWidget</cite> 的实例。
+通过 <cite>widget</cite> ，可以访问 <cite>StatefulWidget</cite> 中定义的数据和方法。</p>
+<p>另外还有一个 <cite>context</cite> 表示当前 <cite>BuildContext</cite> ，它包含了构建过程中的上下文信息，可以用来访问祖先小部件的属性和方法。</p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    安装
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#macos">
+      MacOS
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#windows">
+      Windows
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    创建项目
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      配置文件介绍
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    启动
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      报错1: 版本不匹配
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dart-ui">
+      报错2: "dart:ui" 不可用
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    控件介绍
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#expanded">
+      Expanded
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#flexible">
+      Flexible
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    控件风格
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    控件状态
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    增加包依赖
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#flutter-2">
+    flutter指令选项参考
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#pub">
+      pub
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#packages">
+      packages
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    一些模块/插件参考
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-11">
+    可能遇到的问题
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#error-not-a-constant-expression">
+      Error: Not a constant expression
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-12">
+      使用状态组件时, 状态类获取父类信息
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Mar <strong>30</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
+											<p><p class="first last">CSS设置元素不可被选中</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
+											<p><p class="first last">pm2-守护进程管理器</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
+											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

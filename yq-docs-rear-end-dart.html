@@ -79,7 +79,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 29 三月 2024
+      , 29 March 2024
       , Category:
 	  <a href="category/hou-duan.html">后端</a>
     </div>
@@ -137,54 +137,10 @@ $<span class="w"> </span>brew<span class="w"> </span>unlink<span class="w"> </sp
 <p>你还可以通过 <tt class="docutils literal">Flutter</tt> 框架来安装 <tt class="docutils literal">dart</tt></p>
 <p>dart跟 <tt class="docutils literal">Flutter</tt> 是息息相关的.
 <tt class="docutils literal">Flutter</tt> 是由 <cite>dart</cite> 开发的一个UI框架.</p>
-<p>Flutter 框架</p>
-<blockquote>
-<ul class="simple">
-<li>Flutter 是一个开源的 UI 工具包，由 Google 开发，用于创建跨平台的原生应用程序。它使用 Dart 语言作为开发语言。</li>
-<li>Flutter 提供了一套丰富的基础组件和强大的 UI 创建能力，允许开发者以一种声明式的方式构建应用程序的用户界面。</li>
-<li>通过 Flutter，开发者可以编写一次代码，然后编译到本地代码，运行在 iOS、Android、web 以及桌面等多个平台上。</li>
-</ul>
-</blockquote>
-<p>在 MacOS 下, 安装 <tt class="docutils literal">Flutter</tt> 后, 可以从输出看到, <cite>dart</cite>
-已经默认被捆绑安装</p>
+<p>安装</p>
 <div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>flutter
-
-<span class="c1"># 下面是输出</span>
-Running<span class="w"> </span><span class="sb">`</span>brew<span class="w"> </span>update<span class="w"> </span>--auto-update<span class="sb">`</span>...
-<span class="o">==</span>&gt;<span class="w"> </span>Auto-updated<span class="w"> </span>Homebrew!
-Updated<span class="w"> </span><span class="m">2</span><span class="w"> </span>taps<span class="w"> </span><span class="o">(</span>homebrew/core<span class="w"> </span>and<span class="w"> </span>homebrew/cask<span class="o">)</span>.
-<span class="o">==</span>&gt;<span class="w"> </span>New<span class="w"> </span>Formulae
-c-blosc2<span class="w">                 </span>dissent<span class="w">                  </span>ingress2gateway<span class="w">          </span>jnv<span class="w">                      </span>protoc-gen-js<span class="w">            </span>ratchet<span class="w">                  </span><span class="nv">rtabmap</span>
-<span class="o">==</span>&gt;<span class="w"> </span>New<span class="w"> </span>Casks
-galaxybudsclient<span class="w">     </span>godspeed<span class="w">             </span>ireal-pro<span class="w">            </span>irpf2024<span class="w">             </span>juxtacode<span class="w">            </span>lookaway<span class="w">             </span>loungy<span class="w">               </span>xcodepilot
-
-You<span class="w"> </span>have<span class="w"> </span><span class="m">91</span><span class="w"> </span>outdated<span class="w"> </span>formulae<span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>outdated<span class="w"> </span>cask<span class="w"> </span>installed.
-
-<span class="o">==</span>&gt;<span class="w"> </span>Downloading<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/homebrew-cask/2e01faa0b7127d4da8febacd0448062c147386af/Casks/f/flutter.rb
-<span class="c1">###################################################################################################################################################################### 100.0%</span>
-<span class="o">==</span>&gt;<span class="w"> </span>Downloading<span class="w"> </span>https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.19.5-stable.zip
-<span class="c1">###################################################################################################################################################################### 100.0%</span>
-<span class="o">==</span>&gt;<span class="w"> </span>Installing<span class="w"> </span>Cask<span class="w"> </span><span class="nv">flutter</span>
-<span class="o">==</span>&gt;<span class="w"> </span>Linking<span class="w"> </span>Binary<span class="w"> </span><span class="s1">&#39;dart&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;/usr/local/bin/dart&#39;</span>
-<span class="o">==</span>&gt;<span class="w"> </span>Linking<span class="w"> </span>Binary<span class="w"> </span><span class="s1">&#39;flutter&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;/usr/local/bin/flutter&#39;</span>
-🍺<span class="w">  </span>flutter<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>installed!
 </pre></div>
-<p>最后几行输出已说明</p>
-<p>补充, 当你从 Flutter 官网下载并安装 Flutter SDK 后，你将获得以下内容：</p>
-<ul class="simple">
-<li>Dart 运行时：这是执行 Dart 代码所需的环境。</li>
-<li>Flutter 框架：包含了构建用户界面所需的所有核心库和组件。</li>
-<li>命令行工具：如 flutter 命令行接口，它提供了创建项目、构建和运行应用程序等功能。</li>
-<li>编辑器和 IDE 支持：Flutter 插件和支持，以便在流行的代码编辑器和集成开发环境中使用。</li>
-</ul>
-<p>因此，如果你的目的是开发 Flutter 应用程序，你不需要单独安装 Dart。
-只需按照 Flutter 官方安装指南进行操作，即可同时获得 Dart 语言环境和 Flutter 框架。</p>
-<div class="admonition note">
-<p class="first admonition-title">注解</p>
-<p class="last">此处的介绍仅自己摸索, 因为刚开始, 有些可能不完善.
-官方的教程说明是自己手动下载安装,
-详见: <a class="reference external" href="https://docs.flutter.dev/get-started/install/macos/desktop">Start building Flutter native desktop apps on macOS</a></p>
-</div>
+<p>详情参考: <a class="reference external" href="/yq-docs-rear-end-dart-flutter.html">Flutter</a></p>
 <div class="section" id="idea">
 <h4>补充-IDEA的配置</h4>
 <p>当使用 flutter 安装得 dart 时, 在IDEA, 可以设置为 flutter 的路径,
@@ -287,10 +243,10 @@ Hide<span class="w"> </span>these<span class="w"> </span>hints<span class="w"> <
 
 		</div>
 	</nav>
-	<div id="sidebar-tools" class="fixed-container no-active">
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
-	<div id="sidebar-tool-back-top" class="fixed-container">
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
 		</div>
@@ -307,27 +263,27 @@ Hide<span class="w"> </span>these<span class="w"> </span>hints<span class="w"> <
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 3 <strong>29</strong></span>
+											<span class="date">Mar <strong>30</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
+											<p><p class="first last">CSS设置元素不可被选中</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
 											<p><p class="first last">pm2-守护进程管理器</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>29</strong></span>
+											<span class="date">Mar <strong>29</strong></span>
 											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
 											<p><p class="first last">dart初识</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>28</strong></span>
-											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
-											<p><p class="first last">Theia-拖动文件到编辑器</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
-											<p><p class="first last">浏览器环境下的Window对象</p>
 </p>
 										</li>
 									</ul>
@@ -422,7 +378,7 @@ Hide<span class="w"> </span>these<span class="w"> </span>hints<span class="w"> <
 			window.scrollTo({
 				top: 0,
 				left: 0,
-				behavior: 'smooth' 
+				behavior: 'smooth'
 			});
 		})
 	}

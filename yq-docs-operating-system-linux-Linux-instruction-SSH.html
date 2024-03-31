@@ -79,7 +79,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 24 二月 2023
+      , 24 February 2023
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -113,7 +113,103 @@
 
 									<div class="pennant pennant-alt date">2023-02-24</div>
 									<h2>ssh</h2>
-									
+									<p>选项参数</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-T <var>&lt;addr&gt;</var></span></kbd></td>
+<td><p class="first">测试与某个 addr 的连通性.</p>
+<p>如</p>
+<div class="last"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+</pre></div>
+</div></td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>查看建立连接时候的详细信息, 可以与 <cite>-T</cite> 一起使用</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-V</span></kbd></td>
+<td>版本信息</td></tr>
+</tbody>
+</table>
+<div class="section" id="rsagithub">
+<h2>问题-RSA公钥无法连接github</h2>
+<p>是在 Windows10 上出现的. 多半是用了高版本的缘故</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-V
+OpenSSH_9.5p1,<span class="w"> </span>OpenSSL<span class="w"> </span><span class="m">3</span>.1.4<span class="w"> </span><span class="m">24</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2023</span>
+</pre></div>
+<p>不确定是 ssh 本身的版本还是啥.</p>
+<p>按照以前的 <tt class="docutils literal"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> rsa <span class="pre">-b</span> 4096 <span class="pre">-C</span> &quot;your_email&#64;example.com&quot;</tt>
+这样的方式生成好秘钥放到github上然后尝试连接的时候报错不对</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+The<span class="w"> </span>authenticity<span class="w"> </span>of<span class="w"> </span>host<span class="w"> </span><span class="s1">&#39;github.com (20.205.243.166)&#39;</span><span class="w"> </span>can<span class="s1">&#39;t be established.</span>
+<span class="s1">ED25519 key fingerprint is SHA256:xxxxxxxxxxxxx</span>
+<span class="s1">This key is not known by any other names.</span>
+<span class="s1">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span>
+<span class="s1">Warning: Permanently added &#39;</span>github.com<span class="err">&#39;</span><span class="w"> </span><span class="o">(</span>ED25519<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>known<span class="w"> </span>hosts.
+git@github.com:<span class="w"> </span>Permission<span class="w"> </span>denied<span class="w"> </span><span class="o">(</span>publickey<span class="o">)</span>.
+</pre></div>
+<p>仔细观察发现使用的是 <tt class="docutils literal">ED25519</tt> 算法, 且没找到地方更改...</p>
+<p>再查看链接时详细信息, 发现</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-vT<span class="w"> </span>git@github.com
+OpenSSH_9.5p1,<span class="w"> </span>OpenSSL<span class="w"> </span><span class="m">3</span>.1.4<span class="w"> </span><span class="m">24</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2023</span>
+debug1:<span class="w"> </span>Reading<span class="w"> </span>configuration<span class="w"> </span>data<span class="w"> </span>/etc/ssh/ssh_config
+debug1:<span class="w"> </span>Authentications<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span><span class="k">continue</span>:<span class="w"> </span>publickey
+debug1:<span class="w"> </span>Next<span class="w"> </span>authentication<span class="w"> </span>method:<span class="w"> </span>publickey
+
+...
+
+debug1:<span class="w"> </span>Offering<span class="w"> </span>public<span class="w"> </span>key:<span class="w"> </span>/c/Users/yq/.ssh/id_rsa<span class="w"> </span>RSA<span class="w"> </span>SHA256:xxxxx
+debug1:<span class="w"> </span>Authentications<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span><span class="k">continue</span>:<span class="w"> </span>publickey
+debug1:<span class="w"> </span>Trying<span class="w"> </span>private<span class="w"> </span>key:<span class="w"> </span>/c/Users/yq/.ssh/id_ecdsa
+debug1:<span class="w"> </span>Trying<span class="w"> </span>private<span class="w"> </span>key:<span class="w"> </span>/c/Users/yq/.ssh/id_ecdsa_sk
+debug1:<span class="w"> </span>Offering<span class="w"> </span>public<span class="w"> </span>key:<span class="w"> </span>/c/Users/yq/.ssh/id_ed25519<span class="w"> </span>ED25519<span class="w"> </span>SHA256:xxx
+debug1:<span class="w"> </span>Authentications<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span><span class="k">continue</span>:<span class="w"> </span>publickey
+debug1:<span class="w"> </span>Trying<span class="w"> </span>private<span class="w"> </span>key:<span class="w"> </span>/c/Users/yq/.ssh/id_ed25519_sk
+debug1:<span class="w"> </span>Trying<span class="w"> </span>private<span class="w"> </span>key:<span class="w"> </span>/c/Users/yq/.ssh/id_xmss
+debug1:<span class="w"> </span>Trying<span class="w"> </span>private<span class="w"> </span>key:<span class="w"> </span>/c/Users/yq/.ssh/id_dsa
+debug1:<span class="w"> </span>No<span class="w"> </span>more<span class="w"> </span>authentication<span class="w"> </span>methods<span class="w"> </span>to<span class="w"> </span>try.
+git@github.com:<span class="w"> </span>Permission<span class="w"> </span>denied<span class="w"> </span><span class="o">(</span>publickey<span class="o">)</span>.
+</pre></div>
+<p>发现果然是没有找 <tt class="docutils literal">id_rsa</tt> 文件.</p>
+<p>无奈只有使用 <cite>ssh-agent</cite> 手动加一下看看了...</p>
+<div class="highlight"><pre><span></span>ssh-agent<span class="w"> </span>bash
+ssh-add<span class="w"> </span>~/.ssh/id_rsa
+</pre></div>
+<p>虽然这个文件好像默认是在的.</p>
+<p>好吧, 还是不行...</p>
+<p>然后生成 <tt class="docutils literal">ED25519</tt> 的秘钥加到默认的 <tt class="docutils literal">id_ed25519</tt> 也不行.
+最后单独把自己秘钥加一个才行...</p>
+<div class="highlight"><pre><span></span>ssh-agent<span class="w"> </span>bash
+ssh-add<span class="w"> </span>~/.ssh/id_ed_github
+</pre></div>
+<p>丢.</p>
+<p>个人感觉是, <strong>在 Windows 上, 不支持将多个秘钥文件放在一个文件里面...</strong>
+(看输出有可能是因为是校验整个文件的hash值了).
+但是我记得在 MacOS/Linux 上是支持的.</p>
+<p>但是... <strong>退出 ``ssh-agent bash`` 就不行了</strong>.</p>
+<p>后续解决方法</p>
+<dl class="docutils">
+<dt>方案一</dt>
+<dd><p class="first">在这个仓库手动处理(理论可以, 没测过)</p>
+<div class="last"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>core.sshCommand<span class="w"> </span><span class="s2">&quot;ssh -i /path/to/private/key&quot;</span>
+</pre></div>
+</div></dd>
+<dt>方案二</dt>
+<dd><p class="first">配置config (亲测可行)</p>
+<p>如果没有, 就新建 <tt class="docutils literal"><span class="pre">~/.ssh/config</span></tt> 文件.</p>
+<p>内容:</p>
+<pre class="last literal-block">
+Host github.com           # 别名，重要. 比如 ``ssh -Tv git&#64;github.com`` 时候找的 `github.com`
+HostName github.com       # 重要, 别名对应的实际地址
+User yq
+IdentityFile ~/.ssh/id_ed_github
+</pre>
+</dd>
+</dl>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -127,7 +223,28 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
-	<div id="sidebar-tool-back-top" class="fixed-container">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#rsagithub">
+    问题-RSA公钥无法连接github
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
 		</div>
@@ -144,27 +261,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 3 <strong>29</strong></span>
+											<span class="date">Mar <strong>30</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
+											<p><p class="first last">CSS设置元素不可被选中</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
 											<p><p class="first last">pm2-守护进程管理器</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>29</strong></span>
+											<span class="date">Mar <strong>29</strong></span>
 											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
 											<p><p class="first last">dart初识</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>28</strong></span>
-											<h3><a href="yq-frontend-theia-drop.html">Theia-拖动文件到编辑器</a></h3>
-											<p><p class="first last">Theia-拖动文件到编辑器</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 3 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-Window.html">浏览器Window对象</a></h3>
-											<p><p class="first last">浏览器环境下的Window对象</p>
 </p>
 										</li>
 									</ul>
@@ -259,7 +376,7 @@
 			window.scrollTo({
 				top: 0,
 				left: 0,
-				behavior: 'smooth' 
+				behavior: 'smooth'
 			});
 		})
 	}
