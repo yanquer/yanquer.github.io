@@ -449,4 +449,7 @@ pre{
 	margin: 10px 0;
 }
 
-
+/* 主要区块颜色 */
+#footer-wrapper h2, #footer-wrapper h3, #footer-wrapper h4, #footer-wrapper h5, #footer-wrapper h6, #footer-wrapper strong, #footer-wrapper b{
+	color: #d1c8c8;
+}
