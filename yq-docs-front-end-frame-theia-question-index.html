@@ -10,24 +10,27 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
-			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
-				<link rel="stylesheet" href="/theme/css/pygment.css" />
-				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
 				<link rel="stylesheet" href="/theme/css/style.css" />
 				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
 			</noscript>
+
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/style-update.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
 	</head>
 	<body class="no-sidebar">
 		<!-- Header Wrapper -->
@@ -134,7 +137,31 @@
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-theia-question-Theia-start-the-white-screen.html">theia启动白屏</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-theia-question-Built--in-external-plug--in.html">内置一些外部插件</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-theia-question-Open-the-directory-&-file-selector.html">打开目录&文件选择器</a>
-<a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-theia-question-Yarn-Install-appears-node-gyp-error.html">yarn install 出现node-gyp报错</a>
+<a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-theia-question-Yarn-Install-appears-node-gyp-error.html">yarn install 出现node-gyp报错</a><div class="section" id="section-1">
+<h2>打开总是提示工作区受限</h2>
+<p>消息:</p>
+<pre class="literal-block">
+An extension requests workspace trust but the corresponding API is not yet fully supported. Do you want to trust this workspace?
+</pre>
+<div class="figure">
+<img alt="请求消息" src="doc-raw/resources/images/2024-04-01-15-32-20.png" style="width: 480px;" />
+</div>
+<dl class="docutils">
+<dt>解决</dt>
+<dd><p class="first">关闭询问, 即信任所有工作区</p>
+<div class="last figure">
+<img alt="默认信任所有工作区" src="doc-raw/resources/images/2024-04-01-15-29-52.png" style="width: 480px;" />
+</div>
+</dd>
+</dl>
+<p>修改后会提示重启, 重启即可</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">貌似我这边实际的问题应该是, 即使点了允许, 下一次打开还是会提示, 没空具体看哪的毛病
+暂时先这样解决.</p>
+</div>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -148,6 +175,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    打开总是提示工作区受限
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -165,6 +213,18 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">Apr <strong>20</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
+											<p><p class="first last">as title</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Apr <strong>02</strong></span>
+											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
+											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+</p>
+										</li>
+										<li>
 											<span class="date">Mar <strong>30</strong></span>
 											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
 											<p><p class="first last">dart初识</p>
@@ -174,18 +234,6 @@
 											<span class="date">Mar <strong>29</strong></span>
 											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
 											<p><p class="first last">CSS设置元素不可被选中</p>
-</p>
-										</li>
-										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
-											<p><p class="first last">pm2-守护进程管理器</p>
-</p>
-										</li>
-										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
-											<p><p class="first last">dart初识</p>
 </p>
 										</li>
 									</ul>
@@ -265,6 +313,7 @@
 		<script src="/theme/js/config.js"></script>
 		<script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {

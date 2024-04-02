@@ -1,0 +1,416 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li  class="active"><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Mac下使用GPU加速</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 02 April 2024
+      , Category:
+	  <a href="category/ai.html">AI</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="post-infos">
+										<ul class="tags">
+											<li><a class="button" href="category/ai.html">Ai</a></li>
+												<li><a class="button button-alt" href="tag/shen-du-xue-xi.html">深度学习</a></li>
+
+												<li><a class="button button-alt" href="tag/macos.html">Macos</a></li>
+
+												<li><a class="button button-alt" href="tag/gpu.html">Gpu</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pennant pennant-alt date">2024-04-02</div>
+									<h2>Mac下使用GPU加速</h2>
+									<p>现在这个时间点, AI已经火的遍地开花.
+曾经的看不上也变成了切身相关...</p>
+<p>此文参考 Apple官方教程: <a class="reference external" href="https://developer.apple.com/metal/pytorch/">https://developer.apple.com/metal/pytorch/</a></p>
+<dl class="docutils">
+<dt>支持的系统:</dt>
+<dd><ul class="first last simple">
+<li>MacOS M 系列 (比如 MacBook Pro 2021)</li>
+<li>MacOS Intel + AMD 系列 (比如 MacBook Pro 2019-16inch)</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">此前在社区看到有M系列支持GPU加速的教程,
+以为只有 M 系列支持,
+后来查文档才发现 MacOS 的 AMD 系列也支持. 知识因为, 是比较老的版本了, 所以基本没人提.</p>
+</div>
+<div class="section" id="section-1">
+<h2>安装</h2>
+<div class="section" id="pip">
+<h3>方案一: 使用pip安装</h3>
+<p>建议先创建个虚拟环境再安装</p>
+<div class="highlight"><pre><span></span><span class="c1"># 如果之前已经用原版装过, 要先卸载: pip uninstall torch torchvision torchaudio</span>
+pip3<span class="w"> </span>install<span class="w"> </span>--pre<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>torchaudio<span class="w"> </span>--extra-index-url<span class="w"> </span>https://download.pytorch.org/whl/nightly/cpu
+</pre></div>
+<p>如果遇到报错:</p>
+<pre class="literal-block">
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='download.pytorch.org', port=443): Read timed out.
+</pre>
+<p>说明网络有问题, 如果用了梯子, 先把梯子关掉再执行:</p>
+<pre class="literal-block">
+(.venv) yq&#64;local FromDiffusers % pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+Looking in indexes: https://download.pytorch.org/whl/nightly/cpu
+Collecting torch
+  Downloading https://download.pytorch.org/whl/nightly/cpu/torch-2.3.0.dev20240311-cp311-none-macosx_10_9_x86_64.whl (153.3 MB)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 153.3/153.3 MB 10.1 MB/s eta 0:00:00
+Collecting torchvision
+  Downloading https://download.pytorch.org/whl/nightly/cpu/torchvision-0.18.0.dev20240227-cp311-cp311-macosx_10_13_x86_64.whl (1.8 MB)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 8.6 MB/s eta 0:00:00
+Collecting torchaudio
+  Downloading https://download.pytorch.org/whl/nightly/cpu/torchaudio-2.2.0.dev20240227-cp311-cp311-macosx_10_13_x86_64.whl (3.4 MB)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 10.2 MB/s eta 0:00:00
+Requirement already satisfied: filelock in ./.venv/lib/python3.11/site-packages (from torch) (3.13.3)
+Requirement already satisfied: typing-extensions&gt;=4.8.0 in ./.venv/lib/python3.11/site-packages (from torch) (4.10.0)
+Requirement already satisfied: sympy in ./.venv/lib/python3.11/site-packages (from torch) (1.12)
+Requirement already satisfied: networkx in ./.venv/lib/python3.11/site-packages (from torch) (3.2.1)
+Requirement already satisfied: jinja2 in ./.venv/lib/python3.11/site-packages (from torch) (3.1.3)
+Requirement already satisfied: fsspec in ./.venv/lib/python3.11/site-packages (from torch) (2024.3.1)
+Requirement already satisfied: numpy in ./.venv/lib/python3.11/site-packages (from torchvision) (1.26.4)
+Collecting torch
+  Downloading https://download.pytorch.org/whl/nightly/cpu/torch-2.3.0.dev20240227-cp311-none-macosx_10_9_x86_64.whl (152.5 MB)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.5/152.5 MB 15.1 MB/s eta 0:00:00
+Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in ./.venv/lib/python3.11/site-packages (from torchvision) (10.3.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in ./.venv/lib/python3.11/site-packages (from jinja2-&gt;torch) (2.1.5)
+Requirement already satisfied: mpmath&gt;=0.19 in ./.venv/lib/python3.11/site-packages (from sympy-&gt;torch) (1.3.0)
+Installing collected packages: torch, torchvision, torchaudio
+Successfully installed torch-2.3.0.dev20240227 torchaudio-2.2.0.dev20240227 torchvision-0.18.0.dev20240227
+</pre>
+</div>
+<div class="section" id="conda">
+<h3>方案二: 使用 conda 安装</h3>
+<div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>pytorch<span class="w"> </span>torchvision<span class="w"> </span>torchaudio<span class="w"> </span>-c<span class="w"> </span>pytorch-nightly
+</pre></div>
+</div>
+<div class="section" id="section-2">
+<h3>方案三: 从源码构建</h3>
+<dl class="docutils">
+<dt>系统工具要求:</dt>
+<dd><ul class="first last simple">
+<li>Xcode 13.3.1 or later.</li>
+</ul>
+</dd>
+</dl>
+<p>配置环境变量:</p>
+<pre class="literal-block">
+USE_MPS=1
+</pre>
+<p><cite>USE_MPS</cite> 表示构建时, 使用 MPS 构建.</p>
+<p>然后去 <a class="reference external" href="https://github.com/pytorch/pytorch#from-source">https://github.com/pytorch/pytorch#from-source</a> 拉源码手动构建.
+构建方式也参考仓库说明</p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>验证</h2>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">mps_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;mps&quot;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">mps_device</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;MPS device not found.&quot;</span><span class="p">)</span>
+</pre></div>
+<p>输出:</p>
+<pre class="literal-block">
+tensor([1.], device='mps:0')
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4>Contents</h4>
+				<span class="tool-tip-text">点击隐藏</span>
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    安装
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#pip">
+      方案一: 使用pip安装
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#conda">
+      方案二: 使用 conda 安装
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      方案三: 从源码构建
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    验证
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Apr <strong>20</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
+											<p><p class="first last">as title</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Apr <strong>02</strong></span>
+											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
+											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>30</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
+											<p><p class="first last">dart初识</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
+											<p><p class="first last">CSS设置元素不可被选中</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

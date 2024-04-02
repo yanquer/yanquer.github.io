@@ -10,24 +10,27 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
-			<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
-				<link rel="stylesheet" href="/theme/css/pygment.css" />
-				<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
 				<link rel="stylesheet" href="/theme/css/style.css" />
 				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
 			</noscript>
+
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/style-update.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
 	</head>
 	<body class="no-sidebar">
 		<!-- Header Wrapper -->
@@ -113,8 +116,22 @@
 
 									<div class="pennant pennant-alt date">2024-02-21</div>
 									<h2>本地构建deb包</h2>
-									<p>debian官方文档: <a class="reference external" href="https://www.debian.org/releases/stable/amd64/index.zh-cn.html">https://www.debian.org/releases/stable/amd64/index.zh-cn.html</a></p>
-<p>control文件说明: <a class="reference external" href="https://www.debian.org/doc/debian-policy/ch-controlfields.html">https://www.debian.org/doc/debian-policy/ch-controlfields.html</a></p>
+									<dl class="docutils">
+<dt>关键词::</dt>
+<dd><ul class="first last simple">
+<li>deb包构建</li>
+<li>Debian 安装包</li>
+<li>Ubuntu 安装包</li>
+</ul>
+</dd>
+</dl>
+<p>相关资源:</p>
+<blockquote>
+<ul class="simple">
+<li>debian官方文档: <a class="reference external" href="https://www.debian.org/releases/stable/amd64/index.zh-cn.html">https://www.debian.org/releases/stable/amd64/index.zh-cn.html</a></li>
+<li>control文件说明: <a class="reference external" href="https://www.debian.org/doc/debian-policy/ch-controlfields.html">https://www.debian.org/doc/debian-policy/ch-controlfields.html</a></li>
+</ul>
+</blockquote>
 <div class="section" id="section-1">
 <h2>文件结构</h2>
 <div class="sidebar">
@@ -140,9 +157,8 @@
 </pre>
 <div class="sidebar">
 DEBIAN 下的文件大多都需要可执行权限</div>
-</div>
 <div class="section" id="control">
-<h2>control文件</h2>
+<h3>control文件</h3>
 <p>官方字段说明见: <cite>https://www.debian.org/doc/debian-policy/ch-controlfields.html</cite></p>
 <p>deb包必须具备的描述性文件，以便于软件的安装管理和索引</p>
 <p>内容字段说明</p>
@@ -180,29 +196,31 @@ DEBIAN 下的文件大多都需要可执行权限</div>
 </ul>
 </div>
 <div class="section" id="postinst">
-<h2>postinst文件</h2>
+<h3>postinst文件</h3>
 <p>在Deb包文件解包之前（即软件安装前），将会运行该脚本。可以停止作用于待升级软件包的服务，直到软件包安装或升级完成。</p>
 </div>
 <div class="section" id="preinst">
-<h2>preinst文件</h2>
+<h3>preinst文件</h3>
 <p>负责完成安装包时的配置工作。如新安装或升级的软件重启服务。软件安装完后，执行该Shell脚本，一般用来配置软件执行环境，必须以“#!/bin/sh”为首行。</p>
 </div>
 <div class="section" id="prerm">
-<h2>prerm文件</h2>
+<h3>prerm文件</h3>
 <p>该脚本负责停止与软件包相关联的daemon服务。它在删除软件包关联文件之前执行</p>
 </div>
 <div class="section" id="postrm">
-<h2>postrm文件</h2>
+<h3>postrm文件</h3>
 <p>负责修改软件包链接或文件关联，或删除由它创建的文件。软件卸载后，执行该Shell脚本，一般作为清理收尾工作，必须以“#!/bin/sh”为首行</p>
 </div>
-<div class="section" id="copyright">
-<h2>copyright文件</h2>
+<div class="section" id="copy-right">
+<h3>copy-right</h3>
+<!-- copy-right 而不是 copyright 避免 bug... -->
 </div>
 <div class="section" id="changlog">
-<h2>changlog文件</h2>
+<h3>changlog文件</h3>
 </div>
 <div class="section" id="conffiles">
-<h2>conffiles文件</h2>
+<h3>conffiles文件</h3>
+</div>
 </div>
 <div class="section" id="section-2">
 <h2>用例</h2>
@@ -329,6 +347,11 @@ Exec=.dist/deb_ev-deb/ev-deb-1.0.1/main.bin %F
 <pre class="literal-block">
 MimeType=text/plain;inode/directory;application/x-code-workspace;
 </pre>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<p class="last">当 <cite>Exec</cite> 使用了额外参数, 注意开发应用要对其值可能为空字符串进行处理.
+此前因为没处理空字符串导致的bug, 找了几天.</p>
+</div>
 </div>
 
 								</article>
@@ -356,46 +379,48 @@ MimeType=text/plain;inode/directory;application/x-code-workspace;
    <a class="" href="#section-1">
     文件结构
    </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#control">
-    control文件
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#postinst">
-    postinst文件
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#preinst">
-    preinst文件
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#prerm">
-    prerm文件
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#postrm">
-    postrm文件
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#copyright">
-    copyright文件
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#changlog">
-    changlog文件
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#conffiles">
-    conffiles文件
-   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#control">
+      control文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#postinst">
+      postinst文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#preinst">
+      preinst文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#prerm">
+      prerm文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#postrm">
+      postrm文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#copy-right">
+      copy-right
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#changlog">
+      changlog文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#conffiles">
+      conffiles文件
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-2">
@@ -437,6 +462,18 @@ MimeType=text/plain;inode/directory;application/x-code-workspace;
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">Apr <strong>20</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
+											<p><p class="first last">as title</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Apr <strong>02</strong></span>
+											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
+											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+</p>
+										</li>
+										<li>
 											<span class="date">Mar <strong>30</strong></span>
 											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
 											<p><p class="first last">dart初识</p>
@@ -446,18 +483,6 @@ MimeType=text/plain;inode/directory;application/x-code-workspace;
 											<span class="date">Mar <strong>29</strong></span>
 											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
 											<p><p class="first last">CSS设置元素不可被选中</p>
-</p>
-										</li>
-										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-pm2.html">pm2</a></h3>
-											<p><p class="first last">pm2-守护进程管理器</p>
-</p>
-										</li>
-										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-rear-end-dart.html">dart</a></h3>
-											<p><p class="first last">dart初识</p>
 </p>
 										</li>
 									</ul>
@@ -537,6 +562,7 @@ MimeType=text/plain;inode/directory;application/x-code-workspace;
 		<script src="/theme/js/config.js"></script>
 		<script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {

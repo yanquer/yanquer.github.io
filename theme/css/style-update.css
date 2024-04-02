@@ -140,6 +140,10 @@ div[onclick]:hover,
 	}
 
 /* 小节 */
+dl.docutils {
+	margin-top: 5px;
+
+}
 dt{
 	font-weight: 800 !important;
 	color: #91ee58d9 !important;
@@ -154,7 +158,10 @@ dd{
 
 /* 头部菜单 */
 #nav > ul > li.active > a {
-    background: rgb(44, 44, 44) !important;
+    /* background: rgb(44, 44, 44) !important; */
+	background: unset;
+	color: #b871ff;
+    font-weight: 500;
 }
 .page-menu > #nav a {
 	color: #cdc1c1;
@@ -172,7 +179,7 @@ dd{
 .sphinx-toc-tree{
 	padding: 2px;
 	display: block;
-	width: 100px;
+	width: fit-content;	/* 宽度自适应 内容长度 */
 	font-size: 19px;
 }
 
@@ -233,7 +240,8 @@ div.admonition > .admonition-title{
 	padding: 5px !important;
 }
 div.admonition > p[data-relingo-block="true"],
-div.admonition > .last,
+/* div.admonition > .last, */
+div.admonition > *:not(.first),
 div.admonition > .simple{
 	padding-left: 5px;
 }
@@ -291,7 +299,7 @@ html, body{
 	}
 	.tool-tip-text{
 		visibility: hidden;
-		width: 40px;
+		width: 50px;
 		background-color: #00000090;
 		color: var(--g-tip-text-color);
 		text-align: center;
@@ -362,6 +370,7 @@ html, body{
 	}
 
 /* 指令 参数 选项 */
+table.docutils.field-list,
 table.docutils.option-list{
 	border: none;
     box-shadow: none;
@@ -374,20 +383,40 @@ table.docutils.option-list{
 }
 	table.docutils.option-list::-webkit-scrollbar{
 		/* 取消滚动条, 避免对圆角影响 */
-		display: none;
+		/* display: none; */
 	}
+	.docutils.field-list td,
+	.docutils.field-list th,
 	.docutils.option-list td{
 		border: none;
 	}
 	/* 选项 */
+	.docutils.field-list td:first-child span,
 	.docutils.option-list td:first-child span{
 		color: #8affd7f0;
 		background-color: #191703;		/* 偏黄一点的黑 */
 	}
 	/* 选项参数 */
+	.docutils.field-list td:first-child var,
 	.docutils.option-list td:first-child var{
 		color: #36defff0;
 		background-color: #191703;		/* 偏黄一点的黑 */
+	}
+
+	/* 表格, 双冒号表格 */
+	table.docutils.field-list{
+		border: none;
+		padding-top: 10px;
+	}
+	.docutils.field-list td,
+	.docutils.field-list th{
+		display: block;
+	}
+	.docutils.field-list th{
+		text-align: left;
+	}
+	.docutils.field-list td{
+		padding-left: 5px;
 	}
 
 /* 元素不允许被选中 */
@@ -402,6 +431,22 @@ table.docutils.option-list{
 .simple li[data-relingo-block="true"]::before{
 	content: " - ";
 	color: #7fffd4b5;
+}
+
+/* 斜体 */
+cite{
+	font-style: italic !important;
+}
+
+/* 小 标题, 自动生成的id可能跟默认的有冲突, 比如 copyright */
+.section *:only-child{
+	/* padding: 10px 0; */
+}
+
+/* 代码渲染部分与其他部分的间隔 */
+/* .highlight pre, */
+pre{
+	margin: 10px 0;
 }
 
 
