@@ -1,0 +1,475 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>QML与Python通信</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 10 四月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan.html">后端</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+													<li><a class="button button-alt" href="tag/pyside6.html">Pyside6</a></li>
+
+													<li><a class="button button-alt" href="tag/qml.html">Qml</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-04-10</div>
+										<h2>QML与Python通信</h2>
+									</div>
+									<p>QML与Python通信主要通过QObject来实现,
+QObject是QML与Python之间通信的桥梁,
+QObject可以注册到QML中,
+这样就可以在QML中通过QObject来调用Python中的函数,
+也可以在Python中通过QObject来调用QML中的函数.</p>
+<div class="section" id="section-1">
+<h2>调用举例</h2>
+<p>比如定义一个 <cite>UtilHelper</cite></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.parse</span>
+
+<span class="kn">from</span> <span class="nn">PySide6.QtCore</span> <span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">Signal</span>
+
+
+<span class="k">class</span> <span class="nc">UtilHelper</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+  <span class="n">_cache</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span>
+
+  <span class="c1"># 这里定义的信号是交给 QML 来接收的, 在QML中通过 connect 来接收</span>
+  <span class="n">error</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+  <span class="n">scan_dirs</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+  <span class="n">set_items</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+  <span class="nd">@Slot</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">scan_root_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scan_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;scan movies&quot;&quot;&quot;</span>
+
+      <span class="c1"># 将url转换为本地路径</span>
+      <span class="n">scan_dir</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">scan_dir</span><span class="p">)</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+      <span class="c1"># 做一些相应的逻辑处理</span>
+      <span class="k">return</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+<p>那么如何在 QML 定义调用及接收相关的处理?</p>
+<p><strong>qml主动调用python定义的逻辑</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// 这里举例, 使用文件夹选择来定义相关处理</span>
+<span class="nx">FolderDialog</span><span class="p">{</span>
+    <span class="kd">id: folderDialog</span>
+    <span class="k">folder:</span> <span class="nx">defaultSelectFolder</span>
+    <span class="k">acceptLabel:</span> <span class="s2">&quot;确定&quot;</span>
+    <span class="k">rejectLabel:</span> <span class="s2">&quot;取消&quot;</span>
+    <span class="k">options:</span> <span class="nx">FolderDialog</span><span class="p">.</span><span class="nx">ShowDirsOnly</span>
+    <span class="k">onAccepted:</span> <span class="p">{</span>
+        <span class="nx">utilHelper</span><span class="p">.</span><span class="nx">scan_root_dir</span><span class="p">(</span><span class="nx">folder</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">onFolderChanged:</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;folder change...&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p><strong>qml接收python发送来的消息</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// 变量声明</span>
+<span class="nx">property</span> <span class="nx">ListModel</span> <span class="k">scanDirRes:</span> <span class="nx">ListModel</span> <span class="p">{}</span>
+<span class="nx">property</span> <span class="nx">ListModel</span> <span class="k">curItems:</span> <span class="nx">ListModel</span> <span class="p">{}</span>
+
+<span class="nx">Connections</span> <span class="p">{</span>
+    <span class="k">target:</span> <span class="nx">utilHelper</span>          <span class="c1">// 绑定python的类</span>
+    <span class="k">ignoreUnknownSignals:</span> <span class="kc">true</span>  <span class="c1">// 取消警告</span>
+
+    <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 使用 on + 信号名(首字母大写) 作为信号的槽</span>
+        <span class="nx">dirScanLabel</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 数组数据放到 ListModel 是因为没有原生的list支持.</span>
+    <span class="kd">function</span> <span class="nx">onScan_dirs</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;dirs0...&quot;</span><span class="p">)</span>
+        <span class="nx">scanDirRes</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">scanDirRes</span><span class="p">.</span><span class="nx">append</span><span class="p">({</span> <span class="k">text:</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 数组数据放到 ListModel 是因为没有原生的list支持.</span>
+    <span class="kd">function</span> <span class="nx">onSet_items</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;dirs1...&quot;</span><span class="p">)</span>
+        <span class="nx">curItems</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">curItems</span><span class="p">.</span><span class="nx">append</span><span class="p">({</span> <span class="k">text:</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="qmlpython-1">
+<h2>关联QML与Python</h2>
+<p>好了. 现在相互调用已经定义好了, 但是现在还有一个问题, 如何将QML与Python联系起来.</p>
+<p>有两种方式</p>
+<div class="section" id="qml">
+<h3>方式一: 注册QML控件</h3>
+<p>就像官网给的例子</p>
+<blockquote>
+<p>在Python的入口文件定义</p>
+<div class="highlight"><pre><span></span><span class="c1"># To be used on the @QmlElement decorator</span>
+<span class="c1"># (QML_IMPORT_MINOR_VERSION is optional)</span>
+<span class="n">QML_IMPORT_NAME</span> <span class="o">=</span> <span class="s2">&quot;io.qt.textproperties&quot;</span>
+<span class="n">QML_IMPORT_MAJOR_VERSION</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+<p>在QML中使用的时候直接导入即可</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">io</span><span class="p">.</span><span class="nx">qt</span><span class="p">.</span><span class="nx">textproperties</span> <span class="mf">1.0</span>
+
+<span class="nx">Bridge</span><span class="p">{</span>
+  <span class="kd">id: bridge</span>
+<span class="p">}</span>
+</pre></div>
+</blockquote>
+<p>这里要注意, 因为官网是直接定义在入口文件的, 所以不用手动注册,
+如果不是定义在入口文件, 需要手动注册, 比如</p>
+<div class="highlight"><pre><span></span><span class="n">QML_IMPORT_NAME</span> <span class="o">=</span> <span class="s2">&quot;io.qt.textproperties&quot;</span>
+<span class="n">QML_IMPORT_MAJOR_VERSION</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nd">@QmlElement</span>
+<span class="k">class</span> <span class="nc">Bridge</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="c1"># 手动注册</span>
+<span class="n">qmlRegisterType</span><span class="p">(</span><span class="n">Bridge</span><span class="p">,</span> <span class="n">QML_IMPORT_NAME</span><span class="p">,</span> <span class="n">QML_IMPORT_MAJOR_VERSION</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Bridge&quot;</span><span class="p">)</span>
+</pre></div>
+<p>同理, 这里自己的 <cite>utilHelper</cite> 应该这样做.</p>
+<p>在 Python 文件中加入</p>
+<div class="highlight"><pre><span></span><span class="n">QML_IMPORT_NAME</span> <span class="o">=</span> <span class="s2">&quot;yq.com.qt.util&quot;</span>
+<span class="n">QML_IMPORT_MAJOR_VERSION</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># 下面是 像上面例子那样的定义</span>
+<span class="k">class</span> <span class="nc">UtilHelper</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+  <span class="o">...</span>
+
+<span class="c1"># 注册</span>
+<span class="n">qmlRegisterType</span><span class="p">(</span><span class="n">UtilHelper</span><span class="p">,</span> <span class="n">QML_IMPORT_NAME</span><span class="p">,</span> <span class="n">QML_IMPORT_MAJOR_VERSION</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;UtilHelper&quot;</span><span class="p">)</span>
+</pre></div>
+<p>在QML中使用</p>
+<div class="highlight"><pre><span></span><span class="nx">UtilHelper</span> <span class="p">{</span>
+  <span class="kd">id: utilHelper</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-2">
+<h3>方式二: 设置上下文</h3>
+<p>类似这样</p>
+<div class="highlight"><pre><span></span><span class="n">utilHelper</span> <span class="o">=</span> <span class="n">UtilHelper</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;utilHelper&quot;</span><span class="p">,</span> <span class="n">utilHelper</span><span class="p">)</span>
+</pre></div>
+<p>在QML使用的时候, 就不用像第一种那样手动定义 <tt class="docutils literal">utilHelper</tt>,
+直接调用就行</p>
+<div class="highlight"><pre><span></span><span class="nx">utilHelper</span><span class="p">.</span><span class="nx">xxx</span>
+</pre></div>
+<p>部分参考: <a class="reference external" href="https://www.cnblogs.com/crossy/p/17063949.html">QML与python互相通信</a></p>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>关于槽函数返回值</h2>
+<p>返回值如果是 <cite>tuple</cite>, 建议换成 <cite>list</cite>,
+因为 <cite>tuple</cite> 在 QML 中只能拿到一个空的 <cite>QVariant</cite>. 找了很多资料都没解决.</p>
+<p>而换成 <cite>list</cite>, 就可以直接用数组索引拿值了.</p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    调用举例
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#qmlpython-1">
+    关联QML与Python
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#qml">
+      方式一: 注册QML控件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      方式二: 设置上下文
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    关于槽函数返回值
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -182,11 +182,27 @@ dd{
 	width: fit-content;	/* 宽度自适应 内容长度 */
 	font-size: 19px;
 }
+/* toctree 整体 */
+.sphinx-toc-tree-box{
+	/* display: block;
+    margin-top: 4%; */
+}
+/* 文章头部 */
+.box-head{
+	margin-bottom: 4%;
+}
 
 
 /* 文章主体内容区域 */
 .is-post h2{
 	/* color: #b5b5b5b5; */
+}
+
+/* 文章段落 */
+.is-post p,
+p, ul, ol, dl, table{
+	margin: unset;
+	margin-bottom: 5px;
 }
 
 
@@ -233,7 +249,9 @@ div.admonition p.admonition-title{
 div.admonition{
     border-radius: var(--g-border-radius);
 	padding: 0px;
+	border: 1px solid #463e3e;
 	border-left: var(--g-radius-border-no-color) #7fffd478;
+	background-color: #2a2a2a;
 }
 div.admonition > .admonition-title{
 	background-color: #7fffd426;
@@ -248,12 +266,21 @@ div.admonition > .simple{
 div.admonition p{
 	margin: 0;
 }
-.admonition.note > .first.admonition-title{
+.admonition > .first.admonition-title{
 	font-size: 12px;
 }
-.admonition.note > .first.admonition-title::before{
+.admonition > .first.admonition-title::before{
 	font-family: 'Font Awesome 6 Free Web';
+}
+.admonition.note > .first.admonition-title::before{
 	content: var(--g-content-icon-admonition-note);
+}
+
+div.admonition.warning{
+	border-left: var(--g-radius-border-no-color) #a07979;
+}
+.admonition.warning > .first.admonition-title{
+	background-color: #a0797961;
 }
 
 /* 禁止横向滚动 */
@@ -294,38 +321,22 @@ html, body{
 		color: #ade7ecd9;
 		text-decoration: none;
 	}
-	#top-toc-tree-container .toc-contents-title{
-
-	}
-	.tool-tip-text{
-		visibility: hidden;
-		width: 50px;
-		background-color: #00000090;
-		color: var(--g-tip-text-color);
-		text-align: center;
-		/* padding: 5px 0; */
-		border-radius: 6px;
-		font-size: 10px;
-
-		/* 定位 */
-		position: absolute;
-		z-index: 1;
-
-		margin-top: -10px;
-	}
 	#top-toc-tree-container .toc-contents-title > h4{
 		width: 70px;
 		cursor: pointer;
 	}
-	#top-toc-tree-container .toc-contents-title > h4:hover{
-		display: inline;
-	}
-	#top-toc-tree-container .toc-contents-title > h4:hover + .tool-tip-text{
-		visibility: visible;
-		display: inline;
-	}
 	.no-active{
 		display: none;
+	}
+
+	/* 目录 鼠标移入显示隐藏 */
+	#toc-contents-title-text:hover::after{
+		content: "隐藏";
+		width: 30px;
+		font-size: 10px;
+		margin-top: -10px;
+		color: var(--g-tip-text-color);
+		position: absolute;
 	}
 
 	/* 目录隐藏后的工具栏 */
@@ -367,6 +378,12 @@ html, body{
 		margin-top: -10px;
 		color: var(--g-tip-text-color);
 		position: absolute;
+	}
+
+	/* 目录 滚动条 */
+	#top-toc-tree-container::-webkit-scrollbar {
+		width: 2px;
+		height: 2px;
 	}
 
 /* 指令 参数 选项 */
@@ -425,10 +442,12 @@ table.docutils.option-list{
 }
 
 /* 列表 */
-.simple li[data-relingo-block="true"]{
+.admonition li,
+.simple li{
 	margin-left: 10px;
 }
-.simple li[data-relingo-block="true"]::before{
+.admonition li::before,
+.simple li::before{
 	content: " - ";
 	color: #7fffd4b5;
 }
@@ -449,7 +468,25 @@ pre{
 	margin: 10px 0;
 }
 
+/* 标题含有特殊字符串时 */
+h2 tt{
+	/* background-color: unset; */
+}
+h2 .pre {
+	/* background-color: unset; */
+	display: inline-block;
+	margin: 10px 0;
+}
+
 /* 主要区块颜色 */
 #footer-wrapper h2, #footer-wrapper h3, #footer-wrapper h4, #footer-wrapper h5, #footer-wrapper h6, #footer-wrapper strong, #footer-wrapper b{
 	color: #d1c8c8;
 }
+
+/* 标题间隔 */
+h3, h4, h5, h6{
+	margin: 10px 0;
+}
+
+
+

@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -77,12 +77,12 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>QML</h2>
+      <h2>QML(源于官方文档)</h2>
     </div>
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/hou-duan.html">后端</a>
     </div>
@@ -104,21 +104,33 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/hou-duan.html">后端</a></li>
-												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan.html">后端</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
 
-												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
 
-												<li><a class="button button-alt" href="tag/pyside6_more.html">Pyside6_more</a></li>
+													<li><a class="button button-alt" href="tag/pyside6_more.html">Pyside6_more</a></li>
 
-										</ul>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2023-02-20</div>
+										<h2>QML(源于官方文档)</h2>
 									</div>
-
-									<div class="pennant pennant-alt date">2023-02-20</div>
-									<h2>QML</h2>
-									<p>Qt设计的一种类似 CSS, JSON 的语言, 同时允许 JavaScript , 用于创建 UI 应用</p>
+									<p>相关资源:</p>
+<div class='sphinx-toc-tree-box'>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a>
+</div><dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>所有QML控件: <a class="reference external" href="https://doc.qt.io/qt-6/qmltypes.html">https://doc.qt.io/qt-6/qmltypes.html</a></li>
+</ul>
+</dd>
+</dl>
+<p>Qt设计的一种类似 CSS, JSON 的语言, 同时允许 JavaScript , 用于创建 UI 应用</p>
 <p>可被其他组件集成, 可被 C++ 代码使用.</p>
 <p>相对于传统 Python 代码中编写方式而言, 使用声明式 QML 更自然, 便捷, 开发 UI 部分更快速.</p>
 <p>在官网教程中, 标题为 <tt class="docutils literal">Your First QtQuick/QML Application</tt> ,
@@ -325,6 +337,50 @@ import style_rc
 <p>有时间按照教程试试</p>
 <!-- todo: 有时间按照教程试试 -->
 </div>
+<div class="section" id="section-2">
+<h2>记录实际使用过程中的一些坑</h2>
+<div class="section" id="pythonqml">
+<h3>Python与QML的交互</h3>
+<div class="section" id="qml-1">
+<h4>方式一是注册QML控件</h4>
+<p>就像官网给的例子, 在Python的入口文件定义</p>
+<div class="highlight"><pre><span></span><span class="c1"># To be used on the @QmlElement decorator</span>
+<span class="c1"># (QML_IMPORT_MINOR_VERSION is optional)</span>
+<span class="n">QML_IMPORT_NAME</span> <span class="o">=</span> <span class="s2">&quot;io.qt.textproperties&quot;</span>
+<span class="n">QML_IMPORT_MAJOR_VERSION</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+<p>在QML中使用的时候直接导入即可(<strong>导入的时候没有引号</strong>)</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">io</span><span class="p">.</span><span class="nx">qt</span><span class="p">.</span><span class="nx">textproperties</span> <span class="mf">1.0</span>
+
+<span class="nx">Bridge</span><span class="p">{</span>
+  <span class="kd">id: bridge</span>
+<span class="p">}</span>
+</pre></div>
+<p>这里要注意, 因为官网是直接定义在入口文件的, 所以不用手动注册,
+如果不是定义在入口文件, 需要手动注册, 比如</p>
+<div class="highlight"><pre><span></span><span class="n">QML_IMPORT_NAME</span> <span class="o">=</span> <span class="s2">&quot;io.qt.textproperties&quot;</span>
+<span class="n">QML_IMPORT_MAJOR_VERSION</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nd">@QmlElement</span>
+<span class="k">class</span> <span class="nc">Bridge</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="c1"># 手动注册</span>
+<span class="n">qmlRegisterType</span><span class="p">(</span><span class="n">Bridge</span><span class="p">,</span> <span class="n">QML_IMPORT_NAME</span><span class="p">,</span> <span class="n">QML_IMPORT_MAJOR_VERSION</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Bridge&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h4>方式二是设置上下文</h4>
+<p>类似这样</p>
+<div class="highlight"><pre><span></span><span class="n">bridge</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;bridge&quot;</span><span class="p">,</span> <span class="n">bridge</span><span class="p">)</span>
+</pre></div>
+<p>在QML使用的时候, 就不用手动定义 <tt class="docutils literal">Bridge</tt>, 而是直接调用</p>
+<div class="highlight"><pre><span></span><span class="nx">bridge</span><span class="p">.</span><span class="nx">xxx</span>
+</pre></div>
+</div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -342,8 +398,8 @@ import style_rc
 	<nav>
 		<div id="top-toc-tree-container" class="fixed-container">
 			<div class="toc-contents-title">
-				<h4>Contents</h4>
-				<span class="tool-tip-text">点击隐藏</span>
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
 			</div>
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
@@ -366,6 +422,30 @@ import style_rc
    <a class="" href="#sql">
     与数据库(SQL)结合
    </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    记录实际使用过程中的一些坑
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#pythonqml">
+      Python与QML的交互
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#qml-1">
+        方式一是注册QML控件
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#section-3">
+        方式二是设置上下文
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -392,27 +472,27 @@ import style_rc
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -495,7 +575,7 @@ import style_rc
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

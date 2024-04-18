@@ -1,0 +1,531 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>导入其他QML/组件</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 10 四月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan.html">后端</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+													<li><a class="button button-alt" href="tag/pyside6.html">Pyside6</a></li>
+
+													<li><a class="button button-alt" href="tag/qml.html">Qml</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-04-10</div>
+										<h2>导入其他QML/组件</h2>
+									</div>
+									<div class="section" id="section-1">
+<h2>如何导入</h2>
+<div class="section" id="section-2">
+<h3>使用路径导入</h3>
+<p>可以直接使用绝对/相对路径导入, 路径需要加引号, 注意只能导入文件夹, 不能导入文件.
+比如 <tt class="docutils literal">import <span class="pre">&quot;./CustomComponents/&quot;</span> as CustomComponents</tt>, 需要用这目录下的组件, 就直接 <tt class="docutils literal">CustomComponents.ComponentName</tt>
+即可.</p>
+<p>如果你直接导入文件 <tt class="docutils literal">import <span class="pre">&quot;./CustomComponents/ComponentName.qml&quot;</span></tt>, 基本会收获报错 <tt class="docutils literal"><span class="pre">&quot;./CustomComponents/ComponentName.qml&quot;,</span> no such directory</tt>.
+这是个坑点.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">我比较诧异的就是这一点, 看到CSDN上有些教程直接导入的文件, 不知道是怎么做到的</p>
+</div>
+<p>如果遇到报错:</p>
+<pre class="literal-block">
+Type xxx unavailable
+</pre>
+<p>说明组件定义的有问题, 看看最后的报错是啥慢慢找</p>
+</div>
+<div class="section" id="section-3">
+<h3>模块注册导入</h3>
+<div class="section" id="section-4">
+<h4>模块注册</h4>
+<p>在被导入的文件夹, 建立 <cite>qmldir</cite> 文件.
+比如 <cite>&quot;./CustomComponents/&quot;</cite>,
+内容为需要导出的组件.</p>
+<p>大致语法.</p>
+<div class="highlight"><pre><span></span>module CustommComponents
+[singleton] [模块名] [版本] 模块文件
+
+// singleton 表示单例
+</pre></div>
+<p>比如我的模块QML文件放在 <cite>CustommComponents</cite> 目录下,
+下面有个 <cite>App.qml</cite>, 那么我的 <cite>qmldir</cite> 文件这样写</p>
+<div class="highlight"><pre><span></span>module CustommComponents
+App 1.0 App.qml
+
+// 第二行可以直接
+// App.qml
+</pre></div>
+<p>模块名称， 应与模块所在的目录名称完全一致</p>
+</div>
+<div class="section" id="section-5">
+<h4>模块导入</h4>
+<p>现在我们来使用上面注册的模块.</p>
+<p>其他QML导入</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">CustommComponents</span> <span class="mf">1.0</span>
+</pre></div>
+<p>待续...</p>
+<p>此部分参考: <a class="reference external" href="https://blog.csdn.net/sonicss/article/details/125342754">https://blog.csdn.net/sonicss/article/details/125342754</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="qml-1">
+<h2>QML组件定义-文件组件</h2>
+<p>一个 QML 文件就可以视为一个组件.</p>
+<p>组件是可重用、封装的 QML 类型，具有明确定义的接口。</p>
+<p><strong>只有组件根级的属性才能够被其它文件的组件访问</strong>,
+所以如果想到组件下子组件有属性需要被外部访问, 需要使用 <cite>alias</cite> 定义别名.</p>
+<div class="highlight"><pre><span></span><span class="c1">// MyButton.qml</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">Rectangle</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+
+    <span class="c1">// 导出按钮属性 使用了别名, 可以被外部访问</span>
+    <span class="nx">property</span> <span class="nx">alias</span> <span class="k">text:</span> <span class="nx">label</span><span class="p">.</span><span class="nx">text</span>
+
+    <span class="c1">// 自定义点击信号</span>
+    <span class="nx">signal</span> <span class="nx">clicked</span>
+
+    <span class="k">width:</span> <span class="mi">116</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">26</span>
+    <span class="k">color:</span> <span class="s2">&quot;lightsteelblue&quot;</span>
+    <span class="k">border.color:</span> <span class="s2">&quot;slategrey&quot;</span>
+
+    <span class="nx">Text</span> <span class="p">{</span>
+        <span class="kd">id: label</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">text:</span> <span class="s2">&quot;Start&quot;</span>
+    <span class="p">}</span>
+
+    <span class="nx">MouseArea</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">onClicked:</span> <span class="p">{</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">clicked</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>使用, 这里注意信号需要加 <cite>on</cite>.</p>
+<div class="highlight"><pre><span></span><span class="c1">// main.qml</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+    <span class="k">width:</span> <span class="mi">140</span>
+    <span class="k">height:</span> <span class="mi">120</span>
+
+    <span class="c1">// 文件式自定义按钮</span>
+    <span class="nx">MyButton</span> <span class="p">{</span>
+        <span class="kd">id: myButton</span>
+        <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">12</span>
+        <span class="k">text:</span> <span class="s2">&quot;Start&quot;</span>
+
+        <span class="c1">// 绑定的是自定义的&quot;clicked信号&quot;</span>
+        <span class="k">onClicked:</span> <span class="p">{</span>
+            <span class="nx">status</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;Button clicked!&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 当按钮按下，改变文本的text</span>
+    <span class="nx">Text</span> <span class="p">{</span>
+        <span class="kd">id: status</span>
+        <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">76</span>
+        <span class="k">width:</span> <span class="mi">116</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">26</span>
+        <span class="k">text:</span> <span class="s2">&quot;waiting ...&quot;</span>
+        <span class="k">horizontalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignHCenter</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="qml-component">
+<h2>QML组件定义-Component</h2>
+<p><cite>Component</cite> 是一种特殊的类型，可以定义一个组件，然后通过 <cite>Component.createObject()</cite> 创建组件实例。</p>
+<p>定义一个 <cite>Component</cite> 与定义一个 <cite>QML</cite> 文档类似， <cite>Component</cite> 只能包含一个顶层 <cite>item</cite> ，而且在这个 <cite>item</cite> 之外不能定义任何数据，除了 <cite>id</cite> 。</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+    <span class="k">width:</span> <span class="mi">140</span>
+    <span class="k">height:</span> <span class="mi">200</span>
+
+    <span class="c1">// 嵌入式按钮组件</span>
+    <span class="nx">Component</span> <span class="p">{</span>
+        <span class="kd">id: buttonComponent</span>
+
+        <span class="nx">Rectangle</span> <span class="p">{</span>
+            <span class="kd">id: myButton</span>
+            <span class="k">width:</span> <span class="mi">116</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">26</span>
+            <span class="k">color:</span> <span class="s2">&quot;lightsteelblue&quot;</span>
+            <span class="k">border.color:</span> <span class="s2">&quot;slategrey&quot;</span>
+
+            <span class="c1">// 导出按钮属性</span>
+            <span class="nx">property</span> <span class="nx">alias</span> <span class="k">text:</span> <span class="nx">label</span><span class="p">.</span><span class="nx">text</span>
+
+            <span class="c1">// 自定义点击信号</span>
+            <span class="nx">signal</span> <span class="nx">clicked</span>
+
+            <span class="nx">Text</span> <span class="p">{</span>
+                <span class="kd">id: label</span>
+                <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+                <span class="k">text:</span> <span class="s2">&quot;Start&quot;</span>
+            <span class="p">}</span>
+
+            <span class="nx">MouseArea</span> <span class="p">{</span>
+                <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+                <span class="k">onClicked:</span> <span class="p">{</span>
+                    <span class="nx">myButton</span><span class="p">.</span><span class="nx">clicked</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Loader加载&quot;嵌入式自定义按钮&quot;</span>
+    <span class="nx">Loader</span><span class="p">{</span>
+        <span class="kd">id: loader</span>
+        <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+        <span class="k">anchors.bottomMargin:</span> <span class="mi">4</span>
+        <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+        <span class="k">sourceComponent:</span> <span class="nx">buttonComponent</span>
+        <span class="k">onLoaded:</span><span class="p">{</span>
+            <span class="c1">// item指向myButton</span>
+            <span class="nx">item</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// target 指向嵌入式按钮组件的顶层item—Rectangle，所以可以直接响应它的clicked信号。</span>
+    <span class="nx">Connections</span> <span class="p">{</span>
+        <span class="k">target:</span> <span class="nx">loader</span><span class="p">.</span><span class="nx">item</span><span class="p">;</span>
+        <span class="k">onClicked:</span><span class="p">{</span>
+            <span class="nx">status</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;Button clicked!&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 当按钮按下，改变文本的text</span>
+    <span class="nx">Text</span> <span class="p">{</span>
+        <span class="kd">id: status</span>
+        <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">76</span>
+        <span class="k">width:</span> <span class="mi">116</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">26</span>
+        <span class="k">text:</span> <span class="s2">&quot;waiting ...&quot;</span>
+        <span class="k">horizontalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignHCenter</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>参考: <a class="reference external" href="https://www.cnblogs.com/linuxAndMcu/p/11935778.html#_label2">https://www.cnblogs.com/linuxAndMcu/p/11935778.html#_label2</a></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    如何导入
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      使用路径导入
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      模块注册导入
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#section-4">
+        模块注册
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#section-5">
+        模块导入
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#qml-1">
+    QML组件定义-文件组件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#qml-component">
+    QML组件定义-Component
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

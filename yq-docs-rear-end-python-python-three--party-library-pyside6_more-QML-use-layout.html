@@ -1,0 +1,758 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>QML布局方式</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 10 四月 2024
+      , Category:
+	  <a href="category/hou-duan.html">后端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan.html">后端</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+													<li><a class="button button-alt" href="tag/pyside6.html">Pyside6</a></li>
+
+													<li><a class="button button-alt" href="tag/qml.html">Qml</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-04-10</div>
+										<h2>QML布局方式</h2>
+									</div>
+									<p>参考: <a class="reference external" href="https://www.cnblogs.com/Fuss/p/4313928.html">Qt Quick快速入门之qml布局</a></p>
+<div class="section" id="section-1">
+<h2>锚点布局</h2>
+<p>锚点布局使用 <cite>anchors</cite> 属性将一个元素的边定位到另一个元素的边，从而确定元素的位置和大小</p>
+<p>如下</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+
+<span class="nx">Window</span> <span class="p">{</span>
+  <span class="kd">id:anchorLayoutWindow</span><span class="p">;</span>
+  <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span>
+  <span class="k">height:</span> <span class="mi">320</span><span class="p">;</span>
+  <span class="k">title:</span> <span class="s2">&quot;AnchorLayout&quot;</span><span class="p">;</span>
+
+  <span class="nx">Rectangle</span><span class="p">{</span>
+      <span class="kd">id:rect1</span><span class="p">;</span>
+      <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+      <span class="k">height:</span><span class="mi">50</span><span class="p">;</span>
+      <span class="k">color:</span><span class="s2">&quot;blue&quot;</span><span class="p">;</span>
+      <span class="k">anchors.top:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+      <span class="nx">Text</span><span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Top&quot;</span><span class="p">;</span> <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span><span class="p">;</span><span class="k">anchors.top:</span><span class="nx">parent</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span> <span class="k">color:</span><span class="s2">&quot;white&quot;</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">Rectangle</span><span class="p">{</span>
+      <span class="kd">id:rect2</span><span class="p">;</span>
+      <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>
+      <span class="k">color:</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
+      <span class="k">anchors.top:</span><span class="nx">rect1</span><span class="p">.</span><span class="nx">bottom</span><span class="p">;</span>
+      <span class="k">anchors.bottom:</span> <span class="nx">rect4</span><span class="p">.</span><span class="nx">top</span>
+      <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+      <span class="nx">Text</span><span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Left&quot;</span><span class="p">;</span> <span class="k">anchors.verticalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">verticalCenter</span><span class="p">;</span> <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span><span class="k">color:</span><span class="s2">&quot;white&quot;</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">Rectangle</span><span class="p">{</span>
+      <span class="kd">id:rect3</span><span class="p">;</span>
+      <span class="k">color:</span> <span class="s2">&quot;green&quot;</span><span class="p">;</span>
+      <span class="k">width:</span><span class="nx">rect2</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+      <span class="k">anchors.top:</span><span class="nx">rect1</span><span class="p">.</span><span class="nx">bottom</span><span class="p">;</span>
+      <span class="k">anchors.bottom:</span> <span class="nx">rect4</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+      <span class="k">anchors.right:</span><span class="nx">parent</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+      <span class="nx">Text</span><span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Right&quot;</span><span class="p">;</span><span class="k">anchors.right:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span><span class="k">anchors.verticalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">verticalCenter</span><span class="p">;</span><span class="k">color:</span><span class="s2">&quot;white&quot;</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">Rectangle</span><span class="p">{</span>
+      <span class="kd">id:rect4</span><span class="p">;</span>
+      <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+      <span class="k">height:</span><span class="mi">50</span><span class="p">;</span>
+      <span class="k">color:</span><span class="s2">&quot;yellow&quot;</span><span class="p">;</span>
+      <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span><span class="p">;</span>
+      <span class="nx">Text</span><span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Bottom&quot;</span><span class="p">;</span> <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span><span class="p">;</span><span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span><span class="p">;</span><span class="k">color:</span><span class="s2">&quot;blue&quot;</span><span class="p">;}</span>
+  <span class="p">}</span>
+
+  <span class="nx">Rectangle</span><span class="p">{</span>
+      <span class="kd">id:rect5</span><span class="p">;</span>
+      <span class="k">color:</span><span class="s2">&quot;#FF605066&quot;</span><span class="p">;</span>
+      <span class="k">anchors.top:</span><span class="nx">rect1</span><span class="p">.</span><span class="nx">bottom</span><span class="p">;</span>
+      <span class="k">anchors.bottom:</span> <span class="nx">rect4</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
+      <span class="k">anchors.left:</span> <span class="nx">rect2</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+      <span class="k">anchors.right:</span> <span class="nx">rect3</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+      <span class="nx">Text</span><span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Center&quot;</span><span class="p">;</span><span class="k">anchors.centerIn:</span> <span class="nx">parent</span><span class="p">;</span> <span class="k">color:</span><span class="s2">&quot;white&quot;</span><span class="p">;}</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+<p>效果</p>
+<div class="figure">
+<img alt="锚点布局效果" src="doc-raw/resources/images/2024-04-10-17-25-45.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="grid">
+<h2>Grid布局</h2>
+<p>Grid布局有</p>
+<ul class="simple">
+<li>GridLayout</li>
+<li>ColumnLayout</li>
+<li>RowLayout</li>
+<li>Column</li>
+<li>Row</li>
+</ul>
+<p>其中 <cite>ColumnLayout</cite> 、 <cite>RowLayout</cite> 只是 <cite>GridLayout</cite> 的一种特例， <cite>ColumnLayout</cite> 表示只有一列， <cite>RowLayout</cite> 表示只有一行。</p>
+<p><cite>GridLayout</cite> 使用 <cite>columns</cite> 、 <cite>rows</cite> 属性将空间分成若干单元格，
+使用 <cite>columnSpacing</cite> 、 <cite>rowSpacing</cite> 确立单元格之间的间隔。
+而 <cite>GridLayout</cite> 内部元素的大小由 <cite>Layout.fillWidth</cite> 、 <cite>Layout.fillHeight</cite> 以及 <cite>Layout.preferredWidth</cite> 、 <cite>Layout.preferredHeight</cite> 来确定，
+如 <cite>Layout.fillWidth:true</cite> 表示宽度填充整个单元格，
+<cite>Layout.preferredWidth</cite> 则指定一个建议宽度。
+<cite>Layout.row</cite> 、 <cite>Layout.column</cite> 确定内部元素处于哪个单元格。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">不要将内部元素的宽度、高度、x、y 与 <cite>GridLayout</cite> 进行绑定，容易导致绑定循环。</p>
+</div>
+<p><cite>Column</cite> 、 <cite>Row</cite> 类似于 <cite>html</cite> 中的 <cite>float</cite> 或是 <cite>wpf</cite> 中的 <cite>StackPanel</cite> ， 会直接将元素一个个挨在一起， 元素间的间隔使用 <cite>spacing</cite> 控制</p>
+<p>下面是GridLayout布局的一个示例</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Layouts</span> <span class="mf">1.1</span>
+
+<span class="nx">Window</span> <span class="p">{</span>
+  <span class="kd">id:gridLayoutWindow</span><span class="p">;</span>
+  <span class="k">title:</span><span class="s2">&quot;GridLayoutWindow&quot;</span><span class="p">;</span>
+  <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span>
+  <span class="k">height:</span> <span class="mi">320</span><span class="p">;</span>
+  <span class="nx">GridLayout</span><span class="p">{</span>
+      <span class="kd">id: gridLayout1</span>
+      <span class="k">columns:</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="k">rows:</span><span class="mi">2</span><span class="p">;</span>
+      <span class="k">anchors.fill:</span> <span class="nx">parent</span><span class="p">;</span>
+      <span class="k">anchors.margins:</span> <span class="mi">5</span><span class="p">;</span>
+      <span class="k">columnSpacing:</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">rowSpacing:</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="nx">Rectangle</span><span class="p">{</span>
+          <span class="kd">id:rect00</span><span class="p">;</span>
+          <span class="k">color:</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
+          <span class="k">Layout.fillWidth:</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="k">Layout.fillHeight:</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nx">Rectangle</span><span class="p">{</span>
+          <span class="kd">id:rect01</span><span class="p">;</span>
+          <span class="k">color:</span> <span class="s2">&quot;blue&quot;</span><span class="p">;</span>
+          <span class="k">Layout.fillWidth:</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="k">Layout.fillHeight:</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nx">Rectangle</span><span class="p">{</span>
+          <span class="kd">id:rect10</span><span class="p">;</span>
+          <span class="k">color:</span> <span class="s2">&quot;green&quot;</span><span class="p">;</span>
+          <span class="k">Layout.fillWidth:</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="k">Layout.fillHeight:</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="k">Layout.row:</span><span class="mi">1</span><span class="p">;</span>
+          <span class="k">Layout.column:</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>效果</p>
+<div class="figure">
+<img alt="Grid布局效果" src="doc-raw/resources/images/2024-04-10-17-30-26.png" style="width: 480px;" />
+</div>
+<div class="section" id="gridcolumn">
+<h3>Grid与Column结合</h3>
+<p><cite>ColumnLayout</cite> 默认就不用考虑在哪一列, 每一列会从左到右依次放置.</p>
+<div class="highlight"><pre><span></span><span class="nx">GridLayout</span><span class="p">{</span>
+    <span class="k">rows:</span> <span class="mi">3</span>
+    <span class="k">columns:</span> <span class="mi">3</span>
+
+    <span class="nx">ColumnLayout</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="nx">ColumnLayout</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">ColumnLayout</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>3x3 效果</p>
+<div class="figure">
+<img alt="列模式" src="doc-raw/resources/images/2024-04-10-20-38-00.png" style="width: 480px;" />
+</div>
+<p>但是注意, 这是当 组件数量 与 定义的格子一致的情况, 当不一致的时候,
+就会有点不一样</p>
+<p>为了更方便的看出区别, 稍微更改了一下内容</p>
+<div class="figure">
+<img alt="新样式" src="doc-raw/resources/images/2024-04-10-20-52-06.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">这里如果不定义大小就看不到东西</p>
+</div>
+<p>说明: 格子更新为 3x2; 内容更新为 2x3.</p>
+<p>效果:</p>
+<div class="figure">
+<img alt="新效果" src="doc-raw/resources/images/2024-04-10-20-53-38.png" style="width: 480px;" />
+</div>
+<p>当插入第3列元素的时候, 因为只有2列,
+前两列 红色 与 黄色 色块正常,
+第3列 蓝色 结果就是另起一行的新的一列</p>
+</div>
+<div class="section" id="gridrow">
+<h3>Grid与Row结合</h3>
+<p>与 <cite>ColumnLayout</cite> 不同.
+当 <cite>GridLayout</cite> 结合 <cite>RowLayout</cite> , 默认情况下所有数据会重叠在一行.</p>
+<div class="highlight"><pre><span></span><span class="nx">GridLayout</span><span class="p">{</span>
+    <span class="k">rows:</span> <span class="mi">3</span>
+    <span class="k">columns:</span> <span class="mi">3</span>
+
+    <span class="nx">RowLayout</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="nx">RowLayout</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">RowLayout</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;None&quot;</span>
+            <span class="k">highlighted:</span> <span class="kc">true</span>
+            <span class="k">Material.accent</span>
+<span class="k">            :</span>
+            <span class="nx">Material</span><span class="p">.</span><span class="nx">BlueGrey</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>说明, 定义 3x3 的格子, 尝试使用 <cite>RowLayout</cite>, 每一行内三个按钮.</p>
+<p>实际效果</p>
+<div class="figure">
+<img alt="失败的多RowLayout" src="doc-raw/resources/images/2024-04-10-20-30-45.png" style="width: 480px;" />
+</div>
+<p>明显是有问题的, 本来是想全局 3x3 , 结果都在一行了.</p>
+<p><cite>RowLayout</cite> 的实际表现与 <cite>ColumnLayout</cite> 有点不一样,
+<cite>ColumnLayout</cite> 默认多列是不会重叠的.</p>
+<p>那这个时候怎么办?</p>
+<p>答案是 <strong>手动定义所在的行</strong> <tt class="docutils literal">Layout.row: 行</tt>.</p>
+<div class="figure">
+<img alt="定义所在行" src="doc-raw/resources/images/2024-04-10-20-34-19.png" style="width: 480px;" />
+</div>
+<p>效果</p>
+<div class="figure">
+<img alt="修正后的效果" src="doc-raw/resources/images/2024-04-10-20-34-52.png" style="width: 480px;" />
+</div>
+</div>
+</div>
+<div class="section" id="splitview">
+<h2>SplitView</h2>
+<p>SplitView
+用于提供带切分条的布局，下面是示例</p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Layouts</span> <span class="mf">1.1</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">1.2</span>
+
+<span class="nx">Window</span> <span class="p">{</span>
+  <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span>
+  <span class="k">height:</span> <span class="mi">320</span><span class="p">;</span>
+  <span class="k">title:</span> <span class="s2">&quot;SplitView&quot;</span><span class="p">;</span>
+
+  <span class="nx">SplitView</span><span class="p">{</span>
+      <span class="k">anchors.fill:</span><span class="nx">parent</span><span class="p">;</span>
+      <span class="k">orientation:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">Horizontal</span><span class="p">;</span>
+      <span class="nx">Rectangle</span><span class="p">{</span>
+          <span class="kd">id:rect1</span><span class="p">;</span>
+          <span class="k">width:</span><span class="mi">100</span><span class="p">;</span>
+          <span class="k">color:</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nx">Rectangle</span><span class="p">{</span>
+          <span class="kd">id:rect2</span><span class="p">;</span>
+          <span class="k">Layout.fillWidth:</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="k">Layout.minimumWidth:</span> <span class="mi">50</span><span class="p">;</span>
+          <span class="k">color:</span><span class="s2">&quot;blue&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nx">Rectangle</span><span class="p">{</span>
+          <span class="kd">id:rect3</span><span class="p">;</span>
+          <span class="k">width:</span><span class="mi">100</span><span class="p">;</span>
+          <span class="k">color:</span><span class="s2">&quot;green&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<div class="figure">
+<img alt="SplitView效果" src="doc-raw/resources/images/2024-04-10-17-31-44.png" style="width: 480px;" />
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    锚点布局
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#grid">
+    Grid布局
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#gridcolumn">
+      Grid与Column结合
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#gridrow">
+      Grid与Row结合
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#splitview">
+    SplitView
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

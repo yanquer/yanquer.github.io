@@ -1,0 +1,392 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>semver</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 03 四月 2024
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/qian-duan.html">前端</a></li>
+													<li><a class="button button-alt" href="tag/node.html">Node</a></li>
+
+													<li><a class="button button-alt" href="tag/san-fang-ku.html">三方库</a></li>
+
+													<li><a class="button button-alt" href="tag/nodemo-kuai.html">Node模块</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-04-03</div>
+										<h2>semver</h2>
+									</div>
+									<p>基于React的Table组件, 提供了丰富的功能</p>
+<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>npm地址: <a class="reference external" href="https://www.npmjs.com/package/semver">https://www.npmjs.com/package/semver</a></li>
+</ul>
+</dd>
+</dl>
+<p>安装</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>semver
+</pre></div>
+<div class="section" id="section-1">
+<h2>使用</h2>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">semver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;semver&#39;</span><span class="p">)</span>
+
+<span class="nx">semver</span><span class="p">.</span><span class="nx">valid</span><span class="p">(</span><span class="s1">&#39;1.2.3&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// &#39;1.2.3&#39;</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">valid</span><span class="p">(</span><span class="s1">&#39;a.b.c&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// null</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">clean</span><span class="p">(</span><span class="s1">&#39;  =v1.2.3   &#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// &#39;1.2.3&#39;</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">satisfies</span><span class="p">(</span><span class="s1">&#39;1.2.3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1.x || &gt;=2.5.0 || 5.0.0 - 7.2.3&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">gt</span><span class="p">(</span><span class="s1">&#39;1.2.3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9.8.7&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// false</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">lt</span><span class="p">(</span><span class="s1">&#39;1.2.3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;9.8.7&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">minVersion</span><span class="p">(</span><span class="s1">&#39;&gt;=1.0.0&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// &#39;1.0.0&#39;</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">valid</span><span class="p">(</span><span class="nx">semver</span><span class="p">.</span><span class="nx">coerce</span><span class="p">(</span><span class="s1">&#39;v2&#39;</span><span class="p">))</span><span class="w"> </span><span class="c1">// &#39;2.0.0&#39;</span>
+<span class="nx">semver</span><span class="p">.</span><span class="nx">valid</span><span class="p">(</span><span class="nx">semver</span><span class="p">.</span><span class="nx">coerce</span><span class="p">(</span><span class="s1">&#39;42.6.7.9.3-alpha&#39;</span><span class="p">))</span><span class="w"> </span><span class="c1">// &#39;42.6.7&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="api">
+<h2>API</h2>
+<div class="section" id="section-2">
+<h3>比较</h3>
+<dl class="docutils">
+<dt>gt(v1, v2)</dt>
+<dd><p class="first">v1 &gt; v2</p>
+<p class="last">注意, 这些显示比较的函数基本类似, 仅支持 &quot;1.0.3&quot; 这样的纯正的版本, 而不支持夹杂符号的 &quot;&gt;=1.0.3&quot;, 否则会直接报错.
+如果要比较某个版本是否匹配夹杂符号的, 需要使用 <cite>satisfies</cite></p>
+</dd>
+<dt>gte(v1, v2)</dt>
+<dd>v1 &gt;= v2</dd>
+<dt>lt(v1, v2)</dt>
+<dd>v1 &lt; v2</dd>
+<dt>lte(v1, v2)</dt>
+<dd>v1 &lt;= v2</dd>
+<dt>eq(v1, v2)</dt>
+<dd><p class="first">v1 == v2</p>
+<p class="last">如果 v1 和 v2 在意义上是相同的版本，及时原始的字符串不一致, 也返回 true,</p>
+<!-- This is true if they're logically equivalent, even if they're not the exact same string. You already know how to compare strings. -->
+</dd>
+<dt>neq(v1, v2)</dt>
+<dd><p class="first">v1 != v2</p>
+<p class="last">与 eq 一致.</p>
+<!-- The opposite of eq. -->
+</dd>
+<dt>cmp(v1, comparator, v2)</dt>
+<dd>指定比较字符串, 调用对应的函数<!-- Pass in a comparison string, and it'll call the corresponding function above. "===" and "!==" do simple string comparison, but are included for completeness. Throws if an invalid comparison string is provided. -->
+</dd>
+<dt>compare(v1, v2)</dt>
+<dd><ul class="first last simple">
+<li>如果 <cite>v1 == v2</cite>, 返回 0.</li>
+<li>如果 <cite>v1 &gt; v2</cite>, 返回 1.</li>
+<li>如果 <cite>v1 &lt; v2</cite>, 返回 -1.</li>
+</ul>
+<!-- Return 0 if v1 == v2, or 1 if v1 is greater, or -1 if v2 is greater. Sorts in ascending order if passed to Array.sort(). -->
+</dd>
+<dt>rcompare(v1, v2)</dt>
+<dd>与 compare 相反.<!-- The reverse of compare. Sorts an array of versions in descending order when passed to Array.sort(). -->
+</dd>
+<dt>compareBuild(v1, v2)</dt>
+<dd>与 compare 类似, 但是考虑到了当两个版本相等但 build 字段不同.
+如果传递给 Array.sort()，则按升序排序。v2 较大。如果传递给 Array.sort()，则按升序排序。<!-- The same as compare but considers build when two versions are equal. Sorts in ascending order if passed to Array.sort(). v2 is greater. Sorts in ascending order if passed to Array.sort(). -->
+</dd>
+<dt>diff(v1, v2)</dt>
+<dd>返回版本差异, 返回值可以是以下值: &quot;major&quot;, &quot;premajor&quot;, &quot;minor&quot;, &quot;preminor&quot;, &quot;patch&quot;, &quot;prepatch&quot;, or &quot;prerelease&quot;.
+如果无差异, 返回null<!-- Returns difference between two versions by the release type (major, premajor, minor, preminor, patch, prepatch, or prerelease), or null if the versions are the same. -->
+</dd>
+<dt>satisfies(v1, comparator_v2)</dt>
+<dd><p class="first">comparator_v2表示可包含比较符号, 比如: &quot;&gt;=1.0.3&quot;.</p>
+<p class="last">表示 v1 是否满足 v2 的要求.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    使用
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#api">
+    API
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      比较
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

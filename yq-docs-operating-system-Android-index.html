@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -104,19 +104,168 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
-												<li><a class="button button-alt" href="tag/android.html">Android</a></li>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/android.html">Android</a></li>
 
-										</ul>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-03-09</div>
+										<h2>安卓相关</h2>
 									</div>
-
-									<div class="pennant pennant-alt date">2024-03-09</div>
-									<h2>安卓相关</h2>
-									<a class="sphinx-toc-tree" href="/yq-docs-operating-system-Android-Mirror-file-dissection-package.html">镜像文件解包</a>
+									<div class='sphinx-toc-tree-box'>
+<a class="sphinx-toc-tree" href="/yq-docs-operating-system-Android-Mirror-file-dissection-package.html">镜像文件解包</a>
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-Android-Some-UI-related-understanding.html">一些UI相关的了解</a>
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-Android-Some-XML-configuration-attributes.html">一些XML配置属性</a>
+</div><p>参考: <a class="reference external" href="https://www.runoob.com/w3cnote/android-tutorial-intro.html">https://www.runoob.com/w3cnote/android-tutorial-intro.html</a></p>
+<div class="section" id="section-2">
+<h2>结构</h2>
+<p>新建工程后主要的几个文件</p>
+<ul class="simple">
+<li><cite>app/src/main/AndroidManifest.xml</cite>: 整个程序的描述文件</li>
+<li><cite>src</cite> 下的 <cite>MainActivity.java</cite>: 后端逻辑</li>
+<li><cite>res</cite> 下的 <cite>layout</cite> 文件夹: UI布局, 默认是 <cite>activity_main.xml</cite>. 一般UI界面就是在这里绘制</li>
+<li><cite>res</cite> 下的 <cite>values</cite> 文件夹: 配置文件, 比如字符串定义默认是 <cite>strings.xml</cite></li>
+</ul>
+</div>
+<div class="section" id="activity">
+<h2>Activity布局</h2>
+<p>主要有6大布局</p>
+<div class="section" id="linearlayout">
+<h3>LinearLayout(线性布局)</h3>
+<p>线性布局, 也可以说是水平/垂直布局</p>
+<p>属性</p>
+<ul class="simple">
+<li><cite>android:orientation</cite>: 布局方向, 默认是垂直 <cite>vertical</cite>, 还有 <cite>horizontal</cite></li>
+<li><cite>android:id</cite>: 布局id, 可使用 <cite>&#64;+id/xxx</cite> 创建</li>
+<li><cite>android:layout_width</cite>: 布局宽度, 默认是 <cite>match_parent</cite></li>
+<li><cite>android:layout_height</cite>: 布局高度, 默认是 <cite>match_parent</cite>, 还支持 <cite>wrap_content</cite>, <cite>fill_parent</cite></li>
+<li><cite>android:gravity</cite>: 布局子组件的内容对齐方式, 默认是 <cite>center</cite></li>
+<li><cite>android:layout_margin</cite>: 布局外边距, 默认是 <cite>0dp</cite></li>
+<li><cite>android:layout_marginTop</cite>: 布局上外边距, 默认是 <cite>0dp</cite></li>
+<li><cite>android:layout_marginBottom</cite>: 布局下外边距, 默认是 <cite>0dp</cite></li>
+<li><cite>android:layout_marginLeft</cite>: 布局左外边距, 默认是 <cite>0dp</cite></li>
+<li><cite>android:layout_marginRight</cite>: 布局右外边距, 默认是 <cite>0dp</cite></li>
+<li><cite>android:layout_marginStart</cite>: 布局开始外边距, 默认是 <cite>0dp</cite></li>
+<li><cite>android:layout_marginEnd</cite>: 布局结束外边距, 默认是 <cite>0dp</cite></li>
+<li><cite>android:layout_weight</cite>: 配置权重, 可以理解为在当前行中, 占比大小. 需要与父布局的 <cite>android:layout_width</cite> 或者 <cite>android:layout_height</cite> 配合使用,
+如水平方向的权重分配, 需要将宽度设置为0 <tt class="docutils literal"><span class="pre">android:layout_width=&quot;0dp&quot;</span> <span class="pre">android:layout_weight=&quot;1&quot;</span></tt></li>
+</ul>
+</div>
+<div class="section" id="relativelayout">
+<h3>RelativeLayout(相对布局)</h3>
+<p>参考: <a class="reference external" href="https://www.runoob.com/w3cnote/android-tutorial-relativelayout.html">RelativeLayout(相对布局)</a></p>
+</div>
+<div class="section" id="tablelayout">
+<h3>TableLayout(表格布局)</h3>
+<p>参考: <a class="reference external" href="https://www.runoob.com/w3cnote/android-tutorial-tablelayout.html">TableLayout(表格布局)</a></p>
+<p>相对 <cite>GridLayout</cite> 是一个比较老的布局组件, 不能直接设置几行几列, 可以不用管这个.</p>
+<ul class="simple">
+<li>如果我们直接往 <cite>TableLayout</cite> 中添加组件的话,那么这个组件将占满一行！！！</li>
+<li>如果我们想一行上有多个组件的话,就要添加一个 <cite>TableRow</cite> 的容器,把组件都丢到里面！</li>
+<li><cite>tablerow</cite> 中的组件个数就决定了该行有多少列, 而列的宽度由该列中最宽的单元格决定</li>
+<li><cite>tablerow</cite> 的 <cite>layout_width</cite> 属性, 默认是 <cite>fill_parent</cite> 的,我们自己设置成其他的值也不会生效！！！ 但是 <cite>layout_height</cite> 默认是 <cite>wrapten——content</cite> 的,我们却可以自己设置大小！</li>
+<li>整个表格布局的宽度取决于父容器的宽度(占满父容器本身)</li>
+<li>一个tablerow一行,一个单独的组件也一行！多少列则是看 <cite>tableRow</cite> 中 的组件个数,组件最多的就是 <cite>TableLayout</cite> 的列数</li>
+</ul>
+<dl class="docutils">
+<dt>属性</dt>
+<dd><ul class="first last simple">
+<li><cite>android:collapseColumns</cite>: 设置需要被 <em>隐藏</em> 的列的序号(从0开始, 下同)</li>
+<li><cite>android:shrinkColumns</cite>: 设置允许被 <em>收缩</em> 的列的列序号</li>
+<li><cite>android:stretchColumns</cite>: 设置运行被 <em>拉伸</em> 的列的列序号</li>
+<li><cite>android:layout_column=&quot;2&quot;</cite>: 表示的就是 <em>跳过</em> 第二个,直接显示到第三个格子处, 从1开始算的!</li>
+<li><cite>android:layout_span=&quot;4&quot;</cite>: 表示 <em>合并</em> 4个单元格,也就说这个组件占4个单元格</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="framelayout">
+<h3>FrameLayout(帧布局)</h3>
+<p>参考: <a class="reference external" href="https://www.runoob.com/w3cnote/android-tutorial-framelayout.html">https://www.runoob.com/w3cnote/android-tutorial-framelayout.html</a></p>
+<blockquote>
+六大布局中最为简单的一个布局,这个布局直接在屏幕上开辟出一块空白的区域,当我们往里面添加控件的时候,会默认把他们放到这块区域的左上角,
+而这种布局方式却没有任何的定位方式,所以它应用的场景并不多;
+帧布局的大小由控件中最大的子控件决定,如果控件的大小一样大的话,那么同一时刻就只能看到最上面的那个组件!
+后续添加的控件会覆盖前一个!虽然默认会将控件放置在左上角,但是我们也可以通过layout_gravity属性,指定到其他的位置!</blockquote>
+<dl class="docutils">
+<dt>属性:</dt>
+<dd><ul class="first last simple">
+<li><cite>android:foreground</cite>: 设置改帧布局容器的前景图像</li>
+<li><cite>android:foregroundGravity</cite>: 设置前景图像显示的位置</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="absolutelayout">
+<h3>AbsoluteLayout(绝对布局)</h3>
+</div>
+<div class="section" id="gridlayout">
+<h3>GridLayout(网格布局)</h3>
+<p>参考: <a class="reference external" href="https://www.runoob.com/w3cnote/android-tutorial-gridlayout.html">https://www.runoob.com/w3cnote/android-tutorial-gridlayout.html</a></p>
+<ul class="simple">
+<li>可以自己设置布局中组件的排列方式</li>
+<li>可以自定义网格布局有多少行,多少列</li>
+<li>可以直接设置组件位于某行某列</li>
+<li>可以设置组件横跨几行或者几列.
+组件横跨 多行或者多列的话, 如果要让组件填满横越过的行或列, 需要添加下面这个属性: <cite>android:layout_gravity = &quot;fill&quot;</cite></li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>其他控件</h2>
+<div class="section" id="textview">
+<h3>TextView</h3>
+<p>属性</p>
+<ul class="simple">
+<li><cite>android:text</cite>: 文本</li>
+</ul>
+</div>
+<div class="section" id="button">
+<h3>Button</h3>
+<p>属性</p>
+<ul class="simple">
+<li><cite>android:text</cite>: 文本</li>
+<li><cite>android:onClick</cite>: 点击事件, 字符串代表 <cite>Activity</cite> 中定义的函数, 如 <tt class="docutils literal"><span class="pre">android:onClick=&quot;Welcome&quot;</span></tt> 表示 <cite>Welcome</cite> 函数, 注意修饰符需要是 <cite>public</cite></li>
+</ul>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>暂未整理属性</h2>
+<ul class="simple">
+<li><cite>android:screenOrientation</cite>: 横/竖屏切换
+- unspecified:默认值 由系统来判断显示方向.判定的策略是和设备相关的，所以不同的设备会有不同的显示方向。
+- landscape:横屏显示（宽比高要长）
+- portrait:竖屏显示(高比宽要长)
+- user:用户当前首选的方向
+- behind:和该Activity下面的那个Activity的方向一致(在Activity堆栈中的)
+- sensor:有物理的感应器来决定。如果用户旋转设备这屏幕会横竖屏切换。
+- nosensor:忽略物理感应器，这样就不会随着用户旋转设备而更改了（&quot;unspecified&quot;设置除外）。</li>
+</ul>
+</div>
+<div class="section" id="section-5">
+<h2>常见报错</h2>
+<div class="section" id="view-is-not-constrained-vertically">
+<h3>view is not constrained vertically</h3>
+<p>报错: 此视图不受垂直约束：在运行时，它将跳转到顶部，除非您添加垂直约束更多...(⌘F1), 原输出:</p>
+<pre class="literal-block">
+This view is not constrained vertically: at runtime it will jump to the top unless you add a vertical constraint More... (⌘F1)
+</pre>
+<p>说明视图在垂直方向没有定义与父组件的布局关系. 可以试下增加垂直方向的约束</p>
+<div class="highlight"><pre><span></span>app:layout_constraintTop_toTopOf=&quot;parent&quot;
+</pre></div>
+<p>所有方向约束</p>
+<div class="highlight"><pre><span></span>app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+app:layout_constraintStart_toStartOf=&quot;parent&quot;
+app:layout_constraintTop_toTopOf=&quot;parent&quot;
+</pre></div>
+</div>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -130,6 +279,98 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    结构
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#activity">
+    Activity布局
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#linearlayout">
+      LinearLayout(线性布局)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#relativelayout">
+      RelativeLayout(相对布局)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#tablelayout">
+      TableLayout(表格布局)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#framelayout">
+      FrameLayout(帧布局)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#absolutelayout">
+      AbsoluteLayout(绝对布局)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#gridlayout">
+      GridLayout(网格布局)
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    其他控件
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#textview">
+      TextView
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#button">
+      Button
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    暂未整理属性
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    常见报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#view-is-not-constrained-vertically">
+      view is not constrained vertically
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -147,27 +388,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -250,7 +491,7 @@
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

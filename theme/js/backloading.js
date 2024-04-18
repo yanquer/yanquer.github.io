@@ -3,7 +3,8 @@ const targetHeadCSS = [
 	// <link rel="stylesheet" href="/theme/css/alabaster.css" />
 	// <link rel="stylesheet" href="/theme/css/style-update.css" />
 	// "/theme/css/alabaster.css",
-	"/theme/css/style-update.css"
+	"/theme/css/style-update.css",
+	"/theme/css/pygments_by_pydata.css",
 ];
 
 const backLoading = () => {

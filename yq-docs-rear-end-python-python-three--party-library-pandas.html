@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/hou-duan.html">后端</a>
     </div>
@@ -104,21 +104,499 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/hou-duan.html">后端</a></li>
-												<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan.html">后端</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
 
-												<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
 
-										</ul>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2023-02-20</div>
+										<h2>pandas</h2>
 									</div>
+									<p>数据处理的库</p>
+<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>官网: <a class="reference external" href="https://pandas.pydata.org/">https://pandas.pydata.org/</a></li>
+</ul>
+</dd>
+</dl>
+<p>安装</p>
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pandas
+</pre></div>
+<div class="section" id="section-1">
+<h2>常见用法</h2>
+<div class="section" id="csv">
+<h3>读取 CSV</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-									<div class="pennant pennant-alt date">2023-02-20</div>
-									<h2>pandas</h2>
-									<p>读取 CSV:</p>
-<blockquote>
-read_csv()</blockquote>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="dataframe">
+<h3>创建DataFrame</h3>
+<p>使用字典创建DataFrame</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">105</span><span class="p">],</span>
+        <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="s1">&#39;Eva&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">28</span><span class="p">],</span>
+        <span class="s1">&#39;Salary&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">55000</span><span class="p">],</span>
+        <span class="s1">&#39;Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="s1">&#39;Inactive&#39;</span><span class="p">,</span> <span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="s1">&#39;Inactive&#39;</span><span class="p">]}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-2">
+<h3>查看数据前几行</h3>
+<p>查看数据前3行, 不给参数默认前5行</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h3>查看数据后几行</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 用于查看DataFrame的后几行，默认为后5行。</p>
+<p>示例： 查看后3行数据。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h3>查看数据基本信息</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 提供DataFrame的基本信息，包括每列的非空值数量和数据类型。</p>
+<p>示例： 查看数据信息。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="section-5">
+<h3>描述性统计信息</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 提供DataFrame的描述性统计信息，包括均值、标准差、最小值、25%分位数、中位数（50%分位数）、75%分位数和最大值。</p>
+<p>示例： 查看数值列的统计信息。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="section-6">
+<h3>选择列</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ColumnName&#39;</span><span class="p">]</span>
+</pre></div>
+<p>使用方式： 通过列名选择DataFrame中的一列。</p>
+<p>示例： 选择“Salary”列。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="section-7">
+<h3>选择多列</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Column1&#39;</span><span class="p">,</span> <span class="s1">&#39;Column2&#39;</span><span class="p">]]</span>
+</pre></div>
+<p>使用方式： 通过列名列表选择DataFrame中的多列。</p>
+<p>示例： 选择“Name”和“Age”列。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="section" id="section-8">
+<h3>选择行</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+<p>使用方式： 通过索引标签选择DataFrame中的一行。</p>
+<p>示例： 选择索引为2的行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="section-9">
+<h3>选择特定行和列</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;ColumnName&#39;</span><span class="p">]</span>
+</pre></div>
+<p>使用方式： 通过索引标签和列名选择DataFrame中的特定元素。</p>
+<p>示例： 选择索引为1的行的“Name”列的值。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="filtering">
+<h3>条件选择（Filtering）</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ColumnName&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">]</span>
+</pre></div>
+<p>使用方式： 使用条件过滤选择满足特定条件的行。</p>
+<p>示例： 选择年龄大于25的行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="section-10">
+<h3>多条件选择</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column1&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">value1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">value2</span><span class="p">)]</span>
+</pre></div>
+<p>使用方式： 使用逻辑运算符 （ <tt class="docutils literal">&amp;</tt>：与， <tt class="docutils literal">|</tt> ：或， <tt class="docutils literal">~</tt> ： 非） 结合多个条件进行过滤。</p>
+<p>示例： 选择年龄大于25且状态为“Active”的行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Active&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="section" id="section-11">
+<h3>排序数据</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ColumnName&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 根据指定列的值进行升序或降序排序。</p>
+<p>示例： 按工资降序排序。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-12">
+<h3>处理缺失值</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 删除包含缺失值的行。</p>
+<p>示例： 删除所有包含缺失值的行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="section-13">
+<h3>填充缺失值</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 用指定值填充缺失值。</p>
+<p>示例： 用均值填充所有缺失值。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="section" id="section-14">
+<h3>新增列</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NewColumn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+</pre></div>
+<p>使用方式： 新增一列，并为其赋值。</p>
+<p>示例： 新增一列表示年龄是否大于30。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;IsAbove30&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<div class="section" id="section-15">
+<h3>删除列</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;ColumnName&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 删除指定列。</p>
+<p>示例： 删除“Status”列。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Status&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-16">
+<h3>重命名列</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;OldName&#39;</span><span class="p">:</span> <span class="s1">&#39;NewName&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 重命名指定列。</p>
+<p>示例： 将“ID”列重命名为“EmployeeID”。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="s1">&#39;EmployeeID&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-17">
+<h3>分组统计</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ColumnName&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Column1&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Column2&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+</pre></div>
+<p>使用方式： 按照指定列进行分组，然后进行聚合统计。</p>
+<p>示例： 按状态分组，计算平均年龄和总工资。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Status&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="section" id="dataframe-1">
+<h3>合并DataFrame</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 沿着指定轴合并两个DataFrame。</p>
+<p>示例： 垂直合并两个DataFrame。</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="dataframe-2">
+<h3>横向合并DataFrame</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 沿着列方向合并两个DataFrame。</p>
+<p>示例： 横向合并两个DataFrame。</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="dataframe-3">
+<h3>合并DataFrame（基于键）</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;KeyColumn&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用指定列进行合并，指定合并方式（内连接、左连接、右连接、外连接）。</p>
+<p>示例： 使用“ID”列内连接两个DataFrame。</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-18">
+<h3>透视表</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ValueColumn&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;IndexColumn&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ColumnToPivot&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 创建透视表，汇总数据。</p>
+<p>示例： 创建一个透视表，计算不同状态下的平均工资。</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Status&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="section-19">
+<h3>独热编码</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CategoricalColumn&#39;</span><span class="p">])</span>
+</pre></div>
+<p>使用方式： 将分类变量转换为独热编码。</p>
+<p>示例： 对“Status”列进行独热编码。</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="section" id="section-20">
+<h3>字符串处理</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;StringColumn&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 对字符串列进行各种处理，如切片、替换等。</p>
+<p>示例： 将“Name”列转换为大写。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="section-21">
+<h3>日期时间处理</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DateTimeColumn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DateTimeColumn&#39;</span><span class="p">])</span>
+</pre></div>
+<p>重点说明： 将字符串列转换为日期时间类型。</p>
+<p>示例： 将“Date”列转换为日期时间类型。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="section" id="section-22">
+<h3>时间序列重采样</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 对时间序列数据进行重新采样。</p>
+<p>示例： 将数据按天重新采样并求和。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="section-23">
+<h3>滑动窗口</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 计算滑动窗口的统计量，如均值。</p>
+<p>示例： 计算“Salary”列的3天滑动平均值。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="section-24">
+<h3>绘制图表</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Column1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Column2&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用内置的绘图功能绘制各种图表。</p>
+<p>示例： 绘制散点图。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="dataframe-4">
+<h3>保存DataFrame到文件</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;filename.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 将DataFrame保存为CSV文件。</p>
+<p>示例： 将DataFrame保存为CSV文件。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;employee_data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="dataframe-5">
+<h3>从文件加载数据到DataFrame</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;filename.csv&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 从文件中加载数据到DataFrame。</p>
+<p>示例： 从CSV文件加载数据。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;employee_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="apply">
+<h3>使用apply函数对列进行操作</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NewColumn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用apply函数对某列的每个元素进行操作，可传递自定义函数。</p>
+<p>示例： 将“Age”列的每个元素乘以2。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DoubleAge&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="map">
+<h3>使用map函数进行值替换</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;Active&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Inactive&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</pre></div>
+<p>使用方式： 使用map函数根据字典或函数替换列中的值。</p>
+<p>示例： 将“Status”列的值映射为1和0。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;Active&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Inactive&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="section" id="cut">
+<h3>使用cut函数进行分箱处理</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeGroup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;20-30&#39;</span><span class="p">,</span> <span class="s1">&#39;30-40&#39;</span><span class="p">,</span> <span class="s1">&#39;40-50&#39;</span><span class="p">])</span>
+</pre></div>
+<p>使用方式： 使用cut函数将数值列分成不同的箱子，用标签表示。</p>
+<p>示例： 将“Age”列分成年龄组。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AgeGroup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;20-30&#39;</span><span class="p">,</span> <span class="s1">&#39;30-40&#39;</span><span class="p">,</span> <span class="s1">&#39;40-50&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="section" id="groupbytransform">
+<h3>使用groupby和transform进行组内操作</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MeanSalaryByAge&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用groupby和transform在组内进行操作，并将结果广播到原始DataFrame。</p>
+<p>示例： 计算每个年龄组的平均工资。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MeanSalaryByAge&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="astype">
+<h3>使用astype进行数据类型转换</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NewColumn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用astype将列的数据类型转换为指定类型。</p>
+<p>示例： 将“Age”列转换为浮点数类型。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="isin">
+<h3>使用isin进行过滤</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;value2&#39;</span><span class="p">])]</span>
+</pre></div>
+<p>使用方式： 使用isin过滤包含在给定列表中的值的行。</p>
+<p>示例： 选择“Name”列包含特定值的行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">])]</span>
+</pre></div>
+</div>
+<div class="section" id="duplicateddrop-duplicates">
+<h3>使用duplicated和drop_duplicates处理重复值</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Column1&#39;</span><span class="p">,</span> <span class="s1">&#39;Column2&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Column1&#39;</span><span class="p">,</span> <span class="s1">&#39;Column2&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用duplicated检测重复值，使用drop_duplicates删除重复值。</p>
+<p>示例： 查找并删除重复行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="nlargestnsmallest">
+<h3>使用nlargest和nsmallest获取最大和最小值</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;ColumnName&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;ColumnName&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用nlargest获取最大值，使用nsmallest获取最小值。</p>
+<p>示例： 获取工资最高的前5名和最低的前5名员工。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="value-counts">
+<h3>使用value_counts计算唯一值的频率</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+<p>使用方式： 使用value_counts计算某列中每个唯一值的频率。</p>
+<p>示例： 计算“Status”列中每个状态的数量。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="str-contains">
+<h3>使用str.contains进行模糊匹配</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;pattern&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+<p>使用方式： 使用str.contains进行模糊匹配，可指定大小写敏感和处理缺失值。</p>
+<p>示例： 选择“Name”列包含字母“A”的行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="section" id="replace">
+<h3>使用replace进行值替换</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;OldValue&#39;</span><span class="p">:</span> <span class="s1">&#39;NewValue&#39;</span><span class="p">})</span>
+</pre></div>
+<p>使用方式： 使用replace替换DataFrame中的值。</p>
+<p>示例： 将“Status”列中的“Active”替换为“ActiveStatus”。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Active&#39;</span><span class="p">:</span> <span class="s1">&#39;ActiveStatus&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="section" id="pivot">
+<h3>使用pivot进行数据透视</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;IndexColumn&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ColumnToPivot&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ValueColumn&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用pivot进行数据透视。</p>
+<p>示例： 创建一个数据透视表。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Status&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="merge">
+<h3>使用merge时处理重复列名</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;LeftColumn&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;RightColumn&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_left&#39;</span><span class="p">,</span> <span class="s1">&#39;_right&#39;</span><span class="p">))</span>
+</pre></div>
+<p>使用方式： 在使用merge时，处理两个DataFrame中相同列名的情况。</p>
+<p>示例： 合并两个DataFrame，处理重复列名。</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_left&#39;</span><span class="p">,</span> <span class="s1">&#39;_right&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="atiat">
+<h3>使用at和iat快速访问元素</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;ColumnName&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">columnIndex</span><span class="p">]</span>
+</pre></div>
+<p>使用方式： 使用at和iat快速访问DataFrame中的元素。</p>
+<p>示例： 获取第2行的“Name”列的值。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="mask">
+<h3>使用mask进行条件替换</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NewColumn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">])</span>
+</pre></div>
+<p>使用方式： 使用mask根据条件替换值。</p>
+<p>示例： 根据“Salary”列的条件进行替换。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Bonus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">60000</span><span class="p">,</span> <span class="s1">&#39;HighBonus&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="query">
+<h3>使用query进行条件查询</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Column &gt; value&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用query进行条件查询。</p>
+<p>示例： 查询“Age”大于25的行。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Age &gt; 25&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="crosstab">
+<h3>使用crosstab进行交叉表</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column1&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Column2&#39;</span><span class="p">])</span>
+</pre></div>
+<p>使用方式： 使用crosstab生成交叉表。</p>
+<p>示例： 生成“Status”和“Age”之间的交叉表。</p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="section" id="explode">
+<h3>使用explode展开列表</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;ListColumn&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用explode展开包含列表的列。</p>
+<p>示例： 展开“Hobbies”列的列表。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;Hobbies&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="agg">
+<h3>使用agg进行多个聚合操作</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;GroupColumn&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Column1&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Column2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]})</span>
+</pre></div>
+<p>使用方式： 使用agg同时进行多个聚合操作。</p>
+<p>示例： 计算每个组的平均值、最小值和最大值。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Status&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Salary&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+<div class="section" id="pipe">
+<h3>使用pipe进行链式操作</h3>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func1</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">arg1</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func3</span><span class="p">)</span>
+</pre></div>
+<p>使用方式： 使用pipe进行链式操作，将多个操作组合在一起。</p>
+<p>示例： 使用pipe调用多个自定义函数。</p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func1</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">arg1</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func3</span><span class="p">)</span>
+</pre></div>
+<p>此节参考: <a class="reference external" href="https://mp.weixin.qq.com/s/0WEoyDAN39KtbhIrgCImeA">50个核心Pandas操作！</a></p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -133,6 +611,284 @@ read_csv()</blockquote>
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    常见用法
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#csv">
+      读取 CSV
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataframe">
+      创建DataFrame
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      查看数据前几行
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      查看数据后几行
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      查看数据基本信息
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      描述性统计信息
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      选择列
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      选择多列
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      选择行
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-9">
+      选择特定行和列
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#filtering">
+      条件选择（Filtering）
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-10">
+      多条件选择
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-11">
+      排序数据
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-12">
+      处理缺失值
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-13">
+      填充缺失值
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-14">
+      新增列
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-15">
+      删除列
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-16">
+      重命名列
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-17">
+      分组统计
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataframe-1">
+      合并DataFrame
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataframe-2">
+      横向合并DataFrame
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataframe-3">
+      合并DataFrame（基于键）
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-18">
+      透视表
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-19">
+      独热编码
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-20">
+      字符串处理
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-21">
+      日期时间处理
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-22">
+      时间序列重采样
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-23">
+      滑动窗口
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-24">
+      绘制图表
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataframe-4">
+      保存DataFrame到文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataframe-5">
+      从文件加载数据到DataFrame
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#apply">
+      使用apply函数对列进行操作
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#map">
+      使用map函数进行值替换
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cut">
+      使用cut函数进行分箱处理
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#groupbytransform">
+      使用groupby和transform进行组内操作
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#astype">
+      使用astype进行数据类型转换
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#isin">
+      使用isin进行过滤
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#duplicateddrop-duplicates">
+      使用duplicated和drop_duplicates处理重复值
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#nlargestnsmallest">
+      使用nlargest和nsmallest获取最大和最小值
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#value-counts">
+      使用value_counts计算唯一值的频率
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#str-contains">
+      使用str.contains进行模糊匹配
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#replace">
+      使用replace进行值替换
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#pivot">
+      使用pivot进行数据透视
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#merge">
+      使用merge时处理重复列名
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#atiat">
+      使用at和iat快速访问元素
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#mask">
+      使用mask进行条件替换
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#query">
+      使用query进行条件查询
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#crosstab">
+      使用crosstab进行交叉表
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#explode">
+      使用explode展开列表
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#agg">
+      使用agg进行多个聚合操作
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#pipe">
+      使用pipe进行链式操作
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -150,27 +906,27 @@ read_csv()</blockquote>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -253,7 +1009,7 @@ read_csv()</blockquote>
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

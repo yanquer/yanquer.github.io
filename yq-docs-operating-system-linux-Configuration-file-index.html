@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -104,18 +104,20 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
-												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
 
-												<li><a class="button button-alt" href="tag/pei-zhi-wen-jian.html">配置文件</a></li>
+													<li><a class="button button-alt" href="tag/pei-zhi-wen-jian.html">配置文件</a></li>
 
-										</ul>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-03-09</div>
+										<h2>配置文件</h2>
 									</div>
-
-									<div class="pennant pennant-alt date">2024-03-09</div>
-									<h2>配置文件</h2>
 									<p>有些东西时间一长就忘了, 想半天也不一定能想起来,
 故还是记录一下吧.</p>
 <ul class="simple">
@@ -123,8 +125,10 @@
 <li>/etc/resolv.conf 配置本机使用dns服务器, 以nameserver开头, 可多行. 参见: <a class="reference external" href="/yq-docs-operating-system-linux-Configuration-file-ETC-Resolv-CONF.html">etc-resolv-conf</a></li>
 <li>/etc/hostname 设置当前主机名, 可通过 hostnamectl 修改, 重启生效</li>
 </ul>
+<div class='sphinx-toc-tree-box'>
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Configuration-file-ETC-HOSTS.html">etc-hosts</a>
-<a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Configuration-file-ETC-Resolv-CONF.html">etc-resolv-conf</a><div class="section" id="bash">
+<a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Configuration-file-ETC-Resolv-CONF.html">etc-resolv-conf</a>
+</div><div class="section" id="bash">
 <h2>bash的配置文件</h2>
 <p>持久保存用户配置</p>
 <dl class="docutils">
@@ -147,6 +151,35 @@
 </dd>
 </dl>
 </div>
+<div class="section" id="etc-skel">
+<h2>/etc/skel</h2>
+<p>在建立新用户时，用于初始化用户根目录。</p>
+<p>新建用户时, 系统会将此目录下的所有文件、目录都复制到新建用户的根目录，
+并且将用户属主与用户组调整为与此根目录相同。
+所以可将用户配置文件预置到 <cite>/etc/skel</cite> 目录
+下，比如说 <cite>.bashrc</cite> 、 <cite>.profile</cite> 与 <cite>.vimrc</cite> 等。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last">
+<li><p class="first">如果在新建用户时，没有自动建立用户根目录，则无法调用到此框架目录。</p>
+</li>
+<li><p class="first">如果不想以默认的 <cite>/etc/skel</cite> 目录作为框架目录，可以在运行 <cite>useradd</cite> 命令时指定新的框架目录。
+例如:</p>
+<pre class="literal-block">
+sudo useradd -d /home/chen -m -k /etc/my_skel chen
+</pre>
+<p>上述命令将新建用户chen，设置用户根目录为/home/chen，并且此目录会自动建立；同时指定框架目录为/etc/my_skel。</p>
+</li>
+<li><p class="first">如果不想在每次新建用户时，都重新指定新的框架目录，可以通过修改/etc/default/useradd配置文件来改变默认的框架目录，
+方法如下：</p>
+<ul class="simple">
+<li>查找SKEL变量的定义，如果此变量的定义已被注释掉，可以取消注释，然后修改其值 <tt class="docutils literal"><span class="pre">SKEL=/etc/my_skel</span></tt></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/chenzhengfeng/article/details/77381677">https://blog.csdn.net/chenzhengfeng/article/details/77381677</a></p>
+</div>
 
 								</article>
 						</div>
@@ -164,14 +197,19 @@
 	<nav>
 		<div id="top-toc-tree-container" class="fixed-container">
 			<div class="toc-contents-title">
-				<h4>Contents</h4>
-				<span class="tool-tip-text">点击隐藏</span>
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
 			</div>
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
    <a class="" href="#bash">
     bash的配置文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#etc-skel">
+    /etc/skel
    </a>
   </li>
  </ul>
@@ -199,27 +237,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -302,7 +340,7 @@
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

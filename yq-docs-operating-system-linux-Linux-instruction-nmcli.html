@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -104,23 +104,100 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
-												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
 
-												<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+													<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
 
-										</ul>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2023-02-20</div>
+										<h2>nmcli</h2>
 									</div>
-
-									<div class="pennant pennant-alt date">2023-02-20</div>
-									<h2>nmcli</h2>
-									<p>配置网络管理器</p>
+									<p>配置网络管理器 (NetworkManager)</p>
 <p>如, 要将名为 eth0 的有线网络接口配置为自动连接:</p>
 <pre class="literal-block">
 sudo nmcli connection modify eth0 connection.autoconnect yes
 </pre>
+<p>用法:</p>
+<pre class="literal-block">
+nmcli [选项] 对象 { 命令 | help }
+</pre>
+<p>对象:</p>
+<pre class="literal-block">
+g[eneral]       NetworkManager 的常规状态和操作
+n[etworking]    整体网络控制
+r[adio]         NetworkManager 无线电开关
+c[onnection]    NetworkManager 的连接
+d[evice]        NetworkManager 管理的设备
+a[gent]         NetworkManager 机密（secret）或 polkit 代理
+m[onitor]       监视 NetworkManager 更改
+</pre>
+<p>选项参数:</p>
+<pre class="literal-block">
+-a, --ask                                询问缺少的参数
+-c, --colors auto|yes|no                 是否在输出中使用颜色
+-e, --escape yes|no                      转义值中的列分隔符
+-f, --fields &lt;字段,...&gt;|all|common       指定要输出的字段
+-g, --get-values &lt;字段,...&gt;|all|common   -m tabular -t -f 的快捷方式
+-h, --help                               打印此帮助
+-m, --mode tabular|multiline             输出模式
+-o, --overview                           概览模式
+-p, --pretty                             美化输出
+-s, --show-secrets                       允许显示密码
+-t, --terse                              简介输出
+-v, --version                            显示程序版本
+-w, --wait &lt;秒数&gt;                        设定操作完成的等待超时
+</pre>
+<div class="section" id="section-1">
+<h2>对象</h2>
+<div class="section" id="device">
+<h3>device</h3>
+<p>用法:</p>
+<pre class="literal-block">
+nmcli device { 命令 | help }
+</pre>
+<p>命令:</p>
+<pre class="literal-block">
+:= { status | show | set | connect | reapply | modify | disconnect | delete | monitor | wifi | lldp }
+
+status
+
+show [&lt;接口名称&gt;]
+
+set [ifname] &lt;接口名称&gt; [autoconnect yes|no] [managed yes|no]
+
+connect &lt;接口名称&gt;
+
+reapply &lt;接口名称&gt;
+
+modify &lt;接口名称&gt; ([+|-]&lt;设置&gt;.&lt;属性&gt; &lt;值&gt;)+
+
+disconnect &lt;接口名称&gt; ...
+
+delete &lt;接口名称&gt; ...
+
+monitor &lt;接口名称&gt; ...
+
+wifi [list [ifname &lt;接口名称&gt;] [bssid &lt;BSSID&gt;] [--rescan yes|no|auto]]
+
+wifi connect &lt;(B)SSID&gt; [password &lt;密码&gt;] [wep-key-type key|phrase] [ifname &lt;接口名称&gt;]
+                       [bssid &lt;BSSID&gt;] [name &lt;名称&gt;] [private yes|no] [hidden yes|no]
+
+wifi hotspot [ifname &lt;接口名称&gt;] [con-name &lt;名称&gt;] [ssid &lt;SSID&gt;] [band a|bg] [channel &lt;信道&gt;] [password &lt;密码&gt;]
+
+wifi rescan [ifname &lt;接口名称&gt;] [[ssid &lt;要扫描的 SSID&gt;] ...]
+
+wifi show-password [ifname &lt;接口名称&gt;]
+
+lldp [list [ifname &lt;接口名称&gt;]]
+</pre>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -135,6 +212,34 @@ sudo nmcli connection modify eth0 connection.autoconnect yes
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    对象
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#device">
+      device
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -152,27 +257,27 @@ sudo nmcli connection modify eth0 connection.autoconnect yes
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -255,7 +360,7 @@ sudo nmcli connection modify eth0 connection.autoconnect yes
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

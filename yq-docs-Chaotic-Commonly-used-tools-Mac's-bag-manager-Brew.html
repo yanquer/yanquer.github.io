@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a>
     </div>
@@ -104,19 +104,29 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-										</ul>
-									</div>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+											</ul>
+										</div>
 
-									<div class="pennant pennant-alt date">2024-03-09</div>
-									<h2>mac的包管理器brew</h2>
+										<div class="pennant pennant-alt date">2024-03-09</div>
+										<h2>mac的包管理器brew</h2>
+									</div>
 									<p>自从升级到macos13之后, 使用brew下载就非常的慢, 稍微看了一下输出,
 大概是国内源没有13版本的包, 所以最后还是去外面下载...
 于是, 就找了一下有没有处理办法.</p>
 <p>mac下包管理器最常用的有brew与macport, 网上说后者的包要多很多.</p>
-<p>这里只谈brew, 官网: <a class="reference external" href="https://brew.sh/index_zh-cn">https://brew.sh/index_zh-cn</a></p>
+<p>这里只谈brew</p>
+<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>官网: <a class="reference external" href="https://brew.sh/index_zh-cn">https://brew.sh/index_zh-cn</a></li>
+<li><a class="reference external" href="https://github.com/Homebrew">github地址</a></li>
+</ul>
+</dd>
+</dl>
 <div class="section" id="brew">
 <h2>安装brew</h2>
 <p>国内源下载</p>
@@ -157,6 +167,8 @@ cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v
 <div class="section" id="section-3">
 <h2>选项/参数</h2>
 <dl class="docutils">
+<dt>update</dt>
+<dd>更新所有本地仓库, 默认更新release.</dd>
 <dt>install &lt;pack&gt;</dt>
 <dd>安装指定的 pack</dd>
 <dt>info &lt;pack&gt;</dt>
@@ -183,9 +195,72 @@ cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v
 </div></dd>
 <dt>link</dt>
 <dd>见 unlink</dd>
+<dt>tap &lt;user/repo&gt; &lt;URL&gt;</dt>
+<dd><p class="first">即 Third-Party Repositories.
+tap 指的是一个外部仓库，它允许用户安装那些不在 Homebrew 默认仓库中的软件包。
+通过使用 brew tap，用户可以扩展 Homebrew 可用的软件包列表，从而访问更多的工具和应用程序。</p>
+<p>效果: 默认 clone <tt class="docutils literal"><span class="pre">https://github.com/&lt;user&gt;/homebrew-&lt;repo&gt;</span></tt>  到本地的 <tt class="docutils literal">$(brew <span class="pre">--repository)/Library/Taps</span></tt>.
+如果指定了 <cite>URL</cite>, 就从这个 <cite>URL</cite>
+.. makes a clone of the repository at <a class="reference external" href="https://github.com">https://github.com</a>/&lt;user&gt;/homebrew-&lt;repo&gt; into $(brew --repository)/Library/Taps.</p>
+<p class="last">如果不带参数, 表示查看当前已有哪些仓库.</p>
+</dd>
+<dt>untap &lt;user/repo&gt;</dt>
+<dd>与 tap 相反, 移除仓库</dd>
 </dl>
 </div>
 <div class="section" id="section-4">
+<h2>仓库分类</h2>
+<p>可以在 <a class="reference external" href="https://github.com/Homebrew">github地址</a> 下看到所有仓库.</p>
+<dl class="docutils">
+<dt>homebrew-cask-drivers</dt>
+<dd>驱动仓库</dd>
+<dt>homebrew-cask-versions</dt>
+<dd>提供历史版本的软件包。使用 Homebrew 安装软件默认只能安装最新版本</dd>
+<dt>homebrew-cask-fonts</dt>
+<dd>字体库。主要偏向程序员使用的字体，因为这些字体往往是开源免费的</dd>
+<dt>homebrew-aliases</dt>
+<dd><p class="first">提供设置 Homebrew 指令别名的指令。比如自定义 Homebrew 的指令，
+把 <cite>brew install</cite> 设置快捷指令为 <cite>brew i</cite> 之类:</p>
+<pre class="last literal-block">
+# 添加指令别名
+brew alias up='update'
+brew alias i='install'
+</pre>
+</dd>
+<dt>homebrew-livecheck</dt>
+<dd><p class="first">提供实时更新软件包的指令。
+不用等到release即可更新手里的软件包，实时与软件包git看齐，适合重度用户。</p>
+<p class="last">直接 <tt class="docutils literal">brew livecheck</tt> 即可拉去最新的更改</p>
+</dd>
+<dt>homebrew/command-not-found</dt>
+<dd><p class="first">找不到指令了？给你个建议。
+Ubuntu 上的一个特性，找不到指令时提醒你可以怎么安装，移植到了 macOS。是个辅助神器:</p>
+<pre class="last literal-block">
+# on Ubuntu
+$ when
+The program 'when' is currently not installed.  You can install it by typing:
+sudo apt-get install when
+
+# on macOS with Homebrew
+$ when
+The program 'when' is currently not installed. You can install it by typing:
+  brew install when
+</pre>
+</dd>
+<dt>homebrew/services</dt>
+<dd><p class="first">服务启动指令。比如 Homebrew 安装完 MySQL，可以直接配合brew services使用:</p>
+<pre class="last literal-block">
+brew services start mysql
+brew services stop mysql
+brew services restart mysql
+</pre>
+</dd>
+<dt>homebrew-bundle</dt>
+<dd>打包神器。方便在项目目录下根据依赖描述文件，快速安装所需环境。
+直接 <tt class="docutils literal">brew bundle</tt> 即可</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
 <h2>常见报错</h2>
 <div class="section" id="command-failed-with-exit-128-git">
 <h3>Command failed with exit 128: git</h3>
@@ -237,8 +312,8 @@ yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/H
 	<nav>
 		<div id="top-toc-tree-container" class="fixed-container">
 			<div class="toc-contents-title">
-				<h4>Contents</h4>
-				<span class="tool-tip-text">点击隐藏</span>
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
 			</div>
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
@@ -269,6 +344,11 @@ yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/H
   </li>
   <li class="toc-h0">
    <a class="" href="#section-4">
+    仓库分类
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
     常见报错
    </a>
    <ul class="toc-tree visible">
@@ -304,27 +384,27 @@ yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/H
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -407,7 +487,7 @@ yanque&#64;yanquedembp ~ % git config --global --add safe.directory /usr/local/H
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

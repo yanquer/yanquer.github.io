@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a>
     </div>
@@ -104,15 +104,18 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-										</ul>
-									</div>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+											</ul>
+										</div>
 
-									<div class="pennant pennant-alt date">2024-03-09</div>
-									<h2>VMware Workstation</h2>
-									<div class="admonition note">
+										<div class="pennant pennant-alt date">2024-03-09</div>
+										<h2>VMware Workstation</h2>
+									</div>
+									<p>VMware Workstation 是一个 Windows 下的虚拟机客户端(模拟硬件). 用于虚拟机的创建管理使用.</p>
+<div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p>VMware Workstation Pro 16 许可证密钥，批量永久激活！:</p>
 <pre class="last literal-block">
@@ -223,6 +226,115 @@ A1、A2与A，B1与B可以互访。</p>
 </pre>
 <p>所以能用的IP地址就只有3~254了。</p>
 </div>
+<div class="section" id="linux">
+<h2>Linux虚拟机扩容</h2>
+<p>虚拟机关机,
+打开改机器的设置, 大致这样配置(如果有快照得先删除, 不然不能拓展)</p>
+<div class="figure">
+<img alt="扩容配置" src="doc-raw/resources/images/2024-04-06-00-05-34.png" style="width: 480px;" />
+</div>
+<p>开机进入机器,
+查看磁盘大小</p>
+<div class="highlight"><pre><span></span>df<span class="w"> </span>-h
+</pre></div>
+<div class="figure">
+<img alt="磁盘大小" src="doc-raw/resources/images/2024-04-06-00-19-45.png" style="width: 480px;" />
+</div>
+<p>可以看到新分配的磁盘还没有应用</p>
+<p>查看磁盘分区表</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>fdisk<span class="w"> </span>-l
+</pre></div>
+<div class="figure">
+<img alt="磁盘分区表" src="doc-raw/resources/images/2024-04-06-00-23-33.png" style="width: 480px;" />
+</div>
+<p>可以看到整个磁盘在 <cite>/dev/sda</cite>, 已经分配了 <cite>/dev/sda1</cite> 到 <cite>/dev/sda3</cite>,
+所以接下来考虑自己的需求</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">已经知道是 <cite>/dev/sda</cite>, 后续查看分区可以直接使用 <tt class="docutils literal">sudo fdisk <span class="pre">-l</span> /dev/sda</tt></p>
+</div>
+<ul class="simple">
+<li>如果是扩容, 就在原有的 <cite>/dev/sda3</cite> 拓展;</li>
+<li>如果想加分区, 就需要新创建一个 <cite>/dev/sda4</cite>;</li>
+</ul>
+<p>我这里是选择扩容</p>
+<p>配置 <cite>sda</cite> 磁盘</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>fdisk<span class="w"> </span>/dev/sda
+
+<span class="c1"># 大致指令</span>
+d<span class="w">    </span><span class="c1"># 删除分区 sda3</span>
+n<span class="w">    </span><span class="c1"># 新建分区</span>
+
+<span class="c1"># 详细输出</span>
+命令<span class="o">(</span>输入<span class="w"> </span>m<span class="w"> </span>获取帮助<span class="o">)</span>：<span class="w"> </span>d
+分区号<span class="w"> </span><span class="o">(</span><span class="m">1</span>-3,<span class="w"> </span>默认<span class="w">  </span><span class="m">3</span><span class="o">)</span>:
+
+分区<span class="w"> </span><span class="m">3</span><span class="w"> </span>已删除。
+
+命令<span class="o">(</span>输入<span class="w"> </span>m<span class="w"> </span>获取帮助<span class="o">)</span>：<span class="w"> </span>n
+分区号<span class="w"> </span><span class="o">(</span><span class="m">3</span>-128,<span class="w"> </span>默认<span class="w">  </span><span class="m">3</span><span class="o">)</span>:
+第一个扇区<span class="w"> </span><span class="o">(</span><span class="m">1054720</span>-536870878,<span class="w"> </span>默认<span class="w"> </span><span class="m">1054720</span><span class="o">)</span>:
+Last<span class="w"> </span>sector,<span class="w"> </span>+/-sectors<span class="w"> </span>or<span class="w"> </span>+/-size<span class="o">{</span>K,M,G,T,P<span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="m">1054720</span>-536870878,<span class="w"> </span>默认<span class="w"> </span><span class="m">536870878</span><span class="o">)</span>:
+
+创建了一个新分区<span class="w"> </span><span class="m">3</span>，类型为“Linux<span class="w"> </span>filesystem”，大小为<span class="w"> </span><span class="m">255</span>.5<span class="w"> </span>GiB。
+分区<span class="w"> </span><span class="c1">#3 包含一个 ext4 签名。</span>
+
+您想移除该签名吗？<span class="w"> </span>是<span class="o">[</span>Y<span class="o">]</span>/否<span class="o">[</span>N<span class="o">]</span>：<span class="w"> </span>n
+
+命令<span class="o">(</span>输入<span class="w"> </span>m<span class="w"> </span>获取帮助<span class="o">)</span>：<span class="w"> </span>w
+
+分区表已调整。
+正在同步磁盘。
+</pre></div>
+<p>刷新分区表</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>partprobe
+</pre></div>
+<p>同步新的分区大小</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span>/dev/sda3
+resize2fs<span class="w"> </span><span class="m">1</span>.46.5<span class="w"> </span><span class="o">(</span><span class="m">30</span>-Dec-2021<span class="o">)</span>
+/dev/sda3<span class="w"> </span>上的文件系统已被挂载于<span class="w"> </span>/；需要进行在线调整大小
+<span class="nv">old_desc_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="nv">new_desc_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">32</span>
+/dev/sda3<span class="w"> </span>上的文件系统大小已经调整为<span class="w"> </span><span class="m">66977019</span><span class="w"> </span>个块（每块<span class="w"> </span>4k）。
+</pre></div>
+<p>查看分区大小</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>fdisk<span class="w">  </span>-l<span class="w"> </span>/dev/sda
+Disk<span class="w"> </span>/dev/sda：256<span class="w"> </span>GiB，274877906944<span class="w"> </span>字节，536870912<span class="w"> </span>个扇区
+Disk<span class="w"> </span>model:<span class="w"> </span>VMware<span class="w"> </span>Virtual<span class="w"> </span>S
+单元：扇区<span class="w"> </span>/<span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>字节
+扇区大小<span class="o">(</span>逻辑/物理<span class="o">)</span>：512<span class="w"> </span>字节<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>字节
+I/O<span class="w"> </span>大小<span class="o">(</span>最小/最佳<span class="o">)</span>：512<span class="w"> </span>字节<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>字节
+磁盘标签类型：gpt
+磁盘标识符：C84E1208-177A-42AB-B5A5-2EB6013A71A6
+
+设备<span class="w">          </span>起点<span class="w">      </span>末尾<span class="w">      </span>扇区<span class="w">   </span>大小<span class="w"> </span>类型
+/dev/sda1<span class="w">     </span><span class="m">2048</span><span class="w">      </span><span class="m">4095</span><span class="w">      </span><span class="m">2048</span><span class="w">     </span>1M<span class="w"> </span>BIOS<span class="w"> </span>启动
+/dev/sda2<span class="w">     </span><span class="m">4096</span><span class="w">   </span><span class="m">1054719</span><span class="w">   </span><span class="m">1050624</span><span class="w">   </span>513M<span class="w"> </span>EFI<span class="w"> </span>系统
+/dev/sda3<span class="w">  </span><span class="m">1054720</span><span class="w"> </span><span class="m">536870878</span><span class="w"> </span><span class="m">535816159</span><span class="w"> </span><span class="m">255</span>.5G<span class="w"> </span>Linux<span class="w"> </span>文件系统
+</pre></div>
+<div class="figure">
+<img alt="扩容操作" src="doc-raw/resources/images/2024-04-06-01-18-43.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>Linux下没有直接扩容的方法, 必须先删除再新建(至少暂时我没找到)</li>
+<li>还有一种方式就是使用图形软件 <cite>Gparted</cite>, 安装: <tt class="docutils literal">sudo apt install gparted</tt>, 这部分是看别人有用, 参考 <a class="reference external" href="https://blog.csdn.net/hktkfly6/article/details/123302335">VMware虚拟机扩容磁盘，有很详细图文</a> ,
+我自己没试过.</li>
+</ul>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/sx_1706/article/details/127673151">https://blog.csdn.net/sx_1706/article/details/127673151</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/MrDevil-k/p/17216330.html">VMware虚拟机扩容--保姆级教学</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 								</article>
 						</div>
@@ -240,8 +352,8 @@ A1、A2与A，B1与B可以互访。</p>
 	<nav>
 		<div id="top-toc-tree-container" class="fixed-container">
 			<div class="toc-contents-title">
-				<h4>Contents</h4>
-				<span class="tool-tip-text">点击隐藏</span>
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
 			</div>
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
@@ -272,6 +384,11 @@ A1、A2与A，B1与B可以互访。</p>
     问题总结
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#linux">
+    Linux虚拟机扩容
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -297,27 +414,27 @@ A1、A2与A，B1与B可以互访。</p>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -400,7 +517,7 @@ A1、A2与A，B1与B可以互访。</p>
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

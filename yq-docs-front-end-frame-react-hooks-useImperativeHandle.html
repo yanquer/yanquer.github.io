@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -104,20 +104,22 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/qian-duan.html">前端</a></li>
-												<li><a class="button button-alt" href="tag/kuang-jia.html">框架</a></li>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/qian-duan.html">前端</a></li>
+													<li><a class="button button-alt" href="tag/kuang-jia.html">框架</a></li>
 
-												<li><a class="button button-alt" href="tag/react.html">React</a></li>
+													<li><a class="button button-alt" href="tag/react.html">React</a></li>
 
-												<li><a class="button button-alt" href="tag/hooks.html">Hooks</a></li>
+													<li><a class="button button-alt" href="tag/hooks.html">Hooks</a></li>
 
-										</ul>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-03-09</div>
+										<h2>useImperativeHandle</h2>
 									</div>
-
-									<div class="pennant pennant-alt date">2024-03-09</div>
-									<h2>useImperativeHandle</h2>
 									<p>useImperativeHandle 可以让你在使用 ref 时 <strong>自定义暴露给父组件的实例值</strong>。
 或者 <strong>给不存在ref属性的函数组件, 增加ref属性</strong>.
 在大多数情况下，应当避免使用 ref 这样的命令式代码。
@@ -160,6 +162,8 @@ fancyInputRef.current.focus()
 </div>
 <div class="section" id="domref">
 <span id="react-hook-domref"></span><h2>给非DOM函数组件增加ref属性</h2>
+<div class="section" id="forwardref">
+<h3>方案一: forwardRef</h3>
 <p>与 <a class="reference internal" href="#dom">暴露DOM节点时自定义暴露属性</a> 例子基本一致</p>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -219,6 +223,63 @@ React.useImperativeHandle(ref, () =&gt; ({
 那就是在暴露DOM组件的基础上, 再控制需要暴露的内容.</p>
 </div>
 </div>
+<div class="section" id="ref">
+<h3>方案二: 手动处理 ref</h3>
+<p>与方案一大体一致, 只不过, 不用forwardRef</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">PSelect00</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">p00</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// // 调用子组件</span>
+<span class="c1">// const PSelect0 = React.forwardRef((props, ref) =&gt; {</span>
+<span class="c1">//</span>
+<span class="c1">//     // 定义暴露的 ref</span>
+<span class="c1">//     React.useImperativeHandle(ref, () =&gt; ({</span>
+<span class="c1">//         do1: do1</span>
+<span class="c1">//     }))</span>
+<span class="c1">//</span>
+<span class="c1">//     const do1 = () =&gt; {console.log(1)}</span>
+<span class="c1">//</span>
+<span class="c1">//     return (</span>
+<span class="c1">//         &lt;PSelect00&gt;p0&lt;/PSelect00&gt;</span>
+<span class="c1">//     )</span>
+<span class="c1">// })</span>
+
+<span class="c1">// 调用子组件</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PSelect0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">onRef</span><span class="o">:</span><span class="w"> </span><span class="kt">React.RefObject</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 定义暴露的 ref</span>
+<span class="w">    </span><span class="nx">React</span><span class="p">.</span><span class="nx">useImperativeHandle</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">onRef</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="nx">do1</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}))</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">do1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">1</span><span class="p">)}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">PSelect00</span><span class="o">&gt;</span><span class="nx">p0</span><span class="o">&lt;</span><span class="err">/PSelect00&gt;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 父组件</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PSelect1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">refP0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">useRef</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">do1</span><span class="o">:</span><span class="w"> </span><span class="p">()=&gt;{}}</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">PSelect0</span><span class="w"> </span><span class="nx">onRef</span><span class="o">=</span><span class="p">{</span><span class="nx">refP0</span><span class="p">}</span><span class="o">/&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">refP0</span><span class="p">.</span><span class="nx">current</span><span class="o">?</span><span class="p">.</span><span class="nx">do1</span><span class="p">()}</span><span class="o">&gt;</span><span class="nx">调用子组件</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><cite>useImperativeHandle</cite> 暴露的调用, 使用的时候一定要加括号...</p>
+</div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -236,8 +297,8 @@ React.useImperativeHandle(ref, () =&gt; ({
 	<nav>
 		<div id="top-toc-tree-container" class="fixed-container">
 			<div class="toc-contents-title">
-				<h4>Contents</h4>
-				<span class="tool-tip-text">点击隐藏</span>
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
 			</div>
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
@@ -250,6 +311,18 @@ React.useImperativeHandle(ref, () =&gt; ({
    <a class="" href="#domref">
     给非DOM函数组件增加ref属性
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#forwardref">
+      方案一: forwardRef
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ref">
+      方案二: 手动处理 ref
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -276,27 +349,27 @@ React.useImperativeHandle(ref, () =&gt; ({
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -379,7 +452,7 @@ React.useImperativeHandle(ref, () =&gt; ({
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

@@ -5,7 +5,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html data-theme="dark">
 	<head>
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -104,22 +104,64 @@
 						<div class="12u skel-cell-mainContent">
 							<!-- Content -->
 								<article class="box is-post">
-									<div class="post-infos">
-										<ul class="tags">
-											<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
-												<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
 
-												<li><a class="button button-alt" href="tag/linuxhuan-jing-bian-liang.html">Linux环境变量</a></li>
+													<li><a class="button button-alt" href="tag/linuxhuan-jing-bian-liang.html">Linux环境变量</a></li>
 
-										</ul>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-03-09</div>
+										<h2>Linux环境变量</h2>
 									</div>
-
-									<div class="pennant pennant-alt date">2024-03-09</div>
-									<h2>Linux环境变量</h2>
-									<a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Linux-environment-variable-Ld_preload.html">LD_PRELOAD</a>
+									<div class='sphinx-toc-tree-box'>
+<a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Linux-environment-variable-Ld_preload.html">LD_PRELOAD</a>
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Linux-environment-variable-Disch.html">DISPLAY</a>
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Linux-environment-variable-PS1.html">PS1</a>
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-Linux-environment-variable-TMPDIR.html">TMPDIR</a>
+</div><div class="section" id="locale">
+<h2>本地化（locale）环境变量</h2>
+<p>对于程序的字符类型处理和区域设置有重要影响</p>
+<div class="section" id="lc-ctype">
+<h3>LC_CTYPE</h3>
+<p><cite>LC_CTYPE</cite> 代表“Language Code Type”，它控制程序如何解释和处理字符。
+这包括字符的大小写转换、字符分类（如字母、数字、空格等）、字符编码和解码等。</p>
+<p><cite>LC_CTYPE</cite> 的值会影响程序对字符的处理方式，包括字符大小写转换、字符分类、字符编码和解码等。
+例如，当程序需要将大写字母转换为小写字母时，它会参考 <cite>LC_CTYPE</cite> 变量设置的区域设置来确定如何进行转换。</p>
+<p><cite>LC_CTYPE</cite> 的常见设置包括：</p>
+<ul class="simple">
+<li>en_US.UTF-8：表示使用美国英语的字符类型，并使用UTF-8编码。</li>
+<li>zh_CN.UTF-8：表示使用简体中文的字符类型，并使用UTF-8编码。</li>
+</ul>
+<p>更改LC_CTYPE设置可以通过在shell中使用 <cite>export LC_CTYPE=&lt;locale&gt;</cite> 命令来完成，或者在程序中使用 <cite>setlocale</cite> 函数。</p>
+</div>
+<div class="section" id="lc-collate">
+<h3>LC_COLLATE</h3>
+<p><cite>LC_COLLATE</cite> 代表“Language Code Collate”，它定义了字符的排序和比较规则。
+这决定了字符串如何进行排序，以及在比较操作中字符的顺序。</p>
+<p>例如，某些语言中字符&quot;ä&quot;可能排在&quot;z&quot;之前，而在其他语言中可能不是这样。</p>
+<p><cite>LC_COLLATE</cite> 的设置通常与 <cite>LC_CTYPE</cite> 相对应，以确保字符的解释和排序规则一致。
+例如， <cite>en_US.UTF-8</cite> 区域设置通常会有一个对应的 <cite>en_US.UTF-8</cite> 的 <cite>LC_COLLATE</cite> 设置。
+更改 <cite>LC_COLLATE</cite> 设置可以通过在 <cite>shell</cite> 中使用 <cite>export LC_COLLATE=&lt;locale&gt;</cite> 命令来完成，或者在程序中使用 <cite>setlocale</cite> 函数。</p>
+<!-- 这两个环境变量的设置对于多语言支持和国际化非常重要。 -->
+<!-- 它们确保程序能够根据用户的区域设置正确处理和显示文本信息。 -->
+<!-- 在编写跨平台的程序时，应当考虑到这些环境变量的影响，并确保程序能够适应不同的本地化设置。 -->
+<!-- 此外，它们也常用于数据库、排序算法和文本处理工具中，以确保数据的正确性和一致性。 -->
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>当设置</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">LC_COLLATE</span><span class="o">=</span><span class="s1">&#39;C&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LC_CTYPE</span><span class="o">=</span><span class="s1">&#39;C&#39;</span>
+</pre></div>
+<p class="last">表示使用默认的C语言标准定义的字符排序和比较规则环境，即美国英语环境.</p>
+</div>
+</div>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -133,6 +175,39 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#locale">
+    本地化（locale）环境变量
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#lc-ctype">
+      LC_CTYPE
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#lc-collate">
+      LC_COLLATE
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -150,27 +225,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-transformers.html">transformers</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>02</strong></span>
-											<h3><a href="yq-docs-AI-Deep-learning-tutorial-mac-gpu.html">Mac下使用GPU加速</a></h3>
-											<p><p class="first last">Mac下使用GPU加速(M/A系列)</p>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>30</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter.html">Flutter</a></h3>
-											<p><p class="first last">dart初识</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-user-select.html">user-select</a></h3>
-											<p><p class="first last">CSS设置元素不可被选中</p>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>
 									</ul>
@@ -253,7 +328,7 @@
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {
-		$("#top-toc-tree-container > .toc-contents-title > h4").click(function() {
+		$("#toc-contents-title-text").click(function() {
 			$("#top-toc-tree-container").toggleClass("no-active");
 			$("#sidebar-tools").toggleClass("no-active");
 		})

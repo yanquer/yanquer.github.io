@@ -1,0 +1,409 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li  class="active"><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>hashcat</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 三月 2024
+      , Category:
+	  <a href="category/an-quan.html">安全</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/an-quan.html">安全</a></li>
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-03-20</div>
+										<h2>hashcat</h2>
+									</div>
+									<p>hashcat 是流行, 快速一个密码爆破工具.
+支持在硬件上使用CPU、NVIDIA GPU、ATI GPU来进行密码破解.</p>
+<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>github地址: <a class="reference external" href="https://github.com/hashcat/hashcat">https://github.com/hashcat/hashcat</a></li>
+<li>官网: <a class="reference external" href="https://hashcat.net/hashcat/">https://hashcat.net/hashcat/</a></li>
+<li>文档: <a class="reference external" href="https://hashcat.net/wiki/">https://hashcat.net/wiki/</a></li>
+</ul>
+</dd>
+</dl>
+<p><cite>HashCat</cite> 主要分为三个版本： <cite>Hashcat</cite> 、 <cite>oclHashcat-plus</cite> 、 <cite>oclHashcat-lite</cite> 。
+这三个版本的主要区别是：</p>
+<ul class="simple">
+<li><cite>HashCat</cite> 只支持CPU破解</li>
+<li><cite>oclHashcat-plus</cite> 支持使用GPU破解多个HASH，并且支持的算法高达77种</li>
+<li><cite>oclHashcat-lite</cite> 只支持使用GPU对单个HASH进行破解，支持的HASH种类仅有32种，
+但是对算法进行了优化，可以达到GPU破解的最高速度</li>
+</ul>
+<p>如果只有单个密文进行破解的话，推荐使用 <cite>oclHashCat-lite</cite>。</p>
+<p>MacOS安装</p>
+<div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>hashcat
+</pre></div>
+<div class="section" id="section-1">
+<h2>选项参数</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td><p class="first">指定要使用的破解模式，其值参考后面对参数。
+“-a 0”字典攻击，“-a 1” 组合攻击；“-a 3”掩码攻击。</p>
+<ul class="last simple">
+<li>0 Straight（字典破解）, 直接使用字典文件中的密码进行破解，逐个尝试每个密码。</li>
+<li>1 Combination（组合破解） , 将两个或多个字典文件中的密码进行组合，生成新的密码进行破解</li>
+<li>3 Brute-force（掩码暴力破解） , 掩码暴力破解</li>
+<li>6 Hybrid dict + mask（混合字典+掩码） , 混合攻击：字典+掩码，将字典中密码与指定掩码结合破解</li>
+<li>7 Hybrid mask + dict（混合掩码+字典） , 混合攻击：掩码+字典，先使用掩码模式生成密码，再与字典中密码结合破解</li>
+<li>9 Association (联合攻击) , 结合多种攻击方式，如暴力破解、字典攻击等，以提高破解的效率和成功率</li>
+</ul>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m</span></kbd></td>
+<td>指定要破解的hash类型，如果不指定类型，则默认是MD5</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-o</span></kbd></td>
+<td>指定输出位置
+指定破解成功后的hash及所对应的明文密码的存放位置,可以用它把破解成功的hash写到指定的文件中</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s<var>tdout</var></span></kbd></td>
+<td>指定基础文件</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--force</span></kbd></td>
+<td>强制进行破解, 忽略破解过程中的警告信息, 跑单条hash可能需要加上此选项</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--show</span></kbd></td>
+<td>显示已经破解的hash及该hash所对应的明文</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--increment</span></kbd></td>
+<td>启用增量破解模式, 你可以利用此模式让hashcat在指定的密码长度范围内执行破解过程.
+如: <tt class="docutils literal"><span class="pre">Hashcat-m</span> 1800 hashfile&nbsp; <span class="pre">--increment</span> <span class="pre">--increment-min</span> <span class="pre">6--increment-max</span> 8 <span class="pre">?d?d?d?d?d?d?d?d</span> ##破解hashfiel中纯数字密码，最小范围6位，最大8位</tt>
+其中 <tt class="docutils literal"><span class="pre">?d?d?d?d?d?d?d?d</span></tt> 代表8位纯数字密码.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--increment-min</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>密码最小长度,后面直接等于一个整数即可,配置increment模式一起使用</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--increment-max</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>密码最大长度,同上</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--outfile-format</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定破解结果的输出格式id,默认是3</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--username</span></kbd></td>
+<td>忽略hash文件中的指定的用户名,在破解linux系统用户密码hash可能会用到</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--remove</span></kbd></td>
+<td>删除已被破解成功的hash</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span></kbd></td>
+<td>指定规则文件来使用自定义破解规则</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b</span></kbd></td>
+<td>查看当前机器计算hash的算力</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-V</span></kbd></td>
+<td>查看版本</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-2">
+<h2>其他</h2>
+<p>hashcat其他套件工具:</p>
+<ul class="simple">
+<li>hashcat - 世界上最快、最先进的密码恢复实用程序</li>
+<li>hashcat-utils - 在高级密码破解中有用的小型实用程序 <a class="reference external" href="https://github.com/hashcat/hashcat-utils">https://github.com/hashcat/hashcat-utils</a></li>
+<li>maskprocessor - 具有逐位可配置字符集的高性能字发生器 <a class="reference external" href="https://github.com/hashcat/maskprocessor">https://github.com/hashcat/maskprocessor</a></li>
+<li>statsprocessor - 基于逐位马尔可夫链的词生成器 <a class="reference external" href="https://github.com/hashcat/statsprocessor">https://github.com/hashcat/statsprocessor</a></li>
+<li>princeprocessor - 使用PRINCE算法的独立密码候选生成器 <a class="reference external" href="https://github.com/hashcat/princeprocessor">https://github.com/hashcat/princeprocessor</a></li>
+<li>kwprocessor - 先进的键盘行走生成器，具有可配置的基片、键图和路线 <a class="reference external" href="https://github.com/hashcat/kwprocessor">https://github.com/hashcat/kwprocessor</a></li>
+</ul>
+<!-- hashcat - World's fastest and most advanced password recovery utility (source) -->
+<!-- hashcat-utils - Small utilities that are useful in advanced password cracking (source) -->
+<!-- maskprocessor - High-performance word generator with a per-position configurable charset (source) -->
+<!-- statsprocessor - Word generator based on per-position Markov chains (source) -->
+<!-- princeprocessor - Standalone password candidate generator using the PRINCE algorithm (source) -->
+<!-- kwprocessor - Advanced keyboard-walk generator with configureable basechars, keymap and routes (source) -->
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    选项参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    其他
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>
