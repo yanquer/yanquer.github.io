@@ -137,13 +137,16 @@ useEffect(() =&gt; {
   document.title = `You clicked ${count} times`;
 }, [count]);
 </pre>
-<p>表示只有当count变化的时候，重新执行副作用</p>
-<p>有时候我们会希望useEffect只在第一次渲染时候执行一次，
+<p>表示只有当count变化的时候，重新执行副作用.
+其生命周期横跨所有的渲染过程.
+<strong>即使组件重新触发渲染了, 只要 `count` 没有变化，也不会执行副作用</strong>.</p>
+<p>有时候我们会希望 <cite>useEffect</cite> <strong>只在第一次渲染时候执行一次</strong>，
 例如 componentDidMount ，第二个参数设置成空数组:</p>
 <pre class="literal-block">
 useEffect(() =&gt; {
     console.log('组件Mounted');
 }, []);
+// 如果想每一次渲染都触发, 去掉第二个参数 []
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -181,6 +184,18 @@ useEffect(() =&gt; {
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 4 <strong>19</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-html-length-unit.html">前端HTML长度单位</a></h3>
+											<p><p class="first last">HTML长度单位</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>19</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-pmset.html">pmset</a></h3>
+											<p><p class="first last">电源控制-pmset</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 4 <strong>11</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
 											<p><p class="first last">QML实际使用相关</p>
@@ -189,18 +204,6 @@ useEffect(() =&gt; {
 										<li>
 											<span class="date"> 4 <strong>11</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 4 <strong>10</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use.html">QML实际使用</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 4 <strong>10</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-Python-communication.html">QML与Python通信</a></h3>
 											<p><p class="first last">QML实际使用相关</p>
 </p>
 										</li>

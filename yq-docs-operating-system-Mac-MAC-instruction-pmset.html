@@ -1,0 +1,463 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>pmset</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 19 四月 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/mac.html">Mac</a></li>
+
+													<li><a class="button button-alt" href="tag/maczhi-ling.html">Mac指令</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-04-19</div>
+										<h2>pmset</h2>
+									</div>
+									<p>先简单提一下Mac的工作模式, 顺序为</p>
+<dl class="docutils">
+<dt>工作</dt>
+<dd>工作模式</dd>
+<dt>休眠-sleep</dt>
+<dd>当你长时间不操作 Mac 或把 MacBook 的盖子合上或点击 Apple Logo 菜单下的 Sleep 选项，系统会进入「休眠」状态，由于数据仍存储在内存中，此时系统可以被快速唤醒，快速恢复到休眠前的状态。</dd>
+<dt>睡眠-hibernate</dt>
+<dd>在「休眠」一段时间后，Mac 会根据你的设定进入更深一层的 「睡眠」 状态，
+此时 Mac 会考虑将内存中的数据作为一个镜像写入到硬盘中（GB 级别大小），
+然后放弃内存供电，达到更加省电的目的。此时唤醒系统，数据需要从硬盘重新装载至内存，耗时长，速度慢。</dd>
+</dl>
+<div class="section" id="section-1">
+<h2>用法</h2>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>pmset<span class="w"> </span><span class="o">[</span>-选项<span class="o">]</span><span class="w"> </span>&lt;参数&gt;
+</pre></div>
+</div>
+<div class="section" id="section-2">
+<h2>选项</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td>调整任何条件下的睡眠计划</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c</span></kbd></td>
+<td>调整外部供电的睡眠计划</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b</span></kbd></td>
+<td>调整电池供电的睡眠计划</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-g</span></kbd></td>
+<td>查看计划</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-3">
+<h2>常用参数</h2>
+<dl class="docutils">
+<dt>🎨 sleep</dt>
+<dd>sleep 控制进入休眠所需要的空闲时间</dd>
+<dt>🎨 hibernatemode</dt>
+<dd><div class="first line-block">
+<div class="line">hibernatemode supports values of 0, 3, or 25. Whether or not a hibernation image gets written is also dependent on the values of standby and autopoweroff.</div>
+</div>
+<p>hibernatemode 负责管理睡眠模式。值得注意的是，休眠时的内存镜像是否写入硬盘，除了受 hibernatemode 的控制，还和 standby 以及 autopoweroff 的值有关。</p>
+<p>hibernatemode 有 3 种休眠模式可选择</p>
+<dl class="last docutils">
+<dt>hibernatemode = 0</dt>
+<dd><ul class="first last simple">
+<li>iMac, Mac Mini等 Mac桌面设备默认参数</li>
+<li>持续向内存供电，将数据保留在内存</li>
+<li>唤醒速度快，减少硬盘占用</li>
+<li>数据有丢失风险</li>
+<li>耗电量大</li>
+</ul>
+</dd>
+<dt>hibernatemode = 25</dt>
+<dd><ul class="first last simple">
+<li>将数据写入硬盘</li>
+<li>不向内存供电，将内存镜像直接写入硬盘</li>
+<li>数据不易丢失，镜像占用硬盘空间</li>
+<li>唤醒速度慢</li>
+<li>耗电量少</li>
+</ul>
+</dd>
+<dt>hibernatemode = 3</dt>
+<dd><ul class="first last simple">
+<li>MacBook 笔记本设备默认参数</li>
+<li>safe sleep, 数据既写入内存又写入硬盘</li>
+<li>持续向内存供电</li>
+<li>唤醒时，根据设备电量自动选择从 内存/硬盘 恢复</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>🎨 standby</dt>
+<dd><div class="first line-block">
+<div class="line">standby causes kernel power management to automatically hibernate a machine after it has slept for a specified time period.</div>
+</div>
+<p>standby 是 Mac 在休眠时的计时器，当满足时间条件，Mac就会由「休眠」状态转至「睡眠」状态。</p>
+<p>standby模式需要以下条件：</p>
+<ul class="simple">
+<li>电池供电</li>
+<li>没有外接设备</li>
+<li>没有网络活动</li>
+<li>没有外接显示器</li>
+</ul>
+<p class="last">在满足条件的前提下， standbydelayhigh/low 秒后，会进行睡眠。比较人性化的的一点是，standby 提供了两个倒计时，通过一个阈值 (highstandbythreshold) 进行控制。</p>
+</dd>
+<dt>🎨 highstandbythreshold</dt>
+<dd><div class="first line-block">
+<div class="line">highstandbythreshold(电池剩余电量百分比)它是standbydelay模式选择阈值，默认 50% 电量。</div>
+</div>
+<ul class="last simple">
+<li>高于阈值，采用 standbydelayhigh 计算时间。</li>
+<li>低于阈值，采用 standbydelaylow 计算时间。</li>
+</ul>
+</dd>
+<dt>🎨 autopoweroff</dt>
+<dd><div class="first line-block">
+<div class="line">autopoweroff is enabled by default on supported platforms as an implementation of Lot 6 to the European Energy-related Products Directive. After sleeping for &lt;autopoweroffdelay&gt; seconds, the system will write a hibernation image and go into a lower power chipset sleep. Wakeups from this state will take longer than wakeups from regular sleep.</div>
+</div>
+<p>autppoweroff 是为了满足 欧盟能源效率 Lot 6 条例（关于待机和关闭模式的要求）而设计的，但并不是全部设备都有这个这个设定，需要通过 pmset -g cap 查看是否能调节此项参数。</p>
+<p>autopoweroff模式需要满足以下条件：</p>
+<ul class="simple">
+<li>外部电源供电</li>
+<li>没有外接设备</li>
+<li>没有网络活动</li>
+</ul>
+<p class="last">在满足条件的前提下, autopoweroffdelay秒后，系统会写入内存镜像然后睡眠。与上文提到的 standby 不同，autppoweroff 更多是为了连接外部电源充电时设计的。</p>
+</dd>
+<dt>🎨 gpuswitch</dt>
+<dd><p class="first">gpuswitch 这个参数用于管理显卡的选择，适合有独立显卡/外置显卡的 Mac</p>
+<ul class="simple">
+<li>gpuswitch=0 只使用集成显卡</li>
+<li>gpuswitch=1 只使用独立显卡</li>
+<li>gpuswitch=2 自动切换显卡</li>
+</ul>
+<p class="last">调节这个参数可以避免在电池供电时使用耗电量高的独立显卡，以节省电量。</p>
+</dd>
+</dl>
+<p>其他常用参数</p>
+<ul class="simple">
+<li>lidwake：开盖时是否唤醒</li>
+<li>tcpkeepalive：合盖时是否保存网络连接</li>
+<li>displaysleep：屏幕休眠时间</li>
+<li>disksleep： 硬盘休眠时间</li>
+<li>acwake: 被同一 iCloud ID 下的设备唤醒</li>
+</ul>
+</div>
+<div class="section" id="section-4">
+<h2>常用</h2>
+<div class="highlight"><pre><span></span>pmset<span class="w"> </span>-g<span class="w"> </span>custom<span class="w">   </span><span class="c1"># 查看当前所有睡眠计划</span>
+pmset<span class="w"> </span>-g<span class="w"> </span>cap<span class="w">      </span><span class="c1"># 查看当前供电条件下可以调节的参数</span>
+sudo<span class="w"> </span>pmset<span class="w"> </span>restoredefaults<span class="w">    </span><span class="c1"># 还原全部设置</span>
+</pre></div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">参考::</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://sspai.com/post/61379#!">通过 pmset 工具管理 masOS 睡眠，让你的 Mac 睡得更好</a></li>
+<li><a class="reference external" href="https://www.zhihu.com/tardis/zm/art/629372974?source_id=1005">MacBook Pro合上盖子不休眠的问题简单分析</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    用法
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    常用参数
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    常用
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 4 <strong>19</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-html-length-unit.html">前端HTML长度单位</a></h3>
+											<p><p class="first last">HTML长度单位</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>19</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-pmset.html">pmset</a></h3>
+											<p><p class="first last">电源控制-pmset</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>11</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
+											<p><p class="first last">QML实际使用相关</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

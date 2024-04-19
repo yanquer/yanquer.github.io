@@ -148,6 +148,12 @@ dt{
 	font-weight: 800 !important;
 	color: #91ee58d9 !important;
 }
+dt::before{
+	font-family: "Font Awesome 6 Free Web";
+	content: "\f2dc";
+	margin-right: 0.5em;
+	color: #7575d4;
+}
 /* todo:  dt dt 没用... 不知道为啥 */
 /* dt dt{
 	color: #6da64ad9 !important;
@@ -239,7 +245,15 @@ blockquote {
     padding-left: 20px !important;
     border-radius: var(--g-border-radius);
 }
-
+/* 仅竖线引用内容 */
+.line{
+	border-left: var(--g-radius-border-no-color) #3a5c40;
+    padding-left: 1em;
+    border-radius: var(--g-border-radius);
+    color: #898147 !important;
+    background-color: #16160f;
+    font-weight: 500;
+}
 
 /* note 注解 */
 .admonition,
@@ -448,8 +462,10 @@ table.docutils.option-list{
 }
 .admonition li::before,
 .simple li::before{
-	content: " - ";
-	color: #7fffd4b5;
+	font-family: "Font Awesome 6 Free Web";
+	content: "\f231";
+	color: #4f8271;
+	margin-right: 0.5em;
 }
 
 /* 斜体 */
