@@ -115,10 +115,52 @@
 
 										<div class="pennant pennant-alt date">2024-03-09</div>
 										<h2>windows执行程序打包</h2>
+
+										<span class="head-modify-time">修改于: 2024-04-24</span>
+
 									</div>
 									<div class='sphinx-toc-tree-box'>
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-Windows-Windows-execution-file-packaging-index.html">windows执行文件打包</a>
+</div><div class="section" id="windows-1">
+<h2>windows文件安装格式</h2>
+<p>大致包含有</p>
+<ul class="simple">
+<li>MSI</li>
+<li>EXE</li>
+<li>AppX</li>
+<li>MSIX</li>
+</ul>
+<div class="section" id="msi">
+<h3>MSI</h3>
+<p>Windows最基本的安装格式：比较简单</p>
+<p>安装过程不会检测该软件是否已经存在于计算机，或者是否缺少什么必备组件，它会直接覆盖安装路径中的所有文件。这种简单粗暴的方式，非常适合无人值守的情况，驱动程序大多也是用 MSI 格式安装。</p>
 </div>
+<div class="section" id="exe">
+<h3>EXE</h3>
+<p>最普及</p>
+<p>能实现更多功能，比如检测已安装项，允许自定义安装路径，安装包语言，安装密码，打开网址，版权协议显示，检测安装缺失的必备运行库，以及更漂亮酷炫的安装界面等等（Tmtony）。因为EXE 格式功能更丰富，用户和开发者都喜欢用，反而比专门的安装格式 MSI 更常见。</p>
+</div>
+<div class="section" id="appx">
+<h3>AppX</h3>
+<p>Windows 8 后推出的新安装格式</p>
+<p>继承了 MSI 的优点，就像手机软件的安装过程一样，几乎没有给用户任何选项，它允许直接覆盖升级，完全干净的卸载，Appx 程序运行在沙盒中，不能访问其他应用内存、文件。这个安装格式之所以没有火起来，估计主要是对开发者太不友好，限制了软件权限，封包AppX 格式还必须重写。</p>
+</div>
+<div class="section" id="msix">
+<h3>MSIX</h3>
+<p>MISX文件格式集成了Windows之前的文件格式安装技术，并继承了UWP的特性，更加安全和可靠，网络带宽优化，磁盘空间优化，程序自定义，并支持全部的Windows应用程序，而且MSIX使程序可更干净地卸载。MSIX将来可能会取代EXE、 WIN32、 WPF、WinForm和UWP</p>
+<p>为什么会诞生MSIX:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>EXE 程序功能强大，但容易被恶意程序和流氓软件甚至病毒、木马利用，它带来便利的同时也给我们带来极大的安全隐患。</li>
+<li>MSI 过于简单，用户和开发者都不喜欢用。</li>
+<li>APPX 对比EXE 安全性有了质的提升，但限制条件较多又伤害了开发者的利益，而无法广泛传播。</li>
+</ol>
+<p>所以MSIX应运而生，MSI + AppX = MSIX ， 结合了 MSI 和APPX 的优点而诞生了。从用户的角度来看，MSIX 的安装过程类似 MSI 文件，但在其背后的工作原理又类似 AppX 文件。</p>
+</blockquote>
+<p>参考: <a class="reference external" href="https://www.zhihu.com/question/268407842">如何评价「微软Windows 10全新MSIX文件格式」</a></p>
+</div>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -132,6 +174,49 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#windows-1">
+    windows文件安装格式
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#msi">
+      MSI
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exe">
+      EXE
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#appx">
+      AppX
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#msix">
+      MSIX
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -149,27 +234,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-html-length-unit.html">前端HTML长度单位</a></h3>
-											<p><p class="first last">HTML长度单位</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
+											<p><p class="first last">前端操作yaml</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-pmset.html">pmset</a></h3>
-											<p><p class="first last">电源控制-pmset</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
+											<p><p class="first last">前端教程集合</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
+											<p><p class="first last">开源图标/字体库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -244,11 +329,13 @@
 						</div>
 					</section>
 			</div>
-		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
-		<script src="/theme/js/skel.min.js"></script>
-		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {

@@ -77,7 +77,7 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>概念性</h2>
+      <h2>前端-概念性</h2>
     </div>
     <div class="page-head-content">
       By
@@ -114,14 +114,51 @@
 										</div>
 
 										<div class="pennant pennant-alt date">2024-03-09</div>
-										<h2>概念性</h2>
+										<h2>前端-概念性</h2>
+
+										<span class="head-modify-time">修改于: 2024-03-09</span>
+
 									</div>
 									<div class='sphinx-toc-tree-box'>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-Conceptual-abnormal.html">异常</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-Conceptual-dom-document.html">Dom-Document对象</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-Conceptual-Window.html">Window对象</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-Conceptual-html-length-unit.html">前端长度单位</a>
+</div><div class="section" id="for-in-for-of">
+<h2>for...in 和 for...of 循环区别</h2>
+<dl class="docutils">
+<dt>迭代对象类型:</dt>
+<dd><ul class="first last simple">
+<li>for...in 循环会遍历对象本身的可枚举属性,包括原型链上的属性。</li>
+<li>for...of 循环会遍历可迭代对象(如数组、字符串、Map、Set 等)的元素。</li>
+</ul>
+</dd>
+<dt>迭代键值:</dt>
+<dd><ul class="first last simple">
+<li>for...in 循环会返回对象属性的键(字符串或 Symbol)。</li>
+<li>for...of 循环会返回可迭代对象的值。</li>
+</ul>
+</dd>
+<dt>遍历顺序:</dt>
+<dd><ul class="first last simple">
+<li>for...in 循环的遍历顺序是不确定的,取决于对象属性的枚举顺序。</li>
+<li>for...of 循环会按照可迭代对象的迭代器协议定义的顺序进行遍历。</li>
+</ul>
+</dd>
+<dt>性能:</dt>
+<dd><ul class="first last simple">
+<li>for...in 循环通常比 for...of 循环慢,因为它需要检查原型链上的属性。</li>
+<li>for...of 循环一般比 for...in 循环快,因为它直接访问可迭代对象的元素。</li>
+</ul>
+</dd>
+</dl>
+<p>比如对于Map集合,</p>
+<ul class="simple">
+<li>for...in 返回的是键</li>
+<li>for...of 返回的是键值对</li>
+</ul>
 </div>
+
 								</article>
 						</div>
 					</div>
@@ -135,6 +172,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#for-in-for-of">
+    for...in 和 for...of 循环区别
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -152,27 +210,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-html-length-unit.html">前端HTML长度单位</a></h3>
-											<p><p class="first last">HTML长度单位</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
+											<p><p class="first last">前端操作yaml</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-pmset.html">pmset</a></h3>
-											<p><p class="first last">电源控制-pmset</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
+											<p><p class="first last">前端教程集合</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
+											<p><p class="first last">开源图标/字体库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -247,11 +305,13 @@
 						</div>
 					</section>
 			</div>
-		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
-		<script src="/theme/js/skel.min.js"></script>
-		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {

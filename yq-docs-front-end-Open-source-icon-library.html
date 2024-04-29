@@ -77,7 +77,7 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>开源图标库</h2>
+      <h2>开源图标/字体库</h2>
     </div>
     <div class="page-head-content">
       By
@@ -108,11 +108,18 @@
 										<div class="post-infos">
 											<ul class="tags">
 												<li><a class="button" href="category/qian-duan.html">前端</a></li>
+													<li><a class="button button-alt" href="tag/tu-biao.html">图标</a></li>
+
+													<li><a class="button button-alt" href="tag/zi-ti.html">字体</a></li>
+
 											</ul>
 										</div>
 
 										<div class="pennant pennant-alt date">2024-03-09</div>
-										<h2>开源图标库</h2>
+										<h2>开源图标/字体库</h2>
+
+										<span class="head-modify-time">修改于: 2024-04-24</span>
+
 									</div>
 									<div class="section" id="codicon">
 <h2>codicon</h2>
@@ -157,6 +164,25 @@ render(){
 yarn add &#64;fortawesome/fontawesome-free --save
 </pre>
 <p>预览: <a class="reference external" href="https://fontawesome.com/v5/search">https://fontawesome.com/v5/search</a></p>
+<div class="section" id="fortawesome">
+<h3>使用fortawesome</h3>
+<p>在 <cite>React</cite> 中使用 <cite>fortawesome</cite></p>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="c1"># yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome</span>
+yarn<span class="w"> </span>add<span class="w"> </span>@fortawesome/fontawesome<span class="w"> </span>@fortawesome/react-fontawesome<span class="w"> </span>@fortawesome/fontawesome-free-solid<span class="w"> </span>@fortawesome/fontawesome-free<span class="w"> </span>--save
+</pre></div>
+<p>代码中使用</p>
+<div class="highlight"><pre><span></span>import { FontAwesomeIcon } from &#39;@fortawesome/react-fontawesome&#39;
+import { faCoffee } from &#39;@fortawesome/free-solid-svg-icons&#39;
+
+&lt;FontAwesomeIcon icon={faCoffee} /&gt;
+</pre></div>
+<p>也可以像直接在HTML一样使用</p>
+<div class="highlight"><pre><span></span>import &quot;@fortawesome/fontawesome-free/css/all.css&quot;
+
+&lt;i class=&quot;fas fa-coffee&quot;&gt;&lt;/i&gt;
+</pre></div>
+</div>
 </div>
 
 								</article>
@@ -189,6 +215,13 @@ yarn add &#64;fortawesome/fontawesome-free --save
    <a class="" href="#fontawesome">
     fontawesome
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#fortawesome">
+      使用fortawesome
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -215,27 +248,27 @@ yarn add &#64;fortawesome/fontawesome-free --save
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-html-length-unit.html">前端HTML长度单位</a></h3>
-											<p><p class="first last">HTML长度单位</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
+											<p><p class="first last">前端操作yaml</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-pmset.html">pmset</a></h3>
-											<p><p class="first last">电源控制-pmset</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
+											<p><p class="first last">前端教程集合</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
+											<p><p class="first last">开源图标/字体库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -310,11 +343,13 @@ yarn add &#64;fortawesome/fontawesome-free --save
 						</div>
 					</section>
 			</div>
-		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
-		<script src="/theme/js/skel.min.js"></script>
-		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {

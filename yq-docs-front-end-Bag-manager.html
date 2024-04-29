@@ -113,6 +113,9 @@
 
 										<div class="pennant pennant-alt date">2024-03-09</div>
 										<h2>包管理器</h2>
+
+										<span class="head-modify-time">修改于: 2024-03-09</span>
+
 									</div>
 									<p>常见有两个</p>
 <ul class="simple">
@@ -121,23 +124,24 @@
 </ul>
 <div class="section" id="yarn">
 <h2>yarn</h2>
-<p>安装:</p>
-<pre class="literal-block">
-brew install yarn
-</pre>
+<p>安装</p>
+<div class="highlight"><pre><span></span>brew install yarn
+</pre></div>
 <p>yarn 默认是去 npm/yarn 官方镜像源（国外）获取资源, 较慢</p>
-<p>查询源:</p>
-<pre class="literal-block">
-yarn config get registry
-</pre>
-<p>设置为淘宝源:</p>
-<pre class="literal-block">
-yarn config set registry https://registry.npm.taobao.org/
-</pre>
-<p>还原:</p>
-<pre class="literal-block">
-yarn config set registry https://registry.yarnpkg.com
-</pre>
+<p>查询源</p>
+<div class="highlight"><pre><span></span>yarn config get registry
+</pre></div>
+<p>设置为淘宝源</p>
+<div class="highlight"><pre><span></span>yarn config set registry https://registry.npm.taobao.org/
+</pre></div>
+<p>或者其他镜像地址</p>
+<div class="highlight"><pre><span></span># yarn config set registry  https://registry.npmmirror.com
+# electron镜像
+# yarn config set electron_mirror https://npmmirror.com/mirrors/electron/
+</pre></div>
+<p>还原</p>
+<div class="highlight"><pre><span></span>yarn config set registry https://registry.yarnpkg.com
+</pre></div>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">建议所有使用yarn配置的镜像, 再使用npm配置一遍, 因为有些工具
@@ -146,34 +150,27 @@ yarn config set registry https://registry.yarnpkg.com
 </div>
 <div class="section" id="yrm">
 <h2>第三方工具yrm管理镜像源</h2>
-<p>安装:</p>
-<pre class="literal-block">
-npm install -g yrm
-</pre>
-<p>列出所有镜像源:</p>
-<pre class="literal-block">
-yrm ls
-</pre>
-<p>切换镜像:</p>
-<pre class="literal-block">
-yrm use taobao
-</pre>
-<p>新增镜像:</p>
-<pre class="literal-block">
-yrm add aliyun http://maven.aliyun.com/nexus/content/groups/public
-</pre>
-<p>删除镜像:</p>
-<pre class="literal-block">
-yrm del taobao
-</pre>
-<p>测试延迟（访问速度）:</p>
-<pre class="literal-block">
-yrm test aliyun
-</pre>
-<p>查看帮助:</p>
-<pre class="literal-block">
-yrm -h
-</pre>
+<p>安装</p>
+<div class="highlight"><pre><span></span>npm install -g yrm
+</pre></div>
+<p>列出所有镜像源</p>
+<div class="highlight"><pre><span></span>yrm ls
+</pre></div>
+<p>切换镜像</p>
+<div class="highlight"><pre><span></span>yrm use taobao
+</pre></div>
+<p>新增镜像</p>
+<div class="highlight"><pre><span></span>yrm add aliyun http://maven.aliyun.com/nexus/content/groups/public
+</pre></div>
+<p>删除镜像</p>
+<div class="highlight"><pre><span></span>yrm del taobao
+</pre></div>
+<p>测试延迟（访问速度）</p>
+<div class="highlight"><pre><span></span>yrm test aliyun
+</pre></div>
+<p>查看帮助</p>
+<div class="highlight"><pre><span></span>yrm -h
+</pre></div>
 </div>
 
 								</article>
@@ -232,27 +229,27 @@ yrm -h
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-html-length-unit.html">前端HTML长度单位</a></h3>
-											<p><p class="first last">HTML长度单位</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
+											<p><p class="first last">前端操作yaml</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-pmset.html">pmset</a></h3>
-											<p><p class="first last">电源控制-pmset</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
+											<p><p class="first last">前端教程集合</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
+											<p><p class="first last">开源图标/字体库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -327,11 +324,13 @@ yrm -h
 						</div>
 					</section>
 			</div>
-		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
-		<script src="/theme/js/skel.min.js"></script>
-		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {

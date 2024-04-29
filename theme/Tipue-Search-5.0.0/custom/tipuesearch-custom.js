@@ -232,6 +232,17 @@ http://www.tipue.com/search
                                              {
                                                   var patr = new RegExp('(' + d_w[f] + ')', 'i');
                                              }
+
+                                             // 兼容内容包含特殊字符的情况, 避免当作html执行
+                                             // if (s_t.indexOf("<script>") !== -1 && s_t.indexOf("XSS全称是跨站脚本攻击") !== -1){
+                                             //      console.log("origin: ", s_t);
+                                             // }
+                                             s_t = s_t.replace(/</g, '&lt');
+                                             s_t = s_t.replace(/>/g, '&gt');
+                                             // if (s_t.indexOf("<script>") !== -1 && s_t.indexOf("XSS全称是跨站脚本攻击") !== -1){
+                                             //      console.log("", s_t);
+                                             // }
+
                                              s_t = s_t.replace(patr, "<span class=\"h01\">$1</span>");
                                         }
 
@@ -416,6 +427,11 @@ http://www.tipue.com/search
                                              {
                                                   t_d += ' ...';
                                              }
+                                             // console.log("origin: ", t_d);
+                                             // t_d = t_d.replace(/</g, '\\<');
+                                             // t_d = t_d.replace(/>/g, '\\>');
+                                             // console.log(t_d);
+                                             // t_d = document.createTextNode(t_d);
                                              out += '<div class="tipue_search_content_text">' + t_d + '</div>';
                                         }
                                    }

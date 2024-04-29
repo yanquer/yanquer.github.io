@@ -84,7 +84,7 @@
 	  <a href="author/yanque.html">YanQue</a>
       , 09 三月 2024
       , Category:
-	  <a href="category/hou-duan.html">后端</a>
+	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
 	<div class="red-line">
     </div>
@@ -107,7 +107,7 @@
 									<div class="box-head">
 										<div class="post-infos">
 											<ul class="tags">
-												<li><a class="button" href="category/hou-duan.html">后端</a></li>
+												<li><a class="button" href="category/hou-duan-python.html">后端; python</a></li>
 													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
 
 													<li><a class="button button-alt" href="tag/wen-ti-zong-jie.html">问题总结</a></li>
@@ -117,12 +117,63 @@
 
 										<div class="pennant pennant-alt date">2024-03-09</div>
 										<h2>Python问题总结</h2>
+
+										<span class="head-modify-time">修改于: 2024-04-22</span>
+
 									</div>
 									<div class='sphinx-toc-tree-box'>
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-conclusion-of-issue-Python-rewrite-the-parent-class-parameter-list-issues.html">python重写父类参数列表问题</a>
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-conclusion-of-issue-Sphinx-use.html">Sphinx使用</a>
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-conclusion-of-issue-String-supplement-0.html">字符串补0</a>
+</div><div class="section" id="section-1">
+<h2>包管理器安装问题</h2>
+<p>系统: MacOS</p>
+<p>详细报错:</p>
+<pre class="literal-block">
+$ pip install ipython
+
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─&gt; To install Python packages system-wide, try brew install
+  xyz, where xyz is the package you are trying to
+  install.
+
+  If you wish to install a Python library that isn't in Homebrew,
+  use a virtual environment:
+
+  python3 -m venv path/to/venv
+  source path/to/venv/bin/activate
+  python3 -m pip install xyz
+
+  If you wish to install a Python application that isn't in Homebrew,
+  it may be easiest to use 'pipx install xyz', which will manage a
+  virtual environment for you. You can install pipx with
+
+  brew install pipx
+
+  You may restore the old behavior of pip by passing
+  the '--break-system-packages' flag to pip, or by adding
+  'break-system-packages = true' to your pip.conf file. The latter
+  will permanently disable this error.
+
+  If you disable this error, we STRONGLY recommend that you additionally
+  pass the '--user' flag to pip, or set 'user = true' in your pip.conf
+  file. Failure to do this can result in a broken Homebrew installation.
+
+  Read more about this behavior here: &lt;https://peps.python.org/pep-0668/&gt;
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+</pre>
+<p>说明: 避免系统某些依赖于Python模块的包于需要安装的包存在冲突，这些冲突包括 Python 级 API 不兼容和文件所有权冲突</p>
+<p>参考: <a class="reference external" href="https://www.cnblogs.com/clark1990/p/17942952">新版ubuntu使用pip时发生的错误</a></p>
+<dl class="docutils">
+<dt>解决:</dt>
+<dd>使用 <cite>pipx</cite> 或者使用 虚拟环境 (其实是一个东西, <cite>pipx</cite> 相对更方便)</dd>
+</dl>
 </div>
+
 								</article>
 						</div>
 					</div>
@@ -136,6 +187,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    包管理器安装问题
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -153,27 +225,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-html-length-unit.html">前端HTML长度单位</a></h3>
-											<p><p class="first last">HTML长度单位</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
+											<p><p class="first last">前端操作yaml</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>19</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-pmset.html">pmset</a></h3>
-											<p><p class="first last">电源控制-pmset</p>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
+											<p><p class="first last">前端教程集合</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-cross-qml-parent-child-component-signal-passing.html">跨QML父子组件信号传递</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
+											<p><p class="first last">开源图标/字体库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>11</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-QML-use-issuses-custom-component-attributes.html">自定义组件属性</a></h3>
-											<p><p class="first last">QML实际使用相关</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -248,11 +320,13 @@
 						</div>
 					</section>
 			</div>
-		<script src="/theme/js/jquery.min.js"></script>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
-		<script src="/theme/js/skel.min.js"></script>
-		<script src="/theme/js/skel-panels.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 <script type="text/javascript">
 	function addEvent() {

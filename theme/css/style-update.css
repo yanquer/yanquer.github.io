@@ -69,6 +69,8 @@ div[onclick]:hover,
 	.page-head > div,
 	.container > div{
 		background-color: unset !important;
+		width: 100%;
+
 	}
 
 .red-line{
@@ -150,9 +152,22 @@ dt{
 }
 dt::before{
 	font-family: "Font Awesome 6 Free Web";
-	content: "\f2dc";
+	content: "\f2dc";	/* snow : https://fontawesome.com/icons/snowflake?f=classic&s=regular*/
 	margin-right: 0.5em;
 	color: #7575d4;
+}
+dd dt::before{
+	/* content: "\f492"; vial: https://fontawesome.com/icons/vial?f=classic&s=solid */
+	color: #7575d4cc;
+	font-size: 13px;
+}
+dd dd dt::before{
+	color: #7575d4bb;
+	font-size: 11px;
+}
+dd dd dd dt::before{
+	color: #7575d4aa;
+	font-size: 9px;
 }
 /* todo:  dt dt 没用... 不知道为啥 */
 /* dt dt{
@@ -305,7 +320,7 @@ html, body{
 
 /* 正文 标题 */
 .is-post h2 {
-	padding: 0.9em 0 0.5em 0 !important;
+	/* padding: 0.9em 0 0.5em 0 !important; */
 }
 
 /* 文章目录 */
@@ -461,11 +476,25 @@ table.docutils.option-list{
 	margin-left: 10px;
 }
 .admonition li::before,
-.simple li::before{
+.simple:not(ol) li::before{
 	font-family: "Font Awesome 6 Free Web";
 	content: "\f231";
 	color: #4f8271;
 	margin-right: 0.5em;
+}
+ul.simple:not(ol) li::before{
+	content: "\e139"; /* clover: https://fontawesome.com/icons/clover?f=classic&s=solid */
+	font-size: 8px;
+}
+
+ol{
+	list-style-type: decimal;
+}
+ol.simple li{
+	margin-left: 2em;
+}
+ul{
+	/* list-style-type: circle; */
 }
 
 /* 斜体 */
@@ -500,9 +529,15 @@ h2 .pre {
 }
 
 /* 标题间隔 */
-h3, h4, h5, h6{
-	margin: 10px 0;
+h1, h2, h3, h4, h5, h6{
+	margin: 20px 0;
 }
 
+/* 最近修改时间 */
+.head-modify-time{
+	color: #439279;
+	font-style: italic;
+	font-size: 12px;
+}
 
 

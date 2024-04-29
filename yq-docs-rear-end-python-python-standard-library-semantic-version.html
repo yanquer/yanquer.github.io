@@ -1,0 +1,465 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>semantic-version</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 22 四月 2024
+      , Category:
+	  <a href="category/hou-duan-python.html">后端; python</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan-python.html">后端; python</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/pythonbiao-zhun-ku.html">Python标准库</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-04-22</div>
+										<h2>semantic-version</h2>
+
+										<span class="head-modify-time">修改于: 2024-04-22</span>
+
+									</div>
+									<p>pypi地址: <a class="reference external" href="https://pypi.org/project/semantic-version/">https://pypi.org/project/semantic-version/</a></p>
+<p>安装</p>
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>semantic-version
+</pre></div>
+<div class="section" id="section-1">
+<h2>使用</h2>
+<p>次模块的操作基本依赖于  <cite>semantic_version.Version</cite> 模块</p>
+<p>如</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">semantic_version</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span><span class="o">.</span><span class="n">major</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span><span class="o">.</span><span class="n">minor</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span><span class="o">.</span><span class="n">patch</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span><span class="o">.</span><span class="n">prerelease</span>
+<span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span><span class="o">.</span><span class="n">build</span>
+<span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]]</span>
+</pre></div>
+<p>使用 <cite>Version</cite> 直接实例化时, 字符串必须是符合 <cite>semver</cite> 规范的(比如 <cite>0.1</cite> 就不行, 至少三位)</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/rbarrois/dev/semantic_version/src/semantic_version/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">64</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__init__</span>
+    <span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">prerelease</span><span class="p">,</span> <span class="n">build</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">version_string</span><span class="p">,</span> <span class="n">partial</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/rbarrois/dev/semantic_version/src/semantic_version/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">86</span><span class="p">,</span> <span class="ow">in</span> <span class="n">parse</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid version string: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">version_string</span><span class="p">)</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">version</span> <span class="n">string</span><span class="p">:</span> <span class="s1">&#39;0.1&#39;</span>
+</pre></div>
+<p>还可以使用字典参数</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">semantic_version</span> <span class="kn">import</span> <span class="n">Version</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="n">major</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">patch</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Version(&#39;0.1.2&#39;)</span>
+<span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2&#39;</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="n">major</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">patch</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">prerelease</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">))</span>
+<span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2-alpha.2&#39;</span><span class="p">)</span>
+</pre></div>
+<p>如果原来的字符串是不支持直接实例的, 可以使用 <cite>coerce</cite></p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="o">.</span><span class="n">coerce</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.0.0&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="o">.</span><span class="n">coerce</span><span class="p">(</span><span class="s1">&#39;0.1.2.3.4&#39;</span><span class="p">)</span>
+<span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2+3.4&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="o">.</span><span class="n">coerce</span><span class="p">(</span><span class="s1">&#39;0.1.2a3&#39;</span><span class="p">)</span>
+<span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2-a3&#39;</span><span class="p">)</span>
+</pre></div>
+<p>支持直接比较</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2&#39;</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1-alpha&#39;</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1-alpha&#39;</span><span class="p">)</span>
+<span class="kc">False</span>
+</pre></div>
+<p>还可以获取后续版本</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1+build&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">new_v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">next_major</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_v</span><span class="p">)</span>
+<span class="s1">&#39;1.0.0&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;1.1.1+build&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">new_v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">next_minor</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_v</span><span class="p">)</span>
+<span class="s1">&#39;1.2.0&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">semantic_version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;1.1.1+build&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">new_v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">next_patch</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_v</span><span class="p">)</span>
+<span class="s1">&#39;1.1.2&#39;</span>
+</pre></div>
+<p>版本判断是否在某个区间</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">NpmSpec</span><span class="p">(</span><span class="s1">&#39;0.1.0-alpha.2 .. 0.2.4&#39;</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">NpmSpec</span><span class="p">(</span><span class="s1">&#39;&gt;=0.1.1 &lt;0.1.3 || 2.x&#39;</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;2.3.4&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">NpmSpec</span><span class="p">(</span><span class="s1">&#39;&gt;=0.1.1 &lt;0.1.3 || 2.x&#39;</span><span class="p">)</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+<div class="section" id="api">
+<h2>API</h2>
+<div class="section" id="section-2">
+<h3>类</h3>
+<dl class="docutils">
+<dt>SimpleSpec</dt>
+<dd><div class="first line-block">
+<div class="line">The SimpleSpec class provides a simple, easily understood scheme – somewhat inspired from PyPI range notations;</div>
+</div>
+<p><cite>SimpleSpec</cite> 提供一个简单易理解的方案，一些灵感来源于PyPI范围 notation;</p>
+<p>简单的直接使用比较字符串</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">SimpleSpec</span><span class="p">(</span><span class="s1">&#39;&gt;=0.1.1&#39;</span><span class="p">)</span>  <span class="c1"># At least 0.1.1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1&#39;</span><span class="p">))</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1-alpha1&#39;</span><span class="p">))</span>  <span class="c1"># pre-release doesn&#39;t satisfy version spec</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.0&#39;</span><span class="p">))</span>
+<span class="kc">False</span>
+</pre></div>
+<p>联合版本可以这样定义</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">SimpleSpec</span><span class="p">(</span><span class="s1">&#39;&gt;=0.1.1,&lt;0.3.0&#39;</span><span class="p">)</span>
+</pre></div>
+<p><cite>in</cite> 语法同样可用</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">SimpleSpec</span><span class="p">(</span><span class="s1">&#39;==0.1.1&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1+git7ccc72&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s</span>  <span class="c1"># build variants are equivalent to full versions</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.1-alpha1&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s</span>     <span class="c1"># pre-release variants don&#39;t match the full version.</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.1.2&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s</span>
+<span class="kc">False</span>
+</pre></div>
+<dl class="last docutils">
+<dt>SimpleSpec.filter</dt>
+<dd><p class="first">版本比较过滤</p>
+<p>从迭代中过滤符合条件的</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">SimpleSpec</span><span class="p">(</span><span class="s1">&#39;&gt;=0.1.0,&lt;0.4.0&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">versions</span> <span class="o">=</span> <span class="p">(</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.</span><span class="si">%d</span><span class="s1">.0&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">versions</span><span class="p">):</span>
+<span class="o">...</span>     <span class="nb">print</span> <span class="n">v</span>
+<span class="mf">0.1.0</span>
+<span class="mf">0.2.0</span>
+<span class="mf">0.3.0</span>
+</pre></div>
+</div></dd>
+<dt>SimpleSpec.select</dt>
+<dd><p class="first">选择符合要求的最新版本</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">SimpleSpec</span><span class="p">(</span><span class="s1">&#39;&gt;=0.1.0,&lt;0.4.0&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">versions</span> <span class="o">=</span> <span class="p">(</span><span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.</span><span class="si">%d</span><span class="s1">.0&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">versions</span><span class="p">)</span>
+<span class="n">Version</span><span class="p">(</span><span class="s1">&#39;0.3.0&#39;</span><span class="p">)</span>
+</pre></div>
+</div></dd>
+</dl>
+</dd>
+<dt>NpmSpec</dt>
+<dd><div class="first line-block">
+<div class="line">The NpmSpec class supports the whole NPM range specification scheme:</div>
+</div>
+<p class="last"><cite>NpmSpec</cite> 支持整个NPM范围 specification scheme:</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h3>函数</h3>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    使用
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#api">
+    API
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      类
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      函数
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
+											<p><p class="first last">前端操作yaml</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 4 <strong>26</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
+											<p><p class="first last">前端教程集合</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
+											<p><p class="first last">开源图标/字体库</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
+											<p><p class="first last">as title</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>
