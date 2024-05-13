@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 三月 2024
+      , 09 March 2024
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -163,6 +163,22 @@
 /var/log/wtmp    登陆记录信息（last命令即读取此日志或者 who /var/log/wtmp）
 </pre>
 </div>
+<div class="section" id="ubuntusudo">
+<h2>Ubuntu执行sudo慢</h2>
+<p>解决, 查看主机名, 然后增加到 <cite>/etc/hosts</cite></p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>hostname
+yanqueubuntuserver
+$<span class="w"> </span>cat<span class="w"> </span>/etc/hosts
+<span class="m">127</span>.0.0.1<span class="w"> </span>localhost
+<span class="m">127</span>.0.0.1<span class="w"> </span>yanqueubuntuserver
+</pre></div>
+<dl class="docutils">
+<dt>原因</dt>
+<dd><cite>Ubuntu Server</cite> 被设计成一种类似于分布式的操作系统网结构，允许 <cite>/etc/sudoers</cite> 中的成员不在本机上。
+从而 <cite>sudo</cite> 时会先从网络上寻找可能的 <cite>sudoer</cite> 然后才是本地.
+因而会多出本地网络查找的时间</dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -195,6 +211,11 @@
     文件
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#ubuntusudo">
+    Ubuntu执行sudo慢
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -220,27 +241,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
-											<p><p class="first last">前端操作yaml</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
+											<p><p class="first last">img超出大小时自动调整</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
-											<p><p class="first last">前端教程集合</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
+											<p><p class="first last">Blob对象</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
-											<p><p class="first last">开源图标/字体库</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
+											<p><p class="first last">浏览器环境API</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
+											<p><p class="first last">URL对象</p>
 </p>
 										</li>
 									</ul>

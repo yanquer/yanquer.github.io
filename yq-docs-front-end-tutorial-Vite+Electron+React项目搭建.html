@@ -1,0 +1,492 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Vite+Electron+React项目搭建</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 10 May 2024
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/qian-duan.html">前端</a></li>
+													<li><a class="button button-alt" href="tag/gai-nian-xing.html">概念性</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-05-10</div>
+										<h2>Vite+Electron+React项目搭建</h2>
+
+										<span class="head-modify-time">修改于: 2024-05-10</span>
+
+									</div>
+									<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>创建项目工具: <a class="reference external" href="https://github.com/alex8088/electron-vite">electron-vite</a></li>
+<li>官网中文文档: <a class="reference external" href="https://cn.electron-vite.org/guide/introduction">https://cn.electron-vite.org/guide/introduction</a></li>
+<li>顺便提一句另一个插件: <a class="reference external" href="https://github.com/electron-vite/vite-plugin-electron">vite-plugin-electron</a> , 最开始本来用的是这个, 发现不知道怎么debug源码, 就没用了, 它对应的官网为:
+<a class="reference external" href="https://electron-vite.github.io/guide/why-electron-vite.html">英文版</a>
+<a class="reference external" href="https://cn.vitejs.dev/config/">中文版</a></li>
+</ul>
+</dd>
+</dl>
+<p>安装:</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>electron-vite
+</pre></div>
+<div class="section" id="section-1">
+<h2>创建</h2>
+<div class="section" id="section-2">
+<h3>对于新项目</h3>
+<p>准备一个项目目录的父级文件夹, 执行</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>create<span class="w"> </span>@quick-start/electron@latest
+
+<span class="c1"># yarn create @quick-start/electron</span>
+<span class="c1"># pnpm create @quick-start/electron</span>
+</pre></div>
+<p>然后会出现一个交互式的选择界面</p>
+<div class="highlight"><pre><span></span>✔<span class="w"> </span>Project<span class="w"> </span>name:<span class="w"> </span>…<span class="w"> </span>&lt;electron-app&gt;
+✔<span class="w"> </span>Select<span class="w"> </span>a<span class="w"> </span>framework:<span class="w"> </span>›<span class="w"> </span>vue
+✔<span class="w"> </span>Add<span class="w"> </span>TypeScript?<span class="w"> </span>…<span class="w"> </span>No<span class="w"> </span>/<span class="w"> </span>Yes
+✔<span class="w"> </span>Add<span class="w"> </span>Electron<span class="w"> </span>updater<span class="w"> </span>plugin?<span class="w"> </span>…<span class="w"> </span>No<span class="w"> </span>/<span class="w"> </span>Yes
+✔<span class="w"> </span>Enable<span class="w"> </span>Electron<span class="w"> </span>download<span class="w"> </span>mirror<span class="w"> </span>proxy?<span class="w"> </span>…<span class="w"> </span>No<span class="w"> </span>/<span class="w"> </span>Yes
+
+Scaffolding<span class="w"> </span>project<span class="w"> </span><span class="k">in</span><span class="w"> </span>./&lt;electron-app&gt;...
+Done.
+</pre></div>
+<p>交互式界面中的选项也可以通过参数来配置</p>
+<div class="highlight"><pre><span></span><span class="c1"># npm 6.x</span>
+npm<span class="w"> </span>create<span class="w"> </span>@quick-start/electron<span class="w"> </span>my-app<span class="w"> </span>--template<span class="w"> </span>react
+
+<span class="c1"># npm 7+, extra double-dash is needed:</span>
+npm<span class="w"> </span>create<span class="w"> </span>@quick-start/electron<span class="w"> </span>my-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>react
+
+<span class="c1"># yarn</span>
+yarn<span class="w"> </span>create<span class="w"> </span>@quick-start/electron<span class="w"> </span>my-app<span class="w"> </span>--template<span class="w"> </span>react
+
+<span class="c1"># pnpm</span>
+pnpm<span class="w"> </span>create<span class="w"> </span>@quick-start/electron<span class="w"> </span>my-app<span class="w"> </span>--template<span class="w"> </span>react
+</pre></div>
+<p>目前支持的模板预设如下</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">JavaScript</th>
+<th class="head">TypeScript</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>vanilla</td>
+<td>vanilla-ts</td>
+</tr>
+<tr><td>vue</td>
+<td>vue-ts</td>
+</tr>
+<tr><td>react</td>
+<td>react-ts</td>
+</tr>
+<tr><td>svelte</td>
+<td>svelte-ts</td>
+</tr>
+<tr><td>solid</td>
+<td>solid-ts</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-3">
+<h3>对于旧项目</h3>
+<p>旧项目因为已经有代码了, 所以肯定不能像新项目那样从零开始</p>
+<!-- todo: 未实际测试, 待修正 -->
+<p>可能的方案(未实际测试, 待修正):</p>
+<div class="highlight"><pre><span></span><span class="c1"># 先安装到项目</span>
+yarn<span class="w"> </span>add<span class="w"> </span>electron-vite<span class="w"> </span>--save
+</pre></div>
+<p>然后就是生成需要的资源</p>
+<div class="highlight"><pre><span></span>npx<span class="w"> </span>electron-vite
+</pre></div>
+<p>或者手动在 <cite>package.json</cite> 文件中添加 <cite>npm scripts</cite></p>
+<pre class="literal-block">
+{
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;electron-vite preview&quot;, // 开启 Electron 程序预览生产构建
+    &quot;dev&quot;: &quot;electron-vite dev&quot;,       // 开启开发服务和 Electron 程序
+    &quot;prebuild&quot;: &quot;electron-vite build&quot; // 为生产构建代码
+  }
+}
+</pre>
+</div>
+</div>
+<div class="section" id="electron-vite-1">
+<h2>配置 electron-vite</h2>
+<p>创建好后项目下会有一个 <cite>electron.vite.config.ts</cite> 文件,</p>
+<p>结构要求为</p>
+<div class="highlight"><pre><span></span><span class="c1">// electron.vite.config.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">main</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// vite config options</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// vite config options</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">renderer</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// vite config options</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>目前我自己生成的默认内容为</p>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;path&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">,</span><span class="w"> </span><span class="nx">externalizeDepsPlugin</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;electron-vite&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">react</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@vitejs/plugin-react&#39;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">main</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">externalizeDepsPlugin</span><span class="p">()]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">externalizeDepsPlugin</span><span class="p">()]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">renderer</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">alias</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s1">&#39;@renderer&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;src/renderer/src&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">react</span><span class="p">()]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<div class="section" id="electron">
+<h2>打包-更新 Electron 入口</h2>
+<p>当使用 <cite>electron-vite</cite> 打包代码时， <cite>Electron</cite> 应用程序的入口点应更改为输出目录中的主进程入口文件。默认的输出目录 <cite>outDir</cite> 为 <cite>out</cite> 。
+你的 <cite>package.json</cite> 文件会是这样：</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;electron-app&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./out/main/index.js&quot;</span>
+<span class="p">}</span>
+</pre></div>
+<p><cite>Electron</cite> 的工作目录将是输出目录，而不是你的源代码目录。因此在打包 <cite>Electron</cite> 应用程序时可以将源代码排除。</p>
+</div>
+<div class="section" id="electron-1">
+<h2>其他-Electron源码调试支持</h2>
+<p>也可以说后端源码调试支持</p>
+<p>在 <cite>package.json</cite> 的 <cite>script</cite> 项中增加以下内容:</p>
+<pre class="literal-block">
+&quot;dev-debug&quot;: &quot;electron-vite dev --sourcemap --remote-debugging-port=9222&quot;,
+</pre>
+<p>主要就是:</p>
+<pre class="literal-block">
+--sourcemap --remote-debugging-port=9222
+</pre>
+<p>此部分参考官网: <a class="reference external" href="https://cn-evite.netlify.app/guide/debugging.html#webstorm">https://cn-evite.netlify.app/guide/debugging.html#webstorm</a></p>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    创建
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      对于新项目
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      对于旧项目
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#electron-vite-1">
+    配置 electron-vite
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#electron">
+    打包-更新 Electron 入口
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#electron-1">
+    其他-Electron源码调试支持
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
+											<p><p class="first last">img超出大小时自动调整</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
+											<p><p class="first last">Blob对象</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
+											<p><p class="first last">浏览器环境API</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
+											<p><p class="first last">URL对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

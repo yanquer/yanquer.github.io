@@ -1,0 +1,581 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>inversify</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 10 May 2024
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/qian-duan.html">前端</a></li>
+													<li><a class="button button-alt" href="tag/node.html">Node</a></li>
+
+													<li><a class="button button-alt" href="tag/san-fang-ku.html">三方库</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-05-10</div>
+										<h2>inversify</h2>
+
+										<span class="head-modify-time">修改于: 2024-05-10</span>
+
+									</div>
+									<p>ts版依赖注入框架</p>
+<p>安装</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>inversify<span class="w"> </span>reflect-metadata<span class="w"> </span>--save
+<span class="c1"># yarn add inversify reflect-metadata</span>
+<span class="c1"># pnpm add inversify reflect-metadata</span>
+</pre></div>
+<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>模块地址: <a class="reference external" href="https://www.npmjs.com/package/inversify">https://www.npmjs.com/package/inversify</a></li>
+<li>仓库: <a class="reference external" href="https://github.com/inversify/InversifyJS">https://github.com/inversify/InversifyJS</a></li>
+<li>中文文档: <a class="reference external" href="https://github.com/NeoYo/inversify.cn">https://github.com/NeoYo/inversify.cn</a></li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="section-1">
+<h2>代码中使用</h2>
+<div class="section" id="section-2">
+<h3>接口声明</h3>
+<p>先声明接口</p>
+<div class="highlight"><pre><span></span><span class="c1">// file interfaces.ts</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Warrior</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fight</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">sneak</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Weapon</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">hit</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ThrowableWeapon</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h3>声明接口描述符</h3>
+<p>声明接口对应的描述符</p>
+<div class="highlight"><pre><span></span><span class="c1">// file types.ts</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">TYPES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Warrior</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol.for</span><span class="p">(</span><span class="s2">&quot;Warrior&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">Weapon</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol.for</span><span class="p">(</span><span class="s2">&quot;Weapon&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">ThrowableWeapon</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol.for</span><span class="p">(</span><span class="s2">&quot;ThrowableWeapon&quot;</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TYPES</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h3>接口实现-依赖声明</h3>
+<p>然后使用装饰器 <cite>&#64;injectable</cite> 和 <cite>&#64;inject</cite> 声明依赖</p>
+<p>如</p>
+<div class="highlight"><pre><span></span><span class="c1">// file entities.ts</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">inject</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;inversify&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s2">&quot;reflect-metadata&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Weapon</span><span class="p">,</span><span class="w"> </span><span class="nx">ThrowableWeapon</span><span class="p">,</span><span class="w"> </span><span class="nx">Warrior</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./interfaces&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TYPES</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./types&quot;</span><span class="p">;</span>
+
+<span class="kd">@injectable</span><span class="p">()</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Katana</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">Weapon</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">hit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;cut!&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">@injectable</span><span class="p">()</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Shuriken</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ThrowableWeapon</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">throw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;hit!&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">@injectable</span><span class="p">()</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Ninja</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">Warrior</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">_katana</span><span class="o">:</span><span class="w"> </span><span class="kt">Weapon</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">_shuriken</span><span class="o">:</span><span class="w"> </span><span class="kt">ThrowableWeapon</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">      </span><span class="kd">@inject</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">Weapon</span><span class="p">)</span><span class="w"> </span><span class="nx">katana</span><span class="o">:</span><span class="w"> </span><span class="kt">Weapon</span><span class="p">,</span>
+<span class="w">      </span><span class="kd">@inject</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">ThrowableWeapon</span><span class="p">)</span><span class="w"> </span><span class="nx">shuriken</span><span class="o">:</span><span class="w"> </span><span class="kt">ThrowableWeapon</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">_katana</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">katana</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">_shuriken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">shuriken</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">fight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_katana</span><span class="p">.</span><span class="nx">hit</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">sneak</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_shuriken</span><span class="p">.</span><span class="k">throw</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Ninja</span><span class="p">,</span><span class="w"> </span><span class="nx">Katana</span><span class="p">,</span><span class="w"> </span><span class="nx">Shuriken</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+<p>也可以不用构造器注入而是属性注入依赖</p>
+<div class="highlight"><pre><span></span><span class="kd">@injectable</span><span class="p">()</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Ninja</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">Warrior</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">@inject</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">Weapon</span><span class="p">)</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="nx">_katana</span><span class="o">:</span><span class="w"> </span><span class="kt">Weapon</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">@inject</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">ThrowableWeapon</span><span class="p">)</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="nx">_shuriken</span><span class="o">:</span><span class="w"> </span><span class="kt">ThrowableWeapon</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">fight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_katana</span><span class="p">.</span><span class="nx">hit</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">sneak</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_shuriken</span><span class="p">.</span><span class="k">throw</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-5">
+<h3>容器配置-依赖绑定</h3>
+<p>官方建议文件命名为 <cite>inversify.config.ts</cite></p>
+<div class="highlight"><pre><span></span><span class="c1">// file inversify.config.ts</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Container</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;inversify&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TYPES</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./types&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Warrior</span><span class="p">,</span><span class="w"> </span><span class="nx">Weapon</span><span class="p">,</span><span class="w"> </span><span class="nx">ThrowableWeapon</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./interfaces&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Ninja</span><span class="p">,</span><span class="w"> </span><span class="nx">Katana</span><span class="p">,</span><span class="w"> </span><span class="nx">Shuriken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./entities&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">myContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Container</span><span class="p">();</span>
+<span class="nx">myContainer</span><span class="p">.</span><span class="nx">bind</span><span class="o">&lt;</span><span class="nx">Warrior</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">Warrior</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">Ninja</span><span class="p">);</span>
+<span class="nx">myContainer</span><span class="p">.</span><span class="nx">bind</span><span class="o">&lt;</span><span class="nx">Weapon</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">Weapon</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">Katana</span><span class="p">);</span>
+<span class="nx">myContainer</span><span class="p">.</span><span class="nx">bind</span><span class="o">&lt;</span><span class="nx">ThrowableWeapon</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">ThrowableWeapon</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">Shuriken</span><span class="p">);</span>
+
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">myContainer</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="section-6">
+<h3>外部通过容器获取实例</h3>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">myContainer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./inversify.config&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TYPES</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./types&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Warrior</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./interfaces&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">ninja</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">myContainer</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="nx">Warrior</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TYPES</span><span class="p">.</span><span class="nx">Warrior</span><span class="p">);</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="nx">ninja</span><span class="p">.</span><span class="nx">fight</span><span class="p">()).</span><span class="nx">eql</span><span class="p">(</span><span class="s2">&quot;cut!&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// true</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">ninja</span><span class="p">.</span><span class="nx">sneak</span><span class="p">()).</span><span class="nx">eql</span><span class="p">(</span><span class="s2">&quot;hit!&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>多重绑定</h2>
+<p>即一个接口有多个实现, 且同时绑定到这多个实现</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">绑定的时候跟普通的基本没区别, 主要是获取的时候</p>
+</div>
+<p>接口定义</p>
+<div class="highlight"><pre><span></span><span class="kd">interface</span><span class="w"> </span><span class="nx">IService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">doSomething</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>多个实现</p>
+<div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">ServiceA</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">doSomething</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Service A doing something&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">ServiceB</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">doSomething</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Service B doing something&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>在容器中绑定接口和实现</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Container</span><span class="p">();</span>
+
+<span class="nx">myContainer</span><span class="p">.</span><span class="nx">bind</span><span class="o">&lt;</span><span class="nx">IService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IService</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">ServiceA</span><span class="p">);</span>
+<span class="nx">myContainer</span><span class="p">.</span><span class="nx">bind</span><span class="o">&lt;</span><span class="nx">IService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IService</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">ServiceB</span><span class="p">);</span>
+</pre></div>
+<p>获取绑定的实例</p>
+<ul>
+<li><p class="first">如果是在外部获取</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">myContainer</span><span class="p">.</span><span class="nx">getAll</span><span class="o">&lt;</span><span class="nx">IService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IService</span><span class="p">);</span>
+
+<span class="nx">services</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">());</span>
+</pre></div>
+<p>如果想获取指定的某一个实例, 可以在绑定的时候
+使用 <em>标签</em> 进行更细粒度的控制</p>
+<p>使用标签（tags）</p>
+<div class="highlight"><pre><span></span><span class="nx">myContainer</span><span class="p">.</span><span class="nx">bind</span><span class="o">&lt;</span><span class="nx">IService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IService</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">ServiceA</span><span class="p">).</span><span class="nx">whenTargetNamed</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">);</span>
+<span class="nx">myContainer</span><span class="p">.</span><span class="nx">bind</span><span class="o">&lt;</span><span class="nx">IService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IService</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">ServiceB</span><span class="p">).</span><span class="nx">whenTargetNamed</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">);</span>
+</pre></div>
+<p>然后，当你需要获取服务时，你可以使用标签来获取特定的实现：</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">serviceA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">myContainer</span><span class="p">.</span><span class="nx">getNamed</span><span class="o">&lt;</span><span class="nx">IService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IService</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">serviceB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">myContainer</span><span class="p">.</span><span class="nx">getNamed</span><span class="o">&lt;</span><span class="nx">IService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IService</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">);</span>
+</pre></div>
+</li>
+<li><p class="first">如果是在其他注入类的构造器, 可以使用 <cite>&#64;multiInject</cite> 装饰器</p>
+<div class="highlight"><pre><span></span><span class="kd">@injectable</span><span class="p">()</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">UseService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">_service</span><span class="o">:</span><span class="w"> </span><span class="kt">IService</span><span class="p">[]</span>
+
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="kd">@multiInject</span><span class="p">(</span><span class="nx">IService</span><span class="p">)</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="kt">IService</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">_service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">service</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</li>
+</ul>
+</div>
+<div class="section" id="tsconfig-json">
+<h2>tsconfig.json配置</h2>
+<p>需要补充的配置内容</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es5&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lib&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;es6&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;reflect-metadata&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;commonjs&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;moduleResolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;experimentalDecorators&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;emitDecoratorMetadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="unable-to-resolve-signature">
+<h2>报错-Unable to resolve signature</h2>
+<p>完整报错:</p>
+<pre class="literal-block">
+TS1238: Unable to resolve signature of class decorator when called as an expression. The runtime will invoke the decorator with 2 arguments, but the decorator expects 1
+
+# 或者
+# TypeScript decorator reports &quot;Unable to resolve signature of class decorator when called as an expression&quot;
+</pre>
+<dl class="docutils">
+<dt>原因:</dt>
+<dd>没有配置ts对装饰器的支持</dd>
+<dt>解决:</dt>
+<dd><p class="first">在tsconfig.json中添加:</p>
+<pre class="literal-block">
+&quot;experimentalDecorators&quot;: true,
+&quot;emitDecoratorMetadata&quot;: true
+</pre>
+<p class="last">貌似一般只配置第一个就行</p>
+</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    代码中使用
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      接口声明
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      声明接口描述符
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      接口实现-依赖声明
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      容器配置-依赖绑定
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      外部通过容器获取实例
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    多重绑定
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#tsconfig-json">
+    tsconfig.json配置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unable-to-resolve-signature">
+    报错-Unable to resolve signature
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
+											<p><p class="first last">img超出大小时自动调整</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
+											<p><p class="first last">Blob对象</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
+											<p><p class="first last">浏览器环境API</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
+											<p><p class="first last">URL对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

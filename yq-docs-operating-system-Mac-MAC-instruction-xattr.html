@@ -1,0 +1,418 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/pygment.css" />
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>xattr</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 03 May 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/mac.html">Mac</a></li>
+
+													<li><a class="button button-alt" href="tag/maczhi-ling.html">Mac指令</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-05-03</div>
+										<h2>xattr</h2>
+
+										<span class="head-modify-time">修改于: 2024-05-03</span>
+
+									</div>
+									<p>参考: <a class="reference external" href="https://www.cnblogs.com/Flat-White/p/17153264.html">【macOS】xattr命令简介</a></p>
+<div class="section" id="section-1">
+<h2>扩展文件属性</h2>
+<p>先介绍拓展文件属性, 这里直接摘录</p>
+<blockquote>
+<p>扩展文件属性是文件系统功能，使用户能够将计算机文件与文件系统不解释的元数据相关联，而常规属性具有由文件系统严格定义的目的（例如权限或创建和修改时间的记录）。与通常可以与最大文件大小一样大的forks不同，扩展属性的大小通常被限制为明显小于最大文件大小的值。典型用途包括存储文档的作者、纯文本文档的字符编码或校验和、加密哈希或数字证书和自主访问控制信息。</p>
+<p>在类 Unix系统中，扩展属性通常缩写为xattr。</p>
+<p>Mac OS X 10.4及更高版本通过使用HFS+文件系统属性文件B* 树功能支持扩展属性，该功能允许命名分叉。尽管 HFS+ 中的命名分叉通过扩展区支持任意大量数据，但操作系统对扩展属性的支持仅支持内联属性，将它们的大小限制在单个 B* 树节点中可以容纳的大小。[需要引用]任何常规文件都可能有一个扩展属性列表。HFS+ 支持任意数量的命名分叉，不知道macOS是否对扩展属性的数量施加任何限制。</p>
+<p>每个属性都包含名称和相关数据。该名称是一个以 null 结尾的 Unicode字符串。不存在名称空间限制（使其成为一个开放的 xattr系统），并且约定是使用反向 DNS 字符串（类似于Uniform Type Identifiers）作为属性名称。</p>
+<p>macOS 支持使用类似 Linux 的 API 从文件或目录中列出、 获取、设置、和删除扩展属性。在命令行中，这些能力通过xattr实用程序公开。</p>
+<p>从 macOS 10.5 开始，来自网络的文件被标记为com.apple.quarantinevia 扩展文件属性。在某些旧版本的 macOS（例如Mac OS X 10.6）中，用户空间扩展属性不会在保存在常见的Cocoa应用程序（TextEdit、Preview 等）中时保留。</p>
+</blockquote>
+</div>
+<div class="section" id="xattr-1">
+<h2>xattr命令</h2>
+<p>MacOS使用 <cite>xattr</cite> 命令来管理扩展文件属性</p>
+</div>
+<div class="section" id="section-2">
+<h2>参数选项</h2>
+<!-- -l  默认情况下，前两个命令形式要么只显示属性名称或值，分别。 -l 选项会同时导致要显示的属性名称和相应的值。 -->
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-l</span></kbd></td>
+<td>列出一个文件的所有扩展属性。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span></kbd></td>
+<td>如果文件参数是目录，就好像目录的全部内容一样还指定了递归目录（以便目录中的每个文件目录树被执行）。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>如果文件参数是符号链接，则对符号链接本身进行操作，而不是符号链接指向的文件。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>强制显示文件名，即使是单个文件。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-x</span></kbd></td>
+<td>强制属性值以十六进制显示表示。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-w</span></kbd></td>
+<td>选项通常假定输入属性值是一个字符串。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c</span></kbd></td>
+<td>清除文件的所有扩展属性。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-w<var>x</var></span></kbd></td>
+<td>为文件写入一个扩展属性。如果属性已存在，则会替换它。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p <var>&lt;attr&gt;</var></span></kbd></td>
+<td>打印指定的扩展属性的内容。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d <var>&lt;attr&gt;</var></span></kbd></td>
+<td>删除指定属性, 比如删除隔离属性 <tt class="docutils literal"><span class="pre">-d</span> com.apple.quarantine</tt></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="xattr-2">
+<h2>常用xattr命令</h2>
+<p>显示扩展文件属性</p>
+<div class="highlight"><pre><span></span>xattr<span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>
+</pre></div>
+<p>显示所有扩展文件属性</p>
+<div class="highlight"><pre><span></span>xattr<span class="w"> </span>-l<span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>
+</pre></div>
+<p>比如</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>xattr<span class="w"> </span>-l<span class="w"> </span>/Applications/LocalSend.app
+com.apple.macl:
+com.apple.provenance:
+com.apple.quarantine:<span class="w"> </span>03c1<span class="p">;</span>660e29ee<span class="p">;;</span>43000EEA-EC24-4E18-9B39-6CCAB471547F
+</pre></div>
+<p>其中:</p>
+<pre class="literal-block">
+com.apple.macl:
+
+com.apple.provenance:
+
+com.apple.quarantine: 03c1;660e29ee;;43000EEA-EC24-4E18-9B39-6CCAB471547F
+  隔离属性
+
+  可以使用
+  xattr -p com.apple.quarantine ${file}
+  来查看隔离扩展属性具体信息
+</pre>
+</div>
+<div class="section" id="xxx">
+<h2>解决 xxx 已损坏/无法打开</h2>
+<p>删除隔离扩展属性</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>xattr<span class="w"> </span>-r<span class="w"> </span>-d<span class="w"> </span>com.apple.quarantine<span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>
+</pre></div>
+<p>如上命令可以用来解决某些应用程序出现提示无法打开时的情况:</p>
+<pre class="literal-block">
+无法打开“xxx”，因为无法验证开发者。
+macos无法验证此 App 是否包含恶意软件。
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    扩展文件属性
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#xattr-1">
+    xattr命令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    参数选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#xattr-2">
+    常用xattr命令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#xxx">
+    解决 xxx 已损坏/无法打开
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
+											<p><p class="first last">img超出大小时自动调整</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
+											<p><p class="first last">Blob对象</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
+											<p><p class="first last">浏览器环境API</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
+											<p><p class="first last">URL对象</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

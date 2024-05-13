@@ -77,12 +77,12 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>浏览器Window对象</h2>
+      <h2>JS调试技巧</h2>
     </div>
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 26 三月 2024
+      , 08 May 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -110,112 +110,45 @@
 												<li><a class="button" href="category/qian-duan.html">前端</a></li>
 													<li><a class="button button-alt" href="tag/gai-nian-xing.html">概念性</a></li>
 
-													<li><a class="button button-alt" href="tag/window.html">Window</a></li>
-
 											</ul>
 										</div>
 
-										<div class="pennant pennant-alt date">2024-03-26</div>
-										<h2>浏览器Window对象</h2>
+										<div class="pennant pennant-alt date">2024-05-08</div>
+										<h2>JS调试技巧</h2>
 
-										<span class="head-modify-time">修改于: 2024-03-26</span>
+										<span class="head-modify-time">修改于: 2024-05-08</span>
 
 									</div>
-									<p>此文主要记录常用的 Window对象 提供的相关API.</p>
-<div class="section" id="window-matchmedia">
-<h2>Window matchMedia()</h2>
-<p>语法:</p>
-<pre class="literal-block">
-window.matchMedia(mediaQueryString)
+									<div class="section" id="scriptjs">
+<h2>将script映射为JS文件</h2>
+<p>当 <cite>HTML</cite> 元素中的 <cite>script</cite> 元素内容为 JS源码 时, 不能直接在这上面大断点</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;111&quot;</span><span class="p">)</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+<p>这时可以将 <cite>script</cite> 元素中的内容映射为JS文件, 这样就可以在JS文件上设置断点了.</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="c1">//# sourceURL=script_some_function.js</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;111&quot;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>这里属于 <tt class="docutils literal">JavaScript的Source Map（源映射） (sourceURL / sourceMappingURL)</tt> 的知识点, 类似于这样写都可:</p>
+<pre class="last literal-block">
+//&#64; sourceURL=jquery.extends.js
 </pre>
-<dl class="docutils">
-<dt>mediaQueryString</dt>
-<dd>MediaQueryList 的字符串形式</dd>
-<dt>返回</dt>
-<dd>检测 <strong>CSS 媒体查询</strong>, 返回一个新的 MediaQueryList 对象，表示指定的媒体查询字符串解析后的结果</dd>
-</dl>
-<p>MediaQueryList 对象有以下两个属性</p>
-<blockquote>
-<ul class="simple">
-<li>media: 查询语句的内容。</li>
-<li>matches: 用于检测查询结果，如果文档匹配 media query 列表，值为 true，否则为 false。</li>
-</ul>
-</blockquote>
-<p>MediaQueryList 对象还可以监听事件。
-通过监听，在查询结果发生变化时，就调用指定的回调函数。</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="25%" />
-<col width="75%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">方法</th>
-<th class="head">描述</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>addListener(functionref)</td>
-<td>添加一个新的监听器函数，该函数在媒体查询的结果发生变化时执行。</td>
-</tr>
-<tr><td>removeListener(functionref)</td>
-<td>从媒体查询列表中删除之前添加的监听器。如果指定的监听器不在列表中，则不执行任何操作。</td>
-</tr>
-</tbody>
-</table>
-<p>参考: <a class="reference external" href="https://www.runoob.com/jsref/met-win-matchmedia.html">菜鸟-Window matchMedia() 方法</a></p>
 </div>
-<div class="section" id="window-scrollby">
-<h2>window.scrollBy()</h2>
-<p>window.scrollBy() 方法接受两个参数</p>
-<ul class="simple">
-<li>第一个参数是水平方向上的滚动量（可以是负值）</li>
-<li>第二个参数是垂直方向上的滚动量（也可以是负值）。如果你只想向下滚动，只关心第二个参数：</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">// 向下滚动指定的像素数</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">scrollBy</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// 向下滚动100像素</span>
-<span class="w">  </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="c1">// 水平方向不滚动</span>
-<span class="p">});</span>
-</pre></div>
 </div>
-<div class="section" id="window-scrollto">
-<h2>window.scrollTo()</h2>
-<p>window.scrollTo() 方法也可以用于精确控制滚动位置。
-与 scrollBy() 不同的是，scrollTo() 方法设置的是最终的滚动位置而不是滚动量。</p>
-<p>如果你知道想要滚动到的确切位置，可以使用这个方法：</p>
-<div class="highlight"><pre><span></span><span class="c1">// 滚动到相对于文档顶部的指定位置</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// 从当前位置向下滚动100像素</span>
-<span class="w">  </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// 水平方向不滚动</span>
-<span class="w">  </span><span class="nx">behavior</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;smooth&#39;</span><span class="w"> </span><span class="c1">// 可选，如果你想要平滑滚动</span>
-<span class="p">});</span>
+<div class="section" id="js-1">
+<h2>JS脚本文件源码断点</h2>
+<p>使用 <cite>debugger</cite> 关键字.</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="k">debugger</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;111&quot;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
 </pre></div>
-</div>
-<div class="section" id="window-location">
-<h2>window.location</h2>
-<p>当前窗口相关.</p>
-<p>比如</p>
-<div class="highlight"><pre><span></span><span class="c1">// 获取当前页面的URL</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
-
-<span class="c1">// 获取当前页面的协议</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span>
-
-<span class="c1">// 获取当前页面的域名</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span>
-
-<span class="c1">// 获取当前页面的端口号</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">port</span>
-
-<span class="c1">// 获取当前页面的完整路径</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span>
-
-<span class="c1">// 获取当前页面的查询字符串</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span>
-
-<span class="c1">// 获取当前页面的锚点</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span>
-</pre></div>
+<p>会自动在 <cite>debugger</cite> 处断点</p>
 </div>
 
 								</article>
@@ -240,23 +173,13 @@ window.matchMedia(mediaQueryString)
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
-   <a class="" href="#window-matchmedia">
-    Window matchMedia()
+   <a class="" href="#scriptjs">
+    将script映射为JS文件
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#window-scrollby">
-    window.scrollBy()
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#window-scrollto">
-    window.scrollTo()
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#window-location">
-    window.location
+   <a class="" href="#js-1">
+    JS脚本文件源码断点
    </a>
   </li>
  </ul>
@@ -284,27 +207,27 @@ window.matchMedia(mediaQueryString)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
-											<p><p class="first last">前端操作yaml</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
+											<p><p class="first last">img超出大小时自动调整</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
-											<p><p class="first last">前端教程集合</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
+											<p><p class="first last">Blob对象</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
-											<p><p class="first last">开源图标/字体库</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
+											<p><p class="first last">浏览器环境API</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
+											<p><p class="first last">URL对象</p>
 </p>
 										</li>
 									</ul>

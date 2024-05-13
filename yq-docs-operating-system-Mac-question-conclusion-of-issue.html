@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 26 二月 2023
+      , 26 February 2023
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -191,6 +191,29 @@ extension TipView{
 smartctl -a /dev/disk0
 </pre>
 </div>
+<div class="section" id="xxx">
+<h2>xxx 已损坏，无法打开。你应该将它移到废纸篓。</h2>
+<div class="figure">
+<img alt="已损坏" src="doc-raw/resources/images/2024-05-04-00-38-06.png" style="width: 480px;" />
+</div>
+<p>解决办法↓↓↓</p>
+<blockquote>
+<p>在终端中输入:</p>
+<pre class="literal-block">
+xattr -cr # (这里要注意后面有个空格), 移除应用的安全隔离属性.
+</pre>
+<p>将提示已损坏，无法打开的程序图标拖到命令栏中。</p>
+<div class="figure">
+<img alt="移除应用的安全隔离属性" src="doc-raw/resources/images/2024-05-04-00-39-05.png" style="width: 480px;" />
+</div>
+<p>拖入命令行后， 拖入程序图标后类似显示 <tt class="docutils literal">xattr <span class="pre">-cr</span> /Applications/XXX.app</tt>，然后回车，再去打开程序即可正常运行。</p>
+</blockquote>
+<p>参考:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://sysin.org/blog/macos-if-crashes-when-opening/">macOS 提示：“应用程序” 已损坏，无法打开的解决方法总结</a></li>
+<li><a class="reference external" href="https://juejin.cn/post/7239589685975121980">两招解决Mac安装软件提示 已损坏无法打开 请移到废纸篓</a></li>
+</ul>
+</div>
 
 								</article>
 						</div>
@@ -223,6 +246,11 @@ smartctl -a /dev/disk0
     查看固态寿命
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#xxx">
+    xxx 已损坏，无法打开。你应该将它移到废纸篓。
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -248,27 +276,27 @@ smartctl -a /dev/disk0
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
-											<p><p class="first last">前端操作yaml</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
+											<p><p class="first last">img超出大小时自动调整</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
-											<p><p class="first last">前端教程集合</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
+											<p><p class="first last">Blob对象</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
-											<p><p class="first last">开源图标/字体库</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
+											<p><p class="first last">浏览器环境API</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
+											<p><p class="first last">URL对象</p>
 </p>
 										</li>
 									</ul>

@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 27 二月 2023
+      , 27 February 2023
       , Category:
 	  <a href="category/ban-ben-kong-zhi.html">版本控制</a>
     </div>
@@ -404,6 +404,19 @@ git<span class="w"> </span>submodule<span class="w"> </span>sync
 git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add submodule_repo as submodule&quot;</span>
 </pre></div>
 </div>
+<div class="section" id="section-16">
+<h2>将一个本地分支完全覆盖本地另一个分支</h2>
+<p>比如我现在有一个 <cite>main</cite> 分支, 我觉得有问题, 想用另一个分支 <cite>main-new</cite> 覆盖它, 那么可以这样操作</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main-new
+
+<span class="c1"># 使用 -f 强制将 main 分支指向和 main-new 分支相同的提交</span>
+git<span class="w"> </span>branch<span class="w"> </span>-f<span class="w"> </span>main
+
+<span class="c1"># 如果你不再需要被覆盖的目标分支，可以使用 git branch -D 命令删除</span>
+<span class="c1"># git branch -D main-new</span>
+</pre></div>
+<p>现在切回 <cite>mian</cite> 分支, 会发现, <cite>main</cite> 分支和 <cite>main-new</cite> 分支一样了</p>
+</div>
 
 								</article>
 						</div>
@@ -515,6 +528,11 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
     将已在版本库的文件更为子模块
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-16">
+    将一个本地分支完全覆盖本地另一个分支
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -540,27 +558,27 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-js-yaml.html">js-yaml</a></h3>
-											<p><p class="first last">前端操作yaml</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
+											<p><p class="first last">img超出大小时自动调整</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 4 <strong>26</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-index.html">前端教程</a></h3>
-											<p><p class="first last">前端教程集合</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
+											<p><p class="first last">Blob对象</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
-											<p><p class="first last">开源图标/字体库</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
+											<p><p class="first last">浏览器环境API</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">May <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
+											<p><p class="first last">URL对象</p>
 </p>
 										</li>
 									</ul>
