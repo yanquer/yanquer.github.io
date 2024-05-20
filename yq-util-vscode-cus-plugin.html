@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 15 March 2024
+      , 15 三月 2024
       , Category:
 	  <a href="category/gong-ju-ruan-jian.html">工具软件</a>
     </div>
@@ -116,10 +116,12 @@
 										<div class="pennant pennant-alt date">2024-03-15</div>
 										<h2>vscode自制插件</h2>
 
-										<span class="head-modify-time">修改于: 2024-03-15</span>
+										<span class="head-modify-time">修改于: 2024-05-15</span>
 
 									</div>
 									<p>如何制作vscode插件</p>
+<div class="section" id="section-1">
+<h2>创建基础工程</h2>
 <p>先安装插件基础代码生成工具</p>
 <div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>yo<span class="w"> </span>generator-code
 </pre></div>
@@ -185,6 +187,55 @@ For<span class="w"> </span>more<span class="w"> </span>information,<span class="
 
 ?<span class="w"> </span>Do<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>folder<span class="w"> </span>with<span class="w"> </span>Visual<span class="w"> </span>Studio<span class="w"> </span>Code?<span class="w"> </span>Open<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>code<span class="sb">`</span>
 </pre></div>
+</div>
+<div class="section" id="section-2">
+<h2>创建代码片段补全提示</h2>
+<p>现在流程的版本, 代码片段貌似都是直接使用文件定义了</p>
+<p>参考: <a class="reference external" href="https://github.com/yanquer/vscode-rst-fragment">rst指令片段项目</a>
+此项目.</p>
+<p>片段定义在 <cite>package.json</cite></p>
+<div class="highlight"><pre><span></span><span class="nt">&quot;contributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;languages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;restructuredtext&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;reStructuredText&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;restructuredtext&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ReStructured Text&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;reStructured Text&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;RST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ReST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;reST&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;.rst&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;.rest&quot;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;snippets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;restructuredtext&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./snippets/rst-snippets.json&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">},</span>
+</pre></div>
+<p><cite>snippets/rst-snippets.json</cite> 文件内片段</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;.. code::&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.. code-block:: ${1:language}\n$0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Code&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;source.rst&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -199,6 +250,32 @@ For<span class="w"> </span>more<span class="w"> </span>information,<span class="
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    创建基础工程
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    创建代码片段补全提示
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -216,27 +293,27 @@ For<span class="w"> </span>more<span class="w"> </span>information,<span class="
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
-											<p><p class="first last">img超出大小时自动调整</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
+											<p><p class="first last">toml文件操作</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
-											<p><p class="first last">Blob对象</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
+											<p><p class="first last">tomlib</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
-											<p><p class="first last">浏览器环境API</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
+											<p><p class="first last">tomli</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
-											<p><p class="first last">URL对象</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
+											<p><p class="first last">tomli_w</p>
 </p>
 										</li>
 									</ul>

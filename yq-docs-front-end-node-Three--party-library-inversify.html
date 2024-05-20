@@ -82,7 +82,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 10 May 2024
+      , 10 五月 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -320,6 +320,19 @@
 </li>
 </ul>
 </div>
+<div class="section" id="todynamicvalue">
+<h2>动态绑定 toDynamicValue</h2>
+<p>先看一个示例代码</p>
+<div class="highlight"><pre><span></span><span class="nx">bind</span><span class="p">(</span><span class="nx">A</span><span class="p">).</span><span class="nx">toSelf</span><span class="p">();</span>
+<span class="nx">bind</span><span class="p">(</span><span class="nx">AFactory</span><span class="p">).</span><span class="nx">toDynamicValue</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createA</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">A</span><span class="p">);</span><span class="w"> </span><span class="p">})</span>
+
+<span class="c1">// 外部获取.</span>
+
+<span class="nx">factory</span><span class="p">.</span><span class="nx">createA</span><span class="p">()</span>
+</pre></div>
+<p>首先, 第一句没有现实指明是单例, 所以每一个获取的实例都会是一个新的;
+第二句, 动态获取A对象, 每次调用 <cite>createA</cite> 都会请求一个新的对象实例</p>
+</div>
 <div class="section" id="tsconfig-json">
 <h2>tsconfig.json配置</h2>
 <p>需要补充的配置内容</p>
@@ -418,6 +431,11 @@ TS1238: Unable to resolve signature of class decorator when called as an express
    </a>
   </li>
   <li class="toc-h0">
+   <a class="" href="#todynamicvalue">
+    动态绑定 toDynamicValue
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#tsconfig-json">
     tsconfig.json配置
    </a>
@@ -452,27 +470,27 @@ TS1238: Unable to resolve signature of class decorator when called as an express
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
-											<p><p class="first last">img超出大小时自动调整</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
+											<p><p class="first last">toml文件操作</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
-											<p><p class="first last">Blob对象</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
+											<p><p class="first last">tomlib</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
-											<p><p class="first last">浏览器环境API</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
+											<p><p class="first last">tomli</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
-											<p><p class="first last">URL对象</p>
+											<span class="date"> 5 <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
+											<p><p class="first last">tomli_w</p>
 </p>
 										</li>
 									</ul>
