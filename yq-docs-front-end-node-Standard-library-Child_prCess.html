@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -143,9 +142,43 @@
 </div>
 <div class="section" id="spawn">
 <h2>spawn</h2>
+<div class="rst-function section" id="child_process.spawn(command[, args][, options])">
+<strong>child_process.spawn(command[, args][, options])</strong><p></p>
+<dl class="docutils">
+<dt>command: string</dt>
+<dd>要执行的命令, 实际还是可执行文件；</dd>
+<dt>args: string[]</dt>
+<dd>字符串参数列表；</dd>
+<dt>options: {}</dt>
+<dd><dl class="first docutils">
+<dt>argv0: string</dt>
+<dd>显式地设置发送给子进程的 argv[0] 的值， 如果没有指定，则会被设置为 command 的值；</dd>
+<dt>detached: Boolean</dt>
+<dd>让子进程独立于父进程之外运行；</dd>
+</dl>
+<p class="last">其他: <a class="reference internal" href="#options">options</a></p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="exec">
 <h2>exec</h2>
+<div class="rst-function section" id="child_process.exec(command[, options][, callback])">
+<strong>child_process.exec(command[, options][, callback])</strong><p></p>
+<p>创建一个 shell，然后在 shell 里执行命令。执行完成后，将 stdout、stderr 作为参数传入回调方法</p>
+<p>options支持参数:</p>
+<ul class="simple">
+<li>cwd: 当前工作路径；</li>
+<li>env: 环境变量；</li>
+<li>encoding: 编码，默认是 utf8；</li>
+<li>shell: 用来执行命令的 shell，unix 上默认是 /bin/sh，windows 上默认是 cmd.exe；</li>
+<li>timeout: 默认是 0；当子进程运行超过 timeout 毫秒，那么，就会给进程发送 killSignal 指定的信号（比如 SIGTERM）</li>
+<li>killSignal: 默认是 SIGTERM；</li>
+<li>uid: 执行进程的 uid；</li>
+<li>gid: 执行进程的 gid；</li>
+<li>maxBuffer:  标准输出、错误输出最大允许的数据量（单位为字节），如果超出的话，子进程就会被杀死；默认是 200*1024（即 200k ）</li>
+</ul>
+</div>
 <p>基本使用:</p>
 <pre class="literal-block">
 const {exec} = require('child_process');
@@ -174,6 +207,14 @@ exec('ls').stdout.on('data', data =&gt; {
 </div>
 <div class="section" id="execfile">
 <h2>execFile</h2>
+<div class="rst-function section" id="child_process.execFile(file[, args][, options][, callback])">
+<strong>child_process.execFile(file[, args][, options][, callback])</strong><p></p>
+<p>跟 <a class="reference internal" href="#exec">exec</a> 类似，不同点在于，没有创建一个新的 shell，options 参数与 <a class="reference internal" href="#exec">exec</a> 一样</p>
+<p>file: string</p>
+<blockquote>
+实际是可执行文件, 比如 ping, ls</blockquote>
+<p>options: <a class="reference internal" href="#options">options</a></p>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 const child_process = require('child_process');
@@ -186,6 +227,51 @@ child_process.execFile('ls', ['./'], (error, stdout, stderr) =&gt; {
 </div>
 <div class="section" id="fork">
 <h2>fork</h2>
+<div class="rst-function section" id="child_process.fork(modulePath[, args][, options])">
+<strong>child_process.fork(modulePath[, args][, options])</strong><p></p>
+<dl class="docutils">
+<dt>modulePath: string | URL</dt>
+<dd>子进程运行的模块；</dd>
+<dt>args: string[]</dt>
+<dd>字符串参数列表；</dd>
+<dt>options: {}</dt>
+<dd><p class="first">支持的参数列表, 有以下参数, 基本与 <a class="reference internal" href="#spawn">spawn</a> 一致</p>
+<dl class="last docutils" id="options">
+<dt>cwd: str</dt>
+<dd>当前工作路径；</dd>
+<dt>detached: boolean</dt>
+<dd>让子进程独立于父进程之外运行；</dd>
+<dt>env: object</dt>
+<dd>环境变量；</dd>
+<dt>execArgv: string[]</dt>
+<dd>传给可执行文件的字符串参数列表。默认是 process.execArgv，跟父进程保持一致；</dd>
+<dt>execPath: string</dt>
+<dd>用来创建子进程的可执行文件，默认是 /usr/local/bin/node。也就是说，你可通过 execPath 来指定具体的 node 可执行文件路径；（比如多个 node 版本）</dd>
+<dt>gid: number</dt>
+<dd>执行进程的 gid；</dd>
+<dt>killSignal: string|number</dt>
+<dd>默认是 SIGTERM；</dd>
+<dt>serialization: string</dt>
+<dd>序列化</dd>
+<dt>signal: AbortSingal</dt>
+<dd>.</dd>
+<dt>silent: boolean</dt>
+<dd>默认是 false，即子进程的 stdio 从父进程继承。如果是 true，则直接 pipe 向子进程的child.stdin、child.stdout 等；</dd>
+<dt>stdio: Any[] | string</dt>
+<dd><p class="first">选项用于配置在父进程和子进程之间建立的管道，如果声明了 stdio，则会覆盖 silent 选项的设置；</p>
+<p>如父子进程共用一个输出管道:</p>
+<pre class="last literal-block">
+stdio: 'inherit'
+</pre>
+</dd>
+<dt>timeout: number</dt>
+<dd>默认是 0；当子进程运行超过 timeout 毫秒，那么，就会给进程发送 killSignal 指定的信号（比如 SIGTERM）</dd>
+<dt>uid: number</dt>
+<dd>执行进程的 uid；</dd>
+</dl>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="section-1">
 <h2>支持的事件</h2>
@@ -229,21 +315,45 @@ exec('ls').stdout.on('exit', (code, signal) =&gt; {
    <a class="" href="#spawn">
     spawn
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#child_process.spawn(command[, args][, options])">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#exec">
     exec
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#child_process.exec(command[, options][, callback])">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#execfile">
     execFile
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#child_process.execFile(file[, args][, options][, callback])">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#fork">
     fork
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#child_process.fork(modulePath[, args][, options])">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-1">
@@ -275,27 +385,27 @@ exec('ls').stdout.on('exit', (code, signal) =&gt; {
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

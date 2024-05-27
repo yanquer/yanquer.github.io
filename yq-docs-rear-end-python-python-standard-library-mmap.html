@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -209,6 +208,81 @@ Windows 允许你对同一文件拥有许多不同的映射(一个文件上面�
 </div>
 <div class="section" id="mmap-3">
 <h2>mmap 对象的方法</h2>
+<div class="rst-function section" id="close()">
+<strong>close()</strong><p></p>
+<p>关闭 mmap。 后续调用该对象的其他方法将导致引发 ValueError 异常。 此方法将不会关闭打开的文件。</p>
+</div>
+<div class="rst-function section" id="closed">
+<strong>closed</strong><p></p>
+<p>如果文件已关闭则返回 True。</p>
+</div>
+<div class="rst-function section" id="find(sub[, start[, end]])">
+<strong>find(sub[, start[, end]])</strong><p></p>
+<p>返回子序列 sub 在对象内被找到的最小索引号，使得 sub 被包含在 [start, end] 范围中。 可选参数 start 和 end 会被解读为切片表示法。 如果未找到则返回 -1。</p>
+<p>在 3.5 版更改: 现在接受可写的 字节类对象。</p>
+</div>
+<div class="rst-function section" id="flush([offset[, size]])">
+<strong>flush([offset[, size]])</strong><p></p>
+<p>将对文件的内存副本的修改刷新至磁盘。 如果不使用此调用则无法保证在对象被销毁前将修改写回存储。 如果指定了 offset 和 size，则只将对指定范围内字节的修改刷新至磁盘；在其他情况下，映射的全部范围都会被刷新。 offset 必须为 PAGESIZE 或 ALLOCATIONGRANULARITY 的倍数。</p>
+<p>返回 None 以表示成功。 当调用失败时将引发异常。</p>
+<p>在 3.8 版更改: 在之前版本中，成功时将返回非零值；在 Windows 下当发生错误时将返回零。 在 Unix 下 成功时将返回零值；当发生错误时将引发异常。</p>
+</div>
+<div class="rst-function section" id="madvise(option[, start[, length]])">
+<strong>madvise(option[, start[, length]])</strong><p></p>
+<p>将有关内存区域的建议 option 发送至内核，从 start 开始扩展 length 个字节。 option 必须为系统中可用的 MADV_* 常量 之一。 如果省略 start 和 length，则会包含整个映射。 在某些系统中（包括 Linux），start 必须为 PAGESIZE 的倍数。</p>
+<p>可用性: 具有 madvise() 系统调用的系统。</p>
+<p>3.8 新版功能.</p>
+</div>
+<div class="rst-function section" id="move(dest, src, count)">
+<strong>move(dest, src, count)</strong><p></p>
+<p>将从偏移量 src 开始的 count 个字节拷贝到目标索引号 dest。 如果 mmap 创建时设置了 ACCESS_READ，则调用 move 将引发 TypeError 异常。</p>
+</div>
+<div class="rst-function section" id="read([n])">
+<strong>read([n])</strong><p></p>
+<p>返回一个 bytes，其中包含从当前文件位置开始的至多 n 个字节。 如果参数省略，为 None 或负数，则返回从当前文件位置开始直至映射结尾的所有字节。 文件位置会被更新为返回字节数据之后的位置。</p>
+<p>在 3.3 版更改: 参数可被省略或为 None。</p>
+</div>
+<div class="rst-function section" id="read_byte()">
+<strong>read_byte()</strong><p></p>
+<p>将当前文件位置上的一个字节以整数形式返回，并让文件位置前进 1。</p>
+</div>
+<div class="rst-function section" id="readline()">
+<strong>readline()</strong><p></p>
+<p>返回一个单独的行，从当前文件位置开始直到下一个换行符。 文件位置会被更新为返回字节数据之后的位置。</p>
+</div>
+<div class="rst-function section" id="resize(newsize)">
+<strong>resize(newsize)</strong><p></p>
+<p>改变映射以及下层文件的大小，如果存在的话。 如果 mmap 创建时设置了 ACCESS_READ 或 ACCESS_COPY，则改变映射大小将引发 TypeError 异常。</p>
+<p>On Windows: Resizing the map will raise an OSError if there are other maps against the same named file. Resizing an anonymous map (ie against the pagefile) will silently create a new map with the original data copied over up to the length of the new size.</p>
+<p>在 3.11 版更改: Correctly fails if attempting to resize when another map is held Allows resize against an anonymous map on Windows</p>
+</div>
+<div class="rst-function section" id="rfind(sub[, start[, end]])">
+<strong>rfind(sub[, start[, end]])</strong><p></p>
+<p>返回子序列 sub 在对象内被找到的最大索引号，使得 sub 被包含在 [start, end] 范围中。 可选参数 start 和 end 会被解读为切片表示法。 如果未找到则返回 -1。</p>
+<p>在 3.5 版更改: 现在接受可写的 字节类对象。</p>
+</div>
+<div class="rst-function section" id="seek(pos[, whence])">
+<strong>seek(pos[, whence])</strong><p></p>
+<p>设置文件的当前位置。 whence 参数为可选项并且默认为 os.SEEK_SET 或 0 (绝对文件定位)；其他值还有 os.SEEK_CUR 或 1 (相对当前位置查找) 和 os.SEEK_END 或 2 (相对文件末尾查找)。</p>
+</div>
+<div class="rst-function section" id="size()">
+<strong>size()</strong><p></p>
+<p>返回文件的长度，该数值可以大于内存映射区域的大小。</p>
+</div>
+<div class="rst-function section" id="tell()">
+<strong>tell()</strong><p></p>
+<p>返回文件指针的当前位置。</p>
+</div>
+<div class="rst-function section" id="write(bytes)">
+<strong>write(bytes)</strong><p></p>
+<p>将 bytes 中的字节数据写入文件指针当前位置的内存并返回写入的字节总数 (一定不小于 len(bytes)，因为如果写入失败，将会引发 ValueError)。 在字节数据被写入后文件位置将会更新。 如果 mmap 创建时设置了 ACCESS_READ，则向其写入将引发 TypeError 异常。</p>
+<p>在 3.5 版更改: 现在接受可写的 字节类对象。</p>
+<p>在 3.6 版更改: 现在会返回写入的字节总数。</p>
+</div>
+<div class="rst-function section" id="write_byte(byte)">
+<strong>write_byte(byte)</strong><p></p>
+<p>将整数值 byte 写入文件指针当前位置的内存；文件位置前进 1。 如果 mmap 创建时设置了 ACCESS_READ，则向其写入将引发 TypeError 异常。</p>
+</div>
 <p>对于EOF的处理, write() 和 read_byte() 抛出异常 ValueError, 而 write_byte() 和 read() 什么都不做.</p>
 </div>
 
@@ -254,6 +328,72 @@ Windows 允许你对同一文件拥有许多不同的映射(一个文件上面�
    <a class="" href="#mmap-3">
     mmap 对象的方法
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#close()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#closed">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#find(sub[, start[, end]])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#flush([offset[, size]])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#madvise(option[, start[, length]])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#move(dest, src, count)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#read([n])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#read_byte()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#readline()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#resize(newsize)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#rfind(sub[, start[, end]])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#seek(pos[, whence])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#size()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#tell()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#write(bytes)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#write_byte(byte)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -280,27 +420,27 @@ Windows 允许你对同一文件拥有许多不同的映射(一个文件上面�
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

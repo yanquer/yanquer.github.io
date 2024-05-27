@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -144,6 +143,26 @@ python -m pip install --upgrade pywin32
 <h2>win32event</h2>
 <div class="section" id="createmutex">
 <h3>CreateMutex</h3>
+<div class="rst-function section" id="CreateMutex(MutexAttributes, InitialOwner, Name)">
+<strong>CreateMutex(MutexAttributes, InitialOwner, Name)</strong><p></p>
+<p>创建信号量, 支持windows下的跨进程(主要依赖于 Name)</p>
+<p><strong>参数</strong></p>
+<dl class="docutils">
+<dt>MutexAttributes:</dt>
+<dd>对象描述符指针, 默认None</dd>
+<dt>InitialOwner: bool</dt>
+<dd><p class="first">初始所有权标志.</p>
+<p class="last">如果此值为 TRUE ，并且调用方创建了互斥体，则调用线程获取互斥体对象的初始所有权。
+否则，调用线程不会获取互斥体的所有权。</p>
+</dd>
+<dt>Name: str</dt>
+<dd>互斥量命名, 可在其他进程中获取</dd>
+</dl>
+<p><strong>返回</strong></p>
+<p>如果函数成功，则返回值是新创建的互斥体对象的句柄。</p>
+<p>如果函数失败，则返回值为 NULL。</p>
+<p>如果互斥体是命名互斥体，并且此函数调用之前存在对象，则返回值是现有对象的句柄， 并且 GetLastError 函数返回 ERROR_ALREADY_EXISTS。</p>
+</div>
 <p>可参见: <a class="reference external" href="https://learn.microsoft.com/zh-cn/windows/win32/api/synchapi/nf-synchapi-createmutexa">microsoft-createmutexa</a></p>
 </div>
 <div class="section" id="releasemutex">
@@ -182,6 +201,12 @@ python -m pip install --upgrade pywin32
      <a class="" href="#createmutex">
       CreateMutex
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#CreateMutex(MutexAttributes, InitialOwner, Name)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#releasemutex">
@@ -215,27 +240,27 @@ python -m pip install --upgrade pywin32
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

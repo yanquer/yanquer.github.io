@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -130,6 +129,25 @@
 </dl>
 <div class="section" id="re-match">
 <h2>re.match函数</h2>
+<div class="rst-function section" id="re.match(pattern, string, flags=0)">
+<strong>re.match(pattern, string, flags=0)</strong><p></p>
+<dl class="docutils">
+<dt>pattern</dt>
+<dd>匹配的正则表达式</dd>
+<dt>string</dt>
+<dd>要匹配的字符串</dd>
+<dt>flags</dt>
+<dd><p class="first">标志位，用于控制正则表达式的匹配方式，
+如：是否区分大小写，多行匹配等等。</p>
+<p>re.I 忽略大小写</p>
+<p>re.L 表示特殊字符集 w, W, b, B, s, S 依赖于当前环境</p>
+<p>re.M 多行模式</p>
+<p>re.S 即为 . 并且包括换行符在内的任意字符（. 不包括换行符）</p>
+<p>re.U 表示特殊字符集 w, W, b, B, d, D, s, S 依赖于 Unicode 字符属性数据库</p>
+<p class="last">re.X 为了增加可读性，忽略空格和 # 后面的注释</p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="re-compile">
 <h2>re.compile 函数</h2>
@@ -231,6 +249,24 @@ for match in it:
 <div class="section" id="re-sub">
 <h2>re.sub函数</h2>
 <p>sub是substitute的所写，表示替换，将匹配到的数据进⾏替换。</p>
+<div class="rst-function section" id="re.sub(pattern, repl, string, count=0, flags=0)">
+<strong>re.sub(pattern, repl, string, count=0, flags=0)</strong><p></p>
+<p>pattern</p>
+<blockquote>
+必选，表示正则中的模式字符串</blockquote>
+<p>repl</p>
+<blockquote>
+必选，就是replacement，要替换的字符串，也可为一个函数</blockquote>
+<p>string</p>
+<blockquote>
+必选，被替换的那个string字符串</blockquote>
+<p>count</p>
+<blockquote>
+可选参数，count 是要替换的最大次数，必须是非负整数。如果省略这个参数或设为 0，所有的匹配都会被替换</blockquote>
+<p>flag</p>
+<blockquote>
+可选参数，标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等</blockquote>
+</div>
 <p>举例：将匹配到的阅读次数加1</p>
 <p>方法一:</p>
 <pre class="literal-block">
@@ -291,6 +327,18 @@ print(re.subn(pattern, func, s))
 <div class="section" id="re-split">
 <h2>re.split函数</h2>
 <p>根据匹配进⾏切割字符串，并返回⼀个列表。</p>
+<div class="rst-function section" id="re.split(pattern, string, maxsplit=0, flags=0)">
+<strong>re.split(pattern, string, maxsplit=0, flags=0)</strong><p></p>
+<p>pattern</p>
+<blockquote>
+匹配的正则表达式</blockquote>
+<p>string</p>
+<blockquote>
+要匹配的字符串</blockquote>
+<p>maxsplit</p>
+<blockquote>
+分隔次数，maxsplit=1 分隔一次，默认为 0，不限制次数</blockquote>
+</div>
 <p>举例:</p>
 <pre class="literal-block">
 import re
@@ -455,6 +503,12 @@ Out[18]: 'distribute_type'
    <a class="" href="#re-match">
     re.match函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#re.match(pattern, string, flags=0)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#re-compile">
@@ -480,6 +534,12 @@ Out[18]: 'distribute_type'
    <a class="" href="#re-sub">
     re.sub函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#re.sub(pattern, repl, string, count=0, flags=0)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#re-subn">
@@ -490,6 +550,12 @@ Out[18]: 'distribute_type'
    <a class="" href="#re-split">
     re.split函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#re.split(pattern, string, maxsplit=0, flags=0)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#python">
@@ -531,27 +597,27 @@ Out[18]: 'distribute_type'
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

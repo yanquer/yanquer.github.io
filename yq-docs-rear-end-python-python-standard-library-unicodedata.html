@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -122,6 +121,85 @@
 
 									</div>
 									<p>定义了以下函数</p>
+<div class="rst-function section" id="unicodedata.lookup(name)">
+<strong>unicodedata.lookup(name)</strong><p></p>
+<p>按名称查找字符。如果找到具有给定名称的字符，则返回相应的字符。 如果没有找到，则 KeyError 被引发。</p>
+<p>在 3.3 版更改: 已添加对名称别名 1 和命名序列 2 的支持。</p>
+</div>
+<div class="rst-function section" id="unicodedata.name(chr[, default])">
+<strong>unicodedata.name(chr[, default])</strong><p></p>
+<p>返回分配给字符 chr 的名称作为字符串。
+如果没有定义名称，则返回 default ，如果没有给出，则 ValueError 被引发。</p>
+</div>
+<div class="rst-function section" id="unicodedata.decimal(chr[, default])">
+<strong>unicodedata.decimal(chr[, default])</strong><p></p>
+<p>返回分配给字符 chr 的十进制值作为整数。
+如果没有定义这样的值，则返回 default ，如果没有给出，则 ValueError 被引发。</p>
+</div>
+<div class="rst-function section" id="unicodedata.digit(chr[, default])">
+<strong>unicodedata.digit(chr[, default])</strong><p></p>
+<p>返回分配给字符 chr 的数字值作为整数。
+如果没有定义这样的值，则返回 default ，如果没有给出，则 ValueError 被引发。</p>
+</div>
+<div class="rst-function section" id="unicodedata.numeric(chr[, default])">
+<strong>unicodedata.numeric(chr[, default])</strong><p></p>
+<p>返回分配给字符 chr 的数值作为浮点数。
+如果没有定义这样的值，则返回 default ，如果没有给出，则 ValueError 被引发。</p>
+</div>
+<div class="rst-function section" id="unicodedata.category(chr)">
+<strong>unicodedata.category(chr)</strong><p></p>
+<p>返回分配给字符 chr 的常规类别为字符串。</p>
+</div>
+<div class="rst-function section" id="unicodedata.bidirectional(chr)">
+<strong>unicodedata.bidirectional(chr)</strong><p></p>
+<p>返回分配给字符 chr 的双向类作为字符串。如果未定义此类值，则返回空字符串。</p>
+</div>
+<div class="rst-function section" id="unicodedata.combining(chr)">
+<strong>unicodedata.combining(chr)</strong><p></p>
+<p>返回分配给字符 chr 的规范组合类作为整数。如果没有定义组合类，则返回 0 。</p>
+</div>
+<div class="rst-function section" id="unicodedata.east_asian_width(chr)">
+<strong>unicodedata.east_asian_width(chr)</strong><p></p>
+<p>返回分配给字符 chr 的东亚宽度作为字符串。</p>
+</div>
+<div class="rst-function section" id="unicodedata.mirrored(chr)">
+<strong>unicodedata.mirrored(chr)</strong><p></p>
+<p>返回分配给字符 chr 的镜像属性为整数。
+如果字符在双向文本中被识别为“镜像”字符，则返回 1 ，否则返回 0 。</p>
+</div>
+<div class="rst-function section" id="unicodedata.decomposition(chr)">
+<strong>unicodedata.decomposition(chr)</strong><p></p>
+<p>返回分配给字符 chr 的字符分解映射作为字符串。如果未定义此类映射，则返回空字符串。</p>
+</div>
+<div class="rst-function section" id="unicodedata.normalize(form, unistr)">
+<strong>unicodedata.normalize(form, unistr)</strong><p></p>
+<p>返回 Unicode 字符串 unistr 的正常形式 form 。
+form 的有效值为 'NFC' 、 'NFKC' 、 'NFD' 和 'NFKD' 。</p>
+<p>Unicode 标准基于规范等价和兼容性等效的定义定义了 Unicode 字符串的各种规范化形式。
+在 Unicode 中，可以以各种方式表示多个字符。
+例如，字符 U+00C7 （带有 CEDILLA 的 LATIN CAPITAL LETTER C ）也可以表示为序列
+U+0043（ LATIN CAPITAL LETTER C ）U+0327（ COMBINING CEDILLA ）。</p>
+<p>对于每个字符，有两种正规形式：正规形式 C 和正规形式 D 。
+正规形式D（NFD）也称为规范分解，并将每个字符转换为其分解形式。
+正规形式C（NFC）首先应用规范分解，然后再次组合预组合字符。</p>
+<p>即:</p>
+<ul class="simple">
+<li>NFC 表示字符应该是整体组 成 (比如可能的话就使用单一编码)</li>
+<li>NFD 表示字符应该分解为多个组合字符表示</li>
+</ul>
+<p>除了这两种形式之外，还有两种基于兼容性等效的其他常规形式。
+在 Unicode 中，支持某些字符，这些字符通常与其他字符统一。
+例如， U+2160（ROMAN NUMERAL ONE）与 U+0049（LATIN CAPITAL LETTER I）完全相同。
+但是， Unicode 支持它与现有字符集（例如 gb2312 ）的兼容性。</p>
+<p>正规形式KD（NFKD）将应用兼容性分解，即用其等价项替换所有兼容性字符。
+正规形式KC（NFKC）首先应用兼容性分解，然后是规范组合。</p>
+<p>即使两个 unicode 字符串被规范化并且人类读者看起来相同，如果一个具有组合字符而另一个没有，则它们可能无法相等。</p>
+</div>
+<div class="rst-function section" id="unicodedata.is_normalized(form, unistr)">
+<strong>unicodedata.is_normalized(form, unistr)</strong><p></p>
+<p>判断 Unicode 字符串 unistr 是否为正规形式 form。 form 的有效值为 'NFC', 'NFKC', 'NFD' 和 'NFKD'。</p>
+<p>3.8 新版功能.</p>
+</div>
 <p>此外，该模块暴露了以下常量：</p>
 <dl class="docutils">
 <dt>unicodedata.unidata_version</dt>
@@ -144,6 +222,74 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.lookup(name)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.name(chr[, default])">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.decimal(chr[, default])">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.digit(chr[, default])">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.numeric(chr[, default])">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.category(chr)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.bidirectional(chr)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.combining(chr)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.east_asian_width(chr)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.mirrored(chr)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.decomposition(chr)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.normalize(form, unistr)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#unicodedata.is_normalized(form, unistr)">
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -161,27 +307,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

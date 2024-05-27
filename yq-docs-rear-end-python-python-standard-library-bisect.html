@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -127,6 +126,97 @@
 对于长列表，如果其包含元素的比较操作十分昂贵的话，这可以是对更常见方法的改进。
 这个模块叫做 bisect 因为其使用了基本的二分（bisection）算法。源代码也可以作为很棒的算法示例（边界判断也做好啦！）</p>
 <p>支持的函数</p>
+<div class="rst-function section" id="bisect.bisect_left(a, x, lo=0, hi=len(a), *, key=None)">
+<strong>bisect.bisect_left(a, x, lo=0, hi=len(a), *, key=None)</strong><p></p>
+<dl class="docutils">
+<dt>a:</dt>
+<dd>需要插入的序列</dd>
+<dt>x:</dt>
+<dd>需要插入的值</dd>
+<dt>lo:</dt>
+<dd>序列a的起始位置</dd>
+<dt>hi:</dt>
+<dd>序列a的结束位置. 实际只从 a[lo: hi] 这个子集中找</dd>
+<dt>key:</dt>
+<dd><p class="first">指定带有单个参数的 key function 用来从数组的每个元素中提取比较键。
+为了支持搜索复杂记录，键函数不会被应用到 x 值。</p>
+<p class="last">如果 key 为 None，则将直接进行元素比较而不需要中间的函数调用。</p>
+</dd>
+</dl>
+<p>在 a 中找到 x 合适的插入点以维持有序。
+参数 lo 和 hi 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。
+如果 x 已经在 a 里存在，那么插入点会在已存在元素之前（也就是左边）。
+如果 a 是列表（list）的话，返回值是可以被放在 list.insert() 的第一个参数的。</p>
+<p>返回的插入点 i 将数组 a 分成两半，使得 <tt class="docutils literal">all(val &lt; x for val in a[lo : i])</tt> 在左半边
+而 <tt class="docutils literal">all(val &gt;= x for val in a[i : hi])</tt> 在右半边。</p>
+<p>在 3.10 版更改: 增加了 key 形参。</p>
+</div>
+<div class="rst-function section" id="bisect.bisect_right(a, x, lo=0, hi=len(a), *, key=None)">
+<strong>bisect.bisect_right(a, x, lo=0, hi=len(a), *, key=None)</strong><p></p>
+<dl class="docutils">
+<dt>bisect_right 与 bisect_left 的区别</dt>
+<dd><ul class="first last simple">
+<li>如果有序列表a没有元素x, 那么两者返回的索引相同,
+返回的索引地址, 使得arr的insert插入该值还是有序的</li>
+<li>如果有序列表a包含元素x,
+left返回已包含元素x的索引,
+right返回的索引值是在left的基础上加一</li>
+</ul>
+</dd>
+</dl>
+<p>如:</p>
+<pre class="literal-block">
+data = [2, 5, 6, 9]
+
+print(f'数组: {data}')
+for x in (0, 2, 5, 8, 9, 10):
+    l = bisect.bisect_left(data, x)
+    r = bisect.bisect_right(data, x)
+
+    print(f&quot;查找: {x},  left结: {l}, right结: {r}&quot;)
+</pre>
+<p>输出:</p>
+<pre class="literal-block">
+数组: [2, 5, 6, 9]
+查找: 0,  left结: 0, right结: 0
+查找: 2,  left结: 0, right结: 1
+查找: 5,  left结: 1, right结: 2
+查找: 8,  left结: 3, right结: 3
+查找: 9,  left结: 3, right结: 4
+查找: 10,  left结: 4, right结: 4
+</pre>
+</div>
+<div class="rst-function section" id="bisect.bisect(a, x, lo=0, hi=len(a), *, key=None)">
+<strong>bisect.bisect(a, x, lo=0, hi=len(a), *, key=None)</strong><p></p>
+<p>类似于 bisect_left()，但是返回的插入点是 a 中已存在元素 x 的右侧。</p>
+<p>返回的插入点 i 将数组 a 分成两半，使得
+左半边为 <tt class="docutils literal">all(val &lt;= x for val in a[lo : i])</tt>
+而右半边为 <tt class="docutils literal">all(val &gt; x for val in a[i : hi])</tt></p>
+<p>key 指定带有单个参数的 key function 用来从数组的每个元素中提取比较键。
+为了支持搜索复杂记录，键函数不会被应用到 x 值。</p>
+<p>如果 key 为 None，则将直接进行元素比较而不需要中间的函数调用。</p>
+<p>在 3.10 版更改: 增加了 key 形参。</p>
+</div>
+<div class="rst-function section" id="bisect.insort_left(a, x, lo=0, hi=len(a), *, key=None)">
+<strong>bisect.insort_left(a, x, lo=0, hi=len(a), *, key=None)</strong><p></p>
+<p>按照已排序顺序将 x 插入到 a 中。</p>
+<p>此函数首先会运行 bisect_left() 来定位一个插入点。 然后，它会在 a 上运行 insert() 方法在正确的位置插入 x 以保持排序顺序。</p>
+<p>为了支持将记录插入到表中，key 函数（如果存在）将被应用到 x 用于搜索步骤但不会用于插入步骤。</p>
+<p>请记住 O(log n) 搜索是由缓慢的 O(n) 抛入步骤主导的。</p>
+<p>在 3.10 版更改: 增加了 key 形参。</p>
+</div>
+<div class="rst-function section" id="bisect.insort_right(a, x, lo=0, hi=len(a), *, key=None)">
+<strong>bisect.insort_right(a, x, lo=0, hi=len(a), *, key=None)</strong><p></p>
+<p>.</p>
+</div>
+<div class="rst-function section" id="bisect.insort(a, x, lo=0, hi=len(a), *, key=None)">
+<strong>bisect.insort(a, x, lo=0, hi=len(a), *, key=None)</strong><p></p>
+<p>类似于 insort_left()，但是把 x 插入到 a 中已存在元素 x 的右侧。</p>
+<p>此函数首先会运行 bisect_right() 来定位一个插入点。 然后，它会在 a 上运行 insert() 方法在正确的位置插入 x 以保持排序顺序。</p>
+<p>为了支持将记录插入到表中，key 函数（如果存在）将被应用到 x 用于搜索步骤但不会用于插入步骤。</p>
+<p>请记住 O(log n) 搜索是由缓慢的 O(n) 抛入步骤主导的。</p>
+<p>在 3.10 版更改: 增加了 key 形参。</p>
+</div>
 <p>当使用 bisect() 和 insort() 编写时间敏感的代码时，请记住以下概念:</p>
 <ul class="simple">
 <li>二分法对于搜索一定范围的值是很高效的。 对于定位特定的值，则字典的性能更好。</li>
@@ -150,6 +240,46 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#bisect.bisect_left(a, x, lo=0, hi=len(a), *, key=None)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#bisect.bisect_right(a, x, lo=0, hi=len(a), *, key=None)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#bisect.bisect(a, x, lo=0, hi=len(a), *, key=None)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#bisect.insort_left(a, x, lo=0, hi=len(a), *, key=None)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#bisect.insort_right(a, x, lo=0, hi=len(a), *, key=None)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#bisect.insort(a, x, lo=0, hi=len(a), *, key=None)">
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -167,27 +297,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

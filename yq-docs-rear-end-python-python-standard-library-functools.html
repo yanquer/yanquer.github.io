@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -124,15 +123,71 @@
 									<p>官网</p>
 <div class="section" id="wraps">
 <h2>wraps</h2>
+<div class="rst-function section" id="functools.wraps()">
+<strong>functools.wraps()</strong><p></p>
+<p>用于自定义装饰器, 刷新名称</p>
+</div>
 </div>
 <div class="section" id="partial">
 <h2>partial</h2>
 <p>也叫偏函数</p>
+<div class="rst-function section" id="functools.partial()">
+<strong>functools.partial()</strong><p></p>
+<p>用于包装函数, 可用于函数回调的时候, 增加参数, 或者说固定参数:</p>
+<pre class="literal-block">
+def show(name, age):
+    print(&quot;my name is {} and age is {}&quot;.format(name, age))
+
+
+# 相当于生成一个新的函数
+# def new_fun():
+#   show(&quot;x x x&quot;,1)
+# 如果
+# showP = functools.partial(show, &quot;xxx&quot;)    # 固定第一个参数为 xxx
+# showP(20)
+# 结果一样
+showP = functools.partial(show, &quot;xxx&quot;, 20)  # 固定前两个参数为 xxx, 20, 也适用于关键字参数
+
+
+def test(callback):
+    print(&quot;do some opt…………&quot;)
+    callback()
+
+
+test(showP)
+
+# do some opt…………
+# my name is xxx and age is 19
+</pre>
+</div>
 <p>用途: 有些回调函数不支持传入参数, 可以使用此函数来支持参数.</p>
 </div>
 <div class="section" id="total-ordering">
 <h2>total_ordering</h2>
 <p>装饰器, 实现比较方法</p>
+<div class="rst-function section" id="&#64;functools.total_ordering">
+<strong>&#64;functools.total_ordering</strong><p></p>
+<p>给定一个声明一个或多个全比较排序方法的类，这个类装饰器实现剩余的方法。这减轻了指定所有可能的全比较操作的工作。</p>
+<p>此类必须包含以下方法之一：__lt__() 、__le__()、__gt__() 或 __ge__()。另外，此类必须支持 __eq__() 方法。</p>
+<p>例如:</p>
+<pre class="literal-block">
+&#64;total_ordering
+class Student:
+    def _is_valid_operand(self, other):
+        return (hasattr(other, &quot;lastname&quot;) and
+                hasattr(other, &quot;firstname&quot;))
+    def __eq__(self, other):
+        if not self._is_valid_operand(other):
+            return NotImplemented
+        return ((self.lastname.lower(), self.firstname.lower()) ==
+                (other.lastname.lower(), other.firstname.lower()))
+    def __lt__(self, other):
+        if not self._is_valid_operand(other):
+            return NotImplemented
+        return ((self.lastname.lower(), self.firstname.lower()) &lt;
+                (other.lastname.lower(), other.firstname.lower()))
+</pre>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p>虽然此装饰器使得创建具有良好行为的完全有序类型变得非常容易，
@@ -170,16 +225,34 @@
    <a class="" href="#wraps">
     wraps
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#functools.wraps()">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#partial">
     partial
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#functools.partial()">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#total-ordering">
     total_ordering
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#@functools.total_ordering">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -206,27 +279,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

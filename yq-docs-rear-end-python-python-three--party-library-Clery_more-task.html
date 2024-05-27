@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -497,12 +496,128 @@ add = app.tasks[_AddTask.name]
 </ul>
 <div class="section" id="apply-async">
 <h3>apply_async</h3>
+<div class="rst-function section" id="apply_async(args[, kwargs[, ...]])">
+<strong>apply_async(args[, kwargs[, ...]])</strong><p></p>
+<p>发送一个任务消息。</p>
+<p>T.apply_async((arg,), {'kwarg': value})</p>
+<p>从现在起, 十秒内执行:</p>
+<pre class="literal-block">
+T.apply_async(countdown=10)
+</pre>
+<p>从现在起十秒内执行，指明使用eta:</p>
+<pre class="literal-block">
+T.apply_async(eta=now + timedelta(seconds=10))
+</pre>
+<p>从现在起一分钟执行，但在两分钟后过期:</p>
+<pre class="literal-block">
+T.apply_async(countdown=60, expires=120)
+</pre>
+<p>两天内过期，使用datetime对象:</p>
+<pre class="literal-block">
+T.apply_async(expires=now + timedelta(days=2))
+</pre>
+<p>一些位置参数:</p>
+<dl class="docutils">
+<dt>link: Union[Callable, list]</dt>
+<dd><p class="first">Celery支持任务链，一个任务在另一个任务之后。回调任务将用父任务的结果作为一部分参数:</p>
+<pre class="last literal-block">
+res = add.apply_async((2, 2), link=add.s(16))
+
+# 译者注
+# res.get() --&gt; 4 # 2+2 = 4
+# res.children[0].get() --&gt; 20 # 4 + 16
+</pre>
+</dd>
+<dt>link_error: Union[Callable, list]</dt>
+<dd><p class="first">添加错误回调签名</p>
+<p>例子:</p>
+<pre class="literal-block">
+&#64;app.task
+def error_handler(uuid):
+    result = AsyncResult(uuid)
+    exc = result.get(propagate=False)
+    print('Task {0} raised exception: {1!r}\n{2!r}'.format(
+          uuid, exc, result.traceback))
+</pre>
+<p>可以使用 link_error 执行选项将其添加到任务中:</p>
+<pre class="literal-block">
+add.apply_async((2, 2), link_error=error_handler.s())
+</pre>
+<p>此外，link 和 link_error 选项都可以是list:</p>
+<pre class="literal-block">
+add.apply_async((2, 2), link=[add.s(16), other_task.s()])
+</pre>
+<p class="last">然后将依次调用回调/错误返回，并且将使用父任务的返回值作为部分参数来调用所有回调</p>
+</dd>
+<dt>countdown: int</dt>
+<dd>在某个时间之前结束, 见 <a class="reference internal" href="#countdown">countdown</a></dd>
+<dt>eta: datatime</dt>
+<dd>在某个时间之前结束, 见 <a class="reference internal" href="#eta">eta</a></dd>
+<dt>expires: Union[int, datetime]</dt>
+<dd>任务有效期, 与上基本一致, 见 <a class="reference internal" href="#expires">expires</a></dd>
+<dt>retry: bool = True</dt>
+<dd>是否失败重试, 对应配置为: task_publish_retry</dd>
+<dt>retry_policy: dict</dt>
+<dd><p class="first">重试策略, 对应配置为: task_publish_retry_policy.</p>
+<p>支持的键为:</p>
+<dl class="docutils">
+<dt>max_retries: int = 3</dt>
+<dd><p class="first">最大重试次数，在这种情况下，将抛出重试失败的异常。</p>
+<p class="last">值为None意味着它将永远重试。</p>
+</dd>
+<dt>interval_start: int = 0</dt>
+<dd>定义两次重试之间要等待的秒数（浮点数或整数）。默认值为0（第一次重试是瞬时的）。</dd>
+<dt>interval_step: float = 0.2</dt>
+<dd>在每次连续重试时，此数字将被添加到重试延迟中（浮点数或整数）。默认值为0.2。</dd>
+<dt>interval_max: float=0.2</dt>
+<dd>重试之间等待的最大秒数（浮点数或整数）。默认值为0.2。</dd>
+</dl>
+<p>例:</p>
+<pre class="literal-block">
+add.apply_async((2, 2), retry=True, retry_policy={
+    'max_retries': 3,
+    'interval_start': 0,
+    'interval_step': 0.2,
+    'interval_max': 0.2,
+})
+</pre>
+<p class="last">重试的最长时间为0.4秒。
+默认情况下将其设置为相对较短，因为如果代理连接断开，连接失败可能导致重试堆效应–
+例如，许多 Web 服务器进程正在等待重试，从而阻止了其他传入请求。</p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="delay">
 <h3>delay</h3>
+<div class="rst-function section" id="delay(*args, **kwargs)">
+<strong>delay(*args, **kwargs)</strong><p></p>
+<p>直接发送一个任务消息,但是不支持运行参数。</p>
+<p><tt class="docutils literal">T.delay(arg, kwarg=value)</tt> 调用 apply_async 的快捷方式:</p>
+<pre class="literal-block">
+.delay(_args, *_kwargs)
+</pre>
+<p>等价于调用:</p>
+<pre class="literal-block">
+.apply_async(args, kwargs)
+</pre>
+<p>例如, delay 版:</p>
+<pre class="literal-block">
+task.delay(arg1, arg2, kwarg1='x', kwarg2='y')
+</pre>
+<p>apply_async版:</p>
+<pre class="literal-block">
+task.apply_async(args=[arg1, arg2], kwargs={'kwarg1': 'x', 'kwarg2': 'y'})
+</pre>
+<p>尽管运行十分方便，但是如果像设置额外的行参数，必须用 <a class="reference internal" href="#apply-async">apply_async</a></p>
+</div>
 </div>
 <div class="section" id="calling">
 <h3>calling</h3>
+<div class="rst-function section" id="calling(__call__)">
+<strong>calling(__call__)</strong><p></p>
+<p>应用一个支持调用接口（例如，add(2,2)）的对象,意味着任务不会被一个 worker 执行,但是会在当前线程中执行(但是消息不会被发送)。</p>
+</div>
 </div>
 </div>
 <div class="section" id="section-11">
@@ -516,15 +631,73 @@ add = app.tasks[_AddTask.name]
 </ul>
 <div class="section" id="after-return">
 <h3>after_return</h3>
+<div class="rst-function section" id="after_return(self, status, retval, task_id, args, kwargs, einfo)">
+<strong>after_return(self, status, retval, task_id, args, kwargs, einfo)</strong><p></p>
+<p>任务返回后调用的处理程序</p>
+<p>位置参数:</p>
+<pre class="literal-block">
+status  – 当前任务状态
+retval  – 任务返回值/异常
+task_id – 唯一的任务ID
+args    – 返回任务的原始参数
+kwargs  – 返回任务的原始关键字
+</pre>
+<p>关键字参数:</p>
+<pre class="literal-block">
+einfo   – 异常信息实例，包含 traceback （有的情况下）
+</pre>
+<p>此处理程序的返回值将被忽略。</p>
+</div>
 </div>
 <div class="section" id="on-failure">
 <h3>on_failure</h3>
+<div class="rst-function section" id="on_failure(self, exc, task_id, args, kwargs, einfo)">
+<strong>on_failure(self, exc, task_id, args, kwargs, einfo)</strong><p></p>
+<p>任务执行失败时，由职程（Worker）调用。</p>
+<p>位置参数:</p>
+<pre class="literal-block">
+exc     – 任务引发的异常。
+task_id – 执行失败任务的唯一 ID。
+args    – 任务失败的原始参数。
+kwargs  – 任务失败的原始关键字。
+</pre>
+<p>关键字参数:</p>
+<pre class="literal-block">
+einfo   – 异常信息实例，包含 traceback （有的情况下）。
+</pre>
+<p>此处理程序的返回值将被忽略。</p>
+</div>
 </div>
 <div class="section" id="on-retry">
 <h3>on_retry</h3>
+<div class="rst-function section" id="on_retry(self, exc, task_id, args, kwargs, einfo)">
+<strong>on_retry(self, exc, task_id, args, kwargs, einfo)</strong><p></p>
+<p>任务重试时，由职程（Worker）调用。</p>
+<p>位置参数:</p>
+<pre class="literal-block">
+exc     – 发送给 retry() 函数的异常
+task_id – 任务重试唯一 ID。
+args    – 任务重试的原始参数。
+kwargs  – 任务重试的原始关键字。 Keyword Arguments:
+einfo   – 异常信息实例，包含 traceback （有的情况下）。
+</pre>
+<p>此处理程序的返回值将被忽略。</p>
+</div>
 </div>
 <div class="section" id="on-success">
 <h3>on_success</h3>
+<div class="rst-function section" id="on_success(self, retval, task_id, args, kwargs)">
+<strong>on_success(self, retval, task_id, args, kwargs)</strong><p></p>
+<p>任务成功时，由职程（Worker）调用。</p>
+<p>位置参数:</p>
+<pre class="literal-block">
+retval  – 任务的返回值
+task_id – 执行成功唯一 ID。
+args    – 任务执行成功时的原始参数。
+kwargs  – 任务执行成功时的原始关键字。
+</pre>
+<p>此处理程序的返回值将被忽略。</p>
+</div>
 </div>
 </div>
 <div class="section" id="on-message">
@@ -721,16 +894,34 @@ print([res.get() for res in results])
      <a class="" href="#apply-async">
       apply_async
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#apply_async(args[, kwargs[, ...]])">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#delay">
       delay
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#delay(*args, **kwargs)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#calling">
       calling
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#calling(__call__)">
+       </a>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -743,21 +934,45 @@ print([res.get() for res in results])
      <a class="" href="#after-return">
       after_return
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#after_return(self, status, retval, task_id, args, kwargs, einfo)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#on-failure">
       on_failure
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#on_failure(self, exc, task_id, args, kwargs, einfo)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#on-retry">
       on_retry
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#on_retry(self, exc, task_id, args, kwargs, einfo)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#on-success">
       on_success
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#on_success(self, retval, task_id, args, kwargs)">
+       </a>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -801,27 +1016,27 @@ print([res.get() for res in results])
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

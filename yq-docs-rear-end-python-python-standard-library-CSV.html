@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -131,6 +130,73 @@
 也可使用 DictReader 类和 DictWriter 类以字典的形式读写数据。</p>
 <div class="section" id="section-1">
 <h2>提供的函数</h2>
+<div class="rst-function section" id="csv.reader(csvfile, dialect='excel', **fmtparams)">
+<strong>csv.reader(csvfile, dialect='excel', **fmtparams)</strong><p></p>
+<p>返回一个 reader 对象，该对象将逐行遍历 csvfile。
+csvfile 可以是任何对象，只要这个对象支持 iterator 协议并在每次调用 <tt class="docutils literal">__next__()</tt> 方法时都返回字符串，
+文件对象 和列表对象均适用。</p>
+<dl class="docutils">
+<dt>csvfile:</dt>
+<dd>如果 csvfile 是文件对象，则打开它时应使用 <tt class="docutils literal"><span class="pre">newline=''</span></tt> 。
+如果没有指定 newline=''，则嵌入引号中的换行符将无法正确解析，
+并且在写入时，使用 <tt class="docutils literal">\r\n</tt> 换行的平台会有多余的 <tt class="docutils literal">\r</tt> 写入。
+由于 csv 模块会执行自己的（通用）换行符处理，因此指定 newline='' 应该总是安全的。</dd>
+<dt>dialect:</dt>
+<dd>可选参数 dialect 是用于不同的 CSV 变种的特定参数组。它可以是 <a class="reference internal" href="#dialect">Dialect</a> 类的子类的实例，
+也可以是 list_dialects() 函数返回的字符串之一。</dd>
+<dt>fmtparams:</dt>
+<dd>另一个可选关键字参数 fmtparams 可以覆写当前变种格式中的单个格式设置。有关变种和格式设置参数的完整详细信息，
+请参见 变种与格式参数 部分。</dd>
+</dl>
+<p>csv 文件的每一行都读取为一个由字符串组成的列表。除非指定了 QUOTE_NONNUMERIC 格式选项（在这种情况下，未加引号的字段会转换为浮点数），否则不会执行自动数据类型转换。</p>
+<p>一个简短的用法示例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt;
+import csv
+with open('eggs.csv', newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    for row in spamreader:
+        print(', '.join(row))
+Spam, Spam, Spam, Spam, Spam, Baked Beans
+Spam, Lovely Spam, Wonderful Spam
+</pre>
+</div>
+<div class="rst-function section" id="csv.writer(csvfile, dialect='excel', **fmtparams)">
+<strong>csv.writer(csvfile, dialect='excel', **fmtparams)</strong><p></p>
+<p>返回一个 writer 对象，该对象负责将用户的数据在给定的文件类对象上转换为带分隔符的字符串。 csvfile 可以是任何具有 write() 方法的对象。 如果 csvfile 是一个文件对象，则打开它时应使用 newline='' 1。 可以给出可选的 dialect 形参用来定义一组特定 CSV 变种专属的形参。 它可以是 Dialect 类的某个子类的实例或是 list_dialects() 函数所返回的字符串之一。 还可以给出另一个可选的 fmtparams 关键字参数来覆盖当前变种中的单个格式化形参。 有关各个变种和格式化形参的完整细节，请参阅 变种与格式参数 部分。 为了尽量简化与实现 DB API 的模块之间的接口，None 值会被当作空字符串写入。 虽然这个转换是不可逆的，但它可以简化 SQL NULL 数据值到 CSV 文件的转储而无需预处理从 cursor.fetch* 调用返回的数据。 在被写入之前所有其他非字符串数据都会先用 str() 来转转为字符串。</p>
+<p>一个简短的用法示例:</p>
+<pre class="literal-block">
+import csv
+with open('eggs.csv', 'w', newline='') as csvfile:
+    spamwriter = csv.writer(csvfile, delimiter=' ',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
+    spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+</pre>
+</div>
+<div class="rst-function section" id="csv.register_dialect(name[, dialect[, **fmtparams]])">
+<strong>csv.register_dialect(name[, dialect[, **fmtparams]])</strong><p></p>
+<p>将 dialect 与 name 关联起来。 name 必须是字符串。
+变种的指定可以通过传入一个 Dialect 的子类，或通过 fmtparams 关键字参数，或是两者同时传入，
+此时关键字参数会覆盖 dialect 形参。</p>
+<p>有关变种和格式化形参的完整细节，请参阅 变种与格式参数 部分。</p>
+</div>
+<div class="rst-function section" id="csv.unregister_dialect(name)">
+<strong>csv.unregister_dialect(name)</strong><p></p>
+<p>从变种注册表中删除 name 对应的变种。如果 name 不是已注册的变种名称，则抛出 Error 异常。</p>
+</div>
+<div class="rst-function section" id="csv.get_dialect(name)">
+<strong>csv.get_dialect(name)</strong><p></p>
+<p>返回 name 对应的变种。如果 name 不是已注册的变种名称，则抛出 Error 异常。该函数返回的是不可变的 Dialect 对象。</p>
+</div>
+<div class="rst-function section" id="csv.list_dialects()">
+<strong>csv.list_dialects()</strong><p></p>
+<p>返回所有已注册变种的名称。</p>
+</div>
+<div class="rst-function section" id="csv.field_size_limit([new_limit])">
+<strong>csv.field_size_limit([new_limit])</strong><p></p>
+<p>返回解析器当前允许的最大字段大小。如果指定了 new_limit，则它将成为新的最大字段大小。</p>
+</div>
 </div>
 <div class="section" id="section-2">
 <h2>提供的类</h2>
@@ -145,24 +211,144 @@
 </ul>
 <div class="section" id="dictreader">
 <h3>DictReader</h3>
+<div class="rst-function section" id="class csv.DictReader(f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)">
+<strong>class csv.DictReader(f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)</strong><p></p>
+<p>创建一个对象，该对象在操作上类似于常规 reader，
+但是将每行中的信息映射到一个 dict，该 dict 的键由 fieldnames 可选参数给出。</p>
+<dl class="docutils">
+<dt>f:</dt>
+<dd>文件</dd>
+<dt>fieldnames:</dt>
+<dd>fieldnames 参数是一个 sequence。
+如果省略 fieldnames，则文件 f 第一行中的值将用作字段名。无论字段名是如何确定的，字典都将保留其原始顺序。</dd>
+<dt>restkey:</dt>
+<dd>如果某一行中的字段多于字段名，则剩余数据会被放入一个列表，并与 restkey 所指定的字段名 (默认为 None) 一起保存。</dd>
+<dt>restval:</dt>
+<dd>如果某个非空白行的字段少于字段名，则缺失的值会使用 restval 的值来填充 (默认为 None)。</dd>
+</dl>
+<p>所有其他可选或关键字参数都传递给底层的 reader 实例。</p>
+<p>在 3.6 版更改: 返回的行现在的类型是 OrderedDict。</p>
+<p>在 3.8 版更改: 现在，返回的行是 dict 类型。</p>
+<p>一个简短的用法示例:</p>
+<pre class="literal-block">
+&gt;&gt;&gt;
+import csv
+with open('names.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        print(row['first_name'], row['last_name'])
+
+Eric Idle
+John Cleese
+
+print(row)
+{'first_name': 'John', 'last_name': 'Cleese'}
+</pre>
+</div>
 </div>
 <div class="section" id="dictwriter">
 <h3>DictWriter</h3>
+<div class="rst-function section" id="class csv.DictWriter(f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwds)">
+<strong>class csv.DictWriter(f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwds)</strong><p></p>
+<p>创建一个对象，该对象在操作上类似常规 writer，但会将字典映射到输出行。</p>
+<dl class="docutils">
+<dt>fieldnames:</dt>
+<dd>fieldnames 参数是由键组成的 序列，它指定字典中值的顺序，
+这些值会按指定顺序传递给 writerow() 方法并写入文件 f。</dd>
+<dt>restval:</dt>
+<dd>如果字典缺少 fieldnames 中的键，则可选参数 restval 用于指定要写入的值。</dd>
+<dt>extrasaction:</dt>
+<dd>如果传递给 writerow() 方法的字典的某些键在 fieldnames 中找不到，则可选参数 extrasaction 用于指定要执行的操作。
+如果将其设置为默认值 'raise'，则会引发 ValueError。
+如果将其设置为 'ignore'，则字典中的其他键值将被忽略。</dd>
+</dl>
+<p>所有其他可选或关键字参数都传递给底层的 writer 实例。</p>
+<p>注意，与 <a class="reference internal" href="#dictreader">DictReader</a> 类不同，<a class="reference internal" href="#dictwriter">DictWriter</a> 类的 fieldnames 参数不是可选参数。</p>
+<p>一个简短的用法示例:</p>
+<pre class="literal-block">
+import csv
+
+with open('names.csv', 'w', newline='') as csvfile:
+    fieldnames = ['first_name', 'last_name']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
+    writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
+    writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
+</pre>
+</div>
 </div>
 <div class="section" id="dialect">
 <h3>Dialect</h3>
+<div class="rst-function section" id="class csv.Dialect">
+<strong>class csv.Dialect</strong><p></p>
+<p>Dialect 类是一个容器类，其属性包含有如何处理双引号、空白符、分隔符等的信息。
+由于缺少严格的 CSV 规格描述，不同的应用程序会产生略有差别的 CSV 数据。
+Dialect 实例定义了 reader 和 writer 实例将具有怎样的行为。</p>
+<p>所有可用的 Dialect 名称会由 list_dialects() 返回，
+并且它们可由特定的 reader 和 writer 类通过它们的初始化函数 ( <tt class="docutils literal">__init__</tt> ) 来注册，例如:</p>
+<pre class="literal-block">
+import csv
+
+with open('students.csv', 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile, dialect='unix')
+                              ^^^^^^^^^^^^^^
+</pre>
+</div>
 </div>
 <div class="section" id="excel">
 <h3>excel</h3>
+<div class="rst-function section" id="class csv.excel">
+<strong>class csv.excel</strong><p></p>
+<p>excel 类定义了 Excel 生成的 CSV 文件的常规属性。它在变种注册表中的名称是 'excel'。</p>
+</div>
 </div>
 <div class="section" id="excel-tab">
 <h3>excel_tab</h3>
+<div class="rst-function section" id="class csv.excel_tab">
+<strong>class csv.excel_tab</strong><p></p>
+<p>excel_tab 类定义了 Excel 生成的、制表符分隔的 CSV 文件的常规属性。它在变种注册表中的名称是 'excel-tab'。</p>
+</div>
 </div>
 <div class="section" id="unix-dialect">
 <h3>unix_dialect</h3>
+<div class="rst-function section" id="class csv.unix_dialect">
+<strong>class csv.unix_dialect</strong><p></p>
+<p>unix_dialect 类定义了在 UNIX 系统上生成的 CSV 文件的常规属性，即使用 'n' 作为换行符，且所有字段都有引号包围。
+它在变种注册表中的名称是 'unix'。</p>
+<p>3.2 新版功能.</p>
+</div>
 </div>
 <div class="section" id="sniffer">
 <h3>Sniffer</h3>
+<div class="rst-function section" id="class csv.Sniffer">
+<strong>class csv.Sniffer</strong><p></p>
+<p>Sniffer 类用于推断 CSV 文件的格式。</p>
+<p>Sniffer 类提供了两个方法：</p>
+<div class="rst-function section" id="sniff(sample, delimiters=None)">
+<strong>sniff(sample, delimiters=None)</strong><p></p>
+<p>分析给定的 sample 并返回一个 Dialect 子类，该子类中包含了分析出的格式参数。
+如果给出可选的 delimiters 参数，则该参数会被解释为字符串，该字符串包含了可能的有效定界符。</p>
+</div>
+<div class="rst-function section" id="has_header(sample)">
+<strong>has_header(sample)</strong><p></p>
+<p>分析 sample 文本（假定为 CSV 格式），如果发现其首行为一组列标题则返回 True。
+在检查每一列时，将考虑是否满足两个关键标准之一来估计 sample 是否包含标题:</p>
+<p>第二至第 n 行包含数字值
+第二至第 n 行包含字符串值，其中至少有一个值的长度与该列预期标题的长度不同。
+会对第一行之后的二十行进行采样；如果有超过一半的列 + 行符合标准，则返回 True。
+备注 此方法是一个粗略的启发式方式，有可能产生错误的真值和假值。</p>
+</div>
+<p>使用 Sniffer 的示例:</p>
+<pre class="literal-block">
+with open('example.csv', newline='') as csvfile:
+    dialect = csv.Sniffer().sniff(csvfile.read(1024))
+    csvfile.seek(0)
+    reader = csv.reader(csvfile, dialect)
+    # ... process CSV file contents here ...
+</pre>
+</div>
 </div>
 </div>
 <div class="section" id="section-3">
@@ -231,6 +417,13 @@ The default is False.</dd>
 <div class="section" id="reader">
 <h2>Reader 对象</h2>
 <p>Reader 对象 (<a class="reference internal" href="#dictreader">DictReader</a> 实例和 reader() 函数返回的对象) 具有以下公开方法：</p>
+<div class="rst-function section" id="csvreader.__next__()">
+<strong>csvreader.__next__()</strong><p></p>
+<p>返回 reader 的可迭代对象的下一行，
+它可以是一个列表（如果对象是由 reader() 返回）或字典（如果是一个 DictReader 实例），
+根据当前 Dialect 来解析。</p>
+<p>通常你应当以 next(reader) 的形式来调用它。</p>
+</div>
 <p>Reader 对象具有以下公开属性：</p>
 <dl class="docutils">
 <dt>csvreader.dialect:</dt>
@@ -250,12 +443,28 @@ The default is False.</dd>
 对于 Writer 对象，行 必须是（一组可迭代的）字符串或数字。
 对于 DictWriter 对象，行 必须是一个字典，这个字典将字段名映射为字符串或数字（数字要先经过 str() 转换类型）。
 请注意，输出的复数会有括号包围。这样其他程序读取 CSV 文件时可能会有一些问题（假设它们完全支持复数）。</p>
+<div class="rst-function section" id="csvwriter.writerow(row)">
+<strong>csvwriter.writerow(row)</strong><p></p>
+<p>将 row 形参写入到 writer 的文件对象，根据当前 Dialect 进行格式化。 返回对下层文件对象的 write 方法的调用的返回值。</p>
+<p>在 3.5 版更改: 开始支持任意类型的迭代器。</p>
+</div>
+<div class="rst-function section" id="csvwriter.writerows(rows)">
+<strong>csvwriter.writerows(rows)</strong><p></p>
+<p>将 rows*（即能迭代出多个上述 *row 对象的迭代器）中的所有元素写入 writer 的文件对象，并根据当前设置的变种进行格式化。</p>
+</div>
 <p>Writer 对象具有以下公开属性：</p>
 <dl class="docutils">
 <dt>csvwriter.dialect:</dt>
 <dd>变种描述，只读，供 writer 使用。</dd>
 </dl>
 <p><a class="reference internal" href="#dictwriter">DictWriter</a> 对象具有以下公开方法：</p>
+<div class="rst-function section" id="DictWriter.writeheader()">
+<strong>DictWriter.writeheader()</strong><p></p>
+<p>在 writer 的文件对象中，写入一行字段名称（字段名称在构造函数中指定），并根据当前设置的变种进行格式化。
+本方法的返回值就是内部使用的 csvwriter.writerow() 方法的返回值。</p>
+<p>3.2 新版功能.</p>
+<p>在 3.8 版更改: 现在 writeheader() 也返回其内部使用的 csvwriter.writerow() 方法的返回值。</p>
+</div>
 </div>
 
 								</article>
@@ -283,6 +492,36 @@ The default is False.</dd>
    <a class="" href="#section-1">
     提供的函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#csv.reader(csvfile, dialect='excel', **fmtparams)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csv.writer(csvfile, dialect='excel', **fmtparams)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csv.register_dialect(name[, dialect[, **fmtparams]])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csv.unregister_dialect(name)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csv.get_dialect(name)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csv.list_dialects()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csv.field_size_limit([new_limit])">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-2">
@@ -293,36 +532,88 @@ The default is False.</dd>
      <a class="" href="#dictreader">
       DictReader
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#class csv.DictReader(f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#dictwriter">
       DictWriter
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#class csv.DictWriter(f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwds)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#dialect">
       Dialect
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#class csv.Dialect">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#excel">
       excel
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#class csv.excel">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#excel-tab">
       excel_tab
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#class csv.excel_tab">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#unix-dialect">
       unix_dialect
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#class csv.unix_dialect">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#sniffer">
       Sniffer
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#class csv.Sniffer">
+       </a>
+       <ul class="toc-tree ">
+        <li class="toc-h3">
+         <a class="" href="#sniff(sample, delimiters=None)">
+         </a>
+        </li>
+        <li class="toc-h3">
+         <a class="" href="#has_header(sample)">
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -345,11 +636,31 @@ The default is False.</dd>
    <a class="" href="#reader">
     Reader 对象
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#csvreader.__next__()">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#writer">
     Writer 对象
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#csvwriter.writerow(row)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csvwriter.writerows(rows)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#DictWriter.writeheader()">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -376,27 +687,27 @@ The default is False.</dd>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

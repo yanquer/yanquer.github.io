@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -147,27 +146,93 @@
 </ul>
 <div class="section" id="isvalid">
 <h2>isValid</h2>
+<div class="rst-function section" id="def isValid (obj)">
+<strong>def isValid (obj)</strong><p></p>
+<p>判断 obj 的方法是否可以正常使用而不抛出异常</p>
+<p>当所指向的 C++ 对象已销毁或者不可达时, 装饰器无效.</p>
+<dl class="docutils">
+<dt>obj:</dt>
+<dd>Python 对象</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="wrapinstance">
 <h2>wrapInstance</h2>
+<div class="rst-function section" id="def wrapInstance (address, type)">
+<strong>def wrapInstance (address, type)</strong><p></p>
+<p>对 C++ 对象, 使用指定的 内存地址 address 创建一个 Python 装饰器, 返回值即所给类 type 的对象</p>
+<dl class="docutils">
+<dt>address:</dt>
+<dd>内存地址. 若地址不可用, 或者没指向指定 type 的 C++ 对象, 将会 undefined ?</dd>
+<dt>type:</dt>
+<dd>使用来实例对象的类, 必须是 Shiboken 类型, 当返回对象在 Python 内部的引用计数不为0时, 相关联底层 C++ 对象不会被销毁</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="getcpppointer">
 <h2>getCppPointer</h2>
+<div class="rst-function section" id="def getCppPointer (obj)">
+<strong>def getCppPointer (obj)</strong><p></p>
+<p>返回 被给定 obj 装饰的, 包含了 C++ 对象地址的长元组.</p>
+</div>
 </div>
 <div class="section" id="delete">
 <h2>delete</h2>
+<div class="rst-function section" id="def delete (obj)">
+<strong>def delete (obj)</strong><p></p>
+<p>删除被 obj 装饰的 C++ 对象</p>
+</div>
 </div>
 <div class="section" id="isownedbypython">
 <h2>isOwnedByPython</h2>
+<div class="rst-function section" id="def isOwnedByPython (obj) -&gt; bool">
+<strong>def isOwnedByPython (obj) -&gt; bool</strong><p></p>
+<dl class="docutils">
+<dt>obj:</dt>
+<dd>Python 对象, 如果不是 Shiboken 下的类型, 将会抛出 TypeError</dd>
+<dt>&#64;retuen: bool</dt>
+<dd>True:  Python 可正确删除底层的 C++ 对象, 即 C++ 对象完全被 obj 所 <cite>代理</cite>
+False:</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="wascreatedbypython">
 <h2>wasCreatedByPython</h2>
+<div class="rst-function section" id="def wasCreatedByPython (obj) -&gt; bool">
+<strong>def wasCreatedByPython (obj) -&gt; bool</strong><p></p>
+<p>是否给定的对象是被 Python 创建</p>
+<dl class="docutils">
+<dt>&#64;return: bool</dt>
+<dd>True:  给定的对象是被 Python 创建
+False:</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="dump">
 <h2>dump</h2>
+<div class="rst-function section" id="def dump (obj) -&gt; str">
+<strong>def dump (obj) -&gt; str</strong><p></p>
+<p>只应在 debug 时使用.</p>
+<p>如果 obj 不是 Shiboken 下的类型, 将会打印信息</p>
+<dl class="docutils">
+<dt>&#64;return: str</dt>
+<dd>返回对象的 str 信息, 还可能包含自己实现的相关信息</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="disassembleframe">
 <h2>disassembleFrame</h2>
+<div class="rst-function section" id="def disassembleFrame (marker)">
+<strong>def disassembleFrame (marker)</strong><p></p>
+<p>只应用于 debug</p>
+<p>打印当前 Python 执行的堆栈信息并刷新, 打印的信息将会被 marker 所包裹.</p>
+<p>如果想在此位置打断点(基于C++的断点), 可使用纯函数名. marker 在 C++ 下是一个 string.</p>
+<p>如果是基于 Python 的断点, 在需要断点的位置使用此装饰器. marker 在 Python 下可以是任意对象, 将会调用对象内部的 <tt class="docutils literal">str</tt> 方法</p>
+<dl class="docutils">
+<dt>marker:</dt>
+<dd>用于包裹打印出的堆栈信息</dd>
+</dl>
+</div>
 </div>
 
 								</article>
@@ -195,41 +260,89 @@
    <a class="" href="#isvalid">
     isValid
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def isValid (obj)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#wrapinstance">
     wrapInstance
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def wrapInstance (address, type)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#getcpppointer">
     getCppPointer
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def getCppPointer (obj)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#delete">
     delete
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def delete (obj)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#isownedbypython">
     isOwnedByPython
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def isOwnedByPython (obj) -&gt; bool">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#wascreatedbypython">
     wasCreatedByPython
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def wasCreatedByPython (obj) -&gt; bool">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#dump">
     dump
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def dump (obj) -&gt; str">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#disassembleframe">
     disassembleFrame
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#def disassembleFrame (marker)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -256,27 +369,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -128,6 +127,29 @@
 <p>最后，它还额外提供了一些类型相关但重要程度不足以作为内置对象的工具类和函数。</p>
 <div class="section" id="section-1">
 <h2>动态类型创建</h2>
+<div class="rst-function section" id="types.new_class(name, bases=(), kwds=None, exec_body=None)">
+<strong>types.new_class(name, bases=(), kwds=None, exec_body=None)</strong><p></p>
+<p>使用适当的元类动态地创建一个类对象。</p>
+<p>前三个参数是组成类定义头的部件：类名称，基类 (有序排列)，关键字参数 (例如 metaclass)。</p>
+<p>exec_body 参数是一个回调函数，用于填充新创建类的命名空间。
+它应当接受类命名空间作为其唯一的参数并使用类内容直接更新命名空间。
+如果未提供回调函数，则它就等效于传入 lambda ns: None。</p>
+<p>3.3 新版功能.</p>
+</div>
+<div class="rst-function section" id="types.prepare_class(name, bases=(), kwds=None)">
+<strong>types.prepare_class(name, bases=(), kwds=None)</strong><p></p>
+<p>计算适当的元类并创建类命名空间。</p>
+<p>参数是组成类定义头的部件：类名称，基类 (有序排列) 以及关键字参数 (例如 metaclass)。</p>
+<p>返回值是一个 3 元组: metaclass, namespace, kwds</p>
+<p>metaclass 是适当的元类，namespace 是预备好的类命名空间而 kwds 是所传入 kwds 参数移除每个 'metaclass' 条目后的已更新副本。 如果未传入 kwds 参数，这将为一个空字典。</p>
+<p>3.3 新版功能.</p>
+<p>在 3.6 版更改: 所返回元组中 namespace 元素的默认值已被改变。 现在当元类没有 __prepare__ 方法时将会使用一个保留插入顺序的映射。</p>
+</div>
+<div class="rst-function section" id="types.resolve_bases(bases)">
+<strong>types.resolve_bases(bases)</strong><p></p>
+<p>动态地解析 MRO 条目</p>
+<p>3.7 新版功能.</p>
+</div>
 </div>
 <div class="section" id="section-2">
 <h2>标准解释器类型</h2>
@@ -159,6 +181,17 @@
 <p class="last">3.6 新版功能.</p>
 </dd>
 </dl>
+<div class="rst-function section" id="class types.CodeType(**kwargs)">
+<strong>class types.CodeType(**kwargs)</strong><p></p>
+<p>代码对象的类型，例如 compile() 的返回值。</p>
+<p>引发 审计事件 code.__new__ 附带参数 code, filename, name, argcount, posonlyargcount, kwonlyargcount, nlocals, stacksize, flags。</p>
+<p>请注意被审计的参数可能与初始化代码所要求的名称或位置不相匹配。 审计事件只会被代码对象的直接实例化引发，而不会被普通编译所引发。</p>
+</div>
+<div class="rst-function section" id="replace(**kwargs)">
+<strong>replace(**kwargs)</strong><p></p>
+<p>返回代码对象的一个副本，使用指定的新字段值。</p>
+<p>3.8 新版功能.</p>
+</div>
 <dl class="docutils">
 <dt>types.CellType</dt>
 <dd><p class="first">单元对象的类型：这种对象被用作函数中自由变量的容器。</p>
@@ -234,6 +267,10 @@ True
 <dt>class types.UnionType</dt>
 <dd>合并类型表达式 的类型。</dd>
 </dl>
+<div class="rst-function section" id="class types.TracebackType(tb_next, tb_frame, tb_lasti, tb_lineno)">
+<strong>class types.TracebackType(tb_next, tb_frame, tb_lasti, tb_lineno)</strong><p></p>
+<p>The type of traceback objects such as found in sys.exception().__traceback__.</p>
+</div>
 <dl class="docutils">
 <dt>types.FrameType</dt>
 <dd>帧对象的类型，例如 tb.tb_frame 中的对象，其中 tb 是一个回溯对象。</dd>
@@ -250,6 +287,10 @@ True
 <p class="last">在 3.9 版更改: 更新为支持 PEP 584 所新增的合并 (|) 运算符，它会简单地委托给下层的映射。</p>
 </dd>
 </dl>
+<div class="rst-function section" id="key in proxy">
+<strong>key in proxy</strong><p></p>
+<p>如果下层的映射中存在键 key 则返回 True，否则返回 False。</p>
+</div>
 <dl class="docutils">
 <dt>proxy[key]</dt>
 <dd>返回下层的映射中以 key 为键的项。 如果下层的映射中不存在键 key 则引发 KeyError。</dd>
@@ -274,9 +315,47 @@ True
 </div>
 <div class="section" id="section-3">
 <h2>附加工具类/函数</h2>
+<div class="rst-function section" id="class types.SimpleNamespace">
+<strong>class types.SimpleNamespace</strong><p></p>
+<p>一个简单的 object 子类，提供了访问其命名空间的属性，以及一个有意义的 repr。</p>
+<p>不同于 object，对于 SimpleNamespace 你可以添加和移除属性。 如果一个 SimpleNamespace 对象使用关键字参数进行初始化，这些参数会被直接加入下层命名空间。</p>
+<p>此类型大致等价于以下代码:</p>
+<pre class="literal-block">
+class SimpleNamespace:
+    def __init__(self, /, **kwargs):
+        self.__dict__.update(kwargs)
+
+    def __repr__(self):
+        items = (f&quot;{k}={v!r}&quot; for k, v in self.__dict__.items())
+        return &quot;{}({})&quot;.format(type(self).__name__, &quot;, &quot;.join(items))
+
+    def __eq__(self, other):
+        if isinstance(self, SimpleNamespace) and isinstance(other, SimpleNamespace):
+          return self.__dict__ == other.__dict__
+        return NotImplemented
+</pre>
+<p>SimpleNamespace 可被用于替代 class NS: pass。 但是，对于结构化记录类型则应改用 namedtuple()。</p>
+<p>在 3.9 版更改: repr 中的属性顺序由字母顺序改为插入顺序 (类似 dict)。</p>
+</div>
+<div class="rst-function section" id="types.DynamicClassAttribute(fget=None, fset=None, fdel=None, doc=None)">
+<strong>types.DynamicClassAttribute(fget=None, fset=None, fdel=None, doc=None)</strong><p></p>
+<p>在类上访问 __getattr__ 的路由属性。</p>
+<p>这是一个描述器，用于定义通过实例与通过类访问时具有不同行为的属性。 当实例访问时保持正常行为，但当类访问属性时将被路由至类的 __getattr__ 方法；这是通过引发 AttributeError 来完成的。</p>
+<p>这允许有在实例上激活的特性属性，同时又有在类上的同名虚拟属性 (一个例子请参见 enum.Enum)。</p>
+</div>
 </div>
 <div class="section" id="section-4">
 <h2>协程工具函数</h2>
+<div class="rst-function section" id="types.coroutine(gen_func)">
+<strong>types.coroutine(gen_func)</strong><p></p>
+<p>This function transforms a generator function into a coroutine function which returns a generator-based coroutine.
+The generator-based coroutine is still a generator iterator,
+but is also considered to be a coroutine object and is awaitable.
+However, it may not necessarily implement the __await__() method.</p>
+<p>如果 gen_func 是一个生成器函数，它将被原地修改为异步生成器函数。</p>
+<p>如果 gen_func 不是一个生成器函数，则它会被包装。 如果它返回一个 collections.abc.Generator 的实例，该实例将被包装在一个 awaitable 代理对象中。 所有其他对象类型将被原样返回。</p>
+<p>3.5 新版功能.</p>
+</div>
 </div>
 
 								</article>
@@ -304,21 +383,69 @@ True
    <a class="" href="#section-1">
     动态类型创建
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#types.new_class(name, bases=(), kwds=None, exec_body=None)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#types.prepare_class(name, bases=(), kwds=None)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#types.resolve_bases(bases)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-2">
     标准解释器类型
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#class types.CodeType(**kwargs)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#replace(**kwargs)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#class types.TracebackType(tb_next, tb_frame, tb_lasti, tb_lineno)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#key in proxy">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-3">
     附加工具类/函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#class types.SimpleNamespace">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#types.DynamicClassAttribute(fget=None, fset=None, fdel=None, doc=None)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-4">
     协程工具函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#types.coroutine(gen_func)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -345,27 +472,27 @@ True
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -123,6 +122,20 @@
 									</div>
 									<p>官网: <a class="reference external" href="https://docs.python.org/zh-cn/3/library/html.html">html --- 超文本标记语言支持</a></p>
 <p>该模块定义了操作HTML的工具。</p>
+<div class="rst-function section" id="html.escape(s, quote=True)">
+<strong>html.escape(s, quote=True)</strong><p></p>
+<p>将字符串 s 中的字符``&amp;`` 、 &lt; 和 &gt; 转换为安全的HTML序列。
+如果需要在 HTML 中显示可能包含此类字符的文本，请使用此选项。
+如果可选的标志 quote 为真值，则字符 (&quot;) 和 (') 也被转换；
+这有助于包含在由引号分隔的 HTML 属性中，如 &lt;a href=&quot;...&quot;&gt;。</p>
+<p>3.2 新版功能.</p>
+</div>
+<div class="rst-function section" id="html.unescape(s)">
+<strong>html.unescape(s)</strong><p></p>
+<p>将字符串 s 中的所有命名和数字字符引用 (例如 &amp;gt;, &amp;#62;, &amp;#x3e;) 转换为相应的Unicode字符。
+此函数使用HTML 5标准为有效和无效字符引用定义的规则，以及 HTML 5 命名字符引用列表。</p>
+<p>3.4 新版功能.</p>
+</div>
 <p>html 包中的子模块是：</p>
 <p>html.parser —— 具有宽松解析模式的HTML / XHTML解析器
 html.entities -- HTML 实体定义</p>
@@ -131,6 +144,15 @@ html.entities -- HTML 实体定义</p>
 <p>官网: <a class="reference external" href="https://docs.python.org/zh-cn/3/library/html.parser.html#module-html.parser">https://docs.python.org/zh-cn/3/library/html.parser.html#module-html.parser</a></p>
 <p>简单的 HTML 和 XHTML 解析器</p>
 <p>这个模块定义了一个 HTMLParser 类，为 HTML（超文本标记语言）和 XHTML 文本文件解析提供基础。</p>
+<div class="rst-function section" id="class html.parser.HTMLParser(*, convert_charrefs=True)">
+<strong>class html.parser.HTMLParser(*, convert_charrefs=True)</strong><p></p>
+<p>创建一个能解析无效标记的解析器实例。</p>
+<p>如果 convert_charrefs 为 True (默认值)，则所有字符引用( script/style 元素中的除外)都会自动转换为相应的 Unicode 字符。</p>
+<p>一个 HTMLParser 类的实例用来接受 HTML 数据，并在标记开始、标记结束、文本、注释和其他元素标记出现的时候调用对应的方法。要实现具体的行为，请使用 HTMLParser 的子类并重载其方法。</p>
+<p>这个解析器不检查结束标记是否与开始标记匹配，也不会因外层元素完毕而隐式关闭了的元素引发结束标记处理。</p>
+<p>在 3.4 版更改: convert_charrefs 关键字参数被添加。</p>
+<p>在 3.5 版更改: convert_charrefs 参数的默认值现在为 True。</p>
+</div>
 </div>
 <div class="section" id="html-entities">
 <h2>html.entities</h2>
@@ -174,9 +196,23 @@ html.entities -- HTML 实体定义</p>
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
+   <a class="" href="#html.escape(s, quote=True)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#html.unescape(s)">
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#html-parser">
     html.parser
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#class html.parser.HTMLParser(*, convert_charrefs=True)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#html-entities">
@@ -208,27 +244,27 @@ html.entities -- HTML 实体定义</p>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

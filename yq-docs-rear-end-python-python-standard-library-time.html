@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -274,6 +273,18 @@ struct_time元组共有9个元素，返回 struct_time 的函数主要有gmtime(
 <h2>提供的函数</h2>
 <div class="section" id="time-mktime">
 <h3>time.mktime</h3>
+<div class="rst-function section" id="time.mktime(t)">
+<strong>time.mktime(t)</strong><p></p>
+<p>返回用秒数来表示时间的浮点数</p>
+<dl class="docutils">
+<dt>t:</dt>
+<dd>结构化的时间或者完整的9位元组元素</dd>
+</dl>
+<p>将一个struct_time（元组形式的时间）转化为时间戳。</p>
+<p>time mktime() 函数执行与gmtime(), localtime()相反的操作，
+它接收struct_time对象作为参数，返回用秒数来表示时间的浮点数。</p>
+<p>如果输入的值不是一个合法的时间，将触发 OverflowError 或 ValueError。</p>
+</div>
 <p>实例:</p>
 <pre class="literal-block">
 #!/usr/bin/python
@@ -292,9 +303,20 @@ asctime(localtime(secs)): Tue Feb 17 17:03:38 2009
 </div>
 <div class="section" id="time-time">
 <h3>time.time</h3>
+<div class="rst-function section" id="time.time()">
+<strong>time.time()</strong><p></p>
+<p>返回当前时间的时间戳（1970年开始的秒数）</p>
+<p>时间戳（timestamp）的方式：
+通常来说，时间戳表示的是从 <strong>1970年1月1日00:00:00</strong> 开始按秒计算的偏移量。
+我们运行“type(time.time())”，返回的是float类型。返回时间戳方式的函数主要有time()，clock()等。</p>
+</div>
 </div>
 <div class="section" id="time-localtime">
 <h3>time.localtime</h3>
+<div class="rst-function section" id="time.localtime([secs])">
+<strong>time.localtime([secs])</strong><p></p>
+<p>将一个时间戳转换为当前时区的struct_time。secs参数未提供，则以当前时间为准。</p>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; time.localtime()
@@ -305,6 +327,10 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=14, tm_min=6, tm_sec
 </div>
 <div class="section" id="time-gmtime">
 <h3>time.gmtime</h3>
+<div class="rst-function section" id="time.gmtime([secs])">
+<strong>time.gmtime([secs])</strong><p></p>
+<p>和 localtime() 方法类似，gmtime() 方法是将一个时间戳转换为UTC时区（0时区）的struct_time。</p>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 &gt;&gt;&gt;time.gmtime()
@@ -313,12 +339,29 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 </div>
 <div class="section" id="time-sleep">
 <h3>time.sleep</h3>
+<div class="rst-function section" id="time.sleep(secs)">
+<strong>time.sleep(secs)</strong><p></p>
+<p>线程推迟指定的时间运行。单位为秒。</p>
+</div>
 </div>
 <div class="section" id="time-clock">
 <h3>time.clock</h3>
+<div class="rst-function section" id="time.clock()">
+<strong>time.clock()</strong><p></p>
+<p>这个需要注意，在不同的系统上含义不同。</p>
+<p>在UNIX系统上，它返回的是“进程时间”，它是用秒表示的浮点数（时间戳）。</p>
+<p>而在WINDOWS中，第一次调用，返回的是进程运行的实际时间。
+而第二次之后的调用是自第一次调用以后到现在的运行时间。
+（实际上是以WIN32上 QueryPerformanceCounter() 为基础，它比毫秒表示更为精确）</p>
+</div>
 </div>
 <div class="section" id="time-asctime">
 <h3>time.asctime</h3>
+<div class="rst-function section" id="time.asctime([t])">
+<strong>time.asctime([t])</strong><p></p>
+<p>把一个表示时间的元组或者struct_time表示为这种形式： <strong>'Sun Jun 20 23:21:05 1993'</strong> .</p>
+<p>如果没有参数，将会将time.localtime()作为参数传入。</p>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; time.asctime()
@@ -327,6 +370,12 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 </div>
 <div class="section" id="time-ctime">
 <h3>time.ctime</h3>
+<div class="rst-function section" id="time.ctime([secs])">
+<strong>time.ctime([secs])</strong><p></p>
+<p>把一个时间戳（按秒计算的浮点数）转化为time.asctime()的形式。</p>
+<p>如果参数未给或者为None的时候，将会默认time.time()为参数。
+它的作用相当于time.asctime(time.localtime(secs))。</p>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; time.ctime()
@@ -339,6 +388,116 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 </div>
 <div class="section" id="time-strftime">
 <h3>time.strftime</h3>
+<div class="rst-function section" id="time.strftime(format[, t])">
+<strong>time.strftime(format[, t])</strong><p></p>
+<p>把一个代表时间的元组或者struct_time（如由time.localtime()和time.gmtime()返回）转化为格式化的时间字符串。
+如果t未指定，将传入time.localtime()。
+如果元组中任何一个元素越界，ValueError的错误将会被抛出。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="84%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">格式</th>
+<th class="head">含义</th>
+<th class="head">备注</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>%a</td>
+<td>本地（locale）简化星期名称</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%A</td>
+<td>本地完整星期名称</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%b</td>
+<td>本地简化月份名称</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%B</td>
+<td>本地完整月份名称</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%c</td>
+<td>本地相应的日期和时间表示</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%d</td>
+<td>一个月中的第几天（01 - 31）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%H</td>
+<td>一天中的第几个小时（24小时制，00 - 23）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%I</td>
+<td>第几个小时（12小时制，01 - 12）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%j</td>
+<td>一年中的第几天（001 - 366）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%m</td>
+<td>月份（01 - 12）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%M</td>
+<td>分钟数（00 - 59）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%p</td>
+<td>本地am或者pm的相应符</td>
+<td>一</td>
+</tr>
+<tr><td>%S</td>
+<td>秒（01 - 61）</td>
+<td>二</td>
+</tr>
+<tr><td>%U</td>
+<td>一年中的星期数。（00 - 53星期天是一个星期的开始。）
+第一个星期天之前的所有天数都放在第0周。</td>
+<td>三</td>
+</tr>
+<tr><td>%w</td>
+<td>一个星期中的第几天（0 - 6，0是星期天）</td>
+<td>三</td>
+</tr>
+<tr><td>%W</td>
+<td>和%U基本相同，不同的是%W以星期一为一个星期的开始。</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%x</td>
+<td>本地相应日期</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%X</td>
+<td>本地相应时间</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%y</td>
+<td>去掉世纪的年份（00 - 99）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%Y</td>
+<td>完整的年份</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%Z</td>
+<td>时区的名字（如果不存在为空字符）</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>%%</td>
+<td>‘%’字符</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><strong>备注</strong>：</p>
 <ul class="simple">
 <li>“%p”只有与“%I”配合使用才有效果。</li>
@@ -353,6 +512,15 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 </div>
 <div class="section" id="time-strptime">
 <h3>time.strptime</h3>
+<div class="rst-function section" id="time.strptime(string[, format])">
+<strong>time.strptime(string[, format])</strong><p></p>
+<p>把一个格式化时间字符串转化为struct_time。实际上它和strftime()是逆操作:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; time.strptime('2011-05-05 16:37:06', '%Y-%m-%d %X')
+time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=16, tm_min=37, tm_sec=6, tm_wday=3, tm_yday=125, tm_isdst=-1)
+</pre>
+<p>在这个函数中，format默认为: <strong>&quot;%a %b %d %H:%M:%S %Y&quot;</strong> .</p>
+</div>
 </div>
 </div>
 <div class="section" id="section-4">
@@ -401,51 +569,111 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
      <a class="" href="#time-mktime">
       time.mktime
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.mktime(t)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-time">
       time.time
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.time()">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-localtime">
       time.localtime
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.localtime([secs])">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-gmtime">
       time.gmtime
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.gmtime([secs])">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-sleep">
       time.sleep
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.sleep(secs)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-clock">
       time.clock
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.clock()">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-asctime">
       time.asctime
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.asctime([t])">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-ctime">
       time.ctime
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.ctime([secs])">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-strftime">
       time.strftime
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.strftime(format[, t])">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#time-strptime">
       time.strptime
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#time.strptime(string[, format])">
+       </a>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -479,27 +707,27 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

@@ -540,4 +540,31 @@ h1, h2, h3, h4, h5, h6{
 	font-size: 12px;
 }
 
+/* 新增的 function 指令 */
+.rst-function.section{
+	margin: 5px 0;
+}
+	.rst-function.section strong{
+		background-color: #273f47;
+		border-radius: 5px;
+		padding: 0 5px;
+	}
+	.rst-function.section strong::before{
+		font-family: "Font Awesome 6 Free Web";
+		content: "\e184";
+		margin-right: 0.5em;
+		font-size: 12px;
+		color: #4f8271;
+	}
+
+	.rst-function.section > *:not(:first-child){
+		margin-left: 1em;
+	}
+
+/* 双 反引号 加重显示原生 */
+.docutils.literal{
+	padding: 0 5px;
+	border-radius: 5px;
+	font-weight: 400;
+}
 

@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -122,6 +121,40 @@
 
 									</div>
 									<p>python open() 函数用于打开一个文件，创建一个 file 对象，相关的方法才可以调用它进行读写。</p>
+<div class="rst-function section" id="open(name[, mode[, buffering]])">
+<strong>open(name[, mode[, buffering]])</strong><p></p>
+<dl class="docutils">
+<dt>name:</dt>
+<dd>一个包含了你要访问的文件名称的字符串值。</dd>
+<dt>mode:</dt>
+<dd>mode 决定了打开文件的模式：只读，写入，追加等。所有可取值见如下的完全列表。这个参数是非强制的，默认文件访问模式为只读(r)。</dd>
+<dt>buffering:</dt>
+<dd>如果 buffering 的值被设为 0，就不会有寄存。如果 buffering 的值取 1，访问文件时会寄存行。
+如果将 buffering 的值设为大于 1 的整数，表明了这就是的寄存区的缓冲大小。如果取负值，寄存区的缓冲大小则为系统默认。</dd>
+<dt>newline: str = None</dt>
+<dd><p class="first">指定换行符转换模式, 只对文本文件有效.</p>
+<p>默认值为None。该参数在文本模式下使用，可以控制读取或写入文本文件时处理换行符的方式。</p>
+<p>具体而言，当newline参数为None时，将根据操作系统来自动处理换行符。
+在Windows操作系统上，文本文件的换行符通常是rn，而在Unix/Linux操作系统上，则通常是n。
+当newline参数为None时，在Windows上读取文件时，rn会被自动转换为n，在Unix/Linux上读取文件时，n则不做任何转换。</p>
+<p>另一方面，当newline参数设置为其他字符串值（例如&quot;&quot;或&quot;n&quot;）时，它将指定换行符的显式表示，并且不进行任何自动转换。
+例如，如果您想要强制使用Unix风格的换行符，则可以将newline参数设置为&quot;n&quot;，这样无论在哪个操作系统下打开文件，都将始终使用n作为换行符。</p>
+<p>有以下几种可选值：</p>
+<ul class="simple">
+<li>None：表示使用系统默认的换行符。在Windows上是rn，在Unix/Linux/macOS上是n。</li>
+<li>&quot;&quot;（空字符串）：表示不将任何字符解释为换行符。</li>
+<li>&quot;n&quot;：表示只将n视为有效换行符。这相当于Unix/Linux/macOS上的默认行为。</li>
+<li>&quot;r&quot;：表示只将r视为有效换行符。这是非常罕见的情况。</li>
+<li>&quot;rn&quot;：表示将rn视为有效换行符。这相当于Windows上的默认行为。</li>
+</ul>
+<p>请注意，在新版本的Python中，newline参数也可以设置为其他自定义字符串，但这些字符串必须要能够被正确地解释为换行符。</p>
+<p class="last">当打开一个文本文件时，如果newline参数不是None，那么读取和写入操作将会根据指定的换行符进行处理。
+例如，如果newline参数设置为&quot;n&quot;，
+则在读取文件时，所有rn序列都将被视为单个换行符n，
+而在写入文件时，所有n都将被转换为rn序列。</p>
+</dd>
+</dl>
+</div>
 <p>不同模式打开文件的完全列表：</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -195,6 +228,45 @@
 </table>
 <div class="section" id="file">
 <h2>file 对象方法</h2>
+<div class="rst-function section" id="file.read([size])">
+<strong>file.read([size])</strong><p></p>
+<p>size 未指定则返回整个文件，如果文件大小 &gt;2 倍内存则有问题，f.read()读到文件尾时返回&quot;&quot;(空字串)。</p>
+</div>
+<div class="rst-function section" id="file.readline()">
+<strong>file.readline()</strong><p></p>
+<p>返回一行。</p>
+</div>
+<div class="rst-function section" id="file.readlines([size])">
+<strong>file.readlines([size])</strong><p></p>
+<p>返回包含size行的列表, size 未指定则返回全部行。</p>
+</div>
+<div class="rst-function section" id="for line in f: print line">
+<strong>for line in f: print line</strong><p></p>
+<p>通过迭代器访问。</p>
+</div>
+<div class="rst-function section" id="f.write(&quot;hello\n&quot;)">
+<strong>f.write(&quot;hello\n&quot;)</strong><p></p>
+<p>如果要写入字符串以外的数据,先将他转换为字符串。</p>
+</div>
+<div class="rst-function section" id="f.tell()">
+<strong>f.tell()</strong><p></p>
+<p>返回一个整数,表示当前文件指针的位置(就是到文件头的字节数)。</p>
+</div>
+<div class="rst-function section" id="f.seek(偏移量,[起始位置])：">
+<strong>f.seek(偏移量,[起始位置])：</strong><p></p>
+<p>用来移动文件指针</p>
+<p>偏移量: 单位为字节，可正可负</p>
+<p>起始位置: 0 - 文件头, 默认值; 1 - 当前位置; 2 - 文件尾</p>
+</div>
+<div class="rst-function section" id="f.close()">
+<strong>f.close()</strong><p></p>
+<p>关闭文件</p>
+</div>
+<div class="rst-function section" id="f.readinto(buffer)">
+<strong>f.readinto(buffer)</strong><p></p>
+<p>将文件读取到预先分配的缓冲中</p>
+<p>返回值为读取的字节数</p>
+</div>
 </div>
 <div class="section" id="section-1">
 <h2>实例</h2>
@@ -232,9 +304,51 @@ RUNOOB2
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
+   <a class="" href="#open(name[, mode[, buffering]])">
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#file">
     file 对象方法
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#file.read([size])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#file.readline()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#file.readlines([size])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#for line in f: print line">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href='#f.write("hello\n")'>
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#f.tell()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#f.seek(偏移量,[起始位置])：">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#f.close()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#f.readinto(buffer)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-1">
@@ -266,27 +380,27 @@ RUNOOB2
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

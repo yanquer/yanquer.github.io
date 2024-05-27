@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -134,13 +133,63 @@
 </div>
 <div class="section" id="section-1">
 <h2>功能/状态</h2>
+<div class="rst-function section" id="random.seed(a=None, version=2)">
+<strong>random.seed(a=None, version=2)</strong><p></p>
+<p>初始化随机数生成器。</p>
+<p>如果 a 被省略或为 None ，则使用当前系统时间。
+如果操作系统提供随机源，则使用它们而不是系统时间（有关可用性的详细信息，请参阅 os.urandom() 函数）。</p>
+<p>如果 a 是 int 类型，则直接使用。</p>
+<p>对于版本2（默认的），str 、 bytes 或 bytearray 对象转换为 int 并使用它的所有位。</p>
+<p>对于版本1（用于从旧版本的Python再现随机序列），用于 str 和 bytes 的算法生成更窄的种子范围。</p>
+<p>在 3.2 版更改: 已移至版本2方案，该方案使用字符串种子中的所有位。</p>
+<p>在 3.11 版更改: The seed must be one of the following types: NoneType, int, float, str, bytes, or bytearray.</p>
+</div>
+<div class="rst-function section" id="random.getstate()">
+<strong>random.getstate()</strong><p></p>
+<p>返回捕获生成器当前内部状态的对象。 这个对象可以传递给 setstate() 来恢复状态。</p>
+</div>
+<div class="rst-function section" id="random.setstate(state)">
+<strong>random.setstate(state)</strong><p></p>
+<p>state 应该是从之前调用 getstate() 获得的，并且 setstate() 将生成器的内部状态恢复到 getstate() 被调用时的状态。</p>
+</div>
 </div>
 <div class="section" id="section-2">
 <h2>用于字节数据的函数</h2>
+<div class="rst-function section" id="random.randbytes(n)">
+<strong>random.randbytes(n)</strong><p></p>
+<p>生成 n 个随机字节。</p>
+<p>此方法不可用于生成安全凭据。 那应当使用 secrets.token_bytes()。</p>
+<p>3.9 新版功能.</p>
+</div>
 </div>
 <div class="section" id="section-3">
 <h2>整数用函数</h2>
+<div class="rst-function section" id="random.randrange(stop)">
+<strong>random.randrange(stop)</strong><p></p>
+<p>待补充</p>
+</div>
+<div class="rst-function section" id="random.randrange(start, stop[, step])">
+<strong>random.randrange(start, stop[, step])</strong><p></p>
+<p>从 range(start, stop, step) 返回一个随机选择的元素。
+这相当于 choice(range(start, stop, step)) ，但实际上并没有构建一个 range 对象。</p>
+<p>位置参数模式匹配 range() 。不应使用关键字参数，因为该函数可能以意外的方式使用它们。</p>
+<p>在 3.2 版更改: randrange() 在生成均匀分布的值方面更为复杂。
+以前它使用了像``int(random()*n)``这样的形式，它可以产生稍微不均匀的分布。</p>
+<p>3.10 版后已移除: 非整数类型到相等整数的自动转换已被弃用。
+目前 randrange(10.0) 会无损地转换为 randrange(10)。 在未来，这将引发 TypeError。</p>
+<p>3.10 版后已移除: 针对非整数值例如 randrange(10.5) 或 randrange('10') 引发的异常将从 ValueError 修改为 TypeError。</p>
+</div>
+<div class="rst-function section" id="random.randint(a, b)">
+<strong>random.randint(a, b)</strong><p></p>
 <p>返回随机整数 N 满足 a &lt;= N &lt;= b。相当于 randrange(a, b+1)。</p>
+</div>
+<div class="rst-function section" id="random.getrandbits(k)">
+<strong>random.getrandbits(k)</strong><p></p>
+<p>返回具有 k 个随机比特位的非负 Python 整数。
+此方法随 MersenneTwister 生成器一起提供，其他一些生成器也可能将其作为 API 的可选部分提供。
+在可能的情况下，getrandbits() 会启用 randrange() 来处理任意大的区间。</p>
+<p>在 3.9 版更改: 此方法现在接受零作为 k 的值。</p>
+</div>
 </div>
 
 								</article>
@@ -168,16 +217,54 @@
    <a class="" href="#section-1">
     功能/状态
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#random.seed(a=None, version=2)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#random.getstate()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#random.setstate(state)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-2">
     用于字节数据的函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#random.randbytes(n)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-3">
     整数用函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#random.randrange(stop)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#random.randrange(start, stop[, step])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#random.randint(a, b)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#random.getrandbits(k)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -204,27 +291,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

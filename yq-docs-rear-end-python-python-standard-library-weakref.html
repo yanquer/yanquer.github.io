@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -129,6 +128,25 @@
 但是，在实际销毁对象之前，即使没有强引用，弱引用也一直能返回该对象。</p>
 <p>弱引用的主要用途是实现保存大对象的高速缓存或映射，但又不希望大对象仅仅因为它出现在高速缓存或映射中而保持存活。</p>
 <p>最常用:</p>
+<div class="rst-function section" id="class weakref.ref(object[, callback])">
+<strong>class weakref.ref(object[, callback])</strong><p></p>
+<p>返回对 对象 的弱引用。如果原始对象仍然存活，则可以通过调用引用对象来检索原始对象；
+如果引用的原始对象不再存在，则调用引用对象将得到 None 。
+如果提供了 回调 而且值不是 None ，并且返回的弱引用对象仍然存活，则在对象即将终结时将调用回调;
+弱引用对象将作为回调的唯一参数传递；指示物将不再可用。</p>
+<p>许多弱引用也允许针对相同对象来构建。 为每个弱引用注册的回调将按从最近注册的回调到最早注册的回调的顺序被调用。</p>
+<p>回调所引发的异常将记录于标准错误输出，但无法被传播；它们会按与对象的 __del__() 方法所引发的异常相同的方式被处理。</p>
+<p>如果 object 可哈希，则弱引用也为 hashable。
+即使在 object 被删除之后它们仍将保持其哈希值。
+如果 hash() 在 object 被删除之后才首次被调用，则该调用将引发 TypeError。</p>
+<p>弱引用支持相等检测，但不支持排序比较。
+如果被引用对象仍然存在，两个引用具有与它们的被引用对象一致的相等关系（无论 callback 是否相同）。
+如果删除了任一被引用对象，则仅在两个引用对象为同一对象时两者才相等。</p>
+<p>这是一个可子类化的类型而非一个工厂函数。</p>
+<p>__callback__
+这个只读属性会返回当前关联到弱引用的回调。 如果回调不存在或弱引用的被引用对象已不存在，则此属性的值为 None。
+在 3.4 版更改: 添加了 __callback__ 属性。</p>
+</div>
 
 								</article>
 						</div>
@@ -143,6 +161,26 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#class weakref.ref(object[, callback])">
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -160,27 +198,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

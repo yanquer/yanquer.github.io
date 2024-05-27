@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -123,9 +122,35 @@
 									</div>
 									<div class="section" id="call">
 <h2>call</h2>
+<div class="rst-function section" id="subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)">
+<strong>subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)</strong><p></p>
+<p>父进程直接创建子进程执行程序(执行命令), 然后等待子进程完成</p>
+<dl class="docutils">
+<dt>返回值:</dt>
+<dd>返回子进程的 <strong>退出状态</strong> 即 child.returncode 属性 (返回状态码, 命令正常执行返回0, 报错则返回1))</dd>
+</dl>
+<div class="highlight"><pre><span></span>ret1=subprocess.call(&quot;ifconfig&quot;)
+ret2=subprocess.call(&quot;ipconfig&quot;)    # python3.5不是这样, 依然会抛出异常导致无法对ret2赋值
+print(ret1)     # 0
+print(ret2)     # 1
+
+ret = subprocess.call([&quot;ls&quot;, &quot;-l&quot;], shell=False)    # shell为False的时候命令必须分开写
+ret = subprocess.call(&quot;ls -l&quot;, shell=True)
+</pre></div>
+</div>
 </div>
 <div class="section" id="check-call">
 <h2>check_call</h2>
+<div class="rst-function section" id="subprocess.check_call(args, *, stdin=None, stdout=None, stderr=None, shell=False)">
+<strong>subprocess.check_call(args, *, stdin=None, stdout=None, stderr=None, shell=False)</strong><p></p>
+<p>父进程直接创建子进程执行程序, 然后等待子进程完成, 具体可以使用的参数, 参考上文 Popen 类的介绍。</p>
+<dl class="docutils">
+<dt>返回值:</dt>
+<dd>无论子进程是否成功, 该函数都返回 0.
+但是如果子进程的退出状态不是0, check_call() 抛出异常 CalledProcessError,
+异常对象中包含了 child.returncode 对应的返回码。</dd>
+</dl>
+</div>
 <p>例, check_call()正常执行命令:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; import subprocess
@@ -155,6 +180,20 @@ subprocess.CalledProcessError: Command '['ping', '-c', '2', 'www.xxxxxdu.com']' 
 </div>
 <div class="section" id="check-output">
 <h2>check_output</h2>
+<div class="rst-function section" id="subprocess.check_output(args, *, stdin=None, stderr=None, shell=False, universal_newlines=False)">
+<strong>subprocess.check_output(args, *, stdin=None, stderr=None, shell=False, universal_newlines=False)</strong><p></p>
+<p>执行命令, 如果执行成功则返回执行结果(以 <strong>字符串</strong> 的形式返回子进程的输出), 否则抛异常:</p>
+<pre class="literal-block">
+subprocess.check_output([&quot;echo&quot;, &quot;Hello World!&quot;])
+subprocess.check_output(&quot;exit 1&quot;, shell=True)
+</pre>
+<dl class="docutils">
+<dt>返回值:</dt>
+<dd>字符串形式的子进程的输出结果,
+但是如果子进程的 <strong>退出状态</strong> 不是0, 那么抛出异常 CalledProcessError, 异常对象中包含了 child.returncode 对应的返回码。</dd>
+</dl>
+<p>注意: check_output() 的函数签名中没有参数 <tt class="docutils literal">stdout</tt> , 调用该方法时, 子进程的输出默认就返回给父进程。</p>
+</div>
 <p>例, check_output() 调用的子进程正常与错误退出:</p>
 <pre class="literal-block">
 &gt;&gt;&gt; subprocess.check_output([&quot;echo&quot;, &quot;Hello World!&quot;])
@@ -179,6 +218,84 @@ subprocess.CalledProcessError: Command 'exit 1' returned non-zero exit status 1.
 </div>
 <div class="section" id="popen">
 <h2>Popen</h2>
+<div class="rst-function section" id="subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)">
+<strong>subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)</strong><p></p>
+<p>执行复杂的系统命令. <strong>创建并返回一个子进程</strong> , 并在这个进程中执行指定的程序。</p>
+<p>实例化 Popen 可以通过许多参数详细定制子进程的环境, 但是只有一个参数是必须的, 即位置参数 <strong>args</strong></p>
+<dl class="docutils">
+<dt>args</dt>
+<dd><p class="first">shell命令, 可以是字符串或者序列类型（如：list, 元组）</p>
+<p>要执行的命令或可执行文件的路径。</p>
+<p>一个由字符串组成的序列（通常是列表）,
+列表的第一个元素是可执行程序的路径,
+剩下的是传给这个程序的参数.</p>
+<p class="last">如果没有要传给这个程序的参数, args 参数可以仅仅是一个字符串。</p>
+</dd>
+<dt>bufsize: int = 0</dt>
+<dd><p class="first">指定缓冲</p>
+<p>控制 <tt class="docutils literal">stdin</tt> , <tt class="docutils literal">stdout</tt> , <tt class="docutils literal">stderr</tt> 等参数指定的文件的缓冲, 和打开文件的 内建函数 <tt class="docutils literal">open()</tt> 中的参数 <tt class="docutils literal">bufsize</tt> 含义相同。</p>
+<p class="last">0 无缓冲,1 行缓冲,其他正数表示近似的缓冲区字节数, 负值表示使用系统默认值. 默认是0.</p>
+</dd>
+<dt>executable=None</dt>
+<dd>如果这个参数不是 None, 将替代参数 args 作为可执行程序</dd>
+<dt>stdin=None</dt>
+<dd>表示指定子程序的标准输入</dd>
+<dt>stdout=None</dt>
+<dd>表示指定子程序的标准输出</dd>
+<dt>stderr=None</dt>
+<dd><p class="first">表示指定子程序的标准错误</p>
+<p>对于 <tt class="docutils literal">stdin, stdout</tt> 和 <tt class="docutils literal">stderr</tt> 而言, 如果他们是 None（默认情况）, 那么子进程使用和父进程相同的标准流文件。</p>
+<p>父进程如果想要和子进程通过 communicate() 方法通信, 对应的参数必须是 subprocess.PIPE</p>
+<p class="last">当然 <tt class="docutils literal">stdin, stdout</tt> 和 <tt class="docutils literal">stderr</tt> 也可以是已经打开的 file 对象, 前提是以合理的方式打开, 比如 <tt class="docutils literal">stdin</tt> 对应的文件必须要可读等。</p>
+</dd>
+<dt>preexec_fn=None</dt>
+<dd><p class="first">只在Unix平台下有效, 用于指定一个可执行对象（callable object）, 它将在子进程运行之前被调用</p>
+<p class="last">默认是None, 否则必须是一个函数或者可调用对象, 在子进程中首先执行这个函数, 然后再去执行为子进程指定的程序或Shell。</p>
+</dd>
+<dt>close_sfs: bool = False</dt>
+<dd><p class="first">在windows平台下, 如果close_fds被设置为True,
+则新创建的子进程将不会继承父进程的输入、输出、错误管道.
+所以不能将close_fds设置为True同时重定向子进程的标准输入、输出与错误(stdin, stdout, stderr)。</p>
+<p class="last">布尔型变量, 为 True 时, 在子进程执行前强制关闭所有除 stdin, stdout和stderr外的文件</p>
+</dd>
+<dt>shell: bool = False</dt>
+<dd><p class="first">布尔型变量, 明确要求使用shell运行程序, 与参数 executable 一同指定子进程运行在什么 Shell 中</p>
+<p>如果executable=None 而 shell=True, 则使用 /bin/sh 来执行 args 指定的程序
+也就是说, Python首先起一个shell, 再用这个shell来解释指定运行的命令.
+注意这个时候有个特殊情况,
+如果参数args是字符串, 那么一般不会有啥问题,
+如果参数是列表, 那么列表会当错/bin/sh的参数传递, 有可能导致无法正常识别指令.
+比如:</p>
+<pre class="literal-block">
+subprocess.Popen(['tar', '-zxf', 'xxx.tar.gz'], shell=True)
+</pre>
+<p>实际触发的是:</p>
+<pre class="literal-block">
+/bin/sh -c tar -zxf xxx.tar.gz
+</pre>
+<p>会报错tar没有给选项(因为被当错了sh的参数), 所以这时候还是老老实实的shell=False吧.</p>
+<p class="last">注意 windows 下, 普通权限执行文件不需要设置此选项, 但是, 当执行文件需要申请权限时, 必须设置为 true, 才可以触发权限申请的框.</p>
+</dd>
+<dt>cwd=None</dt>
+<dd><p class="first">用于设置子进程的当前目录</p>
+<p class="last">代表路径的字符串, 指定子进程运行的工作目录, 要求这个目录必须存在；</p>
+</dd>
+<dt>env: dict = None</dt>
+<dd>用于指定子进程的环境变量。如果env = None, 子进程的环境变量将从父进程中继承。</dd>
+<dt>universal_newlines: bool = False</dt>
+<dd>不同系统的换行符不同, True 表示 <tt class="docutils literal">stdout</tt> 和 <tt class="docutils literal">stderr</tt>  使用 <tt class="docutils literal">\n</tt> 通用换行（universal newline）模式</dd>
+<dt>startupinfo=None</dt>
+<dd>只在windows下有效, 将被传递给底层的 <tt class="docutils literal">CreateProcess()</tt> 函数, 用于设置子进程的一些属性, 如：主窗口的外观, 进程的优先级等等</dd>
+<dt>createionflags: int = 0</dt>
+<dd>同上</dd>
+</dl>
+<p>同 Linux 中创建子进程类似, 父进程创建完子进程后, 并不会自动等待子进程执行,
+父进程在子进程之前推出将导致子进程成为孤儿进程, 孤儿进程统一由 init 进程接管, 负责其终止后的回收工作。</p>
+<p>如果父进程在子进程之后终止, 但子进程终止时父进程没有进行最后的回收工作,
+子进程残留的数据结构称为僵尸进程。大量僵尸进程将耗费系统资源,
+因此父进程及时等待和回收子进程是必要的, 除非能够确认自己比子进程先终止, 从而将回收工作过渡给 init 进程。</p>
+<p>这个等待和回收子进程的操作就是wait()函数</p>
+</div>
 <div class="sidebar">
 <p class="first sidebar-title">关于 <cite>shell: bool = False</cite> 参数</p>
 <p>有需求在linux下使用pkexec来申请权限, 如执行ls
@@ -300,6 +417,43 @@ None  —— 子进程尚未结束；
 </div>
 <div class="section" id="section-2">
 <h3>方法</h3>
+<div class="rst-function section" id="p.poll()">
+<strong>p.poll()</strong><p></p>
+<p>检查子进程  p 是否已经终止, 返回 p.returncode 属性 (参考下文 Popen 对象的属性)；</p>
+</div>
+<div class="rst-function section" id="p.wait()">
+<strong>p.wait()</strong><p></p>
+<p>等待子进程 p 终止, 返回 p.returncode 属性；</p>
+<p>注意: wait() 立即阻塞父进程, 直到子进程结束！</p>
+</div>
+<div class="rst-function section" id="p.communicate(input=None)">
+<strong>p.communicate(input=None)</strong><p></p>
+<p>和子进程 p 交流, 将参数 <tt class="docutils literal">input</tt> （字符串）中的数据发送到子进程的 stdin, 同时从子进程的 stdout 和 stderr 读取数据, 直到EOF。</p>
+<dl class="docutils">
+<dt>返回值:</dt>
+<dd>二元组 (stdoutdata, stderrdata)</dd>
+</dl>
+<p>分别表示从标准出和标准错误中读出的数据。</p>
+<p>父进程调用 p.communicate() 和子进程通信有以下限制:</p>
+<ul class="simple">
+<li>只能通过管道和子进程通信, 也就是说, 只有调用 Popen() 创建子进程的时候参数 stdin=subprocess.PIPE,
+才能通过 p.communicate(input) 向子进程的 stdin 发送数据；只有参数 stout 和 stderr 也都为 subprocess.PIPE , 才能通过p.communicate() 从子进程接收数据, 否则接收到的二元组中, 对应的位置是None。</li>
+<li>父进程从子进程读到的数据缓存在内存中, 因此commucate()不适合与子进程交换过大的数据。</li>
+</ul>
+<p>注意: communicate() 立即阻塞父进程, 直到子进程结束！</p>
+</div>
+<div class="rst-function section" id="p.send_signal(signal)">
+<strong>p.send_signal(signal)</strong><p></p>
+<p>向子进程发送信号 <tt class="docutils literal">signal</tt></p>
+</div>
+<div class="rst-function section" id="p.terminate()">
+<strong>p.terminate()</strong><p></p>
+<p>终止子进程 p , 等于向子进程发送 SIGTERM 信号；</p>
+</div>
+<div class="rst-function section" id="p.kill()">
+<strong>p.kill()</strong><p></p>
+<p>杀死子进程 p , 等于向子进程发送 SIGKILL 信号；</p>
+</div>
 </div>
 </div>
 <div class="section" id="subprocess-1">
@@ -324,6 +478,16 @@ print (out)
 </div>
 <div class="section" id="subprocess-2">
 <h2>subprocess模块定义的异常</h2>
+<div class="rst-function section" id="subprocess.CalledProcessError">
+<strong>subprocess.CalledProcessError</strong><p></p>
+<p>什么时候可能抛出该异常: 调用 check_call() 或 check_output() , 子进程的退出状态不为 0 时。</p>
+<p>该异常包含以下信息:</p>
+<ul class="simple">
+<li>returncode: 子进程的退出状态；</li>
+<li>cmd: 创建子进程时指定的命令；</li>
+<li>output: 如果是调用 check_output() 时抛出的该异常, 这里包含子进程的输出, 否则该属性为None。</li>
+</ul>
+</div>
 </div>
 <div class="section" id="section-3">
 <h2>总结</h2>
@@ -372,22 +536,44 @@ print (out)
    <a class="" href="#call">
     call
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#check-call">
     check_call
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#subprocess.check_call(args, *, stdin=None, stdout=None, stderr=None, shell=False)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#check-output">
     check_output
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#subprocess.check_output(args, *, stdin=None, stderr=None, shell=False, universal_newlines=False)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#popen">
     Popen
    </a>
    <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)">
+     </a>
+    </li>
     <li class="toc-h1">
      <a class="" href="#section-1">
       属性
@@ -397,6 +583,32 @@ print (out)
      <a class="" href="#section-2">
       方法
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#p.poll()">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#p.wait()">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#p.communicate(input=None)">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#p.send_signal(signal)">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#p.terminate()">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#p.kill()">
+       </a>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -409,6 +621,12 @@ print (out)
    <a class="" href="#subprocess-2">
     subprocess模块定义的异常
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#subprocess.CalledProcessError">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-3">
@@ -440,27 +658,27 @@ print (out)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

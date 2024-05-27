@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -135,9 +134,37 @@ import cv2
 opencv-python中每个像素三个值的顺序是(B、G、R)</p>
 <div class="section" id="imread">
 <h2>读取图像-imread</h2>
+<div class="rst-function section" id="cv2.imread(path_of_image, intflag)">
+<strong>cv2.imread(path_of_image, intflag)</strong><p></p>
+<p>读取图像</p>
+<dl class="docutils">
+<dt>path_of_image:</dt>
+<dd>图像路径</dd>
+<dt>intflag:</dt>
+<dd><p class="first">读取形式, 支持以下参数:</p>
+<ul class="last simple">
+<li>cv2.IMREAD_COLOR: 1, 加载彩色图像。任何图像的透明度都将被忽略。它是默认标志</li>
+<li>cv2.IMREAD_GRAYSCALE: 0, 以灰度模式加载图像</li>
+<li>cv2.IMREAD_UNCHANGED: -1, 保留读取图片原有的颜色通道</li>
+</ul>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="imshow">
 <h2>显示图像-imshow</h2>
+<div class="rst-function section" id="cv2.imshow(windows_name, image)">
+<strong>cv2.imshow(windows_name, image)</strong><p></p>
+<p>窗口显示图像</p>
+<dl class="docutils">
+<dt>windows_name: str</dt>
+<dd>窗口名称</dd>
+<dt>image:</dt>
+<dd><p class="first">图片对象, 即上面 <a class="reference internal" href="#imread">读取图像-imread</a> 读取的对象. 类型为numpy中的ndarray</p>
+<p class="last">支持使用 imutils.resize(image, size) 来调整大小</p>
+</dd>
+</dl>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 img = cv2.imread('img.png')
@@ -148,6 +175,16 @@ if cv2.waitKey(0) == 27:
 </div>
 <div class="section" id="imwrite">
 <h2>保存图像-imwrite</h2>
+<div class="rst-function section" id="cv2.imwrite(image_filename, image)">
+<strong>cv2.imwrite(image_filename, image)</strong><p></p>
+<p>将图片对象写入文件(保存)</p>
+<dl class="docutils">
+<dt>image_filename: str</dt>
+<dd>保存的图像名称</dd>
+<dt>image:</dt>
+<dd>图像对象，即上面 <a class="reference internal" href="#imread">读取图像-imread</a> 读取的对象. 类型是numpy中的ndarray类型</dd>
+</dl>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 cv2.imwrite('img_1.jpg', img)   # 将图像保存成jpg文件
@@ -161,9 +198,64 @@ cv2.imwrite('img_2.png', img)   # 将图像保存成png文件
 </div>
 <div class="section" id="destroyallwindows-destroywindow">
 <h2>窗口销毁-destroyAllWindows/destroyWindow</h2>
+<div class="rst-function section" id="cv2.destroyWindow(windows_name)">
+<strong>cv2.destroyWindow(windows_name)</strong><p></p>
+<p>销毁单个特定窗口</p>
+<dl class="docutils">
+<dt>windows_name: str</dt>
+<dd>销毁窗口名, 由上面 <a class="reference internal" href="#imshow">显示图像-imshow</a> 的第一个参数指定</dd>
+</dl>
+</div>
+<div class="rst-function section" id="cv2.destroyAllWindows()">
+<strong>cv2.destroyAllWindows()</strong><p></p>
+<p>销毁全部窗口，无参数</p>
+</div>
+<div class="rst-function section" id="cv2.waitKey(time_of_milliseconds)">
+<strong>cv2.waitKey(time_of_milliseconds)</strong><p></p>
+<p>与上两个函数一起使用, 等待一段时间销毁窗口</p>
+<dl class="docutils">
+<dt>time_of_milliseconds: int</dt>
+<dd><ul class="first last">
+<li><p class="first">大于0时, 表示等待多少毫秒销毁</p>
+</li>
+<li><p class="first">小于等于0时, 表示等待键盘敲击事件, 满足时销毁.
+如, 指定waitKey(0) == 27时当敲击键盘 Esc 时便销毁所有窗口:</p>
+<pre class="literal-block">
+if cv2.waitKey(0) == 27: cv2.destroyAllWindows()
+</pre>
+<p>当接收到键盘敲击A时，便销毁名称为'origin image'的图像窗口:</p>
+<pre class="literal-block">
+if cv2.waitKey(-1) == ord('A'): cv2.destroyWindow('origin image')
+</pre>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="cvtcolor">
 <h2>图像色彩空间变换-cvtColor</h2>
+<div class="rst-function section" id="cv2.cvtColor(input_image, flag)">
+<strong>cv2.cvtColor(input_image, flag)</strong><p></p>
+<p>图像色彩空间变换函数</p>
+<dl class="docutils">
+<dt>input_image:</dt>
+<dd>将要变换色彩的图像ndarray对象, 即上面 <a class="reference internal" href="#imread">读取图像-imread</a> 读取的对象</dd>
+<dt>flag:</dt>
+<dd><p class="first">图像色彩空间变换的类型，常用的两种:</p>
+<ul class="simple">
+<li>cv2.COLOR_BGR2GRAY: 表示将图像从BGR空间转化成灰度图，最常用</li>
+<li>cv2.COLOR_BGR2HSV: 表示将图像从RGB空间转换到HSV空间</li>
+</ul>
+<p>获取全部274种空间转换类型:</p>
+<pre class="last literal-block">
+import cv2
+flags = [i for i in dir(cv2) if i.startswith('COLOR_')]
+print(flags)
+</pre>
+</dd>
+</dl>
+</div>
 <p>图像处理时, 经常将彩色图像转化成灰度图像, 因为图像颜色会因为光照因素而产生不同变化(即变成不同颜色图片).
 而图像特征提取/识别过程，需要的是图像的梯度信息，也就是图像的本质内容，所以去除颜色对梯度干扰. 可以降低数据量, 增强处理效果.</p>
 </div>
@@ -189,18 +281,73 @@ cv2.imwrite('img_2.png', img)   # 将图像保存成png文件
 </dl>
 <div class="section" id="line">
 <h3>直线-line</h3>
+<div class="rst-function section" id="cv2.line(image, starting, ending, color, thickness, lineType)">
+<strong>cv2.line(image, starting, ending, color, thickness, lineType)</strong><p></p>
+<dl class="docutils">
+<dt>starting:</dt>
+<dd>线的起点像素坐标</dd>
+<dt>ending:</dt>
+<dd>线的终点像素坐标</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="rectangle">
 <h3>长方形-rectangle</h3>
+<div class="rst-function section" id="cv2.rectangle(image, top-left, bottom-right, color, thickness, lineType)">
+<strong>cv2.rectangle(image, top-left, bottom-right, color, thickness, lineType)</strong><p></p>
+<dl class="docutils">
+<dt>top-left:</dt>
+<dd>表示长方形的左上角像素坐标</dd>
+<dt>bottom-right:</dt>
+<dd>表示长方形的右下角像素坐标</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="circle">
 <h3>圆-circle</h3>
+<div class="rst-function section" id="cv2.circle(image, center, radius, color, thickness, lineType)">
+<strong>cv2.circle(image, center, radius, color, thickness, lineType)</strong><p></p>
+<dl class="docutils">
+<dt>center:</dt>
+<dd>表示圆的圆心像素坐标</dd>
+<dt>radius:</dt>
+<dd>表示圆的半径长度</dd>
+</dl>
+<p>圆绘制函数中当参数thickness = -1 时绘制的是实心圆，当thickness &gt;= 0 时绘制的是空心圆</p>
+</div>
 </div>
 <div class="section" id="ellipse">
 <h3>椭圆-ellipse</h3>
+<div class="rst-function section" id="cv2.circle(image, center, (major-axis-length, minor-axis-length), angle, startAngle, endAngle, color, thickness, lineType)">
+<strong>cv2.circle(image, center, (major-axis-length, minor-axis-length), angle, startAngle, endAngle, color, thickness, lineType)</strong><p></p>
+<dl class="docutils">
+<dt>center:</dt>
+<dd>表示椭圆中心像素坐标</dd>
+<dt>major-axis-length:</dt>
+<dd>表示椭圆的长轴长度</dd>
+<dt>minor-axis-length:</dt>
+<dd>表示椭圆的短轴长度</dd>
+<dt>angle:</dt>
+<dd>表示椭圆在逆时针方向旋转的角度</dd>
+<dt>startAngle:</dt>
+<dd>表示椭圆从主轴向顺时针方向测量的椭圆弧的起始角度</dd>
+<dt>endAngle:</dt>
+<dd>表示椭圆从主轴向顺时针方向测量的椭圆弧的终止时角度</dd>
+</dl>
+<p>当参数thickness = -1 时绘制的是实心椭圆，当thickness &gt;= 0 时绘制的是空心椭圆</p>
+</div>
 </div>
 <div class="section" id="polylines">
 <h3>多边形-polylines</h3>
+<div class="rst-function section" id="cv2.polylines(image, [point-set], flag, color, thickness, lineType)">
+<strong>cv2.polylines(image, [point-set], flag, color, thickness, lineType)</strong><p></p>
+<dl class="docutils">
+<dt>point-set:</dt>
+<dd>表示多边形点的集合，如果多边形有m个点，则便是一个m*1*2的数组，表示共m个点</dd>
+<dt>flag: bool</dt>
+<dd>当flag = True 时，则多边形是封闭的，当flag = False 时，则多边形只是从第一个到最后一个点连线组成的图像，没有封闭</dd>
+</dl>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
@@ -248,16 +395,34 @@ for i in range(gray_img.shape[0]):
    <a class="" href="#imread">
     读取图像-imread
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#cv2.imread(path_of_image, intflag)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#imshow">
     显示图像-imshow
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#cv2.imshow(windows_name, image)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#imwrite">
     保存图像-imwrite
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#cv2.imwrite(image_filename, image)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#puttext">
@@ -268,11 +433,31 @@ for i in range(gray_img.shape[0]):
    <a class="" href="#destroyallwindows-destroywindow">
     窗口销毁-destroyAllWindows/destroyWindow
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#cv2.destroyWindow(windows_name)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cv2.destroyAllWindows()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cv2.waitKey(time_of_milliseconds)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#cvtcolor">
     图像色彩空间变换-cvtColor
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#cv2.cvtColor(input_image, flag)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-1">
@@ -283,26 +468,56 @@ for i in range(gray_img.shape[0]):
      <a class="" href="#line">
       直线-line
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#cv2.line(image, starting, ending, color, thickness, lineType)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#rectangle">
       长方形-rectangle
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#cv2.rectangle(image, top-left, bottom-right, color, thickness, lineType)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#circle">
       圆-circle
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#cv2.circle(image, center, radius, color, thickness, lineType)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#ellipse">
       椭圆-ellipse
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#cv2.circle(image, center, (major-axis-length, minor-axis-length), angle, startAngle, endAngle, color, thickness, lineType)">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#polylines">
       多边形-polylines
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#cv2.polylines(image, [point-set], flag, color, thickness, lineType)">
+       </a>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -336,27 +551,27 @@ for i in range(gray_img.shape[0]):
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -131,6 +130,131 @@
 </div>
 <div class="section" id="section-2">
 <h2>函数</h2>
+<div class="rst-function section" id="os.ctermid()">
+<strong>os.ctermid()</strong><p></p>
+<p>返回与进程控制终端对应的文件名。</p>
+</div>
+<div class="rst-function section" id="os.get_terminal_size(fd=STDOUT_FILENO, /)">
+<strong>os.get_terminal_size(fd=STDOUT_FILENO, /)</strong><p></p>
+<p>返回终端窗口的尺寸，格式为 (columns, lines)，它是类型为 terminal_size 的元组。</p>
+<p>可选参数 fd （默认为 STDOUT_FILENO 或标准输出）指定应查询的文件描述符。</p>
+<p>如果文件描述符未连接到终端，则抛出 OSError 异常。</p>
+<p>shutil.get_terminal_size() 是供常规使用的高阶函数，os.get_terminal_size 是其底层的实现。</p>
+<p>可用性: Unix, Windows。</p>
+</div>
+<div class="rst-function section" id="os.walk(top, topdown=True, onerror=None, followlinks=False)">
+<strong>os.walk(top, topdown=True, onerror=None, followlinks=False)</strong><p></p>
+<p>生成目录树中的文件名，方式是按上-&gt;下或下-&gt;上顺序浏览目录树。
+对于以 top 为根的目录树中的每个目录（包括 top 本身），
+它都会生成一个三元组 (dirpath, dirnames, filenames)。</p>
+</div>
+<div class="rst-function section" id="os.path.getsize(path)">
+<strong>os.path.getsize(path)</strong><p></p>
+<p>获取指定路径 path 下的文件的大小，以字节为单位
+计算机中的单位换算:</p>
+<pre class="literal-block">
+字节→1024-K→1024-M→1024-G→1024-T…
+</pre>
+</div>
+<div class="rst-function section" id="os.popen(command[, mode[, bufsize]])">
+<strong>os.popen(command[, mode[, bufsize]])</strong><p></p>
+<p>用于从一个命令打开一个管道。
+在Unix，Windows中有效</p>
+<dl class="docutils">
+<dt>参数</dt>
+<dd><dl class="first last docutils">
+<dt>command</dt>
+<dd>使用的命令。</dd>
+<dt>mode</dt>
+<dd>模式权限可以是 ‘r’(默认) 或 ‘w’。</dd>
+<dt>bufsize</dt>
+<dd>指明了文件需要的缓冲大小：0意味着无缓冲；1意味着行缓冲；
+其它正值表示使用参数大小的缓冲（大概值，以字节为单位）。
+负的bufsize意味着使用系统的默认值，
+一般来说，对于tty设备，它是行缓冲；
+对于其它文件，它是全缓冲。如果没有改参数，使用系统的默认值。</dd>
+</dl>
+</dd>
+<dt>返回值</dt>
+<dd>返回一个文件描述符号为fd的打开的文件对象</dd>
+</dl>
+<p>这种调用方式是通过管道的方式来实现，函数返回一个file对象，
+里面的内容是脚本输出的内容（可简单理解为echo输出的内容），使用os.popen调用test.sh的情况:</p>
+<pre class="literal-block">
+&gt;&gt; import os
+&gt;&gt;&gt; os.popen(&quot;./test.sh&quot;)
+&lt;open file './test.sh', mode 'r' at 0x7f6cbbbee4b0&gt;
+&gt;&gt;&gt; f=os.popen(&quot;./test.sh&quot;)
+&gt;&gt;&gt; f
+&lt;open file './test.sh', mode 'r' at 0x7f6cbbbee540&gt;
+&gt;&gt;&gt; f.readlines()
+['hello python!\n', 'hello world!\n']
+&gt;&gt;&gt;
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>os.popen不会等cmd命令执行完毕就继续下面的代码(非阻塞),
+可以调用 readlines() 强行读阻塞.</p>
+<p class="last">python调用Shell脚本，有两种方法：os.system()和os.popen(),
+前者返回值是脚本的退出状态码，后者的返回值是脚本执行过程中的输出内容</p>
+</div>
+</div>
+<div class="rst-function section" id="os.system(command)">
+<strong>os.system(command)</strong><p></p>
+<p>该方法在调用完shell脚本后，返回一个16位的二进制数，
+低位为杀死所调用脚本的信号号码，高位为脚本的退出状态码，
+即脚本中“exit 1”的代码执行后，os.system函数返回值的高位数则是1，
+如果低位数是0的情况下，则函数的返回值是0x0100,换算为十进制得到256。</p>
+<p>要获得os.system的正确返回值，可以使用位移运算（将返回值右移8位）还原返回值:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.system(&quot;./test.sh&quot;)
+hello python!
+hello world!
+256
+&gt;&gt;&gt; n=os.system(&quot;./test.sh&quot;)
+hello python!
+hello world!
+&gt;&gt;&gt; n
+256
+&gt;&gt;&gt; n&gt;&gt;8
+1
+&gt;&gt;&gt;
+</pre>
+</div>
+<div class="rst-function section" id="os.chmod(path, mode)">
+<strong>os.chmod(path, mode)</strong><p></p>
+<p>更改文件权限</p>
+<p>比如改为 755:</p>
+<div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="mo">0o755</span><span class="p">)</span>
+</pre></div>
+<dl class="docutils">
+<dt>path</dt>
+<dd>文件名路径或目录路径。</dd>
+<dt>flags</dt>
+<dd><p class="first">可用以下选项按位或操作生成， 目录的读权限表示可以获取目录里文件名列表， ，执行权限表示可以把工作目录切换到此目录 ，删除添加目录里的文件必须同时有写和执行权限 ，文件权限以用户id-&gt;组id-&gt;其它顺序检验,最先匹配的允许或禁止权限被应用。</p>
+<ul class="last simple">
+<li>stat.S_IXOTH: 其他用户有执行权0o001</li>
+<li>stat.S_IWOTH: 其他用户有写权限0o002</li>
+<li>stat.S_IROTH: 其他用户有读权限0o004</li>
+<li>stat.S_IRWXO: 其他用户有全部权限(权限掩码)0o007</li>
+<li>stat.S_IXGRP: 组用户有执行权限0o010</li>
+<li>stat.S_IWGRP: 组用户有写权限0o020</li>
+<li>stat.S_IRGRP: 组用户有读权限0o040</li>
+<li>stat.S_IRWXG: 组用户有全部权限(权限掩码)0o070</li>
+<li>stat.S_IXUSR: 拥有者具有执行权限0o100</li>
+<li>stat.S_IWUSR: 拥有者具有写权限0o200</li>
+<li>stat.S_IRUSR: 拥有者具有读权限0o400</li>
+<li>stat.S_IRWXU: 拥有者有全部权限(权限掩码)0o700</li>
+<li>stat.S_ISVTX: 目录里文件目录只有拥有者才可删除更改0o1000</li>
+<li>stat.S_ISGID: 执行此文件其进程有效组为文件所在组0o2000</li>
+<li>stat.S_ISUID: 执行此文件其进程有效用户为文件所有者0o4000</li>
+<li>stat.S_IREAD: windows下设为只读</li>
+<li>stat.S_IWRITE: windows下取消只读</li>
+</ul>
+</dd>
+</dl>
+</div>
 </div>
 
 								</article>
@@ -163,6 +287,36 @@
    <a class="" href="#section-2">
     函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#os.ctermid()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.get_terminal_size(fd=STDOUT_FILENO, /)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.walk(top, topdown=True, onerror=None, followlinks=False)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.path.getsize(path)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.popen(command[, mode[, bufsize]])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.system(command)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.chmod(path, mode)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -189,27 +343,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

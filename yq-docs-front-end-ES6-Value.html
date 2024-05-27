@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -188,21 +187,82 @@ configurable：false
 <div class="section" id="section-5">
 <h2>方法</h2>
 <p>Number 对象新方法</p>
+<div class="rst-function section" id="Number.isFinite()">
+<strong>Number.isFinite()</strong><p></p>
+<p>用于检查一个数值是否为有限的（ finite ），即不是 Infinity</p>
+</div>
+<div class="rst-function section" id="Number.parseInt()">
+<strong>Number.parseInt()</strong><p></p>
+<p>用于将给定字符串转化为指定进制的整数,
+如:</p>
+<pre class="literal-block">
+// 不指定进制时默认为 10 进制
+Number.parseInt('12.34'); // 12
+Number.parseInt(12.34);   // 12
+
+// 指定进制
+Number.parseInt('0011',2); // 3
+</pre>
+</div>
 </div>
 <div class="section" id="math">
 <h2>Math 对象的扩展</h2>
 <p>ES6 在 Math 对象上新增了 17 个数学相关的静态方法，这些方法只能在 Math 中调用。</p>
 <div class="section" id="section-6">
 <h3>普通计算</h3>
+<div class="rst-function section" id="Math.cbrt">
+<strong>Math.cbrt</strong><p></p>
+<p>用于计算一个数的立方根。</p>
+</div>
+<div class="rst-function section" id="Math.imul">
+<strong>Math.imul</strong><p></p>
+<p>两个数以 32 位带符号整数形式相乘的结果，返回的也是一个 32 位的带符号整数</p>
+</div>
+<div class="rst-function section" id="Math.hypot">
+<strong>Math.hypot</strong><p></p>
+<p>用于计算所有参数的平方和的平方根</p>
+</div>
+<div class="rst-function section" id="Math.clz32">
+<strong>Math.clz32</strong><p></p>
+<p>用于返回数字的32 位无符号整数形式的前导0的个数</p>
+</div>
 </div>
 <div class="section" id="section-7">
 <h3>数字处理</h3>
+<div class="rst-function section" id="Math.trunc">
+<strong>Math.trunc</strong><p></p>
+<p>用于返回数字的整数部分</p>
+</div>
+<div class="rst-function section" id="Math.fround">
+<strong>Math.fround</strong><p></p>
+<p>用于获取数字的32位单精度浮点数形式</p>
+</div>
 </div>
 <div class="section" id="section-8">
 <h3>判断</h3>
+<div class="rst-function section" id="Math.sign">
+<strong>Math.sign</strong><p></p>
+<p>判断数字的符号（正、负、0）</p>
+</div>
 </div>
 <div class="section" id="section-9">
 <h3>对数方法</h3>
+<div class="rst-function section" id="Math.expm1()">
+<strong>Math.expm1()</strong><p></p>
+<p>用于计算 e 的 x 次方减 1 的结果，即 Math.exp(x) - 1</p>
+</div>
+<div class="rst-function section" id="Math.log1p(x)">
+<strong>Math.log1p(x)</strong><p></p>
+<p>用于计算1 + x 的自然对数，即 Math.log(1 + x)</p>
+</div>
+<div class="rst-function section" id="Math.log10(x)">
+<strong>Math.log10(x)</strong><p></p>
+<p>用于计算以 10 为底的 x 的对数</p>
+</div>
+<div class="rst-function section" id="Math.log2()">
+<strong>Math.log2()</strong><p></p>
+<p>用于计算 2 为底的 x 的对数</p>
+</div>
 </div>
 <div class="section" id="section-10">
 <h3>双曲函数方法</h3>
@@ -269,6 +329,16 @@ exam ** = 2; // 4
    <a class="" href="#section-5">
     方法
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#Number.isFinite()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Number.parseInt()">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#math">
@@ -279,21 +349,73 @@ exam ** = 2; // 4
      <a class="" href="#section-6">
       普通计算
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#Math.cbrt">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#Math.imul">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#Math.hypot">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#Math.clz32">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#section-7">
       数字处理
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#Math.trunc">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#Math.fround">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#section-8">
       判断
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#Math.sign">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#section-9">
       对数方法
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#Math.expm1()">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#Math.log1p(x)">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#Math.log10(x)">
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#Math.log2()">
+       </a>
+      </li>
+     </ul>
     </li>
     <li class="toc-h1">
      <a class="" href="#section-10">
@@ -332,27 +454,27 @@ exam ** = 2; // 4
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

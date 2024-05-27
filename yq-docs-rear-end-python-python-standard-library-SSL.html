@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -127,6 +126,42 @@
 包括客户端和服务器端。 该模块使用 OpenSSL 库。
 它可以在所有现代 Unix 系统、 Windows 、 macOS 和可能的其他平台上使用，只要 OpenSSL 安装在该平台上。</p>
 <p>主要的一个API</p>
+<div class="rst-function section" id="SSLContext.wrap_socket(sock, server_side=False, do_handshake_on_connect=True, suppress_ragged_eofs=True, server_hostname=None, session=None)">
+<strong>SSLContext.wrap_socket(sock, server_side=False, do_handshake_on_connect=True, suppress_ragged_eofs=True, server_hostname=None, session=None)</strong><p></p>
+<p>包装一个现有的 Python 套接字 sock 并返回一个
+SSLContext.sslsocket_class 的实例 (默认为 SSLSocket)。
+返回的 SSL 套接字会绑定上下文、设置以及证书。
+sock 必须是一个 SOCK_STREAM 套接字；其他套接字类型不被支持。</p>
+<dl class="docutils">
+<dt>server_side: bool</dt>
+<dd><p class="first">标明希望从该套接字获得服务器端行为还是客户端行为</p>
+<p>对于客户端套接字，上下文的构造会延迟执行；
+如果下层的套接字尚未连接，上下文的构造将在对套接字调用 connect() 之后执行。</p>
+<p class="last">对于服务器端套接字，如果套接字没有远端对等方，它会被视为一个监听套接字，
+并且服务器端 SSL 包装操作会在通过 accept() 方法所接受的客户端连接上自动执行。
+此方法可能会引发 SSLError。</p>
+</dd>
+<dt>server_hostname:</dt>
+<dd>用在客户端连接上，指定所要连接的服务的主机名。
+这允许单个服务器托管具有单独证书的多个基于 SSL 的服务，
+很类似于 HTTP 虚拟主机。
+如果 server_side 为真值则指定 server_hostname 将引发 ValueError。</dd>
+<dt>do_handshake_on_connect:</dt>
+<dd>指明是否要在调用 socket.connect() 之后自动执行 SSL 握手，
+还是要通过发起调用 SSLSocket.do_handshake() 方法让应用程序显式地调用它。
+显式地调用 SSLSocket.do_handshake() 可给予程序对握手中所涉及的套接字 I/O 阻塞行为的控制。</dd>
+<dt>suppress_ragged_eofs:</dt>
+<dd>形参 suppress_ragged_eofs 指明 SSLSocket.recv() 方法
+应当如何从连接的另一端发送非预期的 EOF 信号。
+如果指定为 True (默认值)，它将返回正常的 EOF (空字节串对象)
+来响应从下层套接字引发的非预期的 EOF 错误；
+如果指定为 False，它将向调用方引发异常。</dd>
+</dl>
+<p>session，参见 session。</p>
+<p>在 3.5 版更改: 总是允许传送 server_hostname，即使 OpenSSL 没有 SNI。</p>
+<p>在 3.6 版更改: 增加了 session 参数。</p>
+<p>在 3.7 版更改: The method returns an instance of SSLContext.sslsocket_class instead of hard-coded SSLSocket.</p>
+</div>
 
 								</article>
 						</div>
@@ -141,6 +176,26 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#SSLContext.wrap_socket(sock, server_side=False, do_handshake_on_connect=True, suppress_ragged_eofs=True, server_hostname=None, session=None)">
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -158,27 +213,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -156,8 +155,60 @@
 <li><a class="reference internal" href="#nlargest">nlargest</a></li>
 <li><a class="reference internal" href="#nsmallest">nsmallest</a></li>
 </ul>
+<div class="rst-function section" id="heapq.heappush(heap, item)">
+<span id="heappush"></span><strong>heapq.heappush(heap, item)</strong><p></p>
+<p>将 item 的值加入 heap 中，保持堆的不变性。</p>
+</div>
+<div class="rst-function section" id="heapq.heappop(heap)">
+<span id="heappop"></span><strong>heapq.heappop(heap)</strong><p></p>
+<p>弹出并返回 heap 的最小的元素，保持堆的不变性。
+如果堆为空，抛出 IndexError 。使用 heap[0] ，可以只访问最小的元素而不弹出它。</p>
+</div>
+<div class="rst-function section" id="heapq.heappushpop(heap, item)">
+<span id="heappushpop"></span><strong>heapq.heappushpop(heap, item)</strong><p></p>
+<p>将 item 放入堆中，然后弹出并返回 heap 的最小元素。
+该组合操作比先调用 heappush() 再调用 heappop() 运行起来更有效率。</p>
+</div>
+<div class="rst-function section" id="heapq.heapify(x)">
+<span id="heapify"></span><strong>heapq.heapify(x)</strong><p></p>
+<p>将list x 转换成堆，原地，线性时间内。</p>
+</div>
+<div class="rst-function section" id="heapq.heapreplace(heap, item)">
+<span id="heapreplace"></span><strong>heapq.heapreplace(heap, item)</strong><p></p>
+<p>弹出并返回 heap 中最小的一项，同时推入新的 item。 堆的大小不变。 如果堆为空则引发 IndexError。</p>
+<p>这个单步骤操作比 heappop() 加 heappush() 更高效，并且在使用固定大小的堆时更为适宜。
+pop/push 组合总是会从堆中返回一个元素并将其替换为 item。</p>
+<p>返回的值可能会比添加的 item 更大。 如果不希望如此，可考虑改用 heappushpop()。
+它的 push/pop 组合会返回两个值中较小的一个，将较大的值留在堆中。</p>
+</div>
 <p>该模块还提供了三个基于堆的通用功能函数。</p>
 <!-- merge: -->
+<div class="rst-function section" id="heapq.merge(*iterables, key=None, reverse=False)">
+<strong>heapq.merge(*iterables, key=None, reverse=False)</strong><p></p>
+<p>将多个已排序的输入合并为一个已排序的输出（例如，合并来自多个日志文件的带时间戳的条目）。 返回已排序值的 iterator。</p>
+<p>类似于 <tt class="docutils literal"><span class="pre">sorted(itertools.chain(*iterables))</span></tt> 但返回一个可迭代对象，
+不会一次性地将数据全部放入内存，并假定每个输入流都是已排序的（从小到大）。</p>
+<p>具有两个可选参数，它们都必须指定为关键字参数。</p>
+<p>key 指定带有单个参数的 key function，用于从每个输入元素中提取比较键。 默认值为 None (直接比较元素)。</p>
+<dl class="docutils">
+<dt>reverse: bool</dt>
+<dd>如果设为 True，则输入元素将按比较结果逆序进行合并。
+要达成与 <tt class="docutils literal"><span class="pre">sorted(itertools.chain(*iterables),</span> reverse=True)</tt> 类似的行为，所有可迭代对象必须是已从大到小排序的。</dd>
+</dl>
+<p>在 3.5 版更改: 添加了可选的 key 和 reverse 形参。</p>
+</div>
+<div class="rst-function section" id="heapq.nlargest(n, iterable, key=None)">
+<span id="nlargest"></span><strong>heapq.nlargest(n, iterable, key=None)</strong><p></p>
+<p>从 iterable 所定义的数据集中返回前 n 个最大元素组成的列表。
+如果提供了 key 则其应指定一个单参数的函数，用于从 iterable 的每个元素中提取比较键 (例如 key=str.lower)。
+等价于: sorted(iterable, key=key, reverse=True)[:n]。</p>
+</div>
+<div class="rst-function section" id="heapq.nsmallest(n, iterable, key=None)">
+<span id="nsmallest"></span><strong>heapq.nsmallest(n, iterable, key=None)</strong><p></p>
+<p>从 iterable 所定义的数据集中返回前 n 个最小元素组成的列表。
+如果提供了 key 则其应指定一个单参数的函数，用于从 iterable 的每个元素中提取比较键 (例如 key=str.lower)。
+等价于: sorted(iterable, key=key)[:n]。</p>
+</div>
 <p>后两个函数在 n 值较小时性能最好。
 对于更大的值，使用 sorted() 函数会更有效率。
 此外，当 n==1 时，使用内置的 min() 和 max() 函数会更有效率。
@@ -189,6 +240,40 @@
    <a class="" href="#section-1">
     支持函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#heapq.heappush(heap, item)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#heapq.heappop(heap)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#heapq.heappushpop(heap, item)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#heapq.heapify(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#heapq.heapreplace(heap, item)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#heapq.merge(*iterables, key=None, reverse=False)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#heapq.nlargest(n, iterable, key=None)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#heapq.nsmallest(n, iterable, key=None)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -215,27 +300,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

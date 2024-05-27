@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -123,13 +122,116 @@
 									</div>
 									<div class="section" id="section-1">
 <h2>数值计算</h2>
+<div class="rst-function section" id="format(num, n)">
+<strong>format(num, n)</strong><p></p>
+<p>格式化为string，format($num, $n)， 四舍五入保留小数点后 n 位，
+并格式化用逗号隔开（每三位一个逗号）:</p>
+<pre class="literal-block">
+select format(1000.1254);
+# 1,000.13
+</pre>
+</div>
 <dl class="docutils">
 <dt>round(num, n)</dt>
 <dd>直接四舍五入，round($num, $n)，四舍五入保留 n 位小数</dd>
 </dl>
+<div class="rst-function section" id="truncate(num, n)">
+<strong>truncate(num, n)</strong><p></p>
+<p>截取数字的小数点后几位 truncate($num, $n)，不四舍五入:</p>
+<pre class="literal-block">
+select truncate(100.1234, 2) as '1';
+
+# 100.12
+# 截取小数点后两位
+</pre>
+</div>
+<div class="rst-function section" id="convert(num, ...)">
+<strong>convert(num, ...)</strong><p></p>
+<p>转型，会四舍五入:</p>
+<pre class="literal-block">
+select convert(1478568.2457, DECIMAL(10,2));
+
+# 1478568.25
+# DECIMAL(10,2) 表示转换为 DECIMAL, 十进制, 保留2位
+</pre>
+</div>
+<div class="rst-function section" id="ceiling(num, n)">
+<strong>ceiling(num, n)</strong><p></p>
+<p>取整，个位加一:</p>
+<pre class="literal-block">
+select CEILING(1478568.2457);   直接取整，个位+1
+# 1478569
+</pre>
+</div>
+<div class="rst-function section" id="floor(n)">
+<strong>floor(n)</strong><p></p>
+<p>向下取整:</p>
+<pre class="literal-block">
+select FLOOR(1478568.2457);
+# 1478568
+</pre>
+</div>
+<div class="rst-function section" id="rand([n])">
+<strong>rand([n])</strong><p></p>
+<p>返回随机数, 0~1之间</p>
+<p>可设置随机种子参数, 保证结果一致</p>
+</div>
+<div class="rst-function section" id="random()">
+<strong>random()</strong><p></p>
+<p>随机数</p>
+</div>
 </div>
 <div class="section" id="section-2">
 <h2>字符串拼接</h2>
+<div class="rst-function section" id="cancat(a, b, c)">
+<strong>cancat(a, b, c)</strong><p></p>
+<p>将abc拼起来</p>
+</div>
+<div class="rst-function section" id="substr(data_str, start, length)">
+<strong>substr(data_str, start, length)</strong><p></p>
+<p>截取字符串</p>
+<dl class="docutils">
+<dt>data_str: str</dt>
+<dd>需要截取的字符串</dd>
+<dt>start: int</dt>
+<dd>开始截取的下标(包含)</dd>
+<dt>length: int</dt>
+<dd>从起始位置的长度, 默认到结尾</dd>
+</dl>
+</div>
+<div class="rst-function section" id="mid">
+<strong>mid</strong><p></p>
+<p>效果等价于substr</p>
+</div>
+<div class="rst-function section" id="left(data_str, length)">
+<strong>left(data_str, length)</strong><p></p>
+<p>从左边开始截取字符串指定长度</p>
+</div>
+<div class="rst-function section" id="ascii(data_str)">
+<strong>ascii(data_str)</strong><p></p>
+<p>获取ascii码, 字符串则获取首字母的ascii码</p>
+</div>
+<div class="rst-function section" id="ord(data_str)">
+<strong>ord(data_str)</strong><p></p>
+<p>效果等价于ascii</p>
+</div>
+<div class="rst-function section" id="group_concat">
+<strong>group_concat</strong><p></p>
+<p>group_by 的时候, 如果有一对多的情况, 5.7 之后的mysql会报错.</p>
+<p>使用 group_concat(分组依据的字段名) 可以将多的情况拼接起来.</p>
+</div>
+<div class="rst-function section" id="updatexml(XML, xpath_str, new_value)">
+<strong>updatexml(XML, xpath_str, new_value)</strong><p></p>
+<p>...</p>
+</div>
+<div class="rst-function section" id="extractvalue(XML, xpath_str)">
+<strong>extractvalue(XML, xpath_str)</strong><p></p>
+<p>...</p>
+</div>
+<div class="rst-function section" id="hex(char)">
+<strong>hex(char)</strong><p></p>
+<p>查看字符的十六进制</p>
+</div>
 </div>
 
 								</article>
@@ -157,11 +259,83 @@
    <a class="" href="#section-1">
     数值计算
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#format(num, n)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#truncate(num, n)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#convert(num, ...)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ceiling(num, n)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#floor(n)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#rand([n])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#random()">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-2">
     字符串拼接
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#cancat(a, b, c)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#substr(data_str, start, length)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#mid">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#left(data_str, length)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ascii(data_str)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ord(data_str)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#group_concat">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#updatexml(XML, xpath_str, new_value)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#extractvalue(XML, xpath_str)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#hex(char)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -188,27 +362,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

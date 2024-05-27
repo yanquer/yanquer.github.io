@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -125,7 +124,45 @@
 <p>提供了一个装饰器和一些函数，用于自动添加生成的 special method，例如 __init__() 和 __repr__() 到用户定义的类。</p>
 <div class="section" id="section-1">
 <h2>装饰器使用</h2>
+<div class="rst-function section" id="&#64;dataclasses.dataclass(*, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)">
+<strong>&#64;dataclasses.dataclass(*, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)</strong><p></p>
+<p>dataclass() 装饰器会检查类以查找 具有 <strong>类型标注</strong> 的 <strong>类变量</strong></p>
+</div>
 <p>类属性的默认值</p>
+<div class="rst-function section" id="dataclasses.field(*, default=MISSING, default_factory=MISSING, init=True, repr=True, hash=None, compare=True, metadata=None, kw_only=MISSING)">
+<strong>dataclasses.field(*, default=MISSING, default_factory=MISSING, init=True, repr=True, hash=None, compare=True, metadata=None, kw_only=MISSING)</strong><p></p>
+<p>对于被 dataclasses 装饰的数据类, 有时候 类变量的默认值 是较复杂的类型, 这时候就可以使用 field 方式来定义其默认值</p>
+<dl class="docutils">
+<dt>default:</dt>
+<dd>可选, 表示此变量的默认值</dd>
+<dt>default_factory</dt>
+<dd><p class="first">可选, 必须是一个零参数可调用对象，当该字段需要一个默认值时，它将被调用。可以用于指定具有可变默认值的字段</p>
+<p>与 default 的区别是:</p>
+<ul class="last simple">
+<li>default 与 default_factory 仅可显示指定一个</li>
+<li>default 制定的值将会在多个对象之间共享; default_factory 指定的工程, 每个对象生成的值是独立的, 仅用于可变类型</li>
+<li>default可以是“任何可调用对象”，包括函数、lambda表达式、staticmethod等; 而default_factory必须是一个函数。</li>
+</ul>
+</dd>
+</dl>
+<p>注意: 同时指定 default 和 default_factory 将产生错误。</p>
+<dl class="docutils">
+<dt>init: bool = True</dt>
+<dd>如果为true（默认值），则该字段作为参数包含在生成的 __init__() 方法中。</dd>
+<dt>repr: bool = True</dt>
+<dd>如果为true（默认值），则该字段包含在生成的 __repr__() 方法返回的字符串中。</dd>
+<dt>hash: bool = None</dt>
+<dd><p class="first">如果为true，则此字段包含在生成的 __hash__() 方法中。如果为 None （默认值），请使用 compare 的值，这通常是预期的行为。如果字段用于比较，则应在 hash 中考虑该字段。不鼓励将此值设置为 None 以外的任何值。</p>
+<p class="last">设置 hash=False 但 compare=True 的一个可能原因是，如果一个计算 hash 的代价很高的字段是检验等价性需要的，但还有其他字段可以计算类型的 hash 。 即使从 hash 中排除某个字段，它仍将用于比较。</p>
+</dd>
+<dt>compare: bool = True</dt>
+<dd>如果为true（默认值），则该字段包含在生成的相等性和比较方法中（ __eq__() ， __gt__() 等等）。</dd>
+<dt>metadata: dict = None</dt>
+<dd>这可以是映射或 None 。 None 被视为一个空的字典。这个值包含在 MappingProxyType() 中，使其成为只读，并暴露在 Field 对象上。数据类根本不使用它，它是作为第三方扩展机制提供的。多个第三方可以各自拥有自己的键值，以用作元数据中的命名空间。</dd>
+<dt>kw_only:</dt>
+<dd>如果为真值，则此字段将被标记为仅限关键字。 这将在当计算出所生成的 __init__() 方法的形参时被使用。</dd>
+</dl>
+</div>
 <p>如果通过调用 field() 指定字段的默认值，则该字段的类属性将替换为指定的 default 值。
 如果没有提供 default ，那么将删除类属性。目的是在 dataclass() 装饰器运行之后，类属性将包含字段的默认值，就像指定了默认值一样。
 例如:</p>
@@ -143,6 +180,86 @@ class C:
 type ：字段的类型。
 default, default_factory, init, repr, hash, compare, metadata 和 kw_only 具有与 field() 函数中对应参数相同的含义和值。
 可能存在其他属性，但它们是私有的，不能被审查或依赖。</p>
+<div class="rst-function section" id="dataclasses.fields(class_or_instance)">
+<strong>dataclasses.fields(class_or_instance)</strong><p></p>
+<p>返回 Field 对象的元组，用于定义此数据类的字段。 接受数据类或数据类的实例。如果没有传递一个数据类或实例将引发 TypeError 。 不返回 ClassVar 或 InitVar 的伪字段。</p>
+</div>
+<div class="rst-function section" id="dataclasses.asdict(obj, *, dict_factory=dict)">
+<strong>dataclasses.asdict(obj, *, dict_factory=dict)</strong><p></p>
+<p>将数据类``obj``转换为一个字典（通过使用工厂函数``dict_factory``）。 每个数据类被转换为其字段的字典，作为``name: value``键值对。数据类、字典、列表和元组被递归到。 其他对象用 copy.deepcopy() 来复制。</p>
+<p>在嵌套的数据类上使用 asdict() 的例子:</p>
+<pre class="literal-block">
+&#64;dataclass
+class Point:
+  x: int
+  y: int
+
+&#64;dataclass
+class C:
+  mylist: list[Point]
+
+p = Point(10, 20)
+assert asdict(p) == {'x': 10, 'y': 20}
+
+c = C([Point(0, 0), Point(10, 4)])
+assert asdict(c) == {'mylist': [{'x': 0, 'y': 0}, {'x': 10, 'y': 4}]}
+</pre>
+<p>要创建一个浅拷贝，可以使用以下方法:</p>
+<pre class="literal-block">
+dict((field.name, getattr(obj, field.name)) for field in fields(obj))
+</pre>
+<p>如果 obj 不是一个数据类实例, asdict() 引发 TypeError 。</p>
+</div>
+<div class="rst-function section" id="dataclasses.astuple(obj, *, tuple_factory=tuple)">
+<strong>dataclasses.astuple(obj, *, tuple_factory=tuple)</strong><p></p>
+<p>将数据类``obj``转换为一个元组（通过使用工厂函数``tuple_factory``）。 每个数据类被转换为其字段值的元组。数据类、字典、列表和元组被递归到。其他对象用 copy.deepcopy() 来复制。</p>
+<p>继续前一个例子:</p>
+<pre class="literal-block">
+assert astuple(p) == (10, 20)
+assert astuple(c) == ([(0, 0), (10, 4)],)
+</pre>
+<p>要创建一个浅拷贝，可以使用以下方法:</p>
+<pre class="literal-block">
+tuple(getattr(obj, field.name) for field in dataclasses.fields(obj))
+</pre>
+<p>如果``obj``不是一个数据类实例， astuple() 引发 TypeError 。</p>
+</div>
+<div class="rst-function section" id="dataclasses.make_dataclass(cls_name, fields, *, bases=(), namespace=None, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)">
+<strong>dataclasses.make_dataclass(cls_name, fields, *, bases=(), namespace=None, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)</strong><p></p>
+<p>与使用装饰器 &#64;dataclasses 的效果一致</p>
+<p>此函数不是严格要求的，因为用于任何创建带有 __annotations__ 的新类的 Python 机制都可以应用 dataclass() 函数将该类转换为数据类。提供此功能是为了方便。例如:</p>
+<pre class="literal-block">
+C = make_dataclass('C',
+        [('x', int),
+          'y',
+          ('z', int, field(default=5))],
+        namespace={'add_one': lambda self: self.x + 1})
+</pre>
+<p>等价于:</p>
+<pre class="literal-block">
+&#64;dataclass
+class C:
+  x: int
+  y: 'typing.Any'
+  z: int = 5
+
+  def add_one(self):
+    return self.x + 1
+</pre>
+</div>
+<div class="rst-function section" id="dataclasses.replace(obj, /, **changes)">
+<strong>dataclasses.replace(obj, /, **changes)</strong><p></p>
+<p>创建一个与``obj``类型相同的新对象，将字段替换为来自``changes``的值。如果``obj``不是数据类，则引发 TypeError 。如果``changes``里面的值没有指定字段，引发 TypeError 。</p>
+<p>新返回的对象通过调用数据类的 __init__() 方法创建。这确保了如果存在 __post_init__() ，其也被调用。</p>
+<p>如果存在没有默认值的仅初始化变量，必须在调用 replace() 时指定，以便它们可以传递给 __init__() 和 __post_init__() 。</p>
+<p>changes 包含任何定义为 init=False 的字段是错误的。在这种情况下会引发 ValueError 。</p>
+<p>提前提醒 init=False 字段在调用 replace() 时的工作方式。如果它们完全被初始化的话，它们不是从源对象复制的，而是在 __post_init__() 中初始化。估计 init=False 字段很少能被正确地使用。如果使用它们，那么使用备用类构造函数或者可能是处理实例复制的自定义 replace() （或类似命名的）方法可能是明智的。</p>
+</div>
+<div class="rst-function section" id="dataclasses.is_dataclass(obj)">
+<strong>dataclasses.is_dataclass(obj)</strong><p></p>
+<p>如果其形参为 dataclass 或其实例则返回 True，否则返回 False。</p>
+<p>如果你需要知道一个类是否是一个数据类的实例（而不是一个数据类本身），那么再添加一个 not isinstance(obj, type) 检查</p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p>使用 &#64;dataclasses 时, __init__() 方法将会调用 __post_init__() 方法</p>
@@ -247,6 +364,40 @@ def __init__(self, x: Any = 15.0, z: int = 10, *, y: int = 0, w: int = 1, t: int
    <a class="" href="#section-1">
     装饰器使用
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#@dataclasses.dataclass(*, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataclasses.field(*, default=MISSING, default_factory=MISSING, init=True, repr=True, hash=None, compare=True, metadata=None, kw_only=MISSING)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataclasses.fields(class_or_instance)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataclasses.asdict(obj, *, dict_factory=dict)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataclasses.astuple(obj, *, tuple_factory=tuple)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataclasses.make_dataclass(cls_name, fields, *, bases=(), namespace=None, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataclasses.replace(obj, /, **changes)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dataclasses.is_dataclass(obj)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-2">
@@ -288,27 +439,27 @@ def __init__(self, x: Any = 15.0, z: int = 10, *, y: int = 0, w: int = 1, t: int
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

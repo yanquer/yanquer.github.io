@@ -164,5 +164,10 @@ html{
     background: transparent;
    }
 
-
+/* tab标签上的网站标题为圆角 */
+/* <link rel="shortcut icon" type="text/css" href="{{ SITEURL }}/favicon-radiu.ico" /> */
+/* link[rel="shortcut icon"] {
+    border-radius: 50%;
+} */
+/* 不行 不能直接这样设置, 因为不是用link添加的 */
 

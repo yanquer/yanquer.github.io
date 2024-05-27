@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -205,6 +204,39 @@ loop.run_until_complete(asyncio.gather(*tasks))
 <div class="section" id="socket-udp">
 <h2>创建socket-udp事件</h2>
 <p>使用 <strong>loop.create_datagram_endpoint</strong></p>
+<div class="rst-function section" id="loop.create_datagram_endpoint(protocol_factory, local_addr=None, remote_addr=None, *, family=0, proto=0, flags=0, reuse_port=None, allow_broadcast=None, sock=None)">
+<strong>loop.create_datagram_endpoint(protocol_factory, local_addr=None, remote_addr=None, *, family=0, proto=0, flags=0, reuse_port=None, allow_broadcast=None, sock=None)</strong><p></p>
+<p>创建一个数据报连接。</p>
+<p>套接字族可以是 AF_INET, AF_INET6 或 AF_UNIX，具体取决于 host (或 family 参数，如果有提供的话)。</p>
+<p>socket类型将是 SOCK_DGRAM 。</p>
+<dl class="docutils">
+<dt>protocol_factory:</dt>
+<dd><p class="first">必须为一个返回 协议 实现的可调用对象。</p>
+<p class="last">成功时返回一个 (transport, protocol) 元组。</p>
+</dd>
+<dt>local_addr:</dt>
+<dd>如果指定，它应当是一个用来在本地绑定套接字的 (local_host, local_port) 元组。
+local_host 和 local_port 是使用 getaddrinfo() 来查找的。</dd>
+<dt>remote_addr:</dt>
+<dd>如果指定的话，就是一个 (remote_host, remote_port) 元组，
+用于同一个远程地址连接。remote_host 和 remote_port 是使用 getaddrinfo() 来查找的。</dd>
+</dl>
+<p>family, proto, flags 是可选的地址族，协议和标志，其会被传递给 getaddrinfo() 来完成 host 的解析。
+如果要指定的话，这些都应该是来自于 socket 模块的对应常量。</p>
+<dl class="docutils">
+<dt>reuse_port:</dt>
+<dd>告知内核，只要在创建时都设置了这个旗标，就允许此端点绑定到其他现有端点所绑定的相同端口上。
+这个选项在 Windows 和某些 Unix 上不受支持。 如果 SO_REUSEPORT 常量未定义则此功能就是不受支持的。</dd>
+<dt>allow_broadcast:</dt>
+<dd>告知内核允许此端点向广播地址发送消息。</dd>
+<dt>sock:</dt>
+<dd>可选择通过指定此值用于使用一个预先存在的，已经处于连接状态的 socket.socket 对象，
+并将其提供给此传输对象使用。如果指定了这个值， local_addr 和 remote_addr 就应该被忽略 (必须为 None)。</dd>
+</dl>
+<p>当具有不同 UID 的多个进程将套接字赋给具有 SO_REUSEADDR 的相同 UDP 套接字地址时，传入的数据包可能会在套接字间随机分配。</p>
+<p>对于受支持的平台，reuse_port 可以被用作类似功能的替代。 通过 reuse_port 将改用 SO_REUSEPORT，
+它能够防止具有不同 UID 的进程将套接字赋给相同的套接字地址。</p>
+</div>
 <p>eg:</p>
 <pre class="literal-block">
 loop.create_datagram_endpoint(
@@ -314,6 +346,12 @@ inspect.iscoroutinefunction(async_func))    # True
    <a class="" href="#socket-udp">
     创建socket-udp事件
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#loop.create_datagram_endpoint(protocol_factory, local_addr=None, remote_addr=None, *, family=0, proto=0, flags=0, reuse_port=None, allow_broadcast=None, sock=None)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-7">
@@ -345,27 +383,27 @@ inspect.iscoroutinefunction(async_func))    # True
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

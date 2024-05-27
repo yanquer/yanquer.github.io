@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -143,15 +142,85 @@
 </div>
 <div class="section" id="import-module">
 <h2>import_module</h2>
+<div class="rst-function section" id="importlib.import_module(name, package=None)">
+<strong>importlib.import_module(name, package=None)</strong><p></p>
+<p>导入一个模块。</p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>指定了以绝对或相对导入方式导入什么模块 (比如要么像这样 pkg.mod 或者这样 ..mod)。
+如果参数 name 使用相对导入的方式来指定，那么 package 参数必须设置为那个包名，
+这个包名作为解析这个包名的锚点 (比如 import_module('..mod', 'pkg.subpkg') 将会导入 pkg.mod)。</dd>
+</dl>
+<p>import_module() 函数是一个对 importlib.__import__() 进行简化的包装器。
+这意味着该函数的所有语义都来自于 importlib.__import__()。
+这两个函数之间最重要的不同点在于 import_module() 返回指定的包或模块 (例如 pkg.mod)，
+而 __import__() 返回最高层级的包或模块 (例如 pkg)。</p>
+<p>如果动态导入一个自解释器开始执行以来被创建的模块（即创建了一个 Python 源代码文件），
+为了让导入系统知道这个新模块，可能需要调用 invalidate_caches()。</p>
+</div>
 </div>
 <div class="section" id="find-loader">
 <h2>find_loader</h2>
+<div class="rst-function section" id="importlib.find_loader(name, path=None)">
+<strong>importlib.find_loader(name, path=None)</strong><p></p>
+<p>查找一个模块的加载器，可选择地在指定的 path 里面。
+如果这个模块是在 sys.modules，
+那么返回 sys.modules[name].__loader__ (除非这个加载器是 None 或者是没有被设置， 在这样的情况下，会引起 ValueError 异常）。
+否则使用 sys.meta_path 的一次搜索就结束。如果未发现加载器，则返回 None。</p>
+<p>点状的名称没有使得它父包或模块隐式地导入，因为它需要加载它们并且可能不需要。
+为了适当地导入一个子模块，需要导入子模块的所有父包并且使用正确的参数提供给 path。</p>
+<p>3.3 新版功能.</p>
+<p>在 3.4 版更改: 如果没有设置 __loader__，会引起 ValueError 异常，就像属性设置为 None 的时候一样。</p>
+<p>3.4 版后已移除: 使用 importlib.util.find_spec() 来代替。</p>
+</div>
 </div>
 <div class="section" id="invalidate-caches">
 <h2>invalidate_caches</h2>
+<div class="rst-function section" id="importlib.invalidate_caches()">
+<strong>importlib.invalidate_caches()</strong><p></p>
+<p>使查找器存储在 sys.meta_path 中的内部缓存无效。
+如果一个查找器实现了 invalidate_caches()，那么它会被调用来执行那个无效过程。
+如果创建/安装任何模块，同时正在运行的程序是为了保证所有的查找器知道新模块的存在，那么应该调用这个函数。</p>
+</div>
 </div>
 <div class="section" id="reload">
 <h2>reload</h2>
+<div class="rst-function section" id="importlib.reload(module)">
+<strong>importlib.reload(module)</strong><p></p>
+<p>重新加载之前导入的 module。
+那个参数必须是一个模块对象，所以它之前必须已经成功导入了。
+这在你已经使用外部编辑器编辑过了那个模块的源代码文件并且想在退出 Python 解释器之前试验这个新版本的模块的时候将很适用。
+函数的返回值是那个模块对象（如果重新导入导致一个不同的对象放置在 sys.modules 中，那么那个模块对象是有可能会不同）。</p>
+<p>当执行 reload() 的时候：</p>
+<p>Python 模块的代码会被重新编译并且那个模块级的代码被重新执行，
+通过重新使用一开始加载那个模块的 loader，定义一个新的绑定在那个模块字典中的名称的对象集合。
+扩展模块的``init``函数不会被调用第二次。
+与Python中的所有的其它对象一样，旧的对象只有在它们的引用计数为0之后才会被回收。
+模块命名空间中的名称重新指向任何新的或更改后的对象。
+其他旧对象的引用（例如那个模块的外部名称）不会被重新绑定到引用的新对象的，并且如果有需要，必须在出现的每个命名空间中进行更新。</p>
+<p>有一些其他注意事项：</p>
+<p>当一个模块被重新加载的时候，它的字典（包含了那个模块的全区变量）会被保留。
+名称的重新定义会覆盖旧的定义，所以通常来说这不是问题。
+如果一个新模块没有定义在旧版本模块中定义的名称，则将保留旧版本中的定义。
+这一特性可用于作为那个模块的优点，如果它维护一个全局表或者对象的缓存 —— 使用 try 语句，
+就可以测试表的存在并且跳过它的初始化，如果有需要的话:</p>
+<pre class="literal-block">
+try:
+    cache
+except NameError:
+    cache = {}
+</pre>
+<p>重新加载内置的或者动态加载模块，通常来说不是很有用处。
+不推荐重新加载&quot;sys，__main__，builtins 和其它关键模块。
+在很多例子中，扩展模块并不是设计为不止一次的初始化，并且当重新加载时，可能会以任意方式失败。</p>
+<p>如果一个模块使用 from ... import ... 导入的对象来自另外一个模块，
+给其它模块调用 reload() 不会重新定义来自这个模块的对象 ——
+解决这个问题的一种方式是重新执行 from 语句，另一种方式是使用 import 和限定名称(module.name)来代替。</p>
+<p>如果一个模块创建一个类的实例，重新加载定义那个类的模块不影响那些实例的方法定义———它们继续使用旧类中的定义。
+对于子类来说同样是正确的。</p>
+<p>3.4 新版功能.</p>
+<p>在 3.7 版更改: 如果重新加载的模块缺少 ModuleSpec ，则会触发 ModuleNotFoundError 。</p>
+</div>
 </div>
 <div class="section" id="metadata">
 <h2>metadata</h2>
@@ -243,21 +312,45 @@ print(module.__package__)
    <a class="" href="#import-module">
     import_module
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#importlib.import_module(name, package=None)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#find-loader">
     find_loader
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#importlib.find_loader(name, path=None)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#invalidate-caches">
     invalidate_caches
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#importlib.invalidate_caches()">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#reload">
     reload
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#importlib.reload(module)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#metadata">
@@ -301,27 +394,27 @@ print(module.__package__)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

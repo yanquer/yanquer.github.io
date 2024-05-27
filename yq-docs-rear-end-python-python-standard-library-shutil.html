@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -132,6 +131,31 @@
 <li>copy2, 文件的复制, 复制时, 如果是软链, 仅复制此软链</li>
 <li>copy_tree, 目录的复制</li>
 </ul>
+<div class="rst-function section" id="shutil.disk_usage(path)">
+<strong>shutil.disk_usage(path)</strong><p></p>
+<p>返回给定路径的磁盘使用统计数据，形式为一个 named tuple，
+其中包含 total, used 和 free 属性，分别表示总计、已使用和未使用空间的字节数。</p>
+<p>path 可以是一个文件或是一个目录。</p>
+</div>
+<div class="rst-function section" id="shutil.move(src, dst, copy_function=copy2)">
+<strong>shutil.move(src, dst, copy_function=copy2)</strong><p></p>
+<p>递归地将一个文件或目录 (src) 移至另一位置 (dst) 并返回目标位置。</p>
+<p>如果目标是已存在的目录，则 src 会被移至该目录下。 如果目标已存在但不是目录，它可能会被覆盖，具体取决于 os.rename() 的语义。</p>
+</div>
+<div class="rst-function section" id="shutil.rmtree(path, ignore_errors=False, onerror=None, *, dir_fd=None)">
+<strong>shutil.rmtree(path, ignore_errors=False, onerror=None, *, dir_fd=None)</strong><p></p>
+<p>删除一个完整的目录树；</p>
+<p>path 必须指向一个目录（但不能是一个目录的符号链接）。</p>
+<p>如果 ignore_errors 为真值，删除失败导致的错误将被忽略；
+如果为假值或是省略，此类错误将通过调用由 onerror 所指定的处理程序来处理，
+或者如果此参数被省略则将引发一个异常。</p>
+</div>
+<div class="rst-function section" id="shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)">
+<strong>shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)</strong><p></p>
+<p>递归地将以 src 为根起点的整个目录树拷贝到名为 dst 的目录并返回目标目录。
+所需的包含 dst 的中间目录在默认情况下也将被创建。</p>
+<p>目录的权限和时间会通过 copystat() 来拷贝，单个文件则会使用 copy2() 来拷贝</p>
+</div>
 
 								</article>
 						</div>
@@ -146,6 +170,38 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#shutil.disk_usage(path)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#shutil.move(src, dst, copy_function=copy2)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#shutil.rmtree(path, ignore_errors=False, onerror=None, *, dir_fd=None)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)">
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -163,27 +219,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

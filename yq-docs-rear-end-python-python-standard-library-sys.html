@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -237,6 +236,90 @@ argv[0] 为脚本的名称（是否是完整的路径名取决于操作系统）
 </div>
 <div class="section" id="section-2">
 <h2>函数</h2>
+<div class="rst-function section" id="sys._clear_type_cache()">
+<strong>sys._clear_type_cache()</strong><p></p>
+<p>清除内部的类型缓存。类型缓存是为了加速查找方法和属性的。在调试引用泄漏的时候调用这个函数 只会 清除不必要的引用。</p>
+<p>这个函数应该只在内部为了一些特定的目的使用。</p>
+</div>
+<div class="rst-function section" id="sys.exit([arg])">
+<strong>sys.exit([arg])</strong><p></p>
+<p>引发一个 SystemExit 异常，表示打算退出解释器。</p>
+<p>arg 默认为 0. 表示正常退出;
+非0整型, 表示异常终止.</p>
+<p>大多数系统要求该值的范围是 0-127，否则会产生不确定的结果。
+某些系统为退出代码约定了特定的含义，但通常尚不完善；</p>
+<p>Unix 程序通常用 2 表示命令行语法错误，
+用 1 表示所有其他类型的错误。</p>
+<p>传入其他类型的对象:</p>
+<ul class="simple">
+<li>如果传入 None 等同于传入 0，</li>
+<li>如果传入其他对象则将其打印至 stderr，且退出代码为 1</li>
+</ul>
+<p>特别地，sys.exit(&quot;some error message&quot;) 可以在发生错误时快速退出程序。</p>
+<p>由于 exit() 最终 &quot;只&quot; 引发了一个异常，它只在从主线程调用时退出进程，而异常不会被拦截。
+try 语句的 finally 子句所指定的清理动作会被遵守，并且有可能在外层拦截退出的尝试。</p>
+<p>在 3.6 版更改: 在 Python 解释器捕获 SystemExit 后，如果在清理中发生错误（如清除标准流中的缓冲数据时出错），则退出状态码将变为 120。</p>
+</div>
+<div class="rst-function section" id="sys.getallocatedblocks()">
+<strong>sys.getallocatedblocks()</strong><p></p>
+<p>返回解释器当前已分配的内存块数，无论它们大小如何。本
+函数主要用于跟踪和调试内存泄漏。
+因为解释器有内部缓存，所以不同调用之间结果会变化。
+可能需要调用 _clear_type_cache() 和 gc.collect() 使结果更容易预测。</p>
+<p>如果当前 Python 构建或实现无法合理地计算此信息，允许 getallocatedblocks() 返回 0。</p>
+<p>3.4 新版功能.</p>
+</div>
+<div class="rst-function section" id="sys.getdefaultencoding()">
+<strong>sys.getdefaultencoding()</strong><p></p>
+<p>返回当前 Unicode 实现所使用的默认字符串编码名称。</p>
+</div>
+<div class="rst-function section" id="sys.getdlopenflags()">
+<strong>sys.getdlopenflags()</strong><p></p>
+<p>返回当前 dlopen() 调用所使用的标志位的值。
+标志值对应的符号名称可以在 os 模块中找到（形如 RTLD_xxx 的常量，如 os.RTLD_LAZY ）。</p>
+<p>可用性: Unix。</p>
+</div>
+<div class="rst-function section" id="sys.getfilesystemencoding() 获取 文件系统编码格式: 与 文件系统错误处理句柄 一起使用以便在 Unicode 文件名和字节文件名之间进行转换。 文件系统错误处理句柄是由 getfilesystemencoding() 来返回的。">
+<strong>sys.getfilesystemencoding()
+获取 文件系统编码格式: 与 文件系统错误处理句柄 一起使用以便在 Unicode 文件名和字节文件名之间进行转换。
+文件系统错误处理句柄是由 getfilesystemencoding() 来返回的。</strong><p></p>
+<p>为获得最佳兼容性，在任何时候都应使用 str 来表示文件名，尽管使用 bytes 来表示文件名也是受支持的。
+接受还返回文件名的函数应当支持 str 或 bytes 并在内部将其转换为系统首选的表示形式。</p>
+</div>
+<div class="rst-function section" id="sys.getrecursionlimit()">
+<strong>sys.getrecursionlimit()</strong><p></p>
+<p>返回当前的递归限制值，即 Python 解释器堆栈的最大深度。
+此限制可防止无限递归导致的 C 堆栈溢出和 Python 崩溃。</p>
+<p>该值可以通过 setrecursionlimit() 设置。</p>
+</div>
+<div class="rst-function section" id="sys.getsizeof(object[, default])">
+<strong>sys.getsizeof(object[, default])</strong><p></p>
+<p>返回对象的大小（以字节为单位）。
+该对象可以是任何类型。
+所有内建对象返回的结果都是正确的，但对于第三方扩展不一定正确，因为这与具体实现有关。</p>
+<p>只计算直接分配给对象的内存消耗，不计算它所引用的对象的内存消耗。</p>
+<p>对象不提供计算大小的方法时，如果传入过 default 则返回它，否则抛出 TypeError 异常。</p>
+<p>如果对象由垃圾回收器管理，则 getsizeof() 将调用对象的 __sizeof__ 方法，并在上层添加额外的垃圾回收器。</p>
+<p>可以参考 recursive sizeof recipe 中的示例，关于递归调用 getsizeof() 来得到各个容器及其所有内容物的大小。</p>
+</div>
+<div class="rst-function section" id="sys.gettrace()">
+<strong>sys.gettrace()</strong><p></p>
+<p>返回由 settrace() 设置的跟踪函数。</p>
+<p>CPython 实现细节： gettrace() 函数仅用于实现调试器，性能分析器，打包工具等。
+它的行为是实现平台的一部分，而不是语言定义的一部分，因此并非在所有 Python 实现中都可用。</p>
+</div>
+<div class="rst-function section" id="sys._getframe([depth])">
+<strong>sys._getframe([depth])</strong><p></p>
+<p>返回来自调用栈的一个帧对象。如果传入可选整数 depth，则返回从栈顶往下相应调用层数的帧对象。
+如果该数比调用栈更深，则抛出 ValueError。depth 的默认值是 0，返回调用栈顶部的帧。</p>
+<p>Raises an auditing event sys._getframe with argument frame.</p>
+<p>CPython 实现细节： 这个函数应该只在内部为了一些特定的目的使用。不保证它在所有 Python 实现中都存在。</p>
+<p>通过:</p>
+<pre class="literal-block">
+sys._getframe([depth]).f_locals
+</pre>
+<p>获取此栈局部变量</p>
+</div>
 </div>
 
 								</article>
@@ -269,6 +352,48 @@ argv[0] 为脚本的名称（是否是完整的路径名取决于操作系统）
    <a class="" href="#section-2">
     函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#sys._clear_type_cache()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.exit([arg])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.getallocatedblocks()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.getdefaultencoding()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.getdlopenflags()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.getfilesystemencoding() 获取 文件系统编码格式: 与 文件系统错误处理句柄 一起使用以便在 Unicode 文件名和字节文件名之间进行转换。 文件系统错误处理句柄是由 getfilesystemencoding() 来返回的。">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.getrecursionlimit()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.getsizeof(object[, default])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys.gettrace()">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sys._getframe([depth])">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -295,27 +420,27 @@ argv[0] 为脚本的名称（是否是完整的路径名取决于操作系统）
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

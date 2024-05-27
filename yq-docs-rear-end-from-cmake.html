@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -151,6 +150,135 @@ yanque&#64;yanquedembp PlantsVsZombies %
 - 访问环境变量: 与普通变量相比, 需要加上 ENV, 如$ENV{VariableName}</li>
 <li>打印输出: 使用 message, 如message(“var=${var}”)</li>
 </ul>
+<div class="rst-function section" id="project(&lt;projectname&gt; [languageName1 languageName2 ...])">
+<strong>project(&lt;projectname&gt; [languageName1 languageName2 ...])</strong><p></p>
+<p>指定项目名称, 如指定项目为Game:</p>
+<pre class="literal-block">
+project(Game)
+</pre>
+</div>
+<div class="rst-function section" id="cmake_minimum_requried(VERSION major[.minor[.patch)">
+<strong>cmake_minimum_requried(VERSION major[.minor[.patch)</strong><p></p>
+<p>用于指定需要的CMake的最低版本, 如指定最低使用2.8版本:</p>
+<pre class="literal-block">
+cmake_minimum_requried(VERSION 2.8)
+</pre>
+</div>
+<div class="rst-function section" id="aux_source_directory(&lt;dir&gt; &lt;variable&gt;)">
+<strong>aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</strong><p></p>
+<p>用于将dir目录下的所有源文件的名字保存在变量variable中, 如:</p>
+<pre class="literal-block">
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src  DIR_SRCS)
+</pre>
+</div>
+<div class="rst-function section" id="add_executable(&lt;name&gt; [WIN32] [MACOSX_BUNDLE][EXCLUDE_FROM_ALL] source1 source2 … sourceN)">
+<strong>add_executable(&lt;name&gt; [WIN32] [MACOSX_BUNDLE][EXCLUDE_FROM_ALL] source1 source2 … sourceN)</strong><p></p>
+<p>用于指定从一组源文件source1 source2 ... sourceN 编译出一个可执行文件且命名为name</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+add_executable(Main $(DIR_SRCS))
+</pre>
+</div>
+<div class="rst-function section" id="add_library([STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1source2 … sourceN)">
+<strong>add_library([STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1source2 … sourceN)</strong><p></p>
+<p>用于指定从一组源文件 source1 source2 ... sourceN编译出一个库文件且命名为name</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+add_library(Lib $(DIR_SRCS))
+</pre>
+</div>
+<div class="rst-function section" id="add_dependencies(target-name depend-target1 depend-target2 …)">
+<strong>add_dependencies(target-name depend-target1 depend-target2 …)</strong><p></p>
+<p>用于指定某个目标（可执行文件或者库文件）依赖于其他的目标。这里的目标必须是add_executable、add_library、add_custom_target命令创建的目标</p>
+</div>
+<div class="rst-function section" id="add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])">
+<strong>add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</strong><p></p>
+<p>用于添加一个需要进行构建的子目录</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+add_subdirectory(Lib)
+</pre>
+</div>
+<div class="rst-function section" id="target_link_libraries(&lt;target&gt; [item1 [item2 […]]][[debug|optimized|general] ] …)">
+<strong>target_link_libraries(&lt;target&gt; [item1 [item2 […]]][[debug|optimized|general] ] …)</strong><p></p>
+<p>用于指定target需要链接item1 item2 ...。这里target必须已经被创建，链接的item可以是已经存在的target（依赖关系会自动添加）</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+target_link_libraries(Main Lib)
+</pre>
+</div>
+<div class="rst-function section" id="set(&lt;variable&gt; &lt;value&gt; [[CACHE &lt;type&gt;&lt;docstring&gt; [FORCE]] | PARENT_SCOPE])">
+<strong>set(&lt;variable&gt; &lt;value&gt; [[CACHE &lt;type&gt;&lt;docstring&gt; [FORCE]] | PARENT_SCOPE])</strong><p></p>
+<p>用于设定变量 variable 的值为 value。如果指定了 CACHE 变量将被放入 Cache（缓存）中。</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+set(ProjectName Main)
+</pre>
+</div>
+<div class="rst-function section" id="unset(&lt;variable&gt; [CACHE])">
+<strong>unset(&lt;variable&gt; [CACHE])</strong><p></p>
+<p>用于移除变量 variable。如果指定了 CACHE 变量将被从 Cache 中移除。</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+unset(VAR CACHE)
+</pre>
+</div>
+<div class="rst-function section" id="message([STATUS|WARNING|AUTHOR_WARNING|FATAL_ERROR|SEND_ERROR] “message todisplay”…)">
+<strong>message([STATUS|WARNING|AUTHOR_WARNING|FATAL_ERROR|SEND_ERROR] “message todisplay”…)</strong><p></p>
+<p>用于输出信息</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+message(“Hello World”)
+</pre>
+</div>
+<div class="rst-function section" id="include_directories([AFTER|BEFORE] [SYSTEM] dir1 dir2 …)">
+<strong>include_directories([AFTER|BEFORE] [SYSTEM] dir1 dir2 …)</strong><p></p>
+<p>用于设定目录，这些设定的目录将被编译器用来查找 include 文件</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+include_directories(${PROJECT_SOURCE_DIR}/lib)
+</pre>
+</div>
+<div class="rst-function section" id="find_path(&lt;VAR&gt; name1 [path1 path2 …])">
+<strong>find_path(&lt;VAR&gt; name1 [path1 path2 …])</strong><p></p>
+<p>用于查找包含文件name1的路径，如果找到则将路径保存在VAR中（此路径为一个绝对路径），如果没有找到则结果为&lt;VAR&gt;-NOTFOUND.默认情况下，VAR会被保存在Cache中，这时候我们需要清除VAR才可以进行下一次查询（使用unset命令）:</p>
+<pre class="literal-block">
+find_path(LUA_INCLUDE_PATH lua.h ${LUA_INCLUDE_FIND_PATH})
+if(NOT LUA_INCLUDE_PATH)
+        message(SEND_ERROR &quot;Header file lua.h not found&quot;)
+endif()
+</pre>
+</div>
+<div class="rst-function section" id="find_library(&lt;VAR&gt; name1 [path1 path2 …])">
+<strong>find_library(&lt;VAR&gt; name1 [path1 path2 …])</strong><p></p>
+<p>用于查找库文件 name1 的路径，如果找到则将路径保存在 VAR 中（此路径为一个绝对路径），如果没有找到则结果为 &lt;VAR&gt;-NOTFOUND。一个类似的命令 link_directories 已经不太建议使用了</p>
+</div>
+<div class="rst-function section" id="add_definitions(-DFOO -DBAR …)">
+<strong>add_definitions(-DFOO -DBAR …)</strong><p></p>
+<p>用于添加编译器命令行标志（选项），通常的情况下我们使用其来添加预处理器定义</p>
+<p>使用范例:</p>
+<pre class="literal-block">
+add_definitions(-D_UNICODE -DUNICODE)
+</pre>
+</div>
+<div class="rst-function section" id="file">
+<strong>file</strong><p></p>
+<p>命令简述：此命令提供了丰富的文件和目录的相关操作（这里仅说一下比较常用的）
+使用范例:</p>
+<pre class="literal-block">
+# 目录的遍历
+# GLOB 用于产生一个文件（目录）路径列表并保存在variable 中
+# 文件路径列表中的每个文件的文件名都能匹配globbing expressions（非正则表达式，但是类似）
+# 如果指定了 RELATIVE 路径，那么返回的文件路径列表中的路径为相对于 RELATIVE 的路径
+file(GLOB variable [RELATIVE path][globbing expressions]...)
+
+# 获取当前目录下的所有的文件（目录）的路径并保存到 ALL_FILE_PATH 变量中
+file(GLOB ALL_FILE_PATH ./*)
+# 获取当前目录下的 .h 文件的文件名并保存到ALL_H_FILE 变量中
+# 这里的变量CMAKE_CURRENT_LIST_DIR 表示正在处理的 CMakeLists.txt 文件的所在的目录的绝对路径（2.8.3 以及以后版本才支持）
+file(GLOB ALL_H_FILE RELATIVE${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}/*.h)
+</pre>
+</div>
 </div>
 <div class="section" id="section-3">
 <h2>常用变量</h2>
@@ -206,6 +334,72 @@ CMAKE_RUNTIME_OUTPUT_DIRECTORY  用于设置RUNTIME目标的输出路径
    <a class="" href="#section-2">
     基本语法
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#project(&lt;projectname&gt; [languageName1 languageName2 ...])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cmake_minimum_requried(VERSION major[.minor[.patch)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#aux_source_directory(&lt;dir&gt; &lt;variable&gt;)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#add_executable(&lt;name&gt; [WIN32] [MACOSX_BUNDLE][EXCLUDE_FROM_ALL] source1 source2 … sourceN)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#add_library([STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1source2 … sourceN)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#add_dependencies(target-name depend-target1 depend-target2 …)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#target_link_libraries(&lt;target&gt; [item1 [item2 […]]][[debug|optimized|general] ] …)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#set(&lt;variable&gt; &lt;value&gt; [[CACHE &lt;type&gt;&lt;docstring&gt; [FORCE]] | PARENT_SCOPE])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#unset(&lt;variable&gt; [CACHE])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#message([STATUS|WARNING|AUTHOR_WARNING|FATAL_ERROR|SEND_ERROR] “message todisplay”…)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#include_directories([AFTER|BEFORE] [SYSTEM] dir1 dir2 …)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#find_path(&lt;VAR&gt; name1 [path1 path2 …])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#find_library(&lt;VAR&gt; name1 [path1 path2 …])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#add_definitions(-DFOO -DBAR …)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#file">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-3">
@@ -237,27 +431,27 @@ CMAKE_RUNTIME_OUTPUT_DIRECTORY  用于设置RUNTIME目标的输出路径
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

@@ -1,0 +1,401 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>sysstat工具包</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 23 五月 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+													<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-05-23</div>
+										<h2>sysstat工具包</h2>
+
+										<span class="head-modify-time">修改于: 2024-05-23</span>
+
+									</div>
+									<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/xu710263124/article/details/117437977">Linux命令之sar——查看服务器某一段时间内的CPU情况【系统性能检测】</a></li>
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/355656832">Sysstat：开源免费的 Linux 系统的监控工具</a></li>
+<li>github项目地址: <a class="reference external" href="https://github.com/sysstat/sysstat">https://github.com/sysstat/sysstat</a></li>
+</ul>
+</dd>
+</dl>
+<p>Linux系统常用工具包.
+包含两种类型工具</p>
+<ul class="simple">
+<li>即时查看工具（iostat、mpsat、sar）；</li>
+<li>累计统计工具（sar）.
+<cite>sar</cite> 既可以做系统活动情况报告，又可以进行实时查看服务器的性能，还可以做累计统计</li>
+</ul>
+<p>相关指令</p>
+<ul class="simple">
+<li><cite>./iostat</cite></li>
+<li><cite>./mpsat</cite></li>
+<li><cite>./sar</cite></li>
+<li><cite>./pidstat</cite></li>
+<li><cite>./tapstat</cite></li>
+<li><cite>./cifsiostat</cite></li>
+</ul>
+<p><cite>sysstat</cite> 还包含使用 <cite>cron</cite> 或 <cite>systemd</cite> 执行定时任务的工具（默认的采样时间是10分钟，可以修改。），
+用来收集历史性能和活动数据</p>
+<ul class="simple">
+<li>sar，统计并保存系统活动信息</li>
+<li>sadc， <cite>sar</cite> 的后端，是系统活动数据的收集器</li>
+<li>sa1，收集二进制数据并将其存储在系统活动每日数据文件中，是使用 <cite>cron</cite> 或 <cite>systemd</cite> 运行的 <cite>sar</cite> 前端</li>
+<li>sa2，汇总日常系统活动，是使用 <cite>cron</cite> 或 <cite>systemd</cite> 运行的 <cite>sar</cite> 前端</li>
+<li>sadf，以多种格式显示 <cite>sar</cite> 收集的数据，如 <cite>CSV、XML、JSON</cite> 等，并可以用来与其他程序进行数据交换。</li>
+</ul>
+<p>sar收集的系统统计信息包括：</p>
+<ul class="simple">
+<li>输入/输出和传输速率统计信息</li>
+<li>CPU统计信息，包括对虚拟化体系结构的支持</li>
+<li>内存、交换空间利用率的统计信息</li>
+<li>虚拟内存、分页和故障统计</li>
+<li>进程创建活动信息</li>
+<li>中断信息统计，包括APIC中断，硬件中断，软件中断</li>
+<li>网络统计信息，包括网络接口活动，网络设备故障，IP、TCP、UDP、ICMP协议的流量统计，支持IPv6</li>
+<li>光纤通道流量统计</li>
+<li>基于软件的网络统计信息</li>
+<li>NFS服务器和客户端活动</li>
+<li>套接字统计</li>
+<li>运行队列和系统负载统计</li>
+<li>内核利用率统计信息</li>
+<li>交换统计</li>
+<li>TTY设备活动</li>
+<li>电源管理统计信息</li>
+<li>USB设备事件</li>
+<li>文件系统利用率（节点和块）</li>
+<li>失速信息统计</li>
+</ul>
+<p>sysstat 的主要功能包括：</p>
+<ul class="simple">
+<li>在报告中显示平均统计值。</li>
+<li>检测动态创建或注册的新设备（磁盘，网络接口等）。</li>
+<li>支持UP和SMP计算机，包括具有超线程或多核处理器的计算机。</li>
+<li>支持热插拔CPU和tickless的CPU，自动检测正在动态禁用或启用的处理器。</li>
+<li>适用于许多不同的体系结构，无论是32位还是64位。</li>
+<li>占用很少的CPU时间（用C编写）。</li>
+<li>可以将sar/sadc收集的系统统计信息保存在文件中。</li>
+<li>可以以各种不同的格式（CSV，XML，JSON，SVG等）导出由sar/sadc收集的系统统计信息。</li>
+<li>iostat 可以显示由用户空间中的驱动程序管理的设备的统计信息。</li>
+<li>彩色输出，易于阅读和理解。</li>
+<li>国际化支持，systat 已经被翻译为多种不同的语言。</li>
+<li>可以自动选择用于显示尺寸的单位，以便于阅读，参阅选项 --human</li>
+<li>可以生成SVG图形，并显示在浏览器中。</li>
+</ul>
+<div class="section" id="section-1">
+<h2>安装</h2>
+<div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>sysstat
+</pre></div>
+<p>或者使用源码安装</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git://github.com/sysstat/sysstat
+
+<span class="c1"># 编译安装：</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>sysstat
+$<span class="w"> </span>./configure
+$<span class="w"> </span>make
+$<span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+<div class="section" id="debian">
+<h2>类Debian系统开启数据收集</h2>
+<p>编辑 <cite>/etc/default/sysstat</cite> 配置文件，将 <tt class="docutils literal"><span class="pre">ENABLED=&quot;false&quot;</span></tt> 改为 <tt class="docutils literal"><span class="pre">ENABLED=&quot;true&quot;</span></tt> ，保存即可</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/default/sysstat
+</pre></div>
+<p>重新启动 syastat 服务：</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>service<span class="w"> </span>sysstat<span class="w"> </span>restart
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    安装
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#debian">
+    类Debian系统开启数据收集
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

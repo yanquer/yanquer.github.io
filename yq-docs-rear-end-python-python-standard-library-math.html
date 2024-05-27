@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -129,6 +128,170 @@
 <p>该模块提供了以下函数。除非另有明确说明，否则所有返回值均为浮点数。</p>
 <div class="section" id="section-1">
 <h2>数论与表示函数</h2>
+<div class="rst-function section" id="math.ceil(x)">
+<strong>math.ceil(x)</strong><p></p>
+<p>返回 x 的向上取整，即大于或等于 x 的最小的整数。如果 x 不是浮点数，委托给 x.__ceil__ ，它应该返回一个 Integral 的值。</p>
+</div>
+<div class="rst-function section" id="math.comb(n, k)">
+<strong>math.comb(n, k)</strong><p></p>
+<p>返回不重复且无顺序地从 n 项中选择 k 项的方式总数。</p>
+<p>当 k &lt;= n 时取值为 n! / (k! * (n - k)!)；当 k &gt; n 时取值为零。</p>
+<p>Also called the binomial coefficient because it is equivalent to the coefficient of k-th term in polynomial expansion of (1 + x)ⁿ.</p>
+<p>如果任一参数不为整数则会引发 TypeError。 如果任一参数为负数则会引发 ValueError。</p>
+<p>3.8 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.copysign(x, y)">
+<strong>math.copysign(x, y)</strong><p></p>
+<p>返回一个基于 x 的绝对值和 y 的符号的浮点数。在支持带符号零的平台上，copysign(1.0, -0.0) 返回 -1.0.</p>
+</div>
+<div class="rst-function section" id="math.fabs(x)">
+<strong>math.fabs(x)</strong><p></p>
+<p>返回 x 的绝对值。</p>
+</div>
+<div class="rst-function section" id="math.factorial(n)">
+<strong>math.factorial(n)</strong><p></p>
+<p>Return n factorial as an integer. Raises ValueError if n is not integral or is negative.</p>
+<p>3.9 版后已移除: 接受具有整数值的浮点数 (例如 5.0) 的行为已被弃用。</p>
+</div>
+<div class="rst-function section" id="math.floor(x)">
+<strong>math.floor(x)</strong><p></p>
+<p>返回 x 的向下取整，小于或等于 x 的最大整数。如果 x 不是浮点数，则委托给 x.__floor__ ，它应返回一个 Integral 值。</p>
+</div>
+<div class="rst-function section" id="math.fmod(x, y)">
+<strong>math.fmod(x, y)</strong><p></p>
+<p>返回 fmod(x, y) ，由平台C库定义。请注意，Python表达式 x % y 可能不会返回相同的结果。
+C标准的目的是 fmod(x, y) 完全（数学上；到无限精度）等于 x - n*y 对于某个整数 n ，使得结果具有 与 x 相同的符号和小于 abs(y) 的幅度。
+Python的 x % y 返回带有 y 符号的结果，并且可能不能完全计算浮点参数。
+例如， fmod(-1e-100, 1e100) 是 -1e-100 ，但Python的 -1e-100 % 1e100 的结果是 1e100-1e-100 ，
+它不能完全表示为浮点数，并且取整为令人惊讶的 1e100 。
+出于这个原因，函数 fmod() 在使用浮点数时通常是首选，而Python的 x % y 在使用整数时是首选。</p>
+</div>
+<div class="rst-function section" id="math.frexp(x)">
+<strong>math.frexp(x)</strong><p></p>
+<p>以 (m, e) 对的形式返回 x 的尾数和指数。
+m 是一个浮点数， e 是一个整数，正好是 x == m * 2**e 。</p>
+<p>如果 x 为零，则返回 (0.0, 0) ，否则返回 0.5 &lt;= abs(m) &lt; 1 。这用于以可移植方式“分离”浮点数的内部表示。</p>
+</div>
+<div class="rst-function section" id="math.fsum(iterable)">
+<strong>math.fsum(iterable)</strong><p></p>
+<p>返回迭代中的精确浮点值。通过跟踪多个中间部分和来避免精度损失:</p>
+<pre class="literal-block">
+sum([.1, .1, .1, .1, .1, .1, .1, .1, .1, .1])
+0.9999999999999999
+fsum([.1, .1, .1, .1, .1, .1, .1, .1, .1, .1])
+1.0
+</pre>
+<p>该算法的准确性取决于IEEE-754算术保证和舍入模式为半偶的典型情况。在某些非Windows版本中，底层C库使用扩展精度添加，并且有时可能会使中间和加倍，导致它在最低有效位中关闭。</p>
+<p>有关待进一步讨论和两种替代方法，参见 ASPN cookbook recipes for accurate floating point summation。</p>
+</div>
+<div class="rst-function section" id="math.gcd(*integers)">
+<strong>math.gcd(*integers)</strong><p></p>
+<p>返回给定的整数参数的最大公约数。 如果有一个参数非零，则返回值将是能同时整除所有参数的最大正整数。 如果所有参数为零，则返回值为 0。 不带参数的 gcd() 返回 0。</p>
+<p>3.5 新版功能.</p>
+<p>在 3.9 版更改: 添加了对任意数量的参数的支持。 之前的版本只支持两个参数。</p>
+</div>
+<div class="rst-function section" id="math.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)">
+<strong>math.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)</strong><p></p>
+<p>若 a 和 b 的值比较接近则返回 True，否则返回 False。</p>
+<p>根据给定的绝对和相对容差确定两个值是否被认为是接近的。</p>
+<p>rel_tol 是相对容差 —— 它是 a 和 b 之间允许的最大差值，相对于 a 或 b 的较大绝对值。例如，要设置5％的容差，请传递 rel_tol=0.05 。默认容差为 1e-09，确保两个值在大约9位十进制数字内相同。 rel_tol 必须大于零。</p>
+<p>abs_tol 是最小绝对容差 —— 对于接近零的比较很有用。 abs_tol 必须至少为零。</p>
+<p>如果没有错误发生，结果将是： abs(a-b) &lt;= max(rel_tol * max(abs(a), abs(b)), abs_tol) 。</p>
+<p>IEEE 754特殊值 NaN ， inf 和 -inf 将根据IEEE规则处理。具体来说， NaN 不被认为接近任何其他值，包括 NaN 。 inf 和 -inf 只被认为接近自己。</p>
+<p>3.5 新版功能.</p>
+<p>参见 PEP 485 —— 用于测试近似相等的函数</p>
+</div>
+<div class="rst-function section" id="math.isfinite(x)">
+<strong>math.isfinite(x)</strong><p></p>
+<p>如果 x 既不是无穷大也不是NaN，则返回 True ，否则返回 False 。 （注意 0.0 被认为 是 有限的。）</p>
+<p>3.2 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.isinf(x)">
+<strong>math.isinf(x)</strong><p></p>
+<p>如果 x 是正或负无穷大，则返回 True ，否则返回 False 。</p>
+</div>
+<div class="rst-function section" id="math.isnan(x)">
+<strong>math.isnan(x)</strong><p></p>
+<p>如果 x 是 NaN（不是数字），则返回 True ，否则返回 False 。</p>
+</div>
+<div class="rst-function section" id="math.isqrt(n)">
+<strong>math.isqrt(n)</strong><p></p>
+<p>返回非负整数 n 的整数平方根。 这就是对 n 的实际平方根向下取整，或者相当于使得 a² ≤ n 的最大整数 a。</p>
+<p>对于某些应用来说，可以更适合取值为使得 n ≤ a² 的最小整数 a ，或者换句话说就是 n 的实际平方根向上取整。
+对于正数 n，这可以使用 a = 1 + isqrt(n - 1) 来计算。</p>
+<p>3.8 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.lcm(*integers)">
+<strong>math.lcm(*integers)</strong><p></p>
+<p>返回给定的整数参数的最小公倍数。 如果所有参数均非零，则返回值将是为所有参数的整数倍的最小正整数。 如果参数之一为零，则返回值为 0。 不带参数的 lcm() 返回 1。</p>
+<p>3.9 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.ldexp(x, i)">
+<strong>math.ldexp(x, i)</strong><p></p>
+<p>返回 x * (2**i) 。 这基本上是函数 frexp() 的反函数。</p>
+</div>
+<div class="rst-function section" id="math.modf(x)">
+<strong>math.modf(x)</strong><p></p>
+<p>返回 x 的小数和整数部分。两个结果都带有 x 的符号并且是浮点数。</p>
+</div>
+<div class="rst-function section" id="math.nextafter(x, y)">
+<strong>math.nextafter(x, y)</strong><p></p>
+<p>返回 x 趋向于 y 的最接近的浮点数值。</p>
+<p>如果 x 等于 y 则返回 y。</p>
+<p>示例:</p>
+<pre class="literal-block">
+math.nextafter(x, math.inf) 的方向朝上：趋向于正无穷。
+math.nextafter(x, -math.inf) 的方向朝下：趋向于负无穷。
+math.nextafter(x, 0.0) 趋向于零。
+math.nextafter(x, math.copysign(math.inf, x)) 趋向于零的反方向。
+</pre>
+<p>另请参阅 math.ulp()。</p>
+<p>3.9 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.perm(n, k=None)">
+<strong>math.perm(n, k=None)</strong><p></p>
+<p>返回不重复且有顺序地从 n 项中选择 k 项的方式总数。</p>
+<p>当 k &lt;= n 时取值为 n! / (n - k)!；当 k &gt; n 时取值为零。</p>
+<p>如果 k 未指定或为 None，则 k 默认值为 n 并且函数将返回 n!。</p>
+<p>如果任一参数不为整数则会引发 TypeError。 如果任一参数为负数则会引发 ValueError。</p>
+<p>3.8 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.prod(iterable, *, start=1)">
+<strong>math.prod(iterable, *, start=1)</strong><p></p>
+<p>计算输入的 iterable 中所有元素的积。 积的默认 start 值为 1。</p>
+<p>当可迭代对象为空时，返回起始值。 此函数特别针对数字值使用，并会拒绝非数字类型。</p>
+<p>3.8 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.remainder(x, y)">
+<strong>math.remainder(x, y)</strong><p></p>
+<p>返回 IEEE 754 风格的 x 相对于 y 的余数。对于有限 x 和有限非零 y ，这是差异 x - n*y ，其中 n 是与商 x / y 的精确值最接近的整数。
+如果 x / y 恰好位于两个连续整数之间，则将最接近的 偶数 用作 n 。 余数 r = remainder(x, y) 因此总是满足 abs(r) &lt;= 0.5 * abs(y)。</p>
+<p>特殊情况遵循IEEE 754：特别是 remainder(x, math.inf) 对于任何有限 x 都是 x ，
+而 remainder(x, 0) 和 remainder(math.inf, x) 引发 ValueError 适用于任何非NaN的 x 。
+如果余数运算的结果为零，则该零将具有与 x 相同的符号。</p>
+<p>在使用IEEE 754二进制浮点的平台上，此操作的结果始终可以完全表示：不会引入舍入错误。</p>
+<p>3.7 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.trunc(x)">
+<strong>math.trunc(x)</strong><p></p>
+<p>返回去除小数部分的 x ，只留下整数部分。
+这样就可以四舍五入到0了： trunc() 对于正的 x 相当于 floor() ，对于负的 x 相当于 ceil() 。
+如果 x 不是浮点数，委托给 x.__trunc__ ，它应该返回一个 Integral 值。</p>
+</div>
+<div class="rst-function section" id="math.ulp(x)">
+<strong>math.ulp(x)</strong><p></p>
+<p>返回浮点数 x 的最小有效比特位的值:</p>
+<p>如果 x 是 NaN (非数字)，则返回 x。
+如果 x 为负数，则返回 ulp(-x)。
+如果 x 为正数，则返回 x。
+如果 x 等于零，则返回 去正规化的 可表示最小正浮点数 (小于 正规化的 最小正浮点数 sys.float_info.min)。
+如果 x 等于可表示最大正浮点数，则返回 x 的最低有效比特位的值，使得小于 x 的第一个浮点数为 x - ulp(x)。
+在其他情况下 (x 是一个有限的正数)，则返回 x 的最低有效比特位的值，使得大于 x 的第一个浮点数为 x + ulp(x)。
+ULP 即 &quot;Unit in the Last Place&quot; 的缩写。</p>
+<p>另请参阅 math.nextafter() 和 sys.float_info.epsilon。</p>
+<blockquote>
+3.9 新版功能.</blockquote>
+</div>
 <p>注意 frexp() 和 modf() 具有与它们的C等价函数不同的调用/返回模式：
 它们采用单个参数并返回一对值，而不是通过 '输出形参' 返回它们的第二个返回参数（Python中没有这样的东西）。</p>
 <p>对于 ceil() ， floor() 和 modf() 函数，请注意 所有 足够大的浮点数都是精确整数。
@@ -136,19 +299,178 @@ Python浮点数通常不超过53位的精度（与平台C double类型相同）�
 </div>
 <div class="section" id="section-2">
 <h2>幂函数与对数函数</h2>
+<div class="rst-function section" id="math.cbrt(x)">
+<strong>math.cbrt(x)</strong><p></p>
+<p>Return the cube root of x.</p>
+<p>3.11 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.exp(x)">
+<strong>math.exp(x)</strong><p></p>
+<p>返回 e 次 x 幂，其中 e = 2.718281... 是自然对数的基数。这通常比 math.e ** x 或 pow(math.e, x) 更精确。</p>
+</div>
+<div class="rst-function section" id="math.exp2(x)">
+<strong>math.exp2(x)</strong><p></p>
+<p>Return 2 raised to the power x.</p>
+<p>3.11 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.expm1(x)">
+<strong>math.expm1(x)</strong><p></p>
+<p>返回 e 的 x 次幂，减1。这里 e 是自然对数的基数。
+对于小浮点数 x ， exp(x) - 1 中的减法可能导致 significant loss of precision；
+expm1() 函数提供了一种将此数量计算为全精度的方法:</p>
+<pre class="literal-block">
+from math import exp, expm1
+exp(1e-5) - 1  # gives result accurate to 11 places
+1.0000050000069649e-05
+expm1(1e-5)    # result accurate to full precision
+1.0000050000166668e-05
+</pre>
+<p>3.2 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.log(x[, base])">
+<strong>math.log(x[, base])</strong><p></p>
+<p>使用一个参数，返回 x 的自然对数（底为 e ）。</p>
+<p>使用两个参数，返回给定的 base 的对数 x ，计算为 log(x)/log(base) 。</p>
+</div>
+<div class="rst-function section" id="math.log1p(x)">
+<strong>math.log1p(x)</strong><p></p>
+<p>返回 1+x 的自然对数（以 e 为底）。 以对于接近零的 x 精确的方式计算结果。</p>
+</div>
+<div class="rst-function section" id="math.log2(x)">
+<strong>math.log2(x)</strong><p></p>
+<p>返回 x 以2为底的对数。这通常比 log(x, 2) 更准确。</p>
+<p>3.3 新版功能.</p>
+<p>参见 int.bit_length() 返回表示二进制整数所需的位数，不包括符号和前导零。</p>
+</div>
+<div class="rst-function section" id="math.log10(x)">
+<strong>math.log10(x)</strong><p></p>
+<p>返回 x 底为10的对数。这通常比 log(x, 10) 更准确。</p>
+</div>
+<div class="rst-function section" id="math.pow(x, y)">
+<strong>math.pow(x, y)</strong><p></p>
+<p>Return x raised to the power y. Exceptional cases follow the IEEE 754 standard as far as possible. In particular, pow(1.0, x) and pow(x, 0.0) always return 1.0, even when x is a zero or a NaN. If both x and y are finite, x is negative, and y is not an integer then pow(x, y) is undefined, and raises ValueError.</p>
+<p>与内置的 ** 运算符不同， math.pow() 将其参数转换为 float 类型。使用 ** 或内置的 pow() 函数来计算精确的整数幂。</p>
+<p>在 3.11 版更改: The special cases pow(0.0, -inf) and pow(-0.0, -inf) were changed to return inf instead of raising ValueError, for consistency with IEEE 754.</p>
+</div>
+<div class="rst-function section" id="math.sqrt(x)">
+<strong>math.sqrt(x)</strong><p></p>
+<p>返回 x 的平方根。</p>
+</div>
 </div>
 <div class="section" id="section-3">
 <h2>三角函数</h2>
+<div class="rst-function section" id="math.acos(x)">
+<strong>math.acos(x)</strong><p></p>
+<p>返回以弧度为单位的 x 的反余弦值。 结果范围在 0 到 pi 之间。</p>
+</div>
+<div class="rst-function section" id="math.asin(x)">
+<strong>math.asin(x)</strong><p></p>
+<p>返回以弧度为单位的 x 的反正弦值。 结果范围在 -pi/2 到 pi/2 之间。</p>
+</div>
+<div class="rst-function section" id="math.atan(x)">
+<strong>math.atan(x)</strong><p></p>
+<p>返回以弧度为单位的 x 的反正切值。 结果范围在 -pi/2 到 pi/2 之间。.</p>
+</div>
+<div class="rst-function section" id="math.atan2(y, x)">
+<strong>math.atan2(y, x)</strong><p></p>
+<p>以弧度为单位返回 atan(y / x) 。结果是在 -pi 和 pi 之间。从原点到点 (x, y) 的平面矢量使该角度与正X轴成正比。 atan2() 的点的两个输入的符号都是已知的，因此它可以计算角度的正确象限。 例如， atan(1) 和 atan2(1, 1) 都是 pi/4 ，但 atan2(-1, -1) 是 -3*pi/4 。</p>
+</div>
+<div class="rst-function section" id="math.cos(x)">
+<strong>math.cos(x)</strong><p></p>
+<p>返回 x 弧度的余弦值。</p>
+</div>
+<div class="rst-function section" id="math.dist(p, q)">
+<strong>math.dist(p, q)</strong><p></p>
+<p>返回 p 与 q 两点之间的欧几里得距离，以一个坐标序列（或可迭代对象）的形式给出。 两个点必须具有相同的维度。</p>
+<p>大致相当于:</p>
+<pre class="literal-block">
+sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
+</pre>
+<p>3.8 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.hypot(*coordinates)">
+<strong>math.hypot(*coordinates)</strong><p></p>
+<p>返回欧几里得范数，sqrt(sum(x**2 for x in coordinates))。 这是从原点到坐标给定点的向量长度。</p>
+<p>对于一个二维点 (x, y)，这等价于使用毕达哥拉斯定义 sqrt(x*x + y*y) 计算一个直角三角形的斜边。</p>
+<p>在 3.8 版更改: 添加了对 n 维点的支持。 之前的版本只支持二维点。</p>
+<p>在 3.10 版更改: 改进了算法的精确性，使得最大误差在 1 ulp (最后一位的单位数值) 以下。 更为常见的情况是，结果几乎总是能正确地舍入到 1/2 ulp 范围之内。</p>
+</div>
+<div class="rst-function section" id="math.sin(x)">
+<strong>math.sin(x)</strong><p></p>
+<p>返回 x 弧度的正弦值。</p>
+</div>
+<div class="rst-function section" id="math.tan(x)">
+<strong>math.tan(x)</strong><p></p>
+<p>返回 x 弧度的正切值。</p>
+</div>
 </div>
 <div class="section" id="section-4">
 <h2>角度转换</h2>
+<div class="rst-function section" id="math.degrees(x)">
+<strong>math.degrees(x)</strong><p></p>
+<p>将角度 x 从弧度转换为度数。</p>
+</div>
+<div class="rst-function section" id="math.radians(x)">
+<strong>math.radians(x)</strong><p></p>
+<p>将角度 x 从度数转换为弧度。</p>
+</div>
 </div>
 <div class="section" id="section-5">
 <h2>双曲函数</h2>
 <p>双曲函数 是基于双曲线而非圆来对三角函数进行模拟。</p>
+<div class="rst-function section" id="math.acosh(x)">
+<strong>math.acosh(x)</strong><p></p>
+<p>返回 x 的反双曲余弦值。</p>
+</div>
+<div class="rst-function section" id="math.asinh(x)">
+<strong>math.asinh(x)</strong><p></p>
+<p>返回 x 的反双曲正弦值。</p>
+</div>
+<div class="rst-function section" id="math.atanh(x)">
+<strong>math.atanh(x)</strong><p></p>
+<p>返回 x 的反双曲正切值。</p>
+</div>
+<div class="rst-function section" id="math.cosh(x)">
+<strong>math.cosh(x)</strong><p></p>
+<p>返回 x 的双曲余弦值。</p>
+</div>
+<div class="rst-function section" id="math.sinh(x)">
+<strong>math.sinh(x)</strong><p></p>
+<p>返回 x 的双曲正弦值。</p>
+</div>
+<div class="rst-function section" id="math.tanh(x)">
+<strong>math.tanh(x)</strong><p></p>
+<p>返回 x 的双曲正切值。</p>
+</div>
 </div>
 <div class="section" id="section-6">
 <h2>特殊函数</h2>
+<div class="rst-function section" id="math.erf(x)">
+<strong>math.erf(x)</strong><p></p>
+<p>返回 x 处的 error function 。</p>
+<p>The erf() function can be used to compute traditional statistical functions such as the cumulative standard normal distribution:</p>
+<pre class="literal-block">
+def phi(x):
+    'Cumulative distribution function for the standard normal distribution'
+    return (1.0 + erf(x / sqrt(2.0))) / 2.0
+</pre>
+<p>3.2 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.erfc(x)">
+<strong>math.erfc(x)</strong><p></p>
+<p>返回 x 处的互补误差函数。 互补错误函数 定义为 1.0 - erf(x)。 它用于 x 的大值，从其中减去一个会导致 有效位数损失。</p>
+<p>3.2 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.gamma(x)">
+<strong>math.gamma(x)</strong><p></p>
+<p>返回 x 处的 伽马函数 值。</p>
+<p>3.2 新版功能.</p>
+</div>
+<div class="rst-function section" id="math.lgamma(x)">
+<strong>math.lgamma(x)</strong><p></p>
+<p>返回Gamma函数在 x 绝对值的自然对数。</p>
+<p>3.2 新版功能.</p>
+</div>
 </div>
 <div class="section" id="section-7">
 <h2>常量</h2>
@@ -226,31 +548,263 @@ True
    <a class="" href="#section-1">
     数论与表示函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#math.ceil(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.comb(n, k)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.copysign(x, y)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.fabs(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.factorial(n)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.floor(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.fmod(x, y)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.frexp(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.fsum(iterable)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.gcd(*integers)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.isfinite(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.isinf(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.isnan(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.isqrt(n)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.lcm(*integers)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.ldexp(x, i)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.modf(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.nextafter(x, y)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.perm(n, k=None)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.prod(iterable, *, start=1)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.remainder(x, y)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.trunc(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.ulp(x)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-2">
     幂函数与对数函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#math.cbrt(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.exp(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.exp2(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.expm1(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.log(x[, base])">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.log1p(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.log2(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.log10(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.pow(x, y)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.sqrt(x)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-3">
     三角函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#math.acos(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.asin(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.atan(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.atan2(y, x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.cos(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.dist(p, q)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.hypot(*coordinates)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.sin(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.tan(x)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-4">
     角度转换
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#math.degrees(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.radians(x)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-5">
     双曲函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#math.acosh(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.asinh(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.atanh(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.cosh(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.sinh(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.tanh(x)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-6">
     特殊函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#math.erf(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.erfc(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.gamma(x)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#math.lgamma(x)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-7">
@@ -287,27 +841,27 @@ True
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

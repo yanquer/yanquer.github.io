@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -157,8 +156,100 @@ proxy.age = 25 // 实际执行 handler.set
 // 25
 </pre>
 <p>实例方法</p>
+<div class="rst-function section" id="get(target, propKey, receiver)">
+<strong>get(target, propKey, receiver)</strong><p></p>
+<dl class="docutils">
+<dt>receiver</dt>
+<dd>接收着, 一般表示代理对象, 比如上面的proxy</dd>
+</dl>
+</div>
+<div class="rst-function section" id="set(target, propKey, value, receiver)">
+<strong>set(target, propKey, value, receiver)</strong><p></p>
+<p>待补充</p>
+</div>
+<div class="rst-function section" id="apply(target, ctx, args)">
+<strong>apply(target, ctx, args)</strong><p></p>
+<p>用于拦截函数的调用、call 和 reply 操作</p>
+<dl class="docutils">
+<dt>target</dt>
+<dd>目标对象</dd>
+<dt>ctx</dt>
+<dd>目标对象上下文</dd>
+<dt>args</dt>
+<dd>目标对象的参数数组</dd>
+</dl>
+</div>
+<div class="rst-function section" id="has(target, propKey)">
+<strong>has(target, propKey)</strong><p></p>
+<p>用于拦截 HasProperty 操作，即在判断 target 对象是否存在 propKey 属性时，会被这个方法拦截.
+此方法不判断一个属性是对象自身的属性，还是继承的属性</p>
+</div>
+<div class="rst-function section" id="construct(target, args)">
+<strong>construct(target, args)</strong><p></p>
+<p>用于拦截 new 命令。返回值必须为对象</p>
+</div>
+<div class="rst-function section" id="deleteProperty(target, propKey)">
+<strong>deleteProperty(target, propKey)</strong><p></p>
+<p>用于拦截 delete 操作，如果这个方法抛出错误或者返回 false ，propKey 属性就无法被 delete 命令删除</p>
+</div>
+<div class="rst-function section" id="defineProperty(target, propKey, propDesc)">
+<strong>defineProperty(target, propKey, propDesc)</strong><p></p>
+<p>用于拦截 Object.definePro若目标对象不可扩展，增加目标对象上不存在的属性会报错;
+若属性不可写或不可配置，则不能改变这些属性</p>
+<p>其实就是拦截对象属性定义, 比如 <cite>ob.name=tom</cite></p>
+</div>
 <p>erty 操作</p>
+<div class="rst-function section" id="getOwnPropertyDescriptor(target, propKey)">
+<strong>getOwnPropertyDescriptor(target, propKey)</strong><p></p>
+<p>用于拦截 Object.getOwnPropertyD() 返回值为属性描述对象或者 undefined 。</p>
+</div>
 <p>ptor 属性</p>
+<div class="rst-function section" id="getPrototypeOf(target)">
+<strong>getPrototypeOf(target)</strong><p></p>
+<p>主要用于拦截获取对象原型的操作。包括以下操作：</p>
+<ul class="simple">
+<li>Object.prototype._proto_</li>
+<li>Object.prototype.isPrototypeOf()</li>
+<li>Object.getPrototypeOf()</li>
+<li>Reflect.getPrototypeOf()</li>
+<li>instanceof</li>
+</ul>
+<p>注意，返回值必须是对象或者 null ，否则报错.
+另外，如果目标对象不可扩展（non-extensible），getPrototypeOf 方法必须返回目标对象的原型对象</p>
+</div>
+<div class="rst-function section" id="isExtensible(target)">
+<strong>isExtensible(target)</strong><p></p>
+<p>用于拦截 Object.isExtensible 操作。
+该方法只能返回布尔值，否则返回值会被自动转为布尔值。</p>
+</div>
+<div class="rst-function section" id="ownKeys(target)">
+<strong>ownKeys(target)</strong><p></p>
+<p>用于拦截对象自身属性的读取操作。主要包括以下操作:</p>
+<ul class="simple">
+<li>Object.getOwnPropertyNames()</li>
+<li>Object.getOwnPropertySymbols()</li>
+<li>Object.keys()</li>
+<li>or...in</li>
+</ul>
+<p>方法返回的数组成员，只能是字符串或 Symbol 值，否则会报错。</p>
+<p>若目标对象中含有不可配置的属性，则必须将这些属性在结果中返回，否则就会报错。</p>
+<p>若目标对象不可扩展，则必须全部返回且只能返回目标对象包含的所有属性，不能包含不存在的属性，否则也会报错。</p>
+</div>
+<div class="rst-function section" id="preventExtensions(target)">
+<strong>preventExtensions(target)</strong><p></p>
+<p>拦截 Object.preventExtensions 操作。
+该方法必须返回一个布尔值，否则会自动转为布尔值。</p>
+</div>
+<div class="rst-function section" id="setPrototypeOf">
+<strong>setPrototypeOf</strong><p></p>
+<p>主要用来拦截 Object.setPrototypeOf 方法。
+返回值必须为布尔值，否则会被自动转为布尔值。
+若目标对象不可扩展，setPrototypeOf 方法不得改变目标对象的原型。</p>
+</div>
+<div class="rst-function section" id="Proxy.revocable()">
+<strong>Proxy.revocable()</strong><p></p>
+<p>用于返回一个可取消的 Proxy 实例。</p>
+</div>
 </div>
 <div class="section" id="reflect">
 <h2>Reflect</h2>
@@ -169,8 +260,65 @@ proxy.age = 25 // 实际执行 handler.set
 <p>Reflect 对象对某些方法的返回结果进行了修改，使其更合理。
 Reflect 对象使用函数的方式实现了 Object 的命令式操作。</p>
 <p>静态方法</p>
+<div class="rst-function section" id="Reflect.get(target, name, receiver)">
+<strong>Reflect.get(target, name, receiver)</strong><p></p>
+<p>查找并返回 target 对象的 name 属性。</p>
+</div>
 <p>Reflect.set(target, name, value, receiver)
 将 target 的 name 属性设置为 value。返回值为 boolean ，true 表示修改成功，false 表示失败。当 target 为不存在的对象时，会报错。</p>
+<div class="rst-function section" id="Reflect.has(obj, name)">
+<strong>Reflect.has(obj, name)</strong><p></p>
+<p>是 name in obj 指令的函数化，用于查找 name 属性在 obj 对象中是否存在。返回值为 boolean。如果 obj 不是对象则会报错 TypeError。</p>
+</div>
+<div class="rst-function section" id="Reflect.deleteProperty(obj, property)">
+<strong>Reflect.deleteProperty(obj, property)</strong><p></p>
+<p>是 delete obj[property] 的函数化，用于删除 obj 对象的 property 属性，返回值为 boolean。如果 obj 不是对象则会报错 TypeError。</p>
+</div>
+<div class="rst-function section" id="Reflect.construct(obj, args)">
+<strong>Reflect.construct(obj, args)</strong><p></p>
+<p>等同于 new target(...args)。</p>
+</div>
+<div class="rst-function section" id="Reflect.getPrototypeOf(obj)">
+<strong>Reflect.getPrototypeOf(obj)</strong><p></p>
+<p>用于读取 obj 的 _proto_ 属性。在 obj 不是对象时不会像 Object 一样把 obj 转为对象，而是会报错。</p>
+</div>
+<div class="rst-function section" id="Reflect.setPrototypeOf(obj, newProto)">
+<strong>Reflect.setPrototypeOf(obj, newProto)</strong><p></p>
+<p>用于设置目标对象的 prototype。</p>
+</div>
+<div class="rst-function section" id="Reflect.apply(func, thisArg, args)">
+<strong>Reflect.apply(func, thisArg, args)</strong><p></p>
+<p>等同于 Function.prototype.apply.call(func, thisArg, args)</p>
+<dl class="docutils">
+<dt>func</dt>
+<dd>目标函数；</dd>
+<dt>thisArg</dt>
+<dd>目标函数绑定的 this 对象；</dd>
+<dt>args</dt>
+<dd>目标函数调用时传入的参数列表，可以是数组或类似数组的对象.
+若目标函数无法调用，会抛出 TypeError</dd>
+</dl>
+</div>
+<div class="rst-function section" id="Reflect.defineProperty(target, propertyKey, attributes)">
+<strong>Reflect.defineProperty(target, propertyKey, attributes)</strong><p></p>
+<p>用于为目标对象定义属性。如果 target 不是对象，会抛出错误。</p>
+</div>
+<div class="rst-function section" id="Reflect.getOwnPropertyDescriptor(target, propertyKey)">
+<strong>Reflect.getOwnPropertyDescriptor(target, propertyKey)</strong><p></p>
+<p>用于得到 target 对象的 propertyKey 属性的描述对象。在 target 不是对象时，会抛出错误表示参数非法，不会将非对象转换为对象。</p>
+</div>
+<div class="rst-function section" id="Reflect.isExtensible(target)">
+<strong>Reflect.isExtensible(target)</strong><p></p>
+<p>用于判断 target 对象是否可扩展。返回值为 boolean 。如果 target 参数不是对象，会抛出错误</p>
+</div>
+<div class="rst-function section" id="Reflect.preventExtensions(target)">
+<strong>Reflect.preventExtensions(target)</strong><p></p>
+<p>用于让 target 对象变为不可扩展。如果 target 参数不是对象，会抛出错误</p>
+</div>
+<div class="rst-function section" id="Reflect.ownKeys(target)">
+<strong>Reflect.ownKeys(target)</strong><p></p>
+<p>用于返回 target 对象的所有属性，等同于 Object.getOwnPropertyNames 与Object.getOwnPropertySymbols 之和</p>
+</div>
 </div>
 
 								</article>
@@ -198,11 +346,119 @@ Reflect 对象使用函数的方式实现了 Object 的命令式操作。</p>
    <a class="" href="#proxy">
     Proxy
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#get(target, propKey, receiver)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#set(target, propKey, value, receiver)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#apply(target, ctx, args)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#has(target, propKey)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#construct(target, args)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#deleteProperty(target, propKey)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#defineProperty(target, propKey, propDesc)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#getOwnPropertyDescriptor(target, propKey)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#getPrototypeOf(target)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#isExtensible(target)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#ownKeys(target)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#preventExtensions(target)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#setPrototypeOf">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Proxy.revocable()">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#reflect">
     Reflect
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#Reflect.get(target, name, receiver)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.has(obj, name)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.deleteProperty(obj, property)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.construct(obj, args)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.getPrototypeOf(obj)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.setPrototypeOf(obj, newProto)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.apply(func, thisArg, args)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.defineProperty(target, propertyKey, attributes)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.getOwnPropertyDescriptor(target, propertyKey)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.isExtensible(target)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.preventExtensions(target)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#Reflect.ownKeys(target)">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -229,27 +485,27 @@ Reflect 对象使用函数的方式实现了 Object 的命令式操作。</p>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

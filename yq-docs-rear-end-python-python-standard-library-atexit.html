@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -132,6 +131,26 @@
 在检测到 Python 内部致命错误以及调用了 os._exit() 时也不会执行.</p>
 </div>
 <p>提供的两个api</p>
+<div class="rst-function section" id="atexit.register(func, *args, **kwargs)">
+<strong>atexit.register(func, *args, **kwargs)</strong><p></p>
+<p>将 func 注册为终止时执行的函数.
+任何传给 func 的可选的参数都应当作为参数传给 register().
+可以多次注册同样的函数及参数.</p>
+<p>在正常的程序终止时 (举例来说, 当调用了 sys.exit() 或是主模块的执行完成时),
+所有注册过的函数都会以后进先出的顺序执行.
+这样做是假定更底层的模块通常会比高层模块更早引入, 因此需要更晚清理.</p>
+<p>如果在 exit 处理句柄执行期间引发了异常，
+将会打印回溯信息 (除非引发的是 SystemExit) 并且异常信息会被保存。
+在所有 exit 处理句柄都获得运行机会之后，所引发的最后一个异常会被重新引发。</p>
+<p>这个函数返回 func 对象，可以把它当作装饰器使用。但只有在函数不需要任何参数调用时才能工作.</p>
+</div>
+<div class="rst-function section" id="atexit.unregister(func)">
+<strong>atexit.unregister(func)</strong><p></p>
+<p>将 func 移出当解释器关闭时要运行的函数列表。
+如果 func 之前未被注册则 unregister() 将静默地不做任何事。
+如果 func 已被注册一次以上，则该函数每次在 atexit 调用栈中的出现都将被移除。
+当取消注册时会在内部使用相等性比较 (==)，因而函数引用不需要具有匹配的标识号。</p>
+</div>
 
 								</article>
 						</div>
@@ -146,6 +165,30 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#atexit.register(func, *args, **kwargs)">
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#atexit.unregister(func)">
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -163,27 +206,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>

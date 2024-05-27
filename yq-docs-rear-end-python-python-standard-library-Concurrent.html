@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -137,7 +136,78 @@
 <dl class="docutils">
 <dt>class concurrent.futures.Executor</dt>
 <dd><p class="first">抽象类提供异步执行调用方法。要通过它的子类调用，而不是直接调用。</p>
-<div class="last"></div></dd>
+<div class="rst-function section" id="submit(fn, /, *args, **kwargs)">
+<strong>submit(fn, /, *args, **kwargs)</strong><p></p>
+<p>调度可调用对象 fn，以 <tt class="docutils literal"><span class="pre">fn(*args,</span> **kwargs)</tt> 方式执行并返回一个代表该可调用对象的执行的 Future 对象:</p>
+<pre class="literal-block">
+with ThreadPoolExecutor(max_workers=1) as executor:
+    future = executor.submit(pow, 323, 1235)
+    print(future.result())
+</pre>
+</div>
+<div class="rst-function section" id="map(func, *iterables, timeout=None, chunksize=1)">
+<strong>map(func, *iterables, timeout=None, chunksize=1)</strong><p></p>
+<p>类似于 <tt class="docutils literal">map(func, *iterables)</tt> 函数，除了以下两点:</p>
+<ul class="simple">
+<li>iterables 是立即执行而不是延迟执行的；</li>
+<li>func 是异步执行的，对 func 的多个调用可以并发执行。</li>
+</ul>
+<dl class="docutils">
+<dt>timeout: Union[int, float, None]</dt>
+<dd>当超时时, 将会触发 超时 异常(raises TimeoutError)</dd>
+</dl>
+<p>如果 func 调用引发一个异常，当从迭代器中取回它的值时这个异常将被引发。</p>
+<p>使用 ProcessPoolExecutor 时，这个方法会将 iterables 分割任务块并作为独立的任务并提交到执行池中。
+这些块的大概数量可以由 chunksize 指定正整数设置。
+对很长的迭代器来说，使用大的 chunksize 值比默认值 1 能显著地提高性能。 chunksize 对 ThreadPoolExecutor 没有效果。</p>
+<p>返回的是执行结果的生成器迭代, 保持于 iterables 的顺序一致:</p>
+<pre class="literal-block">
+from concurrent.futures import ThreadPoolExecutor
+
+with ThreadPoolExecutor(max_workers=3) as t:
+    d = t.map(lambda x: x**2, [1, 2, 3, 8])
+    print(type(d))
+    for x in d:
+        print(x, type(x))
+</pre>
+<p>输出:</p>
+<pre class="literal-block">
+&lt;class 'generator'&gt;
+1 &lt;class 'int'&gt;
+4 &lt;class 'int'&gt;
+9 &lt;class 'int'&gt;
+64 &lt;class 'int'&gt;
+</pre>
+<p>在 3.5 版更改: 加入 chunksize 参数。</p>
+</div>
+<div class="rst-function last section" id="shutdown(wait=True, *, cancel_futures=False)">
+<strong>shutdown(wait=True, *, cancel_futures=False)</strong><p></p>
+<p>当待执行的 future 对象完成执行后向执行者发送信号，它就会释放正在使用的任何资源。
+在关闭后调用 Executor.submit() 和 Executor.map() 将会引发 RuntimeError。</p>
+<dl class="docutils">
+<dt>wait: bool = True</dt>
+<dd><p class="first">wait 为 True, 则此方法只有在所有待执行的 future 对象完成执行且释放已分配的资源后才会返回。</p>
+<p>wait 为 False，方法立即返回，所有待执行的 future 对象完成执行后会释放已分配的资源。</p>
+<p class="last">不管 wait 的值是什么，整个 Python 程序将等到所有待执行的 future 对象完成执行后才退出。</p>
+</dd>
+<dt>cancel_futures: bool=False</dt>
+<dd>cancel_futures 为 True，此方法将取消所有执行器还未开始运行的挂起的 Future。
+任何已完成或正在运行的 Future 将不会被取消，无论 cancel_futures 的值是什么？</dd>
+</dl>
+<p>如果 cancel_futures 和 wait 均为 True，则执行器已开始运行的所有 Future 将在此方法返回之前完成。 其余的 Future 会被取消。</p>
+<p>如果使用 with 语句，你就可以避免显式调用这个方法，
+它将会停止 Executor (就好像 Executor.shutdown() 调用时 wait 设为 True 一样等待):</p>
+<pre class="literal-block">
+import shutil
+with ThreadPoolExecutor(max_workers=4) as e:
+    e.submit(shutil.copy, 'src1.txt', 'dest1.txt')
+    e.submit(shutil.copy, 'src2.txt', 'dest2.txt')
+    e.submit(shutil.copy, 'src3.txt', 'dest3.txt')
+    e.submit(shutil.copy, 'src4.txt', 'dest4.txt')
+</pre>
+<p>在 3.9 版更改: 增加了 cancel_futures。</p>
+</div>
+</dd>
 </dl>
 </div>
 <div class="section" id="threadpoolexecutor">
@@ -222,8 +292,81 @@ to control the lifetime of workers in the pool.</p>
 <dl class="docutils">
 <dt>class concurrent.futures.Future</dt>
 <dd><p class="first">将可调用对象封装为异步执行。Future 实例由 Executor.submit() 创建，除非测试，不应直接创建。</p>
+<div class="rst-function section" id="cancel()">
+<strong>cancel()</strong><p></p>
+<p>尝试取消调用。 如果调用正在执行或已结束运行不能被取消则该方法将返回 False，否则调用会被取消并且该方法将返回 True。</p>
+</div>
+<div class="rst-function section" id="cancelled()">
+<strong>cancelled()</strong><p></p>
+<p>如果调用成功取消返回 True。</p>
+</div>
+<div class="rst-function section" id="running()">
+<strong>running()</strong><p></p>
+<p>如果调用正在执行而且不能被取消那么返回 True 。</p>
+</div>
+<div class="rst-function section" id="done()">
+<strong>done()</strong><p></p>
+<p>如果调用已被取消或正常结束那么返回 True。</p>
+</div>
+<div class="rst-function section" id="result(timeout=None)">
+<strong>result(timeout=None)</strong><p></p>
+<p>Return the value returned by the call.
+If the call hasn't yet completed then this method will wait up to timeout seconds.
+If the call hasn't completed in timeout seconds, then a TimeoutError will be raised.
+timeout can be an int or float.
+If timeout is not specified or None, there is no limit to the wait time.</p>
+<p>如果 futrue 在完成前被取消则 CancelledError 将被触发。</p>
+<p>如果调用引发了一个异常，这个方法也会引发同样的异常。</p>
+</div>
+<div class="rst-function section" id="exception(timeout=None)">
+<strong>exception(timeout=None)</strong><p></p>
+<p>Return the exception raised by the call.
+If the call hasn't yet completed then this method will wait up to timeout seconds.
+If the call hasn't completed in timeout seconds, then a TimeoutError will be raised.
+timeout can be an int or float.
+If timeout is not specified or None, there is no limit to the wait time.</p>
+<p>如果 futrue 在完成前被取消则 CancelledError 将被触发。</p>
+<p>如果调用正常完成那么返回 None。</p>
+</div>
+<div class="rst-function section" id="add_done_callback(fn)">
+<strong>add_done_callback(fn)</strong><p></p>
+<p>附加可调用 fn 到 future 对象。
+当 future 对象被取消或完成运行时，将会调用 fn，而这个 future 对象将作为它唯一的参数。</p>
+<p>加入的可调用对象总被属于添加它们的进程中的线程按加入的顺序调用。
+如果可调用对象引发一个 Exception 子类，它会被记录下来并被忽略掉。
+如果可调用对象引发一个 BaseException 子类，这个行为没有定义。</p>
+<p>如果 future 对象已经完成或已取消，fn 会被立即调用。</p>
+</div>
 <p><strong>下面这些 Future 方法用于单元测试和 Executor 实现.</strong></p>
-<div class="last"></div></dd>
+<div class="rst-function section" id="set_running_or_notify_cancel()">
+<strong>set_running_or_notify_cancel()</strong><p></p>
+<p>这个方法只可以在执行关联 Future 工作之前由 Executor 实现调用或由单测试调用。</p>
+<p>线程将会等待 Future实例 执行完成. 类似执行 as_completed() or wait()</p>
+<dl class="docutils">
+<dt>Return:</dt>
+<dd><dl class="first last docutils">
+<dt>False:</dt>
+<dd>Future实例被退出. 类似 Future.cancel() == True</dd>
+<dt>True:</dt>
+<dd>Future实例不可退出, 处于 running 状态. Future.running() == True.</dd>
+</dl>
+</dd>
+</dl>
+<p>这个方法只可以被调用一次并且不能在调用 Future.set_result() 或 Future.set_exception() 之后再调用。</p>
+</div>
+<div class="rst-function section" id="set_result(result)">
+<strong>set_result(result)</strong><p></p>
+<p>设置将 Future 关联工作的结果给 result 。</p>
+<p>这个方法只可以由 Executor 实现和单元测试使用。</p>
+<p>在 3.8 版更改: 如果 Future 已经完成则此方法会引发 concurrent.futures.InvalidStateError。</p>
+</div>
+<div class="rst-function last section" id="set_exception(exception)">
+<strong>set_exception(exception)</strong><p></p>
+<p>设置 Future 关联工作的结果给 Exception exception 。</p>
+<p>这个方法只可以由 Executor 实现和单元测试使用。</p>
+<p>在 3.8 版更改: 如果 Future 已经完成则此方法会引发 concurrent.futures.InvalidStateError。</p>
+</div>
+</dd>
 </dl>
 </div>
 <div class="section" id="section-1">
@@ -232,6 +375,58 @@ to control the lifetime of workers in the pool.</p>
 <li>wait</li>
 <li>as_completed</li>
 </ul>
+<div class="rst-function section" id="concurrent.futures.wait(fs, timeout=None, return_when=ALL_COMPLETED)">
+<strong>concurrent.futures.wait(fs, timeout=None, return_when=ALL_COMPLETED)</strong><p></p>
+<p>等待由 fs 指定的 Future 实例（可能由不同的 Executor 实例创建）完成。
+重复传给 fs 的 future 会被移除并将只返回一次。</p>
+<p>返回一个由集合组成的具名 2 元组。</p>
+<ul class="simple">
+<li>第一个集合的名称为 done，包含在等待完成之前已完成的 future（包括正常结束或被取消的 future）。</li>
+<li>第二个集合的名称为 not_done，包含未完成的 future（包括挂起的或正在运行的 future）。</li>
+</ul>
+<dl class="docutils">
+<dt>timeout: Union[int, float, None]</dt>
+<dd><p class="first">timeout 可以用来控制返回前最大的等待秒数。</p>
+<p class="last">如果 timeout 未指定或为 None ，则不限制等待时间。</p>
+</dd>
+<dt>return_when:</dt>
+<dd><p class="first">指定此函数应在何时返回。它必须为以下常数之一:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">常量</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>FIRST_COMPLETED</td>
+<td>函数将在任意可等待对象结束或取消时返回。</td>
+</tr>
+<tr><td>FIRST_EXCEPTION</td>
+<td>函数将在任意可等待对象因引发异常而结束时返回。当没有引发任何异常时它就相当于 ALL_COMPLETED。</td>
+</tr>
+<tr><td>ALL_COMPLETED</td>
+<td>函数将在所有可等待对象结束或取消时返回。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="rst-function section" id="concurrent.futures.as_completed(fs, timeout=None)">
+<strong>concurrent.futures.as_completed(fs, timeout=None)</strong><p></p>
+<p>返回多个已执行完成的 <a class="reference internal" href="#future">Future</a> 对象的迭代器(状态: 执行完成或退出)</p>
+<p>调用之前就完成的回最先返回.</p>
+<dl class="docutils">
+<dt>fs:</dt>
+<dd>多个 <a class="reference internal" href="#future">Future</a> 对象的列表</dd>
+<dt>timeout: Union[int, float, None]</dt>
+<dd>.</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="exception">
 <h2>Exception 类</h2>
@@ -243,6 +438,36 @@ to control the lifetime of workers in the pool.</p>
 <li>BrokenThreadPool</li>
 <li>BrokenProcessPool</li>
 </ul>
+<div class="rst-function section" id="exception concurrent.futures.CancelledError">
+<strong>exception concurrent.futures.CancelledError</strong><p></p>
+<p>future 对象被取消时会触发。</p>
+</div>
+<div class="rst-function section" id="exception concurrent.futures.TimeoutError">
+<strong>exception concurrent.futures.TimeoutError</strong><p></p>
+<p>A deprecated alias of TimeoutError, raised when a future operation exceeds the given timeout.</p>
+<p>在 3.11 版更改: This class was made an alias of TimeoutError.</p>
+</div>
+<div class="rst-function section" id="exception concurrent.futures.BrokenExecutor">
+<strong>exception concurrent.futures.BrokenExecutor</strong><p></p>
+<p>当执行器被某些原因中断而且不能用来提交或执行新任务时就会被引发派生于 RuntimeError 的异常类。</p>
+<p>3.7 新版功能.</p>
+</div>
+<div class="rst-function section" id="exception concurrent.futures.InvalidStateError">
+<strong>exception concurrent.futures.InvalidStateError</strong><p></p>
+<p>当某个操作在一个当前状态所不允许的 future 上执行时将被引发。</p>
+<p>3.8 新版功能.</p>
+</div>
+<div class="rst-function section" id="exception concurrent.futures.thread.BrokenThreadPool">
+<strong>exception concurrent.futures.thread.BrokenThreadPool</strong><p></p>
+<p>当 ThreadPoolExecutor 中的其中一个工作者初始化失败时会引发派生于 BrokenExecutor 的异常类。</p>
+<p>3.7 新版功能.</p>
+</div>
+<div class="rst-function section" id="exception concurrent.futures.process.BrokenProcessPool">
+<strong>exception concurrent.futures.process.BrokenProcessPool</strong><p></p>
+<p>当 ThreadPoolExecutor 中的其中一个工作者不完整终止时(比如，被外部杀死)
+会引发派生于 BrokenExecutor ( 原名 RuntimeError ) 的异常类。</p>
+<p>3.3 新版功能.</p>
+</div>
 </div>
 
 								</article>
@@ -295,11 +520,47 @@ to control the lifetime of workers in the pool.</p>
    <a class="" href="#section-1">
     模块函数
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#concurrent.futures.wait(fs, timeout=None, return_when=ALL_COMPLETED)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#concurrent.futures.as_completed(fs, timeout=None)">
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#exception">
     Exception 类
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#exception concurrent.futures.CancelledError">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exception concurrent.futures.TimeoutError">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exception concurrent.futures.BrokenExecutor">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exception concurrent.futures.InvalidStateError">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exception concurrent.futures.thread.BrokenThreadPool">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#exception concurrent.futures.process.BrokenProcessPool">
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -326,27 +587,27 @@ to control the lifetime of workers in the pool.</p>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Tutorial-Installation-toml-file-operation.html">toml文件操作</a></h3>
-											<p><p class="first last">toml文件操作</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
+											<p><p class="first last">yargs命令行参数解析</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-tomlib.html">tomlib</a></h3>
-											<p><p class="first last">tomlib</p>
+											<span class="date"> 5 <strong>24</strong></span>
+											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
+											<p><p class="first last">如题</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli.html">tomli</a></h3>
-											<p><p class="first last">tomli</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
+											<p><p class="first last">cifsiostat</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-tomli_w.html">tomli_w</a></h3>
-											<p><p class="first last">tomli_w</p>
+											<span class="date"> 5 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
+											<p><p class="first last">iostat</p>
 </p>
 										</li>
 									</ul>
