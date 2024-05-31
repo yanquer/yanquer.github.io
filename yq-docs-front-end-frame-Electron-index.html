@@ -117,7 +117,7 @@
 										<div class="pennant pennant-alt date">2024-03-09</div>
 										<h2>Electron</h2>
 
-										<span class="head-modify-time">修改于: 2024-03-09</span>
+										<span class="head-modify-time">修改于: 2024-05-29</span>
 
 									</div>
 									<p>中文官方文档: <a class="reference external" href="https://www.electronjs.org/zh/blog">Electron 28.0.0</a></p>
@@ -129,7 +129,99 @@
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-Electron-some-problems.html">一些问题</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-Electron-How-to-debug-in-webstorm.html">webstrom中如何进行调试</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-frame-Electron-API-index.html">API</a>
+</div><div class="section" id="section-1">
+<h2>进程结构说明</h2>
+<p>Theia实际上将进程分为了三种</p>
+<ul class="simple">
+<li>electron主进程</li>
+<li>渲染进程</li>
+<li>后端进程(node)</li>
+</ul>
+<p>目前没有太明白, 为什么不把 <cite>electron主进程</cite> 与 <cite>后端进程</cite> 放在一个进程里.</p>
+<p>启动顺序大致为:</p>
+<ul class="simple">
+<li>electron主进程单独在一个容器启动</li>
+<li>渲染进程 和 后端进程(node) 由另一个容器启动</li>
+</ul>
+<p>一般自定义拓展都是在后面那个容器进行代码编写, 在 <cite>theiaExtensions</cite> 中一般都是:</p>
+<pre class="literal-block">
+&quot;theiaExtensions&quot;: [
+    {
+      &quot;frontend&quot;: &quot;lib/browser&quot;,
+      &quot;backend&quot;: &quot;lib/backend&quot;,
+    }
+  ],
+</pre>
+<p>如果要想写 <strong>electron主进程拓展</strong>, 一般的方法是实现 <cite>ElectronMainApplicationContribution</cite> 贡献点</p>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ElectronMainApplicationContribution</span><span class="p">,</span><span class="w"> </span><span class="nx">ElectronMainApplication</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@theia/core/lib/electron-main/electron-main-application&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">MaybePromise</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@theia/core/lib/common/types&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">app</span><span class="p">,</span><span class="w"> </span><span class="nx">ipcMain</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@theia/core/electron-shared/electron&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">injectable</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@theia/core/shared/inversify&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">CHANNEL_IPC_CONNECTION</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@theia/core/lib/electron-common/electron-api&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IpcConnectionArg</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../common/defines&quot;</span><span class="p">;</span>
+
+
+<span class="kd">@injectable</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ExtIpcMainService</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ElectronMainApplicationContribution</span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">onStart</span><span class="p">(</span><span class="nx">application</span><span class="o">:</span><span class="w"> </span><span class="kt">ElectronMainApplication</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">MaybePromise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;===注册 ExtIpcMainService&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">ipcMain</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">CHANNEL_IPC_CONNECTION</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">Uint8Array</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TextDecoder</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoder</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// 如果是 json 字符串, 还可以 JSON.parse(args)</span>
+<span class="w">                </span><span class="c1">// 解析失败说明不是自定义的数据</span>
+<span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">newArgs</span><span class="o">:</span><span class="w"> </span><span class="kt">IpcConnectionArg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">newArgs</span><span class="p">.</span><span class="nx">quit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">app</span><span class="p">.</span><span class="nx">quit</span><span class="p">()</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>在 <cite>package.json</cite> 中注册方式为:</p>
+<pre class="literal-block">
+&quot;theiaExtensions&quot;: [
+    {
+      &quot;electronMain&quot;: &quot;lib/electron-main&quot;
+    }
+  ],
+</pre>
 </div>
+<div class="section" id="section-2">
+<h2>渲染进程调用主进程</h2>
+<p>实际上与 <cite>Electron</cite> 的渲染进程调用主进程一样</p>
+<ul class="simple">
+<li>在主进程使用 <cite>ipcMain.on</cite> 模块定义实际的调用 (重复定义 <cite>on</cite> 可能会导致先定义的事件调用被覆盖)</li>
+<li>在 <cite>preload.ts</cite> 中使用 <cite>ipcRenderer.send</cite>, 定义 <cite>windows</cite> 的 <cite>api`(如 `windows.ElectronMainApi</cite>), 以触发主进程的调用</li>
+<li>在渲染进程中使用 <cite>windows.ElectronMainApi.xxx</cite> 调用 <cite>preload</cite> 中的 <cite>api</cite></li>
+</ul>
+<p>如</p>
+<div class="highlight"><pre><span></span><span class="c1">// electron-main.ts</span>
+
+<span class="nx">ipcMain</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;do1&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">args</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;quit&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">quit</span><span class="p">()}</span>
+<span class="p">})</span>
+
+<span class="c1">// preload.ts</span>
+<span class="nx">contextBridge</span><span class="p">.</span><span class="nx">exposeInMainWorld</span><span class="p">(</span><span class="s1">&#39;ElectronMainApi&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">do1</span><span class="o">:</span><span class="w"> </span><span class="p">(...</span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;do1&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">})</span>
+
+
+<span class="c1">// renderer.ts</span>
+<span class="nx">windows</span><span class="p">.</span><span class="nx">ElectronMainApi</span><span class="p">.</span><span class="nx">do1</span><span class="p">(</span><span class="s2">&quot;quit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -143,6 +235,32 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    进程结构说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    渲染进程调用主进程
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -160,27 +278,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>24</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
-											<p><p class="first last">yargs命令行参数解析</p>
+											<span class="date"> 5 <strong>31</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-turorial-valid-api-submit-both-data.html">validateApi提交联动数据</a></h3>
+											<p><p class="first last">Amis教程-validateApi提交联动数据</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>24</strong></span>
-											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
-											<p><p class="first last">如题</p>
+											<span class="date"> 5 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-turorial-custom-data-filter.html">自定义数据过滤器</a></h3>
+											<p><p class="first last">Amis教程-自定义数据过滤器</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
-											<p><p class="first last">cifsiostat</p>
+											<span class="date"> 3 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-Some-open-source-and-convenient-GIT-projects.html">一些开源便利的Git项目</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
-											<p><p class="first last">iostat</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-frame-Electron-index.html">Electron</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>

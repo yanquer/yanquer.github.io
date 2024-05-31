@@ -116,11 +116,53 @@
 										<span class="head-modify-time">修改于: 2024-03-09</span>
 
 									</div>
-									<p>常见有两个</p>
+									<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://npmmirror.com">npm镜像站</a></li>
+<li><a class="reference external" href="https://developer.aliyun.com/mirror/?serviceType=&amp;tag=&amp;keyword=npm">https://developer.aliyun.com/mirror/?serviceType=&amp;tag=&amp;keyword=npm</a></li>
+</ul>
+</dd>
+</dl>
+<p>常见有两个</p>
 <ul class="simple">
 <li>npm</li>
 <li>yarn</li>
 </ul>
+<div class="section" id="npm-1">
+<h2>npm</h2>
+<p>安装</p>
+<div class="highlight"><pre><span></span>brew install npm
+</pre></div>
+<p>查看当前的镜像源。</p>
+<div class="highlight"><pre><span></span>npm config get registry
+</pre></div>
+<!-- 设置为淘宝源 -->
+<p>设置为淘宝源(注意是新的淘宝源, 参考 <a class="reference external" href="https://developer.aliyun.com/mirror/NPM">https://developer.aliyun.com/mirror/NPM</a> )</p>
+<div class="highlight"><pre><span></span>npm config set registry http://registry.npmmirror.com
+</pre></div>
+<p>还原默认源</p>
+<div class="highlight"><pre><span></span>npm config set registry https://registry.npmjs.org/
+</pre></div>
+<div class="section" id="section-2">
+<h3>临时使用</h3>
+<p>上面那种设置是全局的，以后每次都会自动读取已经设置好的源，如果只是一次性使用，可以使用下面的命令</p>
+<div class="highlight"><pre><span></span>npm --registry https://registry.npm.taobao.org install XXX（模块名）
+</pre></div>
+</div>
+<div class="section" id="cnpm">
+<h3>使用cnpm</h3>
+<p>cnpm是一个命令，用它来代替npm</p>
+<div class="highlight"><pre><span></span>npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm install XXX(模块名)
+</pre></div>
+<p>使用nrm</p>
+<div class="highlight"><pre><span></span>npm install -g nrm
+nrm use taobao
+nrm ls  # 查看当前可用源命令
+</pre></div>
+</div>
+</div>
 <div class="section" id="yarn">
 <h2>yarn</h2>
 <p>安装</p>
@@ -130,14 +172,33 @@
 <p>查询源</p>
 <div class="highlight"><pre><span></span>yarn config get registry
 </pre></div>
-<p>设置为淘宝源</p>
-<div class="highlight"><pre><span></span>yarn config set registry https://registry.npm.taobao.org/
-</pre></div>
-<p>或者其他镜像地址</p>
-<div class="highlight"><pre><span></span># yarn config set registry  https://registry.npmmirror.com
+<!-- 淘宝源有毛病, 不用这 -->
+<!-- 设置为淘宝源 -->
+<!-- .. code-block:\: -->
+<!-- yarn config set registry https://registry.npm.taobao.org/ -->
+<p>设置镜像地址</p>
+<div class="highlight"><pre><span></span># yarn config set registry https://registry.npmmirror.com
+yarn config set registry https://registry.npmmirror.com
+
 # electron镜像
 # yarn config set electron_mirror https://npmmirror.com/mirrors/electron/
 </pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>如果一直卡在:</p>
+<pre class="literal-block">
+[4/4] 🔨  Rebuilding all packages...
+[-/24] ⠄ waiting...
+[-/24] ⠂ waiting...
+[-/24] ⠁ waiting...
+[-/24] ⠂ waiting...
+[-/24] ⠂ waiting...
+[15/24] ⠂ electron
+</pre>
+<p>可以试着设置electron镜像</p>
+<div class="last"><div class="highlight"><pre><span></span>yarn config set electron_mirror https://npmmirror.com/mirrors/electron/
+</pre></div>
+</div></div>
 <p>还原</p>
 <div class="highlight"><pre><span></span>yarn config set registry https://registry.yarnpkg.com
 </pre></div>
@@ -194,6 +255,23 @@
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
+   <a class="" href="#npm-1">
+    npm
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      临时使用
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#cnpm">
+      使用cnpm
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#yarn">
     yarn
    </a>
@@ -228,27 +306,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>24</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-yargs.html">yargs</a></h3>
-											<p><p class="first last">yargs命令行参数解析</p>
+											<span class="date"> 5 <strong>31</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-turorial-valid-api-submit-both-data.html">validateApi提交联动数据</a></h3>
+											<p><p class="first last">Amis教程-validateApi提交联动数据</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>24</strong></span>
-											<h3><a href="yq-doc-lan-rst-directives-custom.html">自定义rst指令</a></h3>
-											<p><p class="first last">如题</p>
+											<span class="date"> 5 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-turorial-custom-data-filter.html">自定义数据过滤器</a></h3>
+											<p><p class="first last">Amis教程-自定义数据过滤器</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-cifsiostat.html">cifsiostat</a></h3>
-											<p><p class="first last">cifsiostat</p>
+											<span class="date"> 3 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-Some-open-source-and-convenient-GIT-projects.html">一些开源便利的Git项目</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-iostat.html">iostat</a></h3>
-											<p><p class="first last">iostat</p>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-frame-Electron-index.html">Electron</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
