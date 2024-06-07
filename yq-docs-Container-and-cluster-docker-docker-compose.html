@@ -159,6 +159,32 @@ lrwxr-xr-x&#64; 1 yanque  admin    62B Dec  6  2022 /usr/local/bin/docker-compos
 </pre>
 </div>
 <div class="section" id="section-3">
+<h2>指令选项</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>后台启动</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>指定配置文件, 不指定时默认为 <cite>docker-compose.yml</cite></td></tr>
+</tbody>
+</table>
+<p>常用指令</p>
+<div class="highlight"><pre><span></span><span class="c1"># 以当前目录下的 docker-compose.yml 文件来后台启动应用</span>
+$<span class="w"> </span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+<span class="c1"># 指定当前目录下 docker-compose-me.yml 文件来后台启动应用</span>
+$<span class="w"> </span>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-me.yml<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># 停止并删除所有容器</span>
+$<span class="w"> </span>docker-compose<span class="w"> </span>down
+<span class="c1"># 停止指定应用 appName 是需要停止的容器名</span>
+$<span class="w"> </span>docker-compose<span class="w"> </span>stop<span class="w"> </span>appName
+</pre></div>
+</div>
+<div class="section" id="section-4">
 <h2>准备</h2>
 <p>创建一个简单的 flask 应用:</p>
 <pre class="literal-block">
@@ -757,6 +783,11 @@ services:
   </li>
   <li class="toc-h0">
    <a class="" href="#section-3">
+    指令选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
     准备
    </a>
   </li>
@@ -805,27 +836,27 @@ services:
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>31</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-turorial-valid-api-submit-both-data.html">validateApi提交联动数据</a></h3>
-											<p><p class="first last">Amis教程-validateApi提交联动数据</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
+											<p><p class="first last">TeX 家族</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>30</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-turorial-custom-data-filter.html">自定义数据过滤器</a></h3>
-											<p><p class="first last">Amis教程-自定义数据过滤器</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
+											<p><p class="first last">latex模版配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>13</strong></span>
-											<h3><a href="yq-docs-Chaotic-Some-open-source-and-convenient-GIT-projects.html">一些开源便利的Git项目</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
+											<p><p class="first last">fc-list</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-Electron-index.html">Electron</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
+											<p><p class="first last">otfinfo</p>
 </p>
 										</li>
 									</ul>

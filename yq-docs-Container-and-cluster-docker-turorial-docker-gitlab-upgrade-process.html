@@ -1,0 +1,682 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>docker下gitlab版本升级流程</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 03 六月 2024
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+													<li><a class="button button-alt" href="tag/docker.html">Docker</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-06-03</div>
+										<h2>docker下gitlab版本升级流程</h2>
+
+										<span class="head-modify-time">修改于: 2024-06-03</span>
+
+									</div>
+									<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>gitlab-ce官方docker地址: <a class="reference external" href="https://hub.docker.com/r/gitlab/gitlab-ce">https://hub.docker.com/r/gitlab/gitlab-ce</a></li>
+<li>docker-mac安装: <a class="reference external" href="https://docs.docker.com/desktop/install/mac-install/#system-requirements">https://docs.docker.com/desktop/install/mac-install/#system-requirements</a></li>
+</ul>
+</dd>
+</dl>
+<p>需要按照 <a class="reference external" href="https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/?current=8.15.8&amp;target=15.11.13&amp;distro=docker&amp;auto=true&amp;edition=ce">官方指定升级路线</a> 来升级</p>
+<div class="section" id="section-1">
+<h2>数据备份</h2>
+<p>每一次数据稳定了都记得备份一下数据, 防止升级发生意外</p>
+<div class="highlight"><pre><span></span><span class="c1"># 执行备份命令</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-ti<span class="w"> </span>gitlab<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:backup:create
+
+<span class="c1"># 在持久化目录查看备份情况</span>
+root@git-nas:~#<span class="w"> </span>ll<span class="w"> </span>/opt/gitlab/data/backups/
+-rw-------<span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">998</span><span class="w"> </span>docker<span class="w"> </span><span class="m">342722560</span><span class="w">  </span>6月<span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">02</span>:18<span class="w"> </span>1654366714_2022_06_04_14.4.0_gitlab_backup.tar
+-rw-------<span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">998</span><span class="w"> </span>docker<span class="w"> </span><span class="m">559196160</span><span class="w">  </span>6月<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">22</span>:40<span class="w"> </span>1654958434_2022_06_11_14.4.0_gitlab_backup.tar
+root@git-nas:~#
+
+<span class="c1"># 在目录 `/data/gitlab/backups/` 下会生成一个备份文件如: `1717471048_2024_06_04_gitlab_backup.tar` ，其中 `1717471048_2024_06_04` 即为此次备份都版本号。如果升级失败，可以还原备份</span>
+<span class="c1"># gitlab-rake gitlab:backup:restore BACKUP=备份版本号</span>
+<span class="c1"># 但是注意, 恢复的版本只能是备份的gitlab版本</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-ti<span class="w"> </span>gitlab<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:backup:restore<span class="w"> </span><span class="nv">BACKUP</span><span class="o">=</span>1717471048_2024_06_04
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">此处参考: <a class="reference external" href="https://blog.csdn.net/lic95/article/details/125240496">Docker部署的gitlab升级指南(升级到15.0.2版本)</a></p>
+</div>
+</div>
+<div class="section" id="docker8-15-115-11-13">
+<h2>Docker环境从8.15.1升级到15.11.13</h2>
+<dl class="docutils">
+<dt>前提:</dt>
+<dd><ul class="first last simple">
+<li>已经有一个正常的 <cite>8.15.1</cite> 版本的gitlab环境 (我是按照  <a class="reference external" href="/yq-docs-Container-and-cluster-docker-turorial-docker-config-gitlab.html">gitlab-docker配置</a> 生成的)</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="section-2">
+<h3>升级到8.15.8</h3>
+<p>备份</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-ti<span class="w"> </span>gitlabCe8<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:backup:create
+</pre></div>
+<p>修改compose文件 <cite>docker-compose-8_15_8.yml</cite></p>
+<div class="highlight"><pre><span></span>services:
+<span class="w">  </span>gitlab:
+<span class="w">    </span>container_name:<span class="w"> </span><span class="s1">&#39;gitlabCe8_15_8&#39;</span><span class="w">    </span><span class="c1">#容器名</span>
+<span class="w">    </span>image:<span class="w"> </span><span class="s1">&#39;gitlab/gitlab-ce:8.15.8-ce.0&#39;</span>
+<span class="w">    </span>restart:<span class="w"> </span>always
+<span class="w">    </span><span class="c1"># hostname: &#39;gitlab.example.com&#39;</span>
+<span class="w">    </span>environment:
+<span class="w">      </span>TZ:<span class="w"> </span><span class="s1">&#39;Asia/Shanghai&#39;</span>
+<span class="w">      </span>GITLAB_OMNIBUS_CONFIG:<span class="w"> </span><span class="p">|</span>
+<span class="w">        </span>external_url<span class="w">  </span><span class="s1">&#39;http://192.168.1.199&#39;</span><span class="w">       </span><span class="c1"># git拉代码的IP地址，公网IP和内网IP均可</span>
+<span class="w">        </span>gitlab_rails<span class="o">[</span><span class="s1">&#39;gitlab_shell_ssh_port&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
+<span class="w">        </span><span class="c1"># unicorn[&#39;port&#39;] = 8888</span>
+<span class="w">        </span><span class="c1"># nginx[&#39;listen_port&#39;] = 80</span>
+<span class="w">    </span>ports:<span class="w">    </span><span class="c1">#端口映射，可以自行配置</span>
+<span class="w">      </span>-<span class="w"> </span><span class="s1">&#39;9080:80&#39;</span>
+<span class="w">      </span>-<span class="w"> </span><span class="s1">&#39;8443:443&#39;</span>
+<span class="w">      </span>-<span class="w"> </span><span class="s1">&#39;2222:22&#39;</span>
+<span class="w">    </span>volumes:<span class="w">  </span><span class="c1">#目录挂载，可以自定义</span>
+<span class="w">      </span>-<span class="w"> </span>/Users/yanque/Project/Docker/gitlab/config:/etc/gitlab
+<span class="w">      </span>-<span class="w"> </span>/Users/yanque/Project/Docker/gitlab/data:/var/opt/gitlab
+<span class="w">      </span>-<span class="w"> </span>/Users/yanque/Project/Docker/gitlab/logs:/var/log/gitlab
+<span class="w">      </span>-<span class="w"> </span>/etc/localtime:/etc/localtime:ro
+</pre></div>
+<p>pull&amp;启动</p>
+<div class="highlight"><pre><span></span>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-8_15_8.yml<span class="w"> </span>pull
+docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-8_15_8.yml<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+<!-- 手动触发更新 -->
+<!-- .. code-block:: bash -->
+<!-- docker exec -it gitlabCe8_15_8 gitlab-ctl pg-upgrade -->
+<p>查看日志</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gitlabCe8_15_8
+</pre></div>
+<p>看看最后的几百行, 等待结束后没有错误基本就成功了</p>
+<div class="figure">
+<img alt="启动成功" src="doc-raw/resources/images/2024-06-04-15-30-32.png" style="width: 480px;" />
+</div>
+<p>看看网页功能是否正常</p>
+<div class="figure">
+<img alt="网页访问" src="doc-raw/resources/images/2024-06-04-11-39-56.png" style="width: 480px;" />
+</div>
+<div class="figure">
+<img alt="总览访问" src="doc-raw/resources/images/2024-06-04-11-46-30.png" style="width: 480px;" />
+</div>
+<p>还可以命令诊断下状态</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe8_15_8<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:check<span class="w"> </span><span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span>
+</pre></div>
+<p>都是 <cite>yes</cite> 表示正常</p>
+<div class="figure">
+<img alt="诊断" src="doc-raw/resources/images/2024-06-05-13-52-12.png" style="width: 480px;" />
+</div>
+<p>也可以看下管理员检查页面: <a class="reference external" href="http://192.168.1.199:9080/admin/health_check">http://192.168.1.199:9080/admin/health_check</a></p>
+</div>
+<div class="section" id="section-3">
+<h3>8.15.8升级到8.17.8</h3>
+<p>指令</p>
+<div class="highlight"><pre><span></span><span class="c1"># 备份当前</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-ti<span class="w"> </span>gitlabCe8_15_8<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:backup:create
+
+<span class="c1"># 备份完记得看看是否成功</span>
+
+<span class="c1"># 停止容器</span>
+docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-8_15_8.yml<span class="w"> </span>down
+
+<span class="c1"># 复制配置文件, 更新镜像名</span>
+cp<span class="w"> </span>docker-compose-8_15_8.yml<span class="w"> </span>docker-compose-8_17_8.yml
+<span class="c1"># 更新部分</span>
+<span class="c1"># container_name: &#39;gitlabCe8_17_8&#39;</span>
+<span class="c1"># image: &#39;gitlab/gitlab-ce:8.17.8-ce.0&#39;</span>
+
+<span class="c1"># pull &amp; 启动容器</span>
+docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-8_17_8.yml<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># 非docker需要手动触发更新</span>
+<span class="c1"># docker exec -it gitlabCe8_17_8 gitlab-ctl pg-upgrade</span>
+
+<span class="c1"># 最后看看日志与功能是否正常</span>
+docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gitlabCe8_17_8
+<span class="c1"># 看看诊断是否正常</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe8_17_8<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:check<span class="w"> </span><span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span>
+<span class="c1"># 看看网页访问有没有报错</span>
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h3>升级到9.5.10</h3>
+<p>指令</p>
+<div class="highlight"><pre><span></span><span class="c1"># 备份当前</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-ti<span class="w"> </span>gitlabCe8_17_8<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:backup:create
+
+<span class="c1"># 备份完记得看看是否成功</span>
+
+<span class="c1"># 停止容器</span>
+docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-8_17_8.yml<span class="w"> </span>down
+
+<span class="c1"># 复制配置文件, 更新镜像名</span>
+cp<span class="w"> </span>docker-compose-8_17_8.yml<span class="w"> </span>docker-compose-9_5_10.yml
+<span class="c1"># 更新部分</span>
+<span class="c1"># container_name: &#39;gitlabCe9_5_10&#39;</span>
+<span class="c1"># image: &#39;gitlab/gitlab-ce:9.5.10-ce.0&#39;</span>
+
+<span class="c1"># pull &amp; 启动容器</span>
+docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-9_5_10.yml<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># 非docker需要等启动后手动触发更新</span>
+<span class="c1"># docker exec -it gitlabCe9_5_10 gitlab-ctl pg-upgrade</span>
+
+<span class="c1"># 最后看看日志与功能是否正常</span>
+docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gitlabCe9_5_10
+<span class="c1"># 看看版本信息对不对:</span>
+<span class="c1"># gitlab-rake gitlab:env:info</span>
+<span class="c1"># 看看诊断是否正常</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe9_5_10<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:check<span class="w"> </span><span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span>
+<span class="c1"># 看看网页访问有没有报错</span>
+</pre></div>
+<p>提示, 高版本更新, 这之前的都是迁移(web服务不可用), 之后的就是更新完成的日志了</p>
+<div class="figure">
+<img alt="更新" src="doc-raw/resources/images/2024-06-05-15-03-53.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="section-5">
+<h3>后续升级</h3>
+<p>跟上面的流程一样, 一直重复到最后一个版本即可.</p>
+<p>附 <cite>15.11.13</cite> 版本的 <cite>docker-compose.yml</cite></p>
+<div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gitlab</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gitlabCe15_11_13&#39;</span><span class="w">    </span><span class="c1">#容器名</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;gitlab/gitlab-ce:15.11.13-ce.0&#39;</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="c1"># hostname: &#39;gitlab.example.com&#39;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Asia/Shanghai&#39;</span>
+<span class="w">      </span><span class="nt">GITLAB_OMNIBUS_CONFIG</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">external_url  &#39;http://192.168.1.199&#39;       # git拉代码的IP地址，公网IP和内网IP均可</span>
+<span class="w">        </span><span class="no">gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 2222</span>
+<span class="w">        </span><span class="no"># unicorn[&#39;port&#39;] = 8888</span>
+<span class="w">        </span><span class="no"># nginx[&#39;listen_port&#39;] = 80</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">   </span><span class="c1">#端口映射，可以自行配置</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;9080:80&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;8443:443&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;2222:22&#39;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">  </span><span class="c1">#目录挂载，可以自定义</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/Users/yanque/Project/Docker/gitlab/config:/etc/gitlab</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/Users/yanque/Project/Docker/gitlab/data:/var/opt/gitlab</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/Users/yanque/Project/Docker/gitlab/logs:/var/log/gitlab</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/localtime:/etc/localtime:ro</span>
+<span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;256m&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-6">
+<h2>升级可能遇到的问题/错误</h2>
+<div class="section" id="could-not-set-permissions-of-file-var-opt-gitlab-postgresql-s-pgsql-50432">
+<h3>could not set permissions of file &quot;/var/opt/gitlab/postgresql/.s.PGSQL.50432&quot;</h3>
+<p>从 <cite>8.17.8</cite> 升级到 <cite>9.5.10</cite> 遇到了数据库升级失败错误</p>
+<p>报错</p>
+<div class="highlight"><pre><span></span>&quot;/opt/gitlab/embedded/postgresql/9.2.18/bin/pg_ctl&quot; -w -l &quot;pg_upgrade_server.log&quot; -D &quot;/var/opt/gitlab/postgresql/data&quot; -o &quot;-p 50432 -b  -c listen_addresses=&#39;&#39; -c unix_socket_permissions=0700 -c unix_socket_directory=&#39;/var/opt/gitlab/postgresql&#39;&quot; start &gt;&gt; &quot;pg_upgrade_server.log&quot; 2&gt;&amp;1
+waiting for server to start....LOG:  could not set permissions of file &quot;/var/opt/gitlab/postgresql/.s.PGSQL.50432&quot;: Invalid argument
+</pre></div>
+<p>系统是Mac的, 猜测docker挂载的卷:</p>
+<pre class="literal-block">
+xxx:/var/opt/gitlab
+</pre>
+<p>导致的权限问题, 但是想到Mac不是支持套接字的吗? 就找了一天的问题...</p>
+<!-- 编辑GitLab配置文件（通常位于/etc/gitlab/gitlab.rb），设置新的Unix域套接字目录:\: -->
+<!-- # GitLab 13.0 开始 -->
+<!-- postgresql['unix_socket_directory'] = '/tmp' -->
+<p>最后发现居然是docker共享设置的问题</p>
+<div class="figure">
+<img alt="容器共享实现设置" src="doc-raw/resources/images/2024-06-05-11-41-50.png" style="width: 480px;" />
+</div>
+<p>参考: <a class="reference external" href="https://github.com/sameersbn/docker-gitlab/issues/2818#issuecomment-1740375553">mac don't start docker gitlab caused by psotgresql , how to solve it</a>
+看到也有人在docker官方提了: <a class="reference external" href="https://github.com/docker/for-mac/issues/6614">Permissions issue with VirtioFS</a></p>
+<p>将容器配置改成 <cite>gRPC FUSE</cite> 共享再重启容器后解决.</p>
+<div class="figure">
+<img alt="容器共享设置" src="doc-raw/resources/images/2024-06-05-11-55-06.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="nomethoderror-undefined-method-unique-ips-limit-enabled-for-applicationsetting-0x00007fafe3a87718">
+<h3>NoMethodError (undefined method 'unique_ips_limit_enabled' for #&lt;ApplicationSetting:0x00007fafe3a87718&gt;)</h3>
+<p>还是从 <cite>8.17.8</cite> 升级到 <cite>9.5.10</cite> 遇到的问题, 这次是页面访问报错 <cite>500</cite> 或者 <cite>502</cite></p>
+<p>部分报错信息:</p>
+<pre class="literal-block">
+NoMethodError (undefined method `unique_ips_limit_enabled' for #&lt;ApplicationSetting:0x00007fafe3a87718&gt;)
+</pre>
+<p>解决方法: 更新时数据库迁移存在问题, 需要手动迁移并重启</p>
+<div class="highlight"><pre><span></span><span class="c1"># 执行诊断(SANITIZE表示排除密码等敏感信息) 能看到是数据库问题</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe9_5_10<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:check<span class="w"> </span><span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span>
+<span class="c1"># 手动进行数据迁移</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe9_5_10<span class="w"> </span>gitlab-rake<span class="w"> </span>db:migrate
+<span class="c1"># 重启</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe9_5_10<span class="w"> </span>gitlab-ctl<span class="w"> </span>restart
+</pre></div>
+<p>参考: <a class="reference external" href="https://gitlab.com/gitlab-org/omnibus-gitlab/-/issues/2130">Undefined method 'unique_ips_limit_enabled' after update to 9.0</a></p>
+</div>
+<div class="section" id="x-xhash-hashed-storage">
+<h3>升级到13.x.x版本后的提示hash存储转换(hashed storage)</h3>
+<p>我是在诊断的时候看到的</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe13_0_14<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:check<span class="w"> </span><span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span>
+
+...
+All<span class="w"> </span>projects<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>hashed<span class="w"> </span>storage?<span class="w"> </span>...<span class="w"> </span>no
+<span class="w">  </span>Try<span class="w"> </span>fixing<span class="w"> </span>it:
+<span class="w">  </span>Please<span class="w"> </span>migrate<span class="w"> </span>all<span class="w"> </span>projects<span class="w"> </span>to<span class="w"> </span>hashed<span class="w"> </span>storage
+<span class="w">  </span>as<span class="w"> </span>legacy<span class="w"> </span>storage<span class="w"> </span>is<span class="w"> </span>deprecated<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">13</span>.0<span class="w"> </span>and<span class="w"> </span>support<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>removed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">14</span>.0.
+<span class="w">  </span>For<span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>see:
+<span class="w">  </span>doc/administration/repository_storage_types.md
+...
+</pre></div>
+<p>解决: 触发hash存储转换</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe13_0_14<span class="w"> </span>gitlab-rake<span class="w"> </span>gitlab:storage:migrate_to_hashed
+Enqueuing<span class="w"> </span>migration<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>projects<span class="w"> </span><span class="k">in</span><span class="w"> </span>batches<span class="w"> </span>of<span class="w"> </span><span class="m">200</span>.<span class="w"> </span>Done!
+
+What<span class="err">&#39;</span>s<span class="w"> </span>next?
+<span class="w">  </span>Try<span class="w"> </span>Docker<span class="w"> </span>Debug<span class="w"> </span><span class="k">for</span><span class="w"> </span>seamless,<span class="w"> </span>persistent<span class="w"> </span>debugging<span class="w"> </span>tools<span class="w"> </span><span class="k">in</span><span class="w"> </span>any<span class="w"> </span>container<span class="w"> </span>or<span class="w"> </span>image<span class="w"> </span>→<span class="w"> </span>docker<span class="w"> </span>debug<span class="w"> </span>gitlabCe13_1_11
+<span class="w">  </span>Learn<span class="w"> </span>more<span class="w"> </span>at<span class="w"> </span>https://docs.docker.com/go/debug-cli/
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果不转换hash存储, 无法成功升级到14版本</p>
+</div>
+</div>
+<div class="section" id="expected-batched-background-migration-for-the-given-configuration-to-be-marked-as-finished-but-it-is-active">
+<h3>Expected batched background migration for the given configuration to be marked as 'finished', but it is 'active'</h3>
+<p>升级到 <cite>14.3.6</cite> 的时候一直在失败重启.</p>
+<p>查看日志 <cite>logs/gitlab-rails/gitlab-rails-db-migrate-2024-06-05-16-32-25.log</cite> 发现错误信息:</p>
+<pre class="literal-block">
+rake aborted!
+StandardError: An error has occurred, all later migrations canceled:
+
+Expected batched background migration for the given configuration to be marked as 'finished', but it is 'active':     {:job_class_name=&gt;&quot;CopyColumnUsingBackgroundMigrationJob&quot;, :table_name=&gt;&quot;push_event_payloads&quot;, :column_name=&gt;&quot;event_id&quot;, :job_arguments=&gt;[[&quot;event_id&quot;], [&quot;event_id_convert_to_bigint&quot;]]}
+
+Finalize it manualy by running
+
+  sudo gitlab-rake gitlab:background_migrations:finalize[CopyColumnUsingBackgroundMigrationJob,push_event_payloads,event_id,'[[&quot;event_id&quot;]\, [&quot;event_id_convert_to_bigint&quot;]]']
+
+For more information, check the documentation
+
+  https://docs.gitlab.com/ee/user/admin_area/monitoring/background_migrations.html#database-migrations-failing-because-of-batched-background-migration-not-finished
+</pre>
+<p>根据信息提示, 手动执行</p>
+<div class="highlight"><pre><span></span><span class="c1"># 先进容器</span>
+gitlab-rake<span class="w"> </span>gitlab:background_migrations:finalize<span class="o">[</span>CopyColumnUsingBackgroundMigrationJob,push_event_payloads,event_id,<span class="s1">&#39;[[&quot;event_id&quot;]\, [&quot;event_id_convert_to_bigint&quot;]]&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<div class="section" id="x-x">
+<h3>14.x.x版本后支持可视化迁移流程</h3>
+<div class="figure">
+<img alt="可视化迁移" src="doc-raw/resources/images/2024-06-05-17-22-42.png" style="width: 480px;" />
+</div>
+<p>这里是数据库迁移结束后, 服务基本启动后, 剩余部分额外迁移服务.
+尽量等待此处任务( <a class="reference external" href="http://192.168.1.199:9080/admin/background_migrations">http://192.168.1.199:9080/admin/background_migrations</a> )全部完成</p>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>相关指令集合</h2>
+<p>备份创建/恢复(只能同版本)</p>
+<div class="highlight"><pre><span></span>gitlab-rake<span class="w"> </span>gitlab:backup:create
+gitlab-rake<span class="w"> </span>gitlab:backup:restore<span class="w"> </span><span class="nv">BACKUP</span><span class="o">=</span>版本号比如1717471048_2024_06_04
+</pre></div>
+<p>手动数据迁移</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlabCe9_5_10<span class="w"> </span>gitlab-rake<span class="w"> </span>db:migrate
+</pre></div>
+<p>重启</p>
+<div class="highlight"><pre><span></span>gitlab-ctl<span class="w"> </span>restart
+<span class="c1"># stop 停止</span>
+</pre></div>
+<p>执行不带敏感信息的gitlab诊断</p>
+<div class="highlight"><pre><span></span>gitlab-rake<span class="w"> </span>gitlab:check<span class="w"> </span><span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span>
+</pre></div>
+<p>触发hash存储转换</p>
+<div class="highlight"><pre><span></span>gitlab-rake<span class="w"> </span>gitlab:storage:migrate_to_hashed
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    数据备份
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#docker8-15-115-11-13">
+    Docker环境从8.15.1升级到15.11.13
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      升级到8.15.8
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      8.15.8升级到8.17.8
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      升级到9.5.10
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      后续升级
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    升级可能遇到的问题/错误
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#could-not-set-permissions-of-file-var-opt-gitlab-postgresql-s-pgsql-50432">
+      could not set permissions of file "/var/opt/gitlab/postgresql/.s.PGSQL.50432"
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#nomethoderror-undefined-method-unique-ips-limit-enabled-for-applicationsetting-0x00007fafe3a87718">
+      NoMethodError (undefined method 'unique_ips_limit_enabled' for #&lt;ApplicationSetting:0x00007fafe3a87718&gt;)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#x-xhash-hashed-storage">
+      升级到13.x.x版本后的提示hash存储转换(hashed storage)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#expected-batched-background-migration-for-the-given-configuration-to-be-marked-as-finished-but-it-is-active">
+      Expected batched background migration for the given configuration to be marked as 'finished', but it is 'active'
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#x-x">
+      14.x.x版本后支持可视化迁移流程
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    相关指令集合
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
+											<p><p class="first last">TeX 家族</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
+											<p><p class="first last">latex模版配置说明</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
+											<p><p class="first last">fc-list</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
+											<p><p class="first last">otfinfo</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

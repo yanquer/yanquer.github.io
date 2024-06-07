@@ -181,6 +181,166 @@ pip install sphinx-hoverxref
 pip install sphinx-notfound-page
 </pre>
 </div>
+<div class="section" id="sphinxpdf">
+<h2>sphinx生成pdf文档</h2>
+<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>latex部分说明参考: <a class="reference external" href="https://wdk-docs.github.io/sphinx-docs/latex.html">LaTeX 定制</a></li>
+<li>使用外部字体参考: <a class="reference external" href="https://www.overleaf.com/learn/latex/XeLaTeX#Using_fonts_not_installed_on_Overleaf's_servers:_Google_Fonts_example">Configuring fontspec to use the fonts</a></li>
+</ul>
+</dd>
+</dl>
+<p>如果没有中文的需求, 直接用 <cite>rst2pdf</cite> 即可,
+但是如果有中文的话, 就无法识别中文字符, 即使使用了中文字体.</p>
+<p>研究了一段时间, 最稳妥的做法就是使用 <cite>xelatex</cite> 先生成 <cite>LaTeX</cite>, 再生成 <cite>pdf</cite></p>
+<p>Mac需要先安装必要的软件</p>
+<div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>mactex<span class="w"> </span>--cask
+
+<span class="c1"># ubuntu 需要安装 xelatex</span>
+apt<span class="w"> </span>install<span class="w"> </span>xelatex
+apt<span class="w"> </span>install<span class="w"> </span>texlive
+apt<span class="w"> </span>install<span class="w"> </span>texlive-full
+</pre></div>
+<p>conf.py配置</p>
+<div class="highlight"><pre><span></span><span class="c1"># master_doc = &quot;index&quot;</span>
+<span class="n">latex_engine</span> <span class="o">=</span> <span class="s1">&#39;xelatex&#39;</span>
+<span class="c1"># latex_elements = {</span>
+<span class="c1">#     &#39;papersize&#39;: &#39;a4paper&#39;,</span>
+
+<span class="c1">#     # 调整章节标题之间的间距</span>
+<span class="c1">#     &#39;preamble&#39;: r&#39;&#39;&#39;</span>
+<span class="c1">#         \makeatletter</span>
+<span class="c1">#         \let\clearpage\relax</span>
+<span class="c1">#         \makeatother</span>
+<span class="c1">#     &#39;&#39;&#39;,</span>
+
+<span class="c1"># }</span>
+<span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;papersize&#39;</span><span class="p">:</span> <span class="s1">&#39;a4paper&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;utf8extra&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;inputenc&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cmappkg&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fontenc&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fontpkg&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{fontspec}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;preamble&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        \usepackage</span><span class="si">{xeCJK}</span>
+<span class="s1">        \usepackage</span><span class="si">{fontspec}</span>
+<span class="s1">        \parindent 1em</span>
+<span class="s1">        \setcounter</span><span class="si">{tocdepth}{2}</span>
+<span class="s1">        \setlength{\parskip}{0.5\baselineskip}</span>
+<span class="s1">        \renewcommand\familydefault{\ttdefault}</span>
+<span class="s1">        \renewcommand\CJKfamilydefault{\CJKrmdefault}</span>
+<span class="s1">        \let\cleardoublepage\clearpage  % 确保不会有空页</span>
+
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># 设置文档</span>
+<span class="c1"># latex_documents = [</span>
+<span class="c1">#     (master_doc, &#39;sphinx.tex&#39;, &#39;你的第一本 Sphinx 书&#39;,</span>
+<span class="c1">#      &#39;作者：&#39;, &#39;manual&#39;, True),</span>
+<span class="c1"># ]</span>
+</pre></div>
+<p>最后, 生成pdf(会先生成 <cite>LaTeX</cite>, 再去 <cite>LaTeX</cite> 的输出目录下make生成 <cite>pdf</cite>)</p>
+<div class="highlight"><pre><span></span>make<span class="w"> </span>latexpdf
+</pre></div>
+<div class="section" id="section-2">
+<h3>可能遇到的问题</h3>
+<div class="section" id="pdf">
+<h4>pdf存在空页</h4>
+<p>每隔一页, 就会存在一页空页, 解决:</p>
+<pre class="literal-block">
+\let\cleardoublepage\clearpage  % 确保不会有空页
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>或者设置sphinx的conf配置</p>
+<p>默认情况下, 生成的 PDF 是双页打印模式的, 在电脑上浏览会发现有很多空白, 这是那些左侧有文字, 右侧没有内容, 且下面的内容在下一个章节的情况下, 会留空.</p>
+<p>要设置这一点, 在 latex_elements 中添加一项</p>
+<div class="highlight"><pre><span></span><span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;extraclassoptions&#39;</span><span class="p">:</span> <span class="s1">&#39;openany,oneside&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+<p>此处参考: <a class="reference external" href="https://learn-rst.readthedocs.io/zh-cn/latest/reST-扩展/latex.html">使用 Sphinx 生成 LaTeX 文件 (最终得到 PDF)</a></p>
+<p>再拓展记录一下</p>
+<ul class="last simple">
+<li><tt class="docutils literal">'extraclassoptions': 'openany,oneside'</tt> 是一个全局配置选项, 它会影响整个文档的页面布局。它会让 LaTeX 允许在任何位置开始新页面,并使用单页面布局。</li>
+<li><tt class="docutils literal">\let\cleardoublepage\clearpage</tt> 禁用 <cite>LaTeX</cite> 默认的章节/节开始时强制使用新奇数页的行为, 仅输出当前页面.
+是一个局部的命令,它只会影响当前部分的页面行为。它将 <cite>cleardoublepage</cite> 命令重定义为 <cite>clearpage</cite>。
+<cite>cleardoublepage</cite> 命令是 <cite>LaTeX</cite> 的一个内部命令,它会确保在新的章节或节开始时, 总是在一个新的页面上。
+而 <cite>clearpage</cite> 命令只是简单地强制输出当前页面,而不管是否为奇数页。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="undefined-control-sequence">
+<h4>Undefined control sequence</h4>
+<p>没有找到包, 通常意味着你尝试使用的某个 LaTeX 命令或宏没有被定义</p>
+<p>解决, 找到需要用的包</p>
+<p>比如我的报错信息是:</p>
+<pre class="literal-block">
+! Undefined control sequence.
+l.32 \setmainfont
+{FreeSerif}[
+?
+</pre>
+<p>对应缺少的宏包是 <cite>fontspec</cite>, 在 <cite>latex_elements</cite> 中添加:</p>
+<pre class="literal-block">
+\usepackage{fontspec}
+</pre>
+<p>由于这个是个字体配置, 还需要添加字体包配置:</p>
+<pre class="literal-block">
+'fontpkg': r'\usepackage{fontspec}',
+</pre>
+<!-- \setmainfont{FreeSerif}[ -->
+<!-- Extension=.otf, -->
+<!-- UprightFont=*-Regular, -->
+<!-- ItalicFont=*-Italic, -->
+<!-- BoldFont=*-Bold, -->
+<!-- BoldItalicFont=*-BoldItalic, -->
+<!-- ] -->
+<!-- \setsansfont{FreeSans}[ -->
+<!-- Extension=.otf, -->
+<!-- UprightFont=*-Regular, -->
+<!-- ItalicFont=*-Oblique, -->
+</div>
+<div class="section" id="section-3">
+<h4>标题过长时未折行</h4>
+<p>配置:</p>
+<pre class="literal-block">
+% 中文断行
+\XeTeXlinebreaklocale &quot;zh&quot;
+\XeTeXlinebreakskip = 0pt plus 1pt
+</pre>
+</div>
+</div>
+<div class="section" id="sphinxlatex">
+<h3>sphinx关于latex配置说明</h3>
+<p>主要是 <cite>latex_element</cite></p>
+<p>相关项</p>
+<dl class="docutils">
+<dt>extraclassoptions</dt>
+<dd><p class="first">额外配置选项 (全局配置)</p>
+<p>比如: <tt class="docutils literal">extraclassoptions': 'openany,oneside</tt>, 表示</p>
+<dl class="last docutils">
+<dt>openany:</dt>
+<dd><p class="first">该选项用于控制 LaTeX 文档的页码布局。</p>
+<p class="last">默认情况下, LaTeX 会强制在章节开始的时候使用奇数页码。
+使用 openany 选项后, LaTeX 会允许在任何位置开始新的页面,而不仅仅是奇数页。
+这对于一些不需要双页面布局的文档很有用,比如电子书或者单页打印的文档。</p>
+</dd>
+<dt>oneside:</dt>
+<dd><p class="first">该选项用于控制 LaTeX 文档的页面布局。</p>
+<p class="last">默认情况下, LaTeX 会使用双页面布局,即左右两页构成一个完整的页面。
+使用 oneside 选项后, LaTeX 会使用单页面布局,即每一页是独立的。
+这对于一些不需要双页面布局的文档很有用,比如电子书或者单页打印的文档。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>详细模版配置见: <a class="reference external" href="/yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -213,6 +373,40 @@ pip install sphinx-notfound-page
     配置
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#sphinxpdf">
+    sphinx生成pdf文档
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      可能遇到的问题
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#pdf">
+        pdf存在空页
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#undefined-control-sequence">
+        Undefined control sequence
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#section-3">
+        标题过长时未折行
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sphinxlatex">
+      sphinx关于latex配置说明
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -238,27 +432,27 @@ pip install sphinx-notfound-page
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>31</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-turorial-valid-api-submit-both-data.html">validateApi提交联动数据</a></h3>
-											<p><p class="first last">Amis教程-validateApi提交联动数据</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
+											<p><p class="first last">TeX 家族</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>30</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-turorial-custom-data-filter.html">自定义数据过滤器</a></h3>
-											<p><p class="first last">Amis教程-自定义数据过滤器</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
+											<p><p class="first last">latex模版配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>13</strong></span>
-											<h3><a href="yq-docs-Chaotic-Some-open-source-and-convenient-GIT-projects.html">一些开源便利的Git项目</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
+											<p><p class="first last">fc-list</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-Electron-index.html">Electron</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
+											<p><p class="first last">otfinfo</p>
 </p>
 										</li>
 									</ul>

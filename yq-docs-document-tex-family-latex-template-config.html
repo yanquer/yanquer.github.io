@@ -1,0 +1,464 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>latex模版配置说明</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 07 六月 2024
+      , Category:
+	  <a href="category/wen-dang.html">文档</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/wen-dang.html">文档</a></li>
+													<li><a class="button button-alt" href="tag/texjia-zu.html">Tex家族</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-06-07</div>
+										<h2>latex模版配置说明</h2>
+
+										<span class="head-modify-time">修改于: 2024-06-07</span>
+
+									</div>
+									<div class="section" id="section-1">
+<h2>常见</h2>
+<p>配置说明:</p>
+<pre class="literal-block">
+\parindent 2em
+  控制段落首行缩进的长度
+\setcounter{tocdepth}{3}
+  控制目录的深度
+\setlength{\parskip}{0.5\baselineskip}
+  控制段落之间的垂直间距
+\let\cleardoublepage\clearpage
+  这将告诉 LaTeX 在生成文档时,使用 \clearpage 而不是 \cleardoublepage。
+
+  \cleardoublepage 会强制在新的一页开始, 这可能会导致出现不必要的空白页。
+  \clearpage 则会更加灵活,只在需要的时候才开始新的一页。
+
+\usepackage{xeCJK}
+  中文字体扩展管理宏包，务必添加！！
+  在编写的.tex文件的导言区导入宏包： \usepackage{xeCJK}
+
+\setmainfont{&lt;font&gt;}:
+  用于设置文档的主要字体,即用于正文的字体。
+  这个字体通常是一种衬线字体(serifed font)。
+  它会影响到文档中除了等宽字体和无衬线字体之外的所有地方。
+
+  设置本机已安装的字体很简单, 直接::
+
+    \setCJKmainfont{已安装字体名}
+
+  但是设置未安装就有点麻烦了
+  比如设置外部未安装中文字体::
+
+    \setCJKmainfont{NotoSerifCJKsc}[
+        Path=../../source/_static/fonts/SimplifiedChinese/,
+        Extension = .otf,
+        UprightFont=*-Regular,
+        BoldFont=*-Bold,
+        ItalicFont=*-Regular,
+        BoldItalicFont=*-Bold
+    ]
+
+  注意本地测试的时候 Path 最好设置为绝对路径, 因为 相对路径要设置为 build/latex 下的相对路径, 可能不一定能好找
+
+\setCJKmainfont
+  设置中文主字体。
+\setmonofont{&lt;font&gt;}:
+  用于设置等宽字体(monospace font)。
+  这种字体通常用于代码片段、终端输出等需要固定宽度的地方。
+  它不会影响到正文和标题等其他部分的字体。
+\setCJKmonofont
+  用于设置中文等宽字体。
+\setsansfont{&lt;font&gt;}:
+  用于设置无衬线字体(sans-serif font)。
+  这种字体通常用于标题、页眉页脚等需要简洁效果的地方。
+  它不会影响到正文和等宽字体等其他部分的字体。
+\setCJKsansfont
+  用于设置中文无衬线字体。
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果是用于 <cite>sphinx</cite>, 需要配置在 <cite>conf</cite> 的 <cite>latex_element</cite> 下的 <cite>preamble</cite>.
+详见 :<a class="reference external" href="/yq-docs-rear-end-python-conclusion-of-issue-Sphinx-use.html">Sphinx使用</a></p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>拓展-设置中文字体</h2>
+<div class="section" id="section-3">
+<h3>方案1-使用已安装字体</h3>
+<p>直接引用系统已存在字体名即可(如果是中文, 需要用对应的英文名)</p>
+<div class="highlight"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>xeCJK<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+<span class="k">\setCJKmainfont</span><span class="nb">{</span>kai<span class="nb">}</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">类 <cite>Unix</cite> 系统可以使用 <cite>fc-list</cite> 查看已安装字体</p>
+</div>
+</div>
+<div class="section" id="section-4">
+<h3>方案2-使用已下载未安装字体</h3>
+<p>使用外部字体参考: <a class="reference external" href="https://www.overleaf.com/learn/latex/XeLaTeX#Using_fonts_not_installed_on_Overleaf's_servers:_Google_Fonts_example">Configuring fontspec to use the fonts</a></p>
+<div class="highlight"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>xeCJK<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+
+<span class="k">\setCJKmainfont</span><span class="nb">{</span>NotoSerifCJKsc<span class="nb">}</span>[
+  Path=../../source/<span class="nb">_</span>static/fonts/SimplifiedChinese/,
+  Extension = .otf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Regular,
+  BoldItalicFont=*-Bold
+]
+</pre></div>
+<p>或者这样反过来也行, 顺序没影响</p>
+<div class="highlight"><pre><span></span><span class="k">\setCJKmainfont</span>[
+  Path=../../source/<span class="nb">_</span>static/fonts/SimplifiedChinese/,
+  Extension = .otf,
+  Scale=0.9,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Regular,
+  BoldItalicFont=*-Bold
+]<span class="nb">{</span>NotoSerifCJKsc<span class="nb">}</span>
+</pre></div>
+<p>另外除了 <tt class="docutils literal"><span class="pre">\setmainfont{&lt;font&gt;}</span></tt> 设置主字体, 还有
+<tt class="docutils literal"><span class="pre">\setmonofont{&lt;font&gt;}</span></tt> 用于设置等宽字体(monospace font)。
+<tt class="docutils literal"><span class="pre">\setsansfont{&lt;font&gt;}</span></tt> 用于设置无衬线字体(sans-serif font)。
+酌情使用即可</p>
+<p>若字体没有分斜体粗体等, 即</p>
+<div class="highlight"><pre><span></span><span class="k">\setCJKmainfont</span><span class="nb">{</span>canglang-xingkai<span class="nb">}</span>[
+    Path=../../source/<span class="nb">_</span>static/fonts/SimplifiedChinese/,
+    Extension = .ttf,
+    UprightFont=*,
+    BoldFont=*,
+    ItalicFont=*,
+    BoldItalicFont=*
+]
+</pre></div>
+<p>可以直接省略掉这部分配置</p>
+<div class="highlight"><pre><span></span><span class="k">\setCJKmainfont</span><span class="nb">{</span>canglang-xingkai<span class="nb">}</span>[
+    Path=../../source/<span class="nb">_</span>static/fonts/SimplifiedChinese/,
+    Extension = .ttf
+]
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>Path的路径要找对, 不知道就用绝对路径.</p>
+<p>另外, 字体名称就是文件名, 不需要去找字体文件真实的 <cite>family</cite> (截图使用的是 <cite>canglang-xingkai</cite> 字体)</p>
+<div class="last figure">
+<img alt="名称" src="doc-raw/resources/images/2024-06-07-15-01-03.png" style="width: 480px;" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>拓展-中文断行</h2>
+<p>设置:</p>
+<pre class="literal-block">
+\XeTeXlinebreaklocale &quot;zh&quot;
+\XeTeXlinebreakskip = 0pt plus 1pt
+\definecolor{VerbatimColor}{rgb}{0.95,0.95,0.95}
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    常见
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    拓展-设置中文字体
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      方案1-使用已安装字体
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      方案2-使用已下载未安装字体
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    拓展-中文断行
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
+											<p><p class="first last">TeX 家族</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
+											<p><p class="first last">latex模版配置说明</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
+											<p><p class="first last">fc-list</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
+											<p><p class="first last">otfinfo</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

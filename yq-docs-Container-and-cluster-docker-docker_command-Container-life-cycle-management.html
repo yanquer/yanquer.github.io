@@ -198,7 +198,7 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 <tr><td>&nbsp;</td><td>开放一个端口或一组端口；</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">--volume</span>, <span class="option">-v</span></kbd></td>
-<td>绑定一个卷, 格式为 <cite>$宿主机目录:$容器内目录</cite></td></tr>
+<td>绑定一个卷, 格式为 <cite>$宿主机目录:$容器内目录:权限</cite>, 权限默认读写</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">--rm</span></kbd></td>
 <td>退出容器时, 自动删除此容器</td></tr>
@@ -217,6 +217,20 @@ docker run $image_name
 只有容器内有进程运行的时候, 才不会挂掉</p>
 <p class="last"><strong>容器内的进程</strong>,
 <strong>容器内的进程必须处于前台运行状态，否则容器就会直接退出</strong></p>
+</div>
+<div class="section" id="v">
+<h3>关于 <cite>-v</cite> 第三个权限参数</h3>
+<p>比如在 <cite>Docker</cite> 中使用 <cite>/etc/localtime:/etc/localtime:ro</cite> 的 <cite>ro</cite> 参数表示以只读(read-only)的方式挂载目录。</p>
+<p>除了 <cite>ro</cite> 参数,在挂载目录时还可以使用以下参数:</p>
+<ul class="simple">
+<li>rw: 以读写模式挂载目录(默认行为)。</li>
+<li>z: 将共享卷标记为可以被多个容器访问。</li>
+<li>Z: 将私有卷标记为可以被多个容器访问。</li>
+<li>nocopy: 在创建新卷时不复制源目录的内容。</li>
+<li>delegated: 设置容器内的卷挂载模式为&quot;代理&quot;(更新主机优先)。</li>
+<li>cached: 设置容器内的卷挂载模式为&quot;缓存&quot;(更新容器优先)。</li>
+</ul>
+<p>这些参数可以根据需求进行组合使用,以满足不同的挂载要求。比如 <cite>rw,z</cite> 表示以读写模式挂载并且标记为可共享。</p>
 </div>
 <div class="section" id="section-2">
 <h3>示例</h3>
@@ -513,6 +527,10 @@ yanque&#64;yanquedembp ~ % docker exec -it mykali /bin/bash
    </a>
    <ul class="toc-tree visible">
     <li class="toc-h1">
+     <a class="" href="#v">
+     </a>
+    </li>
+    <li class="toc-h1">
      <a class="" href="#section-2">
       示例
      </a>
@@ -646,27 +664,27 @@ yanque&#64;yanquedembp ~ % docker exec -it mykali /bin/bash
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 5 <strong>31</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-turorial-valid-api-submit-both-data.html">validateApi提交联动数据</a></h3>
-											<p><p class="first last">Amis教程-validateApi提交联动数据</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
+											<p><p class="first last">TeX 家族</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 5 <strong>30</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-turorial-custom-data-filter.html">自定义数据过滤器</a></h3>
-											<p><p class="first last">Amis教程-自定义数据过滤器</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
+											<p><p class="first last">latex模版配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>13</strong></span>
-											<h3><a href="yq-docs-Chaotic-Some-open-source-and-convenient-GIT-projects.html">一些开源便利的Git项目</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
+											<p><p class="first last">fc-list</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-Electron-index.html">Electron</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>07</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
+											<p><p class="first last">otfinfo</p>
 </p>
 										</li>
 									</ul>
