@@ -1,0 +1,509 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>chsrc</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 10 六月 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+													<li><a class="button button-alt" href="tag/linuxzhi-ling.html">Linux指令</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-06-10</div>
+										<h2>chsrc</h2>
+
+										<span class="head-modify-time">修改于: 2024-06-10</span>
+
+									</div>
+									<dl class="docutils">
+<dt>chsrc</dt>
+<dd><p class="first">全平台命令行换源工具.</p>
+<p class="last">地址: <a class="reference external" href="https://github.com/RubyMetric/chsrc">https://github.com/RubyMetric/chsrc</a></p>
+</dd>
+</dl>
+<div class="section" id="section-1">
+<h2>选项参数</h2>
+<p>使用</p>
+<div class="highlight"><pre><span></span>chsrc<span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>target<span class="o">]</span><span class="w"> </span><span class="o">[</span>mirror<span class="o">]</span>
+
+<span class="nb">help</span><span class="w">                    </span><span class="c1"># 打印此帮助，或 h, -h, --help</span>
+issue<span class="w">                   </span><span class="c1"># 查看相关issue</span>
+list<span class="w"> </span><span class="o">(</span>或<span class="w"> </span>ls,<span class="w"> </span>或<span class="w"> </span>l<span class="o">)</span><span class="w">      </span><span class="c1"># 列出可用镜像源，和可换源软件</span>
+list<span class="w"> </span>mirror/target<span class="w">      </span><span class="c1"># 列出可用镜像源，或可换源软件</span>
+list<span class="w"> </span>os/lang/ware<span class="w">       </span><span class="c1"># 列出可换源的操作系统/编程语言/软件</span>
+list<span class="w"> </span>&lt;target&gt;<span class="w">           </span><span class="c1"># 查看该软件可以使用哪些源</span>
+
+cesu<span class="w"> </span>&lt;target&gt;<span class="w">           </span><span class="c1"># 对该软件所有源测速</span>
+get<span class="w">  </span>&lt;target&gt;<span class="w">           </span><span class="c1"># 查看当前软件的源使用情况</span>
+
+<span class="nb">set</span><span class="w">  </span>&lt;target&gt;<span class="w">           </span><span class="c1"># 换源，自动测速后挑选最快源</span>
+<span class="nb">set</span><span class="w">  </span>&lt;target&gt;<span class="w">  </span>first<span class="w">    </span><span class="c1"># 换源，使用维护团队测速第一的源</span>
+<span class="nb">set</span><span class="w">  </span>&lt;target&gt;<span class="w"> </span>&lt;mirror&gt;<span class="w">  </span><span class="c1"># 换源，指定使用某镜像站 (通过list命令查看)</span>
+reset<span class="w"> </span>&lt;target&gt;<span class="w">          </span><span class="c1"># 重置，使用上游默认使用的源</span>
+</pre></div>
+<p>选项:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-i<var>pv6</var></span></kbd></td>
+<td># 使用IPv6测速</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l<var>ocal</var></span></kbd></td>
+<td># 仅对某项目而非全局换源 (仅部分软件如bundler,pdm支持)</td></tr>
+</tbody>
+</table>
+<p>当你不想自动测速的时候，你可以直接指定某镜像站，以及指定维护团队已测试的最快镜像站</p>
+<div class="highlight"><pre><span></span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ruby<span class="w">           </span><span class="c1"># 测速，寻找最快者，换源</span>
+<span class="c1"># 或</span>
+chsrc<span class="w"> </span>ls<span class="w">  </span>ruby<span class="w">           </span><span class="c1"># 列出可用的镜像站</span>
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ruby<span class="w"> </span>rubychina<span class="w"> </span><span class="c1"># 使用 RubyChina 作为镜像站</span>
+<span class="c1"># 或</span>
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ruby<span class="w"> </span>first<span class="w">     </span><span class="c1"># 使用维护团队测试的最快镜像站</span>
+</pre></div>
+<p>对部分支持局部换源的，可以避免全局换源。</p>
+<div class="highlight"><pre><span></span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-local<span class="w"> </span>bundler
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-local<span class="w"> </span>pdm
+</pre></div>
+<div class="section" id="section-2">
+<h3>编程语言开发</h3>
+<div class="highlight"><pre><span></span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ruby<span class="w">    </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gem
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>python<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>pip<span class="w"> </span>/<span class="w"> </span>pdm<span class="w"> </span><span class="c1"># 同时换pip和pdm</span>
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>node<span class="w">    </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>npm<span class="w"> </span>/<span class="w"> </span>nodejs<span class="w"> </span>/<span class="w"> </span>yarn<span class="w"> </span>/<span class="w"> </span>pnpm<span class="w"> </span><span class="c1"># 同时换3个</span>
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>perl<span class="w">    </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>cpan
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>php<span class="w">     </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>composer
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>lua<span class="w">     </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>luarocks
+
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>go
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>rust<span class="w">    </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>cargo<span class="w"> </span>/<span class="w"> </span>crate
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>java<span class="w">    </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>maven<span class="w"> </span>/<span class="w"> </span>mvn<span class="w"> </span>/<span class="w"> </span>gradle
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>clojure<span class="w"> </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>clojars
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dart<span class="w">    </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>pub<span class="w"> </span>/<span class="w"> </span>flutter<span class="w"> </span><span class="c1"># 同时会为flutter换源</span>
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>haskell<span class="w"> </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>hackage/cabal/stack
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ocaml<span class="w">   </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>opam
+
+<span class="c1"># 同时会为 bioconductor 换源</span>
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>r<span class="w">       </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>cran
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>julia
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h3>操作系统</h3>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ubuntu
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>mint<span class="w">  </span>或<span class="w"> </span>linuxmint
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>debian
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>fedora
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>suse<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>opensuse
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>kali
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>arch<span class="w">  </span><span class="c1"># 同时使用 archlinuxcn</span>
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>manjaro
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gentoo
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>rocky<span class="w"> </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>rockylinux
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>alpine
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>void<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>voidlinux
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>solus
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ros<span class="w">   </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ros2
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>trisquel
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>lite<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>linuxlite
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>raspi<span class="w"> </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>raspberrypi
+
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>deepin
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>euler<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>openeuler
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>kylin<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>openkylin
+
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>msys2<span class="w"> </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>msys
+
+<span class="c1"># BSD</span>
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>freebsd
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>openbsd
+sudo<span class="w"> </span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>netbsd
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h3>软件</h3>
+<div class="highlight"><pre><span></span>chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>winget
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>brew<span class="w">      </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>homebrew
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>cocoapods<span class="w"> </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>cocoa<span class="w"> </span>/<span class="w"> </span>pod
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dockerhub<span class="w"> </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>docker
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>flathub
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>nix
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>guix
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>emacs<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>elpa
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>tex<span class="w">    </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ctan<span class="w"> </span>/<span class="w"> </span>latex<span class="w"> </span>/<span class="w"> </span>texlive<span class="w"> </span>/<span class="w"> </span>miktex
+chsrc<span class="w"> </span><span class="nb">set</span><span class="w"> </span>conda<span class="w">  </span>或<span class="w"> </span><span class="nb">set</span><span class="w"> </span>anaconda
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>安装</h2>
+<div class="section" id="macos">
+<h3>MacOS</h3>
+<div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>chsrc
+</pre></div>
+<p>或手动下载二进制文件</p>
+<div class="highlight"><pre><span></span><span class="c1"># M1/aarch64</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-aarch64-macos<span class="w"> </span>-o<span class="w"> </span>chsrc<span class="p">;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./chsrc
+
+<span class="c1"># x64</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-x64-macos<span class="w"> </span>-o<span class="w"> </span>chsrc<span class="p">;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./chsrc
+</pre></div>
+</div>
+<div class="section" id="linux">
+<h3>Linux</h3>
+<div class="highlight"><pre><span></span><span class="c1"># x64</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-x64-linux<span class="w"> </span>-o<span class="w"> </span>chsrc<span class="p">;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./chsrc
+
+<span class="c1"># aarch64</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-aarch64-linux<span class="w"> </span>-o<span class="w"> </span>chsrc<span class="p">;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./chsrc
+
+<span class="c1"># riscv64</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-riscv64-linux<span class="w"> </span>-o<span class="w"> </span>chsrc<span class="p">;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./chsrc
+
+<span class="c1"># armv7</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-armv7-linux<span class="w"> </span>-o<span class="w"> </span>chsrc<span class="p">;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./chsrc
+</pre></div>
+</div>
+<div class="section" id="windows">
+<h3>Windows</h3>
+<div class="highlight"><pre><span></span><span class="c1"># x64</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-x64-windows.exe<span class="w"> </span>-o<span class="w"> </span>chsrc.exe
+
+<span class="c1"># x86</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://gitee.com/RubyMetric/chsrc/releases/download/latest/chsrc-x86-windows.exe<span class="w"> </span>-o<span class="w"> </span>chsrc.exe
+</pre></div>
+</div>
+<div class="section" id="section-6">
+<h3>源码安装</h3>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://gitee.com/RubyMetric/chsrc.git<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>chsrc<span class="p">;</span><span class="w"> </span>make
+</pre></div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    选项参数
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      编程语言开发
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      操作系统
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      软件
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    安装
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#macos">
+      MacOS
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#linux">
+      Linux
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#windows">
+      Windows
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      源码安装
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></h3>
+											<p><p class="first last">qBittorrent</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-zspace.html">极空间</a></h3>
+											<p><p class="first last">极空间</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-select.html">react-select</a></h3>
+											<p><p class="first last">react-select</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-index.html">NAS</a></h3>
+											<p><p class="first last">NAS</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

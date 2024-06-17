@@ -167,6 +167,70 @@ touch<span class="w"> </span>docker-compose.yml
 <span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;256m&#39;</span>
 </pre></div>
 </div>
+<div class="section" id="nginxhttps">
+<h2>配置使用自带nginx的https</h2>
+<div class="highlight"><pre><span></span>services:
+  gitlab:
+    container_name: &#39;gitlabCe16_5_8&#39;    #容器名
+    image: &#39;gitlab/gitlab-ce:16.5.8-ce.0&#39;
+    restart: always
+    # restart: unless-stopped
+    # hostname: &#39;gitlab.example.com&#39;
+    environment:
+      TZ: &#39;Asia/Shanghai&#39;
+      # | 表示下面配置是多行配置
+      GITLAB_OMNIBUS_CONFIG: |
+        # external_url  &#39;http://192.168.1.108&#39;       # git拉代码的IP地址，公网IP和内网IP均可
+        # gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 2222
+        # unicorn[&#39;port&#39;] = 8888
+        # nginx[&#39;listen_port&#39;] = 80
+
+        nginx[&#39;listen_addresses&#39;] = [&#39;127.0.0.1&#39;,&#39;*&#39;, &#39;[::]&#39;]
+        # 开启 https
+        nginx[&#39;listen_port&#39;] = 443
+        external_url  &#39;https://192.168.1.108:8443&#39;
+        nginx[&#39;redirect_http_to_https&#39;] = true
+        # 将 80 端口的转发到 external_url/url
+        nginx[&#39;redirect_http_to_https_port&#39;] = 80
+
+    ports:   #端口映射，可以自行配置
+      - &#39;9080:80&#39;
+      - &#39;8443:443&#39;
+      - &#39;2222:22&#39;
+    volumes:  #目录挂载，可以自定义
+      - /Volumes/WinterSamsung/Project/Docker/Gitlab/config:/etc/gitlab
+      - /Volumes/WinterSamsung/Project/Docker/Gitlab/data:/var/opt/gitlab
+      - /Volumes/WinterSamsung/Project/Docker/Gitlab/logs:/var/log/gitlab
+      - /etc/localtime:/etc/localtime:ro
+    shm_size: &#39;256m&#39;
+</pre></div>
+<p>主要是这一部分(及其含义)</p>
+<div class="highlight"><pre><span></span># 配置给nginx监听地址, 我加了个127.0.0.1
+nginx[&#39;listen_addresses&#39;] = [&#39;127.0.0.1&#39;,&#39;*&#39;, &#39;[::]&#39;]
+# 开启 https, 设置 443 端口
+nginx[&#39;listen_port&#39;] = 443
+
+# 访问地址, 不设置默认是hostname,
+
+# 注意:
+#   默认情况下, external_url 设置了 https 开头后, 就不会再监听80端口, 除非显示设置 redirect_http_to_https
+
+#   参考: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md#redirect-http-requests-to-https
+#         https://www.coder.work/article/7371344
+#   By default, when you specify an external_url starting with &#39;https&#39;, NGINX will no longer listen for unencrypted HTTP traffic on port 80.
+#   If you want to redirect all HTTP traffic to HTTPS you can use the redirect_http_to_https setting.
+external_url  &#39;https://192.168.1.108:8443&#39;
+nginx[&#39;redirect_http_to_https&#39;] = true
+# 显示指定将 80 端口的转发到 external_url/url
+nginx[&#39;redirect_http_to_https_port&#39;] = 80
+</pre></div>
+<p>参考:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.coder.work/article/7371344">docker - Gitlab-ce docker容器无法通过https访问</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/mithrilon/p/13985710.html">使用Docker安装配置GitLab CE</a></li>
+<li><a class="reference external" href="https://docs.gitlab.com/omnibus/settings/nginx.html">NGINX settings</a></li>
+</ul>
+</div>
 
 								</article>
 						</div>
@@ -199,6 +263,11 @@ touch<span class="w"> </span>docker-compose.yml
     配置
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#nginxhttps">
+    配置使用自带nginx的https
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -224,27 +293,27 @@ touch<span class="w"> </span>docker-compose.yml
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
-											<p><p class="first last">TeX 家族</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></h3>
+											<p><p class="first last">qBittorrent</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
-											<p><p class="first last">latex模版配置说明</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-zspace.html">极空间</a></h3>
+											<p><p class="first last">极空间</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
-											<p><p class="first last">fc-list</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-select.html">react-select</a></h3>
+											<p><p class="first last">react-select</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
-											<p><p class="first last">otfinfo</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-index.html">NAS</a></h3>
+											<p><p class="first last">NAS</p>
 </p>
 										</li>
 									</ul>

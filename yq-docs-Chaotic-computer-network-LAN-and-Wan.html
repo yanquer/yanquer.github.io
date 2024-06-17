@@ -229,6 +229,20 @@ NAT表和ARP表是路由器内部用于管理网络数据包的数据结构，�
 </div>
 <p>参考: <a class="reference external" href="https://www.zhihu.com/question/20738115">https://www.zhihu.com/question/20738115</a></p>
 </div>
+<div class="section" id="section-3">
+<h2>默认情况下的路由流程</h2>
+<p>当家用路由器的两个LAN口分别连接两个设备, 且这两个设备获得的IP地址分别是192.168.1.10和192.168.2.10时,
+默认情况下访问外网的默认路由流程如下:</p>
+<p>设备1(192.168.1.10)需要访问外网时:</p>
+<ul class="simple">
+<li>设备1首先检查自己的路由表,发现目的地址不在本地网段内。</li>
+<li>设备1将数据包发送给默认网关,即家用路由器的IP地址(通常是192.168.1.1)。</li>
+<li>家用路由器接收到来自设备1的数据包,查看自己的路由表。</li>
+<li>路由器发现目的地址不在自己的直连网段,则查找默认路由规则。</li>
+<li>路由器将数据包转发给默认网关, 通常是ISP提供的上一跳路由器。</li>
+<li>上一跳路由器接收到数据包后,根据自己的路由表将数据包转发到Internet。</li>
+</ul>
+</div>
 
 								</article>
 						</div>
@@ -268,6 +282,11 @@ NAT表和ARP表是路由器内部用于管理网络数据包的数据结构，�
     问题-同局域网的两个路由器下的电脑想要ping通
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    默认情况下的路由流程
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -293,27 +312,27 @@ NAT表和ARP表是路由器内部用于管理网络数据包的数据结构，�
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
-											<p><p class="first last">TeX 家族</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></h3>
+											<p><p class="first last">qBittorrent</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
-											<p><p class="first last">latex模版配置说明</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-zspace.html">极空间</a></h3>
+											<p><p class="first last">极空间</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
-											<p><p class="first last">fc-list</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-select.html">react-select</a></h3>
+											<p><p class="first last">react-select</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
-											<p><p class="first last">otfinfo</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-index.html">NAS</a></h3>
+											<p><p class="first last">NAS</p>
 </p>
 										</li>
 									</ul>

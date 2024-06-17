@@ -1,0 +1,432 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li  class="active"><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>Git教程</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 13 六月 2024
+      , Category:
+	  <a href="category/ban-ben-kong-zhi.html">版本控制</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/ban-ben-kong-zhi.html">版本控制</a></li>
+													<li><a class="button button-alt" href="tag/git.html">Git</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-06-13</div>
+										<h2>Git教程</h2>
+
+										<span class="head-modify-time">修改于: 2024-06-13</span>
+
+									</div>
+									<dl class="docutils">
+<dt>相关资源/参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.ruanyifeng.com/blog/2022/10/git-server.html">最简单的 Git 服务器-阮一峰</a></li>
+<li><a class="reference external" href="https://docs.gitea.com/zh-cn/installation/comparison">对比 Gitea 与其它 Git 托管工具</a></li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="gitlab-cegit">
+<h2>使用gitlab-ce搭建git服务器</h2>
+<p>采用docker-compose + https部署</p>
+<p>yaml文件(使用默认生成的证书)</p>
+<div class="highlight"><pre><span></span>services:
+  gitlab:
+    container_name: &#39;gitlabCe16_5_8&#39;    #容器名
+    image: &#39;gitlab/gitlab-ce:16.5.8-ce.0&#39;
+    restart: always
+    # restart: unless-stopped
+    # hostname: &#39;gitlab.example.com&#39;
+    environment:
+      TZ: &#39;Asia/Shanghai&#39;
+      # | 表示下面配置是多行配置
+      GITLAB_OMNIBUS_CONFIG: |
+        # external_url  &#39;http://192.168.1.108&#39;       # git拉代码的IP地址，公网IP和内网IP均可
+        # gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 2222
+        # unicorn[&#39;port&#39;] = 8888
+        # nginx[&#39;listen_port&#39;] = 80
+
+        nginx[&#39;listen_addresses&#39;] = [&#39;127.0.0.1&#39;,&#39;*&#39;, &#39;[::]&#39;]
+        # 开启 https
+        nginx[&#39;listen_port&#39;] = 443
+        external_url  &#39;https://192.168.1.108:8443&#39;
+        nginx[&#39;redirect_http_to_https&#39;] = true
+        # 将 80 端口的转发到 external_url/url
+        nginx[&#39;redirect_http_to_https_port&#39;] = 80
+
+    ports:   #端口映射，可以自行配置
+      - &#39;9080:80&#39;
+      - &#39;8443:443&#39;
+      - &#39;2222:22&#39;
+    volumes:  #目录挂载，可以自定义
+      - /Volumes/WinterSamsung/Project/Docker/Gitlab/config:/etc/gitlab
+      - /Volumes/WinterSamsung/Project/Docker/Gitlab/data:/var/opt/gitlab
+      - /Volumes/WinterSamsung/Project/Docker/Gitlab/logs:/var/log/gitlab
+      - /etc/localtime:/etc/localtime:ro
+    shm_size: &#39;256m&#39;
+</pre></div>
+<p>启动</p>
+<div class="highlight"><pre><span></span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+<p>效果</p>
+<p>访问https的8443端口(访问80会自动切到8443)</p>
+<div class="figure">
+<img alt="访问8443端口" src="doc-raw/resources/images/2024-06-13-14-35-07.png" style="width: 480px;" />
+</div>
+<div class="section" id="section-1">
+<h3>管理员账户密码</h3>
+<p>低版本, 第一次启动时会提示设置账户密码;
+高版本直接提示在日志里的, 日志太长一般又不会去看</p>
+<div class="figure">
+<img alt="密码" src="doc-raw/resources/images/2024-06-13-15-25-45.png" style="width: 480px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">密码会在24小时后删除, 请记住/及时修改</p>
+</div>
+<p>用户名:</p>
+<pre class="literal-block">
+root
+</pre>
+<p>密码:</p>
+<pre class="literal-block">
+cat /etc/gitlab/initial_root_password
+</pre>
+</div>
+<div class="section" id="section-2">
+<h3>配置中文</h3>
+<p>gitlab版本: 16.5.8</p>
+<p>配置位置</p>
+<div class="figure">
+<img alt="配置位置" src="doc-raw/resources/images/2024-06-13-15-32-05.png" style="width: 480px;" />
+</div>
+<p>选择中文后保存刷新即可</p>
+<div class="figure">
+<img alt="保存" src="doc-raw/resources/images/2024-06-13-15-32-55.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="section-3">
+<h3>浏览器信任自签证书</h3>
+<p>系统: MacOS</p>
+<p>双击证书, 使用 <cite>钥匙串访问</cite> 打开</p>
+<div class="figure">
+<img alt="钥匙串访问" src="doc-raw/resources/images/2024-06-13-15-50-51.png" style="width: 480px;" />
+</div>
+<p>双击此证书, 设置为 <strong>始终信任</strong> (建议不使用时移除)</p>
+<div class="figure">
+<img alt="信任" src="doc-raw/resources/images/2024-06-13-15-52-07.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="section-4">
+<h3>导入外部项目</h3>
+<p><strong>管理员</strong> 需要配置支持哪些服务器导入</p>
+<div class="figure">
+<img alt="配置" src="doc-raw/resources/images/2024-06-13-16-18-50.png" style="width: 480px;" />
+</div>
+<p>然后用户就可以选择导入了</p>
+<div class="figure">
+<img alt="导入" src="doc-raw/resources/images/2024-06-13-16-19-33.png" style="width: 480px;" />
+</div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#gitlab-cegit">
+    使用gitlab-ce搭建git服务器
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-1">
+      管理员账户密码
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      配置中文
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      浏览器信任自签证书
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      导入外部项目
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></h3>
+											<p><p class="first last">qBittorrent</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-zspace.html">极空间</a></h3>
+											<p><p class="first last">极空间</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-select.html">react-select</a></h3>
+											<p><p class="first last">react-select</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-index.html">NAS</a></h3>
+											<p><p class="first last">NAS</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

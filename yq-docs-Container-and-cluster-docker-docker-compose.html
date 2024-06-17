@@ -749,6 +749,23 @@ services:
 </dl>
 <p>参考: <a class="reference external" href="https://www.runoob.com/docker/docker-compose.html">菜鸟教程</a></p>
 </div>
+<div class="section" id="yml-1">
+<h2>yml文件存在多行配置</h2>
+<p>使用 &quot;|&quot; 表示是多行配置</p>
+<p>如</p>
+<div class="highlight"><pre><span></span>environment:
+  TZ: &#39;Asia/Shanghai&#39;
+  # | 表示下面配置是多行配置
+  GITLAB_OMNIBUS_CONFIG: |
+    nginx[&#39;listen_addresses&#39;] = [&#39;127.0.0.1&#39;,&#39;*&#39;, &#39;[::]&#39;]
+    # 开启 https
+    nginx[&#39;listen_port&#39;] = 443
+    external_url  &#39;https://192.168.1.108:8443&#39;
+    nginx[&#39;redirect_http_to_https&#39;] = true
+    # 将 80 端口的转发到 external_url/url
+    nginx[&#39;redirect_http_to_https_port&#39;] = 80
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -811,6 +828,11 @@ services:
     yml 配置指令参考
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#yml-1">
+    yml文件存在多行配置
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -836,27 +858,27 @@ services:
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-document-tex-family-index.html">TeX 家族</a></h3>
-											<p><p class="first last">TeX 家族</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></h3>
+											<p><p class="first last">qBittorrent</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-document-tex-family-latex-template-config.html">latex模版配置说明</a></h3>
-											<p><p class="first last">latex模版配置说明</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-zspace.html">极空间</a></h3>
+											<p><p class="first last">极空间</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-fc-list.html">fc-list</a></h3>
-											<p><p class="first last">fc-list</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-select.html">react-select</a></h3>
+											<p><p class="first last">react-select</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>07</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-MAC-instruction-otfinfo.html">otfinfo</a></h3>
-											<p><p class="first last">otfinfo</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-index.html">NAS</a></h3>
+											<p><p class="first last">NAS</p>
 </p>
 										</li>
 									</ul>

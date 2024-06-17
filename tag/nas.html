@@ -7,12 +7,11 @@
 -->
 <html data-theme="dark">
 	<head>
-			<title>书言</title>
+			<title>书言 - NAS</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -75,18 +74,14 @@
 							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
 						</form>
 					</div>
-  <div class="row page-head page-article persistent">
-    <div class="page-head-title">
-      <h2>桥接导入C</h2>
+  <div class="row page-index">
+    <div class="page-index-head-title">
+      <h2>书言</h2>
     </div>
-    <div class="page-head-content">
-      By
-	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
-      , Category:
-	  <a href="category/hou-duan.html">后端</a>
+    <div class="red-line">
     </div>
-	<div class="red-line">
+    <div class="page-index-head-content">
+      意不尽道, 言不尽意, 书不尽言
     </div>
   </div>
 				</div>
@@ -96,78 +91,86 @@
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
 				<div class="container">
-<div class="row">
-	<div class="12u">
-			<section>
-				<div>
-					<div class="row">
-						<div class="12u skel-cell-mainContent">
-							<!-- Content -->
-								<article class="box is-post">
-									<div class="box-head">
-										<div class="post-infos">
-											<ul class="tags">
-												<li><a class="button" href="category/hou-duan.html">后端</a></li>
-													<li><a class="button button-alt" href="tag/swift.html">Swift</a></li>
-
-											</ul>
-										</div>
-
-										<div class="pennant pennant-alt date">2023-02-20</div>
-										<h2>桥接导入C</h2>
-
-										<span class="head-modify-time">修改于: 2023-02-20</span>
-
-									</div>
-									<div class="admonition note">
-<p class="first admonition-title">注解</p>
-<p class="last">源于AI, 有空整理</p>
-</div>
-<p>如果你在 Swift 中使用桥接头文件来访问 C 头文件中的宏定义，你可以按照以下步骤进行操作：</p>
-<dl class="docutils">
-<dt>创建桥接头文件</dt>
-<dd><p class="first">在 Xcode 中，创建一个新的头文件（例如 YourProject-Bridging-Header.h）。
-在桥接头文件中，使用 #import 或 #include 导入 libproc.h 头文件:</p>
-<pre class="last literal-block">
-#import &lt;libproc.h&gt;
-</pre>
-</dd>
-<dt>配置桥接头文件：</dt>
-<dd>在 Xcode 项目的 &quot;Build Settings&quot;（构建设置）中，
-找到 &quot;Objective-C Bridging Header&quot;（Objective-C 桥接头文件）设置。
-将设置的值指定为桥接头文件的路径，例如 YourProject/YourProject-Bridging-Header.h。</dd>
-<dt>在 Swift 代码中使用宏定义</dt>
-<dd><p class="first">在 Swift 文件中，你可以通过桥接头文件来访问 libproc.h 中的宏定义。
-使用 #if 预处理指令来检查宏定义的值，并在代码中做出相应的处理:</p>
-<pre class="last literal-block">
-#if YOUR_MACRO
-    // 宏定义存在时的处理逻辑
-#else
-    // 宏定义不存在时的处理逻辑
-#endif
-</pre>
-</dd>
-</dl>
-<p>请注意，Swift 是一种不同于 C 的语言，因此在 Swift 文件中无法直接访问 C 头文件中的宏定义。
-通过桥接头文件，你可以在 Objective-C 和 Swift 之间建立连接，从而使 Swift 代码能够访问 C 头文件中的宏定义和其他内容。</p>
-<p>确保在桥接头文件和 Swift 文件之间设置了正确的路径和配置，以便能够成功访问 libproc.h 中的宏定义</p>
-
-								</article>
-						</div>
-					</div>
-				</div>
-			</section>
-	</div>
-</div>
+  <div class="row">
+    <div class="12u">
+      <section>
+<div class="row">            <div class="4u">
+              <section class="box">
+                <header>
+                  <h3><a href="/yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></h3>
+                  <!-- <h3>qBittorrent</h3> -->
+                  <span class="byline">2024-06-14 11:21:01</span>
+                </header>
+                <p class="first last
+                <!--  -->
+                <!-- <p class="... -->
+                <footer class="actions">
+                  <a href="/yq-docs-Chaotic-NAS-qBittorrent.html"
+                     class="button button-icon button-icon-1">Continue Reading</a>
+                </footer>
+              </section>
+            </div>
+            <div class="4u">
+              <section class="box">
+                <header>
+                  <h3><a href="/yq-docs-Chaotic-NAS-zspace.html">极空间</a></h3>
+                  <!-- <h3>极空间</h3> -->
+                  <span class="byline">2024-06-14 11:21:01</span>
+                </header>
+                <p class="first last
+                <!--  -->
+                <!-- <p class="... -->
+                <footer class="actions">
+                  <a href="/yq-docs-Chaotic-NAS-zspace.html"
+                     class="button button-icon button-icon-1">Continue Reading</a>
+                </footer>
+              </section>
+            </div>
+            <div class="4u">
+              <section class="box">
+                <header>
+                  <h3><a href="/yq-docs-Chaotic-NAS-index.html">NAS</a></h3>
+                  <!-- <h3>NAS</h3> -->
+                  <span class="byline">2024-06-13 14:21:01</span>
+                </header>
+                <p class="first last
+                <!--  -->
+                <!-- <p class="... -->
+                <footer class="actions">
+                  <a href="/yq-docs-Chaotic-NAS-index.html"
+                     class="button button-icon button-icon-1">Continue Reading</a>
+                </footer>
+              </section>
+            </div>
+</div><div class="row">            <div class="4u">
+              <section class="box">
+                <header>
+                  <h3><a href="/yq-docs-Chaotic-NAS-outer-access.html">设置外网访问</a></h3>
+                  <!-- <h3>设置外网访问</h3> -->
+                  <span class="byline">2024-06-13 14:21:01</span>
+                </header>
+                <p class="first last
+                <!--  -->
+                <!-- <p class="... -->
+                <footer class="actions">
+                  <a href="/yq-docs-Chaotic-NAS-outer-access.html"
+                     class="button button-icon button-icon-1">Continue Reading</a>
+                </footer>
+              </section>
+            </div>
+      </section>
+      <!-- /#content -->
+        <p class="paginator">
+          Page 1 / 1
+        </p>
+    </div>
+  </div>
 
 				</div>
 			</div>
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
-	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
-		<!-- 按钮 使用 content 绘制图标 -->
-	</div>
 		</div>
 
 		<!-- Footer Wrapper -->
@@ -182,27 +185,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-img-auto-adjust.html">img超出大小时自动调整</a></h3>
-											<p><p class="first last">img超出大小时自动调整</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></h3>
+											<p><p class="first last">qBittorrent</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-blob.html">Blob对象</a></h3>
-											<p><p class="first last">Blob对象</p>
+											<span class="date"> 6 <strong>14</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-zspace.html">极空间</a></h3>
+											<p><p class="first last">极空间</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-index.html">浏览器环境</a></h3>
-											<p><p class="first last">浏览器环境API</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-index.html">NAS</a></h3>
+											<p><p class="first last">NAS</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-Conceptual-browser-environment-url.html">URL对象</a></h3>
-											<p><p class="first last">URL对象</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-outer-access.html">设置外网访问</a></h3>
+											<p><p class="first last">设置外网访问</p>
 </p>
 										</li>
 									</ul>
@@ -285,27 +288,6 @@
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
-<script type="text/javascript">
-	function addEvent() {
-		$("#toc-contents-title-text").click(function() {
-			$("#top-toc-tree-container").toggleClass("no-active");
-			$("#sidebar-tools").toggleClass("no-active");
-		})
-		$("#sidebar-tools").click(function() {
-			$("#top-toc-tree-container").toggleClass("no-active");
-			$("#sidebar-tools").toggleClass("no-active");
-		})
-		$("#sidebar-tool-back-top").click(function() {
-			// window.scrollTo(0, 0);
-			window.scrollTo({
-				top: 0,
-				left: 0,
-				behavior: 'smooth'
-			});
-		})
-	}
-	addEvent()
-</script>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
 	</body>
 </html>
