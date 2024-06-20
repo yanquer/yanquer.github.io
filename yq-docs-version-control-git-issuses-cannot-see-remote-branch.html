@@ -1,0 +1,430 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li  class="active"><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>问题记录-无法查看到远程分支</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 19 六月 2024
+      , Category:
+	  <a href="category/ban-ben-kong-zhi.html">版本控制</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+			</div>
+
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/ban-ben-kong-zhi.html">版本控制</a></li>
+													<li><a class="button button-alt" href="tag/git.html">Git</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-06-19</div>
+										<h2>问题记录-无法查看到远程分支</h2>
+
+										<span class="head-modify-time">修改于: 2024-06-19</span>
+
+									</div>
+									<p>今天拉取一个比较大的仓库的时候, 网络不好
+老是断开, 无奈就先浅层clone了一下, 然后进目录去拉</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/vernesong/OpenClash.git
+Cloning<span class="w"> </span>into<span class="w"> </span><span class="s1">&#39;OpenClash&#39;</span>...
+remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">462</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">462</span>/462<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">410</span>/410<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">462</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">32</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">387</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">25</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
+Receiving<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">462</span>/462<span class="o">)</span>,<span class="w"> </span><span class="m">7</span>.77<span class="w"> </span>MiB<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">6</span>.96<span class="w"> </span>MiB/s,<span class="w"> </span><span class="k">done</span>.
+Resolving<span class="w"> </span>deltas:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">32</span>/32<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>OpenClash
+
+$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--unshallow
+remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">27364</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">27364</span>/27364<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">10857</span>/10857<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+error:<span class="w"> </span>RPC<span class="w"> </span>failed<span class="p">;</span><span class="w"> </span>curl<span class="w"> </span><span class="m">92</span><span class="w"> </span>HTTP/2<span class="w"> </span>stream<span class="w"> </span><span class="m">5</span><span class="w"> </span>was<span class="w"> </span>not<span class="w"> </span>closed<span class="w"> </span>cleanly:<span class="w"> </span>CANCEL<span class="w"> </span><span class="o">(</span>err<span class="w"> </span><span class="m">8</span><span class="o">)</span>
+error:<span class="w"> </span><span class="m">2145</span><span class="w"> </span>bytes<span class="w"> </span>of<span class="w"> </span>body<span class="w"> </span>are<span class="w"> </span>still<span class="w"> </span>expected
+fetch-pack:<span class="w"> </span>unexpected<span class="w"> </span>disconnect<span class="w"> </span><span class="k">while</span><span class="w"> </span>reading<span class="w"> </span>sideband<span class="w"> </span>packet
+fatal:<span class="w"> </span>early<span class="w"> </span>EOF
+fatal:<span class="w"> </span>fetch-pack:<span class="w"> </span>invalid<span class="w"> </span>index-pack<span class="w"> </span>output
+git<span class="w"> </span>pull<span class="w"> </span>--unshallow
+remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">27364</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">27364</span>/27364<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">10857</span>/10857<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">27076</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">11649</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">26777</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">11350</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
+Receiving<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">27076</span>/27076<span class="o">)</span>,<span class="w"> </span><span class="m">3</span>.72<span class="w"> </span>GiB<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span>.67<span class="w"> </span>MiB/s,<span class="w"> </span><span class="k">done</span>.
+Resolving<span class="w"> </span>deltas:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">11649</span>/11649<span class="o">)</span>,<span class="w"> </span>completed<span class="w"> </span>with<span class="w"> </span><span class="m">191</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>objects.
+remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
+From<span class="w"> </span>https://github.com/vernesong/OpenClash
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.100-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.100-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.103-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.103-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.109-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.109-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.110-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.110-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.111-bata<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.111-bata
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.112-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.112-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.121-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.121-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.128-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.128-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.129-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.129-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.141-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.141-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.152-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.152-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.156-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.156-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.157-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.45.157-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.69-beta<span class="w">  </span>-&gt;<span class="w"> </span>v0.45.69-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.70-beta<span class="w">  </span>-&gt;<span class="w"> </span>v0.45.70-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.78-beta<span class="w">  </span>-&gt;<span class="w"> </span>v0.45.78-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.87-beta<span class="w">  </span>-&gt;<span class="w"> </span>v0.45.87-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.45.97-beta<span class="w">  </span>-&gt;<span class="w"> </span>v0.45.97-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.46.001-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.46.001-beta
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>tag<span class="o">]</span><span class="w">           </span>v0.46.003-beta<span class="w"> </span>-&gt;<span class="w"> </span>v0.46.003-beta
+</pre></div>
+<p>后面发现少了分支, 于是手动拉了一下</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch
+*<span class="w"> </span>master
+$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-r
+<span class="w">  </span>origin/HEAD<span class="w"> </span>-&gt;<span class="w"> </span>origin/master
+<span class="w">  </span>origin/master
+
+$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>core<span class="w"> </span>dev<span class="w"> </span>package
+remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">6734</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">179</span>/179<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+remote:<span class="w"> </span>Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">111</span>/111<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
+Receiving<span class="w"> </span>objects:<span class="w">  </span><span class="m">25</span>%<span class="w"> </span><span class="o">(</span><span class="m">1732</span>/6734<span class="o">)</span>,<span class="w"> </span><span class="m">6</span>.07<span class="w"> </span>GiB<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">297</span>.00<span class="w"> </span>KiB/s
+remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">6734</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">69</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">161</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">66</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">6555</span>
+Receiving<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">6734</span>/6734<span class="o">)</span>,<span class="w"> </span><span class="m">24</span>.91<span class="w"> </span>GiB<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span>.19<span class="w"> </span>MiB/s,<span class="w"> </span><span class="k">done</span>.
+Resolving<span class="w"> </span>deltas:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">682</span>/682<span class="o">)</span>,<span class="w"> </span>completed<span class="w"> </span>with<span class="w"> </span><span class="m">43</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>objects.
+From<span class="w"> </span>https://github.com/vernesong/OpenClash
+*<span class="w"> </span>branch<span class="w">              </span>core<span class="w">       </span>-&gt;<span class="w"> </span>FETCH_HEAD
+*<span class="w"> </span>branch<span class="w">              </span>dev<span class="w">        </span>-&gt;<span class="w"> </span>FETCH_HEAD
+*<span class="w"> </span>branch<span class="w">              </span>package<span class="w">    </span>-&gt;<span class="w"> </span>FETCH_HEAD
+hint:<span class="w"> </span>You<span class="w"> </span>have<span class="w"> </span>divergent<span class="w"> </span>branches<span class="w"> </span>and<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>specify<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>reconcile<span class="w"> </span>them.
+hint:<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span><span class="k">do</span><span class="w"> </span>so<span class="w"> </span>by<span class="w"> </span>running<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>commands<span class="w"> </span>sometime<span class="w"> </span>before
+hint:<span class="w"> </span>your<span class="w"> </span>next<span class="w"> </span>pull:
+hint:
+hint:<span class="w">   </span>git<span class="w"> </span>config<span class="w"> </span>pull.rebase<span class="w"> </span><span class="nb">false</span><span class="w">  </span><span class="c1"># merge</span>
+hint:<span class="w">   </span>git<span class="w"> </span>config<span class="w"> </span>pull.rebase<span class="w"> </span><span class="nb">true</span><span class="w">   </span><span class="c1"># rebase</span>
+hint:<span class="w">   </span>git<span class="w"> </span>config<span class="w"> </span>pull.ff<span class="w"> </span>only<span class="w">       </span><span class="c1"># fast-forward only</span>
+hint:
+hint:<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>replace<span class="w"> </span><span class="s2">&quot;git config&quot;</span><span class="w"> </span>with<span class="w"> </span><span class="s2">&quot;git config --global&quot;</span><span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>a<span class="w"> </span>default
+hint:<span class="w"> </span>preference<span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>repositories.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>pass<span class="w"> </span>--rebase,<span class="w"> </span>--no-rebase,
+hint:<span class="w"> </span>or<span class="w"> </span>--ff-only<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>to<span class="w"> </span>override<span class="w"> </span>the<span class="w"> </span>configured<span class="w"> </span>default<span class="w"> </span>per
+hint:<span class="w"> </span>invocation.
+fatal:<span class="w"> </span>Need<span class="w"> </span>to<span class="w"> </span>specify<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>reconcile<span class="w"> </span>divergent<span class="w"> </span>branches.
+</pre></div>
+<p>没想到结果还是一样</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch
+*<span class="w"> </span>master
+$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-r
+<span class="w">  </span>origin/HEAD<span class="w"> </span>-&gt;<span class="w"> </span>origin/master
+<span class="w">  </span>origin/master
+</pre></div>
+<p>最终发现是 <cite>.git/config</cite> 中fetch的地址不对, 显示只指定了master</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w">  </span>.git/config
+<span class="o">[</span>core<span class="o">]</span>
+<span class="w">  </span><span class="nv">repositoryformatversion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="nv">filemode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="nv">bare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="w">  </span><span class="nv">logallrefupdates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="nv">ignorecase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="nv">precomposeunicode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="o">[</span>submodule<span class="o">]</span>
+<span class="w">  </span><span class="nv">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.
+<span class="o">[</span>remote<span class="w"> </span><span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+<span class="w">  </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>https://github.com/vernesong/OpenClash.git
+<span class="w">  </span><span class="nv">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>+refs/heads/master:refs/remotes/origin/master
+<span class="o">[</span>branch<span class="w"> </span><span class="s2">&quot;master&quot;</span><span class="o">]</span>
+<span class="w">  </span><span class="nv">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>origin
+<span class="w">  </span><span class="nv">merge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>refs/heads/master
+</pre></div>
+<p>修改为如下形式</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w">  </span>.git/config
+<span class="o">[</span>core<span class="o">]</span>
+<span class="w">  </span><span class="nv">repositoryformatversion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="nv">filemode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="nv">bare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="w">  </span><span class="nv">logallrefupdates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="nv">ignorecase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="nv">precomposeunicode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="o">[</span>submodule<span class="o">]</span>
+<span class="w">  </span><span class="nv">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.
+<span class="o">[</span>remote<span class="w"> </span><span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+<span class="w">  </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>https://github.com/vernesong/OpenClash.git
+<span class="w">  </span><span class="c1"># fetch = +refs/heads/master:refs/remotes/origin/master</span>
+<span class="w">  </span><span class="nv">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>+refs/heads/*:refs/remotes/origin/*
+<span class="o">[</span>branch<span class="w"> </span><span class="s2">&quot;master&quot;</span><span class="o">]</span>
+<span class="w">  </span><span class="nv">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>origin
+<span class="w">  </span><span class="nv">merge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>refs/heads/master
+</pre></div>
+<p>现在对了</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>fetch
+From<span class="w"> </span>https://github.com/vernesong/OpenClash
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w">        </span>core<span class="w">       </span>-&gt;<span class="w"> </span>origin/core
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w">        </span>dev<span class="w">        </span>-&gt;<span class="w"> </span>origin/dev
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w">        </span>package<span class="w">    </span>-&gt;<span class="w"> </span>origin/package
+*<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>branch<span class="o">]</span><span class="w">        </span>rm<span class="w">         </span>-&gt;<span class="w"> </span>origin/rm
+
+$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-v
+*<span class="w"> </span>master<span class="w"> </span>dd5e07d8<span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s1">&#39;dev&#39;</span>
+
+$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-r
+<span class="w">  </span>origin/HEAD<span class="w"> </span>-&gt;<span class="w"> </span>origin/master
+<span class="w">  </span>origin/core
+<span class="w">  </span>origin/dev
+<span class="w">  </span>origin/master
+<span class="w">  </span>origin/package
+<span class="w">  </span>origin/rm
+
+$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>dev
+branch<span class="w"> </span><span class="s1">&#39;dev&#39;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>track<span class="w"> </span><span class="s1">&#39;origin/dev&#39;</span>.
+Switched<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>branch<span class="w"> </span><span class="s1">&#39;dev&#39;</span>
+</pre></div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 6 <strong>19</strong></span>
+											<h3><a href="yq-docs-version-control-git-issuses-cannot-see-remote-branch.html">问题记录-无法查看到远程分支</a></h3>
+											<p><p class="first last">无法查看到远程分支</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>19</strong></span>
+											<h3><a href="yq-docs-version-control-git-turorial-clone-new-repo-resume.html">Git教程-克隆新仓库时断点续传</a></h3>
+											<p><p class="first last">克隆新仓库时断点续传</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>18</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-zspace-config-istoreos.html">极空间配置iStoreOS旁路由</a></h3>
+											<p><p class="first last">极空间配置iStoreOS旁路由</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 6 <strong>17</strong></span>
+											<h3><a href="yq-docs-Chaotic-NAS-movie-standard.html">视频说明</a></h3>
+											<p><p class="first last">视频说明</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>
