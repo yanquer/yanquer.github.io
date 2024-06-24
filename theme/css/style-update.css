@@ -8,9 +8,10 @@
 
 
 /* 默认的黑色主题 */
-html, html > body *:not(a):not(.highlight):not(pre):not(span),
+/* html, html > body *:not(a):not(.highlight):not(pre):not(span),
 html > body *[class]:not(a):not(.highlight):not(pre):not(span),
-html > body *[id]:not(a):not(.highlight):not(pre):not(span){
+html > body *[id]:not(a):not(.highlight):not(pre):not(span) */
+* {
 	color: var(--g-color);
 }
 /* a {
@@ -51,6 +52,8 @@ div[onclick]:hover,
 /* 文章内容主题区域 */
 .box {
 	background: var(--main-area-bg-color) !important;
+	border: 1px solid #3d3d3f;
+    border-radius: 12px;
 }
 .actions a{
 	background-color: var(--g-a-action-color) !important;
@@ -72,6 +75,10 @@ div[onclick]:hover,
 		width: 100%;
 
 	}
+
+.page-head-title h2{
+	color: #c4ced7;
+}
 
 .red-line{
 	border-bottom: 2px solid red !important;
@@ -217,6 +224,7 @@ dd{
 /* 文章主体内容区域 */
 .is-post h2{
 	/* color: #b5b5b5b5; */
+	color: #d8a239;
 }
 
 /* 文章段落 */
@@ -224,6 +232,7 @@ dd{
 p, ul, ol, dl, table{
 	margin: unset;
 	margin-bottom: 5px;
+	font-weight: 400;
 }
 
 
@@ -472,29 +481,53 @@ table.docutils.option-list{
 
 /* 列表 */
 .admonition li,
+.first li,
+.last li,
 .simple li{
 	margin-left: 10px;
 }
-.admonition li::before,
-.simple:not(ol) li::before{
-	font-family: "Font Awesome 6 Free Web";
-	content: "\f231";
-	color: #4f8271;
-	margin-right: 0.5em;
+
+ul li {
+	/* 设置列表前标记距离 */
+	text-indent: 0.5em;
 }
-ul.simple:not(ol) li::before{
+
+/* 一级无序列表 */
+ul.first > li::marker,
+ul.last > li::marker,
+ul.simple > li::marker {
 	content: "\e139"; /* clover: https://fontawesome.com/icons/clover?f=classic&s=solid */
 	font-size: 8px;
+	color: #4f8271;
+	margin-right: 0.5em;
+	font-family: "Font Awesome 6 Free Web";
 }
+
+	/* 二级无序列表 */
+	ul.last > li > ul > li::marker,
+	ul.first > li > ul > li::marker,
+	ul.simple > li > ul > li::marker {
+		content: "\f231";
+	}
+
+	/* 三级无序列表 */
+	ul.first > li > ul > li > ul > li::marker,
+	ul.last > li > ul > li > ul > li::marker,
+	ul.simple > li > ul > li > ul > li::marker {
+		/* https://fontawesome.com/icons/fish-fins?f=classic&s=solid */
+		content: "\e4f2";
+	}
+
+	/* 四级无序列表 */
+	ul.last > li > ul > li > ul > li > ul > li::marker,
+	ul.first > li > ul > li > ul > li > ul > li::marker,
+	ul.simple > li > ul > li > ul > li > ul > li::marker {
+		/* https://fontawesome.com/icons/bottle-droplet?f=classic&s=solid */
+		content: "\e4c4";
+	}
 
 ol{
 	list-style-type: decimal;
-}
-ol.simple li{
-	margin-left: 2em;
-}
-ul{
-	/* list-style-type: circle; */
 }
 
 /* 斜体 */
@@ -567,4 +600,98 @@ h1, h2, h3, h4, h5, h6{
 	border-radius: 5px;
 	font-weight: 400;
 }
+
+
+/* 画布 - 粒子效果 */
+#universe {
+	display: block;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 头部 - 下方动效 */
+.waves-area .waves-svg {
+    width: 100%;
+    /* height: 80px; */
+}
+
+	.parallax > use {
+		animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+	}
+
+	.parallax > use:nth-child(1) {
+		animation-delay: -2s;
+		animation-duration: 7s;
+		fill: var(--main-area-bg-color);
+		opacity: 0.5;
+	}
+
+	.parallax > use:nth-child(2) {
+		animation-delay: -3s;
+		animation-duration: 10s;
+		fill: var(--main-area-bg-color);
+		opacity: 0.6;
+	}
+
+	.parallax > use:nth-child(3) {
+		animation-delay: -4s;
+		animation-duration: 13s;
+		fill: var(--main-area-bg-color);
+		opacity: 0.7;
+	}
+
+	.parallax > use:nth-child(4) {
+		animation-delay: -5s;
+		animation-duration: 20s;
+		fill: var(--main-area-bg-color);
+	}
+
+	@keyframes move-forever {
+		0% {
+			transform: translate3d(-90px, 0, 0);
+		}
+		100% {
+			transform: translate3d(85px, 0, 0);
+		}
+	}
+
+/* 首页 每一项 字体颜色 */
+header a{
+	color: var(--g-color);
+}
+/* 需要修改地方的颜色 */
+.toc-contents-title h4 {
+	color: var(--g-color);
+}
+
+/* 反引号 引用内容 */
+tt, code,
+tt > .pre,
+tt.docutils > .pre,
+tt.docutils > span.pre
+{
+	color: #cb8585;
+}
+
+/* 表格 */
+table.docutils{
+	box-shadow: 2px 2px 4px #5f5d5d;
+}
+
+/* 强调字体 */
+strong, b {
+    color: #ba5870;
+    font-weight: 700;
+}
+
+
 

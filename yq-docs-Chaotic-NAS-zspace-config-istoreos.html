@@ -32,7 +32,11 @@
 
 	</head>
 	<body class="no-sidebar">
-		<!-- Header Wrapper -->
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
 			<div id="header-wrapper">
 				<div class="container">
 					<div class="row">
@@ -89,8 +93,28 @@
     </div>
   </div>
 				</div>
-			</div>
 
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
 
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
@@ -345,6 +369,51 @@ REJECT代表拒绝
 </div>
 </div>
 <div class="section" id="section-5">
+<h3>内核配置</h3>
+<p>正常情况下, 启动clash后会自动提示安装内核, 但是有可能网不好导致下载失败.</p>
+<p>这个时候可以参考下面的方法配置内核</p>
+<p>来源: <a class="reference external" href="https://www.right.com.cn/forum/thread-8272767-1-1.html">[openwrt(x86)] OPENCLASH 内核更新失败解决方法</a></p>
+<blockquote>
+<p>通过网络下载安装，使用此方法，在Dev内核发布页内查找对应的架构安装包，
+替换掉以下命令内的 clash-linux-armv8.tar.gz 内容，
+如：将 clash-linux-armv8.tar.gz 替换为 clash-linux-mips64.tar.gz，依次运行以下命令即可，命令如下</p>
+<div class="highlight"><pre><span></span><span class="c1"># 进入内核安装目录</span>
+<span class="nb">cd</span><span class="w"> </span>/etc/openclash/core/
+
+<span class="c1"># 下载内核安装包</span>
+wget<span class="w"> </span>https://github.com/vernesong/OpenClash/releases/download/Clash/clash-linux-armv8.tar.gz
+
+<span class="c1"># 解压内核安装包</span>
+tar<span class="w"> </span>-zxvf<span class="w"> </span>clash-linux-armv8.tar.gz
+
+<span class="c1"># 给予最高权限</span>
+chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>clash
+</pre></div>
+<p>2、无法通过 wget 下载或手动上传，可使用此方法，同样在Dev内核发布页内查找下载对应的架构安装包，
+将安装包通过 SFTP 上传到 /etc/openclash/core/ 目录下，依次执行以下命令即可，命令如下：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 进入内核安装目录</span>
+<span class="nb">cd</span><span class="w"> </span>/etc/openclash/core/
+
+<span class="c1"># 解压内核安装包</span>
+tar<span class="w"> </span>-zxvf<span class="w"> </span>clash-linux-armv8.tar.gz
+
+<span class="c1"># 给予最高权限</span>
+chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>clash
+</pre></div>
+<p>最后说明</p>
+<p>安装完 Dev 内核后，可以配置代理网络节点，
+然后通过在“openclash”&gt;“全局设置”&gt;“版本更新”内更新内核，如你需要安装 TUN 内核，
+那么和以上方法一致，但需要将内核文件修改为 clash_tun 并给予 777 最高权限，以下列出 Dev 和 TUN 内核下载地址。</p>
+<p>Dev 内核下载: <a class="reference external" href="https://github.com/vernesong/OpenClash/releases/tag/Clash">https://github.com/vernesong/OpenClash/releases/tag/Clash</a>
+Tun 内核下载: <a class="reference external" href="https://github.com/vernesong/OpenClash/releases/tag/TUN-Premium">https://github.com/vernesong/OpenClash/releases/tag/TUN-Premium</a>
+Tun 游戏内核: <a class="reference external" href="https://github.com/vernesong/OpenClash/releases/tag/TUN">https://github.com/vernesong/OpenClash/releases/tag/TUN</a></p>
+<p>使用 TUN 模式单独下载 TUN 内核，路径 /etc/openclash/core/clash_tun，
+使用 TUN（游戏）模式就下载 TUN 游戏内核，
+路径 /etc/openclash/core/clash_game，clash_tun 和 clash_game 都为文件名，
+如使用此方法无法识别内核，可以尝试卸载 OpenClash 后重新安装依赖和插件</p>
+</blockquote>
+</div>
+<div class="section" id="section-6">
 <h3>配置软路由(需要才配)</h3>
 <ul class="simple">
 <li>系统-系统便利工具（如没有，软件商店安装）-关闭ipv6</li>
@@ -366,9 +435,97 @@ REJECT代表拒绝
 </li>
 </ul>
 </div>
+<div class="section" id="dns">
+<h3>DNS配置介绍</h3>
+<dl class="docutils">
+<dt>参考:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/vernesong/OpenClash/wiki/DNS设置#">https://github.com/vernesong/OpenClash/wiki/DNS设置#</a></li>
+<li><a class="reference external" href="https://blog.lckof.com/2024/03/21/dns-in-openclash/">OpenClash中的DNS设置</a></li>
+<li><a class="reference external" href="https://blog.oneleaf.asia/archives/【软路由】如何安装与配置AdGuard%20Home">【软路由】如何安装与配置AdGuard Home0</a></li>
+</ul>
+</dd>
+</dl>
+<p>OpenClash 的 DNS 设置分为三个分组：</p>
+<ul class="simple">
+<li>NameServer</li>
+<li>FallBack</li>
+<li>Default-NameServer</li>
+</ul>
+<div class="figure">
+<img alt="配置位置" src="doc-raw/resources/images/2024-06-20-20-34-05.png" style="width: 480px;" />
+</div>
+<p>只有启用 <cite>自定义上游 DNS 服务器</cite> 才生效</p>
+<div class="figure">
+<img alt="自定义上游-DNS" src="doc-raw/resources/images/2024-06-20-20-35-25.png" style="width: 480px;" />
+</div>
+<p>给一个 FakeIP 的例子</p>
+<div class="highlight"><pre><span></span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">ipv6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">enhanced-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fake-ip</span>
+<span class="w">  </span><span class="nt">fake-ip-range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">198.18.0.1/16</span>
+<span class="w">  </span><span class="nt">listen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0:7874</span>
+<span class="w">  </span><span class="nt">nameserver</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://doh.pub/dns-query</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dns.alidns.com/dns-query</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">119.29.29.29</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">223.5.5.5</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.4.4</span>
+<span class="w">  </span><span class="nt">default-nameserver</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">119.29.29.29</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">223.5.5.5</span>
+</pre></div>
+<p>可以看到里面的 DNS 服务地址有三种样式，分别是:</p>
+<pre class="literal-block">
+Do53: 192.168.1.1
+DoT: dhcp://“eth1”
+DoH: https://doh.pub/dns-query
+</pre>
+<p>Do53 就是我们认识中传统的 DNS，基于 UDP/TCP。
+后面两个则是 2016 年后出现的加密 DNS 协议，其中 DoT 是 DNS over TLS，DOH 则是 DNS over HTTPS。</p>
+<p>先说 <cite>default-nameserver</cite>，它的功能最单一，它是用来解析 <cite>nameserver</cite> 的 DNS 服务，所以它不允许使用域名，只能用 Do53 协议。</p>
+<p><cite>nameserver</cite> 则是我们使用的 dns 服务，当 openclash 收到 dns 解析请求时，它会并行的向所有的服务发起请求，然后采用最快返回的结果。</p>
+<p>如果所有的请求都失败，那么就会使用 <cite>fallback</cite> 中的 dns 服务。</p>
+<div class="section" id="dns-1">
+<h4>一些知名的公共 DNS 服务</h4>
+<p>阿里:</p>
+<pre class="literal-block">
+223.5.5.5
+223.6.6.6
+DoT: dns.alidns.com
+DoH: https://dns.alidns.com/dns-query
+</pre>
+<p>腾讯:</p>
+<pre class="literal-block">
+119.29.29
+DoT: dot.pub
+DoH: https://doh.pub/dns-query
+</pre>
+<p>谷歌:</p>
+<pre class="literal-block">
+8.8.8.8
+8.8.4.4
+DoH: https://dns.google/dns-query
+</pre>
+<p>CloudFlare:</p>
+<pre class="literal-block">
+1.1.1.1
+</pre>
+<p>至于 <a class="reference external" href="https://www.114dns.com">114dns</a> 的 <cite>114.114.114.114</cite>，就让它随风而去吧。早就污染得不成样子了。放在列表里只起到污染 dns 的作用。</p>
+</div>
+</div>
 </div>
 <div class="section" id="adguard-home">
 <h2>AdGuard Home</h2>
+<dl class="docutils">
+<dt>参考:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.oneleaf.asia/archives/【软路由】如何安装与配置AdGuard%20Home">【软路由】如何安装与配置AdGuard Home1</a></li>
+</ul>
+</dd>
+</dl>
 <p>下载: <a class="reference external" href="https://github.com/AUK9527/Are-u-ok/tree/main/x86">https://github.com/AUK9527/Are-u-ok/tree/main/x86</a></p>
 <div class="figure">
 <img alt="下载" src="doc-raw/resources/images/2024-06-20-09-44-30.png" style="width: 480px;" />
@@ -382,6 +539,42 @@ REJECT代表拒绝
 <img alt="配置" src="doc-raw/resources/images/2024-06-20-09-47-24.png" style="width: 480px;" />
 </div>
 <p>然后浏览器访问 <cite>ip:3000</cite> 开始网页设置</p>
+<dl class="docutils">
+<dt>添加第三方DNS黑名单</dt>
+<dd><p class="first">目前比较好的黑名单维护项目: <a class="reference external" href="https://github.com/TG-Twilight/AWAvenue-Ads-Rule">https://github.com/TG-Twilight/AWAvenue-Ads-Rule</a></p>
+<p>使用方式(官方使用方式 <a class="reference external" href="https://awavenue.top/Knowledge.html">https://awavenue.top/Knowledge.html</a> ):</p>
+<p>复制 <a class="reference external" href="https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt">https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt</a> 然后添加
+到 <tt class="docutils literal">过滤器 <span class="pre">-&gt;</span> DNS黑名单</tt></p>
+<div class="figure">
+<img alt="规则添加" src="doc-raw/resources/images/2024-06-20-20-25-32.png" style="width: 480px;" />
+</div>
+<p class="last">DNS配置详细说明可参考: <a class="reference external" href="https://github.com/vernesong/OpenClash/wiki/DNS设置#">https://github.com/vernesong/OpenClash/wiki/DNS设置#</a></p>
+</dd>
+<dt>DNS配置(可选)</dt>
+<dd><p class="first">为了加快响应速度, 可以加一下新的DNS, 比如:</p>
+<pre class="literal-block">
+https://doh.pub/dns-query
+https://dns.alidns.com/dns-query
+tls://dns.alidns.com
+</pre>
+<ul class="simple">
+<li>选择并行请求，极大降低访问延迟</li>
+</ul>
+<div class="figure">
+<img alt="DNS" src="doc-raw/resources/images/2024-06-20-21-11-08.png" style="width: 480px;" />
+</div>
+<p>后备 DNS 服务器，最好是选择本地的, 比如北京的为:</p>
+<pre class="literal-block">
+119.29.29.29
+119.28.28.28
+</pre>
+<p>点击下方的&quot;测试上游DNS&quot;按钮,页面右下角提示&quot;指定的 DNS 服务器现已正常运行&quot;,
+表示配置正确，反正进行修改.（没有问题，点击&quot;应用&quot;按钮.）</p>
+<div class="last figure">
+<img alt="应用" src="doc-raw/resources/images/2024-06-20-21-16-30.png" style="width: 480px;" />
+</div>
+</dd>
+</dl>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p>配置好后, 若安装了OpenClash, 需要Clash中设置上游DNS</p>
@@ -397,7 +590,7 @@ REJECT代表拒绝
 </ul>
 </div>
 </div>
-<div class="section" id="section-6">
+<div class="section" id="section-7">
 <h2>安装所有商店软件</h2>
 <div class="highlight"><pre><span></span>curl https://repo.istoreos.com/repo/all/meta/ &gt; 1.txt
 cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg install
@@ -414,6 +607,8 @@ cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg 
 
 				</div>
 			</div>
+
+
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
@@ -464,8 +659,25 @@ cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg 
     </li>
     <li class="toc-h1">
      <a class="" href="#section-5">
+      内核配置
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
       配置软路由(需要才配)
      </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#dns">
+      DNS配置介绍
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#dns-1">
+        一些知名的公共 DNS 服务
+       </a>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -475,7 +687,7 @@ cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg 
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-6">
+   <a class="" href="#section-7">
     安装所有商店软件
    </a>
   </li>
@@ -504,27 +716,27 @@ cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg 
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-issuses-cannot-see-remote-branch.html">问题记录-无法查看到远程分支</a></h3>
-											<p><p class="first last">无法查看到远程分支</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-clone-new-repo-resume.html">Git教程-克隆新仓库时断点续传</a></h3>
-											<p><p class="first last">克隆新仓库时断点续传</p>
+											<span class="date"> 6 <strong>22</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
+											<p><p class="first last">钥匙串访问与证书</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>18</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-zspace-config-istoreos.html">极空间配置iStoreOS旁路由</a></h3>
-											<p><p class="first last">极空间配置iStoreOS旁路由</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
+											<p><p class="first last">animation动画属性</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>17</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-movie-standard.html">视频说明</a></h3>
-											<p><p class="first last">视频说明</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
+											<p><p class="first last">text-indent缩进</p>
 </p>
 										</li>
 									</ul>
@@ -599,6 +811,18 @@ cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg 
 						</div>
 					</section>
 			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
 		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
@@ -607,6 +831,7 @@ cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg 
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

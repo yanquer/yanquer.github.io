@@ -32,7 +32,11 @@
 
 	</head>
 	<body class="no-sidebar">
-		<!-- Header Wrapper -->
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
 			<div id="header-wrapper">
 				<div class="container">
 					<div class="row">
@@ -89,8 +93,28 @@
     </div>
   </div>
 				</div>
-			</div>
 
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
 
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
@@ -124,7 +148,71 @@
 <a class="sphinx-toc-tree" href="/yq-docs-Container-and-cluster-nginx-Configuration.html">配置</a>
 <a class="sphinx-toc-tree" href="/yq-docs-Container-and-cluster-nginx-Compared-with-other-products.html">与其他产品对比</a>
 <a class="sphinx-toc-tree" href="/yq-docs-Container-and-cluster-nginx-docker-deploy-nginx.html">docker部署nginx</a>
+</div><div class="section" id="section-1">
+<h2>教程</h2>
+<div class="section" id="mac">
+<h3>mac下生成证书</h3>
+<p>参见 <a class="reference external" href="/yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></p>
 </div>
+</div>
+<div class="section" id="section-2">
+<h2>遇到的报错</h2>
+<div class="section" id="no-route-to-host">
+<h3>No route to host</h3>
+<p>完整信息:</p>
+<pre class="literal-block">
+2024/6/21 0:12:08  2024/06/20 16:12:08 [error] 22 #22: *1 connect() failed (113: No route to host) while connecting to upstream, client: 192.168.50.51, server: git.yq.io, request: &quot;GET / HTTP/1.1&quot;, upstream: &quot;http://192.168.50.223:18880/&quot;, host: &quot;gitlab.yq.io&quot;
+</pre>
+<div class="figure">
+<img alt="no-route" src="doc-raw/resources/images/2024-06-21-00-29-34.png" style="width: 480px;" />
+</div>
+<p>在nginx所在机器上发现无法正常访问</p>
+<div class="highlight"><pre><span></span>root@gw:~#<span class="w"> </span>ping<span class="w"> </span><span class="m">192</span>.168.50.223
+PING<span class="w"> </span><span class="m">192</span>.168.50.223<span class="w"> </span><span class="o">(</span><span class="m">192</span>.168.50.223<span class="o">)</span><span class="w"> </span><span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span><span class="w"> </span>bytes<span class="w"> </span>of<span class="w"> </span>data.
+From<span class="w"> </span><span class="m">192</span>.168.50.100<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>Destination<span class="w"> </span>Host<span class="w"> </span>Unreachable
+From<span class="w"> </span><span class="m">192</span>.168.50.100<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>Destination<span class="w"> </span>Host<span class="w"> </span>Unreachable
+From<span class="w"> </span><span class="m">192</span>.168.50.100<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span><span class="w"> </span>Destination<span class="w"> </span>Host<span class="w"> </span>Unreachable
+^C
+---<span class="w"> </span><span class="m">192</span>.168.50.223<span class="w"> </span>ping<span class="w"> </span>statistics<span class="w"> </span>---
+<span class="m">6</span><span class="w"> </span>packets<span class="w"> </span>transmitted,<span class="w"> </span><span class="m">0</span><span class="w"> </span>received,<span class="w"> </span>+3<span class="w"> </span>errors,<span class="w"> </span><span class="m">100</span>%<span class="w"> </span>packet<span class="w"> </span>loss,<span class="w"> </span><span class="nb">time</span><span class="w"> </span>5118ms
+pipe<span class="w"> </span><span class="m">4</span>
+</pre></div>
+<p>nginx是使用maclan桥接启动的docker, <cite>192.168.50.223</cite> 是宿主机, 多半就是macvlan桥接与宿主机的访问问题了.</p>
+<dl class="docutils">
+<dt>macvlan模式</dt>
+<dd><p class="first">容器与宿主机通信</p>
+<p>通俗一点讲就是在一张物理网卡上虚拟出两个虚拟网卡，具有不同的MAC地址，
+可以让宿主机和docker同时接入网络并且使用不同的ip，
+此时docker可以直接和同一网络下的其他设备直接通信，
+相当的方便，但是这种模式有一个问题，宿主机和容器是没办法直接进行网络通信的</p>
+<dl class="last docutils">
+<dt>参考:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://aoyouer.com/posts/macvlan-host/">macvlan模式容器与宿主机通信</a></li>
+<li><a class="reference external" href="https://www.jianshu.com/p/d65d24c31872">Docker macvlan的使用及访问主机问题解决</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>我的机子不方便直接设置网络, 只好将服务再启动在一个容器里了.</p>
+</div>
+<div class="section" id="pem-read-bio-x509-aux">
+<h3>PEM_read_bio_X509_AUX</h3>
+<p>完整错误:</p>
+<pre class="literal-block">
+nginx: [emerg] cannot load certificate &quot;/etc/nginx/ssl/xxx.pem&quot;: PEM_read_bio_X509_AUX() failed (SSL: error:0480006C:PEM routines::no start line:Expecting: TRUSTED CERTIFICATE)
+</pre>
+<p>说明文件给错了, 可以使用以下命令:</p>
+<pre class="literal-block">
+openssl x509 -text -noout -in xxx.crt
+</pre>
+<p>来确定是否是证书. 且要注意, nginx不接受加密后的证书文件(二进制文件),
+若是二进制文件, 需要单独把证书跟密钥提取出来.</p>
+<p>mac下证书导出可参考 <a class="reference external" href="/yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></p>
+</div>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -136,8 +224,55 @@
 				</div>
 			</div>
 
+
+
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    教程
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#mac">
+      mac下生成证书
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    遇到的报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#no-route-to-host">
+      No route to host
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#pem-read-bio-x509-aux">
+      PEM_read_bio_X509_AUX
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -155,27 +290,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-issuses-cannot-see-remote-branch.html">问题记录-无法查看到远程分支</a></h3>
-											<p><p class="first last">无法查看到远程分支</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-clone-new-repo-resume.html">Git教程-克隆新仓库时断点续传</a></h3>
-											<p><p class="first last">克隆新仓库时断点续传</p>
+											<span class="date"> 6 <strong>22</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
+											<p><p class="first last">钥匙串访问与证书</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>18</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-zspace-config-istoreos.html">极空间配置iStoreOS旁路由</a></h3>
-											<p><p class="first last">极空间配置iStoreOS旁路由</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
+											<p><p class="first last">animation动画属性</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>17</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-movie-standard.html">视频说明</a></h3>
-											<p><p class="first last">视频说明</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
+											<p><p class="first last">text-indent缩进</p>
 </p>
 										</li>
 									</ul>
@@ -250,6 +385,18 @@
 						</div>
 					</section>
 			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
 		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
@@ -258,6 +405,7 @@
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

@@ -32,7 +32,11 @@
 
 	</head>
 	<body class="no-sidebar">
-		<!-- Header Wrapper -->
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
 			<div id="header-wrapper">
 				<div class="container">
 					<div class="row">
@@ -89,8 +93,28 @@
     </div>
   </div>
 				</div>
-			</div>
 
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
 
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
@@ -115,7 +139,7 @@
 										<div class="pennant pennant-alt date">2024-06-13</div>
 										<h2>Git教程</h2>
 
-										<span class="head-modify-time">修改于: 2024-06-13</span>
+										<span class="head-modify-time">修改于: 2024-06-23</span>
 
 									</div>
 									<dl class="docutils">
@@ -192,6 +216,26 @@ root
 <pre class="literal-block">
 cat /etc/gitlab/initial_root_password
 </pre>
+<p>如果忘记密码可以直接上服务器修改</p>
+<div class="highlight"><pre><span></span><span class="c1"># 进入容器</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gitlab14<span class="w"> </span>bash
+
+<span class="c1"># 执行：</span>
+<span class="c1"># 进入控制台</span>
+gitlab-rails<span class="w"> </span>console<span class="w"> </span>-e<span class="w"> </span>production
+<span class="c1"># 查询id为1的用户，id为1的用户是超级管理员</span>
+<span class="nv">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>User.where<span class="o">(</span>id:1<span class="o">)</span>.first
+<span class="c1"># 修改密码</span>
+user.password<span class="o">=</span><span class="s1">&#39;Rootgitlab12345.&#39;</span>
+user.password_confirmation<span class="o">=</span><span class="s1">&#39;Rootgitlab12345.&#39;</span><span class="w"> </span><span class="c1"># 可忽略</span>
+<span class="c1"># 保存</span>
+user.save!
+<span class="c1"># 退出</span>
+quit
+<span class="nb">exit</span>
+
+<span class="c1"># 参考: https://blog.csdn.net/GodDavide/article/details/139182475</span>
+</pre></div>
 </div>
 <div class="section" id="section-2">
 <h3>配置中文</h3>
@@ -228,6 +272,18 @@ cat /etc/gitlab/initial_root_password
 <img alt="导入" src="doc-raw/resources/images/2024-06-13-16-19-33.png" style="width: 480px;" />
 </div>
 </div>
+<div class="section" id="section-5">
+<h3>导入外部自己项目</h3>
+<p>如果是github自己项目, 需要去 <a class="reference external" href="https://github.com/settings/tokens">https://github.com/settings/tokens</a> 配置一下token,</p>
+<p>然后就可以直接导入了</p>
+<div class="figure">
+<img alt="导入自己github项目" src="doc-raw/resources/images/2024-06-20-21-58-27.png" style="width: 480px;" />
+</div>
+<p>如果是开源项目, 那只要有url就行</p>
+<div class="figure">
+<img alt="导入开源项目" src="doc-raw/resources/images/2024-06-20-21-59-48.png" style="width: 480px;" />
+</div>
+</div>
 </div>
 
 								</article>
@@ -240,6 +296,8 @@ cat /etc/gitlab/initial_root_password
 
 				</div>
 			</div>
+
+
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
@@ -276,6 +334,11 @@ cat /etc/gitlab/initial_root_password
       导入外部项目
      </a>
     </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      导入外部自己项目
+     </a>
+    </li>
    </ul>
   </li>
  </ul>
@@ -303,27 +366,27 @@ cat /etc/gitlab/initial_root_password
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-issuses-cannot-see-remote-branch.html">问题记录-无法查看到远程分支</a></h3>
-											<p><p class="first last">无法查看到远程分支</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-clone-new-repo-resume.html">Git教程-克隆新仓库时断点续传</a></h3>
-											<p><p class="first last">克隆新仓库时断点续传</p>
+											<span class="date"> 6 <strong>22</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
+											<p><p class="first last">钥匙串访问与证书</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>18</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-zspace-config-istoreos.html">极空间配置iStoreOS旁路由</a></h3>
-											<p><p class="first last">极空间配置iStoreOS旁路由</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
+											<p><p class="first last">animation动画属性</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>17</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-movie-standard.html">视频说明</a></h3>
-											<p><p class="first last">视频说明</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
+											<p><p class="first last">text-indent缩进</p>
 </p>
 										</li>
 									</ul>
@@ -398,6 +461,18 @@ cat /etc/gitlab/initial_root_password
 						</div>
 					</section>
 			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
 		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
@@ -406,6 +481,7 @@ cat /etc/gitlab/initial_root_password
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

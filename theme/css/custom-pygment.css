@@ -16,6 +16,7 @@ pre{
 
 	/* 代码超出边界时, 允许滚动 */
 	overflow-x: auto;
+	opacity: 0.7;
 }
 /* .c1{
 	color: #7cc2d4;
@@ -75,5 +76,8 @@ html[data-theme="dark"] .highlight .kc{
 	color: #9b3bac;
 }
 
+html[data-theme="dark"] .highlight{
+	border-radius: 12px;
+}
 
 

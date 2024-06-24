@@ -32,7 +32,11 @@
 
 	</head>
 	<body class="no-sidebar">
-		<!-- Header Wrapper -->
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
 			<div id="header-wrapper">
 				<div class="container">
 					<div class="row">
@@ -89,8 +93,28 @@
     </div>
   </div>
 				</div>
-			</div>
 
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
 
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
@@ -189,6 +213,8 @@ convert 1.png -fill white -pointsize 13 -draw “text 10,15 ‘lifesinger 2006�
 				</div>
 			</div>
 
+
+
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
@@ -208,27 +234,27 @@ convert 1.png -fill white -pointsize 13 -draw “text 10,15 ‘lifesinger 2006�
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-issuses-cannot-see-remote-branch.html">问题记录-无法查看到远程分支</a></h3>
-											<p><p class="first last">无法查看到远程分支</p>
+											<span class="date"> 6 <strong>13</strong></span>
+											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>19</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-clone-new-repo-resume.html">Git教程-克隆新仓库时断点续传</a></h3>
-											<p><p class="first last">克隆新仓库时断点续传</p>
+											<span class="date"> 6 <strong>22</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
+											<p><p class="first last">钥匙串访问与证书</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>18</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-zspace-config-istoreos.html">极空间配置iStoreOS旁路由</a></h3>
-											<p><p class="first last">极空间配置iStoreOS旁路由</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
+											<p><p class="first last">animation动画属性</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>17</strong></span>
-											<h3><a href="yq-docs-Chaotic-NAS-movie-standard.html">视频说明</a></h3>
-											<p><p class="first last">视频说明</p>
+											<span class="date"> 6 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
+											<p><p class="first last">text-indent缩进</p>
 </p>
 										</li>
 									</ul>
@@ -303,6 +329,18 @@ convert 1.png -fill white -pointsize 13 -draw “text 10,15 ‘lifesinger 2006�
 						</div>
 					</section>
 			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
 		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
@@ -311,6 +349,7 @@ convert 1.png -fill white -pointsize 13 -draw “text 10,15 ‘lifesinger 2006�
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {
