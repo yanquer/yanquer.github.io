@@ -143,6 +143,13 @@
 									<p>IP地址是一个 <strong>32位的二进制</strong> 地址，被分为4个8位段（八位组）。
 人们不习惯使用32的二进制地址或8位的二进制八位组，
 所以IP地址最常用的表达形式是 <strong>点分十进制</strong> 形式。</p>
+<dl class="docutils">
+<dt>关键字:</dt>
+<dd><ul class="first last simple">
+<li>IPv4</li>
+</ul>
+</dd>
+</dl>
 <div class="section" id="ip-1">
 <h2>IP地址分类</h2>
 <p>IP地址中一部分是 <strong>网络ID</strong>，另一部分是 <strong>主机ID</strong>，
@@ -289,6 +296,29 @@
 </tbody>
 </table>
 </div>
+<div class="section" id="ipv6">
+<h2>IPv6地址</h2>
+<p>IPv6也有特定的地址前缀用于内网/私网。主要有以下几种:</p>
+<dl class="docutils">
+<dt>FE80::/10 - 链路本地地址(Link-Local)</dt>
+<dd><p class="first">这种地址仅在本地链路上有效,不能跨越路由器。</p>
+<p class="last">用于同一网段内的设备通信。</p>
+</dd>
+<dt>FC00::/7 - 唯一本地地址(Unique Local Addresses, ULA)</dt>
+<dd><p class="first">这种地址仅在组织内部使用,无法在公网上路由和访问。</p>
+<p>类似于IPv4的私有地址(10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)。</p>
+<div class="admonition note last">
+<p class="first admonition-title">注解</p>
+<p>FD00::/8 属于 FC00::/7 这个更大的 IPv6 唯一本地地址前缀范围</p>
+<p class="last">可以这么说, f开头的地址, 都不是公网地址</p>
+</div>
+</dd>
+<dt>0000::/8 - 保留地址块</dt>
+<dd>这个地址块被IANA保留作为特殊用途,不能分配给任何组织或设备使用。</dd>
+<dt>::1/128 - 回环地址</dt>
+<dd>等价于IPv4的 127.0.0.1,用于本地环回测试。</dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -348,6 +378,11 @@
     一些题目
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#ipv6">
+    IPv6地址
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -373,27 +408,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>13</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-update-package-json-dependencies.html">一键升级package.json依赖版本</a></h3>
+											<p><p class="first last">一键升级package.json依赖版本</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>22</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
-											<p><p class="first last">钥匙串访问与证书</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@electron-remote.html">&#64;electron/remote</a></h3>
+											<p><p class="first last">&#64;electron/remote</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
-											<p><p class="first last">animation动画属性</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@sentry-browser.html">&#64;sentry/browser</a></h3>
+											<p><p class="first last">&#64;sentry/browser</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
-											<p><p class="first last">text-indent缩进</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-util.html">electron-util</a></h3>
+											<p><p class="first last">electron-util</p>
 </p>
 										</li>
 									</ul>

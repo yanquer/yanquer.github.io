@@ -141,38 +141,97 @@
 										<div class="pennant pennant-alt date">2024-06-12</div>
 										<h2>clone</h2>
 
-										<span class="head-modify-time">修改于: 2024-06-12</span>
+										<span class="head-modify-time">修改于: 2024-06-25</span>
 
 									</div>
 									<p>将远程仓库克隆到本地</p>
 <div class="section" id="section-1">
 <h2>选项参数</h2>
-<p>参考: <a class="reference external" href="https://geek-docs.com/git/git-questions/410_git_whats_the_difference_between_git_clone_mirror_and_git_clone_bare.html">Git: git clone –mirror和git clone –bare之间的区别</a></p>
+<p>参考: <a class="reference external" href="https://stackoverflow.com/questions/3959924/whats-the-difference-between-git-clone-mirror-and-git-clone-bare">https://stackoverflow.com/questions/3959924/whats-the-difference-between-git-clone-mirror-and-git-clone-bare</a></p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--bare</span></kbd></td>
+<td><p class="first">将获得复制的所有标签(tags)，本地分支master（HEAD），next，pu和maint，没有远程跟踪分支。</p>
+<p class="last">也就是说，所有分支都是按原样复制的，并且它完全独立设置，没有期望再次获取。任何远程分支（在克隆的远程中）和其他引用都被完全忽略。</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--mirror</span></kbd></td>
+<td><p class="first">这些引用中的每一个都将按原样复制。</p>
+<p>您将获得所有标签、本地分支 master (HEAD)、next、pu 和 maint、远程分支 devA/master 和 devB/master、其他引用 refs/foo/bar 和 refs/foo/baz。</p>
+<p>一切都与克隆的远程完全相同。远程跟踪设置为，如果您运行 <cite>git remote update</cite>，所有引用都将从原点覆盖，就像您刚刚删除镜像并重新克隆它一样。
+正如文档最初所说，它是一个镜像。它应该是功能相同的副本，可以与原始副本互换。</p>
+<p>下面两种是等价的</p>
+<div class="last"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--mirror<span class="w"> </span><span class="nv">$URL</span>
+
+<span class="c1"># 相当于</span>
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--bare<span class="w"> </span><span class="nv">$URL</span>
+$<span class="w"> </span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$URL</span><span class="k">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>--mirror<span class="o">=</span>fetch<span class="w"> </span>origin<span class="w"> </span><span class="nv">$URL</span><span class="o">)</span>
+</pre></div>
+</div></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bare-mirror-clone">
+<h2>bare,mirror,clone对比</h2>
+<p>git clone's config file looks like:</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>remote<span class="w"> </span><span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>https://github.com/example
+<span class="w">    </span><span class="nv">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>+refs/heads/*:refs/remotes/origin/*
+</pre></div>
+<p>git clone --bare's config file looks like:</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>remote<span class="w"> </span><span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>https://github.com/example
+</pre></div>
+<p>git clone --mirror's config file looks like:</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>remote<span class="w"> </span><span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>https://github.com/example
+<span class="w">    </span><span class="nv">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>+refs/*:refs/*
+<span class="w">    </span><span class="nv">mirror</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+<div class="section" id="bare">
+<h2>实例: --bare 裸库使用</h2>
+<p>参考: <a class="reference external" href="https://stackoverflow.com/questions/3959924/whats-the-difference-between-git-clone-mirror-and-git-clone-bare">https://stackoverflow.com/questions/3959924/whats-the-difference-between-git-clone-mirror-and-git-clone-bare</a></p>
 <dl class="docutils">
-<dt>-–mirror</dt>
-<dd><p class="first">克隆一个裸露（bare）镜像，这个镜像包含了 <strong>原始存储库的所有数据、引用和设置</strong>。
-镜像存储库是一个完全复制的存储库，可以用于创建一个原始存储库的镜像副本。这意味着如果对镜像仓库进行更改，那么原始仓库也会受到影响。</p>
-<p>让我们看一个示例，假设我们有一个名为original_repo的存储库，并使用以下命令创建一个镜像副本：</p>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--mirror<span class="w"> </span>original_repo<span class="w"> </span>mirror_repo
-</pre></div>
-<p>现在，如果我们在mirror_repo中添加、修改或删除分支、标签或提交，那么这些更改也会反映在original_repo中。</p>
-<p>适用于需要创建一个原始仓库的完全镜像副本的情况</p>
-<p>源于AI</p>
-<blockquote class="last">
-git clone --mirror 命令会创建一个镜像仓库,并自动设置好远程仓库的 fetch 和 push 配置。
-但是要实际同步更新,仍然需要手动执行 git fetch --prune 命令。这个命令会拉取远程所有更新,并删除本地已经不存在的分支和标签。
-如果需要将镜像仓库推送到其他地方,也需要手动执行 git push --mirror 命令。这样可以将镜像仓库的所有更新同步到其他地方。</blockquote>
-</dd>
-<dt>-–bare</dt>
-<dd><p class="first">与git clone --mirror命令相比，git clone --bare命令会克隆一个裸露（bare）存储库。
-裸露存储库只包含 <strong>原始存储库的版本历史</strong> ，而不会包含分支、标签或其他引用。它适用于创建一个干净的、不包含任何引用的存储库。裸露存储库一般用于共享和备份的目的。</p>
-<p>让我们通过一个示例来进一步理解。假设我们有一个名为original_repo的存储库，并使用以下命令创建一个裸露克隆：</p>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--bare<span class="w"> </span>original_repo<span class="w"> </span>bare_repo
-</pre></div>
-<p>在裸露存储库中，我们只能看到提交历史，而分支和标签是不可见的。这使得裸露存储库成为一个紧凑且适用于共享和备份的选项。</p>
-<p class="last">适用于需要一个干净的存储库的情况，用于共享和备份目的，而不需要分支和标签的内容。</p>
+<dt>与正常库区别:</dt>
+<dd><ul class="first last simple">
+<li>正常库/普通库：使用git init创建即可。包含了工作区，可以正常的进行源文件的编写，提交等各种git常规操作。</li>
+<li>裸库：使用git init --bare创建。它主要是只保存历史提交的版本信息，不保存文件。作用就是作为分享库。</li>
+</ul>
 </dd>
 </dl>
+<p>下面以百度的amis仓库为例(自行测试可选其他库, 这库有点大):</p>
+<pre class="literal-block">
+https://github.com/baidu/amis.git
+</pre>
+<p>克隆裸库</p>
+<div class="highlight"><pre><span></span><span class="c1"># --recursive可选, 适用于需要子仓库一起克隆的(正常库是, 这里不知道)</span>
+git<span class="w"> </span>clone<span class="w"> </span>--bare<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/baidu/amis.git
+
+
+<span class="c1"># 如果要创建一个新的裸库,</span>
+<span class="c1"># cd /test-bare-repo</span>
+<span class="c1"># git init --bare</span>
+</pre></div>
+<p>更新库</p>
+<div class="highlight"><pre><span></span><span class="c1"># 从 origin 覆盖</span>
+git<span class="w"> </span>remote<span class="w"> </span>update
+
+<span class="c1"># 这个不确定是不是...</span>
+<span class="c1"># 删除已经不存在于上游的远程分支引用</span>
+<span class="c1"># git fetch --prune</span>
+</pre></div>
+<p>其他可用参数</p>
+<div class="highlight"><pre><span></span><span class="c1"># 查看当前头hash</span>
+git<span class="w"> </span>rev-parse<span class="w"> </span>HEAD
+d4c540e121a664b7191ed3ac2e6c6128055cfb37
+
+<span class="c1"># 切换当前指向的分支</span>
+git<span class="w"> </span>symbolic-ref<span class="w"> </span>HEAD<span class="w"> </span>refs/heads/pre-release
+</pre></div>
 </div>
 
 								</article>
@@ -203,6 +262,16 @@ git clone --mirror 命令会创建一个镜像仓库,并自动设置好远程仓
     选项参数
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#bare-mirror-clone">
+    bare,mirror,clone对比
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#bare">
+    实例: --bare 裸库使用
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -228,27 +297,27 @@ git clone --mirror 命令会创建一个镜像仓库,并自动设置好远程仓
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>13</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-update-package-json-dependencies.html">一键升级package.json依赖版本</a></h3>
+											<p><p class="first last">一键升级package.json依赖版本</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>22</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
-											<p><p class="first last">钥匙串访问与证书</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@electron-remote.html">&#64;electron/remote</a></h3>
+											<p><p class="first last">&#64;electron/remote</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
-											<p><p class="first last">animation动画属性</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@sentry-browser.html">&#64;sentry/browser</a></h3>
+											<p><p class="first last">&#64;sentry/browser</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
-											<p><p class="first last">text-indent缩进</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-util.html">electron-util</a></h3>
+											<p><p class="first last">electron-util</p>
 </p>
 										</li>
 									</ul>

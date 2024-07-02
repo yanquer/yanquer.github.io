@@ -12,7 +12,6 @@
 			<meta charset="utf-8" />
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/pygment.css" />
 			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
 			<noscript>
 				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
@@ -33,7 +32,11 @@
 
 	</head>
 	<body class="no-sidebar">
-		<!-- Header Wrapper -->
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
 			<div id="header-wrapper">
 				<div class="container">
 					<div class="row">
@@ -82,16 +85,36 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 29 April 2024
+      , 01 七月 2024
       , Category:
-	  <a href="category/san-fang-ku.html">三方库</a>
+	  <a href="category/electron.html">@electron</a>
     </div>
 	<div class="red-line">
     </div>
   </div>
 				</div>
-			</div>
 
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
 
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
@@ -107,14 +130,14 @@
 									<div class="box-head">
 										<div class="post-infos">
 											<ul class="tags">
-												<li><a class="button" href="category/san-fang-ku.html">三方库</a></li>
+												<li><a class="button" href="category/electron.html">@electron</a></li>
 											</ul>
 										</div>
 
-										<div class="pennant pennant-alt date">2024-04-29</div>
+										<div class="pennant pennant-alt date">2024-07-01</div>
 										<h2></h2>
 
-										<span class="head-modify-time">修改于: 2024-04-29</span>
+										<span class="head-modify-time">修改于: 2024-07-01</span>
 
 									</div>
 									
@@ -128,6 +151,8 @@
 
 				</div>
 			</div>
+
+
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
@@ -148,26 +173,26 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>29</strong></span>
+											<span class="date"> 7 <strong>01</strong></span>
 											<h3><a href=".html"></a></h3>
 											<p></p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-Open-source-icon-library.html">开源图标/字体库</a></h3>
-											<p><p class="first last">开源图标/字体库</p>
+											<span class="date"> 6 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-update-package-json-dependencies.html">一键升级package.json依赖版本</a></h3>
+											<p><p class="first last">一键升级package.json依赖版本</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>09</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-Windows-program-packaging.html">windows执行程序打包</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@sentry-browser.html">&#64;sentry/browser</a></h3>
+											<p><p class="first last">electron-util</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>16</strong></span>
-											<h3><a href="yq-doc-frame-pelican-conf.html">配置项</a></h3>
-											<p><p class="first last">Pelican配置项</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-util.html">electron-util</a></h3>
+											<p><p class="first last">electron-util</p>
 </p>
 										</li>
 									</ul>
@@ -242,6 +267,18 @@
 						</div>
 					</section>
 			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
 		<script src="/theme/js/jquery-3.7.1.min.js"></script>
 		<script src="/theme/js/jquery.dropotron.js"></script>
 		<script src="/theme/js/config.js"></script>
@@ -250,6 +287,7 @@
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

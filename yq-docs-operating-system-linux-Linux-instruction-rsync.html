@@ -162,10 +162,17 @@ rsync [OPTION]... rsync://[USER&#64;]HOST[:PORT]/SRC [DEST]
 <dt>拷贝本地文件</dt>
 <dd><p class="first">当SRC和DES路径信息都不包含有单个冒号 &quot;:&quot; 分隔符时就启动这种工作模式.
 如:</p>
-<pre class="last literal-block">
+<pre class="literal-block">
 rsync -a /data /backup
 </pre>
-</dd>
+<p>注意路径末尾加不加 <tt class="docutils literal">/</tt> 的区别</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="c1"># 源路径不加斜杠, 直接将 data 目录复制到 backup 下: /backup/data/*</span>
+rsync<span class="w"> </span>-av<span class="w"> </span>/data<span class="w"> </span>/backup
+
+<span class="c1"># 源路径加斜杠, 将 data 目录下所有内容复制到 backup 下: /backup/*</span>
+rsync<span class="w"> </span>-av<span class="w"> </span>/data/<span class="w"> </span>/backup
+</pre></div>
+</div></dd>
 <dt>本地-&gt;远程</dt>
 <dd><p class="first">使用一个远程shell程序(如rsh、ssh)来实现将本地机器的内容拷贝到远程机器。</p>
 <p>当DST路径地址包含单个冒号&quot;:&quot;分隔符时启动该模式.
@@ -500,27 +507,27 @@ rsync -v rsync://192.168.78.192/www
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>13</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-update-package-json-dependencies.html">一键升级package.json依赖版本</a></h3>
+											<p><p class="first last">一键升级package.json依赖版本</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>22</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
-											<p><p class="first last">钥匙串访问与证书</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@electron-remote.html">&#64;electron/remote</a></h3>
+											<p><p class="first last">&#64;electron/remote</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
-											<p><p class="first last">animation动画属性</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@sentry-browser.html">&#64;sentry/browser</a></h3>
+											<p><p class="first last">&#64;sentry/browser</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
-											<p><p class="first last">text-indent缩进</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-util.html">electron-util</a></h3>
+											<p><p class="first last">electron-util</p>
 </p>
 										</li>
 									</ul>

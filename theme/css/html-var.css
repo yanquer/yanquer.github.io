@@ -53,7 +53,9 @@ html{
     /* --g-color: #F7F7FA; */
     --g-color: #e1e1e1;
     --g-a-color: #6091c1;
-    --g-a-color2: #2a3bb1;
+    /* --g-a-color2: #2a3bb1; */
+    /* 更新a:hover 颜色 */
+    --g-a-color2: #828dd9;
     --g-a-bg-color: #0000009c;
     --g-a-action-color: #80152c;	/* rgb(128, 21, 44) */
 
@@ -61,6 +63,9 @@ html{
     --g-border-radius: 5px;
     --g-radius-border: 1px solid #524327;
     --g-radius-border-no-color: 1px solid;
+
+    /* main border 文档边框/目录边框 */
+    --g-main-border: 1px solid #3d3d3f;
 
     --g-tip-text-color: #e78585bf;
 

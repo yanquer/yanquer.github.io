@@ -143,6 +143,12 @@
 
 									</div>
 									<dl class="docutils">
+<dt>关键字:</dt>
+<dd><ul class="first last simple">
+<li>极空间</li>
+<li>NAS</li>
+</ul>
+</dd>
 <dt>相关资源-官方</dt>
 <dd><ul class="first last simple">
 <li><a class="reference external" href="https://www.zspace.cn/help/?cid=1025&amp;articleId=100124">qBittorrent镜像教程</a></li>
@@ -157,6 +163,71 @@
 <div class="section" id="qbittorrent-1">
 <h2>配置qBittorrent</h2>
 <p>见 :<a class="reference external" href="/yq-docs-Chaotic-NAS-qBittorrent.html">qBittorrent</a></p>
+</div>
+<div class="section" id="smb">
+<h2>虚拟机smb挂载</h2>
+<ul class="simple">
+<li>Windows: <a class="reference external" href="https://www.zspace.cn/help/?cid=0&amp;articleId=100080">Windows电脑通过SMB挂载极空间的方法</a></li>
+<li>Linux: <a class="reference external" href="https://www.zspace.cn/help/?articleId=100146">linux如何通过smb挂载极空间</a></li>
+</ul>
+<p>主要说下Linux的</p>
+<ol class="arabic simple">
+<li>安装smbclient</li>
+<li>准备账密</li>
+</ol>
+<blockquote>
+<p>示例的IP地址：192.168.1.227</p>
+<p>示例用户名：18600000000</p>
+</blockquote>
+<ol class="arabic simple" start="3">
+<li>在linux客户端上执行命令，输入密码，可以查询可挂载的目录：</li>
+</ol>
+<blockquote>
+<div class="highlight"><pre><span></span>smbclient<span class="w"> </span>-L<span class="w"> </span><span class="m">192</span>.168.1.227<span class="w"> </span>-U<span class="w"> </span><span class="m">18600000000</span>
+<span class="c1">#Enter WORKGROUP\18600000000&#39;s password:</span>
+<span class="c1">#    Sharename       Type      Comment</span>
+<span class="c1">#    ---------       ----      -------</span>
+<span class="c1">#    共享文件    Disk</span>
+<span class="c1">#    186XXXX0000     Disk</span>
+<span class="c1">#    Time Machine    Disk</span>
+</pre></div>
+</blockquote>
+<ol class="arabic simple" start="4">
+<li>在步骤3中选择需要挂载的路径名称，拼接下面的命令。如有其他高级应用需求，请自行搜索参数，拼接命令。</li>
+</ol>
+<blockquote>
+<div class="highlight"><pre><span></span><span class="c1"># 创建本地路径</span>
+mkdir<span class="w"> </span>本地路径
+<span class="c1"># 执行挂载命令</span>
+mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">username</span><span class="o">=</span><span class="m">18600000000</span>,password<span class="o">=</span><span class="s2">&quot;密码&quot;</span><span class="w"> </span>//192.168.1.227/186XXXX0000<span class="w"> </span>本地路径
+</pre></div>
+</blockquote>
+<ol class="arabic simple" start="5">
+<li>验证挂载是否成功</li>
+</ol>
+<blockquote>
+<div class="highlight"><pre><span></span>mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>cifs
+</pre></div>
+</blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">还没实际测试, 待优化...</p>
+</div>
+</div>
+<div class="section" id="alist">
+<h2>Alist小雅版</h2>
+<p>极空间虚拟机iStoreOS部署教程: <a class="reference external" href="https://blog.csdn.net/qq_63499861/article/details/139654883">资源不是问题，极空间全自动小雅Alist以及Emby全家桶部署教程，同时实现自动更新</a></p>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<p class="last">重要的一点是, 必须讲docker容器的路径放到拓展硬盘, 否则默认分配的docker空间不够会导致失败</p>
+</div>
+<dl class="docutils">
+<dt>其他类似可参考教程</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.jianshu.com/p/1e45f30c0332">极空间Docker小雅alist+emby部署教程</a></li>
+</ul>
+</dd>
+</dl>
 </div>
 
 								</article>
@@ -187,6 +258,16 @@
     配置qBittorrent
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#smb">
+    虚拟机smb挂载
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#alist">
+    Alist小雅版
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -212,27 +293,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>13</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-update-package-json-dependencies.html">一键升级package.json依赖版本</a></h3>
+											<p><p class="first last">一键升级package.json依赖版本</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>22</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
-											<p><p class="first last">钥匙串访问与证书</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@electron-remote.html">&#64;electron/remote</a></h3>
+											<p><p class="first last">&#64;electron/remote</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
-											<p><p class="first last">animation动画属性</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@sentry-browser.html">&#64;sentry/browser</a></h3>
+											<p><p class="first last">&#64;sentry/browser</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
-											<p><p class="first last">text-indent缩进</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-util.html">electron-util</a></h3>
+											<p><p class="first last">electron-util</p>
 </p>
 										</li>
 									</ul>

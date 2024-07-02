@@ -261,7 +261,22 @@ password
 <div class="section" id="clash">
 <h2>Clash配置</h2>
 <p>下载地址: <a class="reference external" href="https://github.com/vernesong/OpenClash/releases">https://github.com/vernesong/OpenClash/releases</a></p>
-<p>还是上传上去后安装, 不够这个需要先安装依赖软件</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>历史资源</p>
+<ul class="last simple">
+<li>内核(网络好可以不用手动下载): <a class="reference external" href="https://downloads.openwrt.org/snapshots/targets/x86/64/packages/kernel_5.15.130-1-61d44f65bd1b028e12cc87814825d543_x86_64.ipk">https://downloads.openwrt.org/snapshots/targets/x86/64/packages/kernel_5.15.130-1-61d44f65bd1b028e12cc87814825d543_x86_64.ipk</a></li>
+<li>OpenClash: <a class="reference external" href="https://github.com/vernesong/OpenClash/releases/download/v0.45.141-beta/luci-app-openclash_0.45.141-beta_all.ipk">https://github.com/vernesong/OpenClash/releases/download/v0.45.141-beta/luci-app-openclash_0.45.141-beta_all.ipk</a></li>
+</ul>
+<!-- # 升级核心，不升级会报错 -->
+<!-- opkg install /tmp/upload/kernel_5.15.130-1-61d44f65bd1b028e12cc87814825d543_x86_64.ipk -->
+<!-- # 升级 -->
+<!-- opkg update -->
+<!-- # 安装依赖 -->
+<!-- opkg install coreutils-nohup bash dnsmasq-full curl ca-certificates ipset ip-full libcap libcap-bin ruby ruby-yaml kmod-tun kmod-inet-diag unzip kmod-nft-tproxy luci-compat luci luci-base -->
+<!-- # 安装OpenClash -->
+<!-- opkg install /tmp/upload/luci-app-openclash_0.45.141-beta_all.ipk -->
+</div>
 <div class="highlight"><pre><span></span><span class="c1">#iptables</span>
 opkg<span class="w"> </span>update
 opkg<span class="w"> </span>install<span class="w"> </span>coreutils-nohup<span class="w"> </span>bash<span class="w"> </span>iptables<span class="w"> </span>dnsmasq-full<span class="w"> </span>curl<span class="w"> </span>ca-certificates<span class="w"> </span>ipset<span class="w"> </span>ip-full<span class="w"> </span>iptables-mod-tproxy<span class="w"> </span>iptables-mod-extra<span class="w"> </span>libcap<span class="w"> </span>libcap-bin<span class="w"> </span>ruby<span class="w"> </span>ruby-yaml<span class="w"> </span>kmod-tun<span class="w"> </span>kmod-inet-diag<span class="w"> </span>unzip<span class="w"> </span>luci-compat<span class="w"> </span>luci<span class="w"> </span>luci-base
@@ -716,27 +731,27 @@ cat 1.txt | grep -oE  &quot;app-meta-[a-z]+&quot; | sort | uniq | xargs is-opkg 
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>13</strong></span>
-											<h3><a href="yq-docs-version-control-git-turorial-custom-git-server.html">Git教程</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date"> 6 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-update-package-json-dependencies.html">一键升级package.json依赖版本</a></h3>
+											<p><p class="first last">一键升级package.json依赖版本</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>22</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-turorial-key-and-cert.html">钥匙串访问与证书</a></h3>
-											<p><p class="first last">钥匙串访问与证书</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@electron-remote.html">&#64;electron/remote</a></h3>
+											<p><p class="first last">&#64;electron/remote</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a></h3>
-											<p><p class="first last">animation动画属性</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@sentry-browser.html">&#64;sentry/browser</a></h3>
+											<p><p class="first last">&#64;sentry/browser</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a></h3>
-											<p><p class="first last">text-indent缩进</p>
+											<span class="date"> 6 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-util.html">electron-util</a></h3>
+											<p><p class="first last">electron-util</p>
 </p>
 										</li>
 									</ul>

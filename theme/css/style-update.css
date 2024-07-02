@@ -1,7 +1,7 @@
 /* 引入字体 */
 /* @font-face {
-	font-family: FontAwesome;
-	src: url(font-awesome/webfonts/fa-v4compatibility.ttf);
+    font-family: FontAwesome;
+    src: url(font-awesome/webfonts/fa-v4compatibility.ttf);
 } */
 
 @import url(html-var.css);
@@ -12,14 +12,14 @@
 html > body *[class]:not(a):not(.highlight):not(pre):not(span),
 html > body *[id]:not(a):not(.highlight):not(pre):not(span) */
 * {
-	color: var(--g-color);
+    color: var(--g-color);
 }
 /* a {
-	color: #6091c1 !important;
+    color: #6091c1 !important;
 } */
 html > body[class]:not a:not(.button),
 html > body[class]:not a[class]{
-	color: var(--g-a-color);
+    color: var(--g-a-color);
 }
 
 /* 全局 按钮 链接 标签 */
@@ -42,158 +42,164 @@ div[onclick]:hover,
 /* home a 标签 */
 .page-home > h1 > a,
 .page-head-content > a{
-	color: var(--g-a-color) !important;
+    color: var(--g-a-color) !important;
 }
 .page-home > h1 > a:hover{
-	background: unset !important;
-	color: var(--g-a-color) !important;
+    background: unset !important;
+    color: var(--g-a-color) !important;
 }
 
 /* 文章内容主题区域 */
 .box {
-	background: var(--main-area-bg-color) !important;
-	border: 1px solid #3d3d3f;
+    background: var(--main-area-bg-color) !important;
+    border: var(--g-main-border);
     border-radius: 12px;
 }
 .actions a{
-	background-color: var(--g-a-action-color) !important;
+    background-color: var(--g-a-action-color) !important;
 }
 #main-wrapper{
-	background: var(--main-area-bg-color) !important;
+    background: var(--main-area-bg-color) !important;
 }
 
 
 /*  */
 .page-index{
-	text-align: center;
-	height: 1em;
+    text-align: center;
+    height: 1em;
 }
-	.page-index > div,
-	.page-head > div,
-	.container > div{
-		background-color: unset !important;
-		width: 100%;
+    .page-index > div,
+    .page-head > div,
+    .container > div{
+        background-color: unset !important;
+        width: 100%;
 
-	}
+    }
+
+/* 标题颜色 */
+h1, h2, h3, h4, h5, h6 {
+    /* color: var(--g-color); */
+    color: #d8a239;
+}
 
 .page-index h2,
 .page-head-title h2{
-	color: #c4ced7;
+    color: #c4ced7;
 }
 
 .red-line{
-	border-bottom: 2px solid red !important;
-	width: 10% !important;
-	margin-left: 47.5%;
-	margin-top: -3.5%;
-	height: 1px;
+    border-bottom: 2px solid red !important;
+    width: 10% !important;
+    margin-left: 47.5%;
+    margin-top: -3.5%;
+    height: 1px;
 }
 
 .page-index .page-index-head-content{
-	height: 1em;
-	margin-top: -1%;
-	font-style: italic;
+    height: 1em;
+    margin-top: -1%;
+    font-style: italic;
 }
 
 .page-head {
-	text-align: center;
-	margin-top: 14%;
+    text-align: center;
+    margin-top: 14%;
 }
 
 /* .page-head .page-index-head-content{
-	height: 1em;
-	margin-top: -1%;
+    height: 1em;
+    margin-top: -1%;
 } */
 
 
 #header {
-	width: 100%;
+    width: 100%;
 }
 
-	#header .page-home {
-		text-align: left;
-		display: inline-block; /* 将 div 设置为内联块元素 */
-	}
+    #header .page-home {
+        text-align: left;
+        display: inline-block; /* 将 div 设置为内联块元素 */
+    }
 
-	#header .page-menu {
-		text-align: right;
-		display: inline-block; /* 将 div 设置为内联块元素 */
-		width: 80%; /* 或者根据需要设置宽度 */
-		vertical-align: top; /* 垂直对齐方式，可选 */
-	}
+    #header .page-menu {
+        text-align: right;
+        display: inline-block; /* 将 div 设置为内联块元素 */
+        width: 80%; /* 或者根据需要设置宽度 */
+        vertical-align: top; /* 垂直对齐方式，可选 */
+    }
 
 .page-archives > h2{
-	margin-bottom: 2em;
+    margin-bottom: 2em;
 }
 .page-archives > div{
-	/* display: inline-block; */
-	/* margin-left: 1%; */
+    /* display: inline-block; */
+    /* margin-left: 1%; */
 }
 .page-archives > div > .row {
-	width: 100%;
-	margin-left: unset !important;
-	/* margin-left: 1%; */
+    width: 100%;
+    margin-left: unset !important;
+    /* margin-left: 1%; */
 }
-	.page-archives > div > .row:not(:first-child) {
-		/* margin-top: -4%; */
-	}
-	.page-archives > div > .row > .column{
-		display: inline-block;
-		padding: 1px;
-	}
-	.page-archives > div > .row > .column-25{
-		/* width: 10%; */
-		padding-right: 10px;
-	}
-	.page-archives > div > .row > .column-75{
-		width: 70%;
-	}
+    .page-archives > div > .row:not(:first-child) {
+        /* margin-top: -4%; */
+    }
+    .page-archives > div > .row > .column{
+        display: inline-block;
+        padding: 1px;
+    }
+    .page-archives > div > .row > .column-25{
+        /* width: 10%; */
+        padding-right: 10px;
+    }
+    .page-archives > div > .row > .column-75{
+        width: 70%;
+    }
 
 /* 小节 */
 dl.docutils {
-	margin-top: 5px;
+    margin-top: 5px;
 
 }
 dt{
-	font-weight: 800 !important;
-	color: #91ee58d9 !important;
+    font-weight: 800 !important;
+    color: #91ee58d9 !important;
 }
 dt::before{
-	font-family: "Font Awesome 6 Free Web";
-	content: "\f2dc";	/* snow : https://fontawesome.com/icons/snowflake?f=classic&s=regular*/
-	margin-right: 0.5em;
-	color: #7575d4;
+    font-family: "Font Awesome 6 Free Web";
+    content: "\f2dc";	/* snow : https://fontawesome.com/icons/snowflake?f=classic&s=regular*/
+    margin-right: 0.5em;
+    color: #7575d4;
 }
 dd dt::before{
-	/* content: "\f492"; vial: https://fontawesome.com/icons/vial?f=classic&s=solid */
-	color: #7575d4cc;
-	font-size: 13px;
+    /* content: "\f492"; vial: https://fontawesome.com/icons/vial?f=classic&s=solid */
+    color: #7575d4cc;
+    font-size: 13px;
 }
 dd dd dt::before{
-	color: #7575d4bb;
-	font-size: 11px;
+    color: #7575d4bb;
+    font-size: 11px;
 }
 dd dd dd dt::before{
-	color: #7575d4aa;
-	font-size: 9px;
+    color: #7575d4aa;
+    font-size: 9px;
 }
 /* todo:  dt dt 没用... 不知道为啥 */
 /* dt dt{
-	color: #6da64ad9 !important;
+    color: #6da64ad9 !important;
 } */
 dd{
-	margin-left: 1% !important;
+    margin-left: 1% !important;
 }
 
 /* 头部菜单 */
 #nav > ul > li.active > a {
     /* background: rgb(44, 44, 44) !important; */
-	background: unset;
-	color: #b871ff;
+    background: unset;
+    color: #b871ff;
     font-weight: 500;
 }
 .page-menu > #nav a {
-	color: #cdc1c1;
+    color: #cdc1c1;
 }
 
 /* 导入sphinx主题alabaster的alabaster.css */
@@ -206,34 +212,34 @@ dd{
 /* for custom sphinx directive */
 /* toctree 的 a标签 */
 .sphinx-toc-tree{
-	padding: 2px;
-	display: block;
-	width: fit-content;	/* 宽度自适应 内容长度 */
-	font-size: 19px;
+    padding: 2px;
+    display: block;
+    width: fit-content;	/* 宽度自适应 内容长度 */
+    font-size: 19px;
 }
 /* toctree 整体 */
 .sphinx-toc-tree-box{
-	/* display: block;
+    /* display: block;
     margin-top: 4%; */
 }
 /* 文章头部 */
 .box-head{
-	margin-bottom: 4%;
+    margin-bottom: 4%;
 }
 
 
 /* 文章主体内容区域 */
 .is-post h2{
-	/* color: #b5b5b5b5; */
-	color: #d8a239;
+    /* color: #b5b5b5b5; */
+    color: #d8a239;
 }
 
 /* 文章段落 */
 .is-post p,
 p, ul, ol, dl, table{
-	margin: unset;
-	margin-bottom: 5px;
-	font-weight: 400;
+    margin: unset;
+    margin-bottom: 5px;
+    font-weight: 400;
 }
 
 
@@ -244,7 +250,7 @@ p, ul, ol, dl, table{
     padding-left: 7px;
     width: 30%;
 
-	margin-left: 70%;	/* 统一不使用 float, 否则多个会并排在一起 */
+    margin-left: 70%;	/* 统一不使用 float, 否则多个会并排在一起 */
 }
 /* .sidebar:is(:last-child) {
     margin-left: 70%;
@@ -253,8 +259,8 @@ p, ul, ol, dl, table{
     float: right;
 } */
 .sidebar .first.sidebar-title{
-	color: #ff9292b5;
-	font-size: 19px;
+    color: #ff9292b5;
+    font-size: 19px;
 }
 .sidebar:not(:has(.first.sidebar-title)):before {
     content: "SideBar";
@@ -272,7 +278,7 @@ blockquote {
 }
 /* 仅竖线引用内容 */
 .line{
-	border-left: var(--g-radius-border-no-color) #3a5c40;
+    border-left: var(--g-radius-border-no-color) #3a5c40;
     padding-left: 1em;
     border-radius: var(--g-border-radius);
     color: #898147 !important;
@@ -283,54 +289,54 @@ blockquote {
 /* note 注解 */
 .admonition,
 div.admonition p.admonition-title{
-	display: block;
+    display: block;
 }
 div.admonition{
     border-radius: var(--g-border-radius);
-	padding: 0px;
-	border: 1px solid #463e3e;
-	border-left: var(--g-radius-border-no-color) #7fffd478;
-	background-color: #2a2a2a;
+    padding: 0px;
+    border: 1px solid #463e3e;
+    border-left: var(--g-radius-border-no-color) #7fffd478;
+    background-color: #2a2a2a;
 }
 div.admonition > .admonition-title{
-	background-color: #7fffd426;
-	padding: 5px !important;
+    background-color: #7fffd426;
+    padding: 5px !important;
 }
 div.admonition > p[data-relingo-block="true"],
 /* div.admonition > .last, */
 div.admonition > *:not(.first),
 div.admonition > .simple{
-	padding-left: 5px;
+    padding-left: 5px;
 }
 div.admonition p{
-	margin: 0;
+    margin: 0;
 }
 .admonition > .first.admonition-title{
-	font-size: 12px;
+    font-size: 12px;
 }
 .admonition > .first.admonition-title::before{
-	font-family: 'Font Awesome 6 Free Web';
+    font-family: 'Font Awesome 6 Free Web';
 }
 .admonition.note > .first.admonition-title::before{
-	content: var(--g-content-icon-admonition-note);
+    content: var(--g-content-icon-admonition-note);
 }
 
 div.admonition.warning{
-	border-left: var(--g-radius-border-no-color) #a07979;
+    border-left: var(--g-radius-border-no-color) #a07979;
 }
 .admonition.warning > .first.admonition-title{
-	background-color: #a0797961;
+    background-color: #a0797961;
 }
 
 /* 禁止横向滚动 */
 html, body{
-	overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 
 /* 正文 标题 */
 .is-post h2 {
-	/* padding: 0.9em 0 0.5em 0 !important; */
+    /* padding: 0.9em 0 0.5em 0 !important; */
 }
 
 /* 文章目录 */
@@ -340,144 +346,148 @@ html, body{
     height: 400px;
     overflow-y: auto;
     overflow-x: unset;
-	bottom: 120px;
+    bottom: 120px;
+    border: var(--g-main-border);
+    padding: 0 15px;
 }
-	/* 所有弹出层容器 */
-	.fixed-container{
-		position: fixed;
-		z-index: 2;
-		background: #1b1b1b99;
-		right: 30px;
-		bottom: 100px;
-		padding: 5px;
-		border-radius: var(--g-border-radius);
-	}
-	#top-toc-tree-container li ul{
-		padding-left: 10px;
-		margin-bottom: 1px;
-	}
-	#top-toc-tree-container a{
-		color: #ade7ecd9;
-		text-decoration: none;
-	}
-	#top-toc-tree-container .toc-contents-title > h4{
-		width: 70px;
-		cursor: pointer;
-	}
-	.no-active{
-		display: none;
-	}
+    /* 所有弹出层容器 */
+    .fixed-container{
+        position: fixed;
+        z-index: 2;
+        background: #1b1b1b99;
+        right: 30px;
+        bottom: 100px;
+        padding: 5px;
+        border-radius: var(--g-border-radius);
+    }
+    #top-toc-tree-container li ul{
+        padding-left: 10px;
+        margin-bottom: 1px;
+    }
+    #top-toc-tree-container a{
+        color: #ade7ecd9;
+        text-decoration: none;
+    }
+    #top-toc-tree-container .toc-contents-title > h4{
+        width: 70px;
+        cursor: pointer;
+    }
+    .no-active{
+        display: none;
+    }
 
-	/* 目录 鼠标移入显示隐藏 */
-	#toc-contents-title-text:hover::after{
-		content: "隐藏";
-		width: 30px;
-		font-size: 10px;
-		margin-top: -10px;
-		color: var(--g-tip-text-color);
-		position: absolute;
-	}
+    /* 目录 鼠标移入显示隐藏 */
+    #toc-contents-title-text:hover::after{
+        content: "隐藏";
+        width: 30px;
+        font-size: 10px;
+        margin-top: -10px;
+        color: var(--g-tip-text-color);
+        position: absolute;
+    }
 
-	/* 目录隐藏后的工具栏 */
-	#sidebar-tools::before{
-		font-family: "Font Awesome 6 Free Web";
-		content: "\f550";
-	}
-	#sidebar-tools{
-		cursor: pointer;
-		bottom: 120px;
-		/* height: auto;
-		width: auto;
-		overflow: hidden; */
-		/* margin-right: 80px; */
-	}
-	#sidebar-tools:hover::after{
-		content: "目录";
-		width: 30px;
-		font-size: 10px;
-		margin-top: -10px;
-		color: var(--g-tip-text-color);
-		position: absolute;
-		/* right: 80px; */
-	}
+    /* 目录隐藏后的工具栏 */
+    #sidebar-tools::before{
+        font-family: "Font Awesome 6 Free Web";
+        content: "\f550";
+    }
+    #sidebar-tools{
+        cursor: pointer;
+        bottom: 120px;
+        /* height: auto;
+        width: auto;
+        overflow: hidden; */
+        /* margin-right: 80px; */
+    }
+    #sidebar-tools:hover::after{
+        content: "目录";
+        width: 30px;
+        font-size: 10px;
+        margin-top: -10px;
+        color: var(--g-tip-text-color);
+        position: absolute;
+        /* right: 80px; */
+    }
 
-	/* 侧边工具 回滚/滚动 到顶部 */
-	#sidebar-tool-back-top{
-		cursor: pointer;
-		bottom: 80px;
-	}
-	#sidebar-tool-back-top::before{
-		font-family: "Font Awesome 6 Free Web";
-		content: "\f062";
-	}
-	#sidebar-tool-back-top:hover::after{
-		content: "顶部";
-		width: 30px;
-		font-size: 10px;
-		margin-top: -10px;
-		color: var(--g-tip-text-color);
-		position: absolute;
-	}
+    /* 侧边工具 回滚/滚动 到顶部 */
+    #sidebar-tool-back-top{
+        cursor: pointer;
+        bottom: 80px;
+    }
+    #sidebar-tool-back-top::before{
+        font-family: "Font Awesome 6 Free Web";
+        content: "\f062";
+    }
+    #sidebar-tool-back-top:hover::after{
+        content: "顶部";
+        width: 30px;
+        font-size: 10px;
+        margin-top: -10px;
+        color: var(--g-tip-text-color);
+        position: absolute;
+    }
 
-	/* 目录 滚动条 */
-	#top-toc-tree-container::-webkit-scrollbar {
-		width: 2px;
-		height: 2px;
-	}
+    /* 目录 滚动条 */
+    #top-toc-tree-container::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+    }
 
 /* 指令 参数 选项 */
 table.docutils.field-list,
 table.docutils.option-list{
-	border: none;
+    border: none;
     box-shadow: none;
-	border-left: var(--g-radius-border-no-color) #7fffd478;
+    border-left: var(--g-radius-border-no-color) #7fffd478;
     border-radius: var(--g-border-radius);
 
-	/* 解决 table 圆角无效 */
-	/* border-spacing: 0; */
+    /* 解决 table 圆角无效 */
+    /* border-spacing: 0; */
     border-collapse: separate;
 }
-	table.docutils.option-list::-webkit-scrollbar{
-		/* 取消滚动条, 避免对圆角影响 */
-		/* display: none; */
-	}
-	.docutils.field-list td,
-	.docutils.field-list th,
-	.docutils.option-list td{
-		border: none;
-	}
-	/* 选项 */
-	.docutils.field-list td:first-child span,
-	.docutils.option-list td:first-child span{
-		color: #8affd7f0;
-		background-color: #191703;		/* 偏黄一点的黑 */
-	}
-	/* 选项参数 */
-	.docutils.field-list td:first-child var,
-	.docutils.option-list td:first-child var{
-		color: #36defff0;
-		background-color: #191703;		/* 偏黄一点的黑 */
-	}
+    table.docutils.option-list::-webkit-scrollbar{
+        /* 取消滚动条, 避免对圆角影响 */
+        /* display: none; */
+    }
+    .docutils.field-list td,
+    .docutils.field-list th,
+    .docutils.option-list td{
+        border: none;
+    }
+    /* 选项 */
+    .docutils.field-list td:first-child span,
+    .docutils.option-list td:first-child span{
+        color: #8affd7f0;
+        background-color: #191703;		/* 偏黄一点的黑 */
+        /* 文字单行 */
+        white-space: nowrap;
+    }
+    /* 选项参数 */
+    .docutils.field-list td:first-child var,
+    .docutils.option-list td:first-child var{
+        color: #36defff0;
+        background-color: #191703;		/* 偏黄一点的黑 */
+    }
 
-	/* 表格, 双冒号表格 */
-	table.docutils.field-list{
-		border: none;
-		padding-top: 10px;
-	}
-	.docutils.field-list td,
-	.docutils.field-list th{
-		display: block;
-	}
-	.docutils.field-list th{
-		text-align: left;
-	}
-	.docutils.field-list td{
-		padding-left: 5px;
-	}
+    /* 表格, 双冒号表格 */
+    table.docutils.field-list{
+        border: none;
+        padding-top: 10px;
+    }
+    .docutils.field-list td,
+    .docutils.field-list th{
+        display: block;
+    }
+    .docutils.field-list th{
+        text-align: left;
+    }
+    .docutils.field-list td{
+        padding-left: 5px;
+    }
 
 /* 元素不允许被选中 */
 .cant-select{
-	user-select: none;
+    user-select: none;
 }
 
 /* 列表 */
@@ -485,127 +495,128 @@ table.docutils.option-list{
 .first li,
 .last li,
 .simple li{
-	margin-left: 10px;
+    margin-left: 1.2em;
 }
 
+/* 多级列表不支持时, 缩进会放到下面一层... */
 ul li {
-	/* 设置列表前标记距离 */
-	text-indent: 0.5em;
+    /* 设置列表前标记距离, 但是多级列表有bug..., 所以暂时取消 */
+    /* text-indent: 0.5em; */
 }
 
 /* 一级无序列表 */
 ul.first > li::marker,
 ul.last > li::marker,
 ul.simple > li::marker {
-	content: "\e139"; /* clover: https://fontawesome.com/icons/clover?f=classic&s=solid */
-	font-size: 8px;
-	color: #4f8271;
-	margin-right: 0.5em;
-	font-family: "Font Awesome 6 Free Web";
+    content: "\e139    "; /* clover: https://fontawesome.com/icons/clover?f=classic&s=solid */
+    font-size: 8px;
+    color: #4f8271;
+    margin-right: 0.5em;
+    font-family: "Font Awesome 6 Free Web";
 }
 
-	/* 二级无序列表 */
-	ul.last > li > ul > li::marker,
-	ul.first > li > ul > li::marker,
-	ul.simple > li > ul > li::marker {
-		content: "\f231";
-	}
+    /* 二级无序列表 */
+    ul.last > li > ul > li::marker,
+    ul.first > li > ul > li::marker,
+    ul.simple > li > ul > li::marker {
+        content: "\f231    ";
+    }
 
-	/* 三级无序列表 */
-	ul.first > li > ul > li > ul > li::marker,
-	ul.last > li > ul > li > ul > li::marker,
-	ul.simple > li > ul > li > ul > li::marker {
-		/* https://fontawesome.com/icons/fish-fins?f=classic&s=solid */
-		content: "\e4f2";
-	}
+    /* 三级无序列表 */
+    ul.first > li > ul > li > ul > li::marker,
+    ul.last > li > ul > li > ul > li::marker,
+    ul.simple > li > ul > li > ul > li::marker {
+        /* https://fontawesome.com/icons/fish-fins?f=classic&s=solid */
+        content: "\e4f2    ";
+    }
 
-	/* 四级无序列表 */
-	ul.last > li > ul > li > ul > li > ul > li::marker,
-	ul.first > li > ul > li > ul > li > ul > li::marker,
-	ul.simple > li > ul > li > ul > li > ul > li::marker {
-		/* https://fontawesome.com/icons/bottle-droplet?f=classic&s=solid */
-		content: "\e4c4";
-	}
+    /* 四级无序列表 */
+    ul.last > li > ul > li > ul > li > ul > li::marker,
+    ul.first > li > ul > li > ul > li > ul > li::marker,
+    ul.simple > li > ul > li > ul > li > ul > li::marker {
+        /* https://fontawesome.com/icons/bottle-droplet?f=classic&s=solid */
+        content: "\e4c4    ";
+    }
 
 ol{
-	list-style-type: decimal;
+    list-style-type: decimal;
 }
 
 /* 斜体 */
 cite{
-	font-style: italic !important;
+    font-style: italic !important;
 }
 
 /* 小 标题, 自动生成的id可能跟默认的有冲突, 比如 copyright */
 .section *:only-child{
-	/* padding: 10px 0; */
+    /* padding: 10px 0; */
 }
 
 /* 代码渲染部分与其他部分的间隔 */
 /* .highlight pre, */
 pre{
-	margin: 10px 0;
+    margin: 10px 0;
 }
 
 /* 标题含有特殊字符串时 */
 h2 tt{
-	/* background-color: unset; */
+    /* background-color: unset; */
 }
 h2 .pre {
-	/* background-color: unset; */
-	display: inline-block;
-	margin: 10px 0;
+    /* background-color: unset; */
+    display: inline-block;
+    margin: 10px 0;
 }
 
 /* 主要区块颜色 */
 #footer-wrapper h2, #footer-wrapper h3, #footer-wrapper h4, #footer-wrapper h5, #footer-wrapper h6, #footer-wrapper strong, #footer-wrapper b{
-	color: #d1c8c8;
+    color: #d1c8c8;
 }
 
 /* 标题间隔 */
 h1, h2, h3, h4, h5, h6{
-	margin: 20px 0;
+    margin: 20px 0;
 }
 
 /* 最近修改时间 */
 .head-modify-time{
-	color: #439279;
-	font-style: italic;
-	font-size: 12px;
+    color: #439279;
+    font-style: italic;
+    font-size: 12px;
 }
 
 /* 新增的 function 指令 */
 .rst-function.section{
-	margin: 5px 0;
+    margin: 5px 0;
 }
-	.rst-function.section strong{
-		background-color: #273f47;
-		border-radius: 5px;
-		padding: 0 5px;
-	}
-	.rst-function.section strong::before{
-		font-family: "Font Awesome 6 Free Web";
-		content: "\e184";
-		margin-right: 0.5em;
-		font-size: 12px;
-		color: #4f8271;
-	}
+    .rst-function.section strong{
+        background-color: #273f47;
+        border-radius: 5px;
+        padding: 0 5px;
+    }
+    .rst-function.section strong::before{
+        font-family: "Font Awesome 6 Free Web";
+        content: "\e184";
+        margin-right: 0.5em;
+        font-size: 12px;
+        color: #4f8271;
+    }
 
-	.rst-function.section > *:not(:first-child){
-		margin-left: 1em;
-	}
+    .rst-function.section > *:not(:first-child){
+        margin-left: 1em;
+    }
 
 /* 双 反引号 加重显示原生 */
 .docutils.literal{
-	padding: 0 5px;
-	border-radius: 5px;
-	font-weight: 400;
+    padding: 0 5px;
+    border-radius: 5px;
+    font-weight: 400;
 }
 
 
 /* 画布 - 粒子效果 */
 #universe {
-	display: block;
+    display: block;
     position: fixed;
     margin: 0;
     padding: 0;
@@ -625,53 +636,53 @@ h1, h2, h3, h4, h5, h6{
     /* height: 80px; */
 }
 
-	.parallax > use {
-		animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-	}
+    .parallax > use {
+        animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    }
 
-	.parallax > use:nth-child(1) {
-		animation-delay: -2s;
-		animation-duration: 7s;
-		fill: var(--main-area-bg-color);
-		opacity: 0.5;
-	}
+    .parallax > use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 7s;
+        fill: var(--main-area-bg-color);
+        opacity: 0.5;
+    }
 
-	.parallax > use:nth-child(2) {
-		animation-delay: -3s;
-		animation-duration: 10s;
-		fill: var(--main-area-bg-color);
-		opacity: 0.6;
-	}
+    .parallax > use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 10s;
+        fill: var(--main-area-bg-color);
+        opacity: 0.6;
+    }
 
-	.parallax > use:nth-child(3) {
-		animation-delay: -4s;
-		animation-duration: 13s;
-		fill: var(--main-area-bg-color);
-		opacity: 0.7;
-	}
+    .parallax > use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 13s;
+        fill: var(--main-area-bg-color);
+        opacity: 0.7;
+    }
 
-	.parallax > use:nth-child(4) {
-		animation-delay: -5s;
-		animation-duration: 20s;
-		fill: var(--main-area-bg-color);
-	}
+    .parallax > use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 20s;
+        fill: var(--main-area-bg-color);
+    }
 
-	@keyframes move-forever {
-		0% {
-			transform: translate3d(-90px, 0, 0);
-		}
-		100% {
-			transform: translate3d(85px, 0, 0);
-		}
-	}
+    @keyframes move-forever {
+        0% {
+            transform: translate3d(-90px, 0, 0);
+        }
+        100% {
+            transform: translate3d(85px, 0, 0);
+        }
+    }
 
 /* 首页 每一项 字体颜色 */
 header a{
-	color: var(--g-color);
+    color: var(--g-color);
 }
 /* 需要修改地方的颜色 */
 .toc-contents-title h4 {
-	color: var(--g-color);
+    color: var(--g-color);
 }
 
 /* 反引号 引用内容 */
@@ -680,13 +691,19 @@ tt > .pre,
 tt.docutils > .pre,
 tt.docutils > span.pre
 {
-	color: #cb8585;
+    color: #cb8585;
 }
 
 /* 表格 */
 table.docutils{
-	box-shadow: 2px 2px 4px #5f5d5d;
+    box-shadow: 2px 2px 4px #5f5d5d;
 }
+/* 含有caption标识的表格,取消边框/阴影 */
+table.docutils {
+    border: none;
+    box-shadow: none;
+}
+
 
 /* 强调字体 */
 strong, b {
