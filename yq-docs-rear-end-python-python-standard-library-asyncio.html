@@ -170,7 +170,7 @@
 <h2>await和create_task的区别</h2>
 <dl class="docutils">
 <dt>await:</dt>
-<dd><p class="first">当前代码在此处挂起(阻塞), 等待await的语句执行完成. 程序中时间循环中的其他语句可以在这时候执行.
+<dd><p class="first">当前代码在此处挂起(阻塞), 等待await的语句执行完成. 程序中事件循环中的其他语句可以在这时候执行.
 直到await的语句执行完成(如果一下就执行完了, 那么可以说没有等待)</p>
 <p class="last">但只能用在 async 方法体内</p>
 </dd>
@@ -304,6 +304,11 @@ inspect.iscoroutinefunction(async_func))    # True
 </pre>
 <p>如果要使用类型注解, 参见 <em>CR_Callable</em></p>
 </div>
+<div class="section" id="task">
+<h2>Task取消</h2>
+<p>对于 <cite>create_task</cite> 创建的任务, 可以直接取消, 如果取消的时候任务已经执行完毕, 取消会失败,
+如果正在执行或者还没有执行, 直接取消.</p>
+</div>
 
 								</article>
 						</div>
@@ -384,6 +389,11 @@ inspect.iscoroutinefunction(async_func))    # True
     判断是否是协程
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#task">
+    Task取消
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -409,27 +419,27 @@ inspect.iscoroutinefunction(async_func))    # True
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 6 <strong>29</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-update-package-json-dependencies.html">一键升级package.json依赖版本</a></h3>
-											<p><p class="first last">一键升级package.json依赖版本</p>
+											<span class="date"> 7 <strong>04</strong></span>
+											<h3><a href="yq-docs-rear-end-swift-turtorial-container-layout-horizontal.html">SwiftUI水平容器布局</a></h3>
+											<p><p class="first last">SwiftUI水平容器布局</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@electron-remote.html">&#64;electron/remote</a></h3>
-											<p><p class="first last">&#64;electron/remote</p>
+											<span class="date"> 7 <strong>04</strong></span>
+											<h3><a href="yq-docs-rear-end-swift-turtorial-inner-outer-margin.html">SwiftUI内外边距</a></h3>
+											<p><p class="first last">SwiftUI内外边距</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@sentry-browser.html">&#64;sentry/browser</a></h3>
-											<p><p class="first last">&#64;sentry/browser</p>
+											<span class="date"> 7 <strong>01</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netstat.html">netstat</a></h3>
+											<p><p class="first last">netstat-windows</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 6 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-util.html">electron-util</a></h3>
-											<p><p class="first last">electron-util</p>
+											<span class="date"> 7 <strong>01</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Istoreos-tutorial-docker-add-trust-certificate.html">教程-Docker添加信任证书</a></h3>
+											<p><p class="first last">教程-Docker添加信任证书</p>
 </p>
 										</li>
 									</ul>

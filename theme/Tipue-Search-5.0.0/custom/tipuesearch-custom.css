@@ -191,7 +191,10 @@ color: rgb(105, 92, 221);
 font-size: 18px;
 }
 
-
+/* 搜索结果文字颜色 */
+.tipue_search_content_text {
+    color: var(--g-color);
+}
 
 
 

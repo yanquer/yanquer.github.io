@@ -1,0 +1,363 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>netstat</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 01 七月 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/windows.html">Windows</a></li>
+
+													<li><a class="button button-alt" href="tag/windows_shell.html">Windows_shell</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-07-01</div>
+										<h2>netstat</h2>
+
+										<span class="head-modify-time">修改于: 2024-07-01</span>
+
+									</div>
+									<p>显示协议统计信息和当前 TCP/IP 网络连接。</p>
+<p>用法</p>
+<div class="highlight"><pre><span></span>NETSTAT<span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-b<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="o">]</span><span class="w"> </span><span class="o">[</span>-f<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>proto<span class="o">]</span><span class="w"> </span><span class="o">[</span>-r<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="o">]</span><span class="w"> </span><span class="o">[</span>-x<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span><span class="w"> </span><span class="o">[</span>interval<span class="o">]</span>
+
+-a<span class="w">            </span>显示所有连接和侦听端口。
+-b<span class="w">            </span>显示在创建每个连接或侦听端口时涉及的
+<span class="w">              </span>可执行文件。在某些情况下，已知可执行文件托管
+<span class="w">              </span>多个独立的组件，此时会
+<span class="w">              </span>显示创建连接或侦听端口时
+<span class="w">              </span>涉及的组件序列。在此情况下，可执行文件的
+<span class="w">              </span>名称位于底部<span class="w"> </span><span class="o">[]</span><span class="w"> </span>中，它调用的组件位于顶部，
+<span class="w">              </span>直至达到<span class="w"> </span>TCP/IP。注意，此选项
+<span class="w">              </span>可能很耗时，并且可能因为你没有足够的
+<span class="w">              </span>权限而失败。
+-e<span class="w">            </span>显示以太网统计信息。此选项可以与<span class="w"> </span>-s<span class="w"> </span>选项
+<span class="w">              </span>结合使用。
+-f<span class="w">            </span>显示外部地址的完全限定
+<span class="w">              </span>域名<span class="o">(</span>FQDN<span class="o">)</span>。
+-n<span class="w">            </span>以数字形式显示地址和端口号。
+-o<span class="w">            </span>显示拥有的与每个连接关联的进程<span class="w"> </span>ID。
+-p<span class="w"> </span>proto<span class="w">      </span>显示<span class="w"> </span>proto<span class="w"> </span>指定的协议的连接；proto
+<span class="w">              </span>可以是下列任何一个:<span class="w"> </span>TCP、UDP、TCPv6<span class="w"> </span>或<span class="w"> </span>UDPv6。如果与<span class="w"> </span>-s
+<span class="w">              </span>选项一起用来显示每个协议的统计信息，proto<span class="w"> </span>可以是下列任何一个:
+<span class="w">              </span>IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP<span class="w"> </span>或<span class="w"> </span>UDPv6。
+-q<span class="w">            </span>显示所有连接、侦听端口和绑定的
+<span class="w">              </span>非侦听<span class="w"> </span>TCP<span class="w"> </span>端口。绑定的非侦听端口
+<span class="w">              </span>不一定与活动连接相关联。
+-r<span class="w">            </span>显示路由表。
+-s<span class="w">            </span>显示每个协议的统计信息。默认情况下，
+<span class="w">              </span>显示<span class="w"> </span>IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP<span class="w"> </span>和<span class="w"> </span>UDPv6<span class="w"> </span>的统计信息；
+<span class="w">              </span>-p<span class="w"> </span>选项可用于指定默认的子网。
+-t<span class="w">            </span>显示当前连接卸载状态。
+-x<span class="w">            </span>显示<span class="w"> </span>NetworkDirect<span class="w"> </span>连接、侦听器和共享
+<span class="w">              </span>终结点。
+-y<span class="w">            </span>显示所有连接的<span class="w"> </span>TCP<span class="w"> </span>连接模板。
+<span class="w">              </span>无法与其他选项结合使用。
+interval<span class="w">      </span>重新显示选定的统计信息，各个显示间暂停的
+<span class="w">              </span>间隔秒数。按<span class="w"> </span>CTRL+C<span class="w"> </span>停止重新显示
+<span class="w">              </span>统计信息。如果省略，则<span class="w"> </span>netstat<span class="w"> </span>将打印当前的
+<span class="w">              </span>配置信息一次。
+</pre></div>
+<p>查看端口占用以及对应进程号</p>
+<div class="highlight"><pre><span></span>netstat<span class="w"> </span>-ano
+</pre></div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date"> 7 <strong>04</strong></span>
+											<h3><a href="yq-docs-rear-end-swift-turtorial-container-layout-horizontal.html">SwiftUI水平容器布局</a></h3>
+											<p><p class="first last">SwiftUI水平容器布局</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 7 <strong>04</strong></span>
+											<h3><a href="yq-docs-rear-end-swift-turtorial-inner-outer-margin.html">SwiftUI内外边距</a></h3>
+											<p><p class="first last">SwiftUI内外边距</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 7 <strong>01</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netstat.html">netstat</a></h3>
+											<p><p class="first last">netstat-windows</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 7 <strong>01</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Istoreos-tutorial-docker-add-trust-certificate.html">教程-Docker添加信任证书</a></h3>
+											<p><p class="first last">教程-Docker添加信任证书</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2021-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>
