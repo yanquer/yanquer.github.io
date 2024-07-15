@@ -170,12 +170,52 @@
 <li>flex: Flexible Box的缩写，意为&quot;弹性布局&quot;，用来为盒状模型提供最大的灵活性。
 设为Flex布局以后，子元素的float、clear和vertical-align属性将失效</li>
 </ul>
+<div class="section" id="flex">
+<h2>flex</h2>
 <p>对于 flex, 还有以下拓展属性</p>
+<dl class="docutils">
+<dt>flex-grow: number</dt>
+<dd><p class="first">定义子元素放大比例</p>
+<ul class="last simple">
+<li><tt class="docutils literal">0</tt>, 意味着子元素在父容器有剩余空间时, 不会放大占据更多空间;</li>
+<li><tt class="docutils literal">1</tt>, 意味着子元素在父容器有剩余空间时, 会自动放大以填充满剩余空间。</li>
+</ul>
+</dd>
+<dt>flex-shrink: number</dt>
+<dd><p class="first">定义子元素缩小比例</p>
+<ul class="last simple">
+<li><tt class="docutils literal">0</tt> 意味着子元素在父容器空间不足时, 不会缩小;</li>
+<li><tt class="docutils literal">1</tt> 意味着子元素在父容器空间不足时,会等比例缩小。</li>
+</ul>
+</dd>
+<dt>flex-basis: auto | number</dt>
+<dd><p class="first">子元素的初始大小由内容决定。</p>
+<p><tt class="docutils literal">0</tt> 表示, 在分配剩余空间或收缩空间之前, <cite>flex</cite> 项目的初始大小为 <cite>0</cite>。这意味着:</p>
 <ul class="simple">
-<li>flex-direction容器内元素的排列方向(默认横向排列)</li>
-<li>flex-wrap 容器内元素的换行(默认不换行)</li>
-<li>justify-content 元素在X轴上的排列.
-支持的值:<ul>
+<li>初始大小: 当 <cite>flex-basis</cite> 为 <cite>0</cite> 时, <cite>flex</cite> 项目的初始大小完全由其内容决定。</li>
+<li>分配剩余空间: 当父容器有剩余空间时,根据 <cite>flex-grow</cite> 属性的值(此处为 <cite>1</cite>)， <cite>flex</cite> 项目会等比例放大占据剩余空间。</li>
+<li>收缩空间: 当父容器空间不足时，根据 <cite>flex-shrink</cite> 属性的值(此处为 <cite>1</cite>)，flex 项目会等比例缩小。</li>
+</ul>
+<p class="last"><tt class="docutils literal">auto</tt> 意味着子元素的初始大小由内容决定。</p>
+</dd>
+<dt>flex: number</dt>
+<dd><p class="first">当父元素设置为 <tt class="docutils literal">dispaly: flex</tt> 时, 子元素可使用 <tt class="docutils literal">flex</tt> 来控制占比. 不设置表示按照元素自己的大小.</p>
+<p>如果不设置 flex 属性,子元素的默认值是 <tt class="docutils literal">flex: 0 1 auto</tt>, 具体来说:</p>
+<ul class="simple">
+<li><cite>flex-grow: 0</cite>: 子元素在父容器有剩余空间时,不会放大占据更多空间。</li>
+<li><cite>flex-shrink: 1</cite>: 子元素在父容器空间不足时,会等比例缩小。</li>
+<li><cite>flex-basis: auto</cite>: 子元素的初始大小由内容决定。</li>
+</ul>
+<p class="last"><tt class="docutils literal">flex: 1</tt> 等价于 <tt class="docutils literal"><span class="pre">flex-grow:</span> 1, <span class="pre">flex-shrink:</span> 1, <span class="pre">flex-basis:</span> 0</tt></p>
+</dd>
+<dt>flex-direction</dt>
+<dd>容器内元素的排列方向(默认横向排列)</dd>
+<dt>flex-wrap</dt>
+<dd>容器内元素的换行(默认不换行)</dd>
+<dt>justify-content</dt>
+<dd><p class="first">元素在X轴上的排列.</p>
+<p>支持的值:</p>
+<ul class="last simple">
 <li>flex-start: Flex项向行头紧挨着填充。这个是默认值。</li>
 <li>flex-end: Flex项向行尾紧挨着填充。</li>
 <li>center: Flex项居中紧挨着填充。</li>
@@ -183,10 +223,12 @@
 <li>space-around: Flex项平分剩余空间,空间在Flex项之间。</li>
 <li>space-evenly: Flex项平分剩余空间,空间在Flex项及边缘之间。</li>
 </ul>
-</li>
-<li>align-items 元素在Y轴方向上的对齐方式</li>
-<li>align-content 在弹性容器内的元素没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）</li>
-</ul>
+</dd>
+<dt>align-items</dt>
+<dd>元素在Y轴方向上的对齐方式</dd>
+<dt>align-content</dt>
+<dd>在弹性容器内的元素没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）</dd>
+</dl>
 <p>如 <cite>parent</cite> 下的子元素上下左右都居中:</p>
 <pre class="literal-block">
 .parent {
@@ -208,6 +250,7 @@
   height: 100%;
 }
 </pre>
+</div>
 
 								</article>
 						</div>
@@ -224,6 +267,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#flex">
+    flex
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -241,27 +305,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>04</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-turtorial-container-layout-horizontal.html">SwiftUI水平容器布局</a></h3>
-											<p><p class="first last">SwiftUI水平容器布局</p>
+											<span class="date"> 7 <strong>12</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
+											<p><p class="first last">react-draggable</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>04</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-turtorial-inner-outer-margin.html">SwiftUI内外边距</a></h3>
-											<p><p class="first last">SwiftUI内外边距</p>
+											<span class="date"> 7 <strong>12</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
+											<p><p class="first last">div支持拖动+resize</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>01</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netstat.html">netstat</a></h3>
-											<p><p class="first last">netstat-windows</p>
+											<span class="date"> 7 <strong>12</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
+											<p><p class="first last">dom事件</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>01</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Istoreos-tutorial-docker-add-trust-certificate.html">教程-Docker添加信任证书</a></h3>
-											<p><p class="first last">教程-Docker添加信任证书</p>
+											<span class="date"> 7 <strong>11</strong></span>
+											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
+											<p><p class="first last">useId</p>
 </p>
 										</li>
 									</ul>

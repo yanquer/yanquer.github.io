@@ -337,6 +337,7 @@ html, body{
 /* 正文 标题 */
 .is-post h2 {
     /* padding: 0.9em 0 0.5em 0 !important; */
+    line-height: 45px;
 }
 
 /* 文章目录 */

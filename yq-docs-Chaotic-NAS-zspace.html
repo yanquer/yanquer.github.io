@@ -229,6 +229,25 @@ mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">use
 </dd>
 </dl>
 </div>
+<div class="section" id="sun-panel">
+<h2>配置 sun-panel</h2>
+<p>默认账号密码:</p>
+<pre class="literal-block">
+账号：admin&#64;sun.cc
+
+密码：12345678
+</pre>
+<p>docker部署</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--restart<span class="o">=</span>always<span class="w"> </span>-p<span class="w"> </span><span class="m">3002</span>:3002<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>./conf:/app/conf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>./uploads:/app/uploads<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>./database:/app/database<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="c1"># 如果要用docker</span>
+<span class="w">  </span><span class="c1"># -v /var/run/docker.sock:/var/run/docker.sock \</span>
+<span class="w">  </span>--name<span class="w"> </span>sun-panel<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>hslr/sun-panel:latest
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -268,6 +287,11 @@ mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">use
     Alist小雅版
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#sun-panel">
+    配置 sun-panel
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -293,27 +317,27 @@ mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">use
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>04</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-turtorial-container-layout-horizontal.html">SwiftUI水平容器布局</a></h3>
-											<p><p class="first last">SwiftUI水平容器布局</p>
+											<span class="date"> 7 <strong>12</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
+											<p><p class="first last">react-draggable</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>04</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-turtorial-inner-outer-margin.html">SwiftUI内外边距</a></h3>
-											<p><p class="first last">SwiftUI内外边距</p>
+											<span class="date"> 7 <strong>12</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
+											<p><p class="first last">div支持拖动+resize</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>01</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netstat.html">netstat</a></h3>
-											<p><p class="first last">netstat-windows</p>
+											<span class="date"> 7 <strong>12</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
+											<p><p class="first last">dom事件</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>01</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Istoreos-tutorial-docker-add-trust-certificate.html">教程-Docker添加信任证书</a></h3>
-											<p><p class="first last">教程-Docker添加信任证书</p>
+											<span class="date"> 7 <strong>11</strong></span>
+											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
+											<p><p class="first last">useId</p>
 </p>
 										</li>
 									</ul>
