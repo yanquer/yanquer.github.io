@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -249,6 +250,19 @@
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">sneak</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_shuriken</span><span class="p">.</span><span class="k">throw</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p>属性注入器有个缺点是, 不能在构造函数中就使用(这时获取到的大概率是 <cite>undefined</cite>), 因为属性注入器是延迟注入的,
+若要使用, 需要额外定一个初始化方法并添加 <tt class="docutils literal">&#64;postConstruct</tt> 装饰器,
+表示在属性注入完成后调用</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="err">@</span><span class="nx">multiInject</span><span class="p">(</span><span class="nx">IBaseWindow</span><span class="p">)</span><span class="w"> </span><span class="kr">protected</span><span class="w"> </span><span class="nx">readonly</span><span class="w"> </span><span class="nx">allWins</span><span class="o">:</span><span class="w"> </span><span class="nx">IBaseWindow</span><span class="p">[]</span>
+
+<span class="err">@</span><span class="nx">postConstruct</span><span class="p">()</span>
+<span class="kr">protected</span><span class="w"> </span><span class="nx">init</span><span class="p">(){</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_registerAll</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div></div>
 </div>
 <div class="section" id="section-5">
 <h3>容器配置-依赖绑定</h3>
@@ -372,8 +386,10 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="section" id="section-8">
+<h2>可能遇到的报错</h2>
 <div class="section" id="unable-to-resolve-signature">
-<h2>报错-Unable to resolve signature</h2>
+<h3>报错-Unable to resolve signature</h3>
 <p>完整报错:</p>
 <pre class="literal-block">
 TS1238: Unable to resolve signature of class decorator when called as an expression. The runtime will invoke the decorator with 2 arguments, but the decorator expects 1
@@ -393,6 +409,25 @@ TS1238: Unable to resolve signature of class decorator when called as an express
 <p class="last">貌似一般只配置第一个就行</p>
 </dd>
 </dl>
+</div>
+<div class="section" id="missing-required-inject-or-multiinject-annotation">
+<h3>报错-Missing required &#64;inject or &#64;multiInject annotation</h3>
+<p>我的现状是, 将注入器写在了构造函数中且并没有缺少装饰器</p>
+<div class="highlight"><pre><span></span><span class="kr">constructor</span><span class="p">(</span><span class="err">@</span><span class="nx">multiInject</span><span class="p">(</span><span class="nx">IService</span><span class="p">)</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nx">IService</span><span class="p">[])</span>
+</pre></div>
+<p>找了很久也没有找到完美解决的方案, 只好将构造器作为属性使用</p>
+<div class="highlight"><pre><span></span><span class="err">@</span><span class="nx">multiInject</span><span class="p">(</span><span class="nx">IService</span><span class="p">)</span>
+<span class="kr">protected</span><span class="w"> </span><span class="nx">readonly</span><span class="w"> </span><span class="nx">_service</span><span class="o">:</span><span class="w"> </span><span class="nx">IService</span><span class="p">[]</span>
+</pre></div>
+<dl class="docutils">
+<dt>相关issuse</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/inversify/InversifyJS/issues/1258">Missing required &#64;inject or &#64;multiInject annotation in: argument 0 in class t.</a></li>
+<li><a class="reference external" href="https://github.com/inversify/InversifyJS/issues/1004">&quot;Missing required &#64;inject or &#64;multiInject annotation&quot; even though it's there</a></li>
+</ul>
+</dd>
+</dl>
+</div>
 </div>
 
 								</article>
@@ -466,9 +501,21 @@ TS1238: Unable to resolve signature of class decorator when called as an express
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#unable-to-resolve-signature">
-    报错-Unable to resolve signature
+   <a class="" href="#section-8">
+    可能遇到的报错
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#unable-to-resolve-signature">
+      报错-Unable to resolve signature
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#missing-required-inject-or-multiinject-annotation">
+      报错-Missing required @inject or @multiInject annotation
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -495,27 +542,27 @@ TS1238: Unable to resolve signature of class decorator when called as an express
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
-											<p><p class="first last">react-draggable</p>
+											<span class="date"> 7 <strong>22</strong></span>
+											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
+											<p><p class="first last">前端测试框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
-											<p><p class="first last">div支持拖动+resize</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
+											<p><p class="first last">&#64;browserless/screencast</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
-											<p><p class="first last">dom事件</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
+											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>11</strong></span>
-											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
-											<p><p class="first last">useId</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
+											<p><p class="first last">ffmpeg-static</p>
 </p>
 										</li>
 									</ul>

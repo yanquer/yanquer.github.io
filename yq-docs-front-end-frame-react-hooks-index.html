@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -181,6 +182,28 @@
 </dl>
 <p>只在React组件中才能调用:</p>
 </div>
+<div class="section" id="useeffect-usecallback-usememo">
+<h2>useEffect, useCallback, useMemo区别</h2>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://segmentfault.com/a/1190000039657107">useEffect, useCallback, useMemo三者有何区别？</a></li>
+<li><a class="reference external" href="https://juejin.cn/post/7008433550307360798">useMemo, useCallback, useEffect 三者区别</a></li>
+</ul>
+</dd>
+<dt>前置知识</dt>
+<dd>组件重渲染的时机会比较 <cite>props</cite> 是否有更新</dd>
+</dl>
+<ul class="simple">
+<li>:<a class="reference external" href="/yq-docs-front-end-frame-react-hooks-useeffect.html">useEffect</a> : 在DOM更新完成后执行某些副作用操作，如数据获取，设置订阅以及手动更改 React 组件中的 DOM 等</li>
+<li>:<a class="reference external" href="/yq-docs-front-end-frame-react-hooks-useMemo.html">useMemo</a> : 性能优化. useMemo返回的的是一个值，用于避免在每次渲染时都进行高开销的计算。</li>
+<li>:<a class="reference external" href="/yq-docs-front-end-frame-react-hooks-useCallback.html">useCallback</a> : 性能优化, 返回一个函数，当把它返回的这个函数作为子组件使用时，
+可以避免每次父组件更新时都重新渲染这个子组件</li>
+</ul>
+<p><cite>useCallback</cite> 和 <cite>useMemo</cite> 都是性能优化的手段，
+类似于类组件中的 <cite>shouldComponentUpdate</cite> ，在子组件中使用 <cite>shouldComponentUpdate</cite> ，
+判定该组件的 <cite>props</cite> 和 <cite>state</cite> 是否有变化，从而避免每次父组件 <cite>render</cite> 时都去重新渲染子组件。</p>
+</div>
 
 								</article>
 						</div>
@@ -210,6 +233,11 @@
     Hook 的规则
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#useeffect-usecallback-usememo">
+    useEffect, useCallback, useMemo区别
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -235,27 +263,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
-											<p><p class="first last">react-draggable</p>
+											<span class="date"> 7 <strong>22</strong></span>
+											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
+											<p><p class="first last">前端测试框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
-											<p><p class="first last">div支持拖动+resize</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
+											<p><p class="first last">&#64;browserless/screencast</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
-											<p><p class="first last">dom事件</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
+											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>11</strong></span>
-											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
-											<p><p class="first last">useId</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
+											<p><p class="first last">ffmpeg-static</p>
 </p>
 										</li>
 									</ul>

@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -161,6 +162,55 @@ sips -z 512 512 pic.png --out tmp.iconset/icon_512x512.png
 sips -z 1024 1024 pic.png --out tmp.iconset/icon_512x512&#64;2x.png
 </pre>
 <p>还可参考: <a class="reference external" href="https://blog.csdn.net/ypf1024/article/details/114011755">https://blog.csdn.net/ypf1024/article/details/114011755</a></p>
+<p>完整脚本</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="k">function</span><span class="w"> </span>error_exit<span class="o">()</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="nb">set</span><span class="w"> </span>+e
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span>error<span class="w"> </span>with<span class="w"> </span>last<span class="w"> </span>lines
+<span class="o">}</span>
+
+<span class="k">function</span><span class="w"> </span>create_icon<span class="o">()</span>
+<span class="o">{</span>
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_16x16.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_16x16@2x.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_32x32.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_32x32@2x.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_128x128.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_128x128@2x.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_256x256.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_256x256@2x.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_512x512.png
+<span class="w">  </span>sips<span class="w"> </span>-z<span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span><span class="s2">&quot;</span>_512x512@2x.png
+<span class="o">}</span>
+
+<span class="nb">set</span><span class="w"> </span>-e
+<span class="nb">trap</span><span class="w"> </span>error_exit<span class="w"> </span>ERR
+
+
+<span class="nv">Origin</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">Dest</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">Name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">3</span><span class="k">:-</span><span class="nv">icon</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&gt;&gt;&gt; run with</span>
+<span class="s2">  OriginImage: </span><span class="si">${</span><span class="nv">Origin</span><span class="si">}</span>
+<span class="s2">  DestDir: </span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span>
+<span class="s2">  Name: </span><span class="si">${</span><span class="nv">Name</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Dest</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+
+create_icon
+
+<span class="nb">set</span><span class="w"> </span>+e
+</pre></div>
+<p>使用, 将 <cite>sf.png</cite> 图片转换为图标到 <cite>sf</cite> 文件夹下面</p>
+<div class="highlight"><pre><span></span>sh<span class="w"> </span>run_icon.sh<span class="w"> </span>sf.png<span class="w"> </span>sf
+</pre></div>
 
 								</article>
 						</div>
@@ -194,27 +244,27 @@ sips -z 1024 1024 pic.png --out tmp.iconset/icon_512x512&#64;2x.png
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
-											<p><p class="first last">react-draggable</p>
+											<span class="date"> 7 <strong>22</strong></span>
+											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
+											<p><p class="first last">前端测试框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
-											<p><p class="first last">div支持拖动+resize</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
+											<p><p class="first last">&#64;browserless/screencast</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
-											<p><p class="first last">dom事件</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
+											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>11</strong></span>
-											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
-											<p><p class="first last">useId</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
+											<p><p class="first last">ffmpeg-static</p>
 </p>
 										</li>
 									</ul>

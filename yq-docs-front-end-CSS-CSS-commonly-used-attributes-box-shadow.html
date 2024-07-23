@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -146,6 +147,26 @@
 									</div>
 									<p>给元素添加阴影.</p>
 <p>阴影填充的位置为 <a class="reference external" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-padding.html">padding</a> 所处位置</p>
+<div class="section" id="section-1">
+<h2>创建一个黑色半透明阴影</h2>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">box</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="mi">9999</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<ul class="simple">
+<li>阴影颜色: <cite>rgba(0, 0, 0, 0.2)</cite>, 第一个参数0-255之间的值表示红色分量, 第二个参数同样表示绿色, 第三个参数表示蓝色, 第四个参数0-1之间的值表示不透明度, <cite>0.2</cite> 表示 <cite>20%</cite> 不透明的黑色。</li>
+<li>位置参数: <cite>0px 0px</cite> 表示阴影离元素水平位移和垂直位移距离均为0。</li>
+<li>大小参数: <cite>0px</cite> 表示阴影的模糊距离为0, 也就是锐利的边缘。</li>
+<li>扩展参数: <cite>9999px</cite> 表示阴影从元素整个四周扩散很大的距离,几乎会盖掉整个页面内容。</li>
+</ul>
+<p>所以总的效果就是:</p>
+<ul class="simple">
+<li>创建一个20%不透明度的黑色阴影</li>
+<li>阴影从元素周围扩散很大的距离(9999px),几乎盖掉整个页面</li>
+<li>阴影贴合元素,没有位移</li>
+</ul>
+<p>这样就会给元素本身添加一个半透明的黑色覆盖层效果,起到遮罩背景内容的作用。常用于弹窗、对话框等需要遮挡背景的场景。</p>
+</div>
 
 								</article>
 						</div>
@@ -162,6 +183,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    创建一个黑色半透明阴影
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -179,27 +221,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
-											<p><p class="first last">react-draggable</p>
+											<span class="date"> 7 <strong>22</strong></span>
+											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
+											<p><p class="first last">前端测试框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
-											<p><p class="first last">div支持拖动+resize</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
+											<p><p class="first last">&#64;browserless/screencast</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
-											<p><p class="first last">dom事件</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
+											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>11</strong></span>
-											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
-											<p><p class="first last">useId</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
+											<p><p class="first last">ffmpeg-static</p>
 </p>
 										</li>
 									</ul>

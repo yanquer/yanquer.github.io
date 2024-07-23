@@ -1,0 +1,53 @@
+@import url(html-var.css);
+
+/* note 注解 */
+.admonition,
+div.admonition p.admonition-title{
+    display: block;
+}
+div.admonition{
+    border-radius: var(--g-border-radius);
+    padding: 0px;
+    border: 1px solid #463e3e;
+    border-left: var(--g-radius-border-no-color) #7fffd478;
+    background-color: #2a2a2a;
+}
+div.admonition > .admonition-title{
+    background-color: #7fffd426;
+    padding: 5px !important;
+}
+div.admonition > p[data-relingo-block="true"],
+/* div.admonition > .last, */
+div.admonition > *:not(.first),
+div.admonition > .simple{
+    padding-left: 5px;
+}
+div.admonition p{
+    margin: 0;
+}
+.admonition > .first.admonition-title{
+    font-size: 12px;
+}
+.admonition > .first.admonition-title::before{
+    font-family: 'Font Awesome 6 Free Web';
+}
+.admonition > .first.admonition-title::before{
+    content: var(--g-content-icon-admonition-note);
+}
+
+div.admonition.warning{
+    border-left: var(--g-radius-border-no-color) #a07979;
+}
+.admonition.warning > .first.admonition-title{
+    background-color: #a0797961;
+}
+
+div.important .admonition-title{
+    color: #dbbb91;
+}
+
+div.topic{
+    padding: 10px 10px 10px 20px;
+    border-radius: 10px;
+}
+

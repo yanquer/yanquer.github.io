@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -140,7 +141,22 @@
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<p>Python下有个三方库, 可见: <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-ffmpeg.html">ffmpeg</a></p>
+									<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>Python下有个三方库, 可见: <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-ffmpeg.html">ffmpeg</a></li>
+</ul>
+</dd>
+<dt>参考:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://zhuanlan.zhihu.com/p/117523405">https://zhuanlan.zhihu.com/p/117523405</a></li>
+<li><a class="reference external" href="https://cloud.tencent.com/developer/article/1773248">https://cloud.tencent.com/developer/article/1773248</a></li>
+<li><a class="reference external" href="https://sspai.com/post/76637#!%23">如何满足小众的录屏需求？自己配置 FFmpeg 解决问题</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/1175429393wljblog/p/15165295.html">使用FFmpeg进行屏幕录像和录音（Windows，Linux，MacOS）</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/qqqq245425070/article/details/84038620">mac ffmpeg 中的录制命令和分解与复用命令</a></li>
+</ul>
+</dd>
+</dl>
 <div class="section" id="section-1">
 <h2>前言</h2>
 <p>FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。可以轻易地实现多种视频格式之间的相互转换。</p>
@@ -201,16 +217,166 @@
 <div class="section" id="section-4">
 <h3>码率</h3>
 <p>比特率(也叫码率，数据率)是一个确定整体视频/音频质量的参数，秒为单位处理的字节数，码率和视频质量成正比，在视频文件中中比特率用bps来表达。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+</div>
+</div>
+<div class="section" id="section-5">
+<h2>安装</h2>
+<p>MacOS</p>
+<div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>ffmpeg<span class="w"> </span>--with-libass
+</pre></div>
+</div>
+<div class="section" id="section-6">
+<h2>命令行使用</h2>
+<p>参数支持</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">参考::</th><td class="field-body"><a class="reference external" href="https://zhuanlan.zhihu.com/p/117523405">https://zhuanlan.zhihu.com/p/117523405</a>
-<a class="reference external" href="https://cloud.tencent.com/developer/article/1773248">https://cloud.tencent.com/developer/article/1773248</a></td>
-</tr>
+<tr><td class="option-group">
+<kbd><span class="option">-y</span></kbd></td>
+<td>强制覆盖输出文件</td></tr>
 </tbody>
 </table>
+<dl class="docutils">
+<dt>-f 输入源</dt>
+<dd><p class="first">指定输入源. 录制屏幕的时候需要用到</p>
+<p>不同平台支持不同</p>
+<ul class="simple">
+<li>MacOS是 <tt class="docutils literal"><span class="pre">-f</span> avfoundation</tt></li>
+<li>Windows是 <tt class="docutils literal"><span class="pre">-f</span> dshow</tt></li>
+<li>Linux是 <tt class="docutils literal"><span class="pre">-f</span> x11grab</tt></li>
+</ul>
+<p class="last">另外还有 <tt class="docutils literal"><span class="pre">-f</span> gdigrab</tt> 使用 <cite>FFmpeg</cite> 内置屏幕录制命令 <cite>gdigrab</cite></p>
+</dd>
+<dt>-draw_mouse 1</dt>
+<dd>在 <cite>gdigrab</cite> 录制的视频中显示鼠标。</dd>
+<dt>-i 输入设备</dt>
+<dd><p class="first">指定输入设备,  格式 <tt class="docutils literal"><span class="pre">-i</span> 视频设备:音频设备</tt>, 可以只指定一个.</p>
+<p>可以使用 <tt class="docutils literal"><span class="pre">-i</span> desktop</tt> 指定名称为 <tt class="docutils literal">desktop</tt> 的屏幕录制整个屏幕</p>
+<p>还支持指定多个输入):</p>
+<pre class="last literal-block">
+# windows下
+ffmpeg -f dshow -i audio=&quot;Analogue 1/2 (Audient iD4)&quot; -f dshow -i video=&quot;V380 FHD Camera&quot; output.mp4
+</pre>
+</dd>
+<dt>-framerate 帧率</dt>
+<dd>指定帧率, 比如 <tt class="docutils literal"><span class="pre">-framerate</span> 60</tt></dd>
+<dt>-r 帧率</dt>
+<dd><p class="first">指定帧率, 比如 <tt class="docutils literal"><span class="pre">-r</span> 60</tt>.</p>
+<p class="last">ffmpeg官方文档说 <cite>-r</cite> 与 <cite>-framerate</cite> 作用相同，但实际测试时发现不同。 <cite>-framerate</cite> 用于限制输入，而 <cite>-r</cite> 用于限制输出。</p>
+</dd>
+<dt>-c:v 视频编码器</dt>
+<dd>指定视频编码器,  如 <tt class="docutils literal"><span class="pre">-c:v</span> libx264</tt>, 一般可不填使用默认配置</dd>
+<dt>-c:a 音频编码</dt>
+<dd>指定音频编码器,  如 <tt class="docutils literal"><span class="pre">-c:a</span> aac</tt>, 一般可不填使用默认配置</dd>
+<dt>-a 音频</dt>
+<dd><p class="first">无音频使用 <cite>-an</cite></p>
+<dl class="last docutils">
+<dt>-acodec 音频编码器</dt>
+<dd>音频编码器, 比如 <tt class="docutils literal"><span class="pre">-acodec</span> copy</tt> 指明只拷贝，不做编解码</dd>
+</dl>
+</dd>
+<dt>-v 视频</dt>
+<dd><p class="first">比如 <tt class="docutils literal"><span class="pre">-vn</span></tt> 就是无视频的意思</p>
+<dl class="last docutils">
+<dt>-vcodec 视频编码器</dt>
+<dd>视频编码器, 比如 <tt class="docutils literal">vcodec copy</tt> 指明只拷贝，不做编解码</dd>
+</dl>
+</dd>
+<dt>-pix_fmt 像素格式</dt>
+<dd>指定像素格式, 比如 <tt class="docutils literal"><span class="pre">-pix_fmt</span> yuv420p</tt></dd>
+<dt>-preset 编码质量</dt>
+<dd>指定编码质量, 比如 <tt class="docutils literal"><span class="pre">-preset</span> 0</tt></dd>
+<dt>-crf 码率</dt>
+<dd>指定码率, 比如 <tt class="docutils literal"><span class="pre">-crf</span> 19</tt></dd>
+<dt>-b:a 音频码率</dt>
+<dd>指定音频码率, 比如 <tt class="docutils literal"><span class="pre">-b:a</span> 192k</tt></dd>
+<dt>-b:v 视频码率</dt>
+<dd>指定视频码率</dd>
+<dt>-s 视频分辨率</dt>
+<dd>指定视频分辨率, 比如 <tt class="docutils literal"><span class="pre">-s</span> 1280x720</tt>,
+用 <cite>scale</cite> 方法，设置视频分辨率为 720p。</dd>
+<dt>-qp 编码模式</dt>
+<dd>指定编码模式, 比如 <tt class="docutils literal"><span class="pre">-qp</span> 0</tt> 是x264无损编码模式</dd>
+<dt>-preset ultrafast</dt>
+<dd>快速编码，编码速度最快，但质量最差。</dd>
+<dt>-pixel_format 视频像素格式</dt>
+<dd>视频像素格式</dd>
+<dt>-video_size 大小</dt>
+<dd>指定大小如 <tt class="docutils literal"><span class="pre">-video_size</span> 2560x1440</tt></dd>
+</dl>
+<p>指定区域:</p>
+<pre class="literal-block">
+-offset_x 0 -offset_y 0 -video_size 2560x1440
+
+# 与 -filter:v crop=948:460:886:75 效果一致 ?
+</pre>
 </div>
+<div class="section" id="section-7">
+<h2>使用技巧</h2>
+<div class="section" id="section-8">
+<h3>屏幕录制</h3>
+<p>参考: <a class="reference external" href="https://www.jianshu.com/p/8a242e60f464">在macOS下使用ffmpeg录屏</a></p>
+<p>注意需要先选取设备, 使用以下指令查看支持设备</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-f<span class="w"> </span>avfoundation<span class="w"> </span>-list_devices<span class="w"> </span><span class="nb">true</span><span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;&quot;</span>
+</pre></div>
+<p>看下方的设备源， <cite>AVFoundation video devices</cite> 下是视频设备源头，
+分别是摄像头和屏幕捕捉。 <cite>AVFoundation audio devices</cite> 下是音频设备源</p>
+<p>录制</p>
+<div class="highlight"><pre><span></span><span class="c1"># ffmpeg -f avfoundation -i &quot;0:0&quot; -y -vframes 1 bg-win1.png</span>
+<span class="c1"># -i 1:0</span>
+<span class="c1">#   分别表示, 视频设备为 设备1</span>
+<span class="c1">#             音频设备为 设备0</span>
+ffmpeg<span class="w"> </span>-y<span class="w"> </span>-f<span class="w"> </span>avfoundation<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>:0<span class="w"> </span>-framerate<span class="w"> </span><span class="m">60</span><span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-r<span class="w"> </span><span class="m">60</span><span class="w"> </span>-pix_fmt<span class="w"> </span>yuv420p<span class="w"> </span>-preset<span class="w"> </span><span class="m">0</span><span class="w"> </span>-crf<span class="w"> </span><span class="m">19</span><span class="w"> </span>-c:a<span class="w"> </span>aac<span class="w"> </span>-b:a<span class="w"> </span>192k<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Screen Record </span><span class="k">$(</span>date<span class="w"> </span><span class="s2">&quot;+%Y-%m-%d %H-%M-%S&quot;</span><span class="k">)</span><span class="s2">.mp4&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="section-9">
+<h3>图片/视频裁剪</h3>
+<p>参考: <a class="reference external" href="https://cloud.tencent.com/developer/article/2417219">【FFmpeg】Filter 过滤器 ② ( 裁剪过滤器 Crop Filter | 裁剪过滤器语法 | 裁剪过滤器内置变量 | 裁剪过滤器常用用法 )</a></p>
+<p>使用 <cite>filter:crop</cite>,</p>
+<p>语法:</p>
+<pre class="literal-block">
+crop=ow[:oh[:x[:y[:keep_aspect]]]]
+</pre>
+<dl class="docutils">
+<dt>ow</dt>
+<dd>裁剪后 输出宽度 , 该选项必须指定 ;</dd>
+<dt>oh</dt>
+<dd>裁剪后 输出高度 , 该选项可选 , 如果不指定 , 默认使用 输入高度 ;</dd>
+<dt>x</dt>
+<dd>裁剪区域 左上角 x 坐标 , 该选项可选 , 如果不指定 , 默认值为 (iw - ow)/2 , 默认裁剪中心区域 ;</dd>
+<dt>y</dt>
+<dd>裁剪区域 左上角 y 坐标 , 该选项可选 , 如果不指定 , 默认值为 (ih - oh)/2 , 默认裁剪中心区域 ;</dd>
+<dt>keep_aspect</dt>
+<dd>保持宽高比标志 , 该选项可选 , 如果设置为 1，则强制输出图像的宽高比与输入相同 ;</dd>
+</dl>
+<p>比如 <tt class="docutils literal">ffmpeg <span class="pre">-i</span> <span class="pre">bg-win1.png</span> <span class="pre">-y</span> <span class="pre">-filter:v</span> crop=948:460:886:75 <span class="pre">bg-win.png</span></tt> 中的
+<tt class="docutils literal"><span class="pre">-filter:v</span> crop=948:460:886:75</tt></p>
+<p>参数依次为</p>
+<ul class="simple">
+<li>宽度: 948</li>
+<li>高度: 460</li>
+<li>左上角x坐标: 886</li>
+<li>左上角y坐标: 75</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>如果遇到指定的参数与实际效果不一致的问题, 可能是由于显示器的分辨率问题, 需要额外手动处理</p>
+<p class="last">比如手动计算一下实际应该使用的物理分辨率, 或者看看能不能让 <cite>ffmpeg</cite> 使用 <cite>css分辨率</cite></p>
+</div>
+</div>
+</div>
+<div class="section" id="section-10">
+<h2>常见报错</h2>
+</div>
+<div class="section" id="error-reinitializing-filters">
+<h2>Error reinitializing filters</h2>
+<p>是前端项目裁剪的时候报这个错的, 检查发现程序使用的是 <cite>6.0</cite>, 图片不支持截屏时候裁剪(最新 <cite>7.0</cite> 才支持),
+但是又没有更高版本的npm包, 于是分成两步骤:</p>
+<ul class="simple">
+<li>截全屏: <tt class="docutils literal">ffmpeg <span class="pre">-f</span> avfoundation <span class="pre">-i</span> 2 <span class="pre">-y</span> <span class="pre">-vframes</span> 1 <span class="pre">bg-win1.png</span></tt></li>
+<li>裁剪: <tt class="docutils literal">ffmpeg <span class="pre">-i</span> <span class="pre">bg-win1.png</span> <span class="pre">-y</span> <span class="pre">-filter:v</span> crop=948:460:886:75 <span class="pre">bg-win.png</span></tt></li>
+</ul>
 </div>
 
 								</article>
@@ -290,6 +456,43 @@
     </li>
    </ul>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    安装
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    命令行使用
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    使用技巧
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      屏幕录制
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-9">
+      图片/视频裁剪
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
+    常见报错
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#error-reinitializing-filters">
+    Error reinitializing filters
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -315,27 +518,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
-											<p><p class="first last">react-draggable</p>
+											<span class="date"> 7 <strong>22</strong></span>
+											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
+											<p><p class="first last">前端测试框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
-											<p><p class="first last">div支持拖动+resize</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
+											<p><p class="first last">&#64;browserless/screencast</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
-											<p><p class="first last">dom事件</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
+											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>11</strong></span>
-											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
-											<p><p class="first last">useId</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
+											<p><p class="first last">ffmpeg-static</p>
 </p>
 										</li>
 									</ul>

@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
 		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -144,6 +145,13 @@
 									</div>
 									<!-- `Blob` 对象表示一个不可变、原始数据的类文件对象。 `Blob` 表示的不一定是 `JavaScript` 原生格式的数据。 -->
 <!-- note:\: `File` 接口基于 `Blob` ，继承了 `blob` 的功能并将其扩展使其支持用户系统上的文件。 -->
+<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob">https://developer.mozilla.org/zh-CN/docs/Web/API/Blob</a></li>
+</ul>
+</dd>
+</dl>
 <p><cite>Blob</cite> （二进制大对象）是几乎所有二进制数据的一种抽象，类似于 <cite>File</cite> 对象。
 <cite>Blob</cite> 表示了一段二进制数据，可以用来存储图片、音频、视频等多媒体文件。我们可以使用 <cite>Blob</cite> 构造函数来创建一个 <cite>Blob</cite> 对象</p>
 <div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text/plain&#39;</span><span class="w"> </span><span class="p">});</span>
@@ -196,6 +204,14 @@
 </dd>
 </dl>
 </div>
+<div class="section" id="section-2">
+<h2>可能遇到的报错</h2>
+<div class="section" id="blob-err-request-range-not-satisfiable">
+<h3>blob ERR_REQUEST_RANGE_NOT_SATISFIABLE</h3>
+<p>我遇到的毛病是, blob的大小是 0, 没有成功生成</p>
+<p>其他参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/416">416 Range Not Satisfiable</a></p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -225,6 +241,18 @@
     构造函数
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    可能遇到的报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#blob-err-request-range-not-satisfiable">
+      blob ERR_REQUEST_RANGE_NOT_SATISFIABLE
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -250,27 +278,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-draggable.html">react-draggable</a></h3>
-											<p><p class="first last">react-draggable</p>
+											<span class="date"> 7 <strong>22</strong></span>
+											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
+											<p><p class="first last">前端测试框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动+resize</a></h3>
-											<p><p class="first last">div支持拖动+resize</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
+											<p><p class="first last">&#64;browserless/screencast</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>12</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a></h3>
-											<p><p class="first last">dom事件</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
+											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>11</strong></span>
-											<h3><a href="yq-docs-front-end-frame-react-hooks-useId.html">useId</a></h3>
-											<p><p class="first last">useId</p>
+											<span class="date"> 7 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
+											<p><p class="first last">ffmpeg-static</p>
 </p>
 										</li>
 									</ul>
