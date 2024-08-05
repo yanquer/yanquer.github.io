@@ -230,6 +230,19 @@ ls *.rst | xargs -L1  | cut -d. -f 1
 <div class="highlight"><pre><span></span>ls<span class="w"> </span>*.js<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-I<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="w"> </span>mv<span class="w"> </span><span class="o">{}</span><span class="w">  </span><span class="o">{}</span>x
 </pre></div>
 </div>
+<div class="section" id="section-2">
+<h2>可能遇到的报错</h2>
+<div class="section" id="xargs-unterminated-quote">
+<h3>xargs unterminated quote</h3>
+<p>参考: <a class="reference external" href="https://stackoverflow.com/questions/11649872/getting-error-xargs-unterminated-quote-when-tried-to-print-the-number-of-lines">Getting error &quot;xargs unterminated quote&quot; when tried to print the number of lines in terminal</a></p>
+<p>原因: 输出的内容中有引号, 当作执行过程的引号了</p>
+<p>解决</p>
+<ul class="simple">
+<li>要么输出时, 转义一下引号</li>
+<li>要么单独提出来处理</li>
+</ul>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -259,6 +272,18 @@ ls *.rst | xargs -L1  | cut -d. -f 1
     参数选项
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    可能遇到的报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#xargs-unterminated-quote">
+      xargs unterminated quote
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -284,27 +309,27 @@ ls *.rst | xargs -L1  | cut -d. -f 1
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

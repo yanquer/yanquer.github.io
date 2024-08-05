@@ -161,7 +161,83 @@ const mainWindow = new BrowserWindow({
   })
 </pre>
 </div>
+<div class="section" id="macos">
+<h2>静态资源处理(MacOS)</h2>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.jianshu.com/p/c70766b05408">Electron常见问题（三）常用路径/静态资源丢失</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/qq_44741577/article/details/136847728">electron的extraFiles和extraResources的配置和使用（附：动态路径拼接问题）</a></li>
+</ul>
+</dd>
+</dl>
+<p>关键字: Electron静态资源</p>
+<p>默认情况下, <cite>resources</cite> 目录下图标等资源不会直接全部复制到生成目录下, 需要显示配置哪些资源是静态资源,
+比如在 <cite>electron-builder.yml</cite> 配置 (不指定别名可以单独一个 <tt class="docutils literal">- resources</tt>)</p>
+<div class="highlight"><pre><span></span><span class="nt">extraResources</span><span class="p">:</span>
+<span class="c1">#  - resources</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resources</span>
+<span class="w">    </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resources</span>
+</pre></div>
+<p>就会将当前目录下的 <tt class="docutils literal">resources</tt> 文件见复制到生成目录下, MacOS下是 <cite>生成APP/Contents/Resources</cite> 下面</p>
+<div class="figure">
+<img alt="配置效果" src="doc-raw/resources/images/2024-07-23-17-28-23.png" style="width: 480px;" />
+</div>
+</div>
+<div class="section" id="macos-1">
+<h2>图标问题(MacOS)</h2>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/ligaoming_123/article/details/121220556">Electron托盘图标显示问题</a></li>
+</ul>
+</dd>
+</dl>
+<p>关键字: Electron菜单栏/任务栏图标</p>
+<p>其实还是静态资源问题, 通过 静态资源处理(MacOS)_ 即可解决.</p>
+<p>另外需要注意的一点是, 菜单栏的图标, 不能使用 <cite>icns</cite> 文件, 只能使用普通的图片, 比如 <cite>png</cite> (这一点几乎没看到有地方提到),
+且需要使用 <tt class="docutils literal">nativeImage.createFromPath</tt> 转换为 <tt class="docutils literal">nativeImage</tt></p>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Tray</span><span class="p">,</span><span class="w"> </span><span class="nx">nativeImage</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;electron&#39;</span><span class="p">;</span>
+
+<span class="nx">tray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Tray</span><span class="p">(</span><span class="nx">nativeImage</span><span class="p">.</span><span class="nx">createFromPath</span><span class="p">(</span><span class="nx">menuImg</span><span class="p">));</span>
+</pre></div>
+</div>
+<div class="section" id="electron-2">
+<h2>electron打包后可能出现的问题</h2>
 <div class="section" id="section-2">
+<h3>启动白屏</h3>
+<p>说明渲染进程没有正常启动, 注意几点</p>
+<ul class="simple">
+<li>打包后的正式版, 访问地址是以 <cite>app:</cite> 开头的, 比如 <cite>app://./home</cite> 而不是 <cite>http://localhost: 8080/home</cite></li>
+<li>确定构建时, 渲染进程的源码正常输出到配置的输出目录下, 且 <cite>electron打包</cite> 时正确处理(一般主/渲染进程源码都是输出到同一个目录)</li>
+</ul>
+</div>
+<div class="section" id="err-file-not-found-6-loading-app-home">
+<h3>ERR_FILE_NOT_FOUND (-6) loading 'app://./home'</h3>
+<p>同上, 不过注意第二点</p>
+</div>
+<div class="section" id="could-not-find-ffmpeg-executable-using-app-asar-unpacked">
+<h3>&quot;Could not find ffmpeg executable&quot; using 'app.asar.unpacked'</h3>
+<p>这个主要是发生在项目有使用 <cite>ffmpeg</cite> 执行文件的情况, 默认情况下现状都是打包到 <cite>app.asar</cite> 集成,
+比如安装的 <cite>ffmpeg-static</cite> 就会到 <cite>app.asar/node_modules/ffmpeg-static/ffmpeg</cite> 这种.</p>
+<p>需要在源码里兼容一下路径处理</p>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">ffmpeg</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ffmpeg-static&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">truthFfmpegPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;production&#39;</span><span class="w"> </span><span class="o">?</span>
+<span class="w">    </span><span class="nx">ffmpeg</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;app.asar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;app.asar.unpacked&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">:</span>
+<span class="w">    </span><span class="nx">ffmpeg</span><span class="p">;</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>本来有个 <cite>electron-util</cite> 提供了路径处理方案, 但是不知道为什么笔者使用无效</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">util</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;electron-util&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ffmpegPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">fixPathForAsarUnpack</span><span class="p">(</span><span class="nx">ffmpeg</span><span class="p">);</span>
+</pre></div>
+</div></div>
+<p>参考: <a class="reference external" href="https://github.com/kribblo/node-ffmpeg-installer/issues/26">https://github.com/kribblo/node-ffmpeg-installer/issues/26</a></p>
+</div>
+</div>
+<div class="section" id="section-3">
 <h2>暂未分类报错总结</h2>
 <div class="section" id="unhandledpromiserejectionwarning-error-failed-to-load-image-from-path">
 <h3>UnhandledPromiseRejectionWarning: Error: Failed to load image from path</h3>
@@ -208,7 +284,39 @@ const mainWindow = new BrowserWindow({
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-2">
+   <a class="" href="#macos">
+    静态资源处理(MacOS)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#macos-1">
+    图标问题(MacOS)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#electron-2">
+    electron打包后可能出现的问题
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      启动白屏
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#err-file-not-found-6-loading-app-home">
+      ERR_FILE_NOT_FOUND (-6) loading 'app://./home'
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#could-not-find-ffmpeg-executable-using-app-asar-unpacked">
+      "Could not find ffmpeg executable" using 'app.asar.unpacked'
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
     暂未分类报错总结
    </a>
    <ul class="toc-tree visible">
@@ -244,27 +352,27 @@ const mainWindow = new BrowserWindow({
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

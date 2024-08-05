@@ -81,7 +81,7 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>图标制作</h2>
+      <h2>图标制作-MacOS</h2>
     </div>
     <div class="page-head-content">
       By
@@ -138,12 +138,32 @@
 										</div>
 
 										<div class="pennant pennant-alt date">2024-02-21</div>
-										<h2>图标制作</h2>
+										<h2>图标制作-MacOS</h2>
 
 										<span class="head-modify-time">修改于: 2024-02-21</span>
 
 									</div>
 									<p>使用 <a class="reference external" href="/yq-docs-operating-system-Mac-MAC-instruction-SIPS.html">sips</a></p>
+<div class="section" id="section-1">
+<h2>将图片转换为圆角图片(可选)</h2>
+<p>参考 :<a class="reference external" href="/yq-docs-operating-system-Mac-MAC-instruction-convert.html">convert</a></p>
+<div class="highlight"><pre><span></span><span class="c1"># sh convert-to-radiu.sh 406 586 20 sf.png sfr.png</span>
+<span class="nv">W</span><span class="o">=</span><span class="nv">$1</span>
+<span class="w">      </span><span class="nv">H</span><span class="o">=</span><span class="nv">$2</span>
+<span class="w">      </span><span class="nv">R</span><span class="o">=</span><span class="nv">$3</span>
+<span class="w">      </span><span class="nv">SRC</span><span class="o">=</span><span class="nv">$4</span>
+<span class="w">      </span><span class="nv">DST</span><span class="o">=</span><span class="nv">$5</span>
+
+<span class="w">      </span><span class="nv">MASK</span><span class="o">=</span>tmpMask.png
+<span class="w">      </span>magick<span class="w"> </span>-size<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$W</span><span class="s2">&quot;</span>x<span class="s2">&quot;</span><span class="nv">$H</span><span class="s2">&quot;</span><span class="w"> </span>xc:none<span class="w"> </span>-draw<span class="w"> </span><span class="s2">&quot;roundrectangle 0,0,</span><span class="nv">$W</span><span class="s2">,</span><span class="nv">$H</span><span class="s2">,</span><span class="nv">$R</span><span class="s2">,</span><span class="nv">$R</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">$MASK</span>
+<span class="w">      </span><span class="c1"># magick $SRC -matte $MASK -compose DstIn -composite $DST</span>
+<span class="w">      </span>magick<span class="w"> </span><span class="nv">$SRC</span><span class="w"> </span>-alpha<span class="w"> </span>Set<span class="w"> </span><span class="nv">$MASK</span><span class="w"> </span>-compose<span class="w"> </span>DstIn<span class="w"> </span>-composite<span class="w"> </span><span class="nv">$DST</span>
+
+<span class="w">      </span>rm<span class="w"> </span><span class="nv">$MASK</span>
+</pre></div>
+</div>
+<div class="section" id="section-2">
+<h2>生成各尺寸图标</h2>
 <p>例, 有一个1024*1024的png: pic.png:</p>
 <pre class="literal-block">
 mkdir tmp.iconset
@@ -161,7 +181,11 @@ sips -z 512 512 pic.png --out tmp.iconset/icon_256x256&#64;2x.png
 sips -z 512 512 pic.png --out tmp.iconset/icon_512x512.png
 sips -z 1024 1024 pic.png --out tmp.iconset/icon_512x512&#64;2x.png
 </pre>
-<p>还可参考: <a class="reference external" href="https://blog.csdn.net/ypf1024/article/details/114011755">https://blog.csdn.net/ypf1024/article/details/114011755</a></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果需要生成圆角图片, sips就不行了, ffmpeg也不行, 可以考虑使用 <a class="reference external" href="/yq-docs-operating-system-Mac-MAC-instruction-convert.html">convert</a></p>
+</div>
+<p>还可参考: <a class="reference external" href="https://blog.csdn.net/ypf1024/article/details/114011755">mac下生成.icns图标</a></p>
 <p>完整脚本</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
@@ -211,6 +235,18 @@ create_icon
 <p>使用, 将 <cite>sf.png</cite> 图片转换为图标到 <cite>sf</cite> 文件夹下面</p>
 <div class="highlight"><pre><span></span>sh<span class="w"> </span>run_icon.sh<span class="w"> </span>sf.png<span class="w"> </span>sf
 </pre></div>
+</div>
+<div class="section" id="icns">
+<h2>将各尺寸图标文件夹生成icns</h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">使用 <a class="reference internal" href="#section-2">生成各尺寸图标</a> 生成的图标文件夹必须是 <cite>.iconset</cite> 后缀, 否则无法识别</p>
+</div>
+<p>在 <a class="reference internal" href="#section-2">生成各尺寸图标</a> 已经生成好了 <tt class="docutils literal">tmp.iconset</tt>, 接下来使用Mac的 <cite>iconutil</cite></p>
+<div class="highlight"><pre><span></span>iconutil<span class="w"> </span>-c<span class="w"> </span>icns<span class="w"> </span>tmp.iconset<span class="w"> </span>-o<span class="w"> </span>tmp.icns
+</pre></div>
+<!-- iconutil -c icns screen-flower.iconset -o screen-flower.icns -->
+</div>
 
 								</article>
 						</div>
@@ -227,6 +263,37 @@ create_icon
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    将图片转换为圆角图片(可选)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    生成各尺寸图标
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#icns">
+    将各尺寸图标文件夹生成icns
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -244,27 +311,27 @@ create_icon
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

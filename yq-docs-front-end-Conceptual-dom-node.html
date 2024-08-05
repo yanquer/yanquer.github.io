@@ -147,7 +147,50 @@
 										<span class="head-modify-time">修改于: 2024-07-18</span>
 
 									</div>
-									<div class="section" id="htmlcanvaselement">
+									<div class="section" id="htmldivelement">
+<h2>HTMLDivElement</h2>
+<p>支持属性</p>
+<dl class="docutils">
+<dt>clientWidth/clientHeight</dt>
+<dd><ul class="first last simple">
+<li>包括元素的内容区域和左右内边距的宽度，不包括边框和滚动条。 (元素内容区域宽度 + 左右内边距宽度)</li>
+</ul>
+</dd>
+<dt>offsetWidth/offsetHeight</dt>
+<dd><ul class="first last simple">
+<li>包括元素的宽度、左右边框和左右滚动条（如果存在）的宽度。 (元素宽度 + 左右边框宽度 + 左右滚动条宽度)</li>
+</ul>
+</dd>
+<dt>scrollWidth/scrollHeight</dt>
+<dd><ul class="first last simple">
+<li>包含元素内容的完整宽度/高度,包括因内容超出而隐藏的部分。</li>
+<li>即使元素有滚动条,也会返回完整的内容尺寸。</li>
+<li>适用于需要获取元素完整内容尺寸的场景。</li>
+</ul>
+</dd>
+<dt>scrollLeft/scrollTop</dt>
+<dd><ul class="first last simple">
+<li>获取或设置元素的水平/垂直滚动条的位置。</li>
+<li>返回值是元素滚动条距离左上角的距离。</li>
+<li>适用于需要获取或设置元素滚动位置的场景。</li>
+</ul>
+</dd>
+<dt>getBoundingClientRect()</dt>
+<dd><ul class="first last simple">
+<li>返回一个对象,包含元素的尺寸和相对于视口的位置。</li>
+<li>返回的对象包含 left、top、right、bottom、width、height 等属性。</li>
+<li>适用于需要获取元素相对于视口的位置信息的场景。</li>
+</ul>
+</dd>
+<dt>getComputedStyle()</dt>
+<dd><ul class="first last simple">
+<li>返回一个对象,包含元素最终的样式值,包括从样式表、内联样式或 CSS 属性计算得到的值</li>
+<li>适用于需要获取元素最终计算后的样式属性值的场景。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="htmlcanvaselement">
 <h2>HTMLCanvasElement</h2>
 <dl class="docutils">
 <dt>HTMLCanvasElement.captureStream()</dt>
@@ -182,6 +225,11 @@
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
+   <a class="" href="#htmldivelement">
+    HTMLDivElement
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#htmlcanvaselement">
     HTMLCanvasElement
    </a>
@@ -211,27 +259,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

@@ -197,6 +197,183 @@ npm i rc-tree
 <p class="caption">效果2</p>
 </div>
 </div>
+<div class="section" id="section-2">
+<h2>此组件的问题</h2>
+<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/react-component/tree/issues/854">https://github.com/react-component/tree/issues/854</a></li>
+</ul>
+</dd>
+</dl>
+<p>一是不能仅加载某个子节点, 另外就是, 传给组件的数据,
+新数据最好是深拷贝一下, 否则, 渲染出来的新数据会丢失缩进.</p>
+<p>丢失缩进示例</p>
+<div class="figure">
+<img alt="丢失缩进" src="doc-raw/resources/images/2024-07-26-10-52-17.png" style="width: 480px;" />
+</div>
+<p>正常情况的数据</p>
+<div class="figure">
+<img alt="正常缩进" src="doc-raw/resources/images/2024-07-26-10-53-56.png" style="width: 480px;" />
+</div>
+<p>源码</p>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">,</span><span class="w"> </span><span class="nx">createRef</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Tree</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rc-tree&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="s2">&quot;rc-tree/assets/index.css&quot;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">DataNode</span><span class="p">,</span><span class="w"> </span><span class="nx">EventDataNode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;rc-tree/es/interface&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">initData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the first node&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-0&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-0-0&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">isLeaf</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the second node, with a tooltip on hover&#39;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-0-1&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">isLeaf</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the third node, with a tooltip on hover&#39;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-1&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">isLeaf</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the fourth node, with a tooltip on hover&#39;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">TreeNode</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">isLeaf?</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">children?</span><span class="o">:</span><span class="w"> </span><span class="kt">TreeNode</span><span class="p">[]</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">TreeDataCacheHelper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="nx">_initData</span><span class="o">:</span><span class="w"> </span><span class="kt">TreeNode</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="nx">keyNodeMap</span><span class="o">:</span><span class="w"> </span><span class="p">{[</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">TreeNode</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="nx">initNodeMap</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">TreeNode</span><span class="p">[]){</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">one</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">keyNodeMap</span><span class="p">[</span><span class="nx">one</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">one</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">one</span><span class="p">.</span><span class="nx">children</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">initNodeMap</span><span class="p">(</span><span class="nx">one</span><span class="p">.</span><span class="nx">children</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">TreeNode</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">reInitData</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">reInitData</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">TreeNode</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">_initData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">initNodeMap</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_initData</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">value</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">TreeNode</span><span class="p">[]{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_initData</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">setChildByKey</span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">any</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">TreeNode</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">keyNodeMap</span><span class="o">?</span><span class="p">.[</span><span class="nx">key</span><span class="p">]</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">t</span><span class="p">.</span><span class="nx">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">initNodeMap</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">children</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`not find tree for </span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CTree</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="o">&lt;</span><span class="nx">any</span><span class="p">,</span><span class="w"> </span><span class="nx">any</span><span class="o">&gt;</span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="nx">proxyData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TreeDataCacheHelper</span><span class="p">(</span><span class="nx">initData</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">treeData</span><span class="o">:</span><span class="w"> </span><span class="kt">this.proxyData.value</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="nx">loadData</span><span class="p">(</span><span class="nx">treeNode</span><span class="o">:</span><span class="w"> </span><span class="kt">EventDataNode</span><span class="o">&lt;</span><span class="nx">DataNode</span><span class="o">&gt;</span><span class="p">){</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;load data&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">treeNode</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">startKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">treeNode</span><span class="p">.</span><span class="nx">key</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">){</span>
+<span class="w">            </span><span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">startKey</span><span class="o">+</span><span class="sb">`-</span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">isLeaf</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="sb">`This is the title for </span><span class="si">${</span><span class="nx">startKey</span><span class="si">}</span><span class="sb">-</span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="nx">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">proxyData</span><span class="p">.</span><span class="nx">setChildByKey</span><span class="p">(</span><span class="nx">treeNode</span><span class="p">.</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">ret</span><span class="p">)</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">treeData</span><span class="o">:</span><span class="w"> </span><span class="kt">this.proxyData.value</span><span class="p">})</span>
+<span class="w">        </span><span class="c1">// return ret</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Tree</span>
+<span class="w">            </span><span class="c1">// defaultExpandedKeys={[&#39;0-0&#39;]}</span>
+<span class="w">            </span><span class="nx">loadData</span><span class="o">=</span><span class="p">{</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">treeNode</span><span class="p">)=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">loadData</span><span class="p">(</span><span class="nx">treeNode</span><span class="p">)}</span>
+<span class="w">            </span><span class="c1">// must deep copy, or no-indent . 必须深拷贝, 否则丢失缩进状态</span>
+<span class="w">            </span><span class="nx">treeData</span><span class="o">=</span><span class="p">{[...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">treeData</span><span class="p">]}</span>
+<span class="w">        </span><span class="o">/&gt;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>深拷贝太耗时了...</p>
+</div>
+<div class="section" id="section-3">
+<h2>虚拟树支持</h2>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>rc-tree大量数据的加载</li>
+<li>rc-tree虚拟树</li>
+</ul>
+</dd>
+</dl>
+<p>主要是设置 <cite>virtual</cite>, <cite>height</cite>, <cite>itemHeight</cite> 这三个属性, 否则不生效,
+比较坑的文档没有提到这一点, 是搜 issue <a class="reference external" href="https://github.com/react-component/tree/issues/659">https://github.com/react-component/tree/issues/659</a> 才知道的.</p>
+<p>代码</p>
+<div class="highlight"><pre><span></span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="nx">div</span>
+<span class="w">          </span><span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">refTree</span><span class="p">}</span>
+<span class="w">      </span><span class="o">&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">Tree</span>
+<span class="w">              </span><span class="c1">// defaultExpandedKeys={[&#39;0-0&#39;]}</span>
+<span class="w">              </span><span class="nx">loadData</span><span class="o">=</span><span class="p">{</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">treeNode</span><span class="p">)=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">loadData</span><span class="p">(</span><span class="nx">treeNode</span><span class="p">)}</span>
+<span class="w">              </span><span class="c1">// must deep copy, or no-indent . 必须深拷贝, 否则丢失缩进状态 , 但是深拷贝又太耗时了...</span>
+<span class="w">              </span><span class="nx">treeData</span><span class="o">=</span><span class="p">{[...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">treeData</span><span class="p">]}</span>
+<span class="w">              </span><span class="c1">// treeData={this.state.treeData}</span>
+<span class="w">              </span><span class="nx">virtual</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span>
+<span class="w">              </span><span class="nx">height</span><span class="o">=</span><span class="p">{</span><span class="mf">200</span><span class="p">}</span>
+<span class="w">              </span><span class="nx">itemHeight</span><span class="o">=</span><span class="p">{</span><span class="mf">20</span><span class="p">}</span>
+<span class="w">          </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/div&gt;);</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h2>树内容截断</h2>
+<p>出现的场景: 祖先容器是flex布局,
+父布局支持滚动, 标题 <cite>title</cite> 自定义了高度为 <cite>14px</cite>.</p>
+<p>后续使用Mac复现了一下, 没成功复现.
+不过发现默认标题高度是 <cite>24px</cite>, 调大为 <cite>24</cite> 后有所改善</p>
+<!-- 好吧, 最后发现是某一级别的祖先容器设置 `padding: 12px` , -->
+<!-- 树的高度如果撑满父容器(位于祖先容器下), 树的部分会被这个padding截断. -->
+<!-- 将父容器高度改为 ``calc(95% - 14px)`` 解决. 多减几个px, 避免期间其他层的padding影响. -->
+<!-- 再更新, -->
+<!-- 发现是 `padding` 跟 `height` 的双重影响, 组件底层实现方式, 使用的是 `24px` 计算的滚动高度, -->
+<!-- 如果自定义了高度, 或者未使用框架的 `css`, 比如自定义为 `height: 14px; line-height: 14px;`, -->
+<!-- 底层计算方式不支持... 就会导致滚动的截断 -->
+<!-- 解决: 主要还是高度. -->
+<p>后面发现是父容器的实际高度比获取的高度要小那么一点, 猜测是 <cite>padding</cite> 等其他边距的影响, 在设置树的高度时, 稍微减去 <cite>5px</cite> 左右即可.
+另外组件底层实现方式, 使用的是 <cite>24px</cite> 计算的滚动高度, 建议使用此高度.</p>
+</div>
 
 								</article>
 						</div>
@@ -226,6 +403,21 @@ npm i rc-tree
     简单使用
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    此组件的问题
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    虚拟树支持
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    树内容截断
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -251,27 +443,27 @@ npm i rc-tree
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

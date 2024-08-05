@@ -185,7 +185,7 @@
 <pre class="literal-block">
 #sh ./test.sh -l --warn ww --error ee --info ii --fatal ff
 
-# ARGS=&quot;getopt -o h -l warn:,error:,info:,fatal: -- $&#64;&quot;
+# ARGS=`getopt -o h -l warn:,error:,info:,fatal: -- &quot;$&#64;&quot;`
 # eval set -- &quot;${ARGS}&quot;
 
 getopt -o h -l warn:,error:,info:,fatal: -- $&#64;
@@ -293,6 +293,112 @@ name:
 通过使用 eval 命令，我们可以将 ${ARGS} 中的字符串解析为实际的命令行参数，以便在脚本中使用这些参数进行进一步的处理或操作。</li>
 </ul>
 </div>
+<div class="section" id="getopt-3">
+<h2>高版本getopt</h2>
+<p>记于 <cite>2024-07-30</cite></p>
+<p>今天突发奇想想用下 <cite>getopt</cite>, 但是发现不管怎么用都不对, 原来的写法:</p>
+<pre class="literal-block">
+# ARGS=`getopt -o h -l warn:,error:,info:,fatal: -- &quot;$&#64;&quot;`
+# eval set -- &quot;${ARGS}&quot;
+</pre>
+<p>已经废弃</p>
+<p>新的写法需要将整个解析方式当作一个字符串:</p>
+<pre class="literal-block">
+# ARGS=`getopt &quot;-o h -l warn:,error:,info:,fatal: --&quot; &quot;$&#64;&quot;`
+# eval set -- &quot;${ARGS}&quot;
+</pre>
+<p>搜了很多都是老的说明, 最后仔细man查看才发现...</p>
+<p>新版用法示例</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nv">USAGE</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Usage:  [-h|--help] [-n|--name &lt;name&gt;]</span>
+
+<span class="s2">Options:</span>
+<span class="s2">    -h, --help      Show this help message</span>
+<span class="s2">    -n, --name      Set the name of the project</span>
+<span class="s2">    -a              Enable A</span>
+<span class="s2">    -b &lt;value&gt;      Set B to &lt;value&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="nv">ARGS</span><span class="o">=</span><span class="k">$(</span>getopt<span class="w"> </span><span class="s2">&quot;-o hn:ab:: -l help,name: --&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="nv">ErrCode</span><span class="o">=</span><span class="nv">$?</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$ErrCode</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error in command line processing&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">eval</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ARGS</span><span class="s2">&quot;</span>
+
+<span class="nv">A</span><span class="o">=</span><span class="nb">false</span>
+<span class="nv">B</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<span class="w">        </span>-h<span class="p">|</span>--help<span class="o">)</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">USAGE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">            </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="w">            </span><span class="p">;;</span>
+<span class="w">        </span>-n<span class="p">|</span>--name<span class="o">)</span>
+<span class="w">            </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<span class="w">            </span><span class="nb">shift</span><span class="w"> </span><span class="m">2</span>
+<span class="w">            </span><span class="p">;;</span>
+<span class="w">        </span>-a<span class="o">)</span>
+<span class="w">            </span><span class="nv">A</span><span class="o">=</span><span class="nb">true</span>
+<span class="w">            </span><span class="nb">shift</span>
+<span class="w">            </span><span class="p">;;</span>
+<span class="w">        </span>-b<span class="o">)</span>
+<span class="w">            </span><span class="nv">B</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+<span class="w">            </span><span class="c1"># todo: 待解决, 可选参数需要灵活判断 shift 2 还是 shift 1</span>
+<span class="w">            </span><span class="nb">shift</span><span class="w"> </span><span class="m">2</span>
+<span class="w">            </span><span class="p">;;</span>
+<span class="w">        </span>--<span class="o">)</span>
+<span class="w">            </span><span class="nb">shift</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">            </span><span class="p">;;</span>
+<span class="w">        </span>*<span class="o">)</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Internal error!&quot;</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">USAGE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">            </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">            </span><span class="p">;;</span>
+<span class="w">    </span><span class="k">esac</span>
+<span class="k">done</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Name: </span><span class="nv">$name</span>
+<span class="s2">A: </span><span class="nv">$A</span>
+<span class="s2">B: </span><span class="nv">$B</span>
+
+<span class="s2">other: </span><span class="nv">$*</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+<p>输出</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>ico<span class="w"> </span>%<span class="w"> </span>sh<span class="w"> </span>test_opt.sh<span class="w"> </span>-h
+
+Usage:<span class="w">  </span><span class="o">[</span>-h<span class="p">|</span>--help<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="p">|</span>--name<span class="w"> </span>&lt;name&gt;<span class="o">]</span>
+
+Options:
+<span class="w">    </span>-h,<span class="w"> </span>--help<span class="w">      </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message
+<span class="w">    </span>-n,<span class="w"> </span>--name<span class="w">      </span>Set<span class="w"> </span>the<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project
+<span class="w">    </span>-a<span class="w">              </span>Enable<span class="w"> </span>A
+<span class="w">    </span>-b<span class="w"> </span>&lt;value&gt;<span class="w">      </span>Set<span class="w"> </span>B<span class="w"> </span>to<span class="w"> </span>&lt;value&gt;
+
+$<span class="w"> </span>ico<span class="w"> </span>%<span class="w"> </span>sh<span class="w"> </span>test_opt.sh<span class="w"> </span>-n123<span class="w"> </span>-abbbb<span class="w"> </span>eerrr<span class="w"> </span>rt
+
+Name:<span class="w"> </span><span class="m">123</span>
+A:<span class="w"> </span><span class="nb">true</span>
+B:<span class="w"> </span>bbb
+
+other:<span class="w"> </span>eerrr<span class="w"> </span>rt
+</pre></div>
+<p>另外还有一个问题, 如果是可选参数, 不方便判断是 <cite>shift</cite> 1还是2.
+所以最好不用默认参数?</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">MacOS上选项参数必须位于位置参数之前, 否则无法正常识别. 比如: <tt class="docutils literal">sh test_opt.sh <span class="pre">-n333</span> 1123</tt>
+而不是 <tt class="docutils literal">sh test_opt.sh 1123 <span class="pre">-n333</span></tt></p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -332,6 +438,11 @@ name:
     getopt作用说明
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#getopt-3">
+    高版本getopt
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -357,27 +468,27 @@ name:
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

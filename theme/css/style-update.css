@@ -427,6 +427,7 @@ table.docutils.option-list{
     .docutils.option-list td:first-child var{
         color: #36defff0;
         background-color: #191703;		/* 偏黄一点的黑 */
+        margin-left: 0.5rem;
     }
 
     /* 表格, 双冒号表格 */

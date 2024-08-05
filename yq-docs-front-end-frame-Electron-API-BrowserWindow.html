@@ -206,10 +206,6 @@
 <dt>titleBarStyle</dt>
 <dd><ul class="first last simple">
 <li>'hidden', // 隐藏bar</li>
-</ul>
-</dd>
-<dt>titleBarStyle</dt>
-<dd><ul class="first last simple">
 <li>'customButtonsOnHover'</li>
 <li>'hidden'</li>
 </ul>
@@ -246,10 +242,24 @@ webPreferences: {
 </pre>
 </dd>
 </dl>
-</div>
 <div class="section" id="section-2">
-<h2>开发技巧</h2>
+<h3>实例方法</h3>
+<dl class="docutils">
+<dt>focus()</dt>
+<dd>聚焦窗口</dd>
+<dt>show()</dt>
+<dd>显示窗口</dd>
+<dt>showInactive()</dt>
+<dd><p class="first">显示窗口, 但不聚焦</p>
+<p class="last">发现一个 bug, 直接使用 <cite>show()</cite> 时, 窗口会因为聚焦行为产生闪烁(一闪而逝的白屏),
+可以更改为 <cite>showInactive()</cite> 然后延时聚焦来解决这个问题.</p>
+</dd>
+</dl>
+</div>
+</div>
 <div class="section" id="section-3">
+<h2>开发技巧</h2>
+<div class="section" id="section-4">
 <h3>优雅地显示窗口</h3>
 <p>每次加载页面都是直接展示，用户突然就看到了，这不是一个好的本地应用使用体验.
 要使窗口显示时没有视觉闪烁，对于不同情况有两种解决方案。</p>
@@ -263,7 +273,8 @@ webPreferences: {
 <span class="p">})</span>
 </pre></div>
 <p>这个事件通常在 <cite>did-finish-load</cite> 事件之后发出，但是页面有许多远程资源时，它可能会在 <cite>did-finish-load</cite> 之前发出事件。</p>
-<p>请注意，使用此事件意味着渲染器会被认为是&quot;可见的&quot;并绘制，即使 <cite>show</cite> 是 <cite>false</cite> 。 如果您使用 <cite>paintWhenInitiallyHidden: false</cite>，此事件将永远不会被触发。</p>
+<p>请注意，使用此事件意味着渲染器会被认为是&quot;可见的&quot;并绘制，即使 <cite>show</cite> 是 <cite>false</cite> 。
+如果您使用 <cite>paintWhenInitiallyHidden: false</cite>，此事件将永远不会被触发。</p>
 </div>
 <div class="section" id="backgroundcolor">
 <h4>设置 backgroundColor 属性</h4>
@@ -284,7 +295,7 @@ webPreferences: {
 <p>有关这些颜色类型的有效选项，请参阅 <a class="reference external" href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetbackgroundcolorbackgroundcolor">win.setBackgroundColor</a> 。</p>
 </div>
 </div>
-<div class="section" id="section-4">
+<div class="section" id="section-5">
 <h3>覆盖全屏幕的透明窗口</h3>
 <div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">getFoucScreen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">Display</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">allDisplay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getAllDisplays</span><span class="p">()</span>
@@ -325,7 +336,7 @@ webPreferences: {
 </pre></div>
 <p>无效果.</p>
 </div>
-<div class="section" id="section-5">
+<div class="section" id="section-6">
 <h3>设置窗口鼠标穿透</h3>
 <p>参考: <a class="reference external" href="https://blog.csdn.net/weixin_42421494/article/details/102800491">electron+vue虚拟桌面开发遇坑之透明窗口鼠标穿透</a></p>
 <div class="admonition note">
@@ -339,10 +350,22 @@ transparent:true,
 <p>使窗口忽略窗口内的所有鼠标事件，并且在此窗口中发生的所有鼠标事件都将被传递到此窗口背后的内容</p>
 <div class="highlight"><pre><span></span><span class="nx">win</span><span class="p">.</span><span class="nx">setIgnoreMouseEvents</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 </pre></div>
-<p><strong>只有点击事件会穿透窗口</strong> ，鼠标移动事件仍会触发</p>
-<!-- // forward, 表示electron程序本身是否也需要响应鼠标事件, 但是不知道为什么貌似无效 -->
+<p><strong>只有点击事件会穿透窗口</strong> ，鼠标移动事件仍会触发(如 <cite>mouseleave</cite>)</p>
 <div class="highlight"><pre><span></span><span class="nx">win</span><span class="p">.</span><span class="nx">setIgnoreMouseEvents</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">forward</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">})</span>
 </pre></div>
+</div>
+<div class="section" id="section-7">
+<h3>无边框模式下窗口的拖动</h3>
+<p>无边框, 即设置 <cite>frame: false</cite> 后不显示边框,
+这个时候还是会显示 <cite>关闭-最小化-最大化</cite> 按钮, 如果想连这个也不显示, 使用
+<tt class="docutils literal">titleBarStyle: 'hidden'</tt></p>
+<dl class="docutils">
+<dt>实现拖动</dt>
+<dd><ul class="first last simple">
+<li>自定义标题元素, 给其加上 <tt class="docutils literal"><span class="pre">-webkit-app-region:</span> &quot;drag&quot;</tt> 的css属性</li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -373,14 +396,21 @@ transparent:true,
    <a class="" href="#section-1">
     创建窗口属性
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      实例方法
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-2">
+   <a class="" href="#section-3">
     开发技巧
    </a>
    <ul class="toc-tree visible">
     <li class="toc-h1">
-     <a class="" href="#section-3">
+     <a class="" href="#section-4">
       优雅地显示窗口
      </a>
      <ul class="toc-tree visible">
@@ -397,7 +427,7 @@ transparent:true,
      </ul>
     </li>
     <li class="toc-h1">
-     <a class="" href="#section-4">
+     <a class="" href="#section-5">
       覆盖全屏幕的透明窗口
      </a>
     </li>
@@ -407,8 +437,13 @@ transparent:true,
      </a>
     </li>
     <li class="toc-h1">
-     <a class="" href="#section-5">
+     <a class="" href="#section-6">
       设置窗口鼠标穿透
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      无边框模式下窗口的拖动
      </a>
     </li>
    </ul>
@@ -438,27 +473,27 @@ transparent:true,
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

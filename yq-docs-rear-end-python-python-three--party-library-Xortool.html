@@ -166,6 +166,51 @@ xortool 旨在自动化分析 XOR 密文并尝试找到密钥，以便解密数�
 <pre class="literal-block">
 xortool file.bin
 </pre>
+<div class="section" id="section-1">
+<h2>额外补充异或说明</h2>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/qq_27158477/article/details/122495307#:~:text=第一次异或运算%20a%3D%20a%5Eb%20%3D%20x%5Ey，b还等于y%20第二次异或运算%20b%3D%20a%5Eb,%3D%20y%5E0%20%3D%20y，此时a的值变为y%20至此完成了交换过程%E3%80%82%20当然使用该方法进行变量交换时需要注意一点，%20a、b对应的内存区域一定不可以是同一块，因为如果是一块区域异或操作会把这块内存的数值改成0%20%E3%80%82">为什么三次异或可以交换两个数？一文教你明白【异或】操作</a></p>
+<p>异或其实就是没有进位的二进制加法</p>
+<p>如果a、b两个值不相同，则异或结果为1。
+如果a、b两个值相同，异或结果为0。这个运算属于二进制中的运算规则。</p>
+<p>最重要的一点是可以把异或操作认为是不带进位的二进制加法。</p>
+<p>例如:</p>
+<pre class="literal-block">
+      0 0 1 0 1 1 0 0
+
+^     0 1 0 0 0 1 1 1
+
+---------------------------
+
+＝    0 1 1 0 1 0 1 1
+</pre>
+<p>可以看出来:</p>
+<pre class="literal-block">
+0⊕0=0，1⊕0=1，0⊕1=1，1⊕1=0     （异或运算的规则）
+</pre>
+<p>因为:</p>
+<pre class="literal-block">
+0+0=0  1+0=1  0+1=1  1+1=2
+</pre>
+<p>当我们只保留当前位，忽略掉进位，结果就为异或运算的结果。所以说异或运算实际上就是忽略进位的加法运算，因此满足加法的结合律和交换律。</p>
+<p>这样我们就很轻易得出以下结论：</p>
+<ol class="arabic simple">
+<li>归零律: <tt class="docutils literal">a⊕a=0</tt> （每一位相加，忽略进位的结果肯定为0）</li>
+<li>恒等律: <tt class="docutils literal">a⊕0=a</tt>  （每一位和0相加还是它本身）</li>
+<li>交换律:  <tt class="docutils literal">a⊕b=b⊕a</tt></li>
+<li>结合律: <tt class="docutils literal"><span class="pre">a⊕b⊕c=（a⊕b）⊕c=a⊕（b⊕c）</span></tt></li>
+<li>自反: <tt class="docutils literal"><span class="pre">a⊕b⊕b=a⊕（b⊕b）=a⊕0=a</span></tt> （由上面推导得出）</li>
+</ol>
+<div class="section" id="section-2">
+<h3>如何不使用第三个变量交换两个数的值？</h3>
+<p>答案是:</p>
+<pre class="literal-block">
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+</pre>
+<p>还有就是使用中位数</p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -182,6 +227,34 @@ xortool file.bin
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    额外补充异或说明
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      如何不使用第三个变量交换两个数的值？
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -199,27 +272,27 @@ xortool file.bin
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

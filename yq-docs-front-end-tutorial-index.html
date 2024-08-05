@@ -158,6 +158,8 @@
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-tutorial-front-div-move-resize.html">div支持拖动</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-tutorial-front-dom-event.html">dom事件</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-tutorial-local-file-to-blob-object.html">本地文件转换为Blob对象</a>
+<a class="sphinx-toc-tree" href="/yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a>
+<a class="sphinx-toc-tree" href="/yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a>
 </div><div class="section" id="section-2">
 <h2>依赖注入框架</h2>
 <p>详见: <a class="reference external" href="/yq-docs-front-end-node-Three--party-library-inversify.html">inversify</a></p>
@@ -218,6 +220,24 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 </blockquote>
 </div>
 </div>
+<div class="section" id="nodejs">
+<h2>nodejs获取当前时间</h2>
+<p>参考: <a class="reference external" href="https://www.delftstack.com/zh/howto/node.js/formatting-dates-in-nodejs/">在 NodeJS 中格式化日期</a></p>
+<div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">getCurrentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">d_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">d_t</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">d_t</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">d_t</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">d_t</span><span class="p">.</span><span class="nx">getHours</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">minute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">d_t</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">seconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">d_t</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// prints date &amp; time in YYYY-MM-DD HH:MM:SS format</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">day</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">minute</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">seconds</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -264,6 +284,11 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
     </li>
    </ul>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#nodejs">
+    nodejs获取当前时间
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -289,27 +314,27 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

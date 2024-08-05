@@ -157,6 +157,33 @@ yarn<span class="w"> </span>add<span class="w"> </span>@types/mocha<span class="
 <!-- testEnvironment: 'jsdom', -->
 <!-- }; -->
 <p>注意测试文件命名一定为 <tt class="docutils literal">xxx.test.ts</tt></p>
+<div class="section" id="section-1">
+<h2>可能遇到的问题</h2>
+<div class="section" id="jest-cannot-find-name-describe">
+<h3>不识别jest语法/报错Cannot find name describe</h3>
+<p>详细输出:</p>
+<pre class="literal-block">
+Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev &#64;types/jest` or `npm i --save-dev &#64;types/mocha`. ts(2582)
+Cannot find name describe. Do you need to install type definitions for a test runner? Try `npm i --save-dev &#64;types/jest` or `npm i --save-dev &#64;types/mocha`. ts(2582)
+</pre>
+<p>解决, 先安装依赖包</p>
+<div class="highlight"><pre><span></span><span class="c1"># 貌似选一种就行</span>
+yarn<span class="w"> </span>add<span class="w"> </span>@types/jest<span class="w"> </span>jest<span class="w"> </span>--dev
+yarn<span class="w"> </span>add<span class="w"> </span>@types/mocha<span class="w"> </span>mocha<span class="w"> </span>--dev
+</pre></div>
+<p>如果是ts, 需要在 <cite>tsconfig.json</cite> 中配置</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="c1">// ... other types</span>
+<span class="w">      </span><span class="s2">&quot;jest&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="c1">// ..other settings</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -173,6 +200,34 @@ yarn<span class="w"> </span>add<span class="w"> </span>@types/mocha<span class="
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    可能遇到的问题
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#jest-cannot-find-name-describe">
+      不识别jest语法/报错Cannot find name describe
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -190,27 +245,27 @@ yarn<span class="w"> </span>add<span class="w"> </span>@types/mocha<span class="
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

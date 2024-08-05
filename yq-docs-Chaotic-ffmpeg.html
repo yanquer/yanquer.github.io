@@ -234,7 +234,25 @@
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd><span class="option">-y</span></kbd></td>
-<td>强制覆盖输出文件</td></tr>
+<td>若输出文件已存在, 直接覆盖</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f<var>s</var></span></kbd></td>
+<td>超过指定的文件大小时则结束转换</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s<var>s</var></span></kbd></td>
+<td>从指定时间开始转换</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t</span></kbd></td>
+<td>从 <cite>-ss</cite> 开始转换的时间</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t<var>itle</var></span></kbd></td>
+<td>设置标题。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t<var>imestamp</var></span></kbd></td>
+<td>设置时间戳。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v<var>sync</var></span></kbd></td>
+<td>增减Frame使影音同步。</td></tr>
 </tbody>
 </table>
 <dl class="docutils">
@@ -261,41 +279,16 @@ ffmpeg -f dshow -i audio=&quot;Analogue 1/2 (Audient iD4)&quot; -f dshow -i vide
 </dd>
 <dt>-framerate 帧率</dt>
 <dd>指定帧率, 比如 <tt class="docutils literal"><span class="pre">-framerate</span> 60</tt></dd>
-<dt>-r 帧率</dt>
-<dd><p class="first">指定帧率, 比如 <tt class="docutils literal"><span class="pre">-r</span> 60</tt>.</p>
-<p class="last">ffmpeg官方文档说 <cite>-r</cite> 与 <cite>-framerate</cite> 作用相同，但实际测试时发现不同。 <cite>-framerate</cite> 用于限制输入，而 <cite>-r</cite> 用于限制输出。</p>
-</dd>
 <dt>-c:v 视频编码器</dt>
 <dd>指定视频编码器,  如 <tt class="docutils literal"><span class="pre">-c:v</span> libx264</tt>, 一般可不填使用默认配置</dd>
 <dt>-c:a 音频编码</dt>
 <dd>指定音频编码器,  如 <tt class="docutils literal"><span class="pre">-c:a</span> aac</tt>, 一般可不填使用默认配置</dd>
-<dt>-a 音频</dt>
-<dd><p class="first">无音频使用 <cite>-an</cite></p>
-<dl class="last docutils">
-<dt>-acodec 音频编码器</dt>
-<dd>音频编码器, 比如 <tt class="docutils literal"><span class="pre">-acodec</span> copy</tt> 指明只拷贝，不做编解码</dd>
-</dl>
-</dd>
-<dt>-v 视频</dt>
-<dd><p class="first">比如 <tt class="docutils literal"><span class="pre">-vn</span></tt> 就是无视频的意思</p>
-<dl class="last docutils">
-<dt>-vcodec 视频编码器</dt>
-<dd>视频编码器, 比如 <tt class="docutils literal">vcodec copy</tt> 指明只拷贝，不做编解码</dd>
-</dl>
-</dd>
 <dt>-pix_fmt 像素格式</dt>
 <dd>指定像素格式, 比如 <tt class="docutils literal"><span class="pre">-pix_fmt</span> yuv420p</tt></dd>
 <dt>-preset 编码质量</dt>
 <dd>指定编码质量, 比如 <tt class="docutils literal"><span class="pre">-preset</span> 0</tt></dd>
 <dt>-crf 码率</dt>
 <dd>指定码率, 比如 <tt class="docutils literal"><span class="pre">-crf</span> 19</tt></dd>
-<dt>-b:a 音频码率</dt>
-<dd>指定音频码率, 比如 <tt class="docutils literal"><span class="pre">-b:a</span> 192k</tt></dd>
-<dt>-b:v 视频码率</dt>
-<dd>指定视频码率</dd>
-<dt>-s 视频分辨率</dt>
-<dd>指定视频分辨率, 比如 <tt class="docutils literal"><span class="pre">-s</span> 1280x720</tt>,
-用 <cite>scale</cite> 方法，设置视频分辨率为 720p。</dd>
 <dt>-qp 编码模式</dt>
 <dd>指定编码模式, 比如 <tt class="docutils literal"><span class="pre">-qp</span> 0</tt> 是x264无损编码模式</dd>
 <dt>-preset ultrafast</dt>
@@ -311,10 +304,120 @@ ffmpeg -f dshow -i audio=&quot;Analogue 1/2 (Audient iD4)&quot; -f dshow -i vide
 
 # 与 -filter:v crop=948:460:886:75 效果一致 ?
 </pre>
-</div>
 <div class="section" id="section-7">
-<h2>使用技巧</h2>
+<h3>视频参数</h3>
+<dl class="docutils">
+<dt>-b:v 视频码率</dt>
+<dd><p class="first">设置视频流量(码率)，默认为200Kbit/秒</p>
+<p>根据使用的ffmpeg版本，须注意单位会有 <cite>kbits/sec</cite> 与 <cite>bits/sec</cite> 的不同。（可用 <cite>ffmpeg -h</cite> 显示说明来确认单位。）.</p>
+<p>例如，</p>
+<ul class="last simple">
+<li>单位为 <cite>bits/sec</cite> 的情况时，欲指定流量 <cite>64kbps</cite> 时 需输入 <cite>-b:a 64k</cite> ；</li>
+<li>单位为 <cite>kbits/sec</cite> 的情况时则需输入 <cite>-b:a 64</cite> 。</li>
+</ul>
+</dd>
+<dt>-r 帧率</dt>
+<dd><p class="first">设置帧率值，默认为25, 比如 <tt class="docutils literal"><span class="pre">-r</span> 60</tt>.</p>
+<p class="last">ffmpeg官方文档说 <cite>-r</cite> 与 <cite>-framerate</cite> 作用相同，但实际测试时发现不同。 <cite>-framerate</cite> 用于限制输入，而 <cite>-r</cite> 用于限制输出。</p>
+</dd>
+<dt>-s 视频分辨率</dt>
+<dd>指定视频分辨率, 即画面的宽与高。比如 <tt class="docutils literal"><span class="pre">-s</span> 1280x720</tt>,</dd>
+</dl>
+<!-- 用 `scale` 方法，设置视频分辨率为 720p。 -->
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a<var>spect</var></span></kbd></td>
+<td>设置画面的比例。</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>-v 视频</dt>
+<dd><p class="first">比如 <tt class="docutils literal"><span class="pre">-vn</span></tt> 就是无视频的意思</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-v<var>n</var></span></kbd></td>
+<td>不处理视频，于仅针对声音做处理时使用。</td></tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>-vcodec 视频编码器</dt>
+<dd><p class="first">视频编码器, 比如 <tt class="docutils literal">vcodec copy</tt> 指明只拷贝，不做编解码</p>
+<!-- -vcodec( -c:v ) 设置视频视频编解码器 -->
+<p>未设置时则使用与输入文件相同之编解码器。</p>
+<p class="last"><cite>-acodec</cite> 及 <cite>-vcodec</cite> 所指定的编解码器名称，
+会根据使用的ffmpeg版本而有所不同。
+例如使用AAC编解码器时，会有输入 <cite>aac</cite> 与 <cite>libfaac</cite> 的情况。
+此外，编解码器有分为仅供解码时使用与仅供编码时使用，因此一定要利用 <tt class="docutils literal">ffmpeg <span class="pre">-formats</span></tt> 确认输入的编解码器是否能运作。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 <div class="section" id="section-8">
+<h3>声音参数</h3>
+<dl class="docutils">
+<dt>-b:a 音频码率</dt>
+<dd><p class="first">指定音频码率,  设置每Channel（最近的SVN版为所有Channel的总合）的流量.
+比如 <tt class="docutils literal"><span class="pre">-b:a</span> 192k</tt></p>
+<p class="last">根据使用的ffmpeg版本，须注意单位会有 <cite>kbits/sec</cite> 与 <cite>bits/sec</cite> 的不同。（可用 <cite>ffmpeg -h</cite> 显示说明来确认单位。）</p>
+</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a<var>r</var></span></kbd></td>
+<td>设置采样率。</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>-a 音频</dt>
+<dd><p class="first">无音频使用 <cite>-an</cite></p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a<var>c</var></span></kbd></td>
+<td>设置声音的Channel数。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-a<var>n</var></span></kbd></td>
+<td>无音频, 不处理声音，于仅针对视频做处理时使用</td></tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>-acodec 音频编码器</dt>
+<dd><p class="first">音频编码器, 比如 <tt class="docutils literal"><span class="pre">-acodec</span> copy</tt> 指明只拷贝，不做编解码</p>
+<p><cite>-acodec ( -c:a )</cite> ——设置声音编解码器，未设置时与视频相同，使用与输入文件相同之编解码器。</p>
+<p class="last"><cite>-acodec</cite> 及 <cite>-vcodec</cite> 所指定的编解码器名称，
+会根据使用的ffmpeg版本而有所不同。
+例如使用AAC编解码器时，会有输入 <cite>aac</cite> 与 <cite>libfaac</cite> 的情况。
+此外，编解码器有分为仅供解码时使用与仅供编码时使用，因此一定要利用 <tt class="docutils literal">ffmpeg <span class="pre">-formats</span></tt> 确认输入的编解码器是否能运作。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-v<var>ol</var></span></kbd></td>
+<td>设置音量大小，256为标准音量。（要设置成两倍音量时则输入512，依此类推。）</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="section-9">
+<h2>使用技巧</h2>
+<div class="section" id="section-10">
 <h3>屏幕录制</h3>
 <p>参考: <a class="reference external" href="https://www.jianshu.com/p/8a242e60f464">在macOS下使用ffmpeg录屏</a></p>
 <p>注意需要先选取设备, 使用以下指令查看支持设备</p>
@@ -330,7 +433,7 @@ ffmpeg -f dshow -i audio=&quot;Analogue 1/2 (Audient iD4)&quot; -f dshow -i vide
 ffmpeg<span class="w"> </span>-y<span class="w"> </span>-f<span class="w"> </span>avfoundation<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>:0<span class="w"> </span>-framerate<span class="w"> </span><span class="m">60</span><span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-r<span class="w"> </span><span class="m">60</span><span class="w"> </span>-pix_fmt<span class="w"> </span>yuv420p<span class="w"> </span>-preset<span class="w"> </span><span class="m">0</span><span class="w"> </span>-crf<span class="w"> </span><span class="m">19</span><span class="w"> </span>-c:a<span class="w"> </span>aac<span class="w"> </span>-b:a<span class="w"> </span>192k<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Screen Record </span><span class="k">$(</span>date<span class="w"> </span><span class="s2">&quot;+%Y-%m-%d %H-%M-%S&quot;</span><span class="k">)</span><span class="s2">.mp4&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="section-9">
+<div class="section" id="section-11">
 <h3>图片/视频裁剪</h3>
 <p>参考: <a class="reference external" href="https://cloud.tencent.com/developer/article/2417219">【FFmpeg】Filter 过滤器 ② ( 裁剪过滤器 Crop Filter | 裁剪过滤器语法 | 裁剪过滤器内置变量 | 裁剪过滤器常用用法 )</a></p>
 <p>使用 <cite>filter:crop</cite>,</p>
@@ -365,8 +468,95 @@ crop=ow[:oh[:x[:y[:keep_aspect]]]]
 <p class="last">比如手动计算一下实际应该使用的物理分辨率, 或者看看能不能让 <cite>ffmpeg</cite> 使用 <cite>css分辨率</cite></p>
 </div>
 </div>
+<div class="section" id="section-12">
+<h3>将图片转换为圆角</h3>
+<p>MacOS下将图片转换为圆角</p>
+<div class="highlight"><pre><span></span><span class="c1"># ffmpeg -i input_image.png -vf &quot;drawbox=x=(w-tw)/2:y=(h-th)/2:tw=min(tw,th):th=min(tw,th):t=max(1,(tw+th)/200):c=none,format=rgba,blend=all_mode=multiply:all_opacity=0.5&quot; output_image.png</span>
+<span class="c1"># ffmpeg -i input_image.png -vf &quot;scale=200:200,crop=200:200:0:0,format=rgba,drawbox=x=0:y=0:w=200:h=200:color=black@0.5,vida45=200:200:100:100&quot; output_image.png</span>
+
+<span class="c1"># ffmpeg -i sf.png -vf &quot;scale=min(iw,ih):min(iw,ih),crop=min(iw,ih):min(iw,ih):((iw-min(iw,ih))/2):((ih-min(iw,ih))/2),format=rgba,DrawBox=enable=&#39;between(pmin_get_w,1,99999)&#39;:color=black@0.5:t=max(1,(pmin_get_w+pmin_get_h)/200):x=(w-tw)/2:y=(h-th)/2:w=min(tw,th):h=min(tw,th),vida45=min(tw,th):min(tw,th):(min(tw,th)/2):(min(tw,th)/2)&quot; sfr.png</span>
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>sf.png<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;scale=min(iw,ih):min(iw,ih),crop=min(iw,ih):min(iw,ih):((iw-min(iw,ih))/2):((ih-min(iw,ih))/2),format=rgba,drawbox=x=(w-min(iw,ih))/2:y=(h-min(iw,ih))/2:w=min(iw,ih):h=min(iw,ih):color=black@0.5,vida45=min(iw,ih):min(iw,ih):min(iw,ih)/2:min(iw,ih)/2&quot;</span><span class="w"> </span>sfr.png
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>sf.png<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;scale=min(iw,ih):min(iw,ih),crop=min(iw,ih):min(iw,ih):max((iw-min(iw,ih))/2,0):max((ih-min(iw,ih))/2,0),format=rgba,drawbox=x=(w-min(iw,ih))/2:y=(h-min(iw,ih))/2:w=min(iw,ih):h=min(iw,ih):color=black@0.5,vida45=min(iw,ih):min(iw,ih):min(iw,ih)/2:min(iw,ih)/2&quot;</span><span class="w"> </span>sfr.png
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>sf.png<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;crop=iw:ih,crop=iw-100:ih-100,pad=iw:ih:50:50:white,roundcrop=iw:ih:50&quot;</span><span class="w"> </span>sfr.png
+
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>sf.png<span class="w"> </span>-i<span class="w"> </span>second.mp4<span class="w"> </span>-filter_complex<span class="w"> </span><span class="nv">xfade</span><span class="o">=</span><span class="nv">transition</span><span class="o">=</span>circlecrop<span class="w"> </span>sfr.png
+</pre></div>
+<p>这个命令的主要步骤如下:</p>
+<pre class="literal-block">
+scale=min(iw,ih):min(iw,ih):
+  将图片缩放到宽高最小值相等的正方形。
+crop=min(iw,ih):min(iw,ih):((iw-min(iw,ih))/2):((ih-min(iw,ih))/2):
+  将图片居中裁剪为正方形。
+format=rgba:
+  输出格式设置为 RGBA 以支持透明通道。
+DrawBox=enable='between(pmin_get_w,1,99999)':color=black&#64;0.5:t=max(1,(pmin_get_w+pmin_get_h)/200):x=(w-tw)/2:y=(h-th)/2:w=min(tw,th):h=min(tw,th):
+  绘制一个黑色半透明的正方形边框,大小与裁剪后的图片大小相同。
+vida45=min(tw,th):min(tw,th):(min(tw,th)/2):(min(tw,th)/2):
+  使用 vida45 滤镜在边框上创建圆角效果。
+</pre>
+<!-- 解释一下各个参数的含义: -->
+<!-- -i input_image.png 指定输入图片 -->
+<!-- -vf 指定视频过滤器 -->
+<!-- drawbox 绘制一个方框,用于裁剪图片 -->
+<!-- x=(w-tw)/2:y=(h-th)/2 计算方框的位置,使其居中 -->
+<!-- tw=min(tw,th):th=min(tw,th) 计算方框的大小,取图片宽高的最小值 -->
+<!-- t=max(1,(tw+th)/200) 计算方框的边框宽度 -->
+<!-- c=none 设置方框为透明 -->
+<!-- format=rgba 指定输出格式为 RGBA -->
+<!-- blend=all_mode=multiply:all_opacity=0.5 设置透明度为 50% -->
 </div>
-<div class="section" id="section-10">
+<div class="section" id="mp4gif">
+<h3>将mp4转换为gif</h3>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/xindoo/article/details/127603896">用ffmpeg将视频转成gif动图</a></p>
+<p>指令</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>xxx.mp4<span class="w"> </span>xxx.gif
+
+<span class="c1"># 指定从 73.5 开始截取 12 秒生成gif</span>
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-ss<span class="w"> </span><span class="m">73</span>.5<span class="w"> </span>-t<span class="w"> </span><span class="m">12</span><span class="w"> </span>out.gif
+<span class="c1"># 支持以时间格式:   时:分:秒.毫秒</span>
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:01:13.500<span class="w"> </span>-t<span class="w"> </span><span class="m">12</span><span class="w"> </span>out.gif
+<span class="c1"># 加 -r 15 指定帧率为15, 注意 -r 一定要在 -i 后面</span>
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:01:13.500<span class="w"> </span>-t<span class="w"> </span><span class="m">12</span><span class="w"> </span>-r<span class="w"> </span><span class="m">15</span><span class="w"> </span>out.gif
+<span class="c1"># 加 -s 480x272 指定分辨率为 480x272</span>
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:01:13.500<span class="w"> </span>-t<span class="w"> </span><span class="m">12</span><span class="w"> </span>-r<span class="w"> </span><span class="m">15</span><span class="w"> </span>-s<span class="w"> </span>480x272<span class="w"> </span>out.gif
+<span class="c1"># 或者使用 -vf &quot;scale=宽:高&quot; 自动计算高度, 适用于不知道原始分辨率情况</span>
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:01:13.500<span class="w"> </span>-t<span class="w"> </span><span class="m">12</span><span class="w"> </span>-r<span class="w"> </span><span class="m">15</span><span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;scale=480:-1&quot;</span><span class="w"> </span>out.gif
+
+
+<span class="c1"># 默认转化是中等质量模式，若要转化出高质量的 gif，可以修改比特率</span>
+ffmpeg<span class="w"> </span>-i<span class="w"> </span>small.mp4<span class="w"> </span>-b<span class="w"> </span>2048k<span class="w"> </span>small.gif
+</pre></div>
+</div>
+<div class="section" id="gif">
+<h3>将 GIF 转化为其他格式</h3>
+<p>参考: <a class="reference external" href="https://www.jianshu.com/p/9af00bfe21b3">使用ffmpeg转换视频为gif</a></p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-f<span class="w"> </span>gif<span class="w"> </span>-i<span class="w"> </span>animation.gif<span class="w"> </span>animation.mp4
+</pre></div>
+<p>也可以将 gif 转为其他视频格式</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-f<span class="w"> </span>gif<span class="w"> </span>-i<span class="w"> </span>animation.gif<span class="w"> </span>animation.mpeg
+ffmpeg<span class="w"> </span>-f<span class="w"> </span>gif<span class="w"> </span>-i<span class="w"> </span>animation.gif<span class="w"> </span>animation.webm
+</pre></div>
+</div>
+<div class="section" id="section-13">
+<h3>倍速播放</h3>
+<p>加倍速播放视频</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mov<span class="w"> </span>-filter:v<span class="w"> </span><span class="s2">&quot;setpts=0.5*PTS&quot;</span><span class="w"> </span>output.mov
+</pre></div>
+<p>定义帧率 16fps:</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mov<span class="w"> </span>-r<span class="w"> </span><span class="m">16</span><span class="w"> </span>-filter:v<span class="w"> </span><span class="s2">&quot;setpts=0.125*PTS&quot;</span><span class="w"> </span>-an<span class="w"> </span>output.mov
+</pre></div>
+<p>慢倍速播放视频</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mov<span class="w"> </span>-filter:v<span class="w"> </span><span class="s2">&quot;setpts=2.0*PTS&quot;</span><span class="w"> </span>output.mov
+</pre></div>
+</div>
+<div class="section" id="section-14">
+<h3>视频提取帧</h3>
+<p>将视频提取10帧</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>index.mp4<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>%03d.jpg<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-15">
 <h2>常见报错</h2>
 </div>
 <div class="section" id="error-reinitializing-filters">
@@ -465,26 +655,63 @@ crop=ow[:oh[:x[:y[:keep_aspect]]]]
    <a class="" href="#section-6">
     命令行使用
    </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#section-7">
-    使用技巧
-   </a>
    <ul class="toc-tree visible">
     <li class="toc-h1">
-     <a class="" href="#section-8">
-      屏幕录制
+     <a class="" href="#section-7">
+      视频参数
      </a>
     </li>
     <li class="toc-h1">
-     <a class="" href="#section-9">
-      图片/视频裁剪
+     <a class="" href="#section-8">
+      声音参数
      </a>
     </li>
    </ul>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-10">
+   <a class="" href="#section-9">
+    使用技巧
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-10">
+      屏幕录制
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-11">
+      图片/视频裁剪
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-12">
+      将图片转换为圆角
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#mp4gif">
+      将mp4转换为gif
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#gif">
+      将 GIF 转化为其他格式
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-13">
+      倍速播放
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-14">
+      视频提取帧
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-15">
     常见报错
    </a>
   </li>
@@ -518,27 +745,27 @@ crop=ow[:oh[:x[:y[:keep_aspect]]]]
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

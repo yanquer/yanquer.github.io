@@ -156,6 +156,16 @@
 </div>
 <p><strong>&amp;是指在后台运行，但当用户推出(挂起)的时候，命令自动也跟着退出</strong></p>
 <p>那么，我们可以巧妙的吧他们结合起来用就是 <tt class="docutils literal">nohup COMMAND &amp;</tt> 这样就能使命令永久的在后台执行</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>除了使用 <tt class="docutils literal">nohup COMMAND &amp;</tt> 还可以将命令放到bash脚本使用bash启动,
+也可以做到忽略终端断开时候的退出信号(推测是因为bash启动时, 作为非前台进程?)</p>
+<p>此时,</p>
+<ul class="last simple">
+<li>未断开终端时, 此脚本运行位置为当前终端</li>
+<li>断开终端时, 运行的tty变成 <tt class="docutils literal">?</tt> , 没有关联的终端设备</li>
+</ul>
+</div>
 
 								</article>
 						</div>
@@ -189,27 +199,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>

@@ -145,7 +145,16 @@
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<p>转换图片格式，支持JPG, BMP, PCX, GIF, PNG, TIFF, XPM和XWD等类型</p>
+									<p>软件包: ImageMagick</p>
+<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>github地址: <a class="reference external" href="https://github.com/ImageMagick/ImageMagick">https://github.com/ImageMagick/ImageMagick</a></li>
+<li>官网: <a class="reference external" href="https://imagemagick.org/">https://imagemagick.org/</a></li>
+</ul>
+</dd>
+</dl>
+<p>转换图片格式，支持JPG, BMP, PCX, GIF, PNG, TIFF, XPM和XWD等类型</p>
 <p>mac安装:</p>
 <pre class="literal-block">
 brew install imagemagick
@@ -202,6 +211,97 @@ convert 1.png -fill white -pointsize 13 -draw “text 10,15 ‘lifesinger 2006�
 </tr>
 </tbody>
 </table>
+<div class="section" id="section-1">
+<h2>参数选项</h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-c<var>hannel</var></span></kbd></td>
+<td>选择需要编辑的通道，例如 A 代表 Alpha 通道，G 代表 Green 通道，B 代表 Blue 通道，K 代表 Key 通道。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b<var>lur</var></span></kbd></td>
+<td>模糊处理各个通道，从而实现圆角图片的模糊效果。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-c<var>ompose</var></span>, <span class="option">-c<var>omposite</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first">合成, 将图片应用到其他图片上</p>
+<p class="last">新版本是 <cite>-alpha Set</cite></p>
+</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-2">
+<h2>将图片裁剪为圆角</h2>
+<!-- convert sf.png -transparent white sft.png -->
+<!-- magick sf.png -transparent white sft.png -->
+<!-- identify -format '%w','%h' sf.png -->
+<!-- magick sf.png -size 406x586 xc:none -draw "roundrectangle 0,0,406,586,20,20" sfr.png -->
+<!-- magick sf.png xc:none -draw "roundrectangle 0,0,406,586,20,20" sfr.png -->
+<!-- magick sf.png  -background transparent -alpha extract -blur 0x10 -threshold -1 -draw "roundrectangle 0,0,406,586,20,20" sfr.png -->
+<dl class="docutils">
+<dt>关键字:</dt>
+<dd><ul class="first last simple">
+<li>圆角图片裁剪</li>
+<li><tt class="docutils literal"><span class="pre">-clip-mask</span> 和 roundedRectangle</tt></li>
+</ul>
+</dd>
+</dl>
+<p>参考: <a class="reference external" href="https://www.coder.work/article/6798899">imagemagick - 使用 ImageMagick 圆角(背景透明或白色)</a></p>
+<p>终于找到了, 脚本如下</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">###</span>
+<span class="c1"># 将图片转换成圆角图片</span>
+<span class="c1">#  会先生成一个 $MASK 临时文件, 作为背景通道图片,</span>
+<span class="c1"># sh convert-to-radiu.sh 406 586 20 sf.png sfr.png</span>
+<span class="c1">###</span>
+
+<span class="nv">W</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">H</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">R</span><span class="o">=</span><span class="nv">$3</span>
+<span class="nv">SRC</span><span class="o">=</span><span class="nv">$4</span>
+<span class="nv">DST</span><span class="o">=</span><span class="nv">$5</span>
+
+<span class="nv">MASK</span><span class="o">=</span>tmpMask.png
+magick<span class="w"> </span>-size<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$W</span><span class="s2">&quot;</span>x<span class="s2">&quot;</span><span class="nv">$H</span><span class="s2">&quot;</span><span class="w"> </span>xc:none<span class="w"> </span>-draw<span class="w"> </span><span class="s2">&quot;roundrectangle 0,0,</span><span class="nv">$W</span><span class="s2">,</span><span class="nv">$H</span><span class="s2">,</span><span class="nv">$R</span><span class="s2">,</span><span class="nv">$R</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">$MASK</span>
+<span class="c1"># magick $SRC -matte $MASK -compose DstIn -composite $DST</span>
+magick<span class="w"> </span><span class="nv">$SRC</span><span class="w"> </span>-alpha<span class="w"> </span>Set<span class="w"> </span><span class="nv">$MASK</span><span class="w"> </span>-compose<span class="w"> </span>DstIn<span class="w"> </span>-composite<span class="w"> </span><span class="nv">$DST</span>
+
+<span class="c1"># 如果想要白底</span>
+<span class="c1"># magick $SRC -matte $MASK -compose DstIn -composite $TMP_PNG</span>
+<span class="c1"># magick $TMP_PNG -background white -flatten $DST</span>
+
+rm<span class="w"> </span><span class="nv">$MASK</span>
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h2>设置透明背景</h2>
+<p>参考: <a class="reference external" href="https://cloud.tencent.com/developer/ask/sof/60981">使用ImageMagick和命令行提示符设置透明背景</a></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">待测试</p>
+</div>
+<p>使得test.png中所有的白色都变成了透明。</p>
+<div class="highlight"><pre><span></span>convert<span class="w"> </span>test.png<span class="w"> </span>-transparent<span class="w"> </span>white<span class="w"> </span>transparent.png
+</pre></div>
+<p>必须删除白色背景从jpg/png图像格式使用ImageMagick</p>
+<div class="highlight"><pre><span></span>convert<span class="w"> </span>input.jpg<span class="w"> </span>input.png
+convert<span class="w"> </span>input.png<span class="w"> </span>-fuzz<span class="w"> </span><span class="m">2</span>%<span class="w"> </span>-transparent<span class="w"> </span>white<span class="w"> </span>output.png
+</pre></div>
+<div class="highlight"><pre><span></span><span class="nv">color</span><span class="o">=</span><span class="k">$(</span><span class="w"> </span>convert<span class="w"> </span>filename.png<span class="w"> </span>-format<span class="w"> </span><span class="s2">&quot;%[pixel:p{0,0}]&quot;</span><span class="w"> </span>info:-<span class="w"> </span><span class="k">)</span>
+convert<span class="w"> </span>filename.png<span class="w"> </span>-alpha<span class="w"> </span>off<span class="w"> </span>-bordercolor<span class="w"> </span><span class="nv">$color</span><span class="w"> </span>-border<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span><span class="se">\(</span><span class="w"> </span>+clone<span class="w"> </span>-fuzz<span class="w"> </span><span class="m">30</span>%<span class="w"> </span>-fill<span class="w"> </span>none<span class="w"> </span>-floodfill<span class="w"> </span>+0+0<span class="w"> </span><span class="nv">$color</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                        </span>-alpha<span class="w"> </span>extract<span class="w"> </span>-geometry<span class="w"> </span><span class="m">200</span>%<span class="w"> </span>-blur<span class="w"> </span>0x0.5<span class="w"> </span><span class="se">\</span>
+<span class="w">                        </span>-morphology<span class="w"> </span>erode<span class="w"> </span>square:1<span class="w"> </span>-geometry<span class="w"> </span><span class="m">50</span>%<span class="w"> </span><span class="se">\)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>-compose<span class="w"> </span>CopyOpacity<span class="w"> </span>-composite<span class="w"> </span>-shave<span class="w"> </span><span class="m">1</span><span class="w"> </span>outputfilename.png
+</pre></div>
+<p>这比之前给出的简单答案要长一点，但它给了更好的结果：(1)由于抗锯齿alpha，质量更好，(2)只有背景被移除，而不是单一的颜色。(“背景”定义为与左上角像素大致相同的颜色，使用图片边缘的填充。)</p>
+<p>其他( <a class="reference external" href="https://blog.csdn.net/zqtsx/article/details/17096033">https://blog.csdn.net/zqtsx/article/details/17096033</a> )</p>
+<div class="highlight"><pre><span></span>convert<span class="w"> </span>cyclops.png<span class="w"> </span>-bordercolor<span class="w"> </span>white<span class="w"> </span>-border<span class="w"> </span>1x1<span class="w"> </span>-matte<span class="w"> </span>-fill<span class="w"> </span>none<span class="w"> </span>-fuzz<span class="w"> </span><span class="m">20</span>%<span class="w">  </span>-draw<span class="w"> </span><span class="s1">&#39;matte 0,0 floodfill&#39;</span><span class="w"> </span>-shave<span class="w"> </span>1x1<span class="w"> </span>cyclops_flood_3.png
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -218,6 +318,37 @@ convert 1.png -fill white -pointsize 13 -draw “text 10,15 ‘lifesinger 2006�
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    参数选项
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    将图片裁剪为圆角
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    设置透明背景
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -235,27 +366,27 @@ convert 1.png -fill white -pointsize 13 -draw “text 10,15 ‘lifesinger 2006�
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>22</strong></span>
-											<h3><a href="yq-docs-front-end-frame-jest-index.html">jest</a></h3>
-											<p><p class="first last">前端测试框架</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-Package.json-configuration-instructions.html">package.json配置说明</a></h3>
+											<p><p class="first last">package.json配置说明</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@browserless/screencast.html">&#64;browserless/screencast</a></h3>
-											<p><p class="first last">&#64;browserless/screencast</p>
+											<span class="date"> 7 <strong>30</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo.html">npm包增加私有git库</a></h3>
+											<p><p class="first last">npm包增加私有git库</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@ffmpeg-installer/ffmpeg.html">&#64;ffmpeg-installer/ffmpeg</a></h3>
-											<p><p class="first last">&#64;ffmpeg-installer/ffmpeg</p>
+											<span class="date"> 7 <strong>29</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-calculation-of-values.html">值的计算方式(函数)</a></h3>
+											<p><p class="first last">值的计算方式(函数)</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 7 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-ffmpeg-static.html">ffmpeg-static</a></h3>
-											<p><p class="first last">ffmpeg-static</p>
+											<span class="date"> 7 <strong>24</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-chalk.html">chalk</a></h3>
+											<p><p class="first last">chalk</p>
 </p>
 										</li>
 									</ul>
