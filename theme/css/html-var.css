@@ -172,6 +172,64 @@ html{
     background: transparent;
    }
 
+/* div */
+div::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+}
+   div::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+   }
+   div::-webkit-scrollbar-thumb {
+    background: #525252;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+   }
+   div::-webkit-scrollbar-thumb:hover {
+    background: #4c4c4c;
+   }
+   div::-webkit-scrollbar-thumb:active {
+    background: #404040;
+   }
+   div::-webkit-scrollbar-track {
+    background: #272727;
+    border: 0px dashed #ffffff;
+    border-radius: 22px;
+   }
+   div::-webkit-scrollbar-corner {
+    background: transparent;
+   }
+
+/* tt */
+tt::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+   tt::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+   }
+   tt::-webkit-scrollbar-thumb {
+    background: #525252;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+   }
+   tt::-webkit-scrollbar-thumb:hover {
+    background: #4c4c4c;
+   }
+   tt::-webkit-scrollbar-thumb:active {
+    background: #404040;
+   }
+   tt::-webkit-scrollbar-track {
+    background: #272727;
+    border: 0px dashed #ffffff;
+    border-radius: 22px;
+   }
+   tt::-webkit-scrollbar-corner {
+    background: transparent;
+   }
+
 /* tab标签上的网站标题为圆角 */
 /* <link rel="shortcut icon" type="text/css" href="{{ SITEURL }}/favicon-radiu.ico" /> */
 /* link[rel="shortcut icon"] {
