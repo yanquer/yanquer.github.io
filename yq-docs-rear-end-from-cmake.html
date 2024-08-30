@@ -270,7 +270,7 @@ include_directories(${PROJECT_SOURCE_DIR}/lib)
 <pre class="literal-block">
 find_path(LUA_INCLUDE_PATH lua.h ${LUA_INCLUDE_FIND_PATH})
 if(NOT LUA_INCLUDE_PATH)
-        message(SEND_ERROR &quot;Header file lua.h not found&quot;)
+  message(SEND_ERROR &quot;Header file lua.h not found&quot;)
 endif()
 </pre>
 </div>
@@ -309,15 +309,36 @@ file(GLOB ALL_H_FILE RELATIVE${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}
 <h2>常用变量</h2>
 <p>常用变量:</p>
 <pre class="literal-block">
-UNIX    如果为真，表示为UNIX-like的系统，包括AppleOSX和CygWin
-WIN32   如果为真，表示为 Windows 系统，包括 CygWin
-APPLE   如果为真，表示为 Apple 系统
-CMAKE_SIZEOF_VOID_P                     表示void*的大小（例如为4或者8），可以使用其来判断当前构建为32位还是64位
-CMAKE_CURRENT_LIST_DIR                  表示正在处理的CMakeLists.txt文件的所在的目录的绝对路径(2.8.3以及以后版本才支持)
-CMAKE_ARCHIVE_OUTPUT_DIRECTORY  用于设置ARCHIVE目标的输出路径
-CMAKE_LIBRARY_OUTPUT_DIRECTORY  用于设置LIBRARY目标的输出路径
-CMAKE_RUNTIME_OUTPUT_DIRECTORY  用于设置RUNTIME目标的输出路径
+UNIX  如果为真，表示为UNIX-like的系统，包括AppleOSX和CygWin
+WIN32         如果为真，表示为 Windows 系统，包括 CygWin
+APPLE         如果为真，表示为 Apple 系统
+CMAKE_SIZEOF_VOID_P                   表示void*的大小（例如为4或者8），可以使用其来判断当前构建为32位还是64位
+CMAKE_CURRENT_LIST_DIR                        表示正在处理的CMakeLists.txt文件的所在的目录的绝对路径(2.8.3以及以后版本才支持)
+CMAKE_ARCHIVE_OUTPUT_DIRECTORY        用于设置ARCHIVE目标的输出路径
+CMAKE_LIBRARY_OUTPUT_DIRECTORY        用于设置LIBRARY目标的输出路径
+CMAKE_RUNTIME_OUTPUT_DIRECTORY        用于设置RUNTIME目标的输出路径
 </pre>
+</div>
+<div class="section" id="section-4">
+<h2>编译指令</h2>
+<dl class="docutils">
+<dt>-B, --build-dir &lt;build_directory&gt; &lt;source_directory&gt;</dt>
+<dd>生成 cmake 需要的环境文件</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--build <var>&lt;build_directory&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>编译 cmake 项目</td></tr>
+</tbody>
+</table>
+<p>比如我有一个 cmake 项目, 需要先生成配置文件(此处指定生成位置为 <cite>build</cite>, 默认在当前文件夹), 然后再编译</p>
+<div class="highlight"><pre><span></span>cmake<span class="w"> </span>-B<span class="w"> </span>build
+cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>app_launcher<span class="w"> </span>-j14
+</pre></div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -433,6 +454,11 @@ CMAKE_RUNTIME_OUTPUT_DIRECTORY  用于设置RUNTIME目标的输出路径
     常用变量
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    编译指令
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -458,27 +484,27 @@ CMAKE_RUNTIME_OUTPUT_DIRECTORY  用于设置RUNTIME目标的输出路径
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

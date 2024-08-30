@@ -186,6 +186,64 @@ echo 3
 虽然 ERR 不是一个实际的信号，但它可以被 trap 命令捕获和处理.
 </pre>
 </div>
+<div class="section" id="shell">
+<h2>shell监听信号</h2>
+<div class="highlight"><pre><span></span>log<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$*</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$*</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;echo.txt&quot;</span>
+
+<span class="o">}</span>
+
+handle_signal<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>log<span class="w"> </span>args:<span class="w"> </span><span class="nv">$*</span>
+<span class="w">  </span><span class="nv">signal</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;Received signal: </span><span class="nv">$signal</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nv">$signal</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>INT<span class="o">)</span>
+<span class="w">      </span>log<span class="w"> </span><span class="s2">&quot;SIGINT received&quot;</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span>TERM<span class="o">)</span>
+<span class="w">      </span>log<span class="w"> </span><span class="s2">&quot;SIGTERM received&quot;</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span>KILL<span class="o">)</span>
+<span class="w">      </span>log<span class="w"> </span><span class="s2">&quot;SIGKILL received&quot;</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span>*<span class="o">)</span>
+<span class="w">      </span>log<span class="w"> </span><span class="s2">&quot;Unknown signal </span><span class="nv">$signal</span><span class="s2"> received&quot;</span>
+<span class="w">  </span><span class="k">esac</span>
+
+<span class="w">  </span><span class="c1"># 清理操作</span>
+<span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;Doing cleanup...&quot;</span>
+
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="o">}</span>
+
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;INT&quot;&#39;</span><span class="w"> </span>INT
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;KILL&quot;&#39;</span><span class="w"> </span>KILL
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;TERM&quot;&#39;</span><span class="w"> </span>TERM
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;HUP&quot;&#39;</span><span class="w"> </span>HUP
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;QUIT&quot;&#39;</span><span class="w"> </span>QUIT
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;ILL&quot;&#39;</span><span class="w"> </span>ILL
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;TRAP&quot;&#39;</span><span class="w"> </span>TRAP
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;ABRT&quot;&#39;</span><span class="w"> </span>ABRT
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;BUS&quot;&#39;</span><span class="w"> </span>BUS
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;FPE&quot;&#39;</span><span class="w"> </span>FPE
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;SEGV&quot;&#39;</span><span class="w"> </span>SEGV
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;PIPE&quot;&#39;</span><span class="w"> </span>PIPE
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;ALARM&quot;&#39;</span><span class="w"> </span>ALARM
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;USR1&quot;&#39;</span><span class="w"> </span>USR1
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;USR2&quot;&#39;</span><span class="w"> </span>USR2
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;CHLD&quot;&#39;</span><span class="w"> </span>CHLD
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;CONT&quot;&#39;</span><span class="w"> </span>CONT
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;STOP&quot;&#39;</span><span class="w"> </span>STOP
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;TSTP&quot;&#39;</span><span class="w"> </span>TSTP
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;TTIN&quot;&#39;</span><span class="w"> </span>TTIN
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;TTOU&quot;&#39;</span><span class="w"> </span>TTOU
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;handle_signal &quot;ERR&quot;&#39;</span><span class="w"> </span>ERR
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -215,6 +273,11 @@ echo 3
     与set协作
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#shell">
+    shell监听信号
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -240,27 +303,27 @@ echo 3
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

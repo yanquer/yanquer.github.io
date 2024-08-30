@@ -209,6 +209,15 @@ UninstPage instfiles
 <div class="section" id="section-5">
 <span id="target-1"></span><h2>组件(自定义节/区段)</h2>
 <p><strong>对应某种安装/卸载选项的处理逻辑, 该段代码仅当用户选择相应的选项才被执行. 卸载程序的区段名用&quot;un.&quot;作为前缀.</strong></p>
+<p><em>实际效果为, 安装时GUI界面会显示所有的 `Section` 组件, 可以仅选择其中的某部分安装</em></p>
+<div class="figure">
+<img alt="组件可选择" src="doc-raw/resources/images/2024-08-30-16-06-14.png" style="width: 480px;" />
+</div>
+<p>注意如要使用此功能, 需要导入宏:</p>
+<pre class="literal-block">
+!include &quot;MUI2.nsh&quot;
+!insertmacro MUI_PAGE_COMPONENTS
+</pre>
 <p>有些应用程序允许安装额外的组件, 比如安装的时候, 显示可选的组件, 让用户选择哪些组件可以安装. 使用 <tt class="docutils literal">Section</tt></p>
 <pre class="literal-block">
 Section &quot;Installer Section&quot;
@@ -381,27 +390,27 @@ Call fun_name
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

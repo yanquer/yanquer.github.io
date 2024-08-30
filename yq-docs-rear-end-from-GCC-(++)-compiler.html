@@ -152,20 +152,15 @@
 <p>大致:</p>
 <ul>
 <li><p class="first">GCC:GNU Compiler Collection(GUN 编译器集合)，它可以编译C、C++、JAV、Fortran、Pascal、Object-C等语言。</p>
-<ul>
-<li><p class="first">Compiler 编译程序，gcc/g++/cc 用来编译源代码文件，通常通过 gcc 调用 g++ 或 cc 命令；</p>
-</li>
-<li><p class="first">Assemblers 汇编程序，编译汇编程序，通常通过 gcc 调用 as 命令；</p>
-</li>
-<li><p class="first">Linkers 链接程序，用来链接编译输出的目标文件，生成可执行程序，通常通过 gcc 调用 ld 命令，还有 ar 命令生成链接库；</p>
-<blockquote>
+<ul class="simple">
+<li>Compiler 编译程序，gcc/g++/cc 用来编译源代码文件，通常通过 gcc 调用 g++ 或 cc 命令；</li>
+<li>Assemblers 汇编程序，编译汇编程序，通常通过 gcc 调用 as 命令；</li>
+<li>Linkers 链接程序，用来链接编译输出的目标文件，生成可执行程序，通常通过 gcc 调用 ld 命令，还有 ar 命令生成链接库；</li>
+</ul>
 <p>GCC 编译套件不仅支持 C/C++，支持各种 C/C++ 方言标准，还支持 Go 或 Object-C/C++ 等，并且支持 x86、x86_64、ARM 等多种 CPU 架构。提供 <cite>gcc</cite> 命令相当于一个门户，它本身就是 C 语言编译器，并且通过它可以调用整个编译流程中会使用到的各种命令。它可以识别各种 C/C++ 源文件的扩展名，并将相应参数传给相应的命令，如果是 C++ 源代码，则执行 <cite>g++</cite> 命令。</p>
 <p>另外，<cite>cc</cite> 是 Unix 系统的 C Compiler，一个是古老的 C 编译器命令。Linux 的 cc 一般是一个符号连接，指向 gcc，可以通过 <cite>ls -l /usr/bin/cc</cite> 来查看。</p>
 <p>注意，直接使用 <cite>g++</cite> 编译 C 语言源代码会被当作 C++ 源代码处理。</p>
 <p>例如，编译 C 语言为汇编程序，不生成目标文件和可执行程序，只需要执行命令时使用 <cite>-S</cite>：</p>
-</blockquote>
-</li>
-</ul>
 </li>
 <li><p class="first">gcc是GCC中的GUN C Compiler（C 编译器）</p>
 </li>
@@ -201,6 +196,11 @@
 <td>禁用链接时优化（LTO）
 当使用该选项编译源代码时，编译器将不会进行链接时优化，
 这可能会导致一些性能上的损失，但也可以避免某些链接错误。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m<var>windows</var></span></kbd></td>
+<td><p class="first">windows可用, 用于隐藏默认会启动的控制台.</p>
+<p class="last">跟代码里隐藏的区别是, 代码里隐藏, 还是会有控制台闪烁. 编译时候指定, 就没有这个闪烁了.</p>
+</td></tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -409,27 +409,27 @@ ar -rc res.m *.o
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

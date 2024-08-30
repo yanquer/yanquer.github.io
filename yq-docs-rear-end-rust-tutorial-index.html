@@ -154,6 +154,42 @@
 </ul>
 </dd>
 </dl>
+<div class="section" id="str-string">
+<h2>str 与 String</h2>
+<p>当函数参数列表是 <cite>str</cite> 时, 其实也可以传递 <cite>String</cite> 的参数</p>
+<dl class="docutils">
+<dt>主要区别</dt>
+<dd><dl class="first docutils">
+<dt>内存分配:</dt>
+<dd><ul class="first last simple">
+<li><cite>String</cite> 是一个动态分配的 <cite>Unicode</cite> 字符串类型, 它拥有自己的内存并可以被修改。</li>
+<li><cite>str</cite> 是一个静态分配的字符串切片类型, 它不拥有内存, 而是指向其他字符串的一部分。</li>
+</ul>
+</dd>
+<dt>所有权:</dt>
+<dd><ul class="first last simple">
+<li><cite>String</cite> 是一个拥有所有权的类型,它可以被移动和克隆。</li>
+<li><cite>str</cite> 是一个借用类型,它不拥有任何数据的所有权。</li>
+</ul>
+</dd>
+<dt>长度:</dt>
+<dd><ul class="first last simple">
+<li><cite>String</cite> 的长度可以在运行时动态改变。</li>
+<li><cite>str</cite> 的长度在编译时就确定,无法动态改变。</li>
+</ul>
+</dd>
+<dt>使用场景:</dt>
+<dd><ul class="first last simple">
+<li><cite>String</cite> 通常用于需要动态修改或者接受用户输入的字符串。</li>
+<li><cite>str</cite> 通常用于函数参数、返回值或者其他静态已知长度的字符串。</li>
+</ul>
+</dd>
+</dl>
+<p class="last">总的来说, <cite>String</cite> 提供了更多的灵活性和功能,但需要消耗更多的内存和资源。
+而 <cite>str</cite> 则更加轻量和高效,但只能用于不可变的字符串。在编写 <cite>Rust</cite> 代码时,需要根据具体的需求选择合适的字符串类型。</p>
+</dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -170,6 +206,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#str-string">
+    str 与 String
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -187,27 +244,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

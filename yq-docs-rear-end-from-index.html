@@ -157,7 +157,48 @@
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-from-Some-keywords.html">一些关键字</a>
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-from-tutorial-index.html">教程</a>
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-from-question-index.html">问题</a>
+</div><div class="section" id="section-1">
+<h2>环境配置</h2>
+<div class="section" id="windows">
+<h3>Windows 下环境</h3>
+<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>官网文档: <a class="reference external" href="https://www.mingw-w64.org/downloads/#mingw-builds">https://www.mingw-w64.org/downloads/#mingw-builds</a> ,</li>
+<li>官网文档源码(只是列出来, 用处不大) <a class="reference external" href="https://github.com/mingw-w64/mingw-w64.github.io">https://github.com/mingw-w64/mingw-w64.github.io</a></li>
+<li><cite>mingw</cite> 下载地址: <a class="reference external" href="https://github.com/niXman/mingw-builds-binaries/releases">https://github.com/niXman/mingw-builds-binaries/releases</a></li>
+<li>库说明: <a class="reference external" href="https://winlibs.com/">https://winlibs.com/</a></li>
+</ul>
+</dd>
+</dl>
+<p>我用的是 <cite>mingw</cite>, 下载地址: <a class="reference external" href="https://github.com/niXman/mingw-builds-binaries/releases">https://github.com/niXman/mingw-builds-binaries/releases</a> ,
+选择适合自己版本的下载就行.</p>
+<p>我只在 <cite>Windows64</cite> 下使用, 选的是 <a class="reference external" href="https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev0/x86_64-13.2.0-release-win32-seh-ucrt-rt_v11-rev0.7z">x86_64-13.2.0-release-win32-seh-ucrt-rt_v11-rev0.7z</a></p>
+<div class="figure">
+<img alt="不同版本" src="doc-raw/resources/images/2024-08-13-13-54-09.png" style="width: 480px;" />
 </div>
+<dl class="docutils">
+<dt>版本说明</dt>
+<dd><ul class="first last simple">
+<li><cite>i686</cite> 是 32位的, <cite>x86_64</cite> 是 64位的</li>
+<li><cite>POSIX</cite> 表示（与其他平台的最佳兼容性） ; <cite>WIN32</cite> 表示 (本机 Windows 线程，但缺少 POSIX 线程 / pthread.h) ; <cite>MCF</cite> (自 GCC 13 起，另请参阅：MCF Gthread 库)</li>
+<li><cite>ucrt</cite> : 微软提供的通用c运行库; <cite>msvcrt</cite> : 微软提供的c++运行库，兼容c.
+除非你的目标是旧版本的 Windows，否则 UCRT 作为运行时库是更好的选择</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">gcc在 <cite>Windows</cite> ， <cite>linux</cite> 和 <cite>MacOS</cite> 的下的命令不一定互通，
+例如 <cite>linux</cite> 下的指令 <cite>make</cite> ， 但是在 <cite>windows</cite> 下会变成 <cite>mingw32-make</cite>, 有需求可以自己做个链接</p>
+</div>
+</div>
+<div class="section" id="clion">
+<h3>CLion 断点失效</h3>
+<p>我删除 <cite>.idea</cite> 后重新打开就可以了...</p>
+</div>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -173,6 +214,39 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    环境配置
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#windows">
+      Windows 下环境
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#clion">
+      CLion 断点失效
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -190,27 +264,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

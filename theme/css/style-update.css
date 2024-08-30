@@ -536,6 +536,7 @@ cite{
 /* .highlight pre, */
 pre{
     margin: 10px 0;
+    max-height: 45vh;
 }
 
 /* 标题含有特殊字符串时 */
@@ -569,12 +570,12 @@ h1, h2, h3, h4, h5, h6{
 .rst-function.section{
     margin: 5px 0;
 }
-    .rst-function.section strong{
+    .rst-function.section > strong{
         background-color: #273f47;
         border-radius: 5px;
         padding: 0 5px;
     }
-    .rst-function.section strong::before{
+    .rst-function.section > strong::before{
         font-family: "Font Awesome 6 Free Web";
         content: "\e184";
         margin-right: 0.5em;

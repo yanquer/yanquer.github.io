@@ -177,6 +177,7 @@
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-align.html">text-align</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-decoration.html">text-decoration</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-indent.html">text-indent</a>
+<a class="sphinx-toc-tree" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-overflow.html">text-overflow</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-wrap.html">text-wrap</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-transform.html">transform</a>
 <a class="sphinx-toc-tree" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-Transition.html">transition</a>
@@ -246,14 +247,59 @@ center（居中对齐）、justify（两端对齐）等。该属性主要用于�
 </div>
 <div class="section" id="section-2">
 <h2>文本折行相关属性</h2>
+<p>参考: <a class="reference external" href="https://segmentfault.com/a/1190000038948266">CSS 文本截断方法总结和原理分析</a></p>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>CSS文本截断</li>
+</ul>
+</dd>
+</dl>
 <ul class="simple">
 <li><a class="reference external" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-wrap.html">text-wrap</a></li>
+<li><a class="reference external" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-text-overflow.html">text-overflow</a></li>
 <li><a class="reference external" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-white-space.html">white-space</a></li>
 <li><a class="reference external" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-word-break.html">word-break</a></li>
 <li><a class="reference external" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-word-wrap.html">word-wrap</a></li>
 </ul>
-</div>
 <div class="section" id="section-3">
+<h3>单行截断</h3>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">single-line-truncate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">white-space</span><span class="p">:</span><span class="w"> </span><span class="kc">nowrap</span><span class="p">;</span>
+<span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">ellipsis</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h3>多行截断</h3>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">multi-line</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="bp">-webkit-</span><span class="n">box</span><span class="p">;</span>
+<span class="w">  </span><span class="kp">-webkit-</span><span class="n">box-orient</span><span class="p">:</span><span class="w"> </span><span class="kc">vertical</span><span class="p">;</span>
+<span class="w">  </span><span class="kp">-webkit-</span><span class="k">line-clamp</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p><cite>-webkit-line-clamp</cite> 可以指定文本在第几行进行截断并添加 <tt class="docutils literal">…</tt> 。
+该属性只有在 <cite>display</cite> 属性设置成 <cite>-webkit-box</cite> 或者 <cite>-webkit-inline-box</cite> 并且 <cite>-webkit-box-orient</cite> 属性设置成 <cite>vertical</cite> 时才有效果。</p>
+<p>随着 Firefox（68 版本开始） 的支持，该方案可以说是目前多行文本截断的不错选择，而且这种写法是官方提供的写法，而不是 CSS trick。</p>
+</div>
+<div class="section" id="section-5">
+<h3>不使用截断字符的多行截断</h3>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">multi-line</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">max-height</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+<span class="w">  </span><span class="k">word-break</span><span class="p">:</span><span class="w"> </span><span class="n">break-all</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p><cite>word-break</cite> 属性用于指定单词的断行行为。
+值 <cite>break-all</cite> 可以保证一个长度超过容器宽度的英文单词（连续的英文字符）能够不溢出容器，而是从中间截断换行。
+一般来说这个属性是需要添加的，否则会因为一个很长的西欧单词，导致部分内容的缺失。
+值 <cite>break-word</cite> 也有类似效果，但它会通过更早的换行来尽量保证英文单词不会被从中间截断。</p>
+</div>
+</div>
+<div class="section" id="section-6">
 <h2>颜色设置</h2>
 <dl class="docutils">
 <dt>透明相关</dt>
@@ -302,9 +348,26 @@ center（居中对齐）、justify（两端对齐）等。该属性主要用于�
    <a class="" href="#section-2">
     文本折行相关属性
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      单行截断
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      多行截断
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      不使用截断字符的多行截断
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-3">
+   <a class="" href="#section-6">
     颜色设置
    </a>
   </li>
@@ -333,27 +396,27 @@ center（居中对齐）、justify（两端对齐）等。该属性主要用于�
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

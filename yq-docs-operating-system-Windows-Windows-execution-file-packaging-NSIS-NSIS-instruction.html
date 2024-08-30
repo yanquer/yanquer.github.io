@@ -192,6 +192,19 @@ Delete &quot;$SMPROGRAMS\Test.exe&quot;
 <pre class="literal-block">
 Rename $INSTDIR\file1 $INSTDIR\file2
 </pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">也可以用来移动文件到其他目录</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p>需要确保目标位置不存在, 如果目标文件已经存在, 移动会失败, 这个时候可以判断一下如果存在先删除:</p>
+<pre class="last literal-block">
+IfFileExists &quot;$INSTDIR\file1&quot; 0 +2
+Delete &quot;$INSTDIR\file1&quot;
+Rename $INSTDIR\file1 $INSTDIR\file2
+</pre>
+</div>
 </div>
 <div class="section" id="createdirectory">
 <h3>CreateDirectory</h3>
@@ -223,6 +236,15 @@ SetOutPath $INSTDIR
 <p>例, 设置Test.exe的快捷方式Test.lnk, 图标为Test.ico:</p>
 <pre class="literal-block">
 CreateShortCut &quot;$DESKTOP\Test.lnk&quot; &quot;$DESKTOP\Test.exe&quot; &quot;$DESKTOP\Icon\Test.ico&quot;
+</pre>
+<p>如果要设置启动时候的工作目录(<cite>Windows</cite> 下叫做起始位置), 设置输出位置即可:</p>
+<pre class="literal-block">
+; 这里设置的输出路径会被当做启动时候的工作目录
+SetOutPath &quot;$INSTDIR&quot;
+CreateShortCut &quot;$DESKTOP\Test.lnk&quot; &quot;$DESKTOP\Test.exe&quot; &quot;$DESKTOP\Icon\Test.ico&quot;
+
+; 还原输出路径
+SetOutPath &quot;$INSTDIR\Test&quot;
 </pre>
 </div>
 </div>
@@ -584,9 +606,30 @@ ${StrFilter} &quot;[字符串]&quot; &quot;[选项]&quot; &quot;[符号1]&quot; 
 </div>
 <div class="section" id="versioncompare">
 <h3>VersionCompare</h3>
+<p>官网参考: <a class="reference external" href="https://nsis.sourceforge.io/VersionCompare">https://nsis.sourceforge.io/VersionCompare</a></p>
+<p>语义化版本比较</p>
 <p>VersionCompare, 用来比较版本号的大小。例如，比较1.1.0.1和1.1.1.0的大小。语法:</p>
 <pre class="literal-block">
 ${VersionCompare} &quot;[版本1]&quot; &quot;[版本2]&quot; $输出变量
+</pre>
+<p>例子:</p>
+<pre class="literal-block">
+${VersionCompare} &quot;1.0.83&quot; &quot;1.0.8&quot; $0
+; MessageBox MB_OK|MB_ICONEXCLAMATION &quot;点击的是 $0&quot;
+IntCmp $0 1 eq lt mt
+lt:
+  ; 0
+  Goto over
+mt:
+  ; 2
+  Goto over
+eq:
+  ; 1
+
+; 安装包与安装包所在目录
+MessageBox MB_OK|MB_ICONEXCLAMATION &quot;exepath  $ExePath == $ExeDir&quot;
+
+over:
 </pre>
 </div>
 <div class="section" id="versionconvert">
@@ -602,7 +645,7 @@ ${VersionConvert} &quot;9.0c&quot; &quot;&quot; $R0  # $R0 = 9.0.03 .这样转�
 </div>
 </div>
 <div class="section" id="section-5">
-<h2>数学计算</h2>
+<h2>数学计算/操作</h2>
 <div class="section" id="intop">
 <h3>IntOp</h3>
 <p>10减去2, eg:</p>
@@ -610,6 +653,31 @@ ${VersionConvert} &quot;9.0c&quot; &quot;&quot; $R0  # $R0 = 9.0.03 .这样转�
 IntOp $0 10 - 2
 </pre>
 <p>效果是计算 <tt class="docutils literal"><span class="pre">10-2</span></tt> , 将结果8赋值给 <tt class="docutils literal">$0</tt>.</p>
+</div>
+<div class="section" id="intcmp">
+<h3>IntCmp</h3>
+<p>官网参考: <a class="reference external" href="https://nsis.sourceforge.io/Reference/IntCmp">https://nsis.sourceforge.io/Reference/IntCmp</a></p>
+<p>数字比较</p>
+<p>数字比较无法直接使用 <tt class="docutils literal">!IF $val == 8</tt> 这样的写法,
+因为 <tt class="docutils literal">!IF</tt> 或 <tt class="docutils literal">${If}</tt> 只支持字符串比较</p>
+<p>用法:</p>
+<pre class="literal-block">
+val1 val2 jump_if_equal [jump_if_val1_less] [jump_if_val1_more]
+</pre>
+<p>举例:</p>
+<pre class="literal-block">
+IntCmp $0 5 is5 lessthan5 morethan5
+is5:
+  DetailPrint &quot;$$0 == 5&quot;
+  Goto done
+lessthan5:
+  DetailPrint &quot;$$0 &lt; 5&quot;
+  Goto done
+morethan5:
+  DetailPrint &quot;$$0 &gt; 5&quot;
+  Goto done
+done:
+</pre>
 </div>
 </div>
 <div class="section" id="section-6">
@@ -783,6 +851,136 @@ Pop $0 # = 1
 </div>
 </div>
 <div class="section" id="section-9">
+<h2>进程操作</h2>
+<div class="section" id="quit">
+<h3>Quit</h3>
+<p>官网参考: <a class="reference external" href="https://nsis.sourceforge.io/Reference/Quit">https://nsis.sourceforge.io/Reference/Quit</a></p>
+<p>无条件退出安装程序</p>
+</div>
+<div class="section" id="abort">
+<h3>Abort</h3>
+<p>官网参考: <a class="reference external" href="https://nsis.sourceforge.io/Abort">https://nsis.sourceforge.io/Abort</a></p>
+<p>退出某个函数/节/块等, 根据调用位置等不同有不同行为</p>
+<p>官网原文</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="33%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Function</th>
+<th class="head">Triggered by</th>
+<th class="head">Abort effect</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>.onInit</td>
+<td>Installer executing.</td>
+<td>Installer terminates. No further callback functions.</td>
+</tr>
+<tr><td>.onGUIInit</td>
+<td>Immediately after .onInit</td>
+<td>Jump to .onGUIEnd</td>
+</tr>
+<tr><td>Page 'pre'</td>
+<td>When entering the page
+(backwards or forwards).</td>
+<td>Skip the page (in the direction the user is navigating).</td>
+</tr>
+<tr><td>Page 'show'</td>
+<td>Immediately after 'pre' callback.</td>
+<td>None (other than skipping remaining instructions in the function).</td>
+</tr>
+<tr><td>Page 'leave'</td>
+<td>When leaving the page
+(backwards or forwards).</td>
+<td>Stay on the page.</td>
+</tr>
+<tr><td>Section</td>
+<td>Immediately after InstFiles
+page 'show' callback.</td>
+<td>Install stops. Only button enabled is Cancel.</td>
+</tr>
+<tr><td>.onInstFailed</td>
+<td>User clicking Cancel after Aborted install.</td>
+<td>Jump to .onGUIEnd</td>
+</tr>
+<tr><td>.onInstSuccess</td>
+<td>User clicking Close after completed install.</td>
+<td>Jump to .onGUIEnd</td>
+</tr>
+<tr><td>.onGUIEnd</td>
+<td>Immediately after .onInstFailed
+or .onInstSuccess</td>
+<td>Installer terminates. No further callback functions.</td>
+</tr>
+<tr><td>Custom Function</td>
+<td>Manual Call from other function/section.</td>
+<td>Abort command effect is as if it
+was executed by the calling function.</td>
+</tr>
+</tbody>
+</table>
+<p>中译(可能不完整)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="33%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Function</th>
+<th class="head">触发位置/场景</th>
+<th class="head">效果</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>.onInit</td>
+<td>执行安装程序时</td>
+<td>安装程序终止。没有任何回调函数。</td>
+</tr>
+<tr><td>.onGUIInit</td>
+<td>.onInit之后立刻调用</td>
+<td>跳转到 .onGUIEnd</td>
+</tr>
+<tr><td>Page 'pre'</td>
+<td>当进入 page 就调用（向后或向前）</td>
+<td>跳过该页面（沿着用户浏览的方向）。</td>
+</tr>
+<tr><td>Page 'show'</td>
+<td>'pre' 页回调立刻调用</td>
+<td>无（除了跳过函数中剩余的指令）。</td>
+</tr>
+<tr><td>Page 'leave'</td>
+<td>当离开 page 时调用（向后或向前）</td>
+<td>Stay on the page.</td>
+</tr>
+<tr><td>Section</td>
+<td>在 InstFiles 页面“显示”回调之后立即执行</td>
+<td>安装停止。仅显示“取消”按钮</td>
+</tr>
+<tr><td>.onInstFailed</td>
+<td>用户在中止安装后单击取消</td>
+<td>跳转到 .onGUIEnd</td>
+</tr>
+<tr><td>.onInstSuccess</td>
+<td>用户在完成安装后单击“关闭”</td>
+<td>跳转到 .onGUIEnd</td>
+</tr>
+<tr><td>.onGUIEnd</td>
+<td>在 .onInstFailed 或 .onInstSuccess 后立即调用</td>
+<td>安装程序终止。没有任何回调函数。</td>
+</tr>
+<tr><td>Custom Function</td>
+<td>从其他 function/section 手动调用</td>
+<td>中止所调用函数执行</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="section-10">
 <h2>获取命令行参数</h2>
 <p>官网地址: <a class="reference external" href="https://nsis.sourceforge.io/GetOptions">GetOptions</a></p>
 <ul class="simple">
@@ -856,7 +1054,7 @@ FunctionEnd
 </pre>
 <p>也可以直接定义全局变量吧</p>
 </div>
-<div class="section" id="section-10">
+<div class="section" id="section-11">
 <h2>静默安装实现</h2>
 <ul class="simple">
 <li><tt class="docutils literal">/S</tt> 参数 执行的时候使用, 如 <tt class="docutils literal">xxx.exe /S</tt></li>
@@ -885,14 +1083,14 @@ SilentInstall normal|silent|silentlog
 SilentUnInstall normal|silent
 </pre>
 </div>
-<div class="section" id="section-11">
+<div class="section" id="section-12">
 <h3>判断是否是静默安装</h3>
 <p>使用 <tt class="docutils literal">IfSilent</tt></p>
 <pre class="literal-block">
 IfSilent +2
   ExecWait '&quot;$INSTDIR\nonsilentprogram.exe&quot;'
 </pre>
-<p>这里没懂 <tt class="docutils literal">+2</tt> 是什么意思</p>
+<p><tt class="docutils literal">+2</tt> 表示指针下移 2 行</p>
 </div>
 </div>
 
@@ -1116,12 +1314,17 @@ IfSilent +2
   </li>
   <li class="toc-h0">
    <a class="" href="#section-5">
-    数学计算
+    数学计算/操作
    </a>
    <ul class="toc-tree visible">
     <li class="toc-h1">
      <a class="" href="#intop">
       IntOp
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#intcmp">
+      IntCmp
      </a>
     </li>
    </ul>
@@ -1194,6 +1397,23 @@ IfSilent +2
   </li>
   <li class="toc-h0">
    <a class="" href="#section-9">
+    进程操作
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#quit">
+      Quit
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#abort">
+      Abort
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
     获取命令行参数
    </a>
   </li>
@@ -1202,7 +1422,7 @@ IfSilent +2
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-10">
+   <a class="" href="#section-11">
     静默安装实现
    </a>
    <ul class="toc-tree visible">
@@ -1222,7 +1442,7 @@ IfSilent +2
      </a>
     </li>
     <li class="toc-h1">
-     <a class="" href="#section-11">
+     <a class="" href="#section-12">
       判断是否是静默安装
      </a>
     </li>
@@ -1253,27 +1473,27 @@ IfSilent +2
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

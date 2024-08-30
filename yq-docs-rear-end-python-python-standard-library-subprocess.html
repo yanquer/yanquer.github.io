@@ -145,7 +145,8 @@
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<div class="section" id="call">
+									<p>官网文档: <a class="reference external" href="https://docs.python.org/zh-cn/3/library/subprocess.html">https://docs.python.org/zh-cn/3/library/subprocess.html</a></p>
+<div class="section" id="call">
 <h2>call</h2>
 <div class="rst-function section" id="subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)">
 <strong>subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)</strong><p></p>
@@ -307,12 +308,64 @@ subprocess.Popen(['tar', '-zxf', 'xxx.tar.gz'], shell=True)
 </dd>
 <dt>env: dict = None</dt>
 <dd>用于指定子进程的环境变量。如果env = None, 子进程的环境变量将从父进程中继承。</dd>
+<dt>preexec_fn</dt>
+<dd>Unix可用,
+参数为可调用类型, 用于在真正执行子进程前做一些额外操作</dd>
+<dt>start_new_session: bool = False</dt>
+<dd><p class="first">Unix可用,
+等效于 <tt class="docutils literal">preexec_fn=os.setsid</tt>,
+即</p>
+<div class="highlight"><pre><span></span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">shell_args</span><span class="p">,</span> <span class="n">preexec_fn</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">setsid</span><span class="p">)</span>
+<span class="c1"># 等价于</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">shell_args</span><span class="p">,</span> <span class="n">start_new_session</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+<p class="last">参考: <a class="reference external" href="https://www.cnblogs.com/gracefulb/p/6893166.html">subprocess之preexec_fn</a></p>
+</dd>
 <dt>universal_newlines: bool = False</dt>
 <dd>不同系统的换行符不同, True 表示 <tt class="docutils literal">stdout</tt> 和 <tt class="docutils literal">stderr</tt>  使用 <tt class="docutils literal">\n</tt> 通用换行（universal newline）模式</dd>
 <dt>startupinfo=None</dt>
-<dd>只在windows下有效, 将被传递给底层的 <tt class="docutils literal">CreateProcess()</tt> 函数, 用于设置子进程的一些属性, 如：主窗口的外观, 进程的优先级等等</dd>
+<dd><p class="first">只在windows下有效, 将被传递给底层的 <tt class="docutils literal">CreateProcess()</tt> 函数, 用于设置子进程的一些属性, 如：主窗口的外观, 进程的优先级等等</p>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="n">startupinfo</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">STARTUPINFO</span><span class="p">()</span>
+<span class="n">startupinfo</span><span class="o">.</span><span class="n">dwFlags</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">STARTF_USESTDHANDLES</span>
+<span class="n">startupinfo</span><span class="o">.</span><span class="n">hStdInput</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span>
+<span class="n">startupinfo</span><span class="o">.</span><span class="n">hStdOutput</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span>
+<span class="n">startupinfo</span><span class="o">.</span><span class="n">hStdError</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span>
+</pre></div>
+<p class="last">将子进程的标准输入、输出、错误重定向到 subprocess.DEVNULL。</p>
+<!-- 这样可以确保即使主进程退出,子进程也不会因为无法访问终端而中断。 -->
+</dd>
 <dt>createionflags: int = 0</dt>
-<dd>同上</dd>
+<dd><p class="first">同上, 只在windows下有效.</p>
+<p>如果要在 <cite>windows</cite> 下分离进程, 需要设置此参数为</p>
+<div class="highlight"><pre><span></span><span class="n">creationflags</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CREATE_NEW_PROCESS_GROUP</span> <span class="o">|</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CREATE_NO_WINDOW</span> <span class="o">|</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">DETACHED_PROCESS</span>
+</pre></div>
+<p>其中</p>
+<dl class="last docutils">
+<dt>CREATE_NEW_PROCESS_GROUP</dt>
+<dd><ul class="first last simple">
+<li>创建子进程时会为该子进程创建一个新的进程组</li>
+<li>该子进程不会受到其父进程的终端信号的影响,可以独立运行</li>
+<li>对于某些需要在后台运行且不受用户终端信号影响的应用程序很有用,比如服务类型的程序。</li>
+</ul>
+</dd>
+<dt>CREATE_NO_WINDOW</dt>
+<dd><ul class="first last simple">
+<li>创建子进程时隐藏该子进程的控制台窗口</li>
+<li>对于某些无需显示任何用户界面的后台应用程序很有用,可以减少系统资源的占用。</li>
+</ul>
+</dd>
+<dt>DETACHED_PROCESS</dt>
+<dd><ul class="first last simple">
+<li>分离进程, 即创建子进程时让该子进程独立于其父进程运行。</li>
+<li>即使父进程退出,子进程也能继续运行</li>
+<li>对于某些需要长时间运行且不依赖于父进程的应用程序很有用,比如服务类型的程序</li>
+<li>特别注意的是, 由于分离进程, 大部分情况下即使在主进程中 <cite>wait()</cite> 也不会真正等待子进程执行完毕, 从而无法获取进程退出状态, 进程的 <cite>returncode</cite> 是始终默认的 1 .
+有些情况例外, 比如安装包执行文件, wait 是会正常等待的... 不知道为什么</li>
+</ul>
+</dd>
+</dl>
+</dd>
 </dl>
 <p>同 Linux 中创建子进程类似, 父进程创建完子进程后, 并不会自动等待子进程执行,
 父进程在子进程之前推出将导致子进程成为孤儿进程, 孤儿进程统一由 init 进程接管, 负责其终止后的回收工作。</p>
@@ -321,8 +374,35 @@ subprocess.Popen(['tar', '-zxf', 'xxx.tar.gz'], shell=True)
 因此父进程及时等待和回收子进程是必要的, 除非能够确认自己比子进程先终止, 从而将回收工作过渡给 init 进程。</p>
 <p>这个等待和回收子进程的操作就是wait()函数</p>
 </div>
-<div class="sidebar">
-<p class="first sidebar-title">关于 <cite>shell: bool = False</cite> 参数</p>
+<p>在Windows系统下, 对于某些需要用户输入的指令, 使用 <cite>Popen</cite> 时可能会遇到报错 <tt class="docutils literal">错误: 不支持输入重新定向，立即退出此进程。</tt>,
+比如执行 <cite>timeout</cite>, 由于timeout.exe在暂停时，可接受用户按键来终止，这个时候会需要输入stdin, 但是GUI中没有窗口或者更多原因, 导致重定向失败, 就报错.
+为什么说可能? 以 <cite>timeout /t</cite> 指令为例, 单独执行脚本无法复现(大概是单独的脚本支持弹出cmd窗口, 可以在此窗口输入), 只有在GUI程序中, 才会出现这样的问题.</p>
+<!-- GUI生产应用中, 不知道为什么, 即使使用这些参数, 也只能执行打包好的 exe 程序, 无法在增加额外指令比如timeout ``args=["timeout", "/t", "5", "&&", "xxx.exe"]`` , -->
+<!-- (不确定是否是因为 timeout 会自动启动一个新的控制台窗口的缘故), -->
+<!-- 但是单个脚本执行测试又没这个问题... -->
+<!-- 后面发现是timeout在GUI进程中无法处理输入重定向导致的. -->
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果要获取进程的 <cite>returncode</cite>, 即使已经执行结束, 还是需要调用 <cite>wait()</cite> 函数, 否则 <cite>returncode</cite> 的值是 <cite>None</cite></p>
+</div>
+<div class="section" id="linux">
+<h3>关于进程分离(Linux)</h3>
+<p>linux进程自带分离属性, 不需进程组的情况下, 使用 <cite>start_new_session</cite> 参数与否区别不大.
+真正需要注意的是, 子进程在分离时, 输入输出如何控制.</p>
+<p>如果要分离进程, 且支持主进程退出时, 子进程继续执行, 若不控制输出管道, 即</p>
+<div class="highlight"><pre><span></span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+<p>那么当主进程退出时, 子进程很可能因为 <cite>终端</cite> 关闭、输入输出管道关闭而无法写入产生 <cite>EPIPE</cite> 相关的错误(如 <tt class="docutils literal">Error: write EPIPE</tt> ),
+简单点就直接全部写到 <cite>NULL</cite>,</p>
+<div class="highlight"><pre><span></span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">args</span><span class="p">,</span>
+  <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span>
+  <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span>
+  <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="shell-bool-false">
+<h3>关于 <cite>shell: bool = False</cite> 参数</h3>
 <p>有需求在linux下使用pkexec来申请权限, 如执行ls
 可以成功执行的两种调用:</p>
 <blockquote>
@@ -337,10 +417,26 @@ subprocess.Popen(['pkexec', 'ls'], shell=False)
 pkexec ls &amp;
 </pre>
 <p>与这个的区别:</p>
-<pre class="last literal-block">
+<pre class="literal-block">
 sh -c &quot;pkexec ls&quot;
 </pre>
+<p>另外,
+当pkexec执行脚本时候, 比如 <tt class="docutils literal">pkexec bash a.sh</tt>, 注意当设置shell为true时, <tt class="docutils literal">pkexec bash a.sh</tt> 需要写在一个字符串中,
+否则实际会分离参数导致执行失败</p>
+<div class="highlight"><pre><span></span><span class="c1"># 失败的写法,</span>
+<span class="c1">#   相当于, sh -c pkexec bash a.sh</span>
+<span class="c1">#   此时 ``bash a.sh`` 会会被当作是 `sh` 的参数. 执行失败.</span>
+subprocess.Popen<span class="o">([</span><span class="s1">&#39;pkexec&#39;</span>,<span class="w"> </span><span class="s1">&#39;bash&#39;</span>,<span class="w"> </span><span class="s1">&#39;a.sh&#39;</span><span class="o">]</span>,<span class="w"> </span><span class="nv">shell</span><span class="o">=</span>True<span class="o">)</span>
+subprocess.Popen<span class="o">([</span><span class="s1">&#39;pkexec&#39;</span>,<span class="w"> </span><span class="s1">&#39;bash a.sh&#39;</span><span class="o">]</span>,<span class="w"> </span><span class="nv">shell</span><span class="o">=</span>True<span class="o">)</span>
+
+<span class="c1"># 正确的写法,</span>
+subprocess.Popen<span class="o">([</span><span class="s1">&#39;pkexec&#39;</span>,<span class="w"> </span><span class="s1">&#39;bash&#39;</span>,<span class="w"> </span><span class="s1">&#39;a.sh&#39;</span><span class="o">]</span>,<span class="w"> </span><span class="nv">shell</span><span class="o">=</span>False<span class="o">)</span>
+subprocess.Popen<span class="o">([</span><span class="s1">&#39;pkexec bash a.sh&#39;</span><span class="o">]</span>,<span class="w"> </span><span class="nv">shell</span><span class="o">=</span>True<span class="o">)</span>
+subprocess.Popen<span class="o">(</span><span class="s1">&#39;pkexec bash a.sh&#39;</span>,<span class="w"> </span><span class="nv">shell</span><span class="o">=</span>True<span class="o">)</span>
+</pre></div>
 </div>
+<div class="section" id="section-1">
+<h3>例</h3>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p>对于的系统命令而言, 当存在关键词参数且参数的值有空格时, 不要使用:</p>
@@ -420,8 +516,38 @@ print(out_error_list)
 0
 </pre>
 <p>这里也可以使用 <tt class="docutils literal">p = <span class="pre">subprocess.Popen(['ls',</span> <span class="pre">'-cl'])</span></tt> 来创建子进程。</p>
-<div class="section" id="section-1">
-<h3>属性</h3>
+</div>
+<div class="section" id="windows">
+<h3>Windows下用例-执行脚本</h3>
+<dl class="docutils">
+<dt>相关说明</dt>
+<dd><ul class="first last simple">
+<li>解决 Windows 执行 CMD 包含空格</li>
+<li>如何避免Windows下 bat 指令存在空格? 将指令写到 bat 脚本, 使用 bat 脚本执行</li>
+</ul>
+</dd>
+</dl>
+<p>脚本一定是 bat 后缀</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do0</span><span class="p">():</span>
+
+  <span class="kn">import</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">os</span>
+  <span class="n">_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">_dir</span><span class="p">)</span>
+  <span class="n">_bat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_dir</span><span class="p">,</span> <span class="s2">&quot;run.bat&quot;</span><span class="p">)</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_bat</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;timeout 5 &amp;&amp; echo 1; exit /b 0&quot;</span><span class="p">)</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">_bat</span><span class="p">,</span>
+                       <span class="n">creationflags</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">CREATE_NEW_PROCESS_GROUP</span> <span class="o">|</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CREATE_NO_WINDOW</span><span class="p">)</span>
+  <span class="n">a</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>     <span class="c1"># 打印 0, 因为能正常执行并 wait 阻塞退出</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">_bat</span><span class="p">,</span> <span class="n">creationflags</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">CREATE_NEW_PROCESS_GROUP</span> <span class="o">|</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">DETACHED_PROCESS</span> <span class="o">|</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CREATE_NO_WINDOW</span><span class="p">)</span>
+  <span class="n">a</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>                <span class="c1"># 不会真正等待. 因为已经 DETACHED_PROCESS 分离</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>     <span class="c1"># 打印 1, 因为 DETACHED_PROCESS 分离了, 所以无法获取退出码, 是默认的 1</span>
+</pre></div>
+<div class="section" id="section-2">
+<h4>属性</h4>
 <p>Popen创建的子进程有一些有用的属性, 假设 p 是 Popen 创建的子进程, p 的属性包括：</p>
 <ul>
 <li><p class="first">p.pid : 子进程的PID。</p>
@@ -440,8 +566,8 @@ None  —— 子进程尚未结束；
 </li>
 </ul>
 </div>
-<div class="section" id="section-2">
-<h3>方法</h3>
+<div class="section" id="section-3">
+<h4>方法</h4>
 <div class="rst-function section" id="p.poll()">
 <strong>p.poll()</strong><p></p>
 <p>检查子进程  p 是否已经终止, 返回 p.returncode 属性 (参考下文 Popen 对象的属性)；</p>
@@ -481,6 +607,7 @@ None  —— 子进程尚未结束；
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="subprocess-1">
 <h2>subprocess模块的其他属性</h2>
 <ul>
@@ -514,7 +641,7 @@ print (out)
 </ul>
 </div>
 </div>
-<div class="section" id="section-3">
+<div class="section" id="section-4">
 <h2>总结</h2>
 <p>使用 Popen 可以在Python进程中创建子进程</p>
 <ul class="simple">
@@ -534,6 +661,102 @@ print (out)
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="node-py">
+<h2>记录一次 node 下 py 子进程协作</h2>
+<dl class="docutils">
+<dt>背景</dt>
+<dd><ul class="first last simple">
+<li>项目需要一个静默更新服务, 前端是 <cite>theia</cite>, 后端是 <cite>python</cite></li>
+<li>更新服务设计为由 <cite>python</cite> 启动子进程, 大致需要的效果:<ul>
+<li>后端 <cite>python</cite> 接收到更新请求后, 检查如果有更新, 启动一个更新安装</li>
+<li>更新安装因为是静默的, 为了避免进程占用导致的文件操作失败, 所以采用版本号方式安装(此处是额外使用 c 写的启动器)</li>
+<li>最后是最卡的一点, 后端 <cite>python</cite> 退出时, 重新打开进程(此处就是 <cite>theia</cite> )</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+<p>好了, 现在问题来了, 可以看出此处是存在一个循环关系的 <cite>theia</cite> -&gt; <cite>python</cite> -&gt; <cite>theia</cite> ...</p>
+<p>在 Linux 系统下, 虽然默认进程是分离的, 但是实际使用的时候, <cite>theia</cite> 不知道是内部封装还是怎么, 导致这个分离无法实现.</p>
+<ul class="simple">
+<li>单独由python 启动的新的 <cite>theia</cite> 可以在 <cite>python</cite> 退出后继续存在;</li>
+<li>由 <cite>theia</cite> 启动的 <cite>python</cite>, 这时由子进程启动更新后的 <cite>theia</cite> 就不行了,
+因为 <cite>theia</cite> 进程退出后, <cite>python</cite> 进程(包括启动的 <cite>theia</cite> 子进程)会收到 <cite>SIGTERM</cite> 信号而退出 (还会导致管道破裂报错, 这个重定向到 null 就可解决, 不做深入讨论),
+即使使用 <cite>setsid</cite> 设置为了新的进程组.</li>
+</ul>
+<p>最后的解决方案, 启动器程序中手动监听 <cite>SIGTERM</cite> 信号, 不处理此信号</p>
+<p>附 C 信号忽略代码</p>
+<div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// Created by 烟雀 on 24-8-23.</span>
+<span class="c1">//</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;signal_handler.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;../../logger.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;os.h&quot;</span>
+
+<span class="cp">#ifdef IS_WINDOWS</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">signal_handler</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">info</span><span class="p">(</span><span class="s">&quot;==get signal(收到信号) %d ==</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sig</span><span class="p">);</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">sig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">SIGTERM</span><span class="p">:</span>
+<span class="w">            </span><span class="n">info</span><span class="p">(</span><span class="s">&quot;receive SIGTERM, exit 1&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">register_signal</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// windows 只打印, 方便 debug</span>
+<span class="w">    </span><span class="c1">// 忽略信号</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGINT</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">     </span><span class="c1">// 2</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGTERM</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 15</span>
+<span class="w">    </span><span class="c1">// signal(SIGKILL, signal_handler);    // 9</span>
+<span class="w">    </span><span class="c1">// signal(SIGQUIT, signal_handler);    // 3</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGILL</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">     </span><span class="c1">// 4</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGABRT</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 6</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGFPE</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 13</span>
+<span class="w">    </span><span class="c1">// signal(SIGSTOP, signal_handler);    // 17</span>
+<span class="p">}</span>
+<span class="cp">#else</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">signal_handler</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">info</span><span class="p">(</span><span class="s">&quot;==get signal(收到信号) %d ==</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sig</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">sig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">SIGKILL</span><span class="p">:</span>
+<span class="w">            </span><span class="n">info</span><span class="p">(</span><span class="s">&quot;receive kill -9, exit 1&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">SIGTERM</span><span class="p">:</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// 不退出,返回继续执行</span>
+<span class="w">    </span><span class="c1">// exit(1);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">register_signal</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">// 忽略信号</span>
+<span class="w">    </span><span class="c1">// linux 下, 忽略 疑似来自祖进程(主要是 node 进程)的 term 信号</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGTERM</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 15</span>
+
+<span class="w">    </span><span class="c1">// 其它可能遇到的信号简单打印下, 方便以后 debug</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGINT</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">     </span><span class="c1">// 2</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGKILL</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 9</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGQUIT</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 3</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGILL</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">     </span><span class="c1">// 4</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGABRT</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 6</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGPIPE</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 13</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">SIGSTOP</span><span class="p">,</span><span class="w"> </span><span class="n">signal_handler</span><span class="p">);</span><span class="w">    </span><span class="c1">// 17</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+</pre></div>
 </div>
 
 								</article>
@@ -602,38 +825,59 @@ print (out)
      </a>
     </li>
     <li class="toc-h1">
-     <a class="" href="#section-1">
-      属性
+     <a class="" href="#linux">
+      关于进程分离(Linux)
      </a>
     </li>
     <li class="toc-h1">
-     <a class="" href="#section-2">
-      方法
+     <a class="" href="#shell-bool-false">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-1">
+      例
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#windows">
+      Windows下用例-执行脚本
      </a>
      <ul class="toc-tree visible">
       <li class="toc-h2">
-       <a class="" href="#p.poll()">
+       <a class="" href="#section-2">
+        属性
        </a>
       </li>
       <li class="toc-h2">
-       <a class="" href="#p.wait()">
+       <a class="" href="#section-3">
+        方法
        </a>
-      </li>
-      <li class="toc-h2">
-       <a class="" href="#p.communicate(input=None)">
-       </a>
-      </li>
-      <li class="toc-h2">
-       <a class="" href="#p.send_signal(signal)">
-       </a>
-      </li>
-      <li class="toc-h2">
-       <a class="" href="#p.terminate()">
-       </a>
-      </li>
-      <li class="toc-h2">
-       <a class="" href="#p.kill()">
-       </a>
+       <ul class="toc-tree ">
+        <li class="toc-h3">
+         <a class="" href="#p.poll()">
+         </a>
+        </li>
+        <li class="toc-h3">
+         <a class="" href="#p.wait()">
+         </a>
+        </li>
+        <li class="toc-h3">
+         <a class="" href="#p.communicate(input=None)">
+         </a>
+        </li>
+        <li class="toc-h3">
+         <a class="" href="#p.send_signal(signal)">
+         </a>
+        </li>
+        <li class="toc-h3">
+         <a class="" href="#p.terminate()">
+         </a>
+        </li>
+        <li class="toc-h3">
+         <a class="" href="#p.kill()">
+         </a>
+        </li>
+       </ul>
       </li>
      </ul>
     </li>
@@ -656,8 +900,13 @@ print (out)
    </ul>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-3">
+   <a class="" href="#section-4">
     总结
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#node-py">
+    记录一次 node 下 py 子进程协作
    </a>
   </li>
  </ul>
@@ -685,27 +934,27 @@ print (out)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

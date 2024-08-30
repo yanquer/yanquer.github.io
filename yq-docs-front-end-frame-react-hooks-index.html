@@ -204,6 +204,54 @@
 类似于类组件中的 <cite>shouldComponentUpdate</cite> ，在子组件中使用 <cite>shouldComponentUpdate</cite> ，
 判定该组件的 <cite>props</cite> 和 <cite>state</cite> 是否有变化，从而避免每次父组件 <cite>render</cite> 时都去重新渲染子组件。</p>
 </div>
+<div class="section" id="setstate">
+<h2>setState界面未及时更新</h2>
+<p>参考: <a class="reference external" href="https://www.cnblogs.com/Simoon/p/16404987.html">React 之 state 数据改变页面不更新未重新渲染的 7 种情况 及 解决办法</a></p>
+<p>可能得原因</p>
+<div class="section" id="state">
+<h3>state 数据需要深更新</h3>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="c1">// 错误方式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">obj</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">xxxxx</span><span class="w"> </span><span class="c1">//省略的代码是改变了对象的值</span>
+<span class="p">});</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">obj</span>
+<span class="p">});</span>
+</pre></div>
+<p>解决办法: 浅拷贝方式获取对象并修改再赋值。</p>
+<div class="highlight"><pre><span></span><span class="c1">// 正确方式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">obj</span><span class="p">];</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">xxxxx</span><span class="w"> </span><span class="c1">//省略的代码是改变了对象的值</span>
+<span class="p">});</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">obj</span>
+<span class="p">});</span>
+</pre></div>
+<p>原因: 对象数组是引用方式 , 对于 <cite>react</cite> 来说它的值都是地址 (涉及到 tree diff)，
+因为没有被重新赋值 (地址没有改变)，所以 react 会认为仍然是之前的元素 (element)，则不更新视图。</p>
+</div>
+<div class="section" id="section-1">
+<h3>打印非实时</h3>
+<div class="highlight"><pre><span></span><span class="c1">//默认string等于&#39;&#39;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">string</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;123&#39;</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">string</span><span class="p">)</span><span class="c1">//&#39;&#39;</span>
+</pre></div>
+<p>解决办法, 改用更新回调</p>
+<div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">string</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;123&#39;</span>
+<span class="p">},()=&gt;{</span>
+<span class="w">    </span><span class="c1">//setState后的回调</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">string</span><span class="p">)</span><span class="c1">//&#39;123&#39;</span>
+<span class="p">})</span>
+</pre></div>
+<p>原因: react 还没更新 state, 打印就执行完毕了。</p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -238,6 +286,23 @@
     useEffect, useCallback, useMemo区别
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#setstate">
+    setState界面未及时更新
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#state">
+      state 数据需要深更新
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-1">
+      打印非实时
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -263,27 +328,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>

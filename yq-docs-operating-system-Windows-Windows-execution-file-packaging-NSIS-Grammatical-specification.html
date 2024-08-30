@@ -350,6 +350,12 @@ IDOK        OK button
 IDRETRY     Retry button
 IDYES       Yes button
 </pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">特别注意, 当使用 <tt class="docutils literal">/S</tt> 静默安装时, 任何交互式的 <cite>MessageBox</cite> 都会被隐藏, 流程里自动选择默认的按钮.
+只有像 <tt class="docutils literal">MessageBox MB_OK|MB_ICONEXCLAMATION &quot;检查到当前版本过低，无法后台安装, 启动手动安装流程&quot;</tt> 这样的简单提示框可以正常显示.
+意外的是这也存在 <cite>确认</cite> 按钮, 不知为何官方不把这一起给默认了...</p>
+</div>
 </div>
 <div class="section" id="section-9">
 <h2>传参(如返回值设置等)</h2>
@@ -435,7 +441,7 @@ FunctionEnd
 <p>效果一致.</p>
 </div>
 <div class="section" id="section-10">
-<h2>一些脚本属性</h2>
+<h2>一些脚本属性/预定义变量</h2>
 <ul>
 <li><p class="first">NAME : 设置安装器名称 (支持多个, 多语言设置时使用, 默认使用第一个).
 如:</p>
@@ -445,14 +451,27 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
 </li>
 <li><p class="first">InstallDir : 设置默认的安装路径</p>
 </li>
-<li><p class="first">OutFile : 打好的exe包输出路径(包含文件名)</p>
+<li><p class="first">InstallDirRegKey: 设置注册表键值, 默认为 <tt class="docutils literal">HKLM\Software\MyProgram\InstallDir</tt>.
+安装时候可以直接从这个注册表键拿安装路径, 如果没有, 则使用 <tt class="docutils literal">InstallDir</tt> 的值.
+例如从 <tt class="docutils literal">HKCU\Software\MyApp</tt> 注册表项的 <cite>InstallDir</cite> 值中读取上次的安装目录 <tt class="docutils literal">InstallDirRegKey HKCU &quot;Software\MyApp&quot; &quot;InstallDir&quot;</tt>, 如果结果不是目录, 使用其上级目录.
+貌似卸载的时候也会读这...</p>
 </li>
-<li><p class="first">ShowInstDetails : 值为 show 表示显示安装详细信息</p>
+<li><p class="first">$OutFile : 打好的exe包输出路径(包含文件名)</p>
 </li>
-<li><p class="first">ShowUnInstDetails : 值为 show 表示显示卸载详细信息</p>
+<li><p class="first">$ShowInstDetails : 值为 show 表示显示安装详细信息</p>
 </li>
-<li><p class="first">BrandingText : 左下角提示信息 (一般是 品牌/公司 名称)</p>
+<li><p class="first">$ShowUnInstDetails : 值为 show 表示显示卸载详细信息</p>
 </li>
+<li><p class="first">$BrandingText : 左下角提示信息 (一般是 品牌/公司 名称)</p>
+</li>
+</ul>
+<p>预定义变量</p>
+<ul class="simple">
+<li>$ExePath: 安装包路径</li>
+<li>$ExeDir: 安装包所在目录</li>
+<li>${NSISDIR}: NSIS 安装目录</li>
+<li>$PluginsDir: 获取NSIS插件目录路径。</li>
+<li>$INSTDIR: 安装目录。默认情况下是当前执行脚本所在目录,也可以自定义修改。</li>
 </ul>
 <p>一些通用属性, 编译标志, 版本信息: <a class="reference external" href="https://nsis.sourceforge.io/Docs/Chapter4.html#instattribs">instattribs</a></p>
 </div>
@@ -544,7 +563,7 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
   </li>
   <li class="toc-h0">
    <a class="" href="#section-10">
-    一些脚本属性
+    一些脚本属性/预定义变量
    </a>
   </li>
  </ul>
@@ -572,27 +591,27 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-index.html">Rust三方库</a></h3>
-											<p><p class="first last">Rust三方库</p>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-create-project-and-run.html">Rust教程-创建项目与运行</a></h3>
-											<p><p class="first last">Rust教程-创建项目与运行</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-index.html">Rust教程</a></h3>
-											<p><p class="first last">Rust教程</p>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 8 <strong>05</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-language-summary.html">Rust教程-语法总结</a></h3>
-											<p><p class="first last">Rust教程-语法总结</p>
+											<span class="date"> 8 <strong>19</strong></span>
+											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
+											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>
