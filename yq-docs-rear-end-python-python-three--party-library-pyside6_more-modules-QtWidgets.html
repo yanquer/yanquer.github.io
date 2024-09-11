@@ -7,7 +7,7 @@
 -->
 <html data-theme="dark">
 	<head>
-			<title>书言 - @radix-ui category</title>
+			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
 
@@ -79,14 +79,18 @@
 							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
 						</form>
 					</div>
-  <div class="row page-index">
-    <div class="page-index-head-title">
-      <h2>书言</h2>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>QtWidgets</h2>
     </div>
-    <div class="red-line">
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 09 九月 2024
+      , Category:
+	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
-    <div class="page-index-head-content">
-      意不尽道, 言不尽意, 书不尽言
+	<div class="red-line">
     </div>
   </div>
 				</div>
@@ -116,32 +120,77 @@
 		<!-- Main Wrapper -->
 			<div id="main-wrapper">
 				<div class="container">
-  <div class="row">
-    <div class="12u">
-      <section>
-<div class="row">            <div class="4u">
-              <section class="box">
-                <header>
-                  <h3><a href="/.html"></a></h3>
-                  <!-- <h3></h3> -->
-                  <span class="byline">2024-07-18 09:54:01</span>
-                </header>
-                
-                <!--  -->
-                <!--  -->
-                <footer class="actions">
-                  <a href="/.html"
-                     class="button button-icon button-icon-1">Continue Reading</a>
-                </footer>
-              </section>
-            </div>
-      </section>
-      <!-- /#content -->
-        <p class="paginator">
-          Page 1 / 1
-        </p>
-    </div>
-  </div>
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan-python.html">后端; python</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+													<li><a class="button button-alt" href="tag/pyside6_more.html">Pyside6_more</a></li>
+
+													<li><a class="button button-alt" href="tag/modules.html">Modules</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-09-09</div>
+										<h2>QtWidgets</h2>
+
+										<span class="head-modify-time">修改于: 2024-09-09</span>
+
+									</div>
+									<div class="section" id="section-1">
+<h2>布局模块</h2>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/weixin_42837024/article/details/82114716">Qt 垂直布局 (QVBoxLayout)</a></p>
+<div class="section" id="qvboxlayout">
+<h3>QVBoxLayout</h3>
+<p>常用接口(C风格):</p>
+<pre class="literal-block">
+addStretch();   // 添加一个可伸缩空间
+                // 相当于使用一个弹簧顶着
+
+addSpacing(int size);
+                // 添加一个固定size 大小的间距
+
+setMargin(int); // setMargin可以设置左、上、右、下的外边距，设置之后，他们的外边距是相同的
+
+//与setMargin功能相同，但是可以将左、上、右、下的外边距设置为不同的值
+setContentsMargins(int left, int top, int right, int bottom );
+
+setContentsMargins(const QMargins &amp;margins);  // 设置外边距
+
+// 添加控件
+// 默认的，我们添加控件至水平布局中，默认都是垂直方向居中对齐的。
+//    stretch 为0时表示不拉伸, 使用默认大小, 否则会拉伸填充满剩余空间
+addWidget(QWidget *, int stretch = 0, Qt::Alignment alignment = 0)
+
+// 设置布局方向
+//    即添加元素的方向, 默认从上到下添加
+setDirection(QBoxLayout::RightToLeft)
+
+setStretchFactor(QWidget *w, int stretch); // 设置控件、布局的拉伸系数
+setStretchFactor(QLayout *l, int stretch);
+</pre>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
 
 				</div>
 			</div>
@@ -150,6 +199,37 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    布局模块
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#qvboxlayout">
+      QVBoxLayout
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 		</div>
 
 		<!-- Footer Wrapper -->
@@ -164,9 +244,28 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date"> 7 <strong>18</strong></span>
-											<h3><a href=".html"></a></h3>
-											<p></p>
+											<span class="date"> 9 <strong>09</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
+											<p><p class="first last">布局时取消默认平均分配空间行为</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>09</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
+											<p><p class="first last">QtWidgets</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 8 <strong>29</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
+											<p><p class="first last">资源管理器右键菜单与注册表</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 8 <strong>28</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
+											<p><p class="first last">electron-builder</p>
+</p>
 										</li>
 									</ul>
 								</section>
@@ -261,6 +360,27 @@
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
 	</body>
 </html>

@@ -570,7 +570,63 @@ https://www.yckceo.com/yuedu/shuyuans/json/id/2.json
 </dd>
 <dt>nginx-proxy-manager</dt>
 <dd><p class="first">nginx管理器</p>
-<p class="last">地址: <a class="reference external" href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
+<p>部署yaml参考</p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;jc21/nginx-proxy-manager:latest&#39;</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;80:80&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;81:81&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;443:443&#39;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data:/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./letsencrypt:/etc/letsencrypt</span>
+</pre></div>
+<p>默认账户:</p>
+<pre class="literal-block">
+账号: admin&#64;example.com
+密码: changeme
+</pre>
+<p>地址: <a class="reference external" href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
+<p>有个汉化版: <a class="reference external" href="https://github.com/xiaoxinpro/nginx-proxy-manager-zh">https://github.com/xiaoxinpro/nginx-proxy-manager-zh</a> , docker镜像: <tt class="docutils literal">docker pull <span class="pre">chishin/nginx-proxy-manager-zh</span></tt></p>
+<p>汉化版可参考配置</p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;chishin/nginx-proxy-manager-zh:release&#39;</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;80:80&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;81:81&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;443:443&#39;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data:/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./letsencrypt:/etc/letsencrypt</span>
+</pre></div>
+<dl class="last docutils">
+<dt>关于DNSPod创建证书失败</dt>
+<dd><p class="first">历史问题</p>
+<p>此问题在2.9.19版本开始就已经存在，原因是zope引起的，由于ARM架构一直安装失败所以无法打包到镜像中，建议使用如下方法修复此问题：
+首先确保nginx-proxy-manager-zh的Docker容器已经正常运行，使用docker-compose ps查看容器名，这里假设容器名为npm-zh。
+进入容器：（注意替换下文中的容器名）:</p>
+<pre class="literal-block">
+docker exec -it npm-zh bash
+</pre>
+<p>执行安装zope命令:</p>
+<pre class="literal-block">
+python3 -m pip install --upgrade pip
+pip install certbot-dns-dnspod
+pip install zope
+</pre>
+<p>等待安装完成，退出容器:</p>
+<pre class="literal-block">
+exit
+</pre>
+<p class="last">最后刷新浏览器，再次使用DNSPod创建证书即可。</p>
+</dd>
+</dl>
 </dd>
 <dt>mihomo</dt>
 <dd><p class="first">基于原Clash内核的Meta内核, 说明参考: <a class="reference external" href="https://clashios.com/clash-meta-clash-core/">https://clashios.com/clash-meta-clash-core/</a></p>
@@ -596,6 +652,12 @@ https://www.yckceo.com/yuedu/shuyuans/json/id/2.json
 <dt>miniblink49</dt>
 <dd><p class="first">类似 electron, 不过是轻量版(暂时只支持windows系统)</p>
 <p class="last">地址: <a class="reference external" href="https://github.com/weolar/miniblink49.git">https://github.com/weolar/miniblink49.git</a></p>
+</dd>
+<dt>aipan-netdisk-search</dt>
+<dd><p class="first">爱盼. 网盘聚合搜索.</p>
+<p>电影搜索是网盘聚合, 支持在线播放.</p>
+<p>音乐搜索不用跳转网盘可以直接下.</p>
+<p class="last">地址: <a class="reference external" href="https://github.com/unilei/aipan-netdisk-search.git">https://github.com/unilei/aipan-netdisk-search.git</a></p>
 </dd>
 </dl>
 <div class="section" id="section-6">
@@ -1220,6 +1282,18 @@ chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">777</span
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>09</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
+											<p><p class="first last">布局时取消默认平均分配空间行为</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>09</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
+											<p><p class="first last">QtWidgets</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 8 <strong>29</strong></span>
 											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
 											<p><p class="first last">资源管理器右键菜单与注册表</p>
@@ -1229,18 +1303,6 @@ chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">777</span
 											<span class="date"> 8 <strong>28</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
 											<p><p class="first last">electron-builder</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-windows_shell-netsh.html">netsh</a></h3>
-											<p><p class="first last">as title</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>19</strong></span>
-											<h3><a href="yq-docs-rear-end-from-tutorial-cmake-set-windows-icon.html">CMAKE设置Windows图标</a></h3>
-											<p><p class="first last">CMAKE设置Windows图标</p>
 </p>
 										</li>
 									</ul>
