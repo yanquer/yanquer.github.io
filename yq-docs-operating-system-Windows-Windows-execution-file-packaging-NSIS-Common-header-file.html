@@ -144,7 +144,7 @@
 										<div class="pennant pennant-alt date">2023-02-20</div>
 										<h2>常用头文件</h2>
 
-										<span class="head-modify-time">修改于: 2023-02-20</span>
+										<span class="head-modify-time">修改于: 2024-09-20</span>
 
 									</div>
 									<div class="section" id="mui-nsh">
@@ -168,6 +168,45 @@
 <pre class="literal-block">
 !insertmacro MUI_LANGUAGE &quot;SimpChinese&quot;
 </pre>
+</div>
+<div class="section" id="winmessages-nsh">
+<h2>WinMessages.nsh</h2>
+<p>WinMessages.nsh 是一个 NSIS 头文件，它提供了一组用于发送窗口消息的指令。这些指令可以用来与窗口进行交互，例如设置窗口标题、更改窗口样式等。</p>
+<div class="section" id="section-2">
+<h3>设置环境变量</h3>
+<div class="highlight"><pre><span></span><span class="cp">!include</span><span class="w"> </span>WinMessages.nsh
+
+<span class="c">; 获取到系统原有的环境变量</span>
+<span class="k">ReadRegStr</span><span class="w"> </span><span class="bp">$0</span><span class="w"> </span><span class="no">HKLM</span><span class="w"> </span><span class="s2">&quot;SYSTEM\CurrentControlSet\Control\Session Manager\Environment&quot;</span><span class="w"> </span><span class="s2">&quot;Path&quot;</span>
+<span class="c">; 在原有的环境变量里追加 D:\test 目录</span>
+<span class="k">WriteRegExpandStr</span><span class="w"> </span><span class="no">HKLM</span><span class="w"> </span><span class="s2">&quot;SYSTEM\CurrentControlSet\Control\Session Manager\Environment&quot;</span><span class="w"> </span><span class="s2">&quot;Path&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="bp">$0</span><span class="s2">;D:\test&quot;</span>
+
+<span class="c">; nsis打包程序写入环境变量不能立即生效，需要调用SendMessage的api才能避免重启</span>
+<span class="c">; SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 &quot;STR:Environment&quot;</span>
+<span class="c">; 不使用超时可能会因为其他窗口不响应导致卡死. 所以加个 /TIMEOUT 避免</span>
+<span class="k">SendMessage</span><span class="w"> </span><span class="kp">${HWND_BROADCAST}</span><span class="w"> </span><span class="kp">${WM_WININICHANGE}</span><span class="w"> </span>0<span class="w"> </span><span class="s2">&quot;STR:Environment&quot;</span><span class="w"> </span><span class="na">/TIMEOUT</span><span class="err">=</span>500
+</pre></div>
+<dl class="docutils">
+<dt>关于SendMessage卡死可参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/weixin_41212181/article/details/126289189">NSIS刷新系统环境变量</a></li>
+<li><a class="reference external" href="https://stackoverflow.com/questions/1951658/sendmessagehwnd-broadcast-hangs">SendMessage(HWND_BROADCAST, ....) hangs</a></li>
+</ul>
+</dd>
+</dl>
+<p>第二链接的部分摘录</p>
+<blockquote>
+<p>This will happen when there is an process that has a top level window, but isn't calling GetMessage or PeekMessage on the thread that created the window.</p>
+<p>For backward compatibility with Windows 3.0, SendMessage will not return until all of the top level windows in the system have responded to your broadcast. This behavior made sense back before Windows was multithreaded, because SendMessage, even when sending to other processes would never block.</p>
+<p>But beginning with Win32, when you SendMessage to a window in another process, what actually happens is your thread blocks until the thread in the other process wakes up and handles the message. If that thread is busy, or just not pumping messages, then you wait forever.</p>
+<p>For that reason you should always use SendNotifyMessage or SendMessageTimeout when you use HWND_BROADCAST, or are otherwise sending messages to windows owned by other processes.</p>
+<p>(机翻)
+当某个进程具有顶层窗口，但是未在创建该窗口的线程上调用 GetMessage 或 PeekMessage 时，就会发生这种情况。
+为了向后兼容 Windows 3.0，SendMessage 直到系统中的所有顶级窗口都响应您的广播后才会返回。这种行为在 Windows 成为多线程之前是有意义的，因为 SendMessage 即使在发送到其他进程时也永远不会阻塞。
+但是从 Win32 开始，当您向另一个进程中的窗口发送消息时，实际发生的情况是您的线程被阻塞，直到另一个进程中的线程被唤醒并处理该消息。如果该线程很忙，或者只是没有发送消息，那么您将永远等待。
+因此，当您使用 HWND_BROADCAST 时，或者以其他方式向其他进程拥有的窗口发送消息时，您应该始终使用 SendNotifyMessage 或 SendMessageTimeout。</p>
+</blockquote>
+</div>
 </div>
 
 								</article>
@@ -198,6 +237,18 @@
     MUI.nsh
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#winmessages-nsh">
+    WinMessages.nsh
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      设置环境变量
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -223,27 +274,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 2 <strong>20</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
+											<p><p class="first last">nsis常用头文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
+											<p><p class="first last">node多版本共存与切换</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
+											<p><p class="first last">开始菜单显示内容</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>09</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
 											<p><p class="first last">布局时取消默认平均分配空间行为</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
-											<p><p class="first last">QtWidgets</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>29</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
-											<p><p class="first last">资源管理器右键菜单与注册表</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
-											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 									</ul>

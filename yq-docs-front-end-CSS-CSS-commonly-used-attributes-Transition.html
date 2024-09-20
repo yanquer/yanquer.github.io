@@ -152,9 +152,47 @@
 <p>设置元素的过渡属性、过渡时间、过渡类型和延迟时间:</p>
 <pre class="literal-block">
 transition: property duration timing-function delay;
+
+// 属性 持续时间 时间函数 延时
 </pre>
 <p>多个状态用逗号隔开</p>
 <p>timing-function时间函数与 <a class="reference external" href="/yq-docs-front-end-CSS-CSS-commonly-used-attributes-animation.html">animation</a> 的基本一致</p>
+<div class="section" id="property">
+<h2>property</h2>
+<p>参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-property">https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-property</a></p>
+<p>即CSS属性的 <cite>transition-property</cite>, 可以是单个属性名，也可以是多个属性名，用逗号隔开</p>
+<p>取值</p>
+<dl class="docutils">
+<dt>none</dt>
+<dd>没有过渡动画。</dd>
+<dt>all</dt>
+<dd>所有可被动画的属性都表现出过渡动画。</dd>
+<dt>IDENT</dt>
+<dd>属性名称。由小写字母 a 到 z，数字 0 到 9，下划线（_）和破折号（-）。第一个非破折号字符不能是数字。同时，不能以两个破折号开头。</dd>
+</dl>
+<p>如</p>
+<div class="highlight"><pre><span></span><span class="c">/* Keyword values */</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">none</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">all</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">margin-right</span><span class="o">,</span><span class="w"> </span><span class="nt">color</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">test_05</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">-specific</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">sliding-vertically</span><span class="o">;</span>
+
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">test1</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">test1</span><span class="o">,</span><span class="w"> </span><span class="nt">animation4</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">all</span><span class="o">,</span><span class="w"> </span><span class="nt">height</span><span class="o">,</span><span class="w"> </span><span class="nt">all</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span>
+<span class="w">  </span><span class="nt">all</span><span class="o">,</span>
+<span class="w">  </span><span class="nt">-moz-specific</span><span class="o">,</span>
+<span class="w">  </span><span class="nt">sliding</span><span class="o">;</span>
+
+<span class="c">/* Global values */</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">inherit</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">initial</span><span class="o">;</span>
+<span class="nt">transition-property</span><span class="o">:</span><span class="w"> </span><span class="nt">unset</span><span class="o">;</span>
+</pre></div>
+</div>
 <div class="section" id="section-1">
 <h2>举例</h2>
 <p>比如 <tt class="docutils literal">transition: transform 0.3s <span class="pre">ease-out;</span></tt>, 表示当元素的 <cite>transform</cite> 属性发生变化时,会有一个持续 <cite>0.3</cite> 秒的过渡动画,并且动画会以一种缓慢减速的方式进行。
@@ -208,6 +246,11 @@ transition: property duration timing-function delay;
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
+   <a class="" href="#property">
+    property
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#section-1">
     举例
    </a>
@@ -242,27 +285,27 @@ transition: property duration timing-function delay;
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 2 <strong>20</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
+											<p><p class="first last">nsis常用头文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
+											<p><p class="first last">node多版本共存与切换</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
+											<p><p class="first last">开始菜单显示内容</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>09</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
 											<p><p class="first last">布局时取消默认平均分配空间行为</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
-											<p><p class="first last">QtWidgets</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>29</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
-											<p><p class="first last">资源管理器右键菜单与注册表</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
-											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 									</ul>

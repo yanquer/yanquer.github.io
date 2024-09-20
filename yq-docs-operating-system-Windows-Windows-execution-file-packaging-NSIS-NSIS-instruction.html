@@ -232,6 +232,13 @@ SetOutPath $INSTDIR
 </div>
 <div class="section" id="createshortcut">
 <h3>CreateShortCut</h3>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>开始菜单起始位置</li>
+</ul>
+</dd>
+</dl>
 <p>作用: 创建快捷文件.lnk 目标文件</p>
 <p>例, 设置Test.exe的快捷方式Test.lnk, 图标为Test.ico:</p>
 <pre class="literal-block">
@@ -384,7 +391,7 @@ ReadINIStr $0 &quot;PLUGINSDIR\TimeZoneZh.ini&quot; &quot;Field 1&quot; &quot;St
 <h2>调用外部程序</h2>
 <div class="section" id="exec">
 <h3>Exec</h3>
-<p>作用: 执行一个指定的程序并且立即继续安装, 就是直接执行一个程序。</p>
+<p>作用: 执行一个指定的程序并且立即继续安装, 就是直接执行一个程序。 会在执行时弹出控制台窗口</p>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
@@ -400,7 +407,7 @@ Exec '$INSTDIR\Microsoft.NET.exe'
 </div>
 <div class="section" id="execshell">
 <span id="nsis-execshell"></span><h3>ExecShell</h3>
-<p>启动 ShellExecute 执行.</p>
+<p>启动 ShellExecute 执行. 默认会会在执行时弹出控制台窗口, 可以在末尾加 <cite>SW_HIDE</cite> 隐藏控制台窗口</p>
 <p>语法:</p>
 <pre class="literal-block">
 ExecShell action command [parameters] [SW_SHOWNORMAL | SW_SHOWMAXIMIZED | SW_SHOWMINIMIZED | SW_HIDE]
@@ -420,10 +427,20 @@ ExecShell action command [parameters] [SW_SHOWNORMAL | SW_SHOWMAXIMIZED | SW_SHO
 <ul class="simple">
 <li>SW_HIDE 隐藏执行命令打开的窗口</li>
 </ul>
+<p>执行并隐藏控制台:</p>
+<pre class="literal-block">
+Section
+  ; 定义要执行的程序
+  StrCpy $0 &quot;notepad.exe&quot;  ; 这里可以替换为您想要执行的程序路径
+
+  ; 执行程序并隐藏控制台
+  ExecShell &quot;open&quot; $0 &quot;&quot; SW_HIDE
+SectionEnd
+</pre>
 </div>
 <div class="section" id="execwait">
 <h3>ExecWait</h3>
-<p>执行一个指定的程序并且 <strong>等待运行处理结束</strong></p>
+<p>执行一个指定的程序并且 <strong>等待运行处理结束</strong>, 会在执行时弹出控制台窗口</p>
 <p>语法:</p>
 <pre class="literal-block">
 ExecWait command [user_var(exit code)]
@@ -1481,27 +1498,27 @@ IfSilent +2
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 2 <strong>20</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
+											<p><p class="first last">nsis常用头文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
+											<p><p class="first last">node多版本共存与切换</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
+											<p><p class="first last">开始菜单显示内容</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>09</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
 											<p><p class="first last">布局时取消默认平均分配空间行为</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
-											<p><p class="first last">QtWidgets</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>29</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
-											<p><p class="first last">资源管理器右键菜单与注册表</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
-											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 									</ul>

@@ -66,14 +66,14 @@ html[data-theme="dark"] .highlight .nn{
 html[data-theme="dark"] .highlight .kn{
 	color: #007020;
 }
-html[data-theme="dark"] .highlight .k{
+/* html[data-theme="dark"] .highlight .k{
 	color: #a005bd
-}
+} */
 html[data-theme="dark"] .highlight .nc{
 	color: #009898;
 }
 html[data-theme="dark"] .highlight .kc{
-	color: #9b3bac;
+	color: #c3bbc4;
 }
 
 html[data-theme="dark"] .highlight{

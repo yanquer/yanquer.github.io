@@ -150,7 +150,7 @@
 <p>-a 显示当前系统所有limit信息
 -n 查看进程可以打开的最大文件描述符的数量
 -u 用户最大可用的进程数</p>
-<p>可以在文件/etc/security/limits.config中配置</p>
+<p>可以在文件 <cite>/etc/security/limits.config</cite> 中配置(有的是 <cite>/etc/security/limits.conf</cite> )</p>
 <p>配置规则:</p>
 <pre class="literal-block">
 &lt;domain&gt; &lt;type&gt; &lt;item&gt; &lt;value&gt;
@@ -176,6 +176,26 @@ ulimit -S -n1024 #设置当前会话打开的文件数软连接数为1024
 ulimit -H -n1024 #设置当前会话打开的文件数硬链接数为1024
 ulimit -n 1024 #设置当前会话打开的文件数软连接数&amp;&amp;硬连接数都为1024
 </pre>
+<div class="section" id="cannot-modify-limit">
+<h2>报错-cannot modify limit</h2>
+<p>场景</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">ulimit</span><span class="w"> </span>-n<span class="w"> </span><span class="m">524288</span>
+bash:<span class="w"> </span>ulimit:<span class="w"> </span>open<span class="w"> </span>files:<span class="w"> </span>cannot<span class="w"> </span>modify<span class="w"> </span>limit:<span class="w"> </span>Operation<span class="w"> </span>not<span class="w"> </span>permitted
+</pre></div>
+<p>这时修改配置最大文件/进程数解决</p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="sb">`</span>grep<span class="w"> </span>-wc<span class="w"> </span><span class="s1">&#39;improve kernel&#39;</span><span class="w"> </span>/etc/security/limits.conf<span class="sb">`</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;set ulimit file&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  *       soft    nofile  65535</span>
+<span class="s2">  *       hard    nofile  65535</span>
+<span class="s2">  # 优化内核</span>
+<span class="s2">  # improve kernel</span>
+<span class="s2">  *       soft    nproc   65535</span>
+<span class="s2">  *       hard    nproc   65535</span>
+<span class="s2">  &quot;&quot;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/security/limits.conf
+<span class="k">fi</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -192,6 +212,27 @@ ulimit -n 1024 #设置当前会话打开的文件数软连接数&amp;&amp;硬连
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#cannot-modify-limit">
+    报错-cannot modify limit
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -209,27 +250,27 @@ ulimit -n 1024 #设置当前会话打开的文件数软连接数&amp;&amp;硬连
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 2 <strong>20</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
+											<p><p class="first last">nsis常用头文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
+											<p><p class="first last">node多版本共存与切换</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
+											<p><p class="first last">开始菜单显示内容</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>09</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
 											<p><p class="first last">布局时取消默认平均分配空间行为</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
-											<p><p class="first last">QtWidgets</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>29</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
-											<p><p class="first last">资源管理器右键菜单与注册表</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
-											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 									</ul>

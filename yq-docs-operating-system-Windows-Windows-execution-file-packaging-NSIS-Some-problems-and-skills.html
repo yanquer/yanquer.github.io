@@ -389,6 +389,16 @@ SectionEnd
 </div>
 <div class="section" id="gui">
 <h2>GUI界面选择安装路径</h2>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>nsis安装路径选择</li>
+<li>nsis安装位置选择</li>
+<li>GUI安装路径选择</li>
+<li>GUI安装路径生效时间</li>
+</ul>
+</dd>
+</dl>
 <p>需要先导入 <tt class="docutils literal">MUI.nsh</tt> , 然后插入页面:</p>
 <pre class="literal-block">
 !include &quot;MUI.nsh&quot;
@@ -400,7 +410,8 @@ InstallDir &quot;$PROGRAMFILES\MyApp&quot;    ; 指定默认安装路径
 
 !insertmacro MUI_PAGE_FINISH        ; 安装完成页面
 </pre>
-<p>注意, 选择安装位置的执行时间在 init 之后, 所以要在 init 之后的 section 获取安装位置才是可靠的.</p>
+<p>注意, 选择安装位置的执行时间在 <cite>.onInit</cite> 之后, 所以要在 <cite>.onInit</cite> 之后的 <cite>Section</cite> 获取安装位置才是可靠的.
+如果有使用 <tt class="docutils literal">!define MUI_CUSTOMFUNCTION_GUIINIT myGuiInit</tt>, 也在 <cite>myGuiInit</cite> 之后才生效.</p>
 <p>此头文件详情可见: <a class="reference external" href="/yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></p>
 </div>
 <div class="section" id="nsis-2">
@@ -487,6 +498,33 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 <span class="w">  </span><span class="k">Delete</span><span class="w"> </span><span class="s2">&quot;</span><span class="vg">$INSTDIR</span><span class="s2">\executable.exe&quot;</span>
 <span class="w">  </span><span class="k">Delete</span><span class="w"> </span><span class="s2">&quot;</span><span class="vg">$INSTDIR</span><span class="s2">\uninstall.exe&quot;</span>
 <span class="w">  </span><span class="k">RMDir</span><span class="w"> </span><span class="s2">&quot;</span><span class="vg">$INSTDIR</span><span class="s2">&quot;</span>
+<span class="k">SectionEnd</span>
+</pre></div>
+</div>
+<div class="section" id="section-15">
+<h2>自定义变量的公用</h2>
+<p>即安装卸载时, 都用到这个变量.</p>
+<div class="highlight"><pre><span></span><span class="k">Var</span><span class="w"> </span>MyVar
+
+<span class="k">Section</span><span class="w"> </span><span class="s2">&quot;MainSection&quot;</span>
+<span class="w">  </span><span class="k">StrCpy</span><span class="w"> </span><span class="nv">$MyVar</span><span class="w"> </span><span class="s2">&quot;MyValue&quot;</span>
+<span class="k">SectionEnd</span>
+
+<span class="k">Section</span><span class="w"> </span><span class="s2">&quot;Uninstall&quot;</span>
+<span class="w">  </span><span class="k">MessageBox</span><span class="w"> </span><span class="no">MB_OK</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MyVar</span><span class="s2">&quot;</span>
+<span class="k">SectionEnd</span>
+</pre></div>
+<p>对于自定义共享变量来说, 在安装过程对此变量的操作, 对卸载阶段是不可见的, 所以卸载阶段需要重新对此变量赋值.</p>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="k">Var</span><span class="w"> </span>MyVar
+
+<span class="k">Section</span><span class="w"> </span><span class="s2">&quot;MainSection&quot;</span>
+<span class="w">  </span><span class="k">StrCpy</span><span class="w"> </span><span class="nv">$MyVar</span><span class="w"> </span><span class="s2">&quot;MyValue&quot;</span>
+<span class="k">SectionEnd</span>
+
+<span class="k">Section</span><span class="w"> </span><span class="s2">&quot;Uninstall&quot;</span>
+<span class="w">  </span><span class="k">StrCpy</span><span class="w"> </span><span class="nv">$MyVar</span><span class="w"> </span><span class="s2">&quot;MyValue&quot;</span>
+<span class="w">  </span><span class="k">MessageBox</span><span class="w"> </span><span class="no">MB_OK</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MyVar</span><span class="s2">&quot;</span>
 <span class="k">SectionEnd</span>
 </pre></div>
 </div>
@@ -609,6 +647,11 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
     安装后是否有exe文件
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-15">
+    自定义变量的公用
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -634,27 +677,27 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 2 <strong>20</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
+											<p><p class="first last">nsis常用头文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
+											<p><p class="first last">node多版本共存与切换</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
+											<p><p class="first last">开始菜单显示内容</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>09</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
 											<p><p class="first last">布局时取消默认平均分配空间行为</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
-											<p><p class="first last">QtWidgets</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>29</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
-											<p><p class="first last">资源管理器右键菜单与注册表</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
-											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 									</ul>

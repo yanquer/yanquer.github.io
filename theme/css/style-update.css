@@ -296,6 +296,10 @@ blockquote {
     padding-left: 20px !important;
     border-radius: var(--g-border-radius);
 }
+    blockquote p{
+        font-size: 13px;
+        color: #b3b39f;
+    }
 /* 仅竖线引用内容 */
 .line{
     border-left: var(--g-radius-border-no-color) #3a5c40;
@@ -537,6 +541,8 @@ cite{
 pre{
     margin: 10px 0;
     max-height: 45vh;
+    font-size: 13px;
+    line-height: 15px;
 }
 
 /* 标题含有特殊字符串时 */
@@ -593,7 +599,6 @@ h1, h2, h3, h4, h5, h6{
     border-radius: 5px;
     font-weight: 400;
 
-    display: block;
     overflow-x: auto;
 }
 

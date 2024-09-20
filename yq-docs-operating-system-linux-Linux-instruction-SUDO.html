@@ -234,6 +234,17 @@ ALL    ALL=(ALL:ALL) ALL
 # ALL 表示任何身份、主机、指令
 </pre>
 </div>
+<div class="section" id="section-3">
+<h2>可能遇到的报错</h2>
+<div class="section" id="sudo-no-tty-present-and-no-askpass-program-specified">
+<h3>sudo: no tty present and no askpass program specified</h3>
+<p>说明当前用户并没有配置在 <cite>sudo</cite> 组里面</p>
+<p>若要配置当前用户免密, 编辑 <cite>/etc/sudoers</cite></p>
+<div class="highlight"><pre><span></span><span class="c1"># %用户名 ALL=(ALL) NOPASSWD: ALL</span>
+%用户名<span class="w"> </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>ALL
+</pre></div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -268,6 +279,18 @@ ALL    ALL=(ALL:ALL) ALL
     配置
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    可能遇到的报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#sudo-no-tty-present-and-no-askpass-program-specified">
+      sudo: no tty present and no askpass program specified
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -293,27 +316,27 @@ ALL    ALL=(ALL:ALL) ALL
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 2 <strong>20</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
+											<p><p class="first last">nsis常用头文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
+											<p><p class="first last">node多版本共存与切换</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>18</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
+											<p><p class="first last">开始菜单显示内容</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>09</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
 											<p><p class="first last">布局时取消默认平均分配空间行为</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-modules-QtWidgets.html">QtWidgets</a></h3>
-											<p><p class="first last">QtWidgets</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>29</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-resouce-manager-right-click-menu-and-registry.html">资源管理器右键菜单与注册表</a></h3>
-											<p><p class="first last">资源管理器右键菜单与注册表</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 8 <strong>28</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-electron-builder.html">electron-builder</a></h3>
-											<p><p class="first last">electron-builder</p>
 </p>
 										</li>
 									</ul>
