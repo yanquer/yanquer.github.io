@@ -391,6 +391,12 @@ CMake Error in CMakeLists.txt:
 CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
 CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
 </pre>
+<div class="section" id="section-7">
+<h4>旧的解决方案(不建议)</h4>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">说下不建议的原因, 因为这样只能运行, 在 vscode 里面的调试有问题, 不能进入调试器</p>
+</div>
 <p>说明构建文件有问题, 清理到之前的资源文件夹比如 <cite>build</cite>, 然后添加 <tt class="docutils literal"><span class="pre">-G</span> &quot;MinGW Makefiles&quot;</tt> 重新生成资源文件并构建
 (若还有其他环境文件(夹)记得都删了重新生成)</p>
 <div class="highlight"><pre><span></span><span class="c1"># cmd 中执行, 若在vscode中执行可能会因为环境的问题, rmdir会失败, 去掉 /s /Q 即可</span>
@@ -399,6 +405,70 @@ rmdir<span class="w"> </span>/s<span class="w"> </span>/Q<span class="w"> </span
 cmake<span class="w"> </span>-G<span class="w"> </span><span class="s2">&quot;MinGW Makefiles&quot;</span><span class="w"> </span>-B<span class="w"> </span>build
 cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>产品名<span class="w"> </span>-j14
 </pre></div>
+</div>
+<div class="section" id="msys2">
+<h4>使用msys2 (建议)</h4>
+<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>msys2官网: <a class="reference external" href="https://www.msys2.org">https://www.msys2.org</a></li>
+</ul>
+</dd>
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/45150172/cmake-error-cmake-was-unable-to-find-a-build-program-corresponding-to-mingw-ma">CMake Error: CMake was unable to find a build program corresponding to &quot;MinGW Makefiles&quot;</a></li>
+</ul>
+</dd>
+</dl>
+<p>参考此回答 <a class="reference external" href="https://stackoverflow.com/a/74240313">https://stackoverflow.com/a/74240313</a></p>
+<div class="figure">
+<img alt="参考" src="doc-raw/resources/images/2024-09-24-15-41-49.png" style="width: 480px;" />
+</div>
+<p>大致流程</p>
+<ol class="arabic simple">
+<li>下载需要的的 <a class="reference external" href="https://github.com/msys2/msys2-installer/releases/download/2024-07-27/msys2-x86_64-20240727.exe">msys2</a></li>
+<li>安装并打开, 会出现一个 GUI 命令行界面</li>
+</ol>
+<div class="figure">
+<img alt="GUI 命令行" src="doc-raw/resources/images/2024-09-24-15-44-08.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="3">
+<li>安装需要的包</li>
+</ol>
+<div class="highlight"><pre><span></span>pacman<span class="w"> </span>-S<span class="w"> </span>mingw-w64-x86_64-gcc
+pacman<span class="w"> </span>-S<span class="w"> </span>mingw-w64-x86_64-gdb
+pacman<span class="w"> </span>-S<span class="w"> </span>mingw-w64-x86_64-cmake
+</pre></div>
+<ol class="arabic simple" start="4">
+<li>配置环境变量 <tt class="docutils literal"><span class="pre">C:\msys64\mingw64\bin</span></tt> (实际的安装位置\bin) 到 <cite>PATH</cite></li>
+</ol>
+<div class="figure">
+<img alt="环境变量" src="doc-raw/resources/images/2024-09-24-15-46-49.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="5">
+<li>在 vscode 中配置 <cite>cmakePath</cite></li>
+</ol>
+<p>为:</p>
+<pre class="literal-block">
+&quot;cmake.cmakePath&quot;: &quot;C:\msys64\mingw64\bin\cmake.exe&quot;
+</pre>
+<div class="figure">
+<img alt="cmakePath" src="doc-raw/resources/images/2024-09-24-15-47-55.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="6">
+<li>重置一下 VScode: 快捷键 <cite>Ctrl+shift+P</cite> , 输入 <tt class="docutils literal">&quot;CMake:Reset CMake Tools for Extension State&quot;</tt> 并选择</li>
+</ol>
+<div class="figure">
+<img alt="重置" src="doc-raw/resources/images/2024-09-24-15-50-21.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="7">
+<li>自动弹出选择配置工具, 此处选择安装好的 <cite>msys2</cite></li>
+</ol>
+<div class="figure">
+<img alt="选择" src="doc-raw/resources/images/2024-09-24-15-52-15.png" style="width: 480px;" />
+</div>
+<p>若没有自动弹出选择界面, 就快捷键 <cite>Ctrl+shift+P</cite>, 输入 <tt class="docutils literal">&quot;CMake: Configure&quot;</tt> 并选择即可看到.</p>
+</div>
 </div>
 </div>
 
@@ -520,6 +590,18 @@ cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"
      <a class="" href="#section-6">
       编译错误1
      </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#section-7">
+        旧的解决方案(不建议)
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#msys2">
+        使用msys2 (建议)
+       </a>
+      </li>
+     </ul>
     </li>
    </ul>
   </li>
@@ -548,27 +630,27 @@ cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>24</strong></span>
+											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
+											<p><p class="first last">配置容器使用的dns</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
+											<p><p class="first last">dig</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-from-question-convert-narrow.html">窄化转换</a></h3>
+											<p><p class="first last">窄化转换(类型转换)</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 2 <strong>20</strong></span>
 											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
 											<p><p class="first last">nsis常用头文件</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
-											<p><p class="first last">node多版本共存与切换</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
-											<p><p class="first last">开始菜单显示内容</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
-											<p><p class="first last">布局时取消默认平均分配空间行为</p>
 </p>
 										</li>
 									</ul>

@@ -146,22 +146,49 @@
 
 									</div>
 									<p>规定元素的定位类型</p>
-<ul class="simple">
-<li>static: HTML 元素的默认值，即没有定位，遵循正常的文档流对象;
-静态定位的元素不会受到 top, bottom, left, right影响;</li>
-<li>relative: 相对位置, 元素的定位是 <strong>相对其正常位置</strong>;
-移动相对定位元素，但它原本所占的空间不会改变;</li>
-<li>absolute: 绝对定位的元素的位置相对于最近的已定位父元素;
-如果元素没有已定位的父元素，那么它的位置相对于&lt;html&gt;;</li>
-<li>fixed: 元素的位置相对于浏览器窗口是固定位置;
-即使窗口是滚动的它也不会移动;</li>
-<li>sticky: 英文字面意思是粘，粘贴，所以可以把它称之为粘性定位;
-基于用户的滚动位置来定位;
-依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换;
-行为就像 position:relative; 而当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置;
-元素定位表现为在跨越特定阈值前为相对定位，之后为固定定位;
-特定阈值指的是 top, right, bottom 或 left 之一，换言之，指定 top, right, bottom 或 left 四个阈值其中之一，才可使粘性定位生效。否则其行为与相对定位相同;</li>
+<dl class="docutils">
+<dt>static</dt>
+<dd>HTML 元素的默认值，即没有定位，遵循正常的文档流对象(正常位置);
+静态定位的元素不会受到 <cite>top, bottom, left, right, z-index</cite> 影响;</dd>
+<dt>relative</dt>
+<dd><p class="first">相对位置, 元素的定位是 <strong>相对其正常位置</strong>;</p>
+<p>移动相对定位元素，但它原本所占的空间不会改变;</p>
+<p class="last">不设置top、right、bottom、left这些属性时，其自身在文档中的定位效果与static并无区别，但加上top、right、bottom、left这些属性后，便会相对于自身在常规流中的位置进行定位</p>
+</dd>
+<dt>absolute</dt>
+<dd><p class="first">绝对定位的元素的位置相对于最近的已定位父元素;</p>
+<p>如果元素没有已定位的父元素，那么它的位置相对于&lt;html&gt;;</p>
+<dl class="docutils">
+<dt>absolute（绝对定位）与relative（相对定位）之间的区别是</dt>
+<dd><ul class="first last simple">
+<li>relative（相对定位）并没有脱离文档流，而absolute（绝对定位）脱离了文档流；</li>
+<li>relative（相对定位）相对于自身在常规流中的位置进行偏移定位，而absolute（绝对定位）相对于离自身最近的定位祖先元素的位置进行偏移定位。</li>
 </ul>
+</dd>
+</dl>
+<p class="last">已定位的元素是指其 <cite>position</cite> 属性被设置为 <cite>relative、absolute、fixed</cite> 或 <cite>sticky</cite> 的元素。如果没有这样的祖先元素，
+它将相对于初始包含块（通常是 <cite>html</cite> 或 <cite>body</cite> 元素）进行定位。</p>
+</dd>
+<dt>fixed</dt>
+<dd><p class="first">元素的位置相对于浏览器窗口是固定位置;</p>
+<p>即使窗口是滚动的它也不会移动;</p>
+<p>fixed（固定定位）和absolute（绝对定位）很像，但也有两点不同：</p>
+<ul class="last simple">
+<li>absolute（绝对定位）相对于定位祖先元素进行偏移定位，而fixed（固定定位）相对于窗口进行偏移定位；</li>
+<li>absolute（绝对定位）的定位祖先元素可以是相对定位的元素，而fixed（固定定位）的定位祖先元素只能是窗口。</li>
+</ul>
+</dd>
+<dt>sticky</dt>
+<dd><p class="first">英文字面意思是粘，粘贴，所以可以把它称之为粘性定位;</p>
+<p>基于用户的滚动位置来定位;</p>
+<p>依赖于用户的滚动，在 <cite>position:relative</cite> 与 <cite>position:fixed</cite> 定位之间切换;
+行为就像 <cite>position:relative</cite>; 而当页面滚动超出目标区域时，它的表现就像 <cite>position:fixed;</cite>，它会固定在目标位置;
+元素定位表现为在跨越 <strong>特定阈值</strong> 前为相对定位，之后为固定定位;
+特定阈值指的是 top, right, bottom 或 left 之一，换言之，指定 top, right, bottom 或 left 四个阈值其中之一，才可使粘性定位生效。否则其行为与相对定位相同;</p>
+<p class="last">以 <cite>top:10px</cite> 为例 ：当元素相对于窗口顶部的距离大于 <cite>10px</cite> 时，元素处于类似 <cite>relative</cite> （相对定位状态），
+一旦元素相对于窗口顶部的距离小于或等于 <cite>10px</cite> 时，元素立马切换到类似 <cite>fixed</cite> （固定定位状态）</p>
+</dd>
+</dl>
 
 								</article>
 						</div>
@@ -195,27 +222,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>24</strong></span>
+											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
+											<p><p class="first last">配置容器使用的dns</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
+											<p><p class="first last">dig</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-from-question-convert-narrow.html">窄化转换</a></h3>
+											<p><p class="first last">窄化转换(类型转换)</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 2 <strong>20</strong></span>
 											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
 											<p><p class="first last">nsis常用头文件</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
-											<p><p class="first last">node多版本共存与切换</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
-											<p><p class="first last">开始菜单显示内容</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
-											<p><p class="first last">布局时取消默认平均分配空间行为</p>
 </p>
 										</li>
 									</ul>

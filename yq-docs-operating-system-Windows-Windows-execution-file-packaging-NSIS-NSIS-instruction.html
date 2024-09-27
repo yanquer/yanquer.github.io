@@ -786,6 +786,11 @@ fileNotExists:
   Abort
 done:
 </pre>
+<p>如果是检查目录是否存在, 使用:</p>
+<pre class="literal-block">
+IfFileExists DIRECTORY\*.*
+</pre>
+<p>需要注意的是 <cite>DIRECTORY</cite> 不能是空字符串, 否则检查的就是 <tt class="docutils literal">\</tt> 根目录了, 必然是存在的</p>
 </div>
 <div class="section" id="goto">
 <h3>Goto</h3>
@@ -796,10 +801,49 @@ done:
 Goto label_to_jump_to | +offset| -offset| user_var(target)
 </pre>
 <ul class="simple">
-<li><tt class="docutils literal">+offset</tt>  表示从当前位置往前跳转 <tt class="docutils literal">offset</tt> 条语句,</li>
+<li><tt class="docutils literal">+offset</tt>  表示从当前位置往前跳转 <tt class="docutils literal">offset</tt> 条语句(空行不算语句)</li>
 <li><tt class="docutils literal"><span class="pre">-offset</span></tt>  表示从当前位置往后跳转 <tt class="docutils literal">offset</tt> 条语句.</li>
 <li><tt class="docutils literal">user_var</tt> 表示跳转到指定变量标记位置.</li>
 </ul>
+<p>效果示例:</p>
+<pre class="literal-block">
+Goto 0
+DetailPrint &quot;1&quot;
+DetailPrint &quot;2&quot;
+DetailPrint &quot;3&quot;
+DetailPrint &quot;==============&quot;
+
+Goto +1
+DetailPrint &quot;1&quot;
+DetailPrint &quot;2&quot;
+DetailPrint &quot;3&quot;
+DetailPrint &quot;==============&quot;
+</pre>
+<div class="figure">
+<img alt="goto" src="doc-raw/resources/images/2024-09-24-09-35-33.png" style="width: 480px;" />
+</div>
+<p>效果示例2(空行不算语句):</p>
+<pre class="literal-block">
+Goto +2
+DetailPrint &quot;1&quot;
+DetailPrint &quot;2&quot;
+DetailPrint &quot;3&quot;
+DetailPrint &quot;==============&quot;
+
+Goto +2
+
+DetailPrint &quot;1&quot;
+
+DetailPrint &quot;2&quot;
+
+DetailPrint &quot;3&quot;
+DetailPrint &quot;==============&quot;
+</pre>
+<div class="figure">
+<img alt="goto2" src="doc-raw/resources/images/2024-09-24-09-39-32.png" style="width: 480px;" />
+</div>
+<p>还可以看出 <cite>Goto 0</cite> 与 <cite>Goto +1</cite> 效果是一样的</p>
+<p>其它例子</p>
 <p>例, 按数字跳转:</p>
 <pre class="literal-block">
 Goto +4 ; 跳转以下4条语句
@@ -876,6 +920,17 @@ Pop $0 # = 1
 </div>
 </div>
 <div class="section" id="section-9">
+<h2>打印</h2>
+<div class="section" id="detailprint">
+<h3>DetailPrint</h3>
+<p>在安装/卸载时候打印到进度详情</p>
+<p>用法:</p>
+<pre class="literal-block">
+DetailPrint &quot;Msg&quot;
+</pre>
+</div>
+</div>
+<div class="section" id="section-10">
 <h2>进程操作</h2>
 <div class="section" id="quit">
 <h3>Quit</h3>
@@ -1005,7 +1060,7 @@ was executed by the calling function.</td>
 </table>
 </div>
 </div>
-<div class="section" id="section-10">
+<div class="section" id="section-11">
 <h2>获取命令行参数</h2>
 <p>官网地址: <a class="reference external" href="https://nsis.sourceforge.io/GetOptions">GetOptions</a></p>
 <ul class="simple">
@@ -1079,7 +1134,7 @@ FunctionEnd
 </pre>
 <p>也可以直接定义全局变量吧</p>
 </div>
-<div class="section" id="section-11">
+<div class="section" id="section-12">
 <h2>静默安装实现</h2>
 <ul class="simple">
 <li><tt class="docutils literal">/S</tt> 参数 执行的时候使用, 如 <tt class="docutils literal">xxx.exe /S</tt></li>
@@ -1108,7 +1163,7 @@ SilentInstall normal|silent|silentlog
 SilentUnInstall normal|silent
 </pre>
 </div>
-<div class="section" id="section-12">
+<div class="section" id="section-13">
 <h3>判断是否是静默安装</h3>
 <p>使用 <tt class="docutils literal">IfSilent</tt></p>
 <pre class="literal-block">
@@ -1422,6 +1477,18 @@ IfSilent +2
   </li>
   <li class="toc-h0">
    <a class="" href="#section-9">
+    打印
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#detailprint">
+      DetailPrint
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-10">
     进程操作
    </a>
    <ul class="toc-tree visible">
@@ -1438,7 +1505,7 @@ IfSilent +2
    </ul>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-10">
+   <a class="" href="#section-11">
     获取命令行参数
    </a>
   </li>
@@ -1447,7 +1514,7 @@ IfSilent +2
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-11">
+   <a class="" href="#section-12">
     静默安装实现
    </a>
    <ul class="toc-tree visible">
@@ -1467,7 +1534,7 @@ IfSilent +2
      </a>
     </li>
     <li class="toc-h1">
-     <a class="" href="#section-12">
+     <a class="" href="#section-13">
       判断是否是静默安装
      </a>
     </li>
@@ -1498,27 +1565,27 @@ IfSilent +2
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>24</strong></span>
+											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
+											<p><p class="first last">配置容器使用的dns</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
+											<p><p class="first last">dig</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-from-question-convert-narrow.html">窄化转换</a></h3>
+											<p><p class="first last">窄化转换(类型转换)</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 2 <strong>20</strong></span>
 											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
 											<p><p class="first last">nsis常用头文件</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
-											<p><p class="first last">node多版本共存与切换</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
-											<p><p class="first last">开始菜单显示内容</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
-											<p><p class="first last">布局时取消默认平均分配空间行为</p>
 </p>
 										</li>
 									</ul>

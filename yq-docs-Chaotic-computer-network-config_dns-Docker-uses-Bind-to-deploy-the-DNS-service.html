@@ -150,6 +150,11 @@ mkdir -p dns_config
 docker run -d --name bind9-dns-server -e TZ=UTC -p 30053:53 -v dns_config:/data  ubuntu/bind9:9.18-22.04_beta
 </pre>
 <p>后面方式基本与 :<a class="reference external" href="/yq-docs-Chaotic-computer-network-config_dns-ubuntu-configuration-DNS.html">ubuntu配置dns</a> 一致</p>
+<p>如果需要通配域名, 相应的配置文件 <cite>/var/lib/bind/配置文件</cite> 内加入:</p>
+<pre class="literal-block">
+*.xxx.xyz   IN    A     192.168.1.40
+</pre>
+<p>即所有 <cite>xxx.xyz</cite> 下级子域名都解析</p>
 <div class="section" id="section-1">
 <h2>其他</h2>
 <p>具有管理面板的docker-bind: <a class="reference external" href="https://cloud.tencent.com/developer/article/2027134">使用Docker搭建自己的DNS服务器</a></p>
@@ -208,27 +213,27 @@ docker run -d --name bind9-dns-server -e TZ=UTC -p 30053:53 -v dns_config:/data 
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>24</strong></span>
+											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
+											<p><p class="first last">配置容器使用的dns</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
+											<p><p class="first last">dig</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-from-question-convert-narrow.html">窄化转换</a></h3>
+											<p><p class="first last">窄化转换(类型转换)</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 2 <strong>20</strong></span>
 											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
 											<p><p class="first last">nsis常用头文件</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
-											<p><p class="first last">node多版本共存与切换</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
-											<p><p class="first last">开始菜单显示内容</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
-											<p><p class="first last">布局时取消默认平均分配空间行为</p>
 </p>
 										</li>
 									</ul>

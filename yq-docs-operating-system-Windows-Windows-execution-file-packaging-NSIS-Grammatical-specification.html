@@ -406,6 +406,15 @@ FunctionEnd
 </div>
 <div class="section" id="macros">
 <h2>macros(宏)</h2>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>函数通用</li>
+<li>NSIS函数公用</li>
+<li>自定义函数公用</li>
+</ul>
+</dd>
+</dl>
 <p>编译时, 插入代码</p>
 <p>宏与 <em>NSIS_自定义函数</em> 类似, 使用有个较明显的区别是:</p>
 <ul class="simple">
@@ -426,7 +435,17 @@ FunctionEnd
 !insertmacro MyFunc &quot;&quot;
 !insertmacro MyFunc &quot;un.&quot;
 </pre>
-<p>结果将会插入两个, 一个给安装时候用, 一个给卸载时候用, 也可以直接:</p>
+<p>结果将会插入两个, 一个给安装时候用, 一个给卸载时候用:</p>
+<pre class="literal-block">
+Section &quot;MySection&quot;
+  Call MyFunc
+SectionEnd
+
+Section Uninstall
+  Call un.MyFunc
+SectionEnd
+</pre>
+<p>也可以直接:</p>
 <pre class="literal-block">
 ; 定义宏
 !macro MyFunc
@@ -599,27 +618,27 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>24</strong></span>
+											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
+											<p><p class="first last">配置容器使用的dns</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
+											<p><p class="first last">dig</p>
+</p>
+										</li>
+										<li>
+											<span class="date"> 9 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-from-question-convert-narrow.html">窄化转换</a></h3>
+											<p><p class="first last">窄化转换(类型转换)</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 2 <strong>20</strong></span>
 											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
 											<p><p class="first last">nsis常用头文件</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-node-multiple-versions-coexist-and-switch.html">node多版本共存与切换</a></h3>
-											<p><p class="first last">node多版本共存与切换</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>18</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-start-menu-show-content.html">开始菜单显示内容</a></h3>
-											<p><p class="first last">开始菜单显示内容</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>09</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-pyside6_more-Tutorial-layout-cancel-default-space-allocation.html">布局时取消默认平均分配空间行为</a></h3>
-											<p><p class="first last">布局时取消默认平均分配空间行为</p>
 </p>
 										</li>
 									</ul>
