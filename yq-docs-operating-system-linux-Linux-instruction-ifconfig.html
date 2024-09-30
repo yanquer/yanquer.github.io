@@ -81,12 +81,12 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>ifcofig</h2>
+      <h2>ifconfig</h2>
     </div>
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 26 二月 2023
+      , 24 九月 2024
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -139,13 +139,262 @@
 											</ul>
 										</div>
 
-										<div class="pennant pennant-alt date">2023-02-26</div>
-										<h2>ifcofig</h2>
+										<div class="pennant pennant-alt date">2024-09-24</div>
+										<h2>ifconfig</h2>
 
-										<span class="head-modify-time">修改于: 2023-02-26</span>
+										<span class="head-modify-time">修改于: 2024-09-24</span>
 
 									</div>
-									<p>配置和显示Linux系统网卡的网络参数</p>
+									<p>参考: <a class="reference external" href="https://www.runoob.com/linux/linux-comm-ifconfig.html">https://www.runoob.com/linux/linux-comm-ifconfig.html</a></p>
+<p>配置和显示Linux系统网卡的网络参数,</p>
+<p>语法:</p>
+<pre class="literal-block">
+ifconfig [网络设备][down up -allmulti -arp -promisc][add&lt;地址&gt;][del&lt;地址&gt;][&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;][io_addr&lt;I/O地址&gt;][irq&lt;IRQ地址&gt;][media&lt;网络媒介类型&gt;][mem_start&lt;内存地址&gt;][metric&lt;数目&gt;][mtu&lt;字节&gt;][netmask&lt;子网掩码&gt;][tunnel&lt;地址&gt;][-broadcast&lt;地址&gt;][-pointopoint&lt;地址&gt;][IP地址]
+</pre>
+<p>多行:</p>
+<pre class="literal-block">
+ifconfig [-a] [-v] [-s] &lt;interface&gt; [[&lt;AF&gt;] &lt;address&gt;]
+  [add &lt;address&gt;[/&lt;prefixlen&gt;]]
+  [del &lt;address&gt;[/&lt;prefixlen&gt;]]
+  [[-]broadcast [&lt;address&gt;]]  [[-]pointopoint [&lt;address&gt;]]
+  [netmask &lt;address&gt;]  [dstaddr &lt;address&gt;]  [tunnel &lt;address&gt;]
+  [outfill &lt;NN&gt;] [keepalive &lt;NN&gt;]
+  [hw &lt;HW&gt; &lt;address&gt;]  [metric &lt;NN&gt;]  [mtu &lt;NN&gt;]
+  [[-]trailers]  [[-]arp]  [[-]allmulti]
+  [multicast]  [[-]promisc]
+  [mem_start &lt;NN&gt;]  [io_addr &lt;NN&gt;]  [irq &lt;NN&gt;]  [media &lt;type&gt;]
+  [txqueuelen &lt;NN&gt;]
+  [[-]dynamic]
+  [up|down] ...
+</pre>
+<p>参数说明</p>
+<dl class="docutils">
+<dt>add&lt;地址&gt;</dt>
+<dd>设置网络设备IPv6的IP地址。</dd>
+<dt>del&lt;地址&gt;</dt>
+<dd>删除网络设备IPv6的IP地址。</dd>
+<dt>down</dt>
+<dd>关闭指定的网络设备。</dd>
+<dt>&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;</dt>
+<dd>设置网络设备的类型与硬件地址。</dd>
+<dt>io_addr&lt;I/O地址&gt;</dt>
+<dd>设置网络设备的I/O地址。</dd>
+<dt>irq&lt;IRQ地址&gt;</dt>
+<dd>设置网络设备的IRQ。</dd>
+<dt>media&lt;网络媒介类型&gt;</dt>
+<dd>设置网络设备的媒介类型。</dd>
+<dt>mem_start&lt;内存地址&gt;</dt>
+<dd>设置网络设备在主内存所占用的起始地址。</dd>
+<dt>metric&lt;数目&gt;</dt>
+<dd>指定在计算数据包的转送次数时，所要加上的数目。</dd>
+<dt>mtu&lt;字节&gt;</dt>
+<dd>设置网络设备的MTU。</dd>
+<dt>netmask&lt;子网掩码&gt;</dt>
+<dd>设置网络设备的子网掩码。</dd>
+<dt>tunnel&lt;地址&gt;</dt>
+<dd>建立IPv4与IPv6之间的隧道通信地址。</dd>
+<dt>up</dt>
+<dd>启动指定的网络设备。</dd>
+<dt>-broadcast&lt;地址&gt;</dt>
+<dd>将要送往指定地址的数据包当成广播数据包来处理。</dd>
+<dt>-pointopoint&lt;地址&gt;</dt>
+<dd>与指定地址的网络设备建立直接连线，此模式具有保密功能。</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-p<var>romisc</var></span></kbd></td>
+<td>关闭或启动指定网络设备的promiscuous模式。</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>[IP地址]</dt>
+<dd>指定网络设备的IP地址。</dd>
+<dt>[网络设备]</dt>
+<dd>指定网络设备的名称。</dd>
+</dl>
+<div class="section" id="section-1">
+<h2>默认输出网卡信息说明</h2>
+<p>以 eth0 为例，其网卡信息含义如下所示</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">名称  含义</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>eth0</td>
+<td>网卡名称</td>
+</tr>
+<tr><td>Link encap</td>
+<td>网卡连接类型</td>
+</tr>
+<tr><td>HWaddr</td>
+<td>网卡 MAC 地址</td>
+</tr>
+<tr><td>inet addr</td>
+<td>IPv4 的 IP 地址</td>
+</tr>
+<tr><td>Bcast</td>
+<td>广播地址</td>
+</tr>
+<tr><td>Mask</td>
+<td>子网掩码</td>
+</tr>
+<tr><td>inet6 addr</td>
+<td>IPv6 的 IP 地址</td>
+</tr>
+<tr><td>Scope</td>
+<td>IPv6 的域范围</td>
+</tr>
+<tr><td>UP</td>
+<td>表示网卡已经启用</td>
+</tr>
+<tr><td>BROADCAST</td>
+<td>表示主机支持广播</td>
+</tr>
+<tr><td>RUNNING</td>
+<td>表示网卡正在运行中</td>
+</tr>
+<tr><td>MULTICAST</td>
+<td>表示主机支持多播</td>
+</tr>
+<tr><td>MTU</td>
+<td>最大传输单元</td>
+</tr>
+<tr><td>Metric</td>
+<td>表示接口度量值</td>
+</tr>
+<tr><td>RX packets:</td>
+<td>接收的数据包数</td>
+</tr>
+<tr><td>errors:</td>
+<td>接收时错误的数据包数</td>
+</tr>
+<tr><td>dropped</td>
+<td>接收时丢弃的数据包数</td>
+</tr>
+<tr><td>overruns:</td>
+<td>接收时由于 buffer 溢出而丢弃的数据包数</td>
+</tr>
+<tr><td>frame:</td>
+<td>接收时由于 frame 错位而丢弃的数据包数</td>
+</tr>
+<tr><td>TX packets</td>
+<td>发送的数据包数</td>
+</tr>
+<tr><td>errors:</td>
+<td>发送时错误的数据包数</td>
+</tr>
+<tr><td>dropped:</td>
+<td>发送时丢弃的数据包数</td>
+</tr>
+<tr><td>overruns:</td>
+<td>发送时由于 buffer 溢出而丢弃的数据包数</td>
+</tr>
+<tr><td>carrier:</td>
+<td>发送时由于 carrier 错误而丢弃的数据包数</td>
+</tr>
+<tr><td>collisions:</td>
+<td>表示冲突信息的数据包数目</td>
+</tr>
+<tr><td>txqueuelen:</td>
+<td>表示网卡设置传输队列的大小</td>
+</tr>
+<tr><td>RX bytes:</td>
+<td>接收的数据包字节数</td>
+</tr>
+<tr><td>TX bytes:</td>
+<td>发送的数据包字节数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="section-2">
+<h2>常见的网络接口</h2>
+<ul class="simple">
+<li>lo 本地回环接口</li>
+<li>br0 网桥接口</li>
+<li>eth0 以太网接口</li>
+<li>wlan0 无线接口</li>
+</ul>
+</div>
+<div class="section" id="section-3">
+<h2>配置文件配置网卡信息</h2>
+<div class="highlight"><pre><span></span><span class="c1"># vim /etc/sysconfig/network-scripts/ifcfg-eth0</span>
+<span class="c1"># vim /etc/sysconfig/network-scripts/ifcfg-eth1</span>
+
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&quot;eth0&quot;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;static&quot;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPADDR</span><span class="o">=</span><span class="s2">&quot;192.168.1.56&quot;</span>
+<span class="nv">NETMASK</span><span class="o">=</span><span class="s2">&quot;255.255.255.0&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h2>用例</h2>
+<p>显示网络设备信息</p>
+<div class="highlight"><pre><span></span><span class="c1"># ifconfig</span>
+eth0<span class="w">   </span>Link<span class="w"> </span>encap:Ethernet<span class="w"> </span>HWaddr<span class="w"> </span><span class="m">00</span>:50:56:0A:0B:0C
+<span class="w">    </span>inet<span class="w"> </span>addr:192.168.0.3<span class="w"> </span>Bcast:192.168.0.255<span class="w"> </span>Mask:255.255.255.0
+<span class="w">    </span>inet6<span class="w"> </span>addr:<span class="w"> </span>fe80::250:56ff:fe0a:b0c/64<span class="w"> </span>Scope:Link
+<span class="w">    </span>UP<span class="w"> </span>BROADCAST<span class="w"> </span>RUNNING<span class="w"> </span>MULTICAST<span class="w"> </span>MTU:1500<span class="w"> </span>Metric:1
+<span class="w">    </span>RX<span class="w"> </span>packets:172220<span class="w"> </span>errors:0<span class="w"> </span>dropped:0<span class="w"> </span>overruns:0<span class="w"> </span>frame:0
+<span class="w">    </span>TX<span class="w"> </span>packets:132379<span class="w"> </span>errors:0<span class="w"> </span>dropped:0<span class="w"> </span>overruns:0<span class="w"> </span>carrier:0
+<span class="w">    </span>collisions:0<span class="w"> </span>txqueuelen:1000
+<span class="w">    </span>RX<span class="w"> </span>bytes:87101880<span class="w"> </span><span class="o">(</span><span class="m">83</span>.0<span class="w"> </span>MiB<span class="o">)</span><span class="w"> </span>TX<span class="w"> </span>bytes:41576123<span class="w"> </span><span class="o">(</span><span class="m">39</span>.6<span class="w"> </span>MiB<span class="o">)</span>
+<span class="w">    </span>Interrupt:185<span class="w"> </span>Base<span class="w"> </span>address:0x2024
+
+lo<span class="w">    </span>Link<span class="w"> </span>encap:Local<span class="w"> </span>Loopback
+<span class="w">    </span>inet<span class="w"> </span>addr:127.0.0.1<span class="w"> </span>Mask:255.0.0.0
+<span class="w">    </span>inet6<span class="w"> </span>addr:<span class="w"> </span>::1/128<span class="w"> </span>Scope:Host
+<span class="w">    </span>UP<span class="w"> </span>LOOPBACK<span class="w"> </span>RUNNING<span class="w"> </span>MTU:16436<span class="w"> </span>Metric:1
+<span class="w">    </span>RX<span class="w"> </span>packets:2022<span class="w"> </span>errors:0<span class="w"> </span>dropped:0<span class="w"> </span>overruns:0<span class="w"> </span>frame:0
+<span class="w">    </span>TX<span class="w"> </span>packets:2022<span class="w"> </span>errors:0<span class="w"> </span>dropped:0<span class="w"> </span>overruns:0<span class="w"> </span>carrier:0
+<span class="w">    </span>collisions:0<span class="w"> </span>txqueuelen:0
+<span class="w">    </span>RX<span class="w"> </span>bytes:2459063<span class="w"> </span><span class="o">(</span><span class="m">2</span>.3<span class="w"> </span>MiB<span class="o">)</span><span class="w"> </span>TX<span class="w"> </span>bytes:2459063<span class="w"> </span><span class="o">(</span><span class="m">2</span>.3<span class="w"> </span>MiB<span class="o">)</span>
+</pre></div>
+<p>启动关闭指定网卡</p>
+<div class="highlight"><pre><span></span><span class="c1"># ifconfig eth0 down</span>
+<span class="c1"># ifconfig eth0 up</span>
+</pre></div>
+<p>为网卡配置和删除IPv6地址</p>
+<div class="highlight"><pre><span></span><span class="c1"># ifconfig eth0 add 33ffe:3240:800:1005::2/ 64 //为网卡设置IPv6地址</span>
+
+<span class="c1"># ifconfig eth0 del 33ffe:3240:800:1005::2/ 64 //为网卡删除IPv6地址</span>
+</pre></div>
+<p>ifconfig修改MAC地址</p>
+<div class="highlight"><pre><span></span><span class="c1"># ifconfig eth0 down //关闭网卡</span>
+<span class="c1"># ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE //修改MAC地址</span>
+<span class="c1"># ifconfig eth0 up //启动网卡</span>
+<span class="c1"># ifconfig eth1 hw ether 00:1D:1C:1D:1E //关闭网卡并修改MAC地址</span>
+<span class="c1"># ifconfig eth1 up //启动网卡</span>
+</pre></div>
+<p>配置IP地址</p>
+<div class="highlight"><pre><span></span><span class="c1"># ifconfig eth0 192.168.1.56</span>
+//给eth0网卡配置IP地址
+<span class="c1"># ifconfig eth0 192.168.1.56 netmask 255.255.255.0</span>
+//<span class="w"> </span>给eth0网卡配置IP地址,并加上子掩码
+<span class="c1"># ifconfig eth0 192.168.1.56 netmask 255.255.255.0 broadcast 192.168.1.255</span>
+//<span class="w"> </span>给eth0网卡配置IP地址,加上子掩码,加上个广播地址
+</pre></div>
+<p>启用和关闭ARP协议</p>
+<div class="highlight"><pre><span></span><span class="c1"># ifconfig eth0 arp  //开启</span>
+<span class="c1"># ifconfig eth0 -arp  //关闭</span>
+</pre></div>
+<p>置最大传输单元</p>
+<div class="highlight"><pre><span></span><span class="c1"># ifconfig eth0 mtu 1500</span>
+//设置能通过的最大数据包大小为<span class="w"> </span><span class="m">1500</span><span class="w"> </span>bytes
+</pre></div>
+</div>
+<div class="section" id="section-5">
+<h2>用例-查看实时网速</h2>
 <p>可结合 <cite>watch</cite> 查看实时网速</p>
 <div class="highlight"><pre><span></span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>ifconfig
 </pre></div>
@@ -155,6 +404,7 @@
 <li>TX: 发送流量</li>
 <li>计算方法： (KB = 数值/1000) (MB = 数值/100000)</li>
 </ul>
+</div>
 
 								</article>
 						</div>
@@ -171,6 +421,47 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    默认输出网卡信息说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    常见的网络接口
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    配置文件配置网卡信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    用例
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    用例-查看实时网速
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -188,27 +479,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
+											<p><p class="first last">apt-clone</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>24</strong></span>
 											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
 											<p><p class="first last">配置容器使用的dns</p>
 </p>
 										</li>
 										<li>
+											<span class="date"> 9 <strong>24</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-ifconfig.html">ifconfig</a></h3>
+											<p><p class="first last">ifconfig</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>23</strong></span>
 											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
 											<p><p class="first last">dig</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>23</strong></span>
-											<h3><a href="yq-docs-rear-end-from-question-convert-narrow.html">窄化转换</a></h3>
-											<p><p class="first last">窄化转换(类型转换)</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 2 <strong>20</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
-											<p><p class="first last">nsis常用头文件</p>
 </p>
 										</li>
 									</ul>

@@ -183,6 +183,144 @@ docker pull linuxserver/jellyfin
 </pre>
 <p>地址: <a class="reference external" href="https://hub.docker.com/r/linuxserver/jellyfin">linuxserver/jellyfin</a></p>
 </div>
+<div class="section" id="emby">
+<h2>emby</h2>
+<p>媒体服务器</p>
+<p>官方的如果需要服务端硬解的话需要订阅, 于是滋生了一些三分pj版</p>
+<dl class="docutils">
+<dt>amilys/embyserver</dt>
+<dd><p class="first">开心版.</p>
+<p>emby自供版 交流群：433493451</p>
+<p class="last">地址: <a class="reference external" href="https://hub.docker.com/r/amilys/embyserver">https://hub.docker.com/r/amilys/embyserver</a></p>
+</dd>
+<dt>lovechen/embyserver</dt>
+<dd><p class="first">embyserver 特别版 非开心版 | AMD64/ARM32/ARM64 | 上海解封版 官改自用 原汁原味 低调使用 喜欢请标星</p>
+<p>地址: <a class="reference external" href="https://hub.docker.com/r/lovechen/embyserver">https://hub.docker.com/r/lovechen/embyserver</a></p>
+<p>参考配置 from Paddi</p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">traefik</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span><span class="w">      </span><span class="c1"># 使用桥接模式的网络驱动</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">      </span><span class="c1"># 表明这个网络是外部创建的，不由这个 Docker Compose 文件管理</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">emby</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lovechen/embyserver:latest</span><span class="w">  </span><span class="c1"># 使用最新版本的 lovechen/embyserver 镜像</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emby</span><span class="w">               </span><span class="c1"># 容器名称设置为 emby</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w">                    </span><span class="c1"># 容器总是重新启动</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span><span class="w">                       </span><span class="c1"># 将此服务连接到 traefik 网络</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;8096:8096&#39;</span><span class="w">                   </span><span class="c1"># 将容器的 8096 端口映射到主机的 8096 端口</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;8920:8920&#39;</span><span class="w">                   </span><span class="c1"># 将容器的 8920 端口映射到主机的 8920 端口</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1900:1900/udp&#39;</span><span class="w">               </span><span class="c1"># 将容器的 1900 UDP 端口映射到主机的 1900 UDP 端口</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;7359:7359/udp&#39;</span><span class="w">               </span><span class="c1"># 将容器的 7359 UDP 端口映射到主机的 7359 UDP 端口</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./config:/config</span><span class="w">              </span><span class="c1"># 将主机上的 ./config 目录挂载到容器的 /config</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pt/downloads/link:/data</span><span class="w">      </span><span class="c1"># 将主机上的 /pt/downloads/link 目录挂载到容器的 /data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/timezone:/etc/timezone</span><span class="w">   </span><span class="c1"># 同步主机和容器的时区设置</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/localtime:/etc/localtime</span><span class="w"> </span><span class="c1"># 同步主机和容器的本地时间</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UID=0</span><span class="w">                         </span><span class="c1"># 设置容器用户 ID 为 0 (通常是 root)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GID=0</span><span class="w">                         </span><span class="c1"># 设置容器组 ID 为 0 (通常是 root)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GIDLIST=0</span><span class="w">                     </span><span class="c1"># 设置容器组 ID 列表为 0</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA_VISIBLE_DEVICES=all</span><span class="w">    </span><span class="c1"># 允许容器访问所有 NVIDIA 设备</span>
+<span class="w">    </span><span class="nt">devices</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/dri:/dev/dri</span><span class="w">             </span><span class="c1"># 将主机的 /dev/dri 设备挂载到容器</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">devices</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span><span class="w">            </span><span class="c1"># 指定使用 NVIDIA 驱动</span>
+<span class="w">            </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w">                </span><span class="c1"># 使用所有可用的 GPU</span>
+<span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span><span class="w">       </span><span class="c1"># 指定 GPU 能力</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;diun.enable=true&quot;</span><span class="w">            </span><span class="c1"># 特定的标签，可能用于监控或其他目的</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.enable=false&quot;</span><span class="w">        </span><span class="c1"># 禁用 Traefik 自动配置此服务</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.docker.network=traefik&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.http.routers.emby.tls=true&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.http.routers.emby.entryPoints=https&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.http.services.emby.loadbalancer.server.port=8096&quot;</span>
+
+<span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">levonet/nginx:latest</span><span class="w">       </span><span class="c1"># 使用最新版本的 levonet/nginx 镜像</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emby-nginx</span><span class="w">        </span><span class="c1"># 容器名称设置为 emby-nginx</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span><span class="w">                       </span><span class="c1"># 将此服务连接到 traefik 网络</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w">                   </span><span class="c1"># 容器总是重新启动</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./nginx_config/nginx.conf:/etc/nginx/nginx.conf</span><span class="w">       </span><span class="c1"># 挂载 nginx 配置文件</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./nginx_config/http.d:/etc/nginx/http.d</span><span class="w">               </span><span class="c1"># 挂载 nginx http 配置目录</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./nginx_config/conf.d:/etc/nginx/conf.d</span><span class="w">               </span><span class="c1"># 挂载 nginx 附加配置目录</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8083:80</span><span class="w">                      </span><span class="c1"># 将容器的 80 端口映射到主机的 8083 端口</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span><span class="w">             </span><span class="c1"># 设置容器的时区为亚洲/上海</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.enable=true&quot;</span><span class="w">        </span><span class="c1"># 启用 Traefik 自动配置此服务</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.docker.network=traefik&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.http.routers.emby-nginx.tls=true&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.http.routers.emby-nginx.entryPoints=https&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;traefik.http.routers.emby-nginx.rule=Host(`yourhost.com`)</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">PathPrefix(`/`)&quot;</span>
+</pre></div>
+<p>旧的参考配置：</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+--network<span class="o">=</span>bridge<span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="s1">&#39;8096:8096&#39;</span><span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="s1">&#39;8920:8920&#39;</span><span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="s1">&#39;1900:1900/udp&#39;</span><span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="s1">&#39;7359:7359/udp&#39;</span><span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/data/emby:/config<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/data/downloads/:/data<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">TZ</span><span class="o">=</span><span class="s2">&quot;Asia/Shanghai&quot;</span><span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/dri:/dev/dri<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">UID</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">GID</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">GIDLIST</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+--restart<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span><span class="s2">&quot;http://你的代理IP:你的代理端口/&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span><span class="s2">&quot;http://你的代理IP:你的代理端口/&quot;</span><span class="w"> </span><span class="se">\</span>
+--name<span class="w"> </span>emby<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span>lovechen/embyserver:版本号
+</pre></div>
+<p>参数说明：</p>
+<div class="last"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="c1">#设置网络模式</span>
+--network<span class="o">=</span>bridge<span class="w"> </span><span class="se">\</span>
+<span class="c1">#开放端口</span>
+<span class="c1">#http</span>
+-p<span class="w"> </span><span class="s1">&#39;8096:8096&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="c1">#https</span>
+-p<span class="w"> </span><span class="s1">&#39;8920:8920&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="c1">#dlna</span>
+-p<span class="w"> </span><span class="s1">&#39;1900:1900/udp&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="c1">#local network discovery</span>
+-p<span class="w"> </span><span class="s1">&#39;7359:7359/udp&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="c1">#映射配置目录</span>
+-v<span class="w"> </span>/data/emby:/config<span class="w"> </span><span class="se">\</span>
+<span class="c1">#映射影视资源目录</span>
+-v<span class="w"> </span>/data/downloads/:/data<span class="w"> </span><span class="se">\</span>
+<span class="c1">#设置时区</span>
+-e<span class="w"> </span><span class="nv">TZ</span><span class="o">=</span><span class="s2">&quot;Asia/Shanghai&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="c1">#映射硬解驱动</span>
+--device<span class="w"> </span>/dev/dri:/dev/dri<span class="w"> </span><span class="se">\</span>
+<span class="c1">#设置权限</span>
+-e<span class="w"> </span><span class="nv">UID</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">GID</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">GIDLIST</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+--restart<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
+<span class="c1">#设置代理（用于TMDB等搜集信息）</span>
+-e<span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span><span class="s2">&quot;http://你的代理IP:你的代理端口/&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span><span class="s2">&quot;http://你的代理IP:你的代理端口/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="c1">#docker名字</span>
+--name<span class="w"> </span>emby<span class="w"> </span><span class="se">\</span>
+<span class="c1">#docker源版本</span>
+-d<span class="w"> </span>lovechen/embyserver:版本号
+</pre></div>
+</div></dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -217,6 +355,11 @@ docker pull linuxserver/jellyfin
     jellyfin
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#emby">
+    emby
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -242,27 +385,27 @@ docker pull linuxserver/jellyfin
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 9 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
+											<p><p class="first last">apt-clone</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>24</strong></span>
 											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
 											<p><p class="first last">配置容器使用的dns</p>
 </p>
 										</li>
 										<li>
+											<span class="date"> 9 <strong>24</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-ifconfig.html">ifconfig</a></h3>
+											<p><p class="first last">ifconfig</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>23</strong></span>
 											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
 											<p><p class="first last">dig</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>23</strong></span>
-											<h3><a href="yq-docs-rear-end-from-question-convert-narrow.html">窄化转换</a></h3>
-											<p><p class="first last">窄化转换(类型转换)</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 2 <strong>20</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a></h3>
-											<p><p class="first last">nsis常用头文件</p>
 </p>
 										</li>
 									</ul>
