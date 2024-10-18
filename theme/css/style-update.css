@@ -529,6 +529,10 @@ ol{
 /* 斜体 */
 cite{
     font-style: italic !important;
+    padding: 0 5px;
+    background-color: #2a3943;
+    border-radius: 5px;
+    color: #cbb685;
 }
 
 /* 小 标题, 自动生成的id可能跟默认的有冲突, 比如 copyright */

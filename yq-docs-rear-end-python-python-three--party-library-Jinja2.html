@@ -218,6 +218,20 @@ pip install Jinja2
   此处可以是html 代码
 {% endfor %}
 </pre>
+<div class="section" id="section-1">
+<h2>模版语法与内容冲突</h2>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/anqixiang/article/details/121076854">https://blog.csdn.net/anqixiang/article/details/121076854</a></p>
+<p>模版语法与内容冲突, 比如模版中有 <tt class="docutils literal">{{</tt> 或 <tt class="docutils literal">}}</tt> 或 <tt class="docutils literal">{#</tt> 等符号, 那么渲染时候就可能报错:</p>
+<pre class="literal-block">
+TemplateSyntaxError: Missing end of comment tag
+</pre>
+<p>此时可以使用 <tt class="docutils literal">raw</tt> 来将其包裹, 表示不解析这部分内容, 比如:</p>
+<pre class="literal-block">
+{% raw %}
+#define MyAppExeName &quot;{#PRODUCT_NAME}.exe&quot;
+{% endraw %}
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -234,6 +248,27 @@ pip install Jinja2
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    模版语法与内容冲突
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -251,27 +286,27 @@ pip install Jinja2
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
+											<p><p class="first last">数据域问题总结</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
+											<p><p class="first last">html</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
+											<p><p class="first last">html标签</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>28</strong></span>
 											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
 											<p><p class="first last">apt-clone</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
-											<p><p class="first last">配置容器使用的dns</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-ifconfig.html">ifconfig</a></h3>
-											<p><p class="first last">ifconfig</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
-											<p><p class="first last">dig</p>
 </p>
 										</li>
 									</ul>
@@ -337,7 +372,7 @@ pip install Jinja2
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2021-2024	</li>
+											<li>&copy; YanQue 2020-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>

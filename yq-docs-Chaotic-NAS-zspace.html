@@ -249,6 +249,100 @@ mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">use
 <span class="w">  </span>hslr/sun-panel:latest
 </pre></div>
 </div>
+<div class="section" id="wisemapping">
+<h2>思维导图 wisemapping</h2>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>Docker脑图</li>
+<li>Docker思维导图</li>
+</ul>
+</dd>
+</dl>
+<p>参考: <a class="reference external" href="https://post.smzdm.com/p/ag5rk4vw/">免费的才是香！极空间部署思维导图【wisemapping】</a></p>
+<p>可以直接在 <cite>常用镜像</cite> 下载</p>
+<div class="figure">
+<img alt="下载" src="doc-raw/resources/images/2024-10-14-14-39-17.png" style="width: 480px;" />
+</div>
+<p>配置信息</p>
+<ol class="arabic simple">
+<li>端口映射(填未使用的端口就行)</li>
+</ol>
+<div class="figure">
+<img alt="端口" src="doc-raw/resources/images/2024-10-14-14-48-12.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="2">
+<li>环境配置</li>
+</ol>
+<div class="figure">
+<img alt="环境配置" src="doc-raw/resources/images/2024-10-14-14-49-53.png" style="width: 480px;" />
+</div>
+<p>使用的值:</p>
+<pre class="literal-block">
+# （指定系统的默认语言设置）
+LANG: zh_CN.UTF-8
+
+# （指定系统默认的语言环境）
+LANGUAGE: zh_CN:zh
+
+# （指定系统所有的语言环境）
+LC_ALL: zh_CN.UTF-8
+
+# （指定程序的内存分配、性能表现和文件编码）
+JAVA_OPTS: -XX:+PrintFlagsFinal -XX:InitialRAMPercentage=30 -XX:MaxRAMPercentage=80 -Dfile.encoding=UTF-8
+</pre>
+<ol class="arabic simple" start="3">
+<li>命令这里默认的 <tt class="docutils literal">'catalina.sh' 'run'</tt> 即可, 然后点击 <cite>应用</cite></li>
+</ol>
+<div class="figure">
+<img alt="命令" src="doc-raw/resources/images/2024-10-14-14-51-50.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="4">
+<li>访问部署好的容器</li>
+</ol>
+<p>默认用户:</p>
+<pre class="literal-block">
+默认用户1: test&#64;wisemapping.org
+密码: test
+
+默认用户2: admin&#64;wisemapping.org
+密码: test
+</pre>
+<p>登录后</p>
+<div class="figure">
+<img alt="命令" src="doc-raw/resources/images/2024-10-14-14-59-51.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="5">
+<li>end</li>
+</ol>
+</div>
+<div class="section" id="xhongc-music-tag-web">
+<h2>音乐刮削-xhongc/music_tag_web</h2>
+<p>参考: <a class="reference external" href="https://post.smzdm.com/p/a3xo7z5k/">音乐爱好者的必备技能：使用极空间的『极音乐』，打造完美的音乐库</a></p>
+<p>文件夹映射:</p>
+<pre class="literal-block">
+.../config:/app/data        # 映射配置目录
+.../music:/app/media:rw     # 映射NAS中音乐文件夹路径
+</pre>
+<div class="figure">
+<img alt="文件夹映射" src="doc-raw/resources/images/2024-10-18-11-05-09.png" style="width: 480px;" />
+</div>
+<p>端口:</p>
+<pre class="literal-block">
+本地端口:8001
+
+# 如果是 v2 (需要激活码), 介绍可查看: https://xiers-organization.gitbook.io/music-tag-web-v2
+# 本地端口:8002
+</pre>
+<div class="figure">
+<img alt="端口" src="doc-raw/resources/images/2024-10-18-11-08-52.png" style="width: 480px;" />
+</div>
+<p>启动时默认账密:</p>
+<pre class="literal-block">
+admin
+admin
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -293,6 +387,16 @@ mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">use
     配置 sun-panel
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#wisemapping">
+    思维导图 wisemapping
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#xhongc-music-tag-web">
+    音乐刮削-xhongc/music_tag_web
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -318,27 +422,27 @@ mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">use
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
+											<p><p class="first last">数据域问题总结</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
+											<p><p class="first last">html</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
+											<p><p class="first last">html标签</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>28</strong></span>
 											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
 											<p><p class="first last">apt-clone</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
-											<p><p class="first last">配置容器使用的dns</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-ifconfig.html">ifconfig</a></h3>
-											<p><p class="first last">ifconfig</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
-											<p><p class="first last">dig</p>
 </p>
 										</li>
 									</ul>
@@ -404,7 +508,7 @@ mount.cifs<span class="w"> </span>-o<span class="w"> </span><span class="nv">use
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2021-2024	</li>
+											<li>&copy; YanQue 2020-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>

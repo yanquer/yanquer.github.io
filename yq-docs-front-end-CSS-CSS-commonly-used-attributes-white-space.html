@@ -150,13 +150,18 @@
 <p>支持的值</p>
 <dl class="docutils">
 <dt>normal(默认)</dt>
-<dd>不会对文本进行换行处理。</dd>
+<dd>不会对文本进行换行处理。空白会被浏览器忽略</dd>
+<dt>pre</dt>
+<dd>空白会被浏览器保留。其行为方式类似 <cite>HTML</cite> 中的 <cite>&lt;pre&gt;</cite> 标签。</dd>
 <dt>pre-wrap</dt>
-<dd>文本会自动进行换行并保留空格。</dd>
+<dd>文本会自动进行换行并保留空格。(保留空白符序列，但是正常地进行换行。)</dd>
 <dt>pre-line</dt>
-<dd>文本会自动进行换行并不保留空格。</dd>
+<dd>文本会自动进行换行并不保留空格。(合并空白符序列，但是保留换行符)</dd>
+<dt>inherit</dt>
+<dd>规定应该从父元素继承 <cite>white-space</cite> 属性的值。</dd>
 <dt>nowrap</dt>
-<dd><p class="first">将多个连续空格符或换行符视为一个空格符。</p>
+<dd><p class="first">将多个连续空格符或换行符视为一个空格符。
+文本不会换行，文本会在在同一行上继续，直到遇到 <cite>&lt;br&gt;</cite> 标签为止。</p>
 <p class="last">默认情况下，文本超过容器宽度时，会自动在合适的地方添加换行符进行换行。
 设置了该值后，换行效果会被消除，使文本不进行换行，从而实现文本单行显示的效果。
 此时我们会发现文本发生了溢出：后面的文本内容跑到容器外面去了。</p>
@@ -205,27 +210,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
+											<p><p class="first last">数据域问题总结</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
+											<p><p class="first last">html</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
+											<p><p class="first last">html标签</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>28</strong></span>
 											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
 											<p><p class="first last">apt-clone</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
-											<p><p class="first last">配置容器使用的dns</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-ifconfig.html">ifconfig</a></h3>
-											<p><p class="first last">ifconfig</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
-											<p><p class="first last">dig</p>
 </p>
 										</li>
 									</ul>
@@ -291,7 +296,7 @@
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2021-2024	</li>
+											<li>&copy; YanQue 2020-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>

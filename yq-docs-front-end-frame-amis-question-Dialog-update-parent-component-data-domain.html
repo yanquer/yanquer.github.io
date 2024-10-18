@@ -238,6 +238,7 @@ onEvent: {
     confirm: {
         actions: [
             {
+                // setValue 的本质是更新数据, 不会将指定字段外的数据覆盖为空
                 actionType: 'setValue',
                 componentId: &quot;top-form&quot;,
                 args: {
@@ -256,6 +257,107 @@ onEvent: {
 <p class="last"><strong>除非是当前数据链上的数据, 否则需要指定额外的id去更新指定控件的数据</strong></p>
 </dd>
 </dl>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<ul class="simple">
+<li>dialog的数据与外部数据域是独立的, 不会互相影响;</li>
+<li>dialog组件内部可以查询外部组件的数据域;</li>
+<li>外部组件内部无法调用dialog组件的数据域;</li>
+<li>dialog使用外部数据域的值, 需要用 <cite>data</cite> 显示指定需要用哪些值, 否则会访问不到...</li>
+</ul>
+<p class="last">比如在 <cite>dialog</cite> 内的某个组件 <cite>name</cite> 设置了值 为外部数据域的值, 在dialog上直接更新时, 默认不会触发外部数据域的更新.
+除非使用 <cite>setValue</cite> 显示设置外部数据域的值</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">当表单需要辅助组件来辅助更新时, 如果设置 <cite>visible</cite> 为 <cite>false</cite>, 实际使用时,
+amis会认为此组件不存在, 可以使用 <tt class="docutils literal">&quot;style&quot;: {&quot;display&quot;: <span class="pre">&quot;none&quot;},</span></tt></p>
+</div>
+<div class="section" id="section-1">
+<h2>可能遇到的报错</h2>
+<dl class="docutils">
+<dt>场景</dt>
+<dd>使用 dialog 给外部表单设置数据时候</dd>
+<dt>出现时机</dt>
+<dd>dialog 内容数组设置空数据时提交遇</dd>
+<dt>报错</dt>
+<dd><p class="first">内容:</p>
+<pre class="last literal-block">
+[mobx-state-tree] You are trying to read or write to an object that is no longer part of a state tree. (Object type: 'FormStore', Path upon death: '', Subpath: '', Action: '.setCurrentAction()'). Either detach nodes first, or don't use objects after removing / replacing them in the tree.
+</pre>
+</dd>
+</dl>
+<p>暂时确定为官方框架的 bug, 已提出在 <a class="reference external" href="https://github.com/baidu/amis/issues/11070">https://github.com/baidu/amis/issues/11070</a></p>
+<p>目前可以临时使用 <cite>form</cite> 包裹来避免</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;button&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Edit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;primary&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;onEvent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;click&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;actionType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dialog&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;dialog&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dialog&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="c1">// 必须使用 form 包裹, 否则清空时会出毛病.</span>
+<span class="w">                            </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;form&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;input-array&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tDItems&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tDItems&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                            </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;combo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;controls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                                    </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;input-text&quot;</span><span class="p">},</span>
+<span class="w">                                                    </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;input-text&quot;</span><span class="p">},</span>
+<span class="w">                                                    </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;addr&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;addr&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;input-text&quot;</span><span class="p">},</span>
+<span class="w">                                                </span><span class="p">],</span>
+<span class="w">                                            </span><span class="p">},</span>
+<span class="w">                                        </span><span class="p">],</span>
+<span class="w">                                    </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">]},</span>
+<span class="w">                            </span><span class="c1">// {&quot;type&quot;: &quot;input-array&quot;, &quot;name&quot;: &quot;tDItems&quot;, &quot;label&quot;: &quot;tDItems&quot;,</span>
+<span class="w">                            </span><span class="c1">//     &quot;items&quot;: [</span>
+<span class="w">                            </span><span class="c1">//         {&quot;type&quot;: &quot;combo&quot;, &quot;controls&quot;: [</span>
+<span class="w">                            </span><span class="c1">//                 {&quot;label&quot;: &quot;name&quot;, &quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;input-text&quot;},</span>
+<span class="w">                            </span><span class="c1">//                 {&quot;label&quot;: &quot;age&quot;, &quot;name&quot;: &quot;age&quot;, &quot;type&quot;: &quot;input-text&quot;},</span>
+<span class="w">                            </span><span class="c1">//                 {&quot;label&quot;: &quot;addr&quot;, &quot;name&quot;: &quot;addr&quot;, &quot;type&quot;: &quot;input-text&quot;},</span>
+<span class="w">                            </span><span class="c1">//             ],</span>
+<span class="w">                            </span><span class="c1">//         },</span>
+<span class="w">                            </span><span class="c1">//     ],</span>
+<span class="w">                            </span><span class="c1">// },</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;onEvent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;confirm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                    </span><span class="c1">// 不行的</span>
+<span class="w">                                    </span><span class="c1">// {&quot;actionType&quot;: &quot;setValue&quot;, &quot;componentName&quot;: &quot;tDItems&quot;,</span>
+<span class="w">                                    </span><span class="c1">//     &quot;args&quot;: {&quot;value&quot;: &quot;$tDItems&quot;,},</span>
+<span class="w">                                    </span><span class="c1">// },</span>
+<span class="w">                                    </span><span class="c1">// {&quot;actionType&quot;: &quot;setValue&quot;, &quot;componentName&quot;: &quot;tDItems&quot;,</span>
+<span class="w">                                    </span><span class="c1">//     &quot;args&quot;: {&quot;value&quot;: {&quot;tDItems&quot;: &quot;$tDItems&quot;},},</span>
+<span class="w">                                    </span><span class="c1">// },</span>
+
+<span class="w">                                    </span><span class="c1">// 可以的</span>
+<span class="w">                                    </span><span class="c1">// {&quot;actionType&quot;: &quot;setValue&quot;, &quot;componentId&quot;: &quot;top-data-domain&quot;,</span>
+<span class="w">                                    </span><span class="c1">//     &quot;args&quot;: {&quot;value&quot;: {&quot;tDItems&quot;: &quot;$tDItems&quot;},},</span>
+<span class="w">                                    </span><span class="c1">// },</span>
+<span class="w">                                    </span><span class="c1">// {&quot;actionType&quot;: &quot;setValue&quot;, &quot;componentId&quot;: &quot;testTableId2&quot;,</span>
+<span class="w">                                    </span><span class="c1">//     &quot;args&quot;: {&quot;value&quot;: {&quot;tDItems&quot;: &quot;$tDItems&quot;},},</span>
+<span class="w">                                    </span><span class="c1">// },</span>
+<span class="w">                                    </span><span class="c1">// componentName 只能是具有数据域的组件, 单个表单项如 input-text 是不具备数据域的</span>
+<span class="w">                                    </span><span class="p">{</span><span class="nt">&quot;actionType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setValue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;componentName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testTableId2&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;tDItems&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$tDItems&quot;</span><span class="p">},},</span>
+<span class="w">                                    </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">],</span>
+<span class="w">                            </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -272,6 +374,27 @@ onEvent: {
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    可能遇到的报错
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -289,27 +412,27 @@ onEvent: {
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date"> 3 <strong>09</strong></span>
+											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
+											<p><p class="first last">数据域问题总结</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
+											<p><p class="first last">html</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>15</strong></span>
+											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
+											<p><p class="first last">html标签</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 9 <strong>28</strong></span>
 											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
 											<p><p class="first last">apt-clone</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-dns.html">配置容器使用的dns</a></h3>
-											<p><p class="first last">配置容器使用的dns</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>24</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-ifconfig.html">ifconfig</a></h3>
-											<p><p class="first last">ifconfig</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>23</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-dig.html">dig</a></h3>
-											<p><p class="first last">dig</p>
 </p>
 										</li>
 									</ul>
@@ -375,7 +498,7 @@ onEvent: {
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2021-2024	</li>
+											<li>&copy; YanQue 2020-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>
