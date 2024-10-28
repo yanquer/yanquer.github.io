@@ -528,6 +528,31 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 <span class="k">SectionEnd</span>
 </pre></div>
 </div>
+<div class="section" id="section-16">
+<h2>注册表值的读写</h2>
+<p>在 <cite>nsis</cite> 中对注册表的操作, 部分无法通过手动打开注册表项查看,
+因为此部分是隐藏/加密/编码的. 具体哪种策略暂时未知,
+要知道注册表内容只有手动在 <cite>nsi</cite> 读取.</p>
+<p>示例脚本</p>
+<div class="highlight"><pre><span></span><span class="c">; 读取上一次注册表版本</span>
+<span class="k">ClearErrors</span>
+<span class="k">ReadRegStr</span><span class="w"> </span><span class="s2">&quot;</span><span class="bp">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="no">HKLM</span><span class="w"> </span><span class="s2">&quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTONE ONE&quot;</span><span class="w"> </span><span class="s2">&quot;DisplayVersion&quot;</span>
+<span class="k">IfErrors</span><span class="w"> </span><span class="o">+</span>2<span class="w"> </span>0
+<span class="k">MessageBox</span><span class="w"> </span><span class="no">MB_OK</span><span class="o">|</span><span class="no">MB_ICONEXCLAMATION</span><span class="w"> </span><span class="s2">&quot;注册表版本 $1&quot;</span>
+
+<span class="c">; Set output path to the installation directory.</span>
+<span class="k">SetOutPath</span><span class="w"> </span><span class="vg">$INSTDIR</span>
+
+<span class="c">; Put file there</span>
+<span class="c">; ...</span>
+
+<span class="c">; 注册表</span>
+<span class="k">WriteRegStr</span><span class="w"> </span><span class="no">HKLM</span><span class="w"> </span><span class="s2">&quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTONE ONE&quot;</span><span class="w"> </span><span class="s2">&quot;DisplayName&quot;</span><span class="w"> </span><span class="s2">&quot;TTONE ONE&quot;</span>
+<span class="k">WriteRegStr</span><span class="w"> </span><span class="no">HKLM</span><span class="w"> </span><span class="s2">&quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTONE ONE&quot;</span><span class="w"> </span><span class="s2">&quot;DisplayVersion&quot;</span><span class="w"> </span><span class="s2">&quot;1.1.1&quot;</span>
+
+<span class="c">; WriteUninstaller &quot;$INSTDIR\uninstall.exe&quot;</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -652,6 +677,11 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
     自定义变量的公用
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-16">
+    注册表值的读写
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -677,27 +707,27 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
+											<p><p class="first last">判断应用是否以管理员权限运行</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
+											<p><p class="first last">base64</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
-											<p><p class="first last">数据域问题总结</p>
+											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
+											<p><p class="first last">汇编</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
-											<p><p class="first last">html</p>
-</p>
-										</li>
-										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
-											<p><p class="first last">html标签</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
-											<p><p class="first last">apt-clone</p>
+											<span class="date">10 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -763,7 +793,7 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2020-2024	</li>
+											<li>&copy; YanQue 2019-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>

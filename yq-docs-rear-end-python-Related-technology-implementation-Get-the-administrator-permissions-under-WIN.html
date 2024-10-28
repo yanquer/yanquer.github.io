@@ -166,6 +166,35 @@ __file__ 执行文件跟的参数
 <p>如果是python2, 那么 <tt class="docutils literal">sys.executable</tt>, <tt class="docutils literal">__file__</tt> 都需要加上 unicode, 如 <tt class="docutils literal">unicode(__file__)</tt></p>
 <p class="last"><tt class="docutils literal">sys.version_info[0] == 3</tt> 判断python版本是否是 3</p>
 </div>
+<p>完整封装代码(参考 <a class="reference external" href="https://blog.csdn.net/MemoryD/article/details/83148305">https://blog.csdn.net/MemoryD/article/details/83148305</a> )</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">ctypes</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">is_admin</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">shell32</span><span class="o">.</span><span class="n">IsUserAnAdmin</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+  <span class="k">if</span> <span class="n">is_admin</span><span class="p">():</span>
+      <span class="c1"># 将要运行的代码加到这里</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+          <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">shell32</span><span class="o">.</span><span class="n">ShellExecuteW</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;runas&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="vm">__file__</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="c1"># 下面两行可以注释</span>
+      <span class="k">else</span><span class="p">:</span><span class="c1">#in python2.x</span>
+          <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">shell32</span><span class="o">.</span><span class="n">ShellExecuteW</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;runas&quot;</span><span class="p">,</span> <span class="n">unicode</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">),</span> <span class="n">unicode</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">run</span><span class="p">()</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>如果将管理员申请弹窗关闭, 可能无法察觉到是不是有成功获取权限, 建议还是打开</p>
+<div class="last figure">
+<img alt="更改权限通知" src="doc-raw/resources/images/2024-10-28-16-50-52.png" style="width: 480px;" />
+</div>
+</div>
 <p>涉及到win API: <a class="reference external" href="https://learn.microsoft.com/zh-cn/windows/win32/api/shellapi/nf-shellapi-shellexecutew">shellExecuteW</a></p>
 
 								</article>
@@ -200,27 +229,27 @@ __file__ 执行文件跟的参数
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
+											<p><p class="first last">判断应用是否以管理员权限运行</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
+											<p><p class="first last">base64</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
-											<p><p class="first last">数据域问题总结</p>
+											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
+											<p><p class="first last">汇编</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
-											<p><p class="first last">html</p>
-</p>
-										</li>
-										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
-											<p><p class="first last">html标签</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
-											<p><p class="first last">apt-clone</p>
+											<span class="date">10 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -286,7 +315,7 @@ __file__ 执行文件跟的参数
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2020-2024	</li>
+											<li>&copy; YanQue 2019-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>

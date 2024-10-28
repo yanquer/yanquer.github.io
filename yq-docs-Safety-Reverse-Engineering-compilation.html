@@ -140,7 +140,7 @@
 										<div class="pennant pennant-alt date">2024-03-09</div>
 										<h2>汇编</h2>
 
-										<span class="head-modify-time">修改于: 2024-03-09</span>
+										<span class="head-modify-time">修改于: 2024-10-25</span>
 
 									</div>
 									<p>怎么用</p>
@@ -180,7 +180,7 @@
 <td>&nbsp;</td>
 </tr>
 <tr><td>%rcx</td>
-<td>传递第四个参数</td>
+<td>传递第四个参数(不一定)</td>
 <td>&nbsp;</td>
 </tr>
 <tr><td>%r8</td>
@@ -259,6 +259,279 @@
 <dt>caller-owned:</dt>
 <dd>如果callee要使用这些寄存器，那么它就要保存好这些寄存器的值，并且返回到caller的时候要将这些值恢复。</dd>
 </dl>
+<div class="section" id="x86">
+<h2>寄存器总览-x86</h2>
+<div class="section" id="section-2">
+<h3>通用寄存器</h3>
+<dl class="docutils">
+<dt>rax - Register A Extended (64 位)</dt>
+<dd><p class="first">主要用于算术运算和存放返回值</p>
+<ul class="last simple">
+<li>eax - Extended A Register (32 位)</li>
+<li>ax - A Register (16 位)</li>
+<li>al - A Low Register (8 位)</li>
+</ul>
+</dd>
+<dt>rbx - Register B Extended (64 位)</dt>
+<dd><p class="first">可以作为基址寄存器，通常在内存访问中使用</p>
+<ul class="last simple">
+<li>ebx - Extended B Register (32 位)</li>
+<li>bx - B Register (16 位)</li>
+<li>bl - B Low Register (8 位)</li>
+</ul>
+</dd>
+<dt>rcx - Register C Extended (64 位)</dt>
+<dd><p class="first">常用于计数器，特别是在循环和字符串操作中。</p>
+<ul class="last simple">
+<li>ecx - Extended C Register (32 位)</li>
+<li>cx - C Register (16 位)</li>
+<li>cl - C Low Register (8 位)</li>
+</ul>
+</dd>
+<dt>rdx - Register D Extended (64 位)</dt>
+<dd><p class="first">通常用于存放乘法和除法运算的第二个操作数或结果。</p>
+<ul class="last simple">
+<li>edx - Extended D Register (32 位)</li>
+<li>dx - D Register (16 位)</li>
+<li>dl - D Low Register (8 位)</li>
+</ul>
+</dd>
+<dt>rsi - Register Source Index Extended (64 位)</dt>
+<dd><p class="first">源操作数索引寄存器，常用于字符串和数组操作
+x86中存储第二个参数.</p>
+<ul class="last simple">
+<li>esi - Extended Source Index Register (32 位)</li>
+<li>si - Source Index Register (16 位)</li>
+</ul>
+</dd>
+<dt>rdi - Register Destination Index Extended (64 位)</dt>
+<dd><p class="first">目标操作数索引寄存器，常用于字符串和数组操作。
+x86中存储第一个参数.</p>
+<ul class="last simple">
+<li>edi - Extended Destination Index Register (32 位)</li>
+<li>di - Destination Index Register (16 位)</li>
+</ul>
+</dd>
+<dt>rsp - Register Stack Pointer Extended (64 位)</dt>
+<dd><p class="first">指向当前栈顶，管理函数调用和局部变量。</p>
+<ul class="last simple">
+<li>esp - Extended Stack Pointer Register (32 位)</li>
+<li>sp - Stack Pointer Register (16 位)</li>
+</ul>
+</dd>
+<dt>rbp - Register Base Pointer Extended (64 位)</dt>
+<dd><p class="first">用于管理函数调用栈帧，提供对局部变量和参数的访问。
+(一般作当前函数的基址指针)</p>
+<ul class="last simple">
+<li>ebp - Extended Base Pointer Register (32 位)</li>
+<li>bp - Base Pointer Register (16 位)</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h3>指令指针寄存器</h3>
+<dl class="docutils">
+<dt>rip - Register Instruction Pointer (64 位)</dt>
+<dd>指向下一条要执行的指令。</dd>
+</dl>
+</div>
+<div class="section" id="section-4">
+<h3>程序状态寄存器</h3>
+<dl class="docutils">
+<dt>rflags - Register Flags (64 位)</dt>
+<dd>存储 CPU 状态和控制标志，如进位标志、零标志等。</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h3>控制寄存器</h3>
+<p>(Control Register)</p>
+<dl class="docutils">
+<dt>cr0 - 控制寄存器 0</dt>
+<dd>控制保护模式、虚拟内存等。</dd>
+<dt>cr1 - 控制寄存器 1</dt>
+<dd>一般未使用。</dd>
+<dt>cr2 - 控制寄存器 2</dt>
+<dd>存放最近一次页错误的线性地址。</dd>
+<dt>cr3 - 控制寄存器 3</dt>
+<dd>存放当前页表的物理地址。</dd>
+<dt>cr4 - 控制寄存器 4</dt>
+<dd>控制额外的 CPU 功能，如分页等。</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="x86-1">
+<h2>示例-x86解析</h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">以下均使用x86机器编译</p>
+</div>
+<div class="section" id="a-b">
+<h3>交换a,b的值</h3>
+<p>源码(此处有个小bug, tmp只声明未分配地址, Windows上运行可能会地址访问错误)</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">){</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="p">;</span>
+<span class="w">  </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="w">  </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+<span class="w">  </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>汇编代码:</p>
+<pre class="literal-block">
+; Attributes: bp-based frame
+
+; void __cdecl swap(int *a, int *b)
+public __Z4swapPiS_
+__Z4swapPiS_ proc near
+
+var_18= qword ptr -18h
+var_10= qword ptr -10h
+tmp= qword ptr -8
+b= qword ptr  0
+a= qword ptr  8
+
+push    rbp
+mov     rbp, rsp
+mov     [rbp+tmp], rdi
+mov     [rbp+var_10], rsi
+mov     rax, [rbp+tmp]
+mov     ecx, [rax]
+mov     rax, [rbp+var_18]
+mov     [rax], ecx
+mov     rax, [rbp+var_10]
+mov     ecx, [rax]
+mov     rax, [rbp+tmp]
+mov     [rax], ecx
+mov     rax, [rbp+var_18]
+mov     ecx, [rax]
+mov     rax, [rbp+var_10]
+mov     [rax], ecx
+pop     rbp
+retn
+__Z4swapPiS_ endp
+</pre>
+<p>汇编代码解释(分号表示注释)</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><tt class="docutils literal">[]</tt> 表示读取该地址的值</p>
+</div>
+<div class="highlight"><pre><span></span><span class="p">;</span><span class="w"> </span><span class="n">Attributes</span><span class="o">:</span><span class="w"> </span><span class="n">bp</span><span class="o">-</span><span class="n">based</span><span class="w"> </span><span class="n">frame</span>
+
+<span class="p">;</span><span class="w"> </span><span class="n">void</span><span class="w"> </span>__<span class="n">cdecl</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="n">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="n">public</span><span class="w"> </span>__<span class="n">Z4swapPiS_</span>
+__<span class="n">Z4swapPiS_</span><span class="w"> </span><span class="n">proc</span><span class="w"> </span><span class="n">near</span>
+
+<span class="p">;</span><span class="w"> </span>定义函数局部变量<span class="p">,</span><span class="w"> </span>局部变量放在<span class="w"> </span>负偏移<span class="w"> </span><span class="p">(</span>相对于<span class="w"> </span><span class="n">rbp</span><span class="w"> </span>函数基址的偏移量<span class="p">)</span>
+<span class="n">var_18</span><span class="o">=</span><span class="w"> </span><span class="n">qword</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="m">-18</span><span class="n">h</span>
+<span class="n">var_10</span><span class="o">=</span><span class="w"> </span><span class="n">qword</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="m">-10</span><span class="n">h</span>
+<span class="n">tmp</span><span class="o">=</span><span class="w"> </span><span class="n">qword</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="m">-8</span>
+
+<span class="p">;</span><span class="w"> </span>定义函数的参数<span class="p">,</span><span class="w"> </span>参数在<span class="w"> </span>正偏移
+<span class="n">b</span><span class="o">=</span><span class="w"> </span><span class="n">qword</span><span class="w"> </span><span class="n">ptr</span><span class="w">  </span><span class="m">0</span>
+<span class="n">a</span><span class="o">=</span><span class="w"> </span><span class="n">qword</span><span class="w"> </span><span class="n">ptr</span><span class="w">  </span><span class="m">8</span>
+
+<span class="p">;</span><span class="w"> </span>栈帧设置
+<span class="p">;</span><span class="w">   </span>当进入一个函数时，通常会将调用者的<span class="w"> </span><span class="n">rbp</span><span class="w"> </span>值压入栈中（使用<span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">rbp</span>），然后将<span class="w"> </span><span class="n">rsp</span><span class="w"> </span>（栈指针）赋值给<span class="w"> </span><span class="n">rbp</span>。这样，<span class="n">rbp</span><span class="w"> </span>就成为了当前函数的基指针。
+<span class="p">;</span><span class="w"> </span>目的：将调用者的基指针<span class="w"> </span><span class="n">rbp</span><span class="w"> </span>压入栈中，以保存调用者的栈帧。
+<span class="p">;</span><span class="w"> </span>结果：栈顶指针<span class="w"> </span><span class="n">rsp</span><span class="w"> </span>减小，栈中保存了调用者的<span class="w"> </span><span class="n">rbp</span><span class="w"> </span>值。
+<span class="n">push</span><span class="w">    </span><span class="n">rbp</span>
+
+<span class="p">;</span><span class="w"> </span>目的：将当前栈指针<span class="w"> </span><span class="n">rsp</span><span class="w"> </span>的值赋给<span class="w"> </span><span class="n">rbp</span>，建立新的栈帧。
+<span class="p">;</span><span class="w"> </span>结果：<span class="n">rbp</span><span class="w"> </span>现在指向当前函数的栈帧底部，允许通过相对偏移访问局部变量和参数。
+<span class="n">mov</span><span class="w">     </span><span class="n">rbp</span><span class="p">,</span><span class="w"> </span><span class="n">rsp</span>
+
+<span class="p">;</span><span class="w"> </span>变量赋值
+<span class="p">;</span><span class="w"> </span>将传入的第一个参数（通常在<span class="w"> </span><span class="n">rdi</span><span class="w"> </span>中）存储到<span class="w"> </span><span class="n">tmp</span><span class="w"> </span>变量中。
+<span class="p">;</span><span class="w">   </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span>
+<span class="n">mov</span><span class="w">     </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">tmp</span><span class="p">],</span><span class="w"> </span><span class="n">rdi</span>
+<span class="p">;</span><span class="w"> </span>将传入的第二个参数（通常在<span class="w"> </span><span class="n">rsi</span><span class="w"> </span>中）存储到<span class="w"> </span><span class="n">var_10</span><span class="w"> </span>变量中。
+<span class="p">;</span><span class="w">   </span><span class="o">*</span><span class="n">var_10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span>
+<span class="n">mov</span><span class="w">     </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">var_10</span><span class="p">],</span><span class="w"> </span><span class="n">rsi</span>
+
+<span class="p">;</span><span class="w">   </span><span class="o">*</span><span class="n">var_18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span>
+<span class="p">;</span><span class="w"> </span>从<span class="w"> </span><span class="n">tmp</span><span class="w"> </span>中读取地址（然后<span class="w"> </span><span class="n">rax</span><span class="w"> </span>包含<span class="w"> </span><span class="n">tmp</span><span class="w"> </span>存储的值）。
+<span class="n">mov</span><span class="w">     </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">tmp</span><span class="p">]</span>
+<span class="p">;</span><span class="w"> </span>从<span class="w"> </span><span class="n">rax</span><span class="w"> </span>指向的地址中读取<span class="w"> </span><span class="m">4</span><span class="w"> </span>字节的数据到<span class="w"> </span><span class="n">ecx</span><span class="w"> </span>中。
+<span class="n">mov</span><span class="w">     </span><span class="n">ecx</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rax</span><span class="p">]</span>
+<span class="p">;</span><span class="w"> </span>上面取了两次值
+<span class="p">;</span><span class="w"> </span>从<span class="w"> </span><span class="n">var_18</span><span class="w"> </span>中读取地址（<span class="n">rax</span><span class="w"> </span>现在包含<span class="w"> </span><span class="n">var_18</span><span class="w"> </span>存储的值）。<span class="w">  </span>放到<span class="w"> </span><span class="n">rax</span><span class="w"> </span>寄存器
+<span class="n">mov</span><span class="w">     </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">var_18</span><span class="p">]</span>
+<span class="p">;</span><span class="w"> </span>将<span class="w"> </span><span class="n">ecx</span><span class="w"> </span>中的值写入<span class="w"> </span><span class="n">rax</span><span class="w"> </span>指向的地址（即<span class="w"> </span><span class="n">var_18</span><span class="w"> </span>所指向的内存）
+<span class="n">mov</span><span class="w">     </span><span class="p">[</span><span class="n">rax</span><span class="p">],</span><span class="w"> </span><span class="n">ecx</span>
+<span class="p">;</span><span class="w"> </span>上面又取了两次值
+
+<span class="p">;</span><span class="w"> </span>重复
+<span class="p">;</span><span class="w">   </span>从<span class="w"> </span><span class="n">var_10</span><span class="w"> </span>中读取值，再写入到<span class="w"> </span><span class="n">tmp</span><span class="w"> </span>中<span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="o">=</span><span class="n">var_10</span><span class="p">)</span>
+<span class="p">;</span><span class="w">     </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">var_10</span><span class="p">;</span>
+<span class="n">mov</span><span class="w">     </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">var_10</span><span class="p">]</span>
+<span class="n">mov</span><span class="w">     </span><span class="n">ecx</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rax</span><span class="p">]</span>
+<span class="n">mov</span><span class="w">     </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">tmp</span><span class="p">]</span>
+<span class="n">mov</span><span class="w">     </span><span class="p">[</span><span class="n">rax</span><span class="p">],</span><span class="w"> </span><span class="n">ecx</span>
+
+<span class="p">;</span><span class="w"> </span>重复
+<span class="p">;</span><span class="w">   </span>从<span class="w"> </span><span class="n">var_18</span><span class="w"> </span>中读取值，再写入到<span class="w"> </span><span class="n">var_10</span><span class="w"> </span>中<span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">var_10</span><span class="o">=</span><span class="n">var_18</span><span class="p">)</span>
+<span class="p">;</span><span class="w">     </span><span class="o">*</span><span class="n">var_10</span><span class="o">=*</span><span class="n">var_18</span>
+<span class="n">mov</span><span class="w">     </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">var_18</span><span class="p">]</span>
+<span class="n">mov</span><span class="w">     </span><span class="n">ecx</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rax</span><span class="p">]</span>
+<span class="n">mov</span><span class="w">     </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbp</span><span class="o">+</span><span class="n">var_10</span><span class="p">]</span>
+<span class="n">mov</span><span class="w">     </span><span class="p">[</span><span class="n">rax</span><span class="p">],</span><span class="w"> </span><span class="n">ecx</span>
+
+<span class="p">;</span><span class="w"> </span>上面重复的内容合起来看就是
+<span class="p">;</span><span class="w">   </span><span class="o">*</span><span class="n">var_18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="p">;</span>
+<span class="p">;</span><span class="w">   </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">var_10</span><span class="p">;</span>
+<span class="p">;</span><span class="w">   </span><span class="o">*</span><span class="n">var_10</span><span class="o">=*</span><span class="n">var_18</span><span class="p">;</span>
+<span class="p">;</span><span class="w"> </span>相当于源码的
+<span class="p">;</span><span class="w">     </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="p">;</span><span class="w">     </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+<span class="p">;</span><span class="w">     </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="p">;</span>
+<span class="p">;</span><span class="w"> </span>可以明显看出<span class="p">,</span><span class="w"> </span>汇编中的变量和源码中的变量名不一定是一致<span class="p">,</span><span class="w"> </span>比如源码的<span class="w"> </span><span class="n">`tmp`</span><span class="w"> </span>这里是<span class="w"> </span><span class="n">`var_18`</span>
+
+<span class="p">;</span><span class="w"> </span>恢复之前保存的基址指针
+<span class="n">pop</span><span class="w">     </span><span class="n">rbp</span>
+<span class="p">;</span><span class="w"> </span>返回到调用该函数的地方。
+<span class="n">retn</span>
+__<span class="n">Z4swapPiS_</span><span class="w"> </span><span class="n">endp</span>
+</pre></div>
+</div>
+<div class="section" id="section-6">
+<h3>减法</h3>
+<p>源码</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">){</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>汇编代码:</p>
+<pre class="literal-block">
+; int __cdecl sub(int a, int b)
+public __Z3subii
+__Z3subii proc near
+
+; 局部变量 var_8, var_4
+var_8= dword ptr -8
+var_4= dword ptr -4
+
+; 参数, 这里为啥只有一个不清楚
+b= dword ptr  8
+
+; 存储调用位置基址(函数结束时返回用), 然后将当前栈顶地址作为新的栈帧基址
+push    rbp
+mov     rbp, rsp
+
+; *var_4 = a
+mov     [rbp+var_4], edi
+; *var_8 = b
+mov     [rbp+var_8], esi
+; eax = *var_4
+mov     eax, [rbp+var_4]
+; eax -= *var_8
+; 即: eax = *var_4 - *var_8
+sub     eax, [rbp+var_8]
+pop     rbp
+retn
+__Z3subii endp
+</pre>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -275,6 +548,66 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#x86">
+    寄存器总览-x86
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      通用寄存器
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      指令指针寄存器
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      程序状态寄存器
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      控制寄存器
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#x86-1">
+    示例-x86解析
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#a-b">
+      交换a,b的值
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      减法
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -292,27 +625,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
+											<p><p class="first last">判断应用是否以管理员权限运行</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
+											<p><p class="first last">base64</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
-											<p><p class="first last">数据域问题总结</p>
+											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
+											<p><p class="first last">汇编</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
-											<p><p class="first last">html</p>
-</p>
-										</li>
-										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
-											<p><p class="first last">html标签</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
-											<p><p class="first last">apt-clone</p>
+											<span class="date">10 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -378,7 +711,7 @@
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2020-2024	</li>
+											<li>&copy; YanQue 2019-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>

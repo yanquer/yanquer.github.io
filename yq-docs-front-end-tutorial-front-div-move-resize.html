@@ -142,7 +142,7 @@
 										<div class="pennant pennant-alt date">2024-07-12</div>
 										<h2>div支持拖动+resize</h2>
 
-										<span class="head-modify-time">修改于: 2024-07-12</span>
+										<span class="head-modify-time">修改于: 2024-10-21</span>
 
 									</div>
 									<dl class="docutils">
@@ -230,6 +230,7 @@ export const DragBox = () =&gt; {
 
     setIds()
 
+    // 记录鼠标相对于目标元素的偏移量
     const mousePosition = {
         isMouseDown: false,
         offsetX: 0,
@@ -240,6 +241,7 @@ export const DragBox = () =&gt; {
     const dialogContentBox = () =&gt; document.getElementById(dialogId);
 
     const dragMouseDown = (e: MouseEvent) =&gt; {
+        // 记录鼠标相对于目标元素的偏移量
         mousePosition.isMouseDown = true;
         mousePosition.offsetX = e.offsetX;
         mousePosition.offsetY = e.offsetY;
@@ -254,6 +256,8 @@ export const DragBox = () =&gt; {
         if (mousePosition.isMouseDown) {
             // const pos = draggable.getClientRects()[0]
 
+            // 根据鼠标计算元素左上角位置 cx, cy
+            // 相对于窗口的偏移量 - 相对于目标元素的偏移量
             let cx = e.clientX - mousePosition.offsetX,
                 cy = e.clientY - mousePosition.offsetY;
             if (cx &lt; 0) {
@@ -263,6 +267,8 @@ export const DragBox = () =&gt; {
                 cy = 0;
             }
 
+            // 如果内容超过了可视窗口, 调整一下
+            // 太久不看都不知道啥意思了
             const _box = dialogContentBox()
             const height = () =&gt; _box.offsetHeight,
                 width = () =&gt; _box.offsetWidth;
@@ -363,6 +369,17 @@ export const DragBox = () =&gt; {
 <li>一个是为了使用时候的体验, 所以移动的事件放在了全局的 <cite>document</cite> 上</li>
 </ul>
 </div>
+<div class="section" id="resize">
+<h2>resize时等比例放大</h2>
+<p>如果使用这个组件可能会发现它等比例放大了, 但是拖动一次后又不是这个效果了(只放大右下角).</p>
+<p>这是因为初始时候, 没有使用 <cite>left</cite> 属性来固定左上角位置, 但是在拖动后, 在计算位置时手动设置了元素
+位置:</p>
+<pre class="literal-block">
+// _box.style.left = cx  + 'px';
+// _box.style.top = cy + 'px';
+</pre>
+<p><cite>transform</cite> 时效果待测试</p>
+</div>
 
 								</article>
 						</div>
@@ -379,6 +396,27 @@ export const DragBox = () =&gt; {
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#resize">
+    resize时等比例放大
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -396,27 +434,27 @@ export const DragBox = () =&gt; {
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
+											<p><p class="first last">判断应用是否以管理员权限运行</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
+											<p><p class="first last">base64</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
-											<p><p class="first last">数据域问题总结</p>
+											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
+											<p><p class="first last">汇编</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
-											<p><p class="first last">html</p>
-</p>
-										</li>
-										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
-											<p><p class="first last">html标签</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
-											<p><p class="first last">apt-clone</p>
+											<span class="date">10 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -482,7 +520,7 @@ export const DragBox = () =&gt; {
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2020-2024	</li>
+											<li>&copy; YanQue 2019-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>

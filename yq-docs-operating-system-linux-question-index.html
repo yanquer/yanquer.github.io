@@ -161,15 +161,22 @@
 <a class="sphinx-toc-tree" href="/yq-docs-operating-system-linux-question-ubuntu-dns-parse-problem.html">记录一次Ubuntu的DNS解析问题</a>
 </div><div class="section" id="section-2">
 <h2>关于 #!</h2>
-<p>表示当作为执行文件的时候，使用解释器路径，默认为当前登录shell</p>
-<p>必须写在第一行才有用</p>
-<p>当执行执行文件时，cd到所在目录后，执行需要加 ./ ，    ./test的./是为了承接现在所在的文件夹，
+<p>表示当作为执行文件的时候，使用解释器路径，默认为当前登录shell.
+这是脚本语言共同遵守的规则</p>
+<p><strong>必须写在第一行才有用</strong></p>
+<p>当执行执行文件时，cd到所在目录后，执行需要加 <cite>./</cite> ，    <cite>./test</cite> 的 <cite>./</cite> 是为了承接现在所在的文件夹，
 让现在所在的文件夹+文件，合并成该文件的完整路径，用于执行。</p>
 <dl class="docutils">
 <dt>优先级</dt>
 <dd>当直接指定解释器的时候 比如 python xxx.py， xxx.py文件里的 #! 是不生效的，</dd>
 </dl>
 <p>只有作为执行文件的时候才会生效，比如  ./xxx.py</p>
+<div class="section" id="usr-bin-env">
+<h3>补充/usr/bin/env作用</h3>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/wudinaniya/article/details/108785765">脚本指定解释器 及 #!/usr/bin/python3 和 #!/usr/bin/env python3 的作用</a></p>
+<p>可用于 <cite>Unix</cite> 系统.</p>
+<p>在 <cite>Unix</cite> 中, <cite>/usr/bin/env</cite> 可以用来寻找当前环境变量中的指令, 这是为了兼容在不同机器上, 指令可能在不同路径下.</p>
+</div>
 </div>
 <div class="section" id="section-3">
 <h2>文件</h2>
@@ -246,6 +253,13 @@ $<span class="w"> </span>cat<span class="w"> </span>/etc/hosts
    <a class="" href="#section-2">
     关于 #!
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#usr-bin-env">
+      补充/usr/bin/env作用
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-3">
@@ -294,27 +308,27 @@ $<span class="w"> </span>cat<span class="w"> </span>/etc/hosts
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
+											<p><p class="first last">判断应用是否以管理员权限运行</p>
+</p>
+										</li>
+										<li>
+											<span class="date">10 <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
+											<p><p class="first last">base64</p>
+</p>
+										</li>
+										<li>
 											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-front-end-frame-amis-question-data-domain-summary.html">数据域问题总结</a></h3>
-											<p><p class="first last">数据域问题总结</p>
+											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
+											<p><p class="first last">汇编</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-index.html">html</a></h3>
-											<p><p class="first last">html</p>
-</p>
-										</li>
-										<li>
-											<span class="date">10 <strong>15</strong></span>
-											<h3><a href="yq-docs-front-end-html-label.html">html标签</a></h3>
-											<p><p class="first last">html标签</p>
-</p>
-										</li>
-										<li>
-											<span class="date"> 9 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-apt-clone.html">apt-clone</a></h3>
-											<p><p class="first last">apt-clone</p>
+											<span class="date">10 <strong>21</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
+											<p><p class="first last">as title</p>
 </p>
 										</li>
 									</ul>
@@ -380,7 +394,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/etc/hosts
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; YanQue 2020-2024	</li>
+											<li>&copy; YanQue 2019-2024	</li>
 											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
 											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
 										</ul>
