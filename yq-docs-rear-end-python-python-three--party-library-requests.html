@@ -86,7 +86,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 二月 2023
+      , 20 February 2023
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -145,7 +145,61 @@
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<div class="section" id="section-1">
+									<p>部分参数</p>
+<dl class="docutils">
+<dt>stream=False</dt>
+<dd><p class="first">是否开启流式传输, 默认关闭.</p>
+<p>当开始流式传输时候, 不会立刻开始下载, 比如</p>
+<div class="highlight"><pre><span></span><span class="n">stream_obj</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">total_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stream_obj</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">])</span>
+</pre></div>
+<p><cite>stream_obj</cite> 仅创建了一个流式传输对象, 并没有开始实际的传输, 需要手动调用 <tt class="docutils literal">iter_content(chunk_size=1024)</tt>
+或者 <tt class="docutils literal">iter_lines</tt> 来开启真正的传输</p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.xxx&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">res_left</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+    <span class="c1"># f.flush()</span>
+</pre></div>
+<p>其中 <cite>chunk_size</cite> 不应设置的过大, 否则可能会因为带宽不足导致 <tt class="docutils literal">ConnectionResetError(10054, <span class="pre">'远程主机强迫关闭了一个现有的连接。',</span> None, 10054, None))</tt></p>
+<p>可以通过这个参数来支持断点续传, 使用方式是在 <cite>headers</cite> 指定传输的起始位置</p>
+<div class="highlight"><pre><span></span><span class="c1"># 不指定结束</span>
+<span class="c1"># 或者 headers = {&#39;Range&#39;: &#39;bytes=%d-&#39;%(start,)}</span>
+<span class="c1"># 指定结束</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Range&#39;</span><span class="p">:</span> <span class="s1">&#39;bytes=</span><span class="si">%d</span><span class="s1">-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">)}</span>
+</pre></div>
+<p>大致完整代码</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">requests</span>
+
+
+<span class="k">def</span> <span class="nf">download_with_resume</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">save_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+
+  <span class="n">start_size</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">save_file</span><span class="p">):</span>
+      <span class="n">start_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">save_file</span><span class="p">)</span>
+
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;Range&quot;</span><span class="p">:</span> <span class="s2">&quot;bytes=</span><span class="si">{}</span><span class="s2">-&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">start_size</span><span class="p">),</span>
+  <span class="p">}</span> <span class="k">if</span> <span class="n">start_size</span> <span class="k">else</span> <span class="kc">None</span>
+
+  <span class="n">ret_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+  <span class="c1"># 206 表示只请求部分资源</span>
+  <span class="k">if</span> <span class="n">ret_response</span><span class="o">.</span><span class="n">status_code</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">206</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Download failed ...&quot;</span><span class="p">)</span>
+
+  <span class="c1"># 可能还得判断下 start_size 超过总大小情况</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">save_file</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">ret_response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">chunk</span><span class="p">:</span>
+              <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+              <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</pre></div>
+</div></dd>
+</dl>
+<div class="section" id="section-1">
 <h2>下载文件</h2>
 <div class="section" id="section-2">
 <h3>小文件</h3>
@@ -238,6 +292,122 @@ headers = {'Range': 'bytes=%d-%d'%(start,end)}
 urllib.parse.unquote(url_path)
 </pre>
 </div>
+<div class="section" id="section-5">
+<h2>附-断点续传代码</h2>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+<span class="n">_LOGGER</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">read_file_one_by_one</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rb&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+
+
+<span class="c1"># 检查前部分内容是否相同, 相同才允许继续下载</span>
+<span class="k">def</span> <span class="nf">check_file_right</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">save_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">save_file</span><span class="p">):</span>
+        <span class="n">compare_size</span> <span class="o">=</span> <span class="mi">256</span>
+        <span class="n">head_bytes</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">save_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">,</span> <span class="n">compare_size</span><span class="p">)</span>
+        <span class="n">ret_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+            <span class="c1"># 高版本减去一个, 可以理解为 bytes 的范围是索引, 两端都包含</span>
+            <span class="s2">&quot;Range&quot;</span><span class="p">:</span> <span class="s2">&quot;bytes=0-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">compare_size</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="n">head_bytes</span> <span class="o">==</span> <span class="n">ret_response</span><span class="o">.</span><span class="n">content</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="c1"># 检查是不是已经全部下载, 通过hash计算</span>
+<span class="k">def</span> <span class="nf">check_file_sha1</span><span class="p">(</span>
+        <span class="n">check_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">hope_sha1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="n">sha1_</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">check_file</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">dat</span> <span class="ow">in</span> <span class="n">read_file_one_by_one</span><span class="p">(</span><span class="n">check_file</span><span class="p">):</span>
+            <span class="n">sha1_</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+        <span class="c1"># hashlib.new(&quot;sha1&quot;, all_bytes)</span>
+        <span class="k">return</span> <span class="n">sha1_</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">==</span> <span class="n">hope_sha1</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="c1"># 检查是不是已经全部下载, 如果服务端有提供 hash 值, 可以通过计算hash值来判断</span>
+<span class="k">def</span> <span class="nf">check_is_all_file</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">save_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">file_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">file_size</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">save_file</span><span class="p">):</span>
+        <span class="n">ret_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">all_size</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">ret_response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content-length&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">all_size</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_size</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">download_with_resume</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">save_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="n">start_size</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">save_file</span><span class="p">):</span>
+        <span class="n">start_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">save_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_file_right</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">save_file</span><span class="p">):</span>
+            <span class="n">_LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;check local file not right, reDownload...&quot;</span><span class="p">)</span>
+            <span class="n">start_size</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;local file downloaded some ... resume&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 检查是不是已经下载完成</span>
+    <span class="k">if</span> <span class="n">check_is_all_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">save_file</span><span class="p">,</span> <span class="n">start_size</span><span class="p">):</span>
+        <span class="n">_LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;local file already downloaded, return&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Range&quot;</span><span class="p">:</span> <span class="s2">&quot;bytes=</span><span class="si">{}</span><span class="s2">-&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">start_size</span><span class="p">),</span>
+    <span class="p">}</span> <span class="k">if</span> <span class="n">start_size</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">ret_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="c1"># 206 表示只请求部分资源</span>
+    <span class="k">if</span> <span class="n">ret_response</span><span class="o">.</span><span class="n">status_code</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">206</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Request resources failed ...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 可能还得判断下 start_size 超过总大小情况</span>
+
+    <span class="n">_LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Download start, wait...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">save_file</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span> <span class="k">if</span> <span class="n">start_size</span> <span class="k">else</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">ret_response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">chunk</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+    <span class="n">_LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Download end&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_download</span><span class="p">():</span>
+    <span class="n">download_with_resume</span><span class="p">(</span>
+        <span class="s2">&quot;https://www.kumeiwp.com/wj/196423/2024/02/04/4899cc8c109ec3cf6ef9c9e237d32d16.mp3?xz=b1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;吹梦到西洲.mp3&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">test_download</span><span class="p">()</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -284,6 +454,11 @@ urllib.parse.unquote(url_path)
     关于文件下载时候的路径
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    附-断点续传代码
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -309,27 +484,27 @@ urllib.parse.unquote(url_path)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
-											<p><p class="first last">判断应用是否以管理员权限运行</p>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
-											<p><p class="first last">base64</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
-											<p><p class="first last">汇编</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
 </p>
 										</li>
 									</ul>

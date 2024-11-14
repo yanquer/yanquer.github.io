@@ -86,7 +86,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 三月 2024
+      , 09 March 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -238,6 +238,13 @@ An extension requests workspace trust but the corresponding API is not yet fully
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="section" id="package-json">
+<h2>package.json依赖顺序问题</h2>
+<p>需要注意的是, theia会按照 <cite>package.json</cite> 中定义依赖的顺序进行载入,
+所以,
+如果你将自己的拓展放到系统的依赖之前, 可能会导致一系列问题, 比如解绑失败</p>
+<p>也找了一下, 并没找到不重写顺序的指令, 只能手动加了...</p>
+</div>
 
 								</article>
 						</div>
@@ -277,6 +284,11 @@ An extension requests workspace trust but the corresponding API is not yet fully
     theia获取当前默认使用的语言
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#package-json">
+    package.json依赖顺序问题
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -302,27 +314,27 @@ An extension requests workspace trust but the corresponding API is not yet fully
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
-											<p><p class="first last">判断应用是否以管理员权限运行</p>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
-											<p><p class="first last">base64</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
-											<p><p class="first last">汇编</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
 </p>
 										</li>
 									</ul>

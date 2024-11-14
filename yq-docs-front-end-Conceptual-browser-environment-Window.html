@@ -86,7 +86,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 26 三月 2024
+      , 26 March 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -260,6 +260,25 @@ window.matchMedia(mediaQueryString)
 虽然 <cite>75hz</cite> 、 <cite>120hz</cite> 和 <cite>144hz</cite> 也被广泛使用，但是最常见的刷新率还是 <cite>60hz</cite> （每秒 60 个周期/帧）。
 为了提高性能和电池寿命，大多数浏览器都会暂停在后台选项卡或者隐藏的 <cite>&lt;iframe&gt;</cite> 中运行的 <cite>requestAnimationFrame()</cite> 。</p>
 </div>
+<div class="section" id="setinterval">
+<h2>setInterval</h2>
+<p>定时器, 每隔多少时间执行一次(先等待), 单位毫秒</p>
+<p>如隔三秒弹出hello</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">myVar</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">myFunction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">myVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">alertFunc</span><span class="p">,</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">alertFunc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>取消一个定时器:</p>
+<pre class="literal-block">
+clearInterval(myVar)
+</pre>
+</div>
 <div class="section" id="section-1">
 <h2>大小相关属性</h2>
 <dl class="docutils">
@@ -329,6 +348,11 @@ window.matchMedia(mediaQueryString)
    </a>
   </li>
   <li class="toc-h0">
+   <a class="" href="#setinterval">
+    setInterval
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#section-1">
     大小相关属性
    </a>
@@ -358,27 +382,27 @@ window.matchMedia(mediaQueryString)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
-											<p><p class="first last">判断应用是否以管理员权限运行</p>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
-											<p><p class="first last">base64</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
-											<p><p class="first last">汇编</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
 </p>
 										</li>
 									</ul>

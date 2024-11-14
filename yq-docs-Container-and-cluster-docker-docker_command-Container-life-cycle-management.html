@@ -86,7 +86,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 二月 2023
+      , 20 February 2023
       , Category:
 	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
     </div>
@@ -246,6 +246,10 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 </tr>
 <tr><td>&nbsp;</td><td>指定一个或多个键值对，这些键值对将作为注释存储在容器元数据中。键值对的格式为key=value。可以使用多个--annotation参数来添加多个注释
 在容器中添加注释，这些注释将传递给OCI运行时。默认为空。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--privileged=<var>false</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>是否需要提权执行. 为true时, 表示容器将以特权模式运行，给予容器更高的权限，能够访问宿主机的设备和其他特权操作，比如加载内核模块等。</td></tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -264,10 +268,11 @@ docker run $image_name
 <p>比如在 <cite>Docker</cite> 中使用 <cite>/etc/localtime:/etc/localtime:ro</cite> 的 <cite>ro</cite> 参数表示以只读(read-only)的方式挂载目录。</p>
 <p>除了 <cite>ro</cite> 参数,在挂载目录时还可以使用以下参数:</p>
 <ul class="simple">
-<li>rw: 以读写模式挂载目录(默认行为)。</li>
-<li>z: 将共享卷标记为可以被多个容器访问。</li>
-<li>Z: 将私有卷标记为可以被多个容器访问。</li>
-<li>nocopy: 在创建新卷时不复制源目录的内容。</li>
+<li>ro(只读): 容器内的目录是只读的，容器无法对该目录进行写操作。</li>
+<li>rw(读写): 以读写模式挂载目录(默认行为)。</li>
+<li>z(共享): 将共享卷标记为可以被多个容器访问。为 SELinux 安全上下文添加共享标签，允许多个容器访问同一目录</li>
+<li>Z(私有): 为 SELinux 安全上下文添加私有标签，使得该目录仅限于当前容器访问。</li>
+<li>nocopy: 在创建容器时，不将本地目录的内容复制到容器中。这在你希望保持本地和容器文件系统独立时很有用。</li>
 <li>delegated: 设置容器内的卷挂载模式为&quot;代理&quot;(更新主机优先)。</li>
 <li>cached: 设置容器内的卷挂载模式为&quot;缓存&quot;(更新容器优先)。</li>
 </ul>
@@ -707,27 +712,27 @@ yanque&#64;yanquedembp ~ % docker exec -it mykali /bin/bash
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
-											<p><p class="first last">判断应用是否以管理员权限运行</p>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
-											<p><p class="first last">base64</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
-											<p><p class="first last">汇编</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
 </p>
 										</li>
 									</ul>

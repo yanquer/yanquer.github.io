@@ -86,7 +86,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 三月 2024
+      , 09 March 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -211,6 +211,46 @@ do
 <li>类要先命名空间声明</li>
 </ul>
 </div>
+<div class="section" id="section-4">
+<h2>直接在构造函数声明成员变量</h2>
+<p>可能有一个类长这样</p>
+<div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 声明成员变量</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 构造函数</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span><span class="w"> </span><span class="c1">// 将参数赋值给成员变量</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 方法</span>
+<span class="w">    </span><span class="nx">introduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hi, I&#39;m </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> and I&#39;m </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb"> years old.`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用示例</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Person</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">);</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">introduce</span><span class="p">();</span><span class="w"> </span><span class="c1">// 输出: Hi, I&#39;m Alice and I&#39;m 30 years old.</span>
+</pre></div>
+<p>但是在ts中支持简写, <cite>TypeScript</cite> 允许在构造函数的参数中使用修饰符（如 <cite>public、private</cite> 或 <cite>protected</cite> ）来自动将参数声明为成员变量，无需手动赋值</p>
+<div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="k">public</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 参数直接作为成员变量</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">introduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hi, I&#39;m </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> and I&#39;m </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb"> years old.`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用示例</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Person</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">introduce</span><span class="p">();</span><span class="w"> </span><span class="c1">// 输出: Hi, I&#39;m Bob and I&#39;m 25 years old.</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -250,6 +290,11 @@ do
     命令空间使用
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    直接在构造函数声明成员变量
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -275,27 +320,27 @@ do
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
-											<p><p class="first last">判断应用是否以管理员权限运行</p>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
-											<p><p class="first last">base64</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
-											<p><p class="first last">汇编</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
 </p>
 										</li>
 									</ul>

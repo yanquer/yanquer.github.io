@@ -86,7 +86,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 10 五月 2024
+      , 10 May 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -252,7 +252,7 @@
 </pre></div>
 <div class="admonition warning">
 <p class="first admonition-title">警告</p>
-<p>属性注入器有个缺点是, 不能在构造函数中就使用(这时获取到的大概率是 <cite>undefined</cite>), 因为属性注入器是延迟注入的,
+<p>属性注入器有个缺点是, 不能保证在构造函数中立刻能使用(这时获取到的大概率是 <cite>undefined</cite>), 因为属性注入器是延迟注入的,
 若要使用, 需要额外定一个初始化方法并添加 <tt class="docutils literal">&#64;postConstruct</tt> 装饰器,
 表示在属性注入完成后调用</p>
 <div class="last"><div class="highlight"><pre><span></span><span class="err">@</span><span class="nx">multiInject</span><span class="p">(</span><span class="nx">IBaseWindow</span><span class="p">)</span><span class="w"> </span><span class="kr">protected</span><span class="w"> </span><span class="nx">readonly</span><span class="w"> </span><span class="nx">allWins</span><span class="o">:</span><span class="w"> </span><span class="nx">IBaseWindow</span><span class="p">[]</span>
@@ -263,6 +263,10 @@
 <span class="p">}</span>
 </pre></div>
 </div></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">建议还是将注入放在构造函数中, 这样可以保证不使用依赖注入的情况下, 类依然是可用的.</p>
+</div>
 </div>
 <div class="section" id="section-5">
 <h3>容器配置-依赖绑定</h3>
@@ -296,7 +300,9 @@
 </div>
 </div>
 <div class="section" id="section-7">
-<h2>多重绑定</h2>
+<h2>支持的绑定类型</h2>
+<div class="section" id="section-8">
+<h3>多重绑定(贡献点)</h3>
 <p>即一个接口有多个实现, 且同时绑定到这多个实现</p>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -358,7 +364,7 @@
 </ul>
 </div>
 <div class="section" id="todynamicvalue">
-<h2>动态绑定 toDynamicValue</h2>
+<h3>动态绑定-toDynamicValue</h3>
 <p>先看一个示例代码</p>
 <div class="highlight"><pre><span></span><span class="nx">bind</span><span class="p">(</span><span class="nx">A</span><span class="p">).</span><span class="nx">toSelf</span><span class="p">();</span>
 <span class="nx">bind</span><span class="p">(</span><span class="nx">AFactory</span><span class="p">).</span><span class="nx">toDynamicValue</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createA</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">A</span><span class="p">);</span><span class="w"> </span><span class="p">})</span>
@@ -369,6 +375,53 @@
 </pre></div>
 <p>首先, 第一句没有现实指明是单例, 所以每一个获取的实例都会是一个新的;
 第二句, 动态获取A对象, 每次调用 <cite>createA</cite> 都会请求一个新的对象实例</p>
+</div>
+<div class="section" id="toconstantvalue">
+<h3>常量绑定-toConstantValue</h3>
+<p>绑定不变常量</p>
+</div>
+<div class="section" id="toconstructor">
+<h3>toConstructor</h3>
+</div>
+<div class="section" id="tofactory">
+<h3>toFactory</h3>
+</div>
+<div class="section" id="tofunction">
+<h3>toFunction</h3>
+</div>
+<div class="section" id="toautofactory">
+<h3>toAutoFactory</h3>
+</div>
+<div class="section" id="toautonamedfactory">
+<h3>toAutoNamedFactory</h3>
+</div>
+<div class="section" id="toprovider">
+<h3>toProvider</h3>
+</div>
+<div class="section" id="toservice">
+<h3>toService</h3>
+</div>
+<div class="section" id="toself">
+<h3>toSelf</h3>
+</div>
+<div class="section" id="to">
+<h3>to</h3>
+</div>
+</div>
+<div class="section" id="section-9">
+<h2>支持的配置范围(作用域)</h2>
+<dl class="docutils">
+<dt>inTransientScope(默认)</dt>
+<dd>每次请求新实例，适合短生命周期对象。</dd>
+<dt>inRequestScope</dt>
+<dd>同一请求共享实例，适合请求上下文中的对象。</dd>
+<dt>inSingletonScope</dt>
+<dd>整个应用共享一个实例，适合全局状态或配置。</dd>
+</dl>
+<p>如</p>
+<div class="highlight"><pre><span></span><span class="c1">// 全局单例</span>
+<span class="nx">bind</span><span class="p">(</span><span class="nx">A</span><span class="p">).</span><span class="nx">toSelf</span><span class="p">().</span><span class="nx">inSingletonScope</span><span class="p">()</span>
+</pre></div>
 </div>
 <div class="section" id="tsconfig-json">
 <h2>tsconfig.json配置</h2>
@@ -386,7 +439,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="section-8">
+<div class="section" id="section-10">
 <h2>可能遇到的报错</h2>
 <div class="section" id="unable-to-resolve-signature">
 <h3>报错-Unable to resolve signature</h3>
@@ -493,12 +546,74 @@ TS1238: Unable to resolve signature of class decorator when called as an express
   </li>
   <li class="toc-h0">
    <a class="" href="#section-7">
-    多重绑定
+    支持的绑定类型
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      多重绑定(贡献点)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#todynamicvalue">
+      动态绑定-toDynamicValue
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toconstantvalue">
+      常量绑定-toConstantValue
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toconstructor">
+      toConstructor
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#tofactory">
+      toFactory
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#tofunction">
+      toFunction
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toautofactory">
+      toAutoFactory
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toautonamedfactory">
+      toAutoNamedFactory
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toprovider">
+      toProvider
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toservice">
+      toService
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toself">
+      toSelf
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#to">
+      to
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
-   <a class="" href="#todynamicvalue">
-    动态绑定 toDynamicValue
+   <a class="" href="#section-9">
+    支持的配置范围(作用域)
    </a>
   </li>
   <li class="toc-h0">
@@ -507,7 +622,7 @@ TS1238: Unable to resolve signature of class decorator when called as an express
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-8">
+   <a class="" href="#section-10">
     可能遇到的报错
    </a>
    <ul class="toc-tree visible">
@@ -553,27 +668,27 @@ TS1238: Unable to resolve signature of class decorator when called as an express
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
-											<p><p class="first last">判断应用是否以管理员权限运行</p>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
-											<p><p class="first last">base64</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
-											<p><p class="first last">汇编</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
 </p>
 										</li>
 									</ul>

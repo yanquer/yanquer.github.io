@@ -86,7 +86,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 三月 2024
+      , 09 March 2024
       , Category:
 	  <a href="category/ji-suan-ji-wang-luo.html">计算机网络</a>
     </div>
@@ -268,6 +268,15 @@ NAT表和ARP表是路由器内部用于管理网络数据包的数据结构，�
 <li>上一跳路由器接收到数据包后,根据自己的路由表将数据包转发到Internet。</li>
 </ul>
 </div>
+<div class="section" id="section-4">
+<h2>主路由器与副路由器的接法</h2>
+<p>主路由器的 <cite>WLAN</cite> 口接光猫这个不用说.</p>
+<p>后面副路由的接法</p>
+<ul class="simple">
+<li>副路由器的 <cite>WLAN</cite> 口接主路由的 <cite>LAN</cite> 口, 多了一条默认路由, 多了一层NAT转换. 网络层级更复杂(家里有个小家).</li>
+<li>副路由器的 <cite>LAN</cite> 口接主路由的 <cite>LAN</cite> 口, 相当于交换机(拓展当前网段设备), 需要手动设置副路由ip在同一网段, 并关闭副路由的DNCP (否则不能上外网).</li>
+</ul>
+</div>
 
 								</article>
 						</div>
@@ -314,6 +323,11 @@ NAT表和ARP表是路由器内部用于管理网络数据包的数据结构，�
     默认情况下的路由流程
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    主路由器与副路由器的接法
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -339,27 +353,27 @@ NAT表和ARP表是路由器内部用于管理网络数据包的数据结构，�
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-app-is-admin.html">判断应用是否以管理员权限运行</a></h3>
-											<p><p class="first last">判断应用是否以管理员权限运行</p>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-standard-library-base64.html">base64</a></h3>
-											<p><p class="first last">base64</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
 </p>
 										</li>
 										<li>
-											<span class="date"> 3 <strong>09</strong></span>
-											<h3><a href="yq-docs-Safety-Reverse-Engineering-compilation.html">汇编</a></h3>
-											<p><p class="first last">汇编</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
 </p>
 										</li>
 										<li>
-											<span class="date">10 <strong>21</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-pointer-events.html">pointer-events</a></h3>
-											<p><p class="first last">as title</p>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
 </p>
 										</li>
 									</ul>

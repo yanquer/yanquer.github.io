@@ -1,0 +1,550 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>OpenWrt配置两级路由并互相访问</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 12 November 2024
+      , Category:
+	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/cao-zuo-xi-tong.html">操作系统</a></li>
+													<li><a class="button button-alt" href="tag/linux.html">Linux</a></li>
+
+													<li><a class="button button-alt" href="tag/openwrt.html">Openwrt</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-11-12</div>
+										<h2>OpenWrt配置两级路由并互相访问</h2>
+
+										<span class="head-modify-time">修改于: 2024-11-12</span>
+
+									</div>
+									<dl class="docutils">
+<dt>背景</dt>
+<dd><p class="first">想把之前的虚拟机换掉用新的Clash, 就新购入了一个由京东亚瑟路由器刷的OpenWrt.</p>
+<ul class="last simple">
+<li>主路由: 192.168.50.1</li>
+<li>之前的虚拟机旁路由: 192.168.50.2</li>
+</ul>
+</dd>
+</dl>
+<p>实体路由支持WIFI, 所以打算实现连接主路由的无线时, 正常网络访问, 连接次路由无线时, 自动梯子Clash访问,
+同时为了兼容以前的旁路由的 <cite>50.2</cite>, 还需要保证主路由机器能够访问次路由机器.</p>
+<p>大致拓扑图与描述</p>
+<div class="figure">
+<img alt="拓扑" src="doc-raw/resources/images/2024-11-12-17-08-38.png" style="width: 480px;" />
+</div>
+<p>此路由IP分配:</p>
+<ul class="simple">
+<li>WLAN: 192.168.50.2</li>
+<li>VLAN: 192.168.60.1</li>
+</ul>
+<p>注意此处, 不要多分配了, 不然可能会存在冲突导致访问失败. 最终我使用的接口如下.</p>
+<div class="figure">
+<img alt="接口" src="doc-raw/resources/images/2024-11-12-17-17-11.png" style="width: 780px;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>OpenWrt 这里接口的含义说明:</p>
+<p>笔者也是后面才理解为什么会有这个东西, 这里新建一个接口其实就等价于你要
+<strong>把哪些物理/软件接口分配到一个子网</strong> (主要是物理) , 页面上每一个接口就是一个子网.</p>
+<p class="last">比如默认情况下的 <cite>LAN</cite> 接口是包含所有 <cite>LAN、WAN</cite> 物理接口, 无线接口的, 那么当你在此接口配置ip为 <cite>192.168.60.1</cite>,
+则表示通过 物理LAN口与无线 链接的设备都会是在 <cite>60.0/24</cite> 网段.</p>
+</div>
+<div class="section" id="section-1">
+<h2>设置流程</h2>
+<div class="section" id="wan">
+<h3>WAN配置</h3>
+<p>其中, <cite>WAN</cite> 与主路由的 <cite>LAN</cite> 口相连, 并分配 <cite>50.2</cite> 以保证以前一些东西的兼容性.</p>
+<div class="figure">
+<img alt="接口WAN" src="doc-raw/resources/images/2024-11-12-17-18-49.png" style="width: 780px;" />
+</div>
+<p>同时因为主路由已经存在 <cite>dhcp</cite> 服务器, 所以此处 <cite>50</cite> 段的 <cite>dhcp</cite> 需要关闭</p>
+<div class="figure">
+<img alt="接口WAN关闭DHCP" src="doc-raw/resources/images/2024-11-12-17-19-50.png" style="width: 780px;" />
+</div>
+</div>
+<div class="section" id="lan">
+<h3>LAN配置</h3>
+<p>因为要实现 连接不同无线时候, 使用的是不同的网络, 所以此处需要在 <cite>LAN</cite> 口新增一个网段,
+此处设置的是 <cite>60.x</cite> 段, 重新建了个为 <cite>lan_outer</cite> 的接口
+(之前有个 <cite>lan</cite> 因为冲突被我删了, 读者可以根据需求直接更改原本的 <cite>lan</cite>)</p>
+<div class="figure">
+<img alt="lan_outer-IP配置" src="doc-raw/resources/images/2024-11-12-17-25-24.png" style="width: 780px;" />
+</div>
+<p>物理接口配置(注意不要选择WAN, 并且注意不要与已有的重复, 不然会有冲突)</p>
+<div class="figure">
+<img alt="lan_outer物理接口" src="doc-raw/resources/images/2024-11-12-17-24-16.png" style="width: 780px;" />
+</div>
+<p>因为 <cite>60.x</cite> 是给无线用的, 所以需要用到 <cite>dhcp</cite> 服务, 这里这里我的 <cite>dhcp</cite> 配置</p>
+<p>可选1</p>
+<div class="figure">
+<img alt="lan_outer-dhcp1" src="doc-raw/resources/images/2024-11-12-17-28-38.png" style="width: 780px;" />
+</div>
+<p>可选2</p>
+<div class="figure">
+<img alt="lan_outer-dhcp2" src="doc-raw/resources/images/2024-11-12-17-29-13.png" style="width: 780px;" />
+</div>
+<p>建议3 (建议关掉ipv6地址分配)</p>
+<div class="figure">
+<img alt="lan_outer-dhcp2" src="doc-raw/resources/images/2024-11-12-17-29-48.png" style="width: 780px;" />
+</div>
+<div class="section" id="dhcp">
+<h4>设置dhcp范围(待测试)</h4>
+<p><strong>直接跳过此节</strong>, 直接在接口那里设置就行, 这里一是没必要, 而是不知道是否有用</p>
+<p>需要在终端中操作.</p>
+<p>编辑 <cite>/etc/dnsmasq.conf</cite> 文件, 设置:</p>
+<pre class="literal-block">
+dhcp-range=set:lan_outer,192.168.60.201,192.168.60.251
+</pre>
+<p><cite>lan_outer</cite> 指定接口, 读者接口不一样的话记得改.</p>
+<ul class="simple">
+<li>192.168.60.201 是起始地址</li>
+<li>192.168.60.251 是结束地址</li>
+</ul>
+<p>注意地址需要与上面图像界面的接口配置的起始地址与设备数目一致.</p>
+<p>此处还可以设置日志打开:</p>
+<pre class="literal-block">
+log-facility=syslog
+</pre>
+<p>然后使用 <cite>logread</cite> 查看日志, <cite>logread -f</cite> 可以监控输出日志</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">新版本不支持直接指定日志文件</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>关联接口与无线</h2>
+<p>此操作保证你连接无线的时候, 是由哪个接口给你分配 <cite>IP</cite>.</p>
+<p>保证这个地方的接口是上面配置的 <cite>lan_outer</cite></p>
+<div class="figure">
+<img alt="无线接口绑定1" src="doc-raw/resources/images/2024-11-12-17-40-46.png" style="width: 780px;" />
+</div>
+<p>每一项都需要绑定(如果更改不了绑定可能是你正在用, 可以选择新建一个),
+如果上面没有建 <cite>lan_outer</cite> 而是直接修改的 <cite>lan</cite>, 这里也是 <cite>lan</cite> 就不用改.</p>
+<div class="figure">
+<img alt="无线接口绑定2" src="doc-raw/resources/images/2024-11-12-17-41-37.png" style="width: 780px;" />
+</div>
+</div>
+<div class="section" id="section-3">
+<h2>主路由器设备访问次路由器(设备)</h2>
+<p>重新连接下此路由器就可以发现:</p>
+<ul class="simple">
+<li>次路由器下设备 <cite>60.x</cite> 可以访问 <cite>50.x</cite></li>
+<li>主路由器无法访问次路由器</li>
+</ul>
+<p>为了保证主路由器访问次路由器</p>
+<p>需要在主路由器配置访问 <cite>60.x</cite> 的静态路由, 我的是华硕路由器, 配置如下.</p>
+<div class="figure">
+<img alt="主路由的静态路由" src="doc-raw/resources/images/2024-11-12-17-47-15.png" style="width: 780px;" />
+</div>
+<p>含义是, 当主路由器(设备)尝试访问 <cite>60.x</cite> 时, 把这些访问转到次路由器的 <cite>WAN</cite> 口 <cite>50.2</cite>.</p>
+<p>设置好后, 主要次路由没有接口冲突, 应该就可以相互访问了.</p>
+</div>
+<div class="section" id="section-4">
+<h2>其它-暂不确定作用的配置(跳过)</h2>
+<p>如果上述操作还是不能实现 <cite>50.x</cite> 访问 <cite>60.x</cite> . 还可以看看防火墙配置.
+之前测试的时候次路由有配置到 <cite>WAN</cite> 的防火墙, 现在总结的时候不确定实际是否需要.</p>
+<div class="figure">
+<img alt="次路由防火墙" src="doc-raw/resources/images/2024-11-12-17-51-16.png" style="width: 780px;" />
+</div>
+<p>好吧, 测试下 <strong>删掉加的这两个没啥影响. 跳过此节</strong></p>
+</div>
+<div class="section" id="ssh">
+<h2>其它-SSH访问</h2>
+<p>需要在 <cite>系统 - 管理权</cite> 配置能使用 <cite>SSH</cite> 的接口与端口</p>
+<div class="figure">
+<img alt="SSH" src="doc-raw/resources/images/2024-11-12-17-33-34.png" style="width: 780px;" />
+</div>
+<p>SSH连接:</p>
+<pre class="literal-block">
+ssh root&#64;192.168.50.2 -o HostKeyAlgorithms=+ssh-rsa,ssh-dss -o PubkeyAcceptedKeyTypes=+ssh-rsa,ssh-dss
+</pre>
+</div>
+<div class="section" id="clash">
+<h2>其它-Clash配置用到的工具等</h2>
+<ul class="simple">
+<li>商店插件下载 <a class="reference external" href="https://github.com/AUK9527/Are-u-ok/tree/main/apps">https://github.com/AUK9527/Are-u-ok/tree/main/apps</a></li>
+<li><cite>luci-app-openclash_0.46.050-beta_all.ipk</cite> 下载: <a class="reference external" href="https://github.com/vernesong/OpenClash/releases/">https://github.com/vernesong/OpenClash/releases/</a></li>
+<li>clash-tun 核心下载: <a class="reference external" href="https://github.com/vernesong/OpenClash/releases/tag/TUN-Premium">https://github.com/vernesong/OpenClash/releases/tag/TUN-Premium</a></li>
+<li>IP/DNS泄露查询: <a class="reference external" href="https://ipleak.net">https://ipleak.net</a></li>
+<li>clash设置图文教程: <a class="reference external" href="https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/OpenClash-设置方案">OpenClash 设置方案</a></li>
+</ul>
+</div>
+<div class="section" id="section-5">
+<h2>更新-路由拓扑</h2>
+<div class="figure">
+<img alt="路由拓扑" src="doc-raw/resources/images/2024-11-14-13-59-21.png" style="width: 780px;" />
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    设置流程
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#wan">
+      WAN配置
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#lan">
+      LAN配置
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#dhcp">
+        设置dhcp范围(待测试)
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    关联接口与无线
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    主路由器设备访问次路由器(设备)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    其它-暂不确定作用的配置(跳过)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#ssh">
+    其它-SSH访问
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#clash">
+    其它-Clash配置用到的工具等
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    更新-路由拓扑
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Nov <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
+											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
+											<p><p class="first last">compose-multiplatform</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
+											<p><p class="first last">Kotlin框架</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Oct <strong>28</strong></span>
+											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
+											<p><p class="first last">Kotlin</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>
