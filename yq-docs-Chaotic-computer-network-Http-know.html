@@ -167,113 +167,226 @@
 </div>
 <div class="section" id="http-1">
 <h2>HTTP状态码</h2>
+<p>主要分类</p>
+<dl class="docutils">
+<dt>1xx</dt>
+<dd>信息性</dd>
+<dt>2xx</dt>
+<dd>成功状态码</dd>
+<dt>3xx</dt>
+<dd><p class="first">重定向状态码;</p>
+<p>重定向状态码用来告诉浏览器客户端，它们访问的资源已被移动， Web服务器发送一个重定向状态码和一个可选的Location Header, 告诉客户端新的资源地址在哪。</p>
+<p>浏览器客户端会自动用Location中提供的地址，重新发送新的Request。 这个过程对用户来说是透明的。</p>
+<p class="last">301和302 非常相似， 一个是永久转移，一个是临时转移。</p>
+</dd>
+</dl>
+<p>（SEO中，搜索引擎如果碰到301， 比如网页A用301重定向到网页B，搜索引擎可以肯定网页A永久性改变地址，就会把网页B当做唯一有效目标）</p>
+<dl class="docutils">
+<dt>4xx</dt>
+<dd><p class="first">客户端错误状态码;</p>
+<p class="last">发生于客户端会发送一些服务器无法处理的东西，比如格式错误的Request, 或者最常见的是， 请求一个不存在的URL</p>
+</dd>
+<dt>5xx</dt>
+<dd><p class="first">服务器错误状态码;</p>
+<p class="last">对于客户端发送的有效Request, Web服务器自身出错</p>
+</dd>
+</dl>
 <table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">状态码</th>
-<th class="head">描述</th>
+<th class="head">状态消息</th>
+<th class="head">&nbsp;</th>
 </tr>
 </thead>
 <tbody valign="top">
+<tr><td>100</td>
+<td>Continue(继续)</td>
+<td>收到了请求的起始部分，客户端应该继续请求</td>
+</tr>
+<tr><td>101</td>
+<td>Switching Protocols (切换协议)</td>
+<td>服务器正根据客户端的指示将协议切换成UpdateHeader列出的协议</td>
+</tr>
 <tr><td>200</td>
 <td>OK</td>
+<td>服务器成功处理了请求（这个是我们见到最多的）</td>
 </tr>
 <tr><td>201</td>
-<td>Created</td>
+<td>Created(已创建)</td>
+<td>对于那些要服务器创建对象的请求来说，资源已创建完毕</td>
 </tr>
 <tr><td>202</td>
-<td>Accepted</td>
+<td>Accepted(已接受)</td>
+<td>请求已接受，但服务器尚未处理</td>
+</tr>
+<tr><td>203</td>
+<td>Non-Authoritative Information（非权威信息）</td>
+<td>服务器已将事务成功处理，
+只是实体Header包含的信息不是来自原始服务器，
+而是来自资源的副本。</td>
+</tr>
+<tr><td>204</td>
+<td>NoContent（没有内容）</td>
+<td>Response中包含一些Header和一个状态行，
+但不包括实体的主题内容(没有responsebody)</td>
+</tr>
+<tr><td>205</td>
+<td>ResetContent（重置内容）</td>
+<td>另一个主要用于浏览器的代码。
+意思是浏览器应该車置当前页面上所有的HTML表单</td>
 </tr>
 <tr><td>206</td>
-<td>表示请求部分资源,
-比如下单时断点续传</td>
+<td>PartialContent（部分内容）</td>
+<td>部分请求成功; 表示请求部分资源,
+比如下载时断点续传</td>
+</tr>
+<tr><td>300</td>
+<td>Multiple Choices (多项选择)</td>
+<td>客户端请求了实际指向多个资源的URL。
+这个代码是和一个选项列表一起返这回的，
+然后用户就可以选择他希望的选项了</td>
 </tr>
 <tr><td>301</td>
-<td>Moved Permanently</td>
+<td>Moved Permanently（永久移除）</td>
+<td>请求的URL已移走。
+Response中应该包含一个LocationURL，说明资源现在所处的位置</td>
 </tr>
 <tr><td>302</td>
-<td>Found</td>
+<td>Found（已找到）</td>
+<td>与状态码301类似。但这里的移除是临时的。
+客户端会使用Location中给出的URL，重新发送新的HTTP request</td>
 </tr>
 <tr><td>303</td>
 <td>See Other</td>
+<td>类似302</td>
 </tr>
 <tr><td>304</td>
-<td>Not Modified</td>
+<td>Not Modified NotModified（未修改）</td>
+<td>客户的缓存资源是最新的，要客户端使用缓存</td>
+</tr>
+<tr><td>305</td>
+<td>UseProxy（使用代理）</td>
+<td>必须通过代理访问资源，代理的地址在Response的Location中</td>
+</tr>
+<tr><td>306</td>
+<td>未使用</td>
+<td>这个状态码当前没使用</td>
+</tr>
+<tr><td>307</td>
+<td>Temporary Redirect(临时重定向)</td>
+<td>类似302</td>
 </tr>
 <tr><td>400</td>
 <td>Bad Request</td>
+<td>告诉客户端，它发送了一个错误的请求。
+发送的Request中的数据有错误(比如：表单有错误，Cookie有错误)</td>
 </tr>
 <tr><td>401</td>
-<td>Unauthorized</td>
+<td>Unauthorized(未授权)</td>
+<td>需要客户端对自己认证</td>
+</tr>
+<tr><td>402</td>
+<td>PaymentRequired（要求付款）</td>
+<td>这个状态还没被使用，保留给将来用</td>
 </tr>
 <tr><td>403</td>
 <td>Forbidden</td>
+<td>请求被服务嚣拒绝了</td>
 </tr>
 <tr><td>404</td>
 <td>Not Found</td>
+<td>未找到资源</td>
 </tr>
 <tr><td>405</td>
 <td>Method Not Allowed</td>
+<td>不支持该Request的方法。</td>
 </tr>
 <tr><td>406</td>
-<td>Not Acceptable</td>
+<td>Not Acceptable（无法接受）</td>
+<td>&nbsp;</td>
 </tr>
 <tr><td>407</td>
 <td>Proxy Authentication Required</td>
+<td>与状态码401类似，用于需要进行认证的代理服务器</td>
 </tr>
 <tr><td>408</td>
 <td>Request Timeout</td>
+<td>如果客户端完成请求时花费的时间太长，
+服务器可以回送这个状态码并关闭连接</td>
 </tr>
 <tr><td>409</td>
 <td>Conflict</td>
+<td>发出的请求在资源上造成了一些冲中突</td>
 </tr>
 <tr><td>410</td>
-<td>Gone</td>
+<td>Gone(消失了)</td>
+<td>服务器曾经有这个资源，现在没有了，与状态码404类似</td>
 </tr>
 <tr><td>411</td>
 <td>Length Required</td>
+<td>服务器要求在Request中包含Content-Length。</td>
 </tr>
 <tr><td>412</td>
-<td>Precondition Failed</td>
+<td>Precondition Failed(先决条件失败)</td>
+<td>&nbsp;</td>
 </tr>
 <tr><td>413</td>
 <td>Request Entity Too Large</td>
+<td>客户端发送的实体主体部分比服务器能够或者希望处理的要大</td>
 </tr>
 <tr><td>414</td>
 <td>Request-URI Too Long</td>
+<td>客户端发送的请求所携带的URL超过了服务器能够或者希望处理的长度</td>
 </tr>
 <tr><td>415</td>
 <td>Unsupported Media Type</td>
+<td>服务器无法理解或不支持客户端所发送的实体的内容类型</td>
 </tr>
 <tr><td>416</td>
-<td>Requested Range Not Satisfiable</td>
+<td>Requested Range Not Satisfiable
+(所请求的范围未得到满足)</td>
+<td>比如断点续传的时候, Range指定的范围不存在</td>
 </tr>
 <tr><td>417</td>
-<td>Expectation Failed</td>
+<td>Expectation Failed(无法满足期望)</td>
+<td>&nbsp;</td>
 </tr>
 <tr><td>500</td>
 <td>Internal Server Error</td>
+<td>服务器遇到一个错误，使其无法为请求提供服务</td>
 </tr>
 <tr><td>501</td>
 <td>Not Implemented</td>
+<td>客户端发起的请求超出服务器的能力范围
+（比如，使用了服务器不支持的请求方法）时，使用此状态码。</td>
 </tr>
 <tr><td>502</td>
 <td>Bad Gateway</td>
+<td>代理使用的服务器遇到了上游的无效响应</td>
 </tr>
 <tr><td>503</td>
 <td>Service Unavailable</td>
+<td>服务器目前无法为请求提供服务，但过一段时间就可以恢复服务</td>
 </tr>
 <tr><td>504</td>
 <td>Gateway Timeout</td>
+<td>与状态吗408类似，但是响应来自网关或代理，
+此网关或代理在等待另一台服务器
+的响应时出现了超时</td>
 </tr>
 <tr><td>505</td>
 <td>HTTP Version Not Supported</td>
+<td>服务器收到的请求使用了它不支持的HTTP协议版本。
+有些服务器不支持HTTP早期的HTTP协议版本, 也不支持太高协议版本</td>
 </tr>
 </tbody>
 </table>
+<p>参考: <a class="reference external" href="https://blog.csdn.net/sheinenggaosuwo/article/details/86700323">HTTP协议状态码查询，详解（200、206、500、416、403、404）</a></p>
 </div>
 <div class="section" id="section-1">
 <h2>浏览器访问总是返回304</h2>
@@ -640,27 +753,27 @@ http2.0协议 已经优化编码效率问题，
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Nov <strong>12</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Openwrt-two-route-c.html">OpenWrt配置两级路由并互相访问</a></h3>
-											<p><p class="first last">OpenWrt配置两级路由并互相访问</p>
+											<span class="date">Nov <strong>20</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-TextField-h.html">TextField设置高度</a></h3>
+											<p><p class="first last">dart-TextField设置高度</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Oct <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-Kotlin-framwork-compose-multiplatform.html">compose-multiplatform</a></h3>
-											<p><p class="first last">compose-multiplatform</p>
+											<span class="date">Nov <strong>20</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-arg-with-callback-fun.html">参数为回调函数</a></h3>
+											<p><p class="first last">dart-参数为回调函数</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Oct <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-Kotlin-framwork-index.html">Kotlin框架</a></h3>
-											<p><p class="first last">Kotlin框架</p>
+											<span class="date">Nov <strong>20</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-asset-load.html">Asset资源加载</a></h3>
+											<p><p class="first last">dart-Asset资源加载</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Oct <strong>28</strong></span>
-											<h3><a href="yq-docs-rear-end-Kotlin-index.html">Kotlin</a></h3>
-											<p><p class="first last">Kotlin</p>
+											<span class="date">Nov <strong>20</strong></span>
+											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-circle-img.html">圆角图片</a></h3>
+											<p><p class="first last">dart圆角图片</p>
 </p>
 										</li>
 									</ul>
