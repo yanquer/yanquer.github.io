@@ -143,25 +143,10 @@
 										<span class="head-modify-time">修改于: 2024-11-19</span>
 
 									</div>
-									<!-- .. toctree:、: -->
-<!-- :maxdepth: 1 -->
-<!-- 文件IO -->
-<div class="section" id="macosio">
-<h2>MacOS下文件IO</h2>
-<p>主要是因为沙盒机制的原因, 导致访问文件的时候可能会遇到报错:</p>
-<pre class="literal-block">
-[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: PathAccessException: Directory listing failed, path = '~/Downloads/test_resources/music/' (OS Error: Operation not permitted, errno = 1)
-</pre>
-<p>关闭沙盒有点不现实, 说不定哪天想上架了?
-最开始以为是 <cite>flutter</cite> 的锅, 以至于一度想放弃 <cite>flutter</cite>...</p>
-<p>网上也很少有, <cite>stackoverflow</cite> 倒是看到个方案结果是喊你关掉沙盒, 这都 2024 年底了啊喂.</p>
-<p>最终还是用 <cite>Xcode</cite> 单独打开应用的 <cite>macos</cite> 文件夹, 并手动设置沙盒可手动选择文件并设置读写</p>
-<div class="figure">
-<img alt="macOS文件访问" src="doc-raw/resources/images/2024-11-20-13-45-15.png" style="width: 480px;" />
-</div>
-<p>剩下权限也可以按需配置</p>
-</div>
-<div class="section" id="no-material-widget-found">
+									<div class='sphinx-toc-tree-box'>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-dart-flutter-issue-file-io.html">MacOS下文件IO</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-dart-flutter-issue-macos-start-black.html">MacOS下Flutter启动会先黑屏几秒</a>
+</div><div class="section" id="no-material-widget-found">
 <h2>No Material widget found.</h2>
 <p>出现原因</p>
 <p>使用了 <cite>Material</cite> 风格的 <cite>widget</cite> 就需要 <cite>Scaffold</cite> 作为根布局</p>
@@ -245,11 +230,6 @@ Cannot hit test a render box with no size.
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
-   <a class="" href="#macosio">
-    MacOS下文件IO
-   </a>
-  </li>
-  <li class="toc-h0">
    <a class="" href="#no-material-widget-found">
     No Material widget found.
    </a>
@@ -284,27 +264,27 @@ Cannot hit test a render box with no size.
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-TextField-h.html">TextField设置高度</a></h3>
-											<p><p class="first last">dart-TextField设置高度</p>
+											<span class="date">Dec <strong>23</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-box-sizing.html">box-sizing</a></h3>
+											<p><p class="first last">box-sizing</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-arg-with-callback-fun.html">参数为回调函数</a></h3>
-											<p><p class="first last">dart-参数为回调函数</p>
+											<span class="date">Dec <strong>17</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-gap.html">gap</a></h3>
+											<p><p class="first last">gap</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-asset-load.html">Asset资源加载</a></h3>
-											<p><p class="first last">dart-Asset资源加载</p>
+											<span class="date">Dec <strong>17</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-scale.html">scale</a></h3>
+											<p><p class="first last">scale</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-circle-img.html">圆角图片</a></h3>
-											<p><p class="first last">dart圆角图片</p>
+											<span class="date">Dec <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-swift-Official-issues-index.html">问题</a></h3>
+											<p><p class="first last">问题</p>
 </p>
 										</li>
 									</ul>

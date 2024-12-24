@@ -170,6 +170,51 @@
 <p>data只能提供 <strong>初始数据源</strong></p>
 <p>没法实现联动变化的效果, 要联动就自行加辅助组件处理.</p>
 </div>
+<div class="section" id="section-3">
+<h2>辅助组件一个问题</h2>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>辅助组件</li>
+<li>联动更新</li>
+<li>值的实时更新</li>
+<li>落后更新</li>
+<li>落后一个版本更新</li>
+<li>延迟更新</li>
+<li>延迟一个版本更新</li>
+</ul>
+</dd>
+</dl>
+<p>当 <cite>value</cite> 的值是表达式时, 此组件的值, 有时候是其他组件有引用这个组件的值不会实时更新,
+会慢一个版本. <cite>strictMode</cite> 无效, 此时再包一层 <cite>service</cite> 解析可以解决.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="c1">// 辅助组件放在 service 组件来保持实时更新.</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;input-text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;comboConditions1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;辅助组件comboConditions1&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;strictMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                  </span><span class="c1">// 在同层的话 value 的值更新会延迟一个版本... 只有放到 service 下面才会实时联动更新</span>
+<span class="w">                  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${comboConditions0|rmKeyAndType:type:data-of-type}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">},</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;page&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;comboConditions0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${comboConditions1|addKeyAndType:type:data-of-type}&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="err">da</span><span class="kc">ta</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<p>或者使用 <cite>setValue</cite> 的动作来更新. 这种情况更适用于dialog关闭的时候, 点击确认时候的更新上层组件的值.</p>
+</div>
 <div class="section" id="table-viewlist">
 <h2>table-view单项为list时报错</h2>
 <p>大致代码</p>
@@ -302,6 +347,11 @@
    </a>
   </li>
   <li class="toc-h0">
+   <a class="" href="#section-3">
+    辅助组件一个问题
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#table-viewlist">
     table-view单项为list时报错
    </a>
@@ -336,27 +386,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-TextField-h.html">TextField设置高度</a></h3>
-											<p><p class="first last">dart-TextField设置高度</p>
+											<span class="date">Dec <strong>23</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-box-sizing.html">box-sizing</a></h3>
+											<p><p class="first last">box-sizing</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-arg-with-callback-fun.html">参数为回调函数</a></h3>
-											<p><p class="first last">dart-参数为回调函数</p>
+											<span class="date">Dec <strong>17</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-gap.html">gap</a></h3>
+											<p><p class="first last">gap</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-asset-load.html">Asset资源加载</a></h3>
-											<p><p class="first last">dart-Asset资源加载</p>
+											<span class="date">Dec <strong>17</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-scale.html">scale</a></h3>
+											<p><p class="first last">scale</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-circle-img.html">圆角图片</a></h3>
-											<p><p class="first last">dart圆角图片</p>
+											<span class="date">Dec <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-swift-Official-issues-index.html">问题</a></h3>
+											<p><p class="first last">问题</p>
 </p>
 										</li>
 									</ul>

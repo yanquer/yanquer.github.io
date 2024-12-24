@@ -161,6 +161,53 @@
 yarn config set proxy http://127.0.0.1:7890
 </pre>
 <p>对于不支持的, 那就只有不用或者用 <cite>Proxifier</cite> 强制指定了(付费软件, 暂未用过)</p>
+<div class="section" id="clash-tun">
+<h2>Clash-开启 TUN 模式</h2>
+<p><strong>TUN 模式支持本地软件大部分都适用代理</strong>, 解决了上面提到的问题</p>
+<p>开启教程</p>
+<ol class="arabic simple">
+<li>软件打开的界面未做任何设置的情况下如图所示。要启用 <cite>TUN 模式</cite> 需要先安装 <cite>Service Mode</cite> 服务，点击后面 <cite>Manage</cite> 安装。</li>
+</ol>
+<div class="figure">
+<img alt="默认界面" src="doc-raw/resources/images/2024-12-06-10-15-12.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="2">
+<li>点击 <cite>Service Mode</cite> 后的 <cite>Manage</cite> 后会弹出如图所示对话框，当前的状态显示为 <cite>无效</cite> 我们点击 <cite>Install</cite></li>
+</ol>
+<div class="figure">
+<img alt="clash for windows 安装 service mode 2" src="doc-raw/resources/images/2024-12-06-10-16-36.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="3">
+<li><cite>Service Mode</cite> 服务安装完成后 <cite>Clash for Windows</cite> 会自动重启，<cite>Service Mode</cite> 后面会显示一个绿色的小地球，表示安装成功</li>
+</ol>
+<div class="figure">
+<img alt="clash for windows 安装 service mode 3" src="doc-raw/resources/images/2024-12-06-10-17-18.png" style="width: 480px;" />
+</div>
+<ol class="arabic simple" start="4">
+<li>配置好 <cite>Clash for Windows</cite> 代理，开启 <cite>TUN Mode</cite> 后面的开关,然后再开启 <cite>System Proxy</cite> 就可以使用 <cite>TUN</cite> 代理上网了。</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>TUN 模式仍然是一种有限的全局代理，一些系统应用或软件内部有自己的网络解析机制，是无法完全隐藏自己的个人 ip 信息的。</li>
+<li>网络并非法外之地，非技术人员不要觉得开个代理就没人能找到你，大家都是娱乐一下刷个剧打个游戏也不必担心会有人找。</li>
+</ul>
+</div>
+<p>参考: <a class="reference external" href="https://doc.miyun.app/app/clash-for-windows-tun/">https://doc.miyun.app/app/clash-for-windows-tun/</a></p>
+</div>
+<div class="section" id="clash-verge">
+<h2>Clash Verge</h2>
+<p>原来的 <cite>Clash</cite> 跑路了, 2024的今天发现了后继者, <cite>Clash Verge</cite> ,</p>
+<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/clash-verge-rev/clash-verge-rev">github - Clash Verge</a></li>
+<li><a class="reference external" href="https://github.com/MetaCubeX/mihomo">github - Clash Meta</a></li>
+</ul>
+</dd>
+</dl>
+<p>使用参考: <a class="reference external" href="https://doc.miyun.app/app/clash-verge-tutorial/">https://doc.miyun.app/app/clash-verge-tutorial/</a></p>
+</div>
 
 								</article>
 						</div>
@@ -177,6 +224,32 @@ yarn config set proxy http://127.0.0.1:7890
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#clash-tun">
+    Clash-开启 TUN 模式
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#clash-verge">
+    Clash Verge
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -194,27 +267,27 @@ yarn config set proxy http://127.0.0.1:7890
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-TextField-h.html">TextField设置高度</a></h3>
-											<p><p class="first last">dart-TextField设置高度</p>
+											<span class="date">Dec <strong>23</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-box-sizing.html">box-sizing</a></h3>
+											<p><p class="first last">box-sizing</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-arg-with-callback-fun.html">参数为回调函数</a></h3>
-											<p><p class="first last">dart-参数为回调函数</p>
+											<span class="date">Dec <strong>17</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-gap.html">gap</a></h3>
+											<p><p class="first last">gap</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-asset-load.html">Asset资源加载</a></h3>
-											<p><p class="first last">dart-Asset资源加载</p>
+											<span class="date">Dec <strong>17</strong></span>
+											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-scale.html">scale</a></h3>
+											<p><p class="first last">scale</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Nov <strong>20</strong></span>
-											<h3><a href="yq-docs-rear-end-dart-flutter-tutorial-circle-img.html">圆角图片</a></h3>
-											<p><p class="first last">dart圆角图片</p>
+											<span class="date">Dec <strong>16</strong></span>
+											<h3><a href="yq-docs-rear-end-swift-Official-issues-index.html">问题</a></h3>
+											<p><p class="first last">问题</p>
 </p>
 										</li>
 									</ul>
