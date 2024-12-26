@@ -81,7 +81,7 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>settings常用字段</h2>
+      <h2>应用打包</h2>
     </div>
     <div class="page-head-content">
       By
@@ -142,62 +142,127 @@
 										</div>
 
 										<div class="pennant pennant-alt date">2023-02-20</div>
-										<h2>settings常用字段</h2>
+										<h2>应用打包</h2>
 
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<dl class="docutils">
-<dt>TEMPLATES</dt>
-<dd><p class="first">默认： <cite>[]</cite> （空列表）</p>
-<p>一个包含所有 Django 模板引擎的配置的列表。列表中的每一项都是一个字典，包含了各个引擎的选项。</p>
-<p>下面是一个配置，告诉 Django 模板引擎从每个安装好的应用程序中的 <cite>templates</cite> 子目录中加载模板:</p>
+									<div class="section" id="setuptools">
+<h2>使用 setuptools 打包</h2>
+<ol class="arabic simple">
+<li>建立一个文件夹放模块</li>
+<li>将模块目录移入这个新建的目录</li>
+<li>在新建目录下创建一个 README.rst 文件，</li>
+</ol>
+<blockquote>
+<p>包含以下内容:</p>
 <pre class="literal-block">
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-    },
-]
+rst
+=====
+Polls
+=====
+
+Polls is a Django app to conduct Web-based polls. For each question,
+visitors can choose between a fixed number of answers.
+
+Detailed documentation is in the &quot;docs&quot; directory.
+
+Quick start
+-----------
+
+1. Add &quot;polls&quot; to your INSTALLED_APPS setting like this::
+
+    INSTALLED_APPS = [
+        ...
+        'polls',
+    ]
+
+2. Include the polls URLconf in your project urls.py like this::
+
+    path('polls/', include('polls.urls')),
+
+3. Run ``python manage.py migrate`` to create the polls models.
+
+4. Start the development server and visit http://127.0.0.1:8000/admin/
+  to create a poll (you'll need the Admin app enabled).
+
+5. Visit http://127.0.0.1:8000/polls/ to participate in the poll.
 </pre>
-<p class="last">以下选项适用于所有后端。</p>
-</dd>
-<dt>BACKEND</dt>
-<dd><p class="first">默认：未定义</p>
-<p>要使用的模板后端。内置的模板后端有：</p>
-<ul class="simple">
-<li><cite>'django.template.backends.django.DjangoTemplates'</cite></li>
-<li><cite>'django.template.backends.jinja2.Jinja2'</cite></li>
-</ul>
-<p class="last">你可以通过将 <cite>BACKEND</cite> 设置为一个完全限定的路径（例如 <cite>'mypackage.whatever.Backend'</cite>）来使用一个不在 Django 中的模板后端。</p>
-</dd>
-<dt>NAME</dt>
-<dd><p class="first">默认：见下方</p>
-<p>这个特定模板引擎的别称。它是一个标识符，允许选择一个引擎进行渲染。所有配置的模板引擎的别名必须是唯一的。</p>
-<p class="last">它默认为定义引擎类的模块名称，即 <cite>BACKEND</cite> 的下一个到最后一个，如果没有提供的话。例如，如果后端是 <cite>'mypackage.whatever.Backend'</cite>，那么它的默认名称是 <cite>'whatever'</cite>。</p>
-</dd>
-<dt>DIRS</dt>
-<dd><p class="first">默认： <cite>[]</cite> （空列表）</p>
-<p class="last">按照搜索顺序，引擎应该查找模板源文件的目录。</p>
-</dd>
-<dt>APP_DIRS</dt>
-<dd><p class="first">默认：<cite>False</cite></p>
-<p>引擎是否应该在已安装的应用程序中查找模板源文件。</p>
-<div class="admonition note last">
-<p class="first admonition-title">注解</p>
-<p class="last">默认的 <cite>settings.py</cite> 文件由 <cite>django-admin startproject</cite> 创建，设置 <cite>'APP_DIRS': True</cite>。</p>
+</blockquote>
+<ol class="arabic simple" start="4">
+<li>在同一目录下创建 LICENSE 文件。选择一个授权协议（这里暂时不知道怎么搞）</li>
+<li>创建 setup.cfg 和 setup.py 说明构建与安装的细节。可参考 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/">setuptools docs</a></li>
+</ol>
+<blockquote>
+<p>大致包含以下内容</p>
+<p>setup.cfg:</p>
+<pre class="literal-block">
+[metadata]
+name = django-polls
+version = 0.1
+description = A Django app to conduct Web-based polls.
+long_description = file: README.rst
+url = https://www.example.com/
+author = Your Name
+author_email = yourname&#64;example.com
+license = BSD-3-Clause  # Example license
+classifiers =
+    Environment :: Web Environment
+    Framework :: Django
+    Framework :: Django :: X.Y  # Replace &quot;X.Y&quot; as appropriate
+    Intended Audience :: Developers
+    License :: OSI Approved :: BSD License
+    Operating System :: OS Independent
+    Programming Language :: Python
+    Programming Language :: Python :: 3
+    Programming Language :: Python :: 3 :: Only
+    Programming Language :: Python :: 3.6
+    Programming Language :: Python :: 3.7
+    Programming Language :: Python :: 3.8
+    Topic :: Internet :: WWW/HTTP
+    Topic :: Internet :: WWW/HTTP :: Dynamic Content
+
+[options]
+include_package_data = true
+packages = find:
+python_requires = &gt;=3.6
+install_requires =
+    Django &gt;= X.Y  # Replace &quot;X.Y&quot; as appropriate
+</pre>
+<p>setup.py:</p>
+<pre class="literal-block">
+from setuptools import setup
+setup()
+</pre>
+</blockquote>
+<ol class="arabic" start="6">
+<li><p class="first">默认情况，包中仅包含 Python 模块和包。
+要包含其他文件，我们需要创建一个`MANIFEST.in` 文件。
+上一步中提到的 setuptools 文档更详细地讨论了这个文件。
+要包含模板、<cite>README.rst</cite> 和我们的 <cite>LICENSE</cite> 文件，创建一个文件 <cite>MANIFEST.in</cite> ，其内容如下:</p>
+<pre class="literal-block">
+include LICENSE
+include README.rst
+recursive-include polls/static *
+recursive-include polls/templates *
+</pre>
+</li>
+<li><p class="first">在应用中包含详细文档是可选的，但我们推荐你这样做。新建目录下创建一个空目录 <cite>docs</cite> 用于未来编写文档。
+额外添加一行至 <cite>MANIFEST.in</cite>:</p>
+<pre class="literal-block">
+recursive-include docs *
+</pre>
+</li>
+</ol>
+<blockquote>
+注意，现在 <cite>docs</cite> 目录不会被加入你的应用包，除非你往这个目录加几个文件。
+许多 Django 应用也提供他们的在线文档通过类似 <a class="reference external" href="https://readthedocs.org/">readthedocs.org</a> 这样的网站。</blockquote>
+<ol class="arabic simple" start="8">
+<li>试着构建你自己的应用包通过 ptyhon setup.py sdist（在  django-polls 目录内）。
+这将创建一个名为 <cite>dist</cite> 的目录并构建你自己的应用包， <cite>django-polls-0.1.tar.gz</cite>。</li>
+</ol>
+<p>更多关于打包的信息，见 Python 的 <a class="reference external" href="https://packaging.python.org/tutorials/packaging-projects/">关于打包和发布项目的教程</a></p>
 </div>
-</dd>
-<dt>OPTIONS</dt>
-<dd><p class="first">默认值： <cite>{}</cite> （空字典）</p>
-<p class="last">要传递给模板后台的额外参数。根据模板后端的不同，可用的参数也不同。
-参见 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/templates/#django.template.backends.django.DjangoTemplates">DjangoTemplates</a>
-和
-<a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/templates/#django.template.backends.jinja2.Jinja2">Jinja2</a>
-了解内置后端的选项</p>
-</dd>
-</dl>
-<p>参考: <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-TEMPLATES">setting配置</a></p>
 
 								</article>
 						</div>
@@ -214,6 +279,27 @@ TEMPLATES = [
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#setuptools">
+    使用 setuptools 打包
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -231,27 +317,27 @@ TEMPLATES = [
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Dec <strong>23</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-box-sizing.html">box-sizing</a></h3>
-											<p><p class="first last">box-sizing</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-index.html">Django教程</a></h3>
+											<p><p class="first last">Django教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-gap.html">gap</a></h3>
-											<p><p class="first last">gap</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-model-enum.html">模型选择枚举类型</a></h3>
+											<p><p class="first last">模型选择枚举类型</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-scale.html">scale</a></h3>
-											<p><p class="first last">scale</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-query-related_name-and-related_query_name.html">反向查询related_name和related_query_name</a></h3>
+											<p><p class="first last">反向查询related_name和related_query_name</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-Official-issues-index.html">问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Dec <strong>24</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-pf.html">防火墙控制pf（Packet Filter）</a></h3>
+											<p><p class="first last">防火墙控制pf（Packet Filter）</p>
 </p>
 										</li>
 									</ul>

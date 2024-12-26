@@ -81,7 +81,7 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>QuerySet Api</h2>
+      <h2>自定义sql</h2>
     </div>
     <div class="page-head-content">
       By
@@ -142,140 +142,29 @@
 										</div>
 
 										<div class="pennant pennant-alt date">2023-02-20</div>
-										<h2>QuerySet Api</h2>
+										<h2>自定义sql</h2>
 
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<p>包含两个公开属性：</p>
-<ul class="simple">
-<li>ordered：查询时候是否有序（True/False）</li>
-<li>db：查询时使用的数据库</li>
-</ul>
-<div class="section" id="objects">
-<h2>模型.objects的一些方法</h2>
-<p>每次执行都是返回一个新的QuerySet()</p>
-<p>总览:</p>
+									<p>使用:</p>
 <pre class="literal-block">
-module.objects.all() 获取该实例的所有信息
-module.objects.add() 添加
-module.objects.create() 创建
-module.objects.get()
-module.objects.filter(*kargs) 过滤器 返回包含指定参数的QuerySet，底层通过AND连接多个参数
-module.objects.exclude(*kargs)        返回不包含指定参数的QuerySet，底层是用NOT()包裹的AND
-module.objects.annotate()     聚合查询，对QuerySet的每个对象进行注解
-module.objects.order_by() 排序
-module.objects.annotate()
-module.objects.alias()        对QuerySet的每个字段设置别名，相当于as（没搞懂）
-module.objects.select_related()       会获取外键对应的对象，在需要的时候就不用重新查询数据库了（主要用于一对多字段的查询）
-module.objects.prefetch_related()     多对多字段的查询（通过外键所对应实体找外键所在实体），底层使用的in
-module.objects.reverse()      反向查询
-module.objects.distinct( \*fields )   反向查询
-module.objects.values()       返查询字典而不是实例
-module.objects.defer()        单次加载时，指定不加载指定的字段，后续是需要时再加载
-module.objects.only() 单次加载时，指定加载指定的字段，未指定的需要再加载
-module.objects.extra()
+Manager.raw(raw_query,params=(),translations=None)
 </pre>
-<p>所有查询操作参考: <a class="reference external" href="https://www.liujiangblog.com/course/django/129">https://www.liujiangblog.com/course/django/129</a></p>
-<dl class="docutils">
-<dt>module.objects.all()</dt>
-<dd><p class="first">获取该实例的所有信息</p>
-<p>注意:</p>
+<p>如:</p>
 <pre class="literal-block">
-Entry.objects.filter(pub_date__year=2006)
+&gt;&gt;&gt; Person.objects.raw('''SELECT first AS first_name,
+...                              last AS last_name,
+...                              bd AS birth_date,
+...                              pk AS id,
+...                       FROM some_other_table''')
 </pre>
-<p>等价于:</p>
-<pre class="last literal-block">
-Entry.objects.all().filter(pub_date__year=2006)
+<p>带参:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; lname = 'Doe'
+&gt;&gt;&gt; Person.objects.raw('SELECT * FROM myapp_person WHERE last_name = %s', [lname])
 </pre>
-</dd>
-<dt>module.objects.add()</dt>
-<dd>添加</dd>
-<dt>module.objects.create()</dt>
-<dd>创建</dd>
-<dt>module.objects.get()</dt>
-<dd>获取</dd>
-<dt>module.objects.filter(*kargs)</dt>
-<dd><p class="first">过滤器 返回包含指定参数的QuerySet，底层通过AND连接多个参数</p>
-<p class="last">如果是多个filter，那么这些filter的链之间是或的关系（or）</p>
-</dd>
-<dt>module.objects.exclude(*kargs)</dt>
-<dd>返回不包含指定参数的QuerySet，底层是用NOT()包裹的AND</dd>
-<dt>module.objects.annotate()</dt>
-<dd>聚合查询，对QuerySet的每个对象进行注解</dd>
-<dt>module.objects.order_by()</dt>
-<dd>排序</dd>
-<dt>module.objects.alias()</dt>
-<dd><p class="first">对QuerySet的每个字段设置别名</p>
-<p class="last">好像相当于as（没搞懂）</p>
-</dd>
-<dt>module.objects.select_related()</dt>
-<dd><p class="first">会获取外键对应的对象，</p>
-<p class="last">在需要的时候就不用重新查询数据库了（主要用于一对多字段的查询）</p>
-</dd>
-<dt>module.objects.prefetch_related()</dt>
-<dd><p class="first">多对多字段的查询</p>
-<p class="last">(通过外键所对应实体找外键所在实体)，底层使用的in</p>
-</dd>
-<dt>module.objects.reverse()</dt>
-<dd>反向查询</dd>
-<dt>module.objects.distinct(*fields )</dt>
-<dd>反向查询</dd>
-<dt>module.objects.values()</dt>
-<dd><p class="first">反查询字典而不是实例</p>
-<p class="last">注意values与distinct使用会影响排序结果</p>
-</dd>
-<dt>module.objects.defer()</dt>
-<dd><p class="first">返回对象实例，指定不加载字段</p>
-<p class="last">单次加载时，指定不加载指定的字段，后续是需要时再加载</p>
-</dd>
-<dt>module.objects.only()</dt>
-<dd><p class="first">返回对象实例，指定加载字段</p>
-<p>单次加载时，指定加载指定的字段，未指定的需要再加载</p>
-<p>多个链式的only，只会以最后一个为准:</p>
-<pre class="last literal-block">
-&gt; 比如:ret=Book.object.all().only('name')
-&gt;         id始终会查,结果是queryset对象,套book对象(里面只有id与name字段)
-&gt;         问:如果取price,发生了什么?
-&gt;         它会再次查询数据库,对数据库造成压力
-</pre>
-</dd>
-<dt>extra(select=None, where=None, params=None, tables=None, order_by=None, select_params=None)</dt>
-<dd><p class="first">有时候，Django 查询语法本身并不能很容易地表达一个复杂的 WHERE 子句。
-对于这些边缘情况，Django 提供了 extra() QuerySet 修饰符——用于将特定的子句注入到由 QuerySet 生成的 SQL 中。</p>
-<p>如果在 extra() 调用之后使用 values() 子句，
-则 extra() 中的 select 参数所定义的任何字段必须明确地包含在 values() 调用中。
-任何在 values() 调用之后进行的 extra() 调用将忽略其额外选择的字段。</p>
-<p class="last">官网文档说计划 extra将在未来废弃</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="filter-other">
-<h2>filter/other</h2>
-<p>过滤后的QuerySet都是唯一的</p>
-<p>前缀为变量或者说字段名</p>
-<p>后缀如下：</p>
-<ul class="simple">
-<li><cite>__gt</cite> : 大于</li>
-<li><cite>__gte</cite> : 大于等于</li>
-<li><cite>__lt</cite> : 小于</li>
-<li><cite>__lte</cite> : 小于等于</li>
-<li><cite>__in</cite> : 其中之一</li>
-<li><cite>__range</cite> : 范围</li>
-<li><cite>__year</cite> : 日期-年</li>
-<li><cite>__exact</cite>：“精确”匹配（区分大小写）</li>
-<li><cite>__iexact</cite>：是不区分大小写的匹配项</li>
-<li><cite>__contains</cite>：区分大小写的模糊查询</li>
-<li><cite>__icontains</cite>：不区分大小写的模糊查询，与`contains`相对应。</li>
-<li><cite>__startswith</cite>：以什么开头的模糊查询（<strong>区分大小写</strong>）</li>
-<li><cite>__istartswith</cite>：以什么开头的模糊查询（<strong>不区分大小写</strong>）</li>
-<li><cite>__endswith</cite>：以什么结尾的模糊查询（<strong>区分大小写</strong>）</li>
-<li><cite>__iendswith</cite>：以什么结尾的模糊查询（<strong>不区分大小写</strong>）</li>
-<li><cite>__isnull</cite> : 是空的</li>
-<li><cite>__regex</cite> : 区分大小写的正则匹配</li>
-<li><cite>__iregex</cite> : 不区分大小写的正则匹配</li>
-</ul>
-</div>
+<p>参考: <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/sql/">执行原生 SQL 查询 | Django 文档 | Django (djangoproject.com)</a></p>
 
 								</article>
 						</div>
@@ -292,32 +181,6 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
-	<nav>
-		<div id="top-toc-tree-container" class="fixed-container">
-			<div class="toc-contents-title">
-				<h4 id="toc-contents-title-text">Contents</h4>
-				<!-- <span class="tool-tip-text">点击隐藏</span> -->
-			</div>
-			<div id="toc-tree-container">
- <ul class="toc-tree visible">
-  <li class="toc-h0">
-   <a class="" href="#objects">
-    模型.objects的一些方法
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#filter-other">
-    filter/other
-   </a>
-  </li>
- </ul>
-</div>
-
-		</div>
-	</nav>
-	<div id="sidebar-tools" class="fixed-container no-active cant-select">
-		<!-- 按钮 使用 content 绘制图标 -->
-	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -335,27 +198,27 @@ Entry.objects.all().filter(pub_date__year=2006)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Dec <strong>23</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-box-sizing.html">box-sizing</a></h3>
-											<p><p class="first last">box-sizing</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-index.html">Django教程</a></h3>
+											<p><p class="first last">Django教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-gap.html">gap</a></h3>
-											<p><p class="first last">gap</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-model-enum.html">模型选择枚举类型</a></h3>
+											<p><p class="first last">模型选择枚举类型</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-scale.html">scale</a></h3>
-											<p><p class="first last">scale</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-query-related_name-and-related_query_name.html">反向查询related_name和related_query_name</a></h3>
+											<p><p class="first last">反向查询related_name和related_query_name</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-Official-issues-index.html">问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Dec <strong>24</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-pf.html">防火墙控制pf（Packet Filter）</a></h3>
+											<p><p class="first last">防火墙控制pf（Packet Filter）</p>
 </p>
 										</li>
 									</ul>

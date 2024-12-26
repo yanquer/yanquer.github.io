@@ -81,12 +81,12 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>自定义sql</h2>
+      <h2>反向查询related_name和related_query_name</h2>
     </div>
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 25 December 2024
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -141,30 +141,35 @@
 											</ul>
 										</div>
 
-										<div class="pennant pennant-alt date">2023-02-20</div>
-										<h2>自定义sql</h2>
+										<div class="pennant pennant-alt date">2024-12-25</div>
+										<h2>反向查询related_name和related_query_name</h2>
 
-										<span class="head-modify-time">修改于: 2023-02-20</span>
+										<span class="head-modify-time">修改于: 2024-12-25</span>
 
 									</div>
-									<p>使用:</p>
-<pre class="literal-block">
-Manager.raw(raw_query,params=(),translations=None)
-</pre>
-<p>如:</p>
-<pre class="literal-block">
-&gt;&gt;&gt; Person.objects.raw('''SELECT first AS first_name,
-...                              last AS last_name,
-...                              bd AS birth_date,
-...                              pk AS id,
-...                       FROM some_other_table''')
-</pre>
-<p>带参:</p>
-<pre class="literal-block">
-&gt;&gt;&gt; lname = 'Doe'
-&gt;&gt;&gt; Person.objects.raw('SELECT * FROM myapp_person WHERE last_name = %s', [lname])
-</pre>
-<p>参考: <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/sql/">执行原生 SQL 查询 | Django 文档 | Django (djangoproject.com)</a></p>
+									<p>参考: <a class="reference external" href="https://blog.csdn.net/coolzpf/article/details/132844054">https://blog.csdn.net/coolzpf/article/details/132844054</a></p>
+<p>比如有一个这样的应用</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;问题名称&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Answer</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+                                  <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;关联的问题&#39;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="s1">&#39;答案的内容&#39;</span><span class="p">)</span>
+</pre></div>
+<dl class="docutils">
+<dt>related_name</dt>
+<dd><p class="first">默认值为 <cite>answer_set</cite>, 即模型名小写 + <cite>_set</cite></p>
+<p class="last">用于反向查询 <cite>Question</cite> 对应的 <cite>Answer</cite>, 比如 <tt class="docutils literal"><span class="pre">q=Question.objects.all().first();</span> q.answer_set.all()</tt> 表示查询问题一的所有答案.</p>
+</dd>
+<dt>related_query_name</dt>
+<dd><p class="first">默认值为 <cite>answer</cite>, 即模型名小写.</p>
+<p>同样用于反向查询 <cite>Question</cite> 对应的 <cite>Answer</cite>, 不过是具体到字段查询时候的名字,
+比如 <tt class="docutils literal"><span class="pre">Question.objects.all().filter(answer__content=&quot;自主学习&quot;)</span></tt>
+表示查询答案内容为 &quot;自主学习&quot; 的问题.</p>
+<p class="last">当 <cite>related_name</cite> 有手动设置时, <cite>related_query_name</cite> 会自动设置为 <cite>related_name</cite> 的值.</p>
+</dd>
+</dl>
 
 								</article>
 						</div>
@@ -198,27 +203,27 @@ Manager.raw(raw_query,params=(),translations=None)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Dec <strong>23</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-box-sizing.html">box-sizing</a></h3>
-											<p><p class="first last">box-sizing</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-index.html">Django教程</a></h3>
+											<p><p class="first last">Django教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-gap.html">gap</a></h3>
-											<p><p class="first last">gap</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-model-enum.html">模型选择枚举类型</a></h3>
+											<p><p class="first last">模型选择枚举类型</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-scale.html">scale</a></h3>
-											<p><p class="first last">scale</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-query-related_name-and-related_query_name.html">反向查询related_name和related_query_name</a></h3>
+											<p><p class="first last">反向查询related_name和related_query_name</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-Official-issues-index.html">问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Dec <strong>24</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-pf.html">防火墙控制pf（Packet Filter）</a></h3>
+											<p><p class="first last">防火墙控制pf（Packet Filter）</p>
 </p>
 										</li>
 									</ul>

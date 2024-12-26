@@ -81,7 +81,7 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>测试</h2>
+      <h2>settings常用字段</h2>
     </div>
     <div class="page-head-content">
       By
@@ -142,82 +142,62 @@
 										</div>
 
 										<div class="pennant pennant-alt date">2023-02-20</div>
-										<h2>测试</h2>
+										<h2>settings常用字段</h2>
 
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<p>一份好的业务代码，是需要经过实际测试的。</p>
-<p>一方面是自己确认代码运行正常，另一方面是对外提供测试信息。</p>
-<div class="section" id="section-2">
-<h2>编写方法</h2>
-<p>一般来说，Django的测试用例应该定义在应用的 tests.py 文件里。</p>
-<p>系统会自动在以 tests 开头的文件里寻找并执行测试代码。</p>
-<p>比如有一个 polls 的django应用，将以下代码写入 tests.py:</p>
+									<dl class="docutils">
+<dt>TEMPLATES</dt>
+<dd><p class="first">默认： <cite>[]</cite> （空列表）</p>
+<p>一个包含所有 Django 模板引擎的配置的列表。列表中的每一项都是一个字典，包含了各个引擎的选项。</p>
+<p>下面是一个配置，告诉 Django 模板引擎从每个安装好的应用程序中的 <cite>templates</cite> 子目录中加载模板:</p>
 <pre class="literal-block">
-import datetime
-
-from django.test import TestCase
-from django.utils import timezone
-
-from .models import Question
-
-
-class QuestionModelTests(TestCase):
-
-    def test_was_published_recently_with_future_question(self):
-        &quot;&quot;&quot;
-        was_published_recently() returns False for questions whose pub_date
-        is in the future.
-        &quot;&quot;&quot;
-        time = timezone.now() + datetime.timedelta(days=30)
-        future_question = Question(pub_date=time)
-        self.assertIs(future_question.was_published_recently(), False)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+    },
+]
 </pre>
-<dl class="docutils">
-<dt>解读：</dt>
-<dd>创建一个 django.test.TestCase 的子类，并添加一个方法，
-此方法创建一个 pub_date 时未来某天的 <cite>Question</cite> 实例。
-然后检查它的 <cite>was_published_recently()</cite> 方法的返回值——它 <em>应该</em> 是 False。</dd>
-</dl>
-</div>
-<div class="section" id="section-3">
-<h2>运行测试</h2>
-<p>在终端中，我们通过输入以下代码运行测试:</p>
-<pre class="literal-block">
-$ python manage.py test polls
-</pre>
-<p>你将会看到运行结果:</p>
-<pre class="literal-block">
-Creating test database for alias 'default'...
-System check identified no issues (0 silenced).
-F
-======================================================================
-FAIL: test_was_published_recently_with_future_question (polls.tests.QuestionModelTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File &quot;/path/to/mysite/polls/tests.py&quot;, line 16, in test_was_published_recently_with_future_question
-    self.assertIs(future_question.was_published_recently(), False)
-AssertionError: True is not False
-
-----------------------------------------------------------------------
-Ran 1 test in 0.001s
-
-FAILED (failures=1)
-Destroying test database for alias 'default'...
-</pre>
-<p>以下是自动化测试的运行过程：</p>
+<p class="last">以下选项适用于所有后端。</p>
+</dd>
+<dt>BACKEND</dt>
+<dd><p class="first">默认：未定义</p>
+<p>要使用的模板后端。内置的模板后端有：</p>
 <ul class="simple">
-<li><cite>python manage.py test polls</cite> 将会寻找 <cite>polls</cite> 应用里的测试代码</li>
-<li>它找到了 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/testing/tools/#django.test.TestCase">django.test.TestCase</a> 的一个子类</li>
-<li>它创建一个特殊的数据库供测试使用</li>
-<li>它在类中寻找测试方法——以 <cite>test</cite> 开头的方法。</li>
-<li>在 <cite>test_was_published_recently_with_future_question</cite> 方法中，它创建了一个 <cite>pub_date</cite> 值为 30 天后的 <cite>Question</cite> 实例。</li>
-<li>接着使用 <cite>assertls()</cite> 方法，发现 <cite>was_published_recently()</cite> 返回了 <cite>True</cite>，而我们期望它返回 <cite>False</cite>。</li>
+<li><cite>'django.template.backends.django.DjangoTemplates'</cite></li>
+<li><cite>'django.template.backends.jinja2.Jinja2'</cite></li>
 </ul>
-<p>测试系统通知我们哪些测试样例失败了，和造成测试失败的代码所在的行号。</p>
-<p>参考: <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial05/">自动化测试简介</a></p>
+<p class="last">你可以通过将 <cite>BACKEND</cite> 设置为一个完全限定的路径（例如 <cite>'mypackage.whatever.Backend'</cite>）来使用一个不在 Django 中的模板后端。</p>
+</dd>
+<dt>NAME</dt>
+<dd><p class="first">默认：见下方</p>
+<p>这个特定模板引擎的别称。它是一个标识符，允许选择一个引擎进行渲染。所有配置的模板引擎的别名必须是唯一的。</p>
+<p class="last">它默认为定义引擎类的模块名称，即 <cite>BACKEND</cite> 的下一个到最后一个，如果没有提供的话。例如，如果后端是 <cite>'mypackage.whatever.Backend'</cite>，那么它的默认名称是 <cite>'whatever'</cite>。</p>
+</dd>
+<dt>DIRS</dt>
+<dd><p class="first">默认： <cite>[]</cite> （空列表）</p>
+<p class="last">按照搜索顺序，引擎应该查找模板源文件的目录。</p>
+</dd>
+<dt>APP_DIRS</dt>
+<dd><p class="first">默认：<cite>False</cite></p>
+<p>引擎是否应该在已安装的应用程序中查找模板源文件。</p>
+<div class="admonition note last">
+<p class="first admonition-title">注解</p>
+<p class="last">默认的 <cite>settings.py</cite> 文件由 <cite>django-admin startproject</cite> 创建，设置 <cite>'APP_DIRS': True</cite>。</p>
 </div>
+</dd>
+<dt>OPTIONS</dt>
+<dd><p class="first">默认值： <cite>{}</cite> （空字典）</p>
+<p class="last">要传递给模板后台的额外参数。根据模板后端的不同，可用的参数也不同。
+参见 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/templates/#django.template.backends.django.DjangoTemplates">DjangoTemplates</a>
+和
+<a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/templates/#django.template.backends.jinja2.Jinja2">Jinja2</a>
+了解内置后端的选项</p>
+</dd>
+</dl>
+<p>参考: <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-TEMPLATES">setting配置</a></p>
 
 								</article>
 						</div>
@@ -234,32 +214,6 @@ Destroying test database for alias 'default'...
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
-	<nav>
-		<div id="top-toc-tree-container" class="fixed-container">
-			<div class="toc-contents-title">
-				<h4 id="toc-contents-title-text">Contents</h4>
-				<!-- <span class="tool-tip-text">点击隐藏</span> -->
-			</div>
-			<div id="toc-tree-container">
- <ul class="toc-tree visible">
-  <li class="toc-h0">
-   <a class="" href="#section-2">
-    编写方法
-   </a>
-  </li>
-  <li class="toc-h0">
-   <a class="" href="#section-3">
-    运行测试
-   </a>
-  </li>
- </ul>
-</div>
-
-		</div>
-	</nav>
-	<div id="sidebar-tools" class="fixed-container no-active cant-select">
-		<!-- 按钮 使用 content 绘制图标 -->
-	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -277,27 +231,27 @@ Destroying test database for alias 'default'...
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Dec <strong>23</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-box-sizing.html">box-sizing</a></h3>
-											<p><p class="first last">box-sizing</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-index.html">Django教程</a></h3>
+											<p><p class="first last">Django教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-gap.html">gap</a></h3>
-											<p><p class="first last">gap</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-model-enum.html">模型选择枚举类型</a></h3>
+											<p><p class="first last">模型选择枚举类型</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>17</strong></span>
-											<h3><a href="yq-docs-front-end-CSS-CSS-commonly-used-attributes-scale.html">scale</a></h3>
-											<p><p class="first last">scale</p>
+											<span class="date">Dec <strong>25</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-query-related_name-and-related_query_name.html">反向查询related_name和related_query_name</a></h3>
+											<p><p class="first last">反向查询related_name和related_query_name</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>16</strong></span>
-											<h3><a href="yq-docs-rear-end-swift-Official-issues-index.html">问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Dec <strong>24</strong></span>
+											<h3><a href="yq-docs-operating-system-Mac-turorial-pf.html">防火墙控制pf（Packet Filter）</a></h3>
+											<p><p class="first last">防火墙控制pf（Packet Filter）</p>
 </p>
 										</li>
 									</ul>
