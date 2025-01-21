@@ -1,0 +1,565 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>前后端分离下的CSRF跨域</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 25 December 2024
+      , Category:
+	  <a href="category/hou-duan-python.html">后端; python</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan-python.html">后端; python</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/webkuang-jia.html">Web框架</a></li>
+
+													<li><a class="button button-alt" href="tag/django.html">Django</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2024-12-25</div>
+										<h2>前后端分离下的CSRF跨域</h2>
+
+										<span class="head-modify-time">修改于: 2024-12-25</span>
+
+									</div>
+									<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value">samesite</a></li>
+<li><a class="reference external" href="https://pypi.org/project/django-cors-headers/">django-cors-headers</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/zh-hans/5.1/howto/csrf/#">如何使用 Django 提供的 CSRF 防护功能</a></li>
+<li><a class="reference external" href="https://github.com/js-cookie/js-cookie/">js-cookie</a></li>
+</ul>
+</dd>
+</dl>
+<p>这个其实可以分成两个部分, <cite>CORS</cite> 和 <cite>CSRF</cite></p>
+<ul class="simple">
+<li><cite>CORS</cite> 是跨域资源共享, 用于解决跨域问题</li>
+<li><cite>CSRF</cite> 是跨站请求伪造, 用于解决跨站请求伪造问题</li>
+</ul>
+<div class="section" id="section-1">
+<h2>跨域访问配置</h2>
+<p>先说下如何设置跨域访问,
+先安装 <cite>django-cors-headers</cite></p>
+<pre class="literal-block">
+pip install django-cors-headers
+</pre>
+<p>然后在 <cite>settings.py</cite> 中增加/修改设置如下</p>
+<div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+
+    <span class="c1"># 新增的应用</span>
+    <span class="s1">&#39;corsheaders&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+
+    <span class="c1"># 新增的中间件 放在 CommonMiddleware 之前</span>
+    <span class="s1">&#39;corsheaders.middleware.CorsMiddleware&#39;</span><span class="p">,</span>
+
+    <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># 允许所有的跨域请求</span>
+<span class="n">CORS_ORIGIN_ALLOW_ALL</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># 是否允许ajax跨域请求时携带cookie</span>
+<span class="n">CORS_ALLOW_CREDENTIALS</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># 也可以使用白名单</span>
+<span class="c1"># 旧版本是 CORS_ORIGIN_WHITELIST, 新版本是 CORS_ALLOWED_ORIGINS</span>
+<span class="n">CORS_ALLOWED_ORIGINS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;http://127.0.0.1:5173&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;http://localhost:5173&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="section-2">
+<h2>跨站请求伪造配置</h2>
+<p><cite>Django</cite> 默认开启了 <cite>CSRF</cite> 防护, 目前官方最新文档参考 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/5.1/howto/csrf/#acquiring-csrf-token-from-html">如何使用 Django 提供的 CSRF 防护功能-CSRF</a> ,
+但是在前后端分离的情况下, 前端无法直接拿到 <cite>csrf_token</cite>, 所以需要特殊处理.</p>
+<p>网上搜了一下, 就没有一个完善的不关闭 <cite>CSRF</cite> 防护的方案, 官方文档也没说明白.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>这里得提一下, 如果仅设置 <cite>CORS</cite> 不配置 <cite>CSRF</cite> 会出现什么情况</p>
+<ul class="last simple">
+<li>普通请求比如正常的 <cite>GET</cite> <cite>OPTIONS</cite> 请求没问题</li>
+<li>复杂的请求比如 <cite>POST</cite> 请求会出现 <cite>403</cite> 错误, 可能会看到 <tt class="docutils literal">CSRF cookie not set</tt> 或 <tt class="docutils literal">CSRF token missing or incorrect</tt></li>
+</ul>
+</div>
+<div class="section" id="section-3">
+<h3>网上主流方式1-关闭防护(不推荐)</h3>
+<p>在 <cite>settings.py</cite> 中关闭 <cite>CSRF</cite> 防护, 注释掉这个中间件:</p>
+<pre class="literal-block">
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
+    # 注释掉这里
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+</pre>
+</div>
+<div class="section" id="section-4">
+<h3>网上主流方式2-关闭指定视图/接口的防护(不推荐)</h3>
+<p>在视图/接口中关闭 <cite>CSRF</cite> 防护:</p>
+<pre class="literal-block">
+from django.views.decorators.csrf import csrf_exempt
+
+&#64;csrf_exempt
+def my_view(request):
+    return HttpResponse('Hello, World!')
+</pre>
+</div>
+<div class="section" id="csrf-token">
+<h3>自定义获取csrf_token(推荐)</h3>
+<p>此方案基于官方文档 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/5.1/howto/csrf/#acquiring-the-token-if-csrf-use-sessions-or-csrf-cookie-httponly-is-true">当 CSRF_USE_SESSIONS 或 CSRF_COOKIE_HTTPONLY 为 True 时获取令牌</a></p>
+<div class="section" id="section-5">
+<h4>后端配置</h4>
+<p>首先是在 <cite>settings.py</cite> 配置:</p>
+<pre class="literal-block">
+# 将信任的域名加入到 CSRF_TRUSTED_ORIGINS 中, 此处与上面的 CORS_ALLOWED_ORIGINS 一致
+CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+# 允许跨域请求时携带cookie的域名, 此处与上面的 CORS_ALLOWED_ORIGINS 一致
+# CSRF_COOKIE_DOMAIN = CORS_ALLOWED_ORIGINS
+
+# 服务器创建的 csrf_token 的属性
+# 是否将 CSRF 标记存储在用户的会话中，而不是 cookie 中。这需要使用 django.contrib.session。
+# CSRF_USE_SESSIONS = True    # 此项不设置
+# 是否对 CSRF cookie 使用 HttpOnly 标志。如果设置为 True，客户端的 JavaScript 将无法访问 CSRF cookie
+# CSRF_COOKIE_HTTPONLY = True
+# CSRF cookie 上 SameSite 标志的值。该标志可防止在跨站点请求中发送 cookie。 默认 'Lax'
+# CSRF_COOKIE_SAMESITE = &quot;None&quot;
+# 是否为 CSRF cookie 使用安全 cookie。如果设置为 True，cookie 将被标记为 安全，这意味着浏览器可以确保 cookie 只在 HTTPS 连接下发送。
+# CSRF_COOKIE_SECURE = True
+</pre>
+<p>简而言之其实只需要:</p>
+<pre class="literal-block">
+CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+</pre>
+<p>然后是定义一个接口可以让前端获取到 <cite>csrf_token</cite>:</p>
+<pre class="literal-block">
+from django.middleware.csrf import get_token
+from django.http import JsonResponse
+
+def get_csrf_token(request):
+    &quot;&quot;&quot; 获取 csrftoken, 跨域这样获取貌似有点毛病... 后续需要加强安全性&quot;&quot;&quot;
+
+    csrf_token = get_token(request)
+    return JsonResponse({'csrf_token': csrf_token})
+    # return HttpResponse(json.dumps({'token': token}), content_type=&quot;application/json,charset=utf-8&quot;)
+</pre>
+<p>定义接口url:</p>
+<pre class="literal-block">
+path('get_csrf_token/', views.get_csrf_token, name='get_csrf_token'),
+</pre>
+</div>
+<div class="section" id="section-6">
+<h4>前端配置</h4>
+<p>前端获取 <cite>csrf_token</cite> 的接口:</p>
+<pre class="literal-block">
+import axios from 'axios'
+
+// 获取 csrf_token
+export const getCsrfToken = async (): string =&gt; {
+  return (await axios.get('xxx/get_csrf_token/')).data.csrf_token
+}
+</pre>
+<p>然后当请求到达的时候, 手动设置 <cite>cookie</cite>:</p>
+<pre class="literal-block">
+import axios from 'axios'
+import Cookies from 'js-cookie'
+
+// 获取 csrf_token
+export const getCsrfToken = async (): string =&gt; {
+  return (await axios.get('get_csrf_token/')).data.csrf_token
+}
+
+// 设置 csrf_token
+export const setCsrfToken = async (data): void =&gt; {
+  const csrfToken = await getCsrfToken()
+  // 必须要设置 cookie
+  Cookies.set(&quot;csrftoken&quot;, csrfToken ?? &quot;&quot;, {
+      sameSite: 'Lax', // 或 'Strict', 'None' 根据需求
+      // secure: false,     // 如果使用 HTTPS，设置为 true. (貌似需要与服务器保持一致)
+      // expires: 7,       // 可选：设置过期时间
+      path: &quot;/&quot;,
+  });
+  // 访问时候配置 config 的 headers, 必须有 `X-CSRFToken`
+  // axios.defaults.headers.common['X-CSRFToken'] = csrfToken
+  // 比如访问 post 的 api/add 接口
+  //  withCredentials = true; 表示允许携带cookie
+  return await axios.post('api/add', data, { headers: { 'X-CSRFToken': csrfToken, withCredentials: true } })
+}
+</pre>
+</div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    跨域访问配置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    跨站请求伪造配置
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      网上主流方式1-关闭防护(不推荐)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      网上主流方式2-关闭指定视图/接口的防护(不推荐)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#csrf-token">
+      自定义获取csrf_token(推荐)
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#section-5">
+        后端配置
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#section-6">
+        前端配置
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Jan <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-question-not-find-distutils.html">编译桌面环境报错找不到'distutils'</a></h3>
+											<p><p class="first last">编译桌面环境报错找不到'distutils'</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Jan <strong>16</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-windows-pause-update.html">Windows暂停更新</a></h3>
+											<p><p class="first last">Windows暂停更新</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Jan <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-axios.html">axios</a></h3>
+											<p><p class="first last">axios</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Jan <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-buffer-with-str.html">Buffer与字符串的转换</a></h3>
+											<p><p class="first last">Buffer与字符串的转换</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

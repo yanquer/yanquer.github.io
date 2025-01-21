@@ -219,6 +219,30 @@ fi
 <p>这里末尾的 <cite>|| true</cite> 是需要的，
 它可以保证这个 shell 脚本在不小心使用了 <cite>-e</cite> 选项而被调用时不会在该行意外地退出</p>
 </div>
+<div class="section" id="section-1">
+<h2>隐藏脚本非0返回值</h2>
+<p>主要是用于在脚本头定义了 <cite>set -e</cite> 的情况下，避免脚本因为预期意外退出</p>
+<p>比如一下脚本片段:</p>
+<pre class="literal-block">
+set -e
+
+cd /tmp/xxx/xx
+
+set +e
+</pre>
+<p>cd的目录可能不存在, 为了避免报错, 可以使用条件语句将非0的返回值隐藏掉:</p>
+<pre class="literal-block">
+set -e
+
+cd /tmp/xxx/xx || true
+# 或者
+# `cd /tmp/xxx/xx` || true
+# 或者
+# [ `cd /tmp/xxx/xx` ] || true
+
+set +e
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -248,6 +272,11 @@ fi
     不带if的写法
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    隐藏脚本非0返回值
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -273,27 +302,27 @@ fi
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Dec <strong>25</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-index.html">Django教程</a></h3>
-											<p><p class="first last">Django教程</p>
+											<span class="date">Jan <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-question-not-find-distutils.html">编译桌面环境报错找不到'distutils'</a></h3>
+											<p><p class="first last">编译桌面环境报错找不到'distutils'</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>25</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-model-enum.html">模型选择枚举类型</a></h3>
-											<p><p class="first last">模型选择枚举类型</p>
+											<span class="date">Jan <strong>16</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-windows-pause-update.html">Windows暂停更新</a></h3>
+											<p><p class="first last">Windows暂停更新</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>25</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-query-related_name-and-related_query_name.html">反向查询related_name和related_query_name</a></h3>
-											<p><p class="first last">反向查询related_name和related_query_name</p>
+											<span class="date">Jan <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-axios.html">axios</a></h3>
+											<p><p class="first last">axios</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>24</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-turorial-pf.html">防火墙控制pf（Packet Filter）</a></h3>
-											<p><p class="first last">防火墙控制pf（Packet Filter）</p>
+											<span class="date">Jan <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-buffer-with-str.html">Buffer与字符串的转换</a></h3>
+											<p><p class="first last">Buffer与字符串的转换</p>
 </p>
 										</li>
 									</ul>

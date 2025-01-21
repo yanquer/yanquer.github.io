@@ -154,6 +154,32 @@ apt install python3-pip -y
 <pre class="literal-block">
 pip -v config list
 </pre>
+<p>部分参数选项</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--target=<var>DIR</var></span></kbd></td>
+<td>安装到指定目录</td></tr>
+</tbody>
+</table>
+<div class="section" id="section-1">
+<h2>拓展-三方包安装到指定目录</h2>
+<p>方案一, 使用pip的参数:</p>
+<pre class="literal-block">
+pip install --target=/path/to/dir package_name
+</pre>
+<p>方案二, 设置python路径环境变量:</p>
+<pre class="literal-block">
+export PYTHONPATH=/path/to/dir:$PYTHONPATH
+</pre>
+<p>方案三, 设置pth文件.
+在 <tt class="docutils literal">/path/to/dir</tt> 目录下(一般是 <tt class="docutils literal"><span class="pre">xxx/site-packages</span></tt>)创建 <tt class="docutils literal">package_name.pth</tt> 文件, 内容为:</p>
+<pre class="literal-block">
+/path/to/dir/package_name
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -170,6 +196,27 @@ pip -v config list
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    拓展-三方包安装到指定目录
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -187,27 +234,27 @@ pip -v config list
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Dec <strong>25</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-index.html">Django教程</a></h3>
-											<p><p class="first last">Django教程</p>
+											<span class="date">Jan <strong>18</strong></span>
+											<h3><a href="yq-docs-front-end-question-not-find-distutils.html">编译桌面环境报错找不到'distutils'</a></h3>
+											<p><p class="first last">编译桌面环境报错找不到'distutils'</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>25</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-model-enum.html">模型选择枚举类型</a></h3>
-											<p><p class="first last">模型选择枚举类型</p>
+											<span class="date">Jan <strong>16</strong></span>
+											<h3><a href="yq-docs-operating-system-Windows-tutorial-windows-pause-update.html">Windows暂停更新</a></h3>
+											<p><p class="first last">Windows暂停更新</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>25</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-query-related_name-and-related_query_name.html">反向查询related_name和related_query_name</a></h3>
-											<p><p class="first last">反向查询related_name和related_query_name</p>
+											<span class="date">Jan <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-axios.html">axios</a></h3>
+											<p><p class="first last">axios</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Dec <strong>24</strong></span>
-											<h3><a href="yq-docs-operating-system-Mac-turorial-pf.html">防火墙控制pf（Packet Filter）</a></h3>
-											<p><p class="first last">防火墙控制pf（Packet Filter）</p>
+											<span class="date">Jan <strong>13</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-buffer-with-str.html">Buffer与字符串的转换</a></h3>
+											<p><p class="first last">Buffer与字符串的转换</p>
 </p>
 										</li>
 									</ul>
