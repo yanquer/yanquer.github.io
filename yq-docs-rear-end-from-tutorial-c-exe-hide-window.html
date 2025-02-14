@@ -162,7 +162,7 @@
 <span class="cp">#include</span><span class="cpf">&lt;windows.h&gt;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">hide_console</span><span class="p">(){</span>
-<span class="w">    </span><span class="n">HWND</span><span class="w"> </span><span class="n">hwnd</span><span class="p">;</span>
+<span class="w">  </span><span class="n">HWND</span><span class="w"> </span><span class="n">hwnd</span><span class="p">;</span>
 <span class="w">  </span><span class="n">hwnd</span><span class="o">=</span><span class="n">FindWindow</span><span class="p">(</span><span class="s">&quot;ConsoleWindowClass&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w">        </span><span class="c1">// 处理顶级窗口的类名和窗口名称匹配指定的字符串,不搜索子窗口。</span>
 <span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">hwnd</span><span class="p">)</span>
 <span class="w">  </span><span class="p">{</span>
@@ -173,6 +173,20 @@
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
 <span class="w">  </span><span class="n">hide_console</span><span class="p">();</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p><strong>后面才发现这个隐藏是对所有打开的CMD都生效, 导致手动打开的CMD被关闭</strong></p>
+<p>只隐藏自己的应该这样</p>
+<div class="highlight"><pre><span></span><span class="c1">// 隐藏启动控制台</span>
+<span class="cp">#include</span><span class="cpf">&lt;windows.h&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">hide_console</span><span class="p">(){</span>
+<span class="w">  </span><span class="n">HWND</span><span class="w"> </span><span class="n">hwnd</span><span class="p">;</span>
+<span class="w">  </span><span class="n">hwnd</span><span class="o">=</span><span class="n">GetConsoleWindow</span><span class="p">()</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">hwnd</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ShowWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span><span class="n">SW_HIDE</span><span class="p">);</span><span class="w">                         </span><span class="c1">// 设置指定窗口的显示状态</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -251,27 +265,27 @@ endif()
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jan <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-question-not-find-distutils.html">编译桌面环境报错找不到'distutils'</a></h3>
-											<p><p class="first last">编译桌面环境报错找不到'distutils'</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
+											<p><p class="first last">问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>16</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-windows-pause-update.html">Windows暂停更新</a></h3>
-											<p><p class="first last">Windows暂停更新</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
+											<p><p class="first last">启动卡在scrapy.addons</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-axios.html">axios</a></h3>
-											<p><p class="first last">axios</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
+											<p><p class="first last">预定义pipelines</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-buffer-with-str.html">Buffer与字符串的转换</a></h3>
-											<p><p class="first last">Buffer与字符串的转换</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
+											<p><p class="first last">教程</p>
 </p>
 										</li>
 									</ul>

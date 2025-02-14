@@ -173,7 +173,8 @@ scrapy startproject mySpider
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
-<p class="last"><cite>mySpider</cite> 才是真正的项目根目录, 上面的 <tt class="docutils literal">pip install Scrapy</tt> 是因为全局可能没有环境.</p>
+<p><cite>mySpider</cite> 才是真正的项目根目录, 上面的 <tt class="docutils literal">pip install Scrapy</tt> 是因为全局可能没有环境.</p>
+<p class="last">最建议的方案是先全局安装 <tt class="docutils literal">pip install Scrapy</tt> , 然后再创建项目, 这样cd进去直接就是项目目录了</p>
 </div>
 <p>输出:</p>
 <pre class="literal-block">
@@ -631,98 +632,7 @@ response.css(&quot;div.quote&quot;)
 <p>设计管道存储爬取内容</p>
 <p>如果只是简单的获取某些数据, 那么上面的内容已经足够.</p>
 <p>但若想处理更复杂的事情, 那么就需要使用到 pipelines</p>
-</div>
-<div class="section" id="section-6">
-<h2>爬虫运行的方式</h2>
-<p>参考: <a class="reference external" href="https://blog.csdn.net/mouday/article/details/89524009">Python爬虫：Scrapy从脚本运行爬虫的5种方式</a></p>
-<p>在上面的例子中, 是直接在命令行运行的, 方便时方便, 缺点是无法 Debug.</p>
-<p>大体上, 运行爬虫有以下方式</p>
-<div class="section" id="section-7">
-<h3>命令行</h3>
-<p>先去项目根目录</p>
-<div class="highlight"><pre><span></span><span class="c1"># 若需要导出, scrapy crawl itcast -O t.json</span>
-$<span class="w"> </span>scrapy<span class="w"> </span>crawl<span class="w"> </span>itcast
-</pre></div>
-<p>若在没有创建项目的情况下运行爬虫</p>
-<div class="highlight"><pre><span></span>$<span class="w"> </span>scrapy<span class="w"> </span>runspider<span class="w"> </span>itcast.py
-</pre></div>
-</div>
-<div class="section" id="cmdline">
-<h3>cmdline</h3>
-<p>缺点是无法在单线程中并行多个爬虫,
-因为如果有多行 <tt class="docutils literal">cmdline.execute</tt>, 第一个执行完毕就直接退出了.</p>
-<p>使用 <cite>cmdline</cite> 本质其实还是命令行执行的</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">cmdline</span><span class="p">,</span> <span class="n">Spider</span>
-
-
-<span class="k">class</span> <span class="nc">BaiduSpider</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;baidu&#39;</span>
-
-    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://baidu.com/&#39;</span><span class="p">]</span>
-
-    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;run baidu&quot;</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">cmdline</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;scrapy crawl baidu&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="section" id="crawlerprocess">
-<h3>CrawlerProcess(建议)</h3>
-<p>多个执行是并行的</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">Spider</span>
-<span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="kn">import</span> <span class="n">CrawlerProcess</span>
-<span class="kn">from</span> <span class="nn">scrapy.utils.project</span> <span class="kn">import</span> <span class="n">get_project_settings</span>
-
-<span class="k">class</span> <span class="nc">BaiduSpider</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
-    <span class="o">...</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c1"># 通过方法 get_project_settings() 获取配置信息</span>
-    <span class="n">process</span> <span class="o">=</span> <span class="n">CrawlerProcess</span><span class="p">(</span><span class="n">get_project_settings</span><span class="p">())</span>
-    <span class="n">process</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">BaiduSpider</span><span class="p">)</span>
-    <span class="c1"># 如果有多个, 继续 crawl</span>
-    <span class="c1">#   如 process.crawl(SinaSpider)</span>
-    <span class="c1">#   是基本并行启动的</span>
-    <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="section" id="crawlerrunner">
-<h3>CrawlerRunner(官方建议)</h3>
-<p>多个执行是顺序的</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">Spider</span>
-<span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="kn">import</span> <span class="n">CrawlerRunner</span>
-<span class="kn">from</span> <span class="nn">scrapy.utils.log</span> <span class="kn">import</span> <span class="n">configure_logging</span>
-<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
-
-
-<span class="k">class</span> <span class="nc">BaiduSpider</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
-    <span class="o">...</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c1"># 直接运行控制台没有日志</span>
-    <span class="n">configure_logging</span><span class="p">(</span>
-        <span class="p">{</span>
-            <span class="s1">&#39;LOG_FORMAT&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%(message)s</span><span class="s1">&#39;</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-
-    <span class="n">runner</span> <span class="o">=</span> <span class="n">CrawlerRunner</span><span class="p">()</span>
-
-    <span class="n">d</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">BaiduSpider</span><span class="p">)</span>
-    <span class="c1"># 如果有多个</span>
-    <span class="c1">#   runner.crawl(SinaSpider)</span>
-    <span class="c1">#   d = runner.join()</span>
-    <span class="c1">#   这样是顺序启动的</span>
-
-    <span class="n">d</span><span class="o">.</span><span class="n">addBoth</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">())</span>
-
-    <span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</pre></div>
 <p>参考: <a class="reference external" href="https://docs.scrapy.org/en/latest/intro/tutorial.html">Scrapy Tutorial</a></p>
-</div>
 </div>
 
 								</article>
@@ -800,33 +710,6 @@ $<span class="w"> </span>scrapy<span class="w"> </span>crawl<span class="w"> </s
     存储内容 （pipelines.py）
    </a>
   </li>
-  <li class="toc-h0">
-   <a class="" href="#section-6">
-    爬虫运行的方式
-   </a>
-   <ul class="toc-tree visible">
-    <li class="toc-h1">
-     <a class="" href="#section-7">
-      命令行
-     </a>
-    </li>
-    <li class="toc-h1">
-     <a class="" href="#cmdline">
-      cmdline
-     </a>
-    </li>
-    <li class="toc-h1">
-     <a class="" href="#crawlerprocess">
-      CrawlerProcess(建议)
-     </a>
-    </li>
-    <li class="toc-h1">
-     <a class="" href="#crawlerrunner">
-      CrawlerRunner(官方建议)
-     </a>
-    </li>
-   </ul>
-  </li>
  </ul>
 </div>
 
@@ -852,27 +735,27 @@ $<span class="w"> </span>scrapy<span class="w"> </span>crawl<span class="w"> </s
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jan <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-question-not-find-distutils.html">编译桌面环境报错找不到'distutils'</a></h3>
-											<p><p class="first last">编译桌面环境报错找不到'distutils'</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
+											<p><p class="first last">问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>16</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-windows-pause-update.html">Windows暂停更新</a></h3>
-											<p><p class="first last">Windows暂停更新</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
+											<p><p class="first last">启动卡在scrapy.addons</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-axios.html">axios</a></h3>
-											<p><p class="first last">axios</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
+											<p><p class="first last">预定义pipelines</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-buffer-with-str.html">Buffer与字符串的转换</a></h3>
-											<p><p class="first last">Buffer与字符串的转换</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
+											<p><p class="first last">教程</p>
 </p>
 										</li>
 									</ul>

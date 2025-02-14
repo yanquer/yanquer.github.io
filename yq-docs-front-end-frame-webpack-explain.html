@@ -292,6 +292,63 @@
 <span class="p">};</span>
 </pre></div>
 </div></dd>
+<dt>optimization</dt>
+<dd><p class="first"><cite>optimization</cite> 属性允许你根据需要来定制 <cite>webpack</cite> 的内部行为。 <cite>optimization</cite> 属性是一个对象，其中包含了各种定制选项。</p>
+<p>比如压缩CSS, 提取CSS文件名等。</p>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">optimization</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">minimize</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+<p>以上配置中，我们通过 <cite>optimization.minimize</cite> 属性，来告诉 <cite>webpack</cite> 编译器是否要启用代码压缩。</p>
+<p>使用三方压缩工具</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="nx">optimization</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">minimizer</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="sb">`...`</span><span class="p">,</span><span class="w"> </span><span class="c1">// 保留默认的 JS 最小化器</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">CssMinimizerPlugin</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="c1">// 开发环境下也启用 CSS 优化</span>
+<span class="w">    </span><span class="nx">minimize</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+
+<span class="w">    </span><span class="c1">// 分离出单独的 css 文件名</span>
+<span class="w">    </span><span class="c1">// splitChunks: {</span>
+<span class="w">    </span><span class="c1">//     cacheGroups: {</span>
+<span class="w">    </span><span class="c1">//         styles: {</span>
+<span class="w">    </span><span class="c1">//             // 动态设置 chunk 名称为 CSS 文件名</span>
+<span class="w">    </span><span class="c1">//             name: (module) =&gt; {</span>
+<span class="w">    </span><span class="c1">//                 // 获取模块的绝对路径，提取文件名部分</span>
+<span class="w">    </span><span class="c1">//                 const filename_ = module.identifier()</span>
+<span class="w">    </span><span class="c1">//                     .split(&#39;/&#39;)</span>
+<span class="w">    </span><span class="c1">//                     .pop()                   // 获取文件名（如 &#39;index.css&#39;）</span>
+<span class="w">    </span><span class="c1">//                     .replace(/\.[^/.]+$/, &#39;&#39;); // 移除扩展名 → &#39;index&#39;</span>
+<span class="w">    </span><span class="c1">//                 // console.log(&quot;module.identifier(): &quot;, module.identifier())</span>
+<span class="w">    </span><span class="c1">//                 // console.log(&quot;filename_: &quot;, filename_)</span>
+<span class="w">    </span><span class="c1">//                 return filename_;</span>
+<span class="w">    </span><span class="c1">//             },</span>
+<span class="w">    </span><span class="c1">//             test: /\.css$/, // 匹配所有 CSS 文件</span>
+<span class="w">    </span><span class="c1">//             chunks: &#39;all&#39;,  // 包括所有类型的 chunks</span>
+<span class="w">    </span><span class="c1">//             enforce: true,  // 强制拆分，即使文件很小</span>
+<span class="w">    </span><span class="c1">//         },</span>
+<span class="w">    </span><span class="c1">//     },</span>
+<span class="w">    </span><span class="c1">// },</span>
+<span class="p">},</span>
+</pre></div>
+</div></dd>
+<dt>externals</dt>
+<dd><p class="first">不导入某些模块, 支持数组与对象</p>
+<p>比如:</p>
+<pre class="last literal-block">
+// externals: [
+//     // Main.ts 不处理 import
+//     &quot;./Plugin&quot;, 'tinymce'
+// ],
+externals: {
+  './Plugin': 'commonjs ./Plugin',
+  'tinymce': 'tinymce',
+},
+</pre>
+</dd>
 </dl>
 </div>
 <div class="section" id="index-html">
@@ -361,27 +418,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jan <strong>18</strong></span>
-											<h3><a href="yq-docs-front-end-question-not-find-distutils.html">编译桌面环境报错找不到'distutils'</a></h3>
-											<p><p class="first last">编译桌面环境报错找不到'distutils'</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
+											<p><p class="first last">问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>16</strong></span>
-											<h3><a href="yq-docs-operating-system-Windows-tutorial-windows-pause-update.html">Windows暂停更新</a></h3>
-											<p><p class="first last">Windows暂停更新</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
+											<p><p class="first last">启动卡在scrapy.addons</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-axios.html">axios</a></h3>
-											<p><p class="first last">axios</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
+											<p><p class="first last">预定义pipelines</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>13</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-buffer-with-str.html">Buffer与字符串的转换</a></h3>
-											<p><p class="first last">Buffer与字符串的转换</p>
+											<span class="date">Feb <strong>12</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
+											<p><p class="first last">教程</p>
 </p>
 										</li>
 									</ul>
