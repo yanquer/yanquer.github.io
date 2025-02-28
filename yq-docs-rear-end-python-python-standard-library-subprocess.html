@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -286,7 +286,7 @@ subprocess.CalledProcessError: Command 'exit 1' returned non-zero exit status 1.
 </dd>
 <dt>shell: bool = False</dt>
 <dd><p class="first">布尔型变量, 明确要求使用shell运行程序, 与参数 executable 一同指定子进程运行在什么 Shell 中</p>
-<p>如果executable=None 而 shell=True, 则使用 /bin/sh 来执行 args 指定的程序
+<p>如果 executable=None 而 shell=True, 则使用 /bin/sh 来执行 args 指定的程序
 也就是说, Python首先起一个shell, 再用这个shell来解释指定运行的命令.
 注意这个时候有个特殊情况,
 如果参数args是字符串, 那么一般不会有啥问题,
@@ -300,7 +300,10 @@ subprocess.Popen(['tar', '-zxf', 'xxx.tar.gz'], shell=True)
 /bin/sh -c tar -zxf xxx.tar.gz
 </pre>
 <p>会报错tar没有给选项(因为被当错了sh的参数), 所以这时候还是老老实实的shell=False吧.</p>
-<p class="last">注意 windows 下, 普通权限执行文件不需要设置此选项, 但是, 当执行文件需要申请权限时, 必须设置为 true, 才可以触发权限申请的框.</p>
+<ul class="last simple">
+<li>注意 windows 下, 普通权限执行文件不需要设置此选项, 但是, 当执行文件需要申请权限时, 必须设置为 true, 才可以触发权限申请的框.</li>
+<li>注意 windows 下, 有时候指令无法找到, 比如你可能想执行 <cite>Popen([&quot;yarn&quot;, &quot;run&quot;, &quot;build&quot;])</cite>, 如果报错 <cite>找不到yarn</cite>, 这时候就需要设置 <cite>shell=True`</cite></li>
+</ul>
 </dd>
 <dt>cwd=None</dt>
 <dd><p class="first">用于设置子进程的当前目录</p>
@@ -934,27 +937,27 @@ print (out)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -982,9 +985,9 @@ print (out)
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -1050,6 +1053,7 @@ print (out)
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

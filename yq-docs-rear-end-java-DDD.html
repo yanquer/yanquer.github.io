@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -145,9 +145,13 @@
 									</div>
 									<dl class="docutils">
 <dt>对DDD的理解</dt>
-<dd><p class="first">最开始的MVC只是抽象出一个Model实体, 做ORM;</p>
-<p class="last">业务复杂度堆积在Service层,
+<dd><p class="first">最开始的MVC只是抽象出一个Model实体, 做ORM;
+业务逻辑在Controller中实现（一般会由Service来辅助实现），View层主要负责视图展示。
+即业务复杂度堆积在Service层,
 将Service的业务实现抽象为一个通用的 &quot;领域对象&quot;(可以理解为一个特殊的Model), 就叫DDD</p>
+<p class="last">简单来说, 原来的MVC的模型只有 <cite>getter/setter</cite> 方法, 视作贫血模型(或者说失血模型),
+而DDD的模型增加了 <cite>业务方法</cite>, 视作充血模型.
+不过DDD还把数据模型与领域模型分开, 业务逻辑在领域模型中实现, 数据模型只负责数据的存储和读取.</p>
 </dd>
 </dl>
 
@@ -183,27 +187,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -231,9 +235,9 @@
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -299,6 +303,7 @@
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

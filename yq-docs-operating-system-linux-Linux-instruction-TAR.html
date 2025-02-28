@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li  class="active"><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -207,7 +207,8 @@
 <tr><td class="option-group" colspan="2">
 <kbd><span class="option">--exclude=<var>&lt;exclude_list&gt;</var></span></kbd></td>
 </tr>
-<tr><td>&nbsp;</td><td>排除不打包文件, 支持通配符</td></tr>
+<tr><td>&nbsp;</td><td>排除不打包文件, 支持通配符
+如果有多个, 分成多个--exclude参数, 或者 使用 {} 包裹, 逗号分隔</td></tr>
 <tr><td class="option-group" colspan="2">
 <kbd><span class="option">-p</span>, <span class="option">--same-permissions</span></kbd></td>
 </tr>
@@ -381,6 +382,16 @@ tar --delete -vf xxx.tar need_delete_file
 <li>文件权限指, 755这种</li>
 </ul>
 </div>
+<div class="section" id="tar-3">
+<h2>tar打包时排除多个目录/文件</h2>
+<p>如现在有个前端项目, 当前所在目录为此项目根目录, 需要打包源码及相关资源文件</p>
+<div class="highlight"><pre><span></span>tar<span class="w"> </span>-czvf<span class="w">  </span>md.tar.gz<span class="w"> </span>--exclude<span class="o">={</span>dist,node_modules,yarn.lock,yarn-error.log<span class="o">}</span><span class="w"> </span>./*
+</pre></div>
+<p>注意顺序一定是(Mac顺序必须这样):</p>
+<pre class="literal-block">
+tar 选项 tar包名 排除项 打包项
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -428,6 +439,11 @@ tar --delete -vf xxx.tar need_delete_file
     tar相关权限变化
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#tar-3">
+    tar打包时排除多个目录/文件
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -453,27 +469,27 @@ tar --delete -vf xxx.tar need_delete_file
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -501,9 +517,9 @@ tar --delete -vf xxx.tar need_delete_file
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -569,6 +585,7 @@ tar --delete -vf xxx.tar need_delete_file
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

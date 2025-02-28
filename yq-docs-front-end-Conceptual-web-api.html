@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -179,6 +179,111 @@
 支持的配置项包括设置容器的 <cite>MIME</cite> 类型 (例如 &quot;video/webm&quot; 或者 &quot;video/mp4&quot; ) 和音频及视频的码率或者二者同用一个码率</dd>
 </dl>
 </div>
+<div class="section" id="canvasrenderingcontext2d">
+<h2>CanvasRenderingContext2D</h2>
+<p>参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/</a></p>
+<dl class="docutils">
+<dt>CanvasRenderingContext2D.arc()</dt>
+<dd><p class="first">arc() 方法创建一个以坐标 (x, y) 为中心，以 radius 为半径的圆弧。
+路径从 startAngle 开始，到 endAngle 结束，路径方向由 counterclockwise 参数决定（默认为顺时针方向）。</p>
+<p>语法</p>
+<div class="highlight"><pre><span></span><span class="nx">arc</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="nx">startAngle</span><span class="p">,</span><span class="w"> </span><span class="nx">endAngle</span><span class="p">)</span>
+<span class="nx">arc</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="nx">startAngle</span><span class="p">,</span><span class="w"> </span><span class="nx">endAngle</span><span class="p">,</span><span class="w"> </span><span class="nx">counterclockwise</span><span class="p">)</span>
+</pre></div>
+<p>示例: 圆弧的 x 坐标为 100，y 坐标为 75，半径为 50。
+为了绘制完整的圆，圆弧从 0 弧度角（0°）开始，到 2π 弧度角（360°）结束。</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;canvas&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">75</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">);</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+</pre></div>
+<p class="last">如果 <cite>startAngle</cite> 和 <cite>endAngle</cite> 相同，这意味着圆弧的起点和终点重合，因此不会形成任何可见的弧线。</p>
+</dd>
+<dt>CanvasRenderingContext2D.beginPath()</dt>
+<dd><p class="first">用于通过清空子路径列表开始一个新路径。当你想创建一个新的路径时，调用此方法。</p>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/beginPath">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/beginPath</a></p>
+</dd>
+<dt>CanvasRenderingContext2D.closePath()</dt>
+<dd><p class="first">从当前点添加一条直线到当前子路径的起点。如果形状已经闭合或只有一个点，此函数将不执行任何操作。</p>
+<p>比如绘制三角形</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;canvas&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">140</span><span class="p">);</span><span class="w"> </span><span class="c1">// 将笔移到左下角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// 连线到顶角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mf">220</span><span class="p">,</span><span class="w"> </span><span class="mf">140</span><span class="p">);</span><span class="w"> </span><span class="c1">// 连线到右下角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span><span class="w"> </span><span class="c1">// 连线到左下角, 闭合路径</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+</pre></div>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/closePath">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/closePath</a></p>
+</dd>
+<dt>CanvasRenderingContext2D.fill()</dt>
+<dd><p class="first">使用非零环绕规则，根据当前的填充样式，填充当前或已经存在的路径。</p>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fill">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fill</a></p>
+</dd>
+<dt>CanvasRenderingContext2D.fillRect()</dt>
+<dd><p class="first">使用当前的填充样式填充一个矩形。</p>
+<p>语法</p>
+<div class="highlight"><pre><span></span><span class="ow">void</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="p">);</span>
+</pre></div>
+<p>参数</p>
+<ul class="simple">
+<li>x: 矩形左上角的 x 坐标</li>
+<li>y: 矩形左上角的 y 坐标</li>
+<li>width: 矩形的宽度</li>
+<li>height: 矩形的高度</li>
+</ul>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillRect">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillRect</a></p>
+</dd>
+<dt>CanvasRenderingContext2D.stroke()</dt>
+<dd><p class="first">根据当前的画线样式，绘制当前或已经存在的路径的方法。</p>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/stroke">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/stroke</a></p>
+</dd>
+<dt>CanvasRenderingContext2D.strokeRect()</dt>
+<dd><p class="first">绘制一个矩形的方法，矩形的起点为 (x, y) ，宽度为 width ，高度为 height 。</p>
+<p>语法</p>
+<div class="highlight"><pre><span></span><span class="ow">void</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeRect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="p">);</span>
+</pre></div>
+<p>参数</p>
+<ul class="simple">
+<li>x: 矩形左上角的 x 坐标</li>
+<li>y: 矩形左上角的 y 坐标</li>
+<li>width: 矩形的宽度</li>
+<li>height: 矩形的高度</li>
+</ul>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeRect">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeRect</a></p>
+</dd>
+<dt>CanvasRenderingContext2D.lineTo()</dt>
+<dd><p class="first">添加一个新点，然后创建从该点到画布中最后指定点的线条。</p>
+<p>语法</p>
+<div class="highlight"><pre><span></span><span class="ow">void</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span>
+</pre></div>
+<p>参数</p>
+<ul class="simple">
+<li>x: 目标点的 x 坐标</li>
+<li>y: 目标点的 y 坐标</li>
+</ul>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineTo">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineTo</a></p>
+</dd>
+<dt>CanvasRenderingContext2D.clearRect()</dt>
+<dd><p class="first">在给定的矩形内清除指定的像素。</p>
+<p>语法</p>
+<div class="highlight"><pre><span></span><span class="ow">void</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="p">);</span>
+</pre></div>
+<p>参数</p>
+<ul class="simple">
+<li>x: 矩形左上角的 x 坐标</li>
+<li>y: 矩形左上角的 y 坐标</li>
+<li>width: 矩形的宽度</li>
+<li>height: 矩形的高度</li>
+</ul>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect</a></p>
+</dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -213,6 +318,11 @@
     MediaRecorder
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#canvasrenderingcontext2d">
+    CanvasRenderingContext2D
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -238,27 +348,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -286,9 +396,9 @@
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -354,6 +464,7 @@
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

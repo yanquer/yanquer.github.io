@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -167,8 +167,94 @@ with TW() as t:
   print(t)
   raise ValueError('error test')
 </pre>
+<div class="section" id="yarn">
+<h2>示例-yarn执行时设置代理</h2>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">common.logger_</span> <span class="kn">import</span> <span class="n">Logger_</span>
+
+<span class="n">_LOGGER</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">Logger_</span><span class="o">.</span><span class="n">add_console_handler</span><span class="p">(</span><span class="n">_LOGGER</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">_LOGGER</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+
+<span class="k">def</span> <span class="nf">is_windows</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Windows&#39;</span>
+
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">with_node_proxy</span><span class="p">(</span><span class="n">pk_manager</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="n">proxy</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;https://registry.npmmirror.com&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pk_manager</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;yarn&quot;</span><span class="p">]:</span>
+        <span class="n">pk_manager</span> <span class="o">=</span> <span class="s2">&quot;npm&quot;</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">pk_manager</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;registry&quot;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">is_windows</span><span class="p">())</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+    <span class="n">_origin_registry</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">stdout</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">_LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;with_node_proxy - _origin_registry: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">_origin_registry</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">proxy</span><span class="p">:</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">pk_manager</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;registry&quot;</span><span class="p">,</span> <span class="n">proxy</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="n">is_windows</span><span class="p">())</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">_origin_registry</span><span class="p">:</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">pk_manager</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;registry&quot;</span><span class="p">,</span> <span class="n">_origin_registry</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="n">is_windows</span><span class="p">())</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">PkProxyRegistry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># _pk_manager: &quot;npm&quot; | &quot;yarn&quot; = &quot;&quot;</span>
+    <span class="n">_pk_manager</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;npm&quot;</span>
+    <span class="n">_proxy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;https://registry.npmmirror.com&quot;</span>
+    <span class="n">_origin</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pk_manager</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">proxy</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">proxy</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_proxy</span> <span class="o">=</span> <span class="n">proxy</span>
+        <span class="k">if</span> <span class="n">pk_manager</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;yarn&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pk_manager</span> <span class="o">=</span> <span class="s2">&quot;npm&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_pk_manager</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;registry&quot;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">is_windows</span><span class="p">())</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">_origin_registry</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">stdout</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">_LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;PkProxyRegistry - _origin_registry: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">_origin_registry</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_origin</span> <span class="o">=</span> <span class="n">_origin_registry</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_pk_manager</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;registry&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proxy</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="n">is_windows</span><span class="p">())</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_origin</span><span class="p">:</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_pk_manager</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;registry&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_origin</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="n">is_windows</span><span class="p">())</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_t_with</span><span class="p">():</span>
+    <span class="c1"># 方案一</span>
+    <span class="k">with</span> <span class="n">with_node_proxy</span><span class="p">(</span><span class="s2">&quot;yarn&quot;</span><span class="p">,</span> <span class="s2">&quot;http:127.0.0.1:8080&quot;</span><span class="p">):</span>
+        <span class="n">_LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;==== enter with_node_proxy ====&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;yarn&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+    <span class="c1"># 方案二</span>
+    <span class="k">with</span> <span class="n">PkProxyRegistry</span><span class="p">(</span><span class="s2">&quot;yarn&quot;</span><span class="p">,</span> <span class="s2">&quot;http:127.0.0.1:8080&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">registry_obj</span><span class="p">:</span>
+        <span class="n">_LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;==== enter PkProxyRegistry ====&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;yarn&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">_t_with</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
 <div class="section" id="async-with">
-<h2>async with语句</h2>
+<h3>async with语句</h3>
 <p>异步上下文管理器.</p>
 <p>用于异步编程.</p>
 <p>与 with 不同的是,
@@ -186,6 +272,7 @@ class AsyncContextManager:
 async with AsyncContextManager():
   ...
 </pre>
+</div>
 </div>
 
 								</article>
@@ -212,9 +299,16 @@ async with AsyncContextManager():
 			<div id="toc-tree-container">
  <ul class="toc-tree visible">
   <li class="toc-h0">
-   <a class="" href="#async-with">
-    async with语句
+   <a class="" href="#yarn">
+    示例-yarn执行时设置代理
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#async-with">
+      async with语句
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -241,27 +335,27 @@ async with AsyncContextManager():
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -289,9 +383,9 @@ async with AsyncContextManager():
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -357,6 +451,7 @@ async with AsyncContextManager():
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

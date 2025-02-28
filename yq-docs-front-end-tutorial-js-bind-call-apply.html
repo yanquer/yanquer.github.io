@@ -1,0 +1,495 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>JS、TS中bind、call和apply</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 16 February 2025
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/qian-duan.html">前端</a></li>
+													<li><a class="button button-alt" href="tag/qian-duan.html">前端</a></li>
+
+													<li><a class="button button-alt" href="tag/jiao-cheng.html">教程</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2025-02-16</div>
+										<h2>JS、TS中bind、call和apply</h2>
+
+										<span class="head-modify-time">修改于: 2025-02-16</span>
+
+									</div>
+									<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.jianshu.com/p/1f7049a7b000">JS中bind、call和apply的作用以及在TS装饰器中的用法</a></li>
+</ul>
+</dd>
+</dl>
+<p>bind、call和apply 常用于函数试编程</p>
+<div class="section" id="bind">
+<h2>bind</h2>
+<p>bind() 方法创建一个新的函数，当这个新函数被调用时，它的 this 值是传递给 bind() 的第一个参数，其余参数将作为新函数的参数供调用时使用。</p>
+<p>语法:</p>
+<pre class="literal-block">
+fun.bind(thisArg[, arg1[, arg2[, ...]]])
+</pre>
+<dl class="docutils">
+<dt>参数</dt>
+<dd><ul class="first last simple">
+<li>thisArg: 当绑定函数被调用时，该参数将作为原函数运行时的 this 指向。</li>
+<li>arg1, arg2, ...: 当绑定函数被调用时，这些参数将作为原函数的参数传递。</li>
+</ul>
+</dd>
+<dt>thisArg说明</dt>
+<dd><ul class="first last simple">
+<li>如果 bind 函数的第一个参数是 null 或 undefined，那么 this 指向全局对象。</li>
+<li>在浏览器中，this 指向 window 对象。</li>
+<li>在 Node.js 中，this 指向 global 对象。</li>
+<li>同样适用于下面的 call 和 apply 方法</li>
+</ul>
+</dd>
+</dl>
+<p>一个正常类调用的实例:</p>
+<pre class="literal-block">
+const Animal = {
+  name: '猫',
+  desc() {
+    return `这是一只【${this.name}】`
+  }
+}
+
+const Dog = {
+  name: '狗'
+}
+
+console.log(Animal.desc()) // 这是一只【猫】
+</pre>
+<p>使用bind修改一个新的函数:</p>
+<pre class="literal-block">
+const dogDesc = Animal.desc.bind(Dog)
+console.log(dogDesc()) // 这是一只【狗】
+</pre>
+</div>
+<div class="section" id="call">
+<h2>call</h2>
+<p>call() 方法调用一个函数，其具有一个指定的 this 值和分别地提供的参数（参数的列表）。</p>
+<p>语法:</p>
+<pre class="literal-block">
+fun.call(thisArg[, arg1[, arg2[, ...]]])
+</pre>
+<p>参数说明与bind一致</p>
+<dl class="docutils">
+<dt>与bind的区别</dt>
+<dd><ul class="first last simple">
+<li>call() 方法不会创建一个新的函数，而是立即执行。</li>
+</ul>
+</dd>
+</dl>
+<p>还是上面的Animal例子:</p>
+<pre class="literal-block">
+console.log(Animal.desc.call(Dog)) // 这是一只【狗】
+</pre>
+</div>
+<div class="section" id="apply">
+<h2>apply</h2>
+<p>apply() 方法调用一个函数，其具有一个指定的 this 值，以及作为一个数组（或类数组对象）提供的参数。</p>
+<p>语法:</p>
+<pre class="literal-block">
+fun.apply(thisArg, [argsArray])
+</pre>
+<dl class="docutils">
+<dt>参数说明</dt>
+<dd><ul class="first last simple">
+<li>thisArg: 当调用 fun 函数时，this 的值将被设置为 thisArg。</li>
+<li>argsArray: 一个数组或类数组对象，其中的数组元素将作为单独的参数传给 fun 函数。</li>
+</ul>
+</dd>
+<dt>与bind的区别</dt>
+<dd><ul class="first last simple">
+<li>apply() 方法不会创建一个新的函数，而是立即执行。</li>
+</ul>
+</dd>
+<dt>与call的区别</dt>
+<dd><ul class="first last simple">
+<li>call() 方法的参数是一个列表，而 apply() 方法的参数是一个数组。</li>
+</ul>
+</dd>
+</dl>
+<p>还是上面的Animal例子:</p>
+<pre class="literal-block">
+console.log(Animal.desc.apply(Dog)) // 这是一只【狗】
+</pre>
+</div>
+<div class="section" id="ts">
+<h2>拓展-TS装饰器中的应用</h2>
+<p>例子:</p>
+<pre class="literal-block">
+// target: 被装饰的类实例
+// key: 被装饰的方法名
+// descriptor: 被装饰的方法的描述对象, 包含value、writable、enumerable、configurable等属性
+//  - value: 被装饰的方法指针引用
+//  - writable: 是否可写
+//  - enumerable: 是否可枚举
+//  - configurable: 是否可配置
+function log(target: any, key: string, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value
+  descriptor.value = function (...args: any[]) {
+    console.log(`Arguments: ${args}`)
+    return originalMethod.apply(this, args)
+  }
+  return descriptor
+}
+
+class Dog {
+  &#64;log
+  bark() {
+    console.log('汪汪')
+  }
+}
+
+const dog = new Dog()
+dog.bark()
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>再拓展一下箭头函数, 箭头函数没有自己的this, 会继承外层的this, 所以在箭头函数中使用bind、call、apply是无效的</p>
+<p class="last">一个说明 <a class="reference external" href="/yq-docs-front-end-question-Arrow-function-this-point-to-the-problem.html">箭头函数this指向问题</a></p>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#bind">
+    bind
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#call">
+    call
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#apply">
+    apply
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#ts">
+    拓展-TS装饰器中的应用
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

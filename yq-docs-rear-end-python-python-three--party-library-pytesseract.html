@@ -1,0 +1,511 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>pytesseract</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 18 February 2025
+      , Category:
+	  <a href="category/hou-duan-python.html">后端; python</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan-python.html">后端; python</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2025-02-18</div>
+										<h2>pytesseract</h2>
+
+										<span class="head-modify-time">修改于: 2025-02-18</span>
+
+									</div>
+									<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>pytesseract</li>
+<li>OCR</li>
+<li>文字识别</li>
+</ul>
+</dd>
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>pypi地址: <a class="reference external" href="https://pypi.org/project/pytesseract/">pytesseract</a></li>
+<li><a class="reference external" href="https://tesseract-ocr.github.io/tessdoc/Installation.html">tesseract-ocr安装</a> , 此独立安装的tesseract-ocr, 可以直接cli使用 (不需要pytesseract)</li>
+</ul>
+</dd>
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/u010698107/article/details/121736386">Python OCR工具pytesseract详解</a></li>
+</ul>
+</dd>
+</dl>
+<p>pytesseract是一个基于Tesseract-OCR的OCR工具, 可以用于文字识别, 支持多种语言, 包括中文, 英文, 日文等.</p>
+<p>安装:</p>
+<pre class="literal-block">
+pip install pytesseract
+</pre>
+<p>默认情况下不支持中文识别, 如果需要识别中文, 需要安装中文语言包, 并指定语言:</p>
+<pre class="literal-block">
+pip install pytesseract
+sudo apt-get install tesseract-ocr
+sudo apt-get install tesseract-ocr-chi-sim
+</pre>
+<p>一个简单的使用例子:</p>
+<pre class="literal-block">
+import pytesseract
+from PIL import Image
+
+img = Image.open('example.jpg')
+text = pytesseract.image_to_string(img, lang='chi_sim')
+
+print(text)
+</pre>
+<div class="section" id="section-1">
+<h2>预处理</h2>
+<p>在进行 OCR 识别之前，有时需要对图像进行预处理，以提高识别率。以下是一个简单的图像预处理示例:</p>
+<pre class="literal-block">
+import cv2
+import numpy as np
+
+# 使用 OpenCV 读取图像
+image_cv = cv2.imread('sample.png')
+
+# 转为灰度图
+gray_image = cv2.cvtColor(image_cv, cv2.COLOR_BGR2GRAY)
+
+# 应用二值化处理
+_, binary_image = cv2.threshold(gray_image, 150, 255, cv2.THRESH_BINARY)
+
+# 使用 pytesseract 识别处理后的图像
+text_processed = pytesseract.image_to_string(binary_image, lang='eng')
+print('处理后的识别文本：', text_processed)
+</pre>
+<p>例二:</p>
+<pre class="literal-block">
+import pytesseract
+from PIL import Image
+
+save_path = 'test.png'
+image = cv2.imread(save_path)
+
+# 将图片转换为灰度图
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# 应用阈值化以突出显示白色文字
+_, thresh = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY_INV)
+
+# 保存处理后的图像（可选）
+processed_image_path = save_path
+cv2.imwrite(processed_image_path, thresh)
+
+# 使用Pillow加载处理后的图像
+processed_image = Image.open(processed_image_path)
+
+# 使用pytesseract将图片转换为文字
+text = pytesseract.image_to_string(processed_image)
+</pre>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.jianshu.com/p/dd65a253b74b">https://www.jianshu.com/p/dd65a253b74b</a></li>
+<li><a class="reference external" href="https://segmentfault.com/a/1190000046111702">https://segmentfault.com/a/1190000046111702</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-2">
+<h2>多语言</h2>
+<p>此py库默认支持语言:</p>
+<pre class="literal-block">
+['eng', 'osd', 'snum']
+</pre>
+<p>如果需要识别其他语言, 需要完整安装 <cite>tesseract</cite> , 设置testdata</p>
+<p>比如在windows下</p>
+<div class="highlight"><pre><span></span><span class="c1"># Example config: r&#39;--tessdata-dir &quot;C:\Program Files (x86)\Tesseract-OCR\tessdata&quot;&#39;</span>
+<span class="c1"># It&#39;s important to add double quotes around the dir path.</span>
+<span class="n">tessdata_dir_config</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;--tessdata-dir &quot;&lt;replace_with_your_tessdata_dir_path&gt;&quot;&#39;</span>
+<span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;chi_sim&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">tessdata_dir_config</span><span class="p">)</span>
+</pre></div>
+<p>在Mac下安装语言包:</p>
+<pre class="literal-block">
+brew install tesseract-lang
+</pre>
+<p>tesseract 目录可以通过命令获取:</p>
+<pre class="literal-block">
+brew info tesseract
+# /usr/local/Cellar/tesseract-lang/4.1.0/
+# /usr/local/Cellar/tesseract-lang/4.1.0/share/tessdata/
+</pre>
+<p>使用:</p>
+<pre class="literal-block">
+pytesseract.image_to_string(image, lang='chi_sim', config='--tessdata-dir &quot;/usr/local/Cellar/tesseract-lang/4.1.0/share/tessdata/&quot;')
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">还可以在 <a class="reference external" href="https://github.com/tesseract-ocr/tessdata">https://github.com/tesseract-ocr/tessdata</a> 手动下载语言包文件夹(只下载需要的), 然后指定路径</p>
+</div>
+</div>
+<div class="section" id="cli">
+<h2>CLI工具</h2>
+<p>Mac下安装:</p>
+<pre class="literal-block">
+brew install tesseract tesseract-lang
+</pre>
+<p>其中, <cite>tesseract-lang</cite> 是综合语言包</p>
+<p>使用:</p>
+<pre class="literal-block">
+tesseract example.jpg output -l chi_sim
+
+# 输出到控制台
+tesseract example.jpg stdout -l chi_sim
+
+# 输出到txt
+tesseract example.jpg output -l chi_sim txt
+
+# 输出到hocr
+tesseract example.jpg output -l chi_sim hocr
+
+# 输出到pdf
+tesseract example.jpg output -l chi_sim pdf
+
+# 输出到tsv
+tesseract example.jpg output -l chi_sim tsv
+
+# 输出到box
+tesseract example.jpg output -l chi_sim box
+
+# 输出到alto
+tesseract example.jpg output -l chi_sim alto
+</pre>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    预处理
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    多语言
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#cli">
+    CLI工具
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

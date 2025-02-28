@@ -1,0 +1,776 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li  class="active"><a href="/category/ai-yolo.html">AI, yolo</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>YOLO11-API-result</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 24 February 2025
+      , Category:
+	  <a href="category/ai-yolo.html">AI, yolo</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/ai-yolo.html">Ai, yolo</a></li>
+													<li><a class="button button-alt" href="tag/kai-yuan-mo-xing.html">开源模型</a></li>
+
+													<li><a class="button button-alt" href="tag/yolo.html">Yolo</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2025-02-24</div>
+										<h2>YOLO11-API-result</h2>
+
+										<span class="head-modify-time">修改于: 2025-02-24</span>
+
+									</div>
+									<div class="section" id="result-boxes">
+<h2>result.Boxes</h2>
+<p>Boxes 对象可用于索引、操作和将边界框转换为不同格式。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+
+<span class="c1"># Load a pretrained YOLO11n model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolo11n.pt&quot;</span><span class="p">)</span>
+
+<span class="c1"># Run inference on an image</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="s2">&quot;https://ultralytics.com/images/bus.jpg&quot;</span><span class="p">)</span>  <span class="c1"># results list</span>
+
+<span class="c1"># View results</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">boxes</span><span class="p">)</span>  <span class="c1"># print the Boxes object containing the detection bounding boxes</span>
+</pre></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="24%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">名称</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>cpu()</td>
+<td>方法</td>
+<td>将对象移至CPU 内存。</td>
+</tr>
+<tr><td>numpy()</td>
+<td>方法</td>
+<td>将对象转换为 numpy 数组。</td>
+</tr>
+<tr><td>cuda()</td>
+<td>方法</td>
+<td>将对象移至CUDA 内存。</td>
+</tr>
+<tr><td>to()</td>
+<td>方法</td>
+<td>将对象移动到指定设备。</td>
+</tr>
+<tr><td>xyxy</td>
+<td>财产(torch.Tensor)</td>
+<td>以 xyxy 格式返回方框。</td>
+</tr>
+<tr><td>conf</td>
+<td>财产(torch.Tensor)</td>
+<td>返回方框的置信度值。</td>
+</tr>
+<tr><td>cls</td>
+<td>财产(torch.Tensor)</td>
+<td>返回方框的类值。</td>
+</tr>
+<tr><td>id</td>
+<td>财产(torch.Tensor)</td>
+<td>返回盒子的轨道 ID（如果有）。</td>
+</tr>
+<tr><td>xywh</td>
+<td>财产(torch.Tensor)</td>
+<td>以 xywh 格式返回方框。</td>
+</tr>
+<tr><td>xyxyn</td>
+<td>财产(torch.Tensor)</td>
+<td>以 xyxy 格式返回按原始图像大小归一化的方框。</td>
+</tr>
+<tr><td>xywhn</td>
+<td>财产(torch.Tensor)</td>
+<td>以 xywh 格式返回按原始图像大小归一化的方框。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="result-masks">
+<h2>result.Masks</h2>
+<p>Masks 对象可用于索引、操作和将掩码转换为线段</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="25%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">名称</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>cpu()</td>
+<td>方法</td>
+<td>返回CPU 内存中的掩码tensor 。</td>
+</tr>
+<tr><td>numpy()</td>
+<td>方法</td>
+<td>以 numpy 数组形式返回掩码tensor 。</td>
+</tr>
+<tr><td>cuda()</td>
+<td>方法</td>
+<td>返回GPU 内存中的掩码tensor 。</td>
+</tr>
+<tr><td>to()</td>
+<td>方法</td>
+<td>返回具有指定设备和 dtype 的掩码tensor 。</td>
+</tr>
+<tr><td>xyn</td>
+<td>财产 (torch.Tensor)</td>
+<td>以张量表示的标准化片段列表。</td>
+</tr>
+<tr><td>xy</td>
+<td>财产 (torch.Tensor)</td>
+<td>以张量表示的像素坐标线段列表。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="result-keypoints">
+<h2>result.Keypoints</h2>
+<p>Keypoints 对象可用于索引、处理和归一化坐标。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="25%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">名称</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>cpu()</td>
+<td>方法</td>
+<td>返回CPU 内存中的关键点tensor 。</td>
+</tr>
+<tr><td>numpy()</td>
+<td>方法</td>
+<td>以 numpy 数组形式返回关键点tensor 。</td>
+</tr>
+<tr><td>cuda()</td>
+<td>方法</td>
+<td>返回GPU 内存中的关键点tensor 。</td>
+</tr>
+<tr><td>to()</td>
+<td>方法</td>
+<td>返回指定设备和 dtype 的关键点tensor 。</td>
+</tr>
+<tr><td>xyn</td>
+<td>财产 (torch.Tensor)</td>
+<td>以张量表示的标准化关键点列表。</td>
+</tr>
+<tr><td>xy</td>
+<td>财产 (torch.Tensor)</td>
+<td>以张量表示的像素坐标关键点列表。</td>
+</tr>
+<tr><td>conf</td>
+<td>财产 (torch.Tensor)</td>
+<td>返回关键点的置信度值（如果有），否则为空。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="result-probs">
+<h2>result.Probs</h2>
+<p>Probs 对象可用于索引、获取 top1 和 top5 分类指数和分数。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="25%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">名称</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>cpu()</td>
+<td>方法</td>
+<td>返回CPU 内存中 probstensor 的副本。</td>
+</tr>
+<tr><td>numpy()</td>
+<td>方法</td>
+<td>以 numpy 数组形式返回 probstensor 的副本。</td>
+</tr>
+<tr><td>cuda()</td>
+<td>方法</td>
+<td>返回GPU 内存中 probstensor 的副本。</td>
+</tr>
+<tr><td>to()</td>
+<td>方法</td>
+<td>返回带有指定设备和 dtype 的 probstensor 的副本。</td>
+</tr>
+<tr><td>top1</td>
+<td>财产 (int)</td>
+<td>前 1 级的指数。</td>
+</tr>
+<tr><td>top5</td>
+<td>财产 (list[int])</td>
+<td>前 5 个等级的指数。</td>
+</tr>
+<tr><td>top1conf</td>
+<td>财产 (torch.Tensor)</td>
+<td>对前 1 级充满信心。</td>
+</tr>
+<tr><td>top5conf</td>
+<td>财产 (torch.Tensor)</td>
+<td>前五名班级的机密</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="result-obb">
+<h2>result.OBB</h2>
+<p>OBB 对象可用于索引、操作和将定向边界框转换为不同格式。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="24%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">名称</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>cpu()</td>
+<td>方法</td>
+<td>将对象移至CPU 内存。</td>
+</tr>
+<tr><td>numpy()</td>
+<td>方法</td>
+<td>将对象转换为 numpy 数组。</td>
+</tr>
+<tr><td>cuda()</td>
+<td>方法</td>
+<td>将对象移至CUDA 内存。</td>
+</tr>
+<tr><td>to()</td>
+<td>方法</td>
+<td>将对象移动到指定设备。</td>
+</tr>
+<tr><td>conf</td>
+<td>财产 (torch.Tensor)</td>
+<td>返回方框的置信度值。</td>
+</tr>
+<tr><td>cls</td>
+<td>财产 (torch.Tensor)</td>
+<td>返回方框的类值。</td>
+</tr>
+<tr><td>id</td>
+<td>财产 (torch.Tensor)</td>
+<td>返回盒子的轨道 ID（如果有）。</td>
+</tr>
+<tr><td>xyxy</td>
+<td>财产 (torch.Tensor)</td>
+<td>以 xyxy 格式返回水平方框。</td>
+</tr>
+<tr><td>xywhr</td>
+<td>财产 (torch.Tensor)</td>
+<td>以 xywhr 格式返回旋转后的方框。</td>
+</tr>
+<tr><td>xyxyxyxy</td>
+<td>财产 (torch.Tensor)</td>
+<td>以 xyxyxyxy 格式返回旋转后的方框。</td>
+</tr>
+<tr><td>xyxyxyxyn</td>
+<td>财产 (torch.Tensor)</td>
+<td>以 xyxyxyxy 格式返回按图像大小归一化的旋转方框。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="result-plot">
+<h2>result.plot()</h2>
+<p>绘制结果对象的图像。</p>
+<p>将检测到的对象（如边界框、遮罩、关键点和概率）叠加到原始图像上，从而实现预测的可视化。该方法以 NumPy 数组形式返回注释图像，便于显示或保存。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+
+<span class="c1"># Load a pretrained YOLO11n model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolo11n.pt&quot;</span><span class="p">)</span>
+
+<span class="c1"># Run inference on &#39;bus.jpg&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">([</span><span class="s2">&quot;https://ultralytics.com/images/bus.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;https://ultralytics.com/images/zidane.jpg&quot;</span><span class="p">])</span>  <span class="c1"># results list</span>
+
+<span class="c1"># Visualize the results</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+    <span class="c1"># Plot results image</span>
+    <span class="n">im_bgr</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  <span class="c1"># BGR-order numpy array</span>
+    <span class="n">im_rgb</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">im_bgr</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># RGB-order PIL image</span>
+
+    <span class="c1"># Show results to screen (in supported environments)</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Save results to disk</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;results</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+<p>plot() 方法参数</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="15%" />
+<col width="60%" />
+<col width="12%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">论据</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+<th class="head">默认值</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>conf</td>
+<td>bool</td>
+<td>包括检测置信度分数。</td>
+<td>True</td>
+</tr>
+<tr><td>line_width</td>
+<td>float</td>
+<td>边界框的线宽。根据图像大小缩放，如果 None.</td>
+<td>None</td>
+</tr>
+<tr><td>font_size</td>
+<td>float</td>
+<td>文字字体大小。与图像大小一致，如果 None.</td>
+<td>None</td>
+</tr>
+<tr><td>font</td>
+<td>str</td>
+<td>文本注释的字体名称。</td>
+<td>'Arial.ttf'</td>
+</tr>
+<tr><td>pil</td>
+<td>bool</td>
+<td>将图像作为 PIL 图像对象返回。</td>
+<td>False</td>
+</tr>
+<tr><td>img</td>
+<td>numpy.ndarray</td>
+<td>用于绘图的替代图像。如果出现以下情况，则使用原始图像 None.</td>
+<td>None</td>
+</tr>
+<tr><td>im_gpu</td>
+<td>torch.Tensor</td>
+<td>GPU-加速图像，用于更快地绘制掩膜图。形状：(1，3，640，640)</td>
+<td>None</td>
+</tr>
+<tr><td>kpt_radius</td>
+<td>int</td>
+<td>绘制关键点的半径。</td>
+<td>5</td>
+</tr>
+<tr><td>kpt_line</td>
+<td>bool</td>
+<td>用线条连接关键点。</td>
+<td>True</td>
+</tr>
+<tr><td>labels</td>
+<td>bool</td>
+<td>在注释中包含类标签。</td>
+<td>True</td>
+</tr>
+<tr><td>boxes</td>
+<td>bool</td>
+<td>在图像上叠加边界框。</td>
+<td>True</td>
+</tr>
+<tr><td>masks</td>
+<td>bool</td>
+<td>在图像上叠加蒙版</td>
+<td>True</td>
+</tr>
+<tr><td>probs</td>
+<td>bool</td>
+<td>包括分类概率。</td>
+<td>True</td>
+</tr>
+<tr><td>show</td>
+<td>bool</td>
+<td>使用默认图像查看器直接显示注释图像。</td>
+<td>False</td>
+</tr>
+<tr><td>save</td>
+<td>bool</td>
+<td>将注释图像保存到由 filename.</td>
+<td>False</td>
+</tr>
+<tr><td>filename</td>
+<td>str</td>
+<td>保存注释图像的文件路径和名称(如果有)。 save 是 True.</td>
+<td>None</td>
+</tr>
+<tr><td>color_mode</td>
+<td>str</td>
+<td>指定颜色模式，如 &quot;实例 &quot;或 &quot;类&quot;。</td>
+<td>'class'</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#result-boxes">
+    result.Boxes
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#result-masks">
+    result.Masks
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#result-keypoints">
+    result.Keypoints
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#result-probs">
+    result.Probs
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#result-obb">
+    result.OBB
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#result-plot">
+    result.plot()
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

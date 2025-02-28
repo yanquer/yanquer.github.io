@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -181,9 +181,10 @@ tensor1 = torch.tensor([5.5, 3])
 print(tensor1)
 </pre>
 <p>输出结果:</p>
-<pre class="last literal-block">
+<pre class="literal-block">
 tensor([5.5000, 3.0000])
 </pre>
+<p class="last">返回: <a class="reference internal" href="#tensor">Tensor</a></p>
 </dd>
 <dt>tensor.new_ones()</dt>
 <dd><p class="first">除了上述几种方法，还可以根据已有的 tensor 变量创建新的 tensor 变量，
@@ -311,6 +312,34 @@ print(mean_dim1)  # 输出: tensor([2., 5., 8.], dtype=torch.float64)
 </dd>
 </dl>
 </div>
+<div class="section" id="tensor">
+<h2>Tensor</h2>
+<p>Tensor是一个多维数组，常用于深度学习和科学计算</p>
+<p>如何将Tensor转换为Python的数组</p>
+<p>如果Tensor只有一个值</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># 创建一个只包含单个值的Tensor</span>
+<span class="n">single_value_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">216.8973</span><span class="p">])</span>
+
+<span class="c1"># 使用.item()获取值</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">single_value_tensor</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1"># 输出: 216.8973</span>
+</pre></div>
+<p>如果不止一个值</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># 创建一个包含多个值的Tensor</span>
+<span class="n">multi_value_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># 使用.tolist()转换为列表</span>
+<span class="n">value_list</span> <span class="o">=</span> <span class="n">multi_value_tensor</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># 通过索引获取特定的值</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">value_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="c1"># 输出: 3</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -350,6 +379,11 @@ print(mean_dim1)  # 输出: tensor([2., 5., 8.], dtype=torch.float64)
     torch.nn
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#tensor">
+    Tensor
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -375,27 +409,27 @@ print(mean_dim1)  # 输出: tensor([2., 5., 8.], dtype=torch.float64)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -423,9 +457,9 @@ print(mean_dim1)  # 输出: tensor([2., 5., 8.], dtype=torch.float64)
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -491,6 +525,7 @@ print(mean_dim1)  # 输出: tensor([2., 5., 8.], dtype=torch.float64)
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

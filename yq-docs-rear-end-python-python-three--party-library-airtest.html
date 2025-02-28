@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -228,7 +228,34 @@ com.netease.ldxy.mi/com.netease.ntunisdk.external.protocol.ProtocolLauncher
 <p>下次就用这个信息启动 <cite>乱斗西游2</cite></p>
 <div class="highlight"><pre><span></span>adb<span class="w"> </span>shell<span class="w"> </span>am<span class="w"> </span>start<span class="w"> </span>-n<span class="w"> </span>com.netease.ldxy.mi/com.netease.ntunisdk.external.protocol.ProtocolLauncher
 </pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>查询cmp的另外方式:</p>
+<pre class="last literal-block">
+# 启动需要查询的APP后(这里是bilibili)查询活动日志
+adb shell dumpsys activity recents | find &quot;intent={&quot;
+
+# 比如输出为
+#    intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=tv.danmaku.bili/.ui.splash.SplashActivity}
+#
+# cmp的值：tv.danmaku.bili/.ui.splash.SplashActivity，
+#   /前的 tv.danmaku.bili 就是 appPackge 的值，
+#   /后的 .ui.splash.SplashActivity 就是 appActivity 的值。
+</pre>
 </div>
+</div>
+</div>
+<div class="section" id="poco">
+<h2>poco</h2>
+<p>poco窗体右侧三个按钮</p>
+<dl class="docutils">
+<dt>Poco pause</dt>
+<dd>点击按钮后，会冻结住下方当年获取的树结构，使得在右侧device screen中选择元素时，树结构中元素不会一直变。</dd>
+<dt>Poco Inspector</dt>
+<dd>点击按钮后，在右侧device screen中选择元素对象时，会发现左侧树结构一直在变动，能够自动定位到选择元素的当前位置节点上。</dd>
+<dt>Poco auto recording</dt>
+<dd>自动录制，点击按钮后，在右侧device screen的设备中一顿操作后，脚本编辑窗中，会记录下所有操作过的元素步骤</dd>
+</dl>
 </div>
 
 								</article>
@@ -276,6 +303,11 @@ com.netease.ldxy.mi/com.netease.ntunisdk.external.protocol.ProtocolLauncher
     </li>
    </ul>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#poco">
+    poco
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -301,27 +333,27 @@ com.netease.ldxy.mi/com.netease.ntunisdk.external.protocol.ProtocolLauncher
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -349,9 +381,9 @@ com.netease.ldxy.mi/com.netease.ntunisdk.external.protocol.ProtocolLauncher
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -417,6 +449,7 @@ com.netease.ldxy.mi/com.netease.ntunisdk.external.protocol.ProtocolLauncher
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

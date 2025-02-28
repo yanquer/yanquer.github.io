@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -156,25 +156,6 @@
 <dl class="docutils">
 <dt>::before</dt>
 <dd>在元素前面添加内容</dd>
-</dl>
-<p>滚动条相关</p>
-<dl class="docutils">
-<dt>::-webkit-scrollbar</dt>
-<dd>滚动条背景</dd>
-<dt>::-webkit-scrollbar-button</dt>
-<dd>滚动条按钮</dd>
-<dt>::-webkit-scrollbar-thumb</dt>
-<dd>滚动条的滑块部分.
-滑块是用户用来滚动内容的可拖动部件。使用这个伪元素，你可以设置滑块的样式，如背景颜色、边框、圆角等。</dd>
-<dt>::-webkit-scrollbar-track</dt>
-<dd>自定义滚动条的轨道（track）样式。
-即滚动条的滑动区域。轨道是滚动条的背景部分，通常在滑块（thumb）上下移动时保持静止。
-你可以使用这个伪元素来设置轨道的背景颜色、边框、圆角等样式。</dd>
-<dt>::-webkit-scrollbar-corner</dt>
-<dd>自定义滚动条的角落（corner）的样式。
-这个角落是水平和垂直滚动条相交的地方。
-在大多数情况下，这个角落是隐藏的，除非你的滚动条同时支持水平和垂直滚动。
-你可以使用这个伪元素来设置角落的背景颜色、边框等样式。</dd>
 <dt>::marker</dt>
 <dd><p class="first">用于样式化列表项 <cite>&lt;li&gt;</cite> 中的标记 <cite>marker</cite> ，
 通常是 无序列表前面的项目符号、有序列表前面的数字。</p>
@@ -191,6 +172,128 @@
 <p class="last">旧版本是另一个名字 <tt class="docutils literal"><span class="pre">input::-webkit-input-placeholder</span></tt></p>
 </dd>
 </dl>
+<div class="section" id="section-1">
+<h2>滚动条相关</h2>
+<dl class="docutils">
+<dt>::-webkit-scrollbar</dt>
+<dd>滚动条背景</dd>
+<dt>::-webkit-scrollbar-button</dt>
+<dd>滚动条按钮（上下箭头）</dd>
+<dt>::-webkit-scrollbar-thumb</dt>
+<dd>滚动条的滑块部分.
+滑块是用户用来滚动内容的可拖动部件。使用这个伪元素，你可以设置滑块的样式，如背景颜色、边框、圆角等。</dd>
+<dt>::-webkit-scrollbar-track</dt>
+<dd>自定义滚动条的轨道（track）样式。
+即滚动条的滑动区域。轨道是滚动条的背景部分，通常在滑块（thumb）上下移动时保持静止。
+你可以使用这个伪元素来设置轨道的背景颜色、边框、圆角等样式。</dd>
+<dt>::-webkit-scrollbar-track-piece</dt>
+<dd>滚动条没有滑块的轨道部分。</dd>
+<dt>::-webkit-resizer</dt>
+<dd>出现在某些元素底角的可拖动调整大小的滑块。</dd>
+<dt>::-webkit-scrollbar-corner</dt>
+<dd><p class="first">当同时有垂直滚动条和水平滚动条时交汇的部分。通常是浏览器窗口的右下角。</p>
+<p class="last">自定义滚动条的角落（corner）的样式。
+这个角落是水平和垂直滚动条相交的地方。
+在大多数情况下，这个角落是隐藏的，除非你的滚动条同时支持水平和垂直滚动。
+你可以使用这个伪元素来设置角落的背景颜色、边框等样式。</p>
+</dd>
+</dl>
+<div class="section" id="section-2">
+<h3>滚动条-自定义箭头</h3>
+<p>即自定义滚动条两端的箭头样式。</p>
+<p>比如自定义垂直滚动条上下两端箭头:</p>
+<pre class="literal-block">
+/*!*    自定义上下颜色 *!*/
+/*::-webkit-scrollbar-button:start:decrement {*/
+/*    background-color: red;*/
+/*}*/
+
+/*::-webkit-scrollbar-button:end:increment {*/
+/*    background-color: blue;*/
+/*}*/
+
+// 设置垂直滚动条样式
+::-webkit-scrollbar:vertical {
+  width: 13px;
+}
+
+/* 两个滚动条交接处 -- x轴和y轴 */
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button:vertical {
+  display: block;
+  height: 7px;
+  width: 12px;
+}
+
+/* 正三角形效果 */
+::-webkit-scrollbar-button:vertical:start:decrement {
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(209, 237, 240, 0.3) transparent;
+}
+/* 倒三角形效果 */
+::-webkit-scrollbar-button:vertical:end:increment {
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(209, 237, 240, 0.3) transparent transparent transparent;
+}
+</pre>
+</div>
+<div class="section" id="section-3">
+<h3>滚动条-自定义背景与滑块色(简)</h3>
+<p>简单版</p>
+<div class="highlight"><pre><span></span><span class="c">/* 设置滚动条 */</span>
+<span class="p">::</span><span class="nd">-webkit-scrollbar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-thumb</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#525252</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-corner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">transparent</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h3>滚动条-自定义背景与滑块色</h3>
+<p>完全版</p>
+<div class="highlight"><pre><span></span><span class="c">/* 设置滚动条 */</span>
+<span class="p">::</span><span class="nd">-webkit-scrollbar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-thumb</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#525252</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-thumb</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#4c4c4c</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-thumb</span><span class="p">:</span><span class="nd">active</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#404040</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-track</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#272727</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="w"> </span><span class="kc">dashed</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="kt">px</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="p">::</span><span class="nd">-webkit-scrollbar-corner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">transparent</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -207,6 +310,44 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    滚动条相关
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      滚动条-自定义箭头
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      滚动条-自定义背景与滑块色(简)
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-4">
+      滚动条-自定义背景与滑块色
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -224,27 +365,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -272,9 +413,9 @@
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -340,6 +481,7 @@
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

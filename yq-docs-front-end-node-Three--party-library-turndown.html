@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -171,6 +171,36 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="section" id="section-2">
+<h2>配置项</h2>
+<p>语法:</p>
+<pre class="literal-block">
+var turndownService = new TurndownService({ option: 'value' })
+</pre>
+<p>支持的配置项</p>
+<dl class="docutils">
+<dt>headingStyle: setext | atx = setext</dt>
+<dd>设置解析标题的样式, 前置 <cite>#</cite> 或 后置 <cite>#</cite></dd>
+<dt>hr: 'Any Thematic break' = * * *</dt>
+<dd>设置分割线的样式</dd>
+<dt>bulletListMarker: -, +, or * = *</dt>
+<dd>设置无序列表的样式</dd>
+<dt>codeBlockStyle: indented | fenced = indented</dt>
+<dd>设置代码块的样式</dd>
+<dt>fence: <tt class="docutils literal">` or ~~~ = `</tt></dt>
+<dd>设置代码块的分隔符</dd>
+<dt>emDelimiter: _ or * = _</dt>
+<dd>设置强调的分隔符</dd>
+<dt>strongDelimiter: ** or __ = **</dt>
+<dd>设置加粗的分隔符</dd>
+<dt>linkStyle: inlined | referenced = inlined</dt>
+<dd>设置链接的样式</dd>
+<dt>linkReferenceStyle: full | collapsed | shortcut = full</dt>
+<dd>设置链接引用的样式</dd>
+<dt>preformattedCode: false | true = false</dt>
+<dd>设置是否解析代码块</dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -200,6 +230,11 @@
     使用
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    配置项
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -225,27 +260,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -273,9 +308,9 @@
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -341,6 +376,7 @@
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

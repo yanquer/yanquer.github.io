@@ -58,11 +58,11 @@
 
 												<!-- categories -->
 														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
 														<li ><a href="/category/an-quan.html">安全</a></li>
 														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
 														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
-														<li ><a href="/category/da-shu-ju.html">大数据</a></li>
 														<li><a href="/categories.html">More...</a></li>
 											</ul>
 										</nav>
@@ -427,6 +427,13 @@ logger.addHandler(logger_stream_handler)
 <li>设置日志输出级别</li>
 <li>设置流式输出(即控制台输出)的handler</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>默认情况下, _logger 的控制台输出使用的是全局的logger配置, 所以直接 <tt class="docutils literal">_logger.setLevel</tt> 是无效的,
+除非是直接设置全局的logger配置 <tt class="docutils literal">logging.basicConfig</tt>.</p>
+<p>或者使用局部设置: 先给这个logger设置handler, 设置handler的级别, 再将这个handler加入到 <cite>_logger</cite> 中.</p>
+<p class="last">另外, 如果是局部设置, 部分配置会继承全局配置, 比如日志格式, 如果不想继承, 可以在局部设置时重新设置.</p>
+</div>
 <p>例:</p>
 <pre class="literal-block">
 # 获取处理器
@@ -434,6 +441,9 @@ _logger = logging.getLogger(__name__)
 
 # 实例 stream handler
 _console_handler = logging.StreamHandler()
+# 如果同时使用了 _logger.setLevel 和 _console_handler.setLevel, 以高一点的为准,
+#   比如同时使用 _logger.setLevel(logging.DEBUG), _console_handler.setLevel(logging.INFO), 实际生效的是INFO
+# _console_handler.setLevel(logging.INFO)
 
 # 给处理器增加handler
 _logger.addHandler(_console_handler)
@@ -583,27 +593,27 @@ _logger.setLevel(logging.INFO)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-index.html">Scrapy-问题</a></h3>
-											<p><p class="first last">问题</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
+											<p><p class="first last">图片标注工具</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-issue-startup-stuck-at-scrapy.addons.html">启动卡在scrapy.addons</a></h3>
-											<p><p class="first last">启动卡在scrapy.addons</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
+											<p><p class="first last">markdown插入资源文件</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-defined-pipelines.html">Scrapy-预定义pipelines</a></h3>
-											<p><p class="first last">预定义pipelines</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
+											<p><p class="first last">Webpack编译报错整理</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>12</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-Scrapy-tutorial-index.html">Scrapy-教程</a></h3>
-											<p><p class="first last">教程</p>
+											<span class="date">Feb <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
+											<p><p class="first last">webpack问题</p>
 </p>
 										</li>
 									</ul>
@@ -631,9 +641,9 @@ _logger.setLevel(logging.INFO)
 									</header>
 									<ul class="divided">
 											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
 											<li><a href="/category/an-quan.html">安全</a></li>
 											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
-											<li><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
 									</ul>
 								</section>
 							</div>
@@ -699,6 +709,7 @@ _logger.setLevel(logging.INFO)
 		<script src="/theme/js/skel-panels.min.js"></script> -->
 		<script src="/theme/js/backloading.js"></script>
 		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {
