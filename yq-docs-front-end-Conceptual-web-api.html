@@ -282,6 +282,106 @@
 </ul>
 <p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect</a></p>
 </dd>
+<dt>CanvasRenderingContext2D.drawImage()</dt>
+<dd><p class="first">在画布（Canvas）上绘制图像</p>
+<p>声明</p>
+<div class="highlight"><pre><span></span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">dx</span><span class="p">,</span><span class="w"> </span><span class="nx">dy</span><span class="p">)</span>
+<span class="nx">drawImage</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">dx</span><span class="p">,</span><span class="w"> </span><span class="nx">dy</span><span class="p">,</span><span class="w"> </span><span class="nx">dWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">dHeight</span><span class="p">)</span>
+<span class="nx">drawImage</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">sx</span><span class="p">,</span><span class="w"> </span><span class="nx">sy</span><span class="p">,</span><span class="w"> </span><span class="nx">sWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">sHeight</span><span class="p">,</span><span class="w"> </span><span class="nx">dx</span><span class="p">,</span><span class="w"> </span><span class="nx">dy</span><span class="p">,</span><span class="w"> </span><span class="nx">dWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">dHeight</span><span class="p">)</span>
+</pre></div>
+<dl class="docutils">
+<dt>image</dt>
+<dd><p class="first">绘制到上下文的元素。</p>
+<p class="last">允许任何的画布图像源，例如： <cite>HTMLImageElement</cite> 、 <cite>SVGImageElement</cite> 、 <cite>HTMLVideoElement</cite> 、 <cite>HTMLCanvasElement</cite> 、 <cite>ImageBitmap</cite> 、 <cite>OffscreenCanvas</cite> 或 <cite>VideoFrame</cite></p>
+</dd>
+<dt>sx: 可选</dt>
+<dd>需要绘制到目标上下文中的，源 <cite>image</cite> 的子矩形（裁剪）的 <strong>左上角 X 轴坐标</strong></dd>
+<dt>sy: 可选</dt>
+<dd>需要绘制到目标上下文中的，源 <cite>image</cite> 的子矩形（裁剪）的 <strong>左上角 Y 轴坐标</strong></dd>
+</dl>
+<p>即 <tt class="docutils literal">sx, sy</tt> 定义了 <cite>image</cite> 需要裁剪的矩形的左上角坐标.</p>
+<dl class="docutils">
+<dt>sWidth: 可选</dt>
+<dd><p class="first">需要绘制到目标上下文中的，源 <cite>image</cite> 的子矩形（裁剪）的宽度。</p>
+<ul class="last simple">
+<li>如果不指定，整个矩形（裁剪）从坐标的 <cite>sx</cite> 和 <cite>sy</cite> 开始，到 <cite>image</cite> 的右下角结束。</li>
+<li>使用负值将翻转这个图像。</li>
+</ul>
+</dd>
+<dt>sHeight: 可选</dt>
+<dd><p class="first">需要绘制到目标上下文中的， <cite>image</cite> 的矩形（裁剪）选择框的高度。</p>
+<p class="last">使用负值将翻转这个图像。</p>
+</dd>
+<dt>dx</dt>
+<dd>源 <cite>image</cite> 的左上角在目标画布上 X 轴坐标。</dd>
+<dt>dy</dt>
+<dd>源 <cite>image</cite> 的左上角在目标画布上 Y 轴坐标。</dd>
+<dt>dWidth</dt>
+<dd><p class="first"><cite>image</cite> 在目标画布上绘制的宽度。允许对绘制的图像进行缩放。</p>
+<p class="last">如果不指定，在绘制时 <cite>image</cite> 宽度不会缩放。</p>
+</dd>
+<dt>dHeight</dt>
+<dd><p class="first"><cite>image</cite> 在目标画布上绘制的高度。允许对绘制的图像进行缩放。</p>
+<p class="last">如果不指定，在绘制时 <cite>image</cite> 高度不会缩放。</p>
+</dd>
+</dl>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage</a></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="window">
+<h2>Window</h2>
+<dl class="docutils">
+<dt>btoa()</dt>
+<dd>将普通字符串 <strong>编码</strong> 为Base64格式</dd>
+<dt>atob()</dt>
+<dd><strong>解码</strong>  Base64编码的字符串</dd>
+</dl>
+</div>
+<div class="section" id="document">
+<h2>Document</h2>
+<dl class="docutils">
+<dt>evaluate()</dt>
+<dd><p class="first">根据传入的 <cite>XPath 表达式</cite> 以及其他参数，返回一个 <cite>XPathResult</cite> 对象。</p>
+<p>语法:</p>
+<pre class="literal-block">
+evaluate(xpathExpression, contextNode, namespaceResolver, resultType, result)
+</pre>
+<ul class="simple">
+<li>pathExpression 表示要计算的 Xpath 字符串。</li>
+<li>contextNode 表示本次查询的上下文节点（参照 XPath 规范 <a class="reference external" href="http://www.w3.org/TR/xpath">http://www.w3.org/TR/xpath</a> ）。通常会使用 document。</li>
+<li>namespaceResolver 是函数。传入名空间前缀，返回跟此前缀相关的名空间 URI（字符串）。
+通常用来解析 Xpath 内的前缀，以便对文档进行匹配。
+HTML 文档或者不使用名空间前缀的文档，通常传入 null。</li>
+<li>resultType 是整数。指定所返回的 XPathResult 的类型，常使用 <cite>named constant properties</cite> ，如 <cite>XPathResult.ANY_TYPE</cite></li>
+<li>result 为 XPathResult 型，用以存储查询结果。通常传入 null，此时将创建新的 XPathResult 对象。</li>
+</ul>
+<p>用例1-查找匹配到src的img标签, 并滚动到此img</p>
+<div class="highlight"><pre><span></span><span class="nx">page_img_xpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`//img[@src=&quot;</span><span class="si">${</span><span class="nx">src</span><span class="si">}</span><span class="sb">&quot;]`</span>
+
+<span class="c1">// singleNodeValue 相当于获取到 HTMLImageElement</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">page_img_xpath</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nb">document</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">XPathResult</span><span class="p">.</span><span class="nx">FIRST_ORDERED_NODE_TYPE</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">).</span><span class="nx">singleNodeValue</span><span class="p">.</span><span class="nx">scrollIntoView</span><span class="p">()</span>
+</pre></div>
+<p>用例2-查找所有的 h2 元素</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">headings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;/html/body//h2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">XPathResult</span><span class="p">.</span><span class="nx">ANY_TYPE</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">null</span><span class="p">,</span>
+<span class="p">);</span>
+<span class="cm">/* 在 document 中查找所有的 h2 元素。</span>
+<span class="cm">* 结果可能是无序节点迭代器。 */</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">thisHeading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">headings</span><span class="p">.</span><span class="nx">iterateNext</span><span class="p">();</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">alertText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Level 2 headings in this document are:\n&quot;</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">thisHeading</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">alertText</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">thisHeading</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">thisHeading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">headings</span><span class="p">.</span><span class="nx">iterateNext</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">alertText</span><span class="p">);</span><span class="w"> </span><span class="c1">// 显示所有 h2 节点的文本</span>
+</pre></div>
+<p class="last">参考: <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/evaluate">https://developer.mozilla.org/zh-CN/docs/Web/API/Document/evaluate</a></p>
+</dd>
 </dl>
 </div>
 
@@ -323,6 +423,16 @@
     CanvasRenderingContext2D
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#window">
+    Window
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#document">
+    Document
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -348,27 +458,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

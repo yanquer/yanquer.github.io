@@ -142,7 +142,7 @@
 										<div class="pennant pennant-alt date">2024-07-09</div>
 										<h2>tailwindcss</h2>
 
-										<span class="head-modify-time">修改于: 2024-07-09</span>
+										<span class="head-modify-time">修改于: 2025-03-03</span>
 
 									</div>
 									<dl class="docutils">
@@ -160,6 +160,29 @@
 <p><cite>TailwindCSS</cite> 本身是一个 <cite>PostCSS</cite> 插件</p>
 <div class="section" id="section-1">
 <h2>使用</h2>
+<div class="section" id="nextjs-react-4-x-tailwindcss">
+<h3>nextjs-React项目 4.x tailwindcss 版本</h3>
+<p>参考: <a class="reference external" href="https://tailwindcss.com/docs/installation/framework-guides/nextjs">https://tailwindcss.com/docs/installation/framework-guides/nextjs</a></p>
+<p>如果还没有项目, 需要先创建项目</p>
+<div class="highlight"><pre><span></span>npx<span class="w"> </span>create-next-app@latest<span class="w"> </span>my-project<span class="w"> </span>--typescript<span class="w"> </span>--eslint<span class="w"> </span>--app
+<span class="nb">cd</span><span class="w"> </span>my-project
+</pre></div>
+<p>安装依赖包</p>
+<div class="highlight"><pre><span></span>tailwindcss<span class="w"> </span>@tailwindcss/postcss<span class="w"> </span>postcss
+</pre></div>
+<p>配置 <cite>postcss.config.mjs</cite></p>
+<div class="highlight"><pre><span></span>const config = {
+  plugins: {
+    &quot;@tailwindcss/postcss&quot;: {},
+  },
+};
+export default config;
+</pre></div>
+<p>在全局css中增加import语句, 一般是在 <cite>./src/app/globals.css</cite></p>
+<div class="highlight"><pre><span></span><span class="c">/* globals.css */</span>
+<span class="p">@</span><span class="k">import</span><span class="w"> </span><span class="s2">&quot;tailwindcss&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
 <div class="section" id="vite-react-4-x-tailwindcss">
 <h3>Vite-React项目 4.x tailwindcss 版本</h3>
 <p>参考: <a class="reference external" href="https://tailwindcss.com/docs/installation/using-vite">https://tailwindcss.com/docs/installation/using-vite</a></p>
@@ -435,6 +458,11 @@ export default defineConfig({
    </a>
    <ul class="toc-tree visible">
     <li class="toc-h1">
+     <a class="" href="#nextjs-react-4-x-tailwindcss">
+      nextjs-React项目 4.x tailwindcss 版本
+     </a>
+    </li>
+    <li class="toc-h1">
      <a class="" href="#vite-react-4-x-tailwindcss">
       Vite-React项目 4.x tailwindcss 版本
      </a>
@@ -523,27 +551,27 @@ export default defineConfig({
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

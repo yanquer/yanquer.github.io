@@ -203,6 +203,35 @@ function Example() {
 <span class="p">});</span>
 </pre></div>
 </div>
+<div class="section" id="section-1">
+<h2>状态更新失效-数组/对象</h2>
+<p>当你有一个状态是数组/对象时, 更新状态不能直接修改数组/对象的某个值, 而是需要重新创建一个新的数组/对象</p>
+<p>错误的更新方式:</p>
+<pre class="literal-block">
+const [listVal, setListVal] = useState&lt;string[]&gt;([]);
+
+const addItem = (item: string) =&gt; {
+  listVal.push(item); // 直接修改原数组
+  setListVal(listVal); // 设置状态为修改后的数组
+};
+</pre>
+<p>因为 <cite>listVal</cite> 的引用没有改变， <cite>React</cite> 可能不会检测到状态的变化，导致组件不会重新渲染。</p>
+<p>正确的更新方式:</p>
+<pre class="literal-block">
+const [listVal, setListVal] = useState&lt;string[]&gt;([]);
+
+const addItem = (item: string) =&gt; {
+  setListVal([...listVal, item]); // 创建一个新数组并设置状态
+};
+
+// 如果是对象, 同理
+const [objVal, setObjVal] = useState&lt;{ key: string }&gt;({ key: 'value' });
+
+const updateObj = (newKey: string) =&gt; {
+  setObjVal({ ...objVal, key: newKey }); // 创建一个新对象并设置状态
+};
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -232,6 +261,11 @@ function Example() {
     state异步的实时属性访问
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    状态更新失效-数组/对象
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -257,27 +291,27 @@ function Example() {
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

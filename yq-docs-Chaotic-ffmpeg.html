@@ -529,6 +529,26 @@ ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"
 <span class="c1"># 默认转化是中等质量模式，若要转化出高质量的 gif，可以修改比特率</span>
 ffmpeg<span class="w"> </span>-i<span class="w"> </span>small.mp4<span class="w"> </span>-b<span class="w"> </span>2048k<span class="w"> </span>small.gif
 </pre></div>
+<p>优化𥖨点与大小</p>
+<div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;fps=10,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse&quot;</span><span class="w"> </span>-y<span class="w"> </span>small.gif
+
+<span class="c1"># &#39;fps=10&#39;, // 设置帧率为 10 fps</span>
+<span class="c1"># &#39;scale=480:-1:flags=lanczos&#39;, // 缩放宽度为 480 像素，高度按比例缩放, 并使用 Lanczos 算法保持高质量。</span>
+<span class="c1"># &#39;split[s0][s1]&#39;, // 将视频流拆分为两个流 [s0] 和 [s1]</span>
+<span class="c1"># &#39;[s0]palettegen[p]&#39;, // 使用 [s0] 生成调色板 [p]</span>
+<span class="c1"># &#39;[s1][p]paletteuse&#39; // 使用 [s1] 和调色板 [p] 生成 GIF</span>
+
+<span class="c1"># 使用优化的调色板，减少颜色失真和噪点。</span>
+</pre></div>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.cnblogs.com/1bite/p/18493460">FFmpeg 视频转 GIF</a></li>
+<li><a class="reference external" href="https://www.jianshu.com/p/7f953f010db5">ffmpeg 小技巧16 -- 将mp4视频转化为GIF(高阶)</a></li>
+<li><a class="reference external" href="https://cloud.tencent.com/developer/article/2161440">利用 FFmpeg 将视频转换为 GIF 操作指北</a></li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="gif">
 <h3>将 GIF 转化为其他格式</h3>
@@ -748,27 +768,27 @@ ffmpeg<span class="w"> </span>-f<span class="w"> </span>gif<span class="w"> </sp
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

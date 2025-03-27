@@ -552,6 +552,46 @@ TS1238: Unable to resolve signature of class decorator when called as an express
 <div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="s2">&quot;reflect-metadata&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
+<div class="section" id="unexpected-asyncronous-service">
+<h3>Unexpected asyncronous service</h3>
+<p>一般是你在应用中获取实例的时候报错:</p>
+<pre class="literal-block">
+container.get&lt;MyService&gt;(MyService);
+</pre>
+<p>大致信息:</p>
+<pre class="literal-block">
+Unexpected asyncronous service when resolving service &quot;Symbol(MyService)&quot;
+</pre>
+<p>这个是因为MyService实例的时候存在异步方法,
+检查一下你的 <cite>postConstruct</cite> 注解方法是不是同步的, 如果是, 比如:</p>
+<pre class="literal-block">
+&#64;postConstruct()
+protected async doInit(){}
+</pre>
+<p>改成:</p>
+<pre class="literal-block">
+&#64;postConstruct()
+protected doInit(){}
+</pre>
+</div>
+<div class="section" id="nextjs">
+<h3>nextjs协作不识别构造函数中的注解</h3>
+<p>表现如标题所示, 可能会打印出类似信息:</p>
+<pre class="literal-block">
+Invalid character: '&#64;'
+</pre>
+<p>查看编译出的代码发现没有正确解析构造函数中的注解并编译, 正常编译好后是不会存在注解的.</p>
+<p>找了很久很久, 找到
+原因是因为启动的时候指定了:</p>
+<pre class="literal-block">
+next dev src/renderer --turbopack
+</pre>
+<p>改成:</p>
+<pre class="literal-block">
+next dev src/renderer
+</pre>
+<p>就好了...</p>
+</div>
 </div>
 
 								</article>
@@ -711,6 +751,16 @@ TS1238: Unable to resolve signature of class decorator when called as an express
       Reflect.hasOwnMetadata is not a function
      </a>
     </li>
+    <li class="toc-h1">
+     <a class="" href="#unexpected-asyncronous-service">
+      Unexpected asyncronous service
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#nextjs">
+      nextjs协作不识别构造函数中的注解
+     </a>
+    </li>
    </ul>
   </li>
  </ul>
@@ -738,27 +788,27 @@ TS1238: Unable to resolve signature of class decorator when called as an express
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

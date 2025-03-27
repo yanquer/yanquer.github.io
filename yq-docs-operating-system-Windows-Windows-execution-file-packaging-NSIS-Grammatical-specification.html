@@ -193,6 +193,10 @@ Var /GLOBAL xxx
 </div>
 <div class="section" id="section-6">
 <h3>预定义</h3>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">寄存器变量全都是全局变量</p>
+</div>
 <p>寄存器变量(用于参数传递):</p>
 <pre class="literal-block">
 $0, $1, $2, $3, $4, $5, $6, $7, $8, $9
@@ -477,9 +481,15 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
 </li>
 <li><p class="first">$OutFile : 打好的exe包输出路径(包含文件名)</p>
 </li>
-<li><p class="first">$ShowInstDetails : 值为 show 表示显示安装详细信息</p>
+<li><p class="first">$ShowInstDetails : 值为 show 表示显示安装详细信息
+- show: 显示详细信息
+- hide: 默认不显示详细信息, 会有一个详细信息按钮, 点击后显示详细信息
+- nevershow: 不显示详细信息</p>
 </li>
-<li><p class="first">$ShowUnInstDetails : 值为 show 表示显示卸载详细信息</p>
+<li><p class="first">$ShowUnInstDetails : 值为 show 表示显示卸载详细信息
+- show: 显示详细信息
+- hide: 默认不显示详细信息, 会有一个详细信息按钮, 点击后显示详细信息
+- nevershow: 不显示详细信息</p>
 </li>
 <li><p class="first">$BrandingText : 左下角提示信息 (一般是 品牌/公司 名称)</p>
 </li>
@@ -501,6 +511,64 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
 <li>$INSTDIR: 安装目录。默认情况下是当前执行脚本所在目录,也可以自定义修改。</li>
 </ul>
 <p>一些通用属性, 编译标志, 版本信息: <a class="reference external" href="https://nsis.sourceforge.io/Docs/Chapter4.html#instattribs">instattribs</a></p>
+</div>
+<div class="section" id="action">
+<h2>一些预定于action</h2>
+<ul>
+<li><p class="first">SetDetailsPrint, 设置是否显示安装详细信息(显示位置在安装进度条的上方)</p>
+<p>支持的值</p>
+<ul class="simple">
+<li>none: 不显示任何信息</li>
+</ul>
+<p>示例</p>
+<div class="highlight"><pre><span></span><span class="k">Name</span><span class="w"> </span><span class="s2">&quot;My Installer&quot;</span>
+<span class="k">OutFile</span><span class="w"> </span><span class="s2">&quot;MyInstaller.exe&quot;</span>
+<span class="k">InstallDir</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PROGRAMFILES</span><span class="s2">\MyApp&quot;</span>
+
+<span class="k">Section</span><span class="w"> </span><span class="s2">&quot;Install&quot;</span>
+<span class="w">    </span><span class="k">SetDetailsPrint</span><span class="w"> </span><span class="no">none</span><span class="w"> </span><span class="c">; 隐藏默认输出</span>
+
+<span class="w">    </span><span class="k">DetailPrint</span><span class="w"> </span><span class="s2">&quot;正在安装文件...&quot;</span>
+<span class="w">    </span><span class="k">File</span><span class="w"> </span><span class="s2">&quot;example.txt&quot;</span>
+
+<span class="w">    </span><span class="k">DetailPrint</span><span class="w"> </span><span class="s2">&quot;正在创建快捷方式...&quot;</span>
+<span class="w">    </span><span class="k">CreateShortcut</span><span class="w"> </span><span class="s2">&quot;</span><span class="nb">$DESKTOP</span><span class="s2">\MyApp.lnk&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="vg">$INSTDIR</span><span class="s2">\MyApp.exe&quot;</span>
+
+<span class="w">    </span><span class="k">DetailPrint</span><span class="w"> </span><span class="s2">&quot;安装完成！&quot;</span>
+<span class="w">    </span><span class="k">SetDetailsPrint</span><span class="w"> </span><span class="no">lastused</span><span class="w"> </span><span class="c">; 恢复默认输出</span>
+<span class="k">SectionEnd</span>
+</pre></div>
+</li>
+</ul>
+</div>
+<div class="section" id="for">
+<h2>For循环</h2>
+<p>方式1, 使用Goto语法</p>
+<div class="highlight"><pre><span></span><span class="c">; 循环从1到10</span>
+<span class="k">StrCpy</span><span class="w">  </span>1
+<span class="nl">loop</span><span class="p">:</span>
+<span class="w">  </span><span class="k">StrCmp</span><span class="w"> </span><span class="bp">$0</span><span class="w"> </span>10<span class="w"> </span>done
+<span class="w">  </span><span class="k">DetailPrint</span><span class="w"> </span><span class="bp">$0</span>
+<span class="w">  </span><span class="k">IntOp</span><span class="w"> </span><span class="bp">$0</span><span class="w"> </span><span class="bp">$0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>1
+<span class="w">  </span><span class="k">Goto</span><span class="w"> </span>loop
+<span class="nl">done</span><span class="p">:</span>
+</pre></div>
+<p>方式2 (参考: <a class="reference external" href="https://blog.csdn.net/gwzz1228/article/details/7794501">https://blog.csdn.net/gwzz1228/article/details/7794501</a> )</p>
+<div class="highlight"><pre><span></span><span class="cp">!include</span><span class="w"> </span><span class="s2">&quot;LogicLib.nsh&quot;</span>
+<span class="k">OutFile</span><span class="w"> </span><span class="s2">&quot;Test_Loop.exe&quot;</span>
+
+<span class="k">Section</span><span class="w"> </span>Main<span class="w"> </span>01
+
+<span class="w">  </span><span class="kp">${ForEach}</span><span class="w"> </span><span class="bp">$R0</span><span class="w"> </span>0<span class="w"> </span>100<span class="w"> </span><span class="o">+</span><span class="w"> </span>5
+<span class="w">    </span><span class="k">MessageBox</span><span class="w"> </span><span class="no">MB_OK</span><span class="w"> </span><span class="bp">$R0</span>
+<span class="w">  </span><span class="kp">${Next}</span>
+
+<span class="w">  </span><span class="kp">${For}</span><span class="w"> </span><span class="bp">$R1</span><span class="w"> </span>0<span class="w"> </span>10
+<span class="w">    </span><span class="k">MessageBox</span><span class="w"> </span><span class="no">MB_OK</span><span class="w"> </span><span class="bp">$R1</span>
+<span class="w">  </span><span class="kp">${Next}</span>
+
+<span class="k">SectionEnd</span>
+</pre></div>
 </div>
 
 								</article>
@@ -593,6 +661,16 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
     一些脚本属性/预定义变量
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#action">
+    一些预定于action
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#for">
+    For循环
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -618,27 +696,27 @@ Name &quot;Foo &amp; Bar&quot; &quot;Foo &amp;&amp; Bar&quot;
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

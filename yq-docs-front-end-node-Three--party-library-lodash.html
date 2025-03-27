@@ -147,9 +147,31 @@
 									</div>
 									<dl class="docutils">
 <dt>节流与消抖</dt>
-<dd><p class="first">节流(throttle): n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效</p>
-<p>消抖(debounce): n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时</p>
+<dd><p class="first">节流(throttle): n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效;
+在一定时间内，事件最多触发一次。即使事件频繁触发，也只在规定的时间间隔内执行一次。</p>
+<p><cite>节流</cite> 关注的是固定时间间隔内的执行次数，确保事件在指定时间内只执行一次。</p>
+<p>消抖(debounce): n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时;
+在事件触发后，等待一段时间，若在这段时间内没有再次触发事件，才执行操作。如果事件再次触发，则重新计时。</p>
+<p><cite>消抖动</cite> 关注的是事件触发后的等待时间，确保在事件停止触发后才执行操作。</p>
 <p class="last">参考: <cite>https://vue3js.cn/interview/JavaScript/debounce_throttle.html#代码实现</cite></p>
+</dd>
+<dt>适用场景</dt>
+<dd><dl class="first last docutils">
+<dt>节流</dt>
+<dd><ul class="first last simple">
+<li>滚动事件（scroll）：比如无限加载列表，每隔一段时间检查一次滚动位置。</li>
+<li>窗口调整（resize）：每隔一段时间调整一次布局。</li>
+<li>鼠标移动（mousemove）：比如拖拽操作，限制触发频率。</li>
+</ul>
+</dd>
+<dt>消抖</dt>
+<dd><ul class="first last simple">
+<li>搜索框输入（input）：等待用户停止输入后再发送请求。</li>
+<li>按钮点击（click）：防止用户多次点击导致重复提交。</li>
+<li>窗口调整（resize）：等待用户停止调整窗口后再执行操作。</li>
+</ul>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition important">
@@ -193,6 +215,65 @@ function handleResize() {
 window.addEventListener('resize', throttle(handleResize, 100));
 </pre>
 <p>这将限制 handleResize 函数每 100ms 至多执行一次,从而提高页面滚动时的性能。</p>
+<div class="section" id="section-1">
+<h2>节流/消抖失效</h2>
+<p>常见于React的函数组件.</p>
+<p>如果函数组件内部使用了节流/消抖函数,
+那么当组件重新渲染时, 节流/消抖函数的回调函数也会重新创建, 这会导致节流/消抖失效。</p>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">throttle</span><span class="p">((</span><span class="nx">val</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">input</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>
+<span class="w">      </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">event</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">handleChange</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+<span class="w">    </span><span class="o">&gt;&lt;</span><span class="err">/input&gt;</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+<p>如果 MyComponent 组件重新渲染, 那么 handleChange 函数也会重新创建, 新的节流函数与之前的无关, 节流失效。</p>
+<p><strong>解决方法</strong></p>
+<p>可以使用</p>
+<ul class="simple">
+<li>useCallback</li>
+<li>useMemo</li>
+<li>useRef</li>
+</ul>
+<p>来保存节流/消抖函数, 从而避免函数重新创建。</p>
+<!-- const handleClick = useCallback(() => { -->
+<!-- setCount(count + 1); -->
+<!-- }, [count]); -->
+<!-- const throttledHandleClick = useMemo(() => { -->
+<!-- return throttle(handleClick, 1000); -->
+<!-- }, [handleClick]); -->
+<div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">MyComponent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">throttle</span><span class="p">((</span><span class="nx">val</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">),</span>
+
+<span class="w">    </span><span class="p">[]);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">input</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>
+<span class="w">      </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">event</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">handleChange</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+<span class="w">    </span><span class="o">&gt;&lt;</span><span class="err">/input&gt;</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">用例是手写的伪代码, 不一定能直接运行...</p>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -209,6 +290,27 @@ window.addEventListener('resize', throttle(handleResize, 100));
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    节流/消抖失效
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -226,27 +328,27 @@ window.addEventListener('resize', throttle(handleResize, 100));
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

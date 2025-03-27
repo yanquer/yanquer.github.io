@@ -1,0 +1,619 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>scrapy-playwright</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 04 March 2025
+      , Category:
+	  <a href="category/hou-duan-python.html">后端; python</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/hou-duan-python.html">后端; python</a></li>
+													<li><a class="button button-alt" href="tag/python.html">Python</a></li>
+
+													<li><a class="button button-alt" href="tag/pythonsan-fang-ku.html">Python三方库</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2025-03-04</div>
+										<h2>scrapy-playwright</h2>
+
+										<span class="head-modify-time">修改于: 2025-03-04</span>
+
+									</div>
+									<dl class="docutils">
+<dt>相关资源</dt>
+<dd><ul class="first last simple">
+<li>github <a class="reference external" href="https://github.com/scrapy-plugins/scrapy-playwright">https://github.com/scrapy-plugins/scrapy-playwright</a></li>
+<li>pypi <a class="reference external" href="https://pypi.org/project/scrapy-playwright/">https://pypi.org/project/scrapy-playwright/</a></li>
+<li>pypi中文 <a class="reference external" href="https://pypi.com.cn/project/scrapy-playwright/">https://pypi.com.cn/project/scrapy-playwright/</a></li>
+</ul>
+</dd>
+</dl>
+<p>scrapy-playwright是scrapy的插件, 支持使用 <cite>scrapy</cite> 时候, 动态操作网页.</p>
+<p>安装:</p>
+<pre class="literal-block">
+pip install scrapy-playwright
+</pre>
+<p>settings.py配置:</p>
+<pre class="literal-block">
+# 替换默认http和/或https下载处理程序 DOWNLOAD_HANDLERS
+DOWNLOAD_HANDLERS = {
+    &quot;http&quot;: &quot;scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler&quot;,
+    &quot;https&quot;: &quot;scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler&quot;,
+}
+
+# REACTOR, 需要在入口安装, 即使是使用 crawl 方式启动
+#  from scrapy.utils.reactor import install_reactor
+#  install_reactor('twisted.internet.asyncioreactor.AsyncioSelectorReactor')
+TWISTED_REACTOR=&quot;twisted.internet.asyncioreactor.AsyncioSelectorReactor&quot;,
+
+PLAYWRIGHT_LAUNCH_OPTIONS={
+    # 是否使用无头模式, False 表示会显式打开一个浏览器窗口, 否则不会打开
+    &quot;headless&quot;: True,
+    # 应该是单个窗口加载超时
+    &quot;timeout&quot;: 60 * 1000,  # 1 min
+},
+# 网页首次加载超时时间
+PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT=10 * 60 * 1000,  # 10 min
+</pre>
+<p>spider参考:</p>
+<pre class="literal-block">
+import scrapy
+
+class AwesomeSpider(scrapy.Spider):
+    name = &quot;awesome&quot;
+
+    def start_requests(self):
+        # GET request
+        yield scrapy.Request(&quot;https://httpbin.org/get&quot;, meta={&quot;playwright&quot;: True})
+        # POST request
+        yield scrapy.FormRequest(
+            url=&quot;https://httpbin.org/post&quot;,
+            formdata={&quot;foo&quot;: &quot;bar&quot;},
+            meta={&quot;playwright&quot;: True},
+        )
+
+    def parse(self, response, **kwargs):
+        # 'response' contains the page as seen by the browser
+        return {&quot;url&quot;: response.url}
+</pre>
+<div class="section" id="request">
+<h2>部分配置选项-Request</h2>
+<p>即:</p>
+<pre class="literal-block">
+yield scrapy.Request
+</pre>
+<p>使用的参数, 注意参数作为字典传递给 <cite>meta=</cite> 选项</p>
+<dl class="docutils">
+<dt>playwright: bool = False</dt>
+<dd>是否交给 Playwright 处理</dd>
+<dt>playwright_context: str = &quot;default&quot;</dt>
+<dd>传递给浏览器的上下文(类似于全局变量)</dd>
+<dt>playwright_include_page: bool = False</dt>
+<dd><p class="first">True表示用于下载请求的 Playwright 页面, 将在回调中通过 <tt class="docutils literal"><span class="pre">response.meta['playwright_page']</span></tt> 获取</p>
+<p>比如</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;playwright_page&#39;</span><span class="p">]</span>
+
+  <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">wait_for_timeout</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+  <span class="n">html</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">()</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">HtmlResponse</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">html</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+  <span class="n">books</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;div.px-1 &gt; div.grid.gap-2 &gt; div &gt; a&quot;</span><span class="p">)</span>
+</pre></div>
+</div></dd>
+<dt>playwright_page_methods: Iterable = ()</dt>
+<dd>一个可迭代的 <cite>scrapy_playwright.page.PageMethod</cite> 对象，用于指示在返回最终响应之前要在页面上执行的操作</dd>
+<dt>playwright_page: Optional[playwright.async_api._generated.Page] = None</dt>
+<dd><p class="first">用于下载请求的 Playwright 页面。</p>
+<p>如果未指定，则为每个请求创建一个新页面。
+该键可以与 结合使用 <cite>playwright_include_page</cite>，以使用同一页面发出一系列请求。</p>
+<p>例如：</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+      <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://httpbin.org/get&quot;</span><span class="p">,</span>
+      <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;playwright&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_include_page&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+  <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;playwright_page&quot;</span><span class="p">]</span>
+    <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://httpbin.org/headers&quot;</span><span class="p">,</span>
+        <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_headers</span><span class="p">,</span>
+        <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;playwright&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">},</span>
+    <span class="p">)</span>
+</pre></div>
+</div></dd>
+<dt>playwright_page_goto_kwargs: dict = {}</dt>
+<dd><p class="first">当导航到 URL 时，带有要传递给页面 goto方法的关键字参数的字典。</p>
+<p class="last">如果存在，则忽略该url键，而是使用请求的 URL。</p>
+</dd>
+<dt>playwright_security_details: Optional[dict]</dt>
+<dd><p class="first">只读</p>
+<p class="last">包含有关给定响应的安全信息的字典。
+仅适用于 HTTPS 请求。可以通过回调在回调中访问 <tt class="docutils literal"><span class="pre">response.meta['playwright_security_details']</span></tt></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="settings-py">
+<h2>部分配置选项-settings.py</h2>
+<dl class="docutils">
+<dt>PLAYWRIGHT_ABORT_REQUEST: Optional[Union[Callable, str]] = None</dt>
+<dd><p class="first">不处理的资源类型</p>
+<p>它接收一个 playwright.async_api.Request对象并且True如果请求应该被中止则必须返回，False否则。
+支持协程函数 ( async def)。</p>
+<p>例如，以下都是等效的，并阻止下载图像</p>
+<div class="highlight"><pre><span></span><span class="n">PLAYWRIGHT_ABORT_REQUEST</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">req</span><span class="p">:</span> <span class="n">req</span><span class="o">.</span><span class="n">resource_type</span> <span class="o">==</span> <span class="s2">&quot;image&quot;</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">should_abort_request</span><span class="p">(</span><span class="n">req</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">req</span><span class="o">.</span><span class="n">resource_type</span> <span class="o">==</span> <span class="s2">&quot;image&quot;</span>
+
+<span class="n">PLAYWRIGHT_ABORT_REQUEST</span> <span class="o">=</span> <span class="n">should_abort_request</span>
+</pre></div>
+<div class="last"><div class="highlight"><pre><span></span><span class="c1"># project/utils.py</span>
+<span class="k">def</span> <span class="nf">should_abort_request</span><span class="p">(</span><span class="n">req</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">req</span><span class="o">.</span><span class="n">resource_type</span> <span class="o">==</span> <span class="s2">&quot;image&quot;</span>
+
+<span class="c1"># settings.py</span>
+<span class="n">PLAYWRIGHT_ABORT_REQUEST</span> <span class="o">=</span> <span class="s2">&quot;project.utils.should_abort_request&quot;</span>
+</pre></div>
+</div></dd>
+</dl>
+</div>
+<div class="section" id="page">
+<h2>示例-在回调中接收 Page 对象</h2>
+<p>注意需要将回调定义为协程函数 <tt class="docutils literal">async def</tt></p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p>请谨慎使用，并且仅当您确实需要在回调中对 Page 对象执行操作时。</p>
+<p class="last">如果页面在不再需要后没有正确关闭，则蜘蛛作业可能会因为设置 <tt class="docutils literal">PLAYWRIGHT_MAX_PAGES_PER_CONTEXT</tt> 设置的限制而卡住</p>
+</div>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">AwesomeSpiderWithPage</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;page_spider&quot;</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://example.org&quot;</span><span class="p">,</span>
+            <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_first</span><span class="p">,</span>
+            <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;playwright&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_include_page&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+            <span class="n">errback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">errback_close_page</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse_first</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;playwright_page&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+            <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_second</span><span class="p">,</span>
+            <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;playwright&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_include_page&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">},</span>
+            <span class="n">errback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">errback_close_page</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">parse_second</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;playwright_page&quot;</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>  <span class="c1"># &quot;Example Domain&quot;</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">errback_close_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">failure</span><span class="p">):</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">failure</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;playwright_page&quot;</span><span class="p">]</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+<ul class="simple">
+<li>传递时 <cite>playwright_include_page=True</cite>，请确保页面不再使用时始终关闭。
+建议设置 <cite>Request errback</cite> 以确保即使请求失败也关闭页面（如果 <cite>playwright_include_page=False</cite> 或未设置，页面会在遇到异常时自动关闭）。
+这很重要，因为打开的页面计入设置的限制， <cite>PLAYWRIGHT_MAX_PAGES_PER_CONTEXT</cite> 如果达到限制并且页面无限期保持打开状态，爬网可能会冻结。</li>
+<li><cite>async def</cite> 仅在需要时才需要定义回调， <cite>await</cite> 如果您只需要将 <cite>Page</cite> 对象从一个回调传递到另一个回调（参见上面的示例），则没有必要。</li>
+<li>goto 任何因在 Page 对象（ ,等）上等待协程而产生的网络操作 <cite>go_back</cite> 都将由 <cite>Playwright</cite> 直接执行，
+绕过 <cite>Scrapy</cite> 请求工作流程（调度程序、中间件等）。</li>
+</ul>
+</div>
+<div class="section" id="page-1">
+<h2>问题-共用page时多个页面的阻塞</h2>
+<p>当使用参数选项 <tt class="docutils literal"><span class="pre">meta={&quot;playwright&quot;:</span> True, &quot;playwright_include_page&quot;: True, &quot;playwright_page&quot;: page},</tt></p>
+<p>如果全局都是共享一个 <cite>page</cite>, 问题貌似不大.</p>
+<p>如果是在 <cite>def start_requests</cite> 中不共享:</p>
+<pre class="literal-block">
+meta={&quot;playwright&quot;: True, &quot;playwright_include_page&quot;: True}
+</pre>
+<p><cite>async def parse</cite> 中才开始共享:</p>
+<pre class="literal-block">
+meta={&quot;playwright&quot;: True, &quot;playwright_include_page&quot;: True, &quot;playwright_page&quot;: page}
+</pre>
+<p>可能会出现阻塞问题.</p>
+<p>为什么?</p>
+<ul class="simple">
+<li>首先, playwright打开浏览器页面的操作是互斥的.</li>
+</ul>
+<p>考虑设置并发数为1的情况</p>
+<ul>
+<li><p class="first"><cite>def start_requests</cite> 返回了 5 个 <cite>yield</cite></p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://example.org&quot;</span><span class="p">,</span>
+        <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_first</span><span class="p">,</span>
+        <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;playwright&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_include_page&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+        <span class="n">errback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">errback_close_page</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</li>
+<li><p class="first">由于并发数为1, 首先执行第一个 <cite>scrapy.Request</cite>, 称之为任务1</p>
+</li>
+<li><p class="first">在 <cite>async def parse</cite> 共享page, 需要查询的url是多页</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="n">page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;playwright_page&quot;</span><span class="p">]</span>
+  <span class="n">last_page</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="c1"># .....</span>
+
+  <span class="c1"># yield item</span>
+
+  <span class="k">if</span> <span class="n">last_page</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://example.org&quot;</span><span class="p">,</span>
+        <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_first</span><span class="p">,</span>
+        <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;playwright&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_include_page&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;playwright_page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">},</span>
+        <span class="n">errback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">errback_close_page</span><span class="p">,</span>
+    <span class="p">)</span>
+
+  <span class="c1"># ......</span>
+</pre></div>
+</li>
+<li><p class="first">由于共享了 <cite>page</cite>, 第一页找完数据后, 会将page传递给 <cite>yield scrapy.Request</cite>, 同时, 浏览器页面不会关闭</p>
+</li>
+<li><p class="first">因为浏览器页面不会关闭, 同时前面也提过 <cite>playwright</cite> 是阻塞的, 所以 <cite>def start_requests</cite> 的第 2 个 <cite>yield</cite>,
+就会一直等待浏览器页面关闭后再执行.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>这里先忽略掉异步编程中优先级问题,
+因为在 <cite>scrapy</cite> 的异步编程中, 往往是先执行 <cite>def start_requests</cite> 返回的 <cite>yield</cite>.</p>
+<p class="last">另外,
+<cite>yield</cite> 的内容是基本按照顺序来调用的, 与 <cite>async def</cite> 定义的内容是放在事件循环中执行的顺序不同.</p>
+</div>
+<dl class="docutils">
+<dt>解决方案</dt>
+<dd><ul class="first last simple">
+<li>保证你的任务并发数比 <cite>CONCURRENT_REQUESTS</cite> 设置额的比 <cite>def start_requests</cite> 返回的 <cite>yield</cite> 数目大</li>
+</ul>
+</dd>
+</dl>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#request">
+    部分配置选项-Request
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#settings-py">
+    部分配置选项-settings.py
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#page">
+    示例-在回调中接收 Page 对象
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#page-1">
+    问题-共用page时多个页面的阻塞
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

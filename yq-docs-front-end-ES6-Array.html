@@ -279,6 +279,189 @@ Set 的 has 方法用于查找值；Map 的 has 方法用于查找键名。</p>
 <li>...items: 需要增加的元素</li>
 </ul>
 </div>
+<div class="rst-function section" id="filter(callable): T[];">
+<strong>filter(callable): T[];</strong><p></p>
+<p>过滤数组元素, 返回一个新的数组, 该数组中的元素是通过检查函数的返回值为 true 的元素</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：指定回调函数中的 this 值</li>
+<li>返回值：一个由通过回调函数测试的元素组成的新数组</li>
+</ul>
+</div>
+<div class="rst-function section" id="pop(): T;">
+<strong>pop(): T;</strong><p></p>
+<p>移除数组中的最后一个元素, 并返回该元素</p>
+<ul class="simple">
+<li>返回值：被移除的元素</li>
+</ul>
+</div>
+<div class="rst-function section" id="shift(): T;">
+<strong>shift(): T;</strong><p></p>
+<p>移除数组中的第一个元素, 并返回该元素</p>
+<ul class="simple">
+<li>返回值：被移除的元素</li>
+</ul>
+</div>
+<div class="rst-function section" id="push(...items: T[]): number;">
+<strong>push(...items: T[]): number;</strong><p></p>
+<p>将一个或多个元素添加到数组的末尾, 并返回数组的新长度</p>
+<ul class="simple">
+<li>...items: 需要添加到数组的元素</li>
+<li>返回值：数组的新长度</li>
+</ul>
+</div>
+<div class="rst-function section" id="unshift(...items: T[]): number;">
+<strong>unshift(...items: T[]): number;</strong><p></p>
+<p>将一个或多个元素添加到数组的开头, 并返回数组的新长度</p>
+<ul class="simple">
+<li>...items: 需要添加到数组的元素</li>
+<li>返回值：数组的新长度</li>
+</ul>
+</div>
+<div class="rst-function section" id="slice(start?: number, end?: number): T[];">
+<strong>slice(start?: number, end?: number): T[];</strong><p></p>
+<p>返回一个新的数组对象, 这个对象是一个由 <cite>start</cite> 和 <cite>end</cite> 决定的原数组的浅拷贝</p>
+<ul class="simple">
+<li>start: 开始提取元素的索引, 默认为0</li>
+<li>end: 结束提取元素的索引, 默认为数组的长度</li>
+<li>返回值：一个新数组, 包含从 <cite>start</cite> 到 <cite>end</cite> (不包括 <cite>end</cite>) 的元素</li>
+</ul>
+</div>
+<div class="rst-function section" id="map(callable): T[];">
+<strong>map(callable): T[];</strong><p></p>
+<p>对数组中的每个元素执行一次给定的函数, 并返回一个新数组</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：指定回调函数中的 this 值</li>
+<li>返回值：一个由原数组中的每个元素执行回调函数的结果组成的新数组</li>
+</ul>
+</div>
+<div class="rst-function section" id="forEach(callable): void;">
+<strong>forEach(callable): void;</strong><p></p>
+<p>遍历数组, 对数组中的每个元素执行一次给定的函数</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：指定回调函数中的 this 值</li>
+<li>返回值：undefined</li>
+</ul>
+</div>
+<div class="rst-function section" id="reduce(callable, initialValue): T;">
+<strong>reduce(callable, initialValue): T;</strong><p></p>
+<p>对数组中的每个元素执行一个由您提供的 <cite>reducer</cite> 函数(升序执行), 将其结果汇总为单个返回值</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：初始值</li>
+<li>返回值：返回最终累计值</li>
+</ul>
+</div>
+<div class="rst-function section" id="reduceRight(callable, initialValue): T;">
+<strong>reduceRight(callable, initialValue): T;</strong><p></p>
+<p>对数组中的每个元素执行一个由您提供的 <cite>reducer</cite> 函数(降序执行), 将其结果汇总为单个返回值</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：初始值</li>
+<li>返回值：返回最终累计值</li>
+</ul>
+</div>
+<div class="rst-function section" id="some(callable): boolean;">
+<strong>some(callable): boolean;</strong><p></p>
+<p>测试数组中的某些元素是否通过由提供的函数实现的测试</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：指定回调函数中的 this 值</li>
+<li>返回值：如果回调函数返回 <cite>true</cite> 则返回 <cite>true</cite>, 否则返回 <cite>false</cite></li>
+</ul>
+</div>
+<div class="rst-function section" id="every(callable): boolean;">
+<strong>every(callable): boolean;</strong><p></p>
+<p>测试数组的所有元素是否通过了由提供的函数实现的测试</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：指定回调函数中的 this 值</li>
+<li>返回值：如果回调函数对每个元素都返回 <cite>true</cite> 则返回 <cite>true</cite>, 否则返回 <cite>false</cite></li>
+</ul>
+</div>
+<div class="rst-function section" id="sort(callable): T[];">
+<strong>sort(callable): T[];</strong><p></p>
+<p>对数组的元素进行排序并返回数组</p>
+<ul class="simple">
+<li>参数1(可选)：排序函数</li>
+<li>返回值：排序后的数组</li>
+</ul>
+</div>
+<div class="rst-function section" id="reverse(): T[];">
+<strong>reverse(): T[];</strong><p></p>
+<p>颠倒数组中元素的顺序</p>
+<ul class="simple">
+<li>返回值：颠倒后的数组</li>
+</ul>
+</div>
+<div class="rst-function section" id="concat(...items: T[]): T[];">
+<strong>concat(...items: T[]): T[];</strong><p></p>
+<p>连接两个或多个数组, 并返回结果</p>
+<ul class="simple">
+<li>...items: 要连接的数组</li>
+<li>返回值：连接后的数组</li>
+</ul>
+</div>
+<div class="rst-function section" id="join(separator: string): string;">
+<strong>join(separator: string): string;</strong><p></p>
+<p>将数组中所有元素连接成一个字符串</p>
+<ul class="simple">
+<li>参数1(可选)：指定一个字符串来分隔数组的每个元素, 默认为 <cite>,</cite></li>
+<li>返回值：一个所有数组元素连接的字符串</li>
+</ul>
+</div>
+<div class="rst-function section" id="toString(): string;">
+<strong>toString(): string;</strong><p></p>
+<p>返回一个字符串, 该字符串表示指定的数组及其元素</p>
+<ul class="simple">
+<li>返回值：一个表示数组的字符串</li>
+</ul>
+</div>
+<div class="rst-function section" id="indexOf(searchElement: T, fromIndex?: number): number;">
+<strong>indexOf(searchElement: T, fromIndex?: number): number;</strong><p></p>
+<p>返回在数组中可以找到一个给定元素的第一个索引, 如果不存在则返回 -1</p>
+<ul class="simple">
+<li>参数1：要查找的元素</li>
+<li>参数2(可选)：从该索引开始查找</li>
+<li>返回值：元素在数组中的索引</li>
+</ul>
+</div>
+<div class="rst-function section" id="lastIndexOf(searchElement: T, fromIndex?: number): number;">
+<strong>lastIndexOf(searchElement: T, fromIndex?: number): number;</strong><p></p>
+<p>返回在数组中可以找到一个给定元素的最后一个索引, 如果不存在则返回 -1</p>
+<ul class="simple">
+<li>参数1：要查找的元素</li>
+<li>参数2(可选)：从该索引开始查找</li>
+<li>返回值：元素在数组中的索引</li>
+</ul>
+</div>
+<div class="rst-function section" id="includes(searchElement: T, fromIndex?: number): boolean;">
+<strong>includes(searchElement: T, fromIndex?: number): boolean;</strong><p></p>
+<p>数组是否包含指定元素</p>
+<ul class="simple">
+<li>参数1：要查找的元素</li>
+<li>参数2(可选)：从该索引开始查找</li>
+</ul>
+</div>
+<div class="rst-function section" id="flat(depth?: number): T[];">
+<strong>flat(depth?: number): T[];</strong><p></p>
+<p>将数组中的所有子数组扁平化为一个新数组</p>
+<ul class="simple">
+<li>参数1(可选)：扁平化的深度, 默认为1</li>
+<li>返回值：一个扁平化后的新数组</li>
+</ul>
+</div>
+<div class="rst-function section" id="flatMap(callable): T[];">
+<strong>flatMap(callable): T[];</strong><p></p>
+<p>将数组中(包括子数组中)的每个元素执行一次给定的函数, 并返回一个新数组</p>
+<ul class="simple">
+<li>参数1：回调函数</li>
+<li>参数2(可选)：指定回调函数中的 this 值</li>
+<li>返回值：一个由原数组中的每个元素执行回调函数的结果组成的新数组</li>
+</ul>
+</div>
 </div>
 
 								</article>
@@ -382,6 +565,94 @@ Set 的 has 方法用于查找值；Map 的 has 方法用于查找键名。</p>
      <a class="" href="#splice(start: number, deleteCount: number, ...items: T[]): T[];">
      </a>
     </li>
+    <li class="toc-h1">
+     <a class="" href="#filter(callable): T[];">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#pop(): T;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#shift(): T;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#push(...items: T[]): number;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#unshift(...items: T[]): number;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#slice(start?: number, end?: number): T[];">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#map(callable): T[];">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#forEach(callable): void;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#reduce(callable, initialValue): T;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#reduceRight(callable, initialValue): T;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#some(callable): boolean;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#every(callable): boolean;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#sort(callable): T[];">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#reverse(): T[];">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#concat(...items: T[]): T[];">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#join(separator: string): string;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#toString(): string;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#indexOf(searchElement: T, fromIndex?: number): number;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#lastIndexOf(searchElement: T, fromIndex?: number): number;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#includes(searchElement: T, fromIndex?: number): boolean;">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#flat(depth?: number): T[];">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#flatMap(callable): T[];">
+     </a>
+    </li>
    </ul>
   </li>
  </ul>
@@ -409,27 +680,27 @@ Set 的 has 方法用于查找值；Map 的 has 方法用于查找键名。</p>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

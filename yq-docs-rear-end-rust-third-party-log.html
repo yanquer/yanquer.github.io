@@ -174,6 +174,43 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+<p>tauri配置日志</p>
+<div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tauri_logger</span>::<span class="n">init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">tauri</span>::<span class="n">Builder</span>::<span class="n">default</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="o">|</span><span class="n">app</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">manage</span><span class="p">(</span><span class="n">log</span>::<span class="n">LevelFilter</span>::<span class="n">Info</span><span class="p">);</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">tauri</span>::<span class="n">generate_context</span><span class="o">!</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;error while running tauri application&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>或者</p>
+<div class="highlight"><pre><span></span><span class="n">tauri</span>::<span class="n">Builder</span>::<span class="n">default</span><span class="p">()</span>
+<span class="w">      </span><span class="p">.</span><span class="n">plugin</span><span class="p">(</span><span class="n">tauri_plugin_log</span>::<span class="n">Builder</span>::<span class="n">new</span><span class="p">().</span><span class="n">build</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="n">plugin</span><span class="p">(</span><span class="n">tauri_plugin_process</span>::<span class="n">init</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="n">plugin</span><span class="p">(</span><span class="n">tauri_plugin_opener</span>::<span class="n">init</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="n">plugin</span><span class="p">(</span><span class="n">tauri_plugin_log</span>::<span class="n">Builder</span>::<span class="n">new</span><span class="p">().</span><span class="n">targets</span><span class="p">([</span>
+<span class="w">          </span><span class="n">Target</span>::<span class="n">new</span><span class="p">(</span><span class="n">TargetKind</span>::<span class="n">Stdout</span><span class="p">),</span>
+<span class="w">          </span><span class="n">Target</span>::<span class="n">new</span><span class="p">(</span><span class="n">TargetKind</span>::<span class="n">LogDir</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">file_name</span>: <span class="nb">None</span> <span class="p">}),</span>
+<span class="w">          </span><span class="n">Target</span>::<span class="n">new</span><span class="p">(</span><span class="n">TargetKind</span>::<span class="n">Webview</span><span class="p">),</span>
+<span class="w">      </span><span class="p">]).</span><span class="n">build</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">tauri</span>::<span class="n">generate_context</span><span class="o">!</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;error while running tauri application&quot;</span><span class="p">);</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p><cite>TargetKind::LogDir</cite> 表示会将日志写入文件, 默认的写入位置:</p>
+<pre class="last literal-block">
+Platform      Value                                                     Example
+Linux         $XDG_DATA_HOME/{bundleIdentifier}/logs
+              or
+              $HOME/.local/share/{bundleIdentifier}/logs                /home/alice/.local/share/com.tauri.dev/logs
+macOS         {homeDir}/Library/Logs/{bundleIdentifier}                 /Users/Alice/Library/Logs/com.tauri.dev
+Windows       {FOLDERID_LocalAppData}/{bundleIdentifier}/logs           C:\Users\Alice\AppData\Local\com.tauri.dev\logs
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -207,27 +244,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

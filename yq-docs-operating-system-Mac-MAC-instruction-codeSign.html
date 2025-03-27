@@ -160,8 +160,12 @@ codesign --validate-constraint path ... # 检查提供的约束plist (check the 
 <col class="description" />
 <tbody valign="top">
 <tr><td class="option-group">
-<kbd><span class="option">-s</span></kbd></td>
-<td>签名</td></tr>
+<kbd><span class="option">-s</span>, <span class="option">--sign</span></kbd></td>
+<td><p class="first">签名</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
 <tr><td class="option-group">
 <kbd><span class="option">-f</span></kbd></td>
 <td>force, 强制重新签名</td></tr>
@@ -172,14 +176,29 @@ codesign --validate-constraint path ... # 检查提供的约束plist (check the 
 <kbd><span class="option">-o</span></kbd></td>
 <td>修改flags</td></tr>
 <tr><td class="option-group">
+<kbd><span class="option">--deep</span></kbd></td>
+<td>递归签名嵌套的可执行文件</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--force</span></kbd></td>
+<td>强制覆盖现有签名</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--options <var>runtime</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>启用 Hardened Runtime（公证必需）</td></tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>--entitlements entitlements.plist</dt>
+<dd>权限配置文件,
+授权机制 entitements信息</dd>
+</dl>
+</td></tr>
+<tr><td class="option-group">
 <kbd><span class="option">-d</span></kbd></td>
 <td>是display展示签名信息的意思</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-v</span></kbd></td>
 <td>是verbose的意思，越多的verbose显示信息越多，通常3个就已经足够了 <tt class="docutils literal"><span class="pre">-vvv</span></tt></td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">--entitlements</span></kbd></td>
-<td>授权机制 entitements信息</td></tr>
 </tbody>
 </table>
 <p>查看WeChat的签名:</p>
@@ -187,6 +206,15 @@ codesign --validate-constraint path ... # 检查提供的约束plist (check the 
 codesign -d -vvv WeChat.app
 </pre>
 <p>参考: <a class="reference external" href="https://www.jianshu.com/p/0124f10b2e00">codesign的使用</a></p>
+<div class="section" id="section-1">
+<h2>签名执行文件</h2>
+<p><cite>--sign</cite> 必须跟一个证书名参数. 证书名字可以打开 <cite>钥匙串</cite> 然后复制你的开发者证书名称.</p>
+<p>比如:</p>
+<pre class="literal-block">
+codesign --sign &quot;Apple Development: xxxxx&#64;xxx.com (xxxxxxxxx)&quot;  node_modules/node-mac-permissions/build/Release/permissions.node
+</pre>
+<p>可以直接 <cite>--sign -</cite> 表示使用 <cite>ad-hoc</cite> 签名</p>
+</div>
 
 								</article>
 						</div>
@@ -203,6 +231,27 @@ codesign -d -vvv WeChat.app
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    签名执行文件
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -220,27 +269,27 @@ codesign -d -vvv WeChat.app
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

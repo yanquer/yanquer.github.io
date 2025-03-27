@@ -553,6 +553,41 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 <span class="c">; WriteUninstaller &quot;$INSTDIR\uninstall.exe&quot;</span>
 </pre></div>
 </div>
+<div class="section" id="powershell">
+<h2>调用PowerShell脚本</h2>
+<p>以一个例子说明, 定义一个检查字符串是不是符合 <tt class="docutils literal"><span class="pre">^\d+\.\d+\.\d+</span></tt> 的正则模式</p>
+<div class="highlight"><pre><span></span><span class="c">; 辅助函数：检查字符串是否是有效的版本号</span>
+<span class="k">Function</span><span class="w"> </span>IsValidVersion
+<span class="w">    </span><span class="k">Var</span><span class="w"> </span><span class="na">/GLOBAL</span><span class="w"> </span>__checkStr
+<span class="w">    </span><span class="k">Var</span><span class="w"> </span><span class="na">/GLOBAL</span><span class="w"> </span>__checkStrCode
+<span class="w">    </span><span class="k">Var</span><span class="w"> </span><span class="na">/GLOBAL</span><span class="w"> </span>__validV
+
+<span class="w">    </span><span class="k">Pop</span><span class="w"> </span><span class="nv">$__checkStr</span>
+
+<span class="w">    </span><span class="c">; 调用 PowerShell 检查是否匹配正则表达式</span>
+<span class="w">    </span><span class="kn">nsExec</span><span class="p">::</span><span class="nf">ExecToStack</span><span class="w"> </span><span class="s1">&#39;powershell -Command &quot;if (\&quot;$__checkStr\&quot; -match \&quot;^\d+\.\d+\.\d+\&quot;) { Write-Output true } else { Write-Output false }&quot;&#39;</span>
+
+<span class="w">    </span><span class="c">; 获取 PowerShell 输出结果</span>
+<span class="w">    </span><span class="c">; 获取 nsExec 的返回状态码（通常为0）</span>
+<span class="w">    </span><span class="k">Pop</span><span class="w"> </span><span class="nv">$__checkStrCode</span>
+<span class="w">    </span><span class="c">; 获取 PowerShell 的输出结果</span>
+<span class="w">    </span><span class="k">Pop</span><span class="w"> </span><span class="nv">$__validV</span>
+
+<span class="w">    </span><span class="c">; 去除换行符</span>
+<span class="w">    </span><span class="k">StrCpy</span><span class="w"> </span><span class="nv">$__validV</span><span class="w"> </span><span class="nv">$__validV</span><span class="w"> </span>4
+
+<span class="w">    </span><span class="c">; 判断结果</span>
+<span class="w">    </span><span class="kp">${If}</span><span class="w"> </span><span class="nv">$__validV</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="no">true</span>
+<span class="w">        </span><span class="k">MessageBox</span><span class="w"> </span><span class="no">MB_OK</span><span class="w"> </span><span class="s2">&quot;str &#39;$__checkStr&#39; is a valid version -- $__validV -- $__checkStrCode&quot;</span>
+<span class="w">        </span><span class="k">Push</span><span class="w"> </span>0
+<span class="w">    </span><span class="kp">${Else}</span>
+<span class="w">        </span><span class="k">MessageBox</span><span class="w"> </span><span class="no">MB_OK</span><span class="w"> </span><span class="s2">&quot;str &#39;$__checkStr&#39; is not a valid version -- $__validV -- $__checkStrCode&quot;</span>
+<span class="w">        </span><span class="k">Push</span><span class="w"> </span>1
+<span class="w">    </span><span class="kp">${EndIf}</span>
+
+<span class="k">FunctionEnd</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -682,6 +717,11 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
     注册表值的读写
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#powershell">
+    调用PowerShell脚本
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -707,27 +747,27 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>

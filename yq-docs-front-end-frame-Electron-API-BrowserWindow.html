@@ -200,15 +200,17 @@
 <dt>frame: boolean</dt>
 <dd>是否使用 默认窗口边框.
 窗口的 边框 是指窗口的某些部分（例如工具栏、控件等），它们不是网页的一部分。
-比如窗口上方的 <cite>关闭、最小化、全屏</cite> 所在位置</dd>
+比如窗口上方的 <cite>关闭、最小化、全屏</cite> 所在位置(红绿灯按钮)</dd>
 <dt>fullscreen: boolean</dt>
 <dd>全屏</dd>
 <dt>titleBarStyle</dt>
-<dd><ul class="first last simple">
-<li>'hidden', // 隐藏bar</li>
-<li>'customButtonsOnHover'</li>
-<li>'hidden'</li>
+<dd><ul class="first simple">
+<li>'hiddenInset'  : 控制按钮距离边框更大</li>
+<li>'customButtonsOnHover' : 鼠标划过左上角的时候显示（实验中）</li>
+<li>'hidden' : 全尺寸内容窗口，保留标准的控制按钮(比如红绿灯)</li>
+<li>'default': 不显示红绿灯</li>
 </ul>
+<p class="last">注意, 如果在 <cite>frame: false</cite> 下使用了非 <cite>default</cite> 值, 会显示红绿灯🚥按钮</p>
 </dd>
 <dt>transparent: boolean</dt>
 <dd><p class="first">窗口是否透明</p>
@@ -356,8 +358,8 @@ transparent:true,
 </div>
 <div class="section" id="section-7">
 <h3>无边框模式下窗口的拖动</h3>
-<p>无边框, 即设置 <cite>frame: false</cite> 后不显示边框,
-这个时候还是会显示 <cite>关闭-最小化-最大化</cite> 按钮, 如果想连这个也不显示, 使用
+<p>无边框, 即设置 <cite>frame: false</cite> 后不显示边框, 不显示 <cite>关闭-最小化-最大化</cite> (红绿灯)按钮,
+如果想显示红路灯按钮, 使用
 <tt class="docutils literal">titleBarStyle: 'hidden'</tt></p>
 <dl class="docutils">
 <dt>实现拖动</dt>
@@ -473,27 +475,27 @@ transparent:true,
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-AI-Computer-vision-picture-mark-util.html">图片标注工具</a></h3>
-											<p><p class="first last">图片标注工具</p>
+											<span class="date">Mar <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
+											<p><p class="first last">JS选中节点内容</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-document-markdown-insert-asset-file.html">markdown插入资源文件</a></h3>
-											<p><p class="first last">markdown插入资源文件</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
+											<p><p class="first last">lofty</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-compilation-error.html">Webpack编译报错整理</a></h3>
-											<p><p class="first last">Webpack编译报错整理</p>
+											<span class="date">Mar <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
+											<p><p class="first last">rodio</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Feb <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-frame-webpack-issue-index.html">webpack问题</a></h3>
-											<p><p class="first last">webpack问题</p>
+											<span class="date">Mar <strong>17</strong></span>
+											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
+											<p><p class="first last">常见宏</p>
 </p>
 										</li>
 									</ul>
