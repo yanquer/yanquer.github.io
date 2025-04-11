@@ -176,18 +176,25 @@ python manage.py startapp polls
 <span class="p">]</span>
 </pre></div>
 <p>接着创建数据表</p>
-<div class="highlight"><pre><span></span><span class="c1"># 检测对模型文件的修改（在这种情况下，你已经取得了新的），并且把修改的部分储存为一次 迁移。</span>
-python<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>polls
-<span class="c1"># 第一次执行会呗被储存在 polls/migrations/0001_initial.py</span>
-<span class="c1"># 可选, 查看对应的sql语句</span>
-<span class="c1"># python manage.py sqlmigrate polls 0001</span>
+<div class="highlight"><pre><span></span><span class="w"> </span><span class="c1"># 检测对模型文件的修改（在这种情况下，你已经取得了新的），并且把修改的部分储存为一次 迁移。</span>
+<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>makemigrations<span class="w"> </span>polls
+<span class="w"> </span><span class="c1"># 第一次执行会将建表语句储存在 polls/migrations/0001_initial.py</span>
+<span class="w"> </span><span class="c1"># 可选, 查看对应的sql语句</span>
+<span class="w"> </span><span class="c1"># python manage.py sqlmigrate polls 0001</span>
 
-python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+
+<span class="c1"># 重置数据库</span>
+<span class="w"> </span><span class="c1"># python manage.py flush</span>
 </pre></div>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">一个项目可以包含多个应用, 每个应用可以独立运行.</p>
 </div>
+<p>如果需要新增模型:</p>
+<pre class="literal-block">
+python manage.py startapp 模型名称
+</pre>
 </div>
 <div class="section" id="section-3">
 <h2>模型字段</h2>
@@ -266,27 +273,27 @@ Email<span class="w"> </span>address:
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

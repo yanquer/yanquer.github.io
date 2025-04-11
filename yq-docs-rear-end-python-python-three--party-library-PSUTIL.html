@@ -173,6 +173,21 @@ psutil.disk_partitions() # 磁盘分区信息
 psutil.disk_usage('/') # 磁盘使用情况
 psutil.disk_io_counters() # 磁盘IO
 </pre>
+<p>获取磁盘剩余空间</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psutil</span>
+
+<span class="n">disk</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_usage</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">total</span><span class="p">)</span> <span class="c1"># 总空间</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">used</span><span class="p">)</span> <span class="c1"># 已使用空间</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">free</span><span class="p">)</span> <span class="c1"># 剩余空间, 单位是字节</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">percent</span><span class="p">)</span> <span class="c1"># 使用率</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">used</span> <span class="o">/</span> <span class="n">disk</span><span class="o">.</span><span class="n">total</span><span class="p">)</span> <span class="c1"># 使用率</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">free</span> <span class="o">/</span> <span class="n">disk</span><span class="o">.</span><span class="n">total</span><span class="p">)</span> <span class="c1"># 剩余空间率</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">used</span> <span class="o">/</span> <span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">used</span> <span class="o">+</span> <span class="n">disk</span><span class="o">.</span><span class="n">free</span><span class="p">))</span> <span class="c1"># 使用率</span>
+
+<span class="c1"># 使用 GB 为单位</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">free</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">**</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># 剩余空间, 单位是G</span>
+</pre></div>
 </div>
 <div class="section" id="section-3">
 <h2>获取网络信息</h2>
@@ -340,27 +355,27 @@ pro.terminate()
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

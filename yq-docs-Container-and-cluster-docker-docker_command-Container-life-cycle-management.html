@@ -230,11 +230,56 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 <tr><td class="option-group">
 <kbd><span class="option">--restart</span></kbd></td>
 <td>always表示检测到挂掉后自定重启</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--hostname <var>&lt;hostname&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定容器的主机名。可以在容器内使用该主机名进行访问。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--net=<var>&lt;network_name&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first">指定容器连接到的网络。可以是Docker创建的网络名称或ID。
+这允许容器在自定义网络中进行通信。</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--net=<var>host</var></span></kbd></td>
+<td>使用宿主机的网络栈。容器将共享宿主机的网络接口和IP地址。
+这意味着容器内的应用程序可以直接访问宿主机的网络资源。
+注意：使用此选项时，容器内的应用程序将与宿主机共享网络配置。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--net=<var>bridge</var></span></kbd></td>
+<td>使用默认的桥接网络。容器将连接到Docker的默认桥接网络。
+这是Docker的默认网络模式，适用于大多数场景。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--net=<var>none</var></span></kbd></td>
+<td>不连接到任何网络。容器将没有网络访问权限。
+适用于需要完全隔离的场景。</td></tr>
+</tbody>
+</table>
+<dl class="last docutils">
+<dt>--net=container:&lt;container_name_or_id&gt;</dt>
+<dd>共享另一个容器的网络栈。容器将使用指定容器的网络配置。
+这意味着容器内的应用程序可以直接访问指定容器的网络资源。</dd>
+</dl>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--link <var>&lt;container_name_or_id&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>创建一个链接到另一个容器的别名。可以在容器内使用该别名进行访问。
+这对于需要与其他容器通信的场景非常有用。
+注意：链接的容器必须在同一网络中。</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--ip <var>&lt;ip_address&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>指定容器的IP地址。可以在容器内使用该IP地址进行访问。
+注意：指定的IP地址必须在容器所在网络的范围内。</td></tr>
 </tbody>
 </table>
 <dl class="docutils">
-<dt>--add-host=database:&lt;IP_ADDRESS&gt;</dt>
-<dd>添加一个自定义的域名映射，&lt;IP_ADDRESS&gt;是你想要关联的IP地址。在容器内部，可以通过主机名database来访问该IP地址。
+<dt>--add-host=&lt;database:&lt;IP_ADDRESS&gt;&gt;</dt>
+<dd>添加一个自定义的域名映射(往 <cite>/etc/hosts</cite> 添加)，&lt;IP_ADDRESS&gt;是你想要关联的IP地址。在容器内部，可以通过主机名database来访问该IP地址。
 格式为 <cite>--add-host=database:192.168.0.100</cite></dd>
 </dl>
 <table class="docutils option-list" frame="void" rules="none">
@@ -712,27 +757,27 @@ yanque&#64;yanquedembp ~ % docker exec -it mykali /bin/bash
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

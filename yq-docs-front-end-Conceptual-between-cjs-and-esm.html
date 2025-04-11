@@ -178,6 +178,49 @@
 </pre></div>
 <p>参考: <a class="reference external" href="https://juejin.cn/post/7128218760300724232">ES Modules 中的 __dirname 和 __filename</a></p>
 </div>
+<div class="section" id="section-1">
+<h2>拓展-其它格式</h2>
+<p>也可以参考 :<a class="reference external" href="/yq-docs-front-end-Conceptual-package-target-difference.html">打包生成目标区别</a></p>
+<div class="section" id="amd">
+<h3>AMD</h3>
+<p>AMD是RequireJS的模块定义规范，它允许在浏览器中异步加载模块，并使用回调函数来处理模块的依赖关系。
+AMD规范定义了模块的加载和依赖关系的方式，使得开发人员可以轻松地使用模块化编程。</p>
+<p>AMD规范定义了以下三个核心概念：</p>
+<ol class="arabic simple">
+<li>模块定义：模块定义是一个函数，该函数接受一个或多个依赖项作为参数，并返回一个模块的导出对象。</li>
+<li>模块加载：模块加载是一个异步的过程，通过调用模块定义函数，可以加载一个模块</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;underscore&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 模块代码</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="umd">
+<h3>UMD</h3>
+<p>UMD是Universal Module Definition的缩写，它是一种模块定义规范，旨在解决不同JavaScript环境下的模块加载问题。
+UMD规范允许模块在CommonJS、AMD和浏览器全局变量等多种环境中运行。</p>
+<p>UMD规范定义了以下几个核心概念：</p>
+<ol class="arabic simple">
+<li>模块定义：UMD模块定义是一个函数，该函数接受一个或多个依赖项作为参数，并返回一个模块的导出对象。</li>
+<li>模块加载：UMD模块加载是一个异步的过程，通过调用模块定义函数，可以加载一个模块。</li>
+<li>模块导出：UMD模块导出是一个对象，该对象包含了模块的所有导出成员。</li>
+<li>模块依赖：UMD模块依赖是一个数组，该数组包含了模块所依赖的其他模块的名称。</li>
+<li>模块名称：UMD模块名称是一个字符串，该字符串表示模块的名称。</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">root</span><span class="p">,</span><span class="w"> </span><span class="nx">factory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">define</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;function&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">define</span><span class="p">.</span><span class="nx">amd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// AMD</span>
+<span class="w">    </span><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;underscore&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">factory</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">exports</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;object&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// CommonJS</span>
+<span class="w">    </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">factory</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">),</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;underscore&#39;</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Browser globals</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -212,6 +255,23 @@
     ESM使用 __dirname
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    拓展-其它格式
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#amd">
+      AMD
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#umd">
+      UMD
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -237,27 +297,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

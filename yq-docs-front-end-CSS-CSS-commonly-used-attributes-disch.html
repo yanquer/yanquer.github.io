@@ -179,25 +179,30 @@
 <dd><p class="first">定义子元素放大比例</p>
 <ul class="last simple">
 <li><tt class="docutils literal">0</tt>, 意味着子元素在父容器有剩余空间时, 不会放大占据更多空间;</li>
-<li><tt class="docutils literal">1</tt>, 意味着子元素在父容器有剩余空间时, 会自动放大以填充满剩余空间。</li>
+<li><tt class="docutils literal">1</tt>, 意味着子元素在父容器有剩余空间时, 会按照给定的比例自动放大以填充满剩余空间。</li>
 </ul>
 </dd>
 <dt>flex-shrink: number</dt>
 <dd><p class="first">定义子元素缩小比例</p>
 <ul class="last simple">
 <li><tt class="docutils literal">0</tt> 意味着子元素在父容器空间不足时, 不会缩小;</li>
-<li><tt class="docutils literal">1</tt> 意味着子元素在父容器空间不足时,会等比例缩小。</li>
+<li><tt class="docutils literal">1</tt> 意味着子元素在父容器空间不足时, 会按照给定的比例等比例缩小。</li>
 </ul>
 </dd>
 <dt>flex-basis: auto | number</dt>
-<dd><p class="first">子元素的初始大小由内容决定。</p>
-<p><tt class="docutils literal">0</tt> 表示, 在分配剩余空间或收缩空间之前, <cite>flex</cite> 项目的初始大小为 <cite>0</cite>。这意味着:</p>
+<dd><p class="first">子元素的初始大小</p>
+<p>取值</p>
 <ul class="simple">
+<li>长度值（px, %, em, rem等）</li>
+<li>auto（默认值，基于内容大小）</li>
+<li>content（基于内容大小，与auto类似但有细微差别）</li>
+</ul>
+<p>当设置 <tt class="docutils literal">0</tt> 时, 表示, 在分配剩余空间或收缩空间之前, <cite>flex</cite> 项目的初始大小为 <cite>0</cite>。这意味着:</p>
+<ul class="last simple">
 <li>初始大小: 当 <cite>flex-basis</cite> 为 <cite>0</cite> 时, <cite>flex</cite> 项目的初始大小完全由其内容决定。</li>
 <li>分配剩余空间: 当父容器有剩余空间时,根据 <cite>flex-grow</cite> 属性的值(此处为 <cite>1</cite>)， <cite>flex</cite> 项目会等比例放大占据剩余空间。</li>
 <li>收缩空间: 当父容器空间不足时，根据 <cite>flex-shrink</cite> 属性的值(此处为 <cite>1</cite>)，flex 项目会等比例缩小。</li>
 </ul>
-<p class="last"><tt class="docutils literal">auto</tt> 意味着子元素的初始大小由内容决定。</p>
 </dd>
 <dt>flex: number</dt>
 <dd><p class="first">当父元素设置为 <tt class="docutils literal">dispaly: flex</tt> 时, 子元素可使用 <tt class="docutils literal">flex</tt> 来控制占比. 不设置表示按照元素自己的大小.</p>
@@ -307,27 +312,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

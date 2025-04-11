@@ -295,6 +295,17 @@ $ ubuntu</blockquote>
 <p><strong>（方法2太慢了 alias debian9=“user&#64;host” 然后 ssh debian9 太慢了 ）</strong></p>
 </div>
 </div>
+<div class="section" id="permitrootlogin">
+<h2>问题-找不到PermitRootLogin</h2>
+<p>比如你想这么修改:</p>
+<pre class="literal-block">
+echo &quot;&quot;&quot;
+PermitRootLogin yes         # 允许 root 登录
+PasswordAuthentication yes  # 允许密码认证
+&quot;&quot;&quot; &gt;&gt; /etc/ssh/sshd_config
+</pre>
+<p>注意文件名是 <cite>sshd_config</cite> 而不是 <cite>ssh_config</cite></p>
+</div>
 
 								</article>
 						</div>
@@ -366,6 +377,11 @@ $ ubuntu</blockquote>
     </li>
    </ul>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#permitrootlogin">
+    问题-找不到PermitRootLogin
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -391,27 +407,27 @@ $ ubuntu</blockquote>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

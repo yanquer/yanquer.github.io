@@ -167,6 +167,44 @@ useEffect(() =&gt; {
 <p>表示只有当count变化的时候，重新执行副作用.
 其生命周期横跨所有的渲染过程.
 <strong>即使组件重新触发渲染了, 只要 `count` 没有变化，也不会执行副作用</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p><strong>即使组件重新触发渲染了, 只要 `count` 没有变化，也不会执行副作用</strong>.</p>
+<p>这里有一个坑点, 此处仅适用与当前组件内的刷新, 如果是父组件重新加载当前组件, 可能会引起 <cite>依赖数组重新加载与失效</cite></p>
+<dl class="docutils">
+<dt>依赖数组比较机制：</dt>
+<dd><ul class="first last simple">
+<li>React 使用浅比较（Object.is）来比较依赖项的前后值</li>
+<li>如果依赖项的值没有变化，React 会跳过效果/计算的重新执行</li>
+</ul>
+</dd>
+<dt>父组件重新渲染的影响：</dt>
+<dd><ul class="first last simple">
+<li>如果父组件重新渲染导致子组件重新渲染，但传递给子组件的 props（即依赖项）没有变化，依赖数组仍然有效</li>
+<li>如果父组件重新渲染时创建了新的引用（如新对象、新数组或新函数），依赖数组会检测到变化</li>
+</ul>
+</dd>
+</dl>
+<p>如</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Parent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 每次渲染都会创建新的对象</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Child</span><span class="w"> </span><span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">Child</span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Effect ran&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">data</span><span class="p">]);</span><span class="w"> </span><span class="c1">// 每次父组件渲染都会触发，因为data是新对象</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Child</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+<span class="p">}</span>
+</pre></div>
+<p class="last">还有一种情况是当前子组件被卸载后重新加载.</p>
+</div>
 <p>有时候我们会希望 <cite>useEffect</cite> <strong>只在第一次渲染时候执行一次</strong>，
 例如 componentDidMount ，第二个参数设置成空数组:</p>
 <pre class="literal-block">
@@ -253,27 +291,27 @@ useEffect(() =&gt; {
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

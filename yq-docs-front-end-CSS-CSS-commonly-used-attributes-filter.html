@@ -215,6 +215,64 @@ filter: blur(10px);
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
+<div class="section" id="section-1">
+<h2>支持的滤镜</h2>
+<p>参考: <a class="reference external" href="https://www.jianshu.com/p/d339d42e074a">[简书] css：使用filter和backdrop-filter实现高斯模糊效果</a></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果使用了多个滤镜, 使用空格隔开即可</p>
+</div>
+<dl class="docutils">
+<dt>blur</dt>
+<dd><p class="first">高斯模糊</p>
+<p class="last">例如:  <cite>filter: blur(10px);</cite></p>
+</dd>
+<dt>brightness</dt>
+<dd><p class="first">线性亮度调整</p>
+<p class="last">例如:  <cite>filter: brightness(50%);</cite></p>
+</dd>
+<dt>contrast</dt>
+<dd><p class="first">对比度调整</p>
+<p class="last">例如:  <cite>filter: contrast(200%);</cite></p>
+</dd>
+<dt>drop-shadow</dt>
+<dd><p class="first">添加阴影</p>
+<p>例如:  <cite>filter: drop-shadow(0px 0px 10px #000);</cite></p>
+<p class="last">注意: 该属性与box-shadow不同, 该属性会模糊阴影, 而box-shadow不会模糊阴影</p>
+</dd>
+<dt>grayscale</dt>
+<dd><p class="first">灰度</p>
+<p class="last">例如:  <cite>filter: grayscale(50%);</cite></p>
+</dd>
+<dt>hue-rotate</dt>
+<dd><p class="first">色相旋转</p>
+<p class="last">例如:  <cite>filter: hue-rotate(90deg);</cite></p>
+</dd>
+<dt>invert</dt>
+<dd><p class="first">反色, 反转颜色</p>
+<p>多适用于当背景图片会影响到文字颜色时, 反转颜色可以让文字更清晰可读</p>
+<p class="last">例如:  <cite>filter: invert(100%);</cite></p>
+</dd>
+<dt>opacity</dt>
+<dd><p class="first">转换透明度</p>
+<p>例如:  <cite>filter: opacity(50%);</cite></p>
+<p class="last">注意: 该属性与opacity不同, 该属性会模糊透明度, 而opacity不会模糊透明度</p>
+</dd>
+<dt>saturate</dt>
+<dd><p class="first">饱和度调整</p>
+<p class="last">例如:  <cite>filter: saturate(200%);</cite></p>
+</dd>
+<dt>sepia</dt>
+<dd><p class="first">褐色滤镜, 比如实现怀旧效果</p>
+<p class="last">例如:  <cite>filter: sepia(50%);</cite></p>
+</dd>
+<dt>url</dt>
+<dd><p class="first">使用svg滤镜</p>
+<p class="last">例如:  <cite>filter: url(#myFilter);</cite>
+该属性需要在svg中定义滤镜</p>
+</dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -231,6 +289,27 @@ filter: blur(10px);
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    支持的滤镜
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -248,27 +327,27 @@ filter: blur(10px);
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

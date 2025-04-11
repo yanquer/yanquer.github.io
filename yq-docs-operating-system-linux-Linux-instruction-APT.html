@@ -238,6 +238,51 @@ $ apt-get dis-upgrade -y
 把桌面系统都给干掉了...</p>
 <p>最后还是 <tt class="docutils literal">apt install <span class="pre">ubuntu-gnome-desktop</span></tt> 来重新安装桌面系统才回来的.</p>
 </div>
+<div class="section" id="ubuntu">
+<h2>ubuntu非交互安装时时区问题</h2>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://techoverflow.net/2019/05/18/how-to-fix-configuring-tzdata-interactive-input-when-building-docker-images/">https://techoverflow.net/2019/05/18/how-to-fix-configuring-tzdata-interactive-input-when-building-docker-images/</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/davidhhuan/p/13223444.html">博客园 - [Docker] 使用ubuntu涉及时区问题</a></li>
+</ul>
+</dd>
+</dl>
+<p>比如你用docker启动了ubuntu镜像, 运行 <tt class="docutils literal">apt install <span class="pre">-y</span> tzdata</tt> 或者其它安装命令,
+可能会遇到:</p>
+<pre class="literal-block">
+Configuring tzdata
+------------------
+
+Please select the geographic area in which you live. Subsequent configuration
+questions will narrow this down by presenting a list of cities, representing
+the time zones in which they are located.
+
+1. Africa      4. Australia  7. Atlantic  10. Pacific  13. Etc
+2. America     5. Arctic     8. Europe    11. SystemV
+3. Antarctica  6. Asia       9. Indian    12. US
+Geographic area:
+</pre>
+<p>然后因为没有交互式的终端, 你就会卡在这里了.</p>
+<!-- 解决方法有两种: -->
+<!-- 1. 运行 ``export DEBIAN_FRONTEND=noninteractive`` 来设置环境变量, 然后再执行安装命令. -->
+<!-- 2. 运行 ``echo "tzdata tzdata/Zones/Asia select Shanghai" | debconf-set-selections`` 来设置时区, 然后再执行安装命令. -->
+<dl class="docutils">
+<dt>解决方法</dt>
+<dd><dl class="first last docutils">
+<dt>方案一:</dt>
+<dd>运行 <tt class="docutils literal">export DEBIAN_FRONTEND=noninteractive</tt> 来设置环境变量, 然后再执行安装命令.</dd>
+</dl>
+</dd>
+</dl>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>tzdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>ln<span class="w"> </span>-fs<span class="w"> </span>/usr/share/zoneinfo/Asia/Shanghai<span class="w"> </span>/etc/localtime<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dpkg-reconfigure<span class="w"> </span>--frontend<span class="w"> </span>noninteractive<span class="w"> </span>tzdata
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -289,6 +334,11 @@ $ apt-get dis-upgrade -y
     autoremove的坑
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#ubuntu">
+    ubuntu非交互安装时时区问题
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -314,27 +364,27 @@ $ apt-get dis-upgrade -y
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

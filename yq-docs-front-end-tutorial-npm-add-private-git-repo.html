@@ -143,7 +143,10 @@
 										<span class="head-modify-time">修改于: 2024-07-30</span>
 
 									</div>
-									<p>有时候发现用的npm包存在问题, 但是由于维护者不更新等原因, 不得不自行fork一个仓库用.</p>
+									<p>有时, 需要使用私有的git仓库作为npm包, 但是由于私有仓库的原因, 无法直接使用</p>
+<div class="section" id="github">
+<h2>增加github的开源库</h2>
+<p>有时候发现用的npm包存在问题, 但是由于维护者不更新等原因, 不得不自行fork一个仓库用.</p>
 <p>此处贴一下使用私有git仓库作为npm包的历程</p>
 <ol class="arabic simple">
 <li>先fork旧的仓库</li>
@@ -173,6 +176,133 @@
 <span class="w">  </span><span class="nt">&quot;repo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/xxxx/repo.git#v1.0.0&quot;</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="section" id="github-1">
+<h2>增加自己github的私有仓库-方案一</h2>
+<p>直接用ssh添加自己的私有库, 比如</p>
+<div class="highlight"><pre><span></span>yarn<span class="w"> </span>add<span class="w"> </span>git+ssh://git@github.com/yanquer/YQFrontCommon.git#v0.2.0
+</pre></div>
+<dl class="docutils">
+<dt>缺点</dt>
+<dd><ul class="first last simple">
+<li>会拉整个仓库, <cite>package.json</cite> 中的 <cite>files</cite> 配置无效</li>
+<li>需要配置ssh</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="github-2">
+<h2>增加自己github的私有仓库-方案二</h2>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.jianshu.com/p/9b7c2d9b30b3">[简书] 如何使用GitHub Packages创建npm私有库</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/KimBing/article/details/129162602">[CSDN] 在发布 npm 包的时候提示没有登录，解决办法 This command requires you to be logged in to https://npm.pkg.github.com</a></li>
+<li><a class="reference external" href="https://github.com/workshopper/how-to-npm/issues/25">[GitHub] npm publish has resulted in error &quot;You need to authorize this machine using npm adduser&quot;</a></li>
+</ul>
+</dd>
+</dl>
+<p>发布到github的npm仓库: <cite>https://npm.pkg.github.com/</cite></p>
+<div class="section" id="github-3">
+<h3>github权限配置</h3>
+<p>github上配置私有token</p>
+<div class="figure">
+<img alt="github配置私有token" src="doc-raw/resources/images/2025-04-09-13-33-50.png" style="width: 480px;" />
+</div>
+<p>新建时的选项</p>
+<div class="figure">
+<img alt="github新建时的选项" src="doc-raw/resources/images/2025-04-09-13-42-47.png" style="width: 480px;" />
+</div>
+<p>生成后的token注意保存, 只能显示一次, 不可再次查看</p>
+<p>然后在本地登陆这个npm</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>npm<span class="w"> </span>login<span class="w"> </span>--registry<span class="o">=</span>https://npm.pkg.github.com
+&gt;<span class="w"> </span>Username:<span class="w"> </span>USERNAME
+&gt;<span class="w"> </span>Password:<span class="w"> </span>TOKEN
+&gt;<span class="w"> </span>Email:<span class="w"> </span>PUBLIC-EMAIL-ADDRESS
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">只能用 npm, 不能用 yarn, 暂时不支持</p>
+</div>
+</div>
+<div class="section" id="npm">
+<h3>npm包创建</h3>
+<p>(建立包就不用说了)</p>
+<p>在自己的包仓库下加一个 <cite>.npmrc</cite> 文件, 内容如下:</p>
+<pre class="literal-block">
+registry=https://npm.pkg.github.com/yanquer/
+</pre>
+<p>如果上面没有手动登陆的话, 需要在 <cite>.npmrc</cite> 中添加token:</p>
+<pre class="literal-block">
+registry=https://npm.pkg.github.com/yanquer/
+always-auth=true
+//npm.pkg.github.com/:_authToken=TOKEN
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>后续包建好后, 其它仓库如果要使用这个包, 也要加一个 <cite>.npmrc</cite> 文件:</p>
+<pre class="last literal-block">
+registry=https://npm.pkg.github.com/yanquer/
+</pre>
+</div>
+<p>更新package.json</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>init<span class="w"> </span>--scope<span class="o">=</span>yanquer
+</pre></div>
+<p>如果生成的 <cite>package.json</cite> 中没有 <cite>publishConfig</cite> 字段, 需要手动添加</p>
+<div class="highlight"><pre><span></span><span class="nt">&quot;publishConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://npm.pkg.github.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+<p>否则会报错 <tt class="docutils literal">This command requires you to be logged in to <span class="pre">https://npm.pkg.github.com</span></tt>, 即使上面登陆步骤执行了)</p>
+<p>然后发布即可</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>publish
+
+npm<span class="w"> </span>notice
+npm<span class="w"> </span>notice<span class="w"> </span>📦<span class="w">  </span>@yanquer/yq-front-common@0.2.0
+npm<span class="w"> </span>notice<span class="w"> </span>Tarball<span class="w"> </span>Contents
+npm<span class="w"> </span>notice<span class="w"> </span>56B<span class="w"> </span>README.md
+npm<span class="w"> </span>notice<span class="w"> </span><span class="m">1</span>.9kB<span class="w"> </span>package.json
+...
+npm<span class="w"> </span>notice<span class="w"> </span>total<span class="w"> </span>files:<span class="w"> </span><span class="m">56</span>
+npm<span class="w"> </span>notice
+npm<span class="w"> </span>notice<span class="w"> </span>Publishing<span class="w"> </span>to<span class="w"> </span>https://npm.pkg.github.com<span class="w"> </span>with<span class="w"> </span>tag<span class="w"> </span>latest<span class="w"> </span>and<span class="w"> </span>default<span class="w"> </span>access
+</pre></div>
+</div>
+</div>
+<div class="section" id="github-4">
+<h2>增加自己github的私有仓库-方案二-多包模式</h2>
+<p>即在一个仓库中包含多个包, 然后发布到github的npm仓库中</p>
+<p>说明</p>
+<ul>
+<li><p class="first">只需要在根目录下添加一个 <cite>.npmrc</cite> 文件,</p>
+<p>内容如下:</p>
+<pre class="literal-block">
+registry=https://npm.pkg.github.com/
+</pre>
+</li>
+</ul>
+<p>注意一定是 <cite>registry</cite> 不要写成安装时候用的 <cite>&#64;yanquer:registry</cite> 的格式, 否则会识别用户信息错误</p>
+<p>根目录的package.json中设置工作空间</p>
+<div class="highlight"><pre><span></span><span class="nt">&quot;workspaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;packages/*&quot;</span>
+<span class="p">]</span>
+</pre></div>
+<p>每个包中设置单独的package.json记得设置发布地址</p>
+<div class="highlight"><pre><span></span><span class="nt">&quot;publishConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://npm.pkg.github.com/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+<p>发布可以单独进入每一个包然后执行</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>publish
+</pre></div>
+<p>或者批量发布</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>publish<span class="w"> </span>--workspaces
+</pre></div>
+<p>目前github上的包可以在这里查看</p>
+<div class="figure">
+<img alt="github上的包" src="doc-raw/resources/images/2025-04-10-11-14-49.png" style="width: 480px;" />
+</div>
+</div>
 
 								</article>
 						</div>
@@ -189,6 +319,54 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#github">
+    增加github的开源库
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#github-1">
+    增加自己github的私有仓库-方案一
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#github-2">
+    增加自己github的私有仓库-方案二
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#github-3">
+      github权限配置
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#npm">
+      npm包创建
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#github-4">
+    增加自己github的私有仓库-方案二-多包模式
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -206,27 +384,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

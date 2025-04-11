@@ -176,11 +176,64 @@
 <span class="w">    </span><span class="c1">// sourcemap: true // 生成 source map 文件，方便调试</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="nx">resolve</span><span class="p">(),</span><span class="w"> </span><span class="c1">// 解析外部模块</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(),</span><span class="w"> </span><span class="c1">// 解析外部模块, 即打包的时候把外部模块一起打包</span>
 <span class="w">    </span><span class="nx">commonjs</span><span class="p">(),</span><span class="w"> </span><span class="c1">// 转换 CommonJS 模块</span>
 <span class="w">    </span><span class="c1">// 去除注释等</span>
 <span class="w">    </span><span class="nx">cleanup</span><span class="p">(),</span>
 <span class="w">    </span><span class="c1">// terser(), // 生产环境压缩代码</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">};</span>
+</pre></div>
+<p>format支持的格式</p>
+<ul class="simple">
+<li>amd: Asynchronous Module Definition</li>
+<li>cjs: CommonJS</li>
+<li>es: ES Module</li>
+<li>iife: Immediately Invoked Function Expression</li>
+<li>umd: Universal Module Definition</li>
+</ul>
+<p>不同格式区别可参考</p>
+<ul class="simple">
+<li>:<a class="reference external" href="/yq-docs-front-end-Conceptual-between-cjs-and-esm.html">ESM与CJS区别</a></li>
+<li>:<a class="reference external" href="/yq-docs-front-end-Conceptual-package-target-difference.html">打包生成目标区别</a></li>
+</ul>
+</div>
+<div class="section" id="js">
+<h2>用例-生成js脚本</h2>
+<div class="highlight"><pre><span></span><span class="c1">// rollup.config.js</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nx">typescript</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@rollup/plugin-typescript&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">terser</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rollup-plugin-terser&#39;</span><span class="p">;</span>
+<span class="c1">// 处理css</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">postcss</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rollup-plugin-postcss&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./node/package-version.ts&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 入口文件</span>
+<span class="w">  </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">file</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./.bin/package-version.js&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 输出文件路径和文件名</span>
+<span class="w">    </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cjs&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">banner</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#!/usr/bin/env node\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 添加 shebang 以便直接运行, 不添加运行时可能会报错</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">    </span><span class="nx">typescript</span><span class="p">({</span><span class="nx">tsconfig</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./tsconfig.json&#39;</span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">postcss</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">    </span><span class="c1">// resolve(),    // 解析外部模块</span>
+<span class="w">    </span><span class="c1">// commonjs(),   // 转换 CommonJS 模块</span>
+
+<span class="w">    </span><span class="c1">// cleanup(),    // 去除注释等, src 为 ts 代码时貌似无效</span>
+
+<span class="w">    </span><span class="nx">terser</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">compress</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">   </span><span class="c1">// 代码压缩</span>
+<span class="w">      </span><span class="nx">mangle</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">     </span><span class="c1">// 变量名混淆</span>
+<span class="w">      </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">    </span><span class="c1">// 去除注释</span>
+<span class="w">        </span><span class="nx">beautify</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">     </span><span class="c1">// 保持代码格式化，不压缩为一行</span>
+<span class="w">        </span><span class="nx">indent_level</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w">     </span><span class="c1">// 设置缩进级别，可选</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">};</span>
 </pre></div>
@@ -227,6 +280,11 @@ $<span class="w"> </span>rollup<span class="w"> </span>main.js<span class="w"> <
    </a>
   </li>
   <li class="toc-h0">
+   <a class="" href="#js">
+    用例-生成js脚本
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#cli">
     用例-cli
    </a>
@@ -256,27 +314,27 @@ $<span class="w"> </span>rollup<span class="w"> </span>main.js<span class="w"> <
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

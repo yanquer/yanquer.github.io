@@ -81,7 +81,7 @@
 					</div>
   <div class="row page-head page-article persistent">
     <div class="page-head-title">
-      <h2>node启动常见参数</h2>
+      <h2>node参数与环境选项</h2>
     </div>
     <div class="page-head-content">
       By
@@ -138,7 +138,7 @@
 										</div>
 
 										<div class="pennant pennant-alt date">2023-02-20</div>
-										<h2>node启动常见参数</h2>
+										<h2>node参数与环境选项</h2>
 
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
@@ -179,6 +179,39 @@
 <img alt="as you see" src="doc-raw/resources/images/2023-09-25-14-45-03.png" style="width: 480px;" />
 </div>
 </div>
+<div class="section" id="section-2">
+<h2>位置参数说明</h2>
+<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>node参数</li>
+<li>node命令行参数</li>
+</ul>
+</dd>
+</dl>
+<p>process.argv 可以获取到所有参数</p>
+<ul class="simple">
+<li>process.argv[0] : node的路径</li>
+<li>process.argv[1] : js文件的路径</li>
+<li>process.argv[2] : 第一个参数</li>
+<li>process.argv[3] : 第二个参数</li>
+<li>...</li>
+<li>process.argv[n] : 第n个参数</li>
+</ul>
+</div>
+<div class="section" id="section-3">
+<h2>环境选项</h2>
+<dl class="docutils">
+<dt>NODE_OPTIONS</dt>
+<dd><p class="first">用于设置node的环境变量</p>
+<p>比如以前node-14的项目, 现在用node-22跑可能会遇到报错 <tt class="docutils literal">opensslErrorStack: [&nbsp;&nbsp;&nbsp;&nbsp; 'error:03000086:digital envelope <span class="pre">routines::initialization</span> error',&nbsp;&nbsp;&nbsp;&nbsp; 'error:0308010C:digital envelope <span class="pre">routines::unsupported'</span>&nbsp;&nbsp; ],&nbsp;&nbsp; library: 'digital envelope routines',&nbsp;&nbsp; reason: 'unsupported',&nbsp;&nbsp; code: 'ERR_OSSL_EVP_UNSUPPORTED'</tt>
+因为两个版本的ssl策略不一样,
+这个时候可以使用以下命令来解决:</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">NODE_OPTIONS</span><span class="o">=</span>--openssl-legacy-provider
+</pre></div>
+</div></dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -208,6 +241,16 @@
     端口调试工具
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    位置参数说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    环境选项
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -233,27 +276,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

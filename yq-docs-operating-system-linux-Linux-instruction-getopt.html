@@ -146,16 +146,16 @@
 
 									</div>
 									<dl class="docutils">
-<dt>getopt选项字符串:</dt>
-<dd><p class="first">&quot;a:b:cd::e&quot;，这就是一个选项字符串。对应到命令行就是-a ,-b ,-c ,-d, -e 。
-冒号又是什么呢？ 冒号表示参数，
-一个冒号就表示这个选项后面必须带有参数（没有带参数会报错哦），
-但是这个参数可以和选项连在一起写，也可以用空格隔开，比如-a123 和-a   123（中间有空格） 都表示123是-a的参数；
-两个冒号的就表示这个选项的参数是可选的，即可以有参数，也可以没有参数，
-但要注意有参数时，参数与选项之间不能有空格（有空格会报错），这一点和一个冒号时是有区别的。</p>
-<p class="last">-o或--options选项后面是可接受的短选项，如ab:c::，表示可接受的短选项为-a -b -c，其中-a选项不接参数，-b选项后必须接参数，-c选项的参数为可选的
--l或--long选项后面是可接受的长选项，用逗号分开，冒号的意义同短选项。
--n选项后接选项解析错误时提示的脚本名字</p>
+<dt>getopt选项字符串</dt>
+<dd>&quot;a:b:cd::e&quot;，这就是一个选项字符串。对应到命令行就是-a ,-b ,-c ,-d, -e 。</dd>
+<dt>选项字符串-冒号</dt>
+<dd><p class="first">冒号表示参数，</p>
+<ul class="last simple">
+<li>不带冒号表示这个选项后面必须没有参数</li>
+<li>一个冒号就表示这个选项后面必须接参数，参数可以和选项连在一起写，也可以用空格隔开，比如 <cite>-aarg</cite> 和 <cite>-a arg</cite> （中间有空格） 都表示 <cite>arg</cite> 是 <cite>-a</cite> 的参数；</li>
+<li>两个冒号就表示这个选项的参数是可选的，即可以有参数，也可以没有参数.
+但要注意有参数时，参数与选项之间不能有空格（有空格会报错）, 比如 <cite>-aarg</cite> 。这一点和一个冒号时是有区别的。</li>
+</ul>
 </dd>
 </dl>
 <div class="section" id="section-1">
@@ -171,16 +171,19 @@
 <kbd><span class="option">-n</span></kbd></td>
 <td>指定一个程序，供getopt(3)函数输出错误信息时使用</td></tr>
 <tr><td class="option-group">
-<kbd><span class="option">-o</span></kbd></td>
+<kbd><span class="option">-o</span>, <span class="option">--options</span></kbd></td>
 <td>识别单字符的短选项</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-q</span></kbd></td>
 <td>禁止输出错误信息</td></tr>
 <tr><td class="option-group">
-<kbd><span class="option">-l</span></kbd></td>
-<td>识别多字符的长选项</td></tr>
+<kbd><span class="option">-l</span>, <span class="option">--long</span></kbd></td>
+<td>识别多字符的长选项, 多个用逗号分开</td></tr>
 </tbody>
 </table>
+<!-- -o或- -options选项后面是可接受的短选项，如ab:c:\:，表示可接受的短选项为-a -b -c，其中-a选项不接参数，-b选项后必须接参数，-c选项的参数为可选的 -->
+<!-- -l或- -long选项后面是可接受的长选项，用逗号分开，冒号的意义同短选项。 -->
+<!-- -n选项后接选项解析错误时提示的脚本名字 -->
 <p>自己写过的一个例子, <strong>至少需要一个短选项</strong>:</p>
 <pre class="literal-block">
 #sh ./test.sh -l --warn ww --error ee --info ii --fatal ff
@@ -468,27 +471,27 @@ other:<span class="w"> </span>eerrr<span class="w"> </span>rt
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

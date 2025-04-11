@@ -149,6 +149,7 @@
 <dt>相关资源</dt>
 <dd><ul class="first last simple">
 <li>npm地址: <a class="reference external" href="https://www.npmjs.com/package/jest">https://www.npmjs.com/package/jest</a></li>
+<li><a class="reference external" href="https://jestjs.io/zh-Hans/docs/configuration">Jest 配置</a></li>
 <li>官网: <a class="reference external" href="https://jestjs.io">https://jestjs.io</a></li>
 </ul>
 </dd>
@@ -172,6 +173,197 @@ npm i jest
 <li><cite>node</cite> 使用node环境</li>
 <li><cite>jsdom</cite> 使用浏览器环境</li>
 </ul>
+</div>
+<div class="section" id="section-2">
+<h2>配置(可选)</h2>
+<ul class="simple">
+<li><cite>testEnvironment</cite>: 测试环境, 默认为 <cite>jsdom</cite></li>
+<li><cite>testMatch</cite>: 测试文件匹配规则, 默认为 <cite>[&quot;**/__tests__/**/*.[jt]s?(x)&quot;, &quot;**/?(*.)+(spec|test).[tj]s?(x)&quot;]</cite></li>
+<li><cite>testPathIgnorePatterns</cite>: 忽略测试文件匹配规则, 默认为 <cite>[&quot;/node_modules/&quot;]</cite></li>
+<li><cite>transform</cite>: 转换器, 默认为 <cite>{ &quot;^.+\.jsx?$&quot;: &quot;babel-jest&quot; }</cite></li>
+<li><cite>transformIgnorePatterns</cite>: 忽略转换器匹配规则, 默认为 <cite>[&quot;/node_modules/&quot;]</cite></li>
+<li><cite>moduleFileExtensions</cite>: 模块文件扩展名, 默认为 <cite>[&quot;js&quot;, &quot;jsx&quot;, &quot;json&quot;, &quot;node&quot;]</cite></li>
+<li><cite>moduleNameMapper</cite>: 模块名称映射, 默认为 <cite>{}</cite></li>
+<li><cite>setupFilesAfterEnv</cite>: 测试环境初始化文件, 默认为 <cite>[]</cite></li>
+<li><cite>setupFiles</cite>: 测试环境初始化文件, 默认为 <cite>[]</cite></li>
+<li><cite>globalSetup</cite>: 全局初始化文件, 默认为 <cite>[]</cite></li>
+<li><cite>globalTeardown</cite>: 全局销毁文件, 默认为 <cite>[]</cite></li>
+<li><cite>coverageDirectory</cite>: 覆盖率报告目录, 默认为 <cite>coverage</cite></li>
+<li><cite>coveragePathIgnorePatterns</cite>: 覆盖率忽略文件匹配规则, 默认为 <cite>[&quot;/node_modules/&quot;]</cite></li>
+<li><cite>coverageReporters</cite>: 覆盖率报告格式, 默认为 <cite>[&quot;json&quot;, &quot;text&quot;, &quot;lcov&quot;, &quot;clover&quot;]</cite></li>
+<li><cite>coverageThreshold</cite>: 覆盖率阈值, 默认为 <cite>{}</cite></li>
+<li><cite>collectCoverage</cite>: 是否收集覆盖率, 默认为 <cite>false</cite></li>
+<li><cite>collectCoverageFrom</cite>: 收集覆盖率文件匹配规则, 默认为 <cite>[&quot;**/*.{js,jsx,ts,tsx}&quot;, &quot;!**/node_modules/**&quot;]</cite></li>
+<li><cite>collectCoverageOnlyFrom</cite>: 收集覆盖率文件匹配规则, 默认为 <cite>[]</cite></li>
+<li><cite>coverageProvider</cite>: 覆盖率提供者, 默认为 <cite>babel</cite></li>
+</ul>
+<div class="section" id="section-3">
+<h3>配置文件</h3>
+<p>配置文件支持js格式/ts格式/json文件, 也可以直接放在 <cite>package.json</cite> 中.</p>
+<div class="section" id="js">
+<h4>js文件</h4>
+</div>
+<div class="section" id="ts">
+<h4>ts文件</h4>
+<p>可以在 <cite>jest.config.ts</cite> 文件中添加以下配置(或者直接在 <cite>package.json</cite> 中添加):</p>
+<pre class="literal-block">
+import type {Config} from 'jest';
+import {defaults} from 'jest-config';
+
+export default async (): Promise&lt;Config&gt; =&gt; {
+  return {
+    moduleFileExtensions: [...defaults.moduleFileExtensions, 'mts'],
+    verbose: true,
+  };
+};
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>也支持 <cite>jest.config.json</cite> 文件</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;bail&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;verbose&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+<p>或者，可以在项目 <cite>package.json</cite> 里的 &quot;jest&quot; 键进行配置 Jest，如：</p>
+<div class="last"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jest&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;verbose&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="ts-1">
+<h2>ts支持</h2>
+<p>有两种方式</p>
+<ul class="simple">
+<li>使用 <cite>ts-jest</cite> 进行编译, 参考: <a class="reference external" href="/yq-docs-front-end-node-Three--party-library-ts-jest.html">ts-jest</a></li>
+<li>使用 <cite>babel</cite> 进行编译</li>
+</ul>
+<div class="section" id="babel">
+<h3>基于babel的配置</h3>
+<p>安装依赖</p>
+<div class="highlight"><pre><span></span>yarn<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </span>@babel/preset-typescript
+</pre></div>
+<p>在 <cite>babel.config.js</cite> 中添加以下配置:</p>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">presets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">[</span><span class="s1">&#39;@babel/preset-env&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">targets</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;current&#39;</span><span class="p">}}],</span>
+<span class="w">    </span><span class="s1">&#39;@babel/preset-typescript&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">};</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">由于Babel中的TypScript支持纯粹是转译，因此Jest不会在您的测试运行时对其进行类型检查。
+如果您想要这样做，您可以使用 <a class="reference external" href="/yq-docs-front-end-node-Three--party-library-ts-jest.html">ts-jest</a> ，或者只是单独运行TypScript编译器tsc（或作为构建过程的一部分）。</p>
+</div>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>可能遇到的报错</h2>
+<div class="section" id="jest-cannot-use-import-statement-outside-a-module">
+<h3>jest Cannot use import statement outside a module</h3>
+<div class="section" id="esm">
+<h4>情况1: 没有使用ESM外部模块</h4>
+<p>参考: <a class="reference external" href="https://segmentfault.com/q/1010000043021196">Jest - SyntaxError: 无法在模块外使用 import 语句</a></p>
+<p>没有使用ESM外部模块时, 多半就是是否配置 <cite>transform</cite></p>
+<p>检查jest.config.ts中配置项是否指定了ts文件的转译行为:</p>
+<pre class="literal-block">
+{
+  &quot;transform&quot;: {
+    &quot;^.+\\.tsx?$&quot;: &quot;ts-jest&quot;
+  }
+}
+</pre>
+<p>附 <cite>tsconfig.json</cite></p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es2016&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;commonjs&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;esModuleInterop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;forceConsistentCasingInFileNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strict&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;skipLibCheck&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;outDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dist&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="esm-1">
+<h4>情况2: 使用了ESM外部模块</h4>
+<p>比如, 使用了 <cite>chalk</cite> 模块会遇到:</p>
+<pre class="literal-block">
+node_modules/chalk/source/index.js:1
+  ({&quot;Object.&lt;anonymous&gt;&quot;:function(module,exports,require,__dirname,__filename,jest){import ansiStyles from '#ansi-styles';
+                                                                                    ^^^^^^
+
+  SyntaxError: Cannot use import statement outside a module
+import chalk from 'chalk'
+</pre>
+<p><cite>chalk5.x</cite> 已经全系列支持ESM了, 但是 <cite>jest</cite> 还不支持ESM模块, 可以选择降级到 <cite>4.x</cite> 的 <cite>commonjs</cite> 版本</p>
+<p>如果不想降级, 需要配置对 <cite>ESM</cite> 的支持,
+<cite>tsconfig.json</cite> 需要添加 <cite>module: &quot;ESNext&quot;</cite> 和 <cite>target: &quot;ES2020&quot;</cite> 选项 (ES系都行),</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 关键配置</span>
+<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES2020&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ESNext&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// node 项是为了编辑器能正常解析 node_modules 中的模块</span>
+<span class="w">    </span><span class="nt">&quot;moduleResolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// 关键配置结束</span>
+
+<span class="w">    </span><span class="nt">&quot;esModuleInterop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;forceConsistentCasingInFileNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strict&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;skipLibCheck&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;outDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dist&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<p><cite>jest.config.ts</cite> 需要配置</p>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="p">{</span><span class="nx">Config</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;jest&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Config</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// 关键配置：处理 ESM 模块（如 chalk 5+）</span>
+<span class="w">        </span><span class="nx">extensionsToTreatAsEsm</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;.ts&#39;</span><span class="p">],</span>
+<span class="w">        </span><span class="c1">// moduleNameMapper: {</span>
+<span class="w">        </span><span class="c1">//     &#39;^(\\.{1,2}/.*)\\.js$&#39;: &#39;$1&#39;,</span>
+<span class="w">        </span><span class="c1">//     &#39;#ansi-styles&#39;: &#39;&lt;rootDir&gt;/node_modules/chalk/source/vendor/ansi-styles/index.js&#39;</span>
+<span class="w">        </span><span class="c1">// },</span>
+
+<span class="w">        </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;^.+\.tsx?$&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ts-jest&quot;</span><span class="p">,{</span>
+<span class="w">                </span><span class="nx">useESM</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">  </span><span class="c1">// 启用 ESM 支持</span>
+<span class="w">                </span><span class="nx">isolatedModules</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">// 避免 TS 类型检查影响测试速度</span>
+<span class="w">            </span><span class="p">}],</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="c1">// 排除 node_modules，但允许转换 chalk</span>
+<span class="w">        </span><span class="c1">// transformIgnorePatterns: [</span>
+<span class="w">        </span><span class="c1">//     &#39;node_modules/(?!chalk/)&#39;</span>
+<span class="w">        </span><span class="c1">// ]</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Config</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+<p>另外, node启动时需要添加 <cite>--experimental-vm-modules</cite> 选项:</p>
+<pre class="literal-block">
+&quot;scripts&quot;: {
+  &quot;test&quot;: &quot;NODE_OPTIONS=--experimental-vm-modules jest&quot;
+},
+</pre>
+</div>
+</div>
 </div>
 
 								</article>
@@ -202,6 +394,66 @@ npm i jest
     环境配置
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    配置(可选)
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      配置文件
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#js">
+        js文件
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#ts">
+        ts文件
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#ts-1">
+    ts支持
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#babel">
+      基于babel的配置
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    可能遇到的报错
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#jest-cannot-use-import-statement-outside-a-module">
+      jest Cannot use import statement outside a module
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#esm">
+        情况1: 没有使用ESM外部模块
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#esm-1">
+        情况2: 使用了ESM外部模块
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -227,27 +479,27 @@ npm i jest
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Mar <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-js-select-node-content.html">JS选中节点内容</a></h3>
-											<p><p class="first last">JS选中节点内容</p>
+											<span class="date">Apr <strong>06</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
+											<p><p class="first last">husky</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-lofty.html">lofty</a></h3>
-											<p><p class="first last">lofty</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
+											<p><p class="first last">npm私有github仓库作为package</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-third-party-rodio.html">rodio</a></h3>
-											<p><p class="first last">rodio</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/kgmwasm</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Mar <strong>17</strong></span>
-											<h3><a href="yq-docs-rear-end-rust-tutorial-common-macro.html">常见宏</a></h3>
-											<p><p class="first last">常见宏</p>
+											<span class="date">Apr <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
+											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>
