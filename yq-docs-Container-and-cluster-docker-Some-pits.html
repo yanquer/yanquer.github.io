@@ -10,20 +10,21 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
 			<noscript>
-				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
-				<link rel="stylesheet" href="/theme/css/style.css" />
-				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
 			</noscript>
 
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
-		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -149,6 +150,83 @@
 <p>重启容器未解决.</p>
 <p>最后重启电脑解决了.</p>
 </div>
+<div class="section" id="macmacvlan">
+<h2>Mac下macvlan不可用</h2>
+<p>创建了一个network, (en0是mac无线网网卡)</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>--driver<span class="w"> </span>macvlan<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--subnet<span class="o">=</span><span class="m">192</span>.168.1.0/24<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--gateway<span class="o">=</span><span class="m">192</span>.168.1.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span><span class="nv">parent</span><span class="o">=</span>en0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>macvlan_network
+</pre></div>
+<p><cite>compose</cite> 版本创建network</p>
+<div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">your_service</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_image</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_container</span>
+<span class="w">    </span><span class="nt">dns</span><span class="p">:</span><span class="w">  </span><span class="c1"># 在这里设置DNS</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.4.4</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">macvlan_net</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.100</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">macvlan_net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">macvlan</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">parent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth0</span>
+<span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.1.0/24&quot;</span>
+<span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.1.1&quot;</span>
+</pre></div>
+<p>会遇到报错: <tt class="docutils literal">Error response from daemon: invalid subinterface vlan name en0, example formatting is eth0.10</tt></p>
+<p>搜了下, docker至今都不支持...</p>
+<dl class="docutils">
+<dt>参考:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/docker/for-mac/issues/3447">https://github.com/docker/for-mac/issues/3447</a></li>
+<li><a class="reference external" href="https://github.com/docker/for-mac/issues/3926">https://github.com/docker/for-mac/issues/3926</a></li>
+<li><a class="reference external" href="https://github.com/moby/libnetwork/issues/2614">https://github.com/moby/libnetwork/issues/2614</a></li>
+<li>官网教程 <a class="reference external" href="https://docs.docker.com/engine/network/tutorials/macvlan/#other-networking-tutorials">https://docs.docker.com/engine/network/tutorials/macvlan/#other-networking-tutorials</a>
+提到了只支持 <cite>windows</cite></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="machostip">
+<h2>Mac下host模式获取的ip错误</h2>
+<p><cite>Docker on macOS</cite> 实际上是运行在 <cite>Linux VM（vmnetd）</cite> 里，
+<cite>host</cite> 模式共享的是 <cite>VM</cite> 的网络，而不是物理 <cite>Mac</cite> 的。</p>
+<div class="highlight"><pre><span></span><span class="w"> </span><span class="c1"># 获取容器是否是host</span>
+<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>容器名<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>NetworkMode
+
+<span class="w"> </span><span class="c1"># 获取docker0的ip</span>
+<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>bridge<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;IPv4Address&quot;</span>
+
+<span class="w"> </span><span class="c1"># 获取host的ip</span>
+<span class="w"> </span>ifconfig<span class="w"> </span>en0<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inet
+
+<span class="w"> </span><span class="c1"># 获取host的ip</span>
+<span class="w"> </span>ifconfig<span class="w"> </span>en0<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inet6
+
+<span class="w"> </span><span class="c1"># 获取host的ip</span>
+<span class="w"> </span>ifconfig<span class="w"> </span>en0<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inet6<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span>
+
+查看容器<span class="w"> </span>IP（应该和宿主机一致）
+</pre></div>
+<div class="highlight"><pre><span></span><span class="c1"># 宿主机 IP</span>
+hostname<span class="w"> </span>-I
+
+<span class="c1"># 容器内 IP（应该和宿主机相同）</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>容器名<span class="w"> </span>hostname<span class="w"> </span>-I
+</pre></div>
+<p>在 <cite>macOS</cite> 上， <cite>host</cite> 模式的容器</p>
+<ul class="simple">
+<li><cite>IP</cite> = <cite>VM 的 IP`（如 `192.168.65.2</cite> ），不是 Mac 本身的 IP（如 <cite>192.168.1.100</cite> ）</li>
+</ul>
+</div>
 
 								</article>
 						</div>
@@ -178,6 +256,16 @@
     挂载本地卷不同步
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#macmacvlan">
+    Mac下macvlan不可用
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#machostip">
+    Mac下host模式获取的ip错误
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -203,27 +291,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>06</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
-											<p><p class="first last">husky</p>
+											<span class="date">May <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
+											<p><p class="first last">adrf</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
-											<p><p class="first last">npm私有github仓库作为package</p>
+											<span class="date">May <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
+											<p><p class="first last">magick</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/kgmwasm</p>
+											<span class="date">May <strong>07</strong></span>
+											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
+											<p><p class="first last">记录一次LCP问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/qmcwasm</p>
+											<span class="date">May <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
+											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>
@@ -310,16 +398,18 @@
 				<canvas id="universe" width="1312" height="880"></canvas>
 			</div>
 
-		<script src="/theme/js/jquery-3.7.1.min.js"></script>
-		<script src="/theme/js/jquery.dropotron.js"></script>
-		<script src="/theme/js/config.js"></script>
-		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
-		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
-		<script src="/theme/js/backloading.js"></script>
-		<script src="/theme/js/canvas/dark.js"></script>
-		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

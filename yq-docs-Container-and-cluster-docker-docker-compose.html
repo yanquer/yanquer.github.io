@@ -10,20 +10,21 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
 			<noscript>
-				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
-				<link rel="stylesheet" href="/theme/css/style.css" />
-				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
 			</noscript>
 
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
-		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -177,7 +178,7 @@ volumes:
 <div class="section" id="section-2">
 <h2>安装</h2>
 <p>可以直接去 github 下载: <a class="reference external" href="https://github.com/docker/compose/releases">https://github.com/docker/compose/releases</a></p>
-<p>其实现在, 如果是桌面端, 比如MacOS, 安装的 docker 图形界面就自带 docker-compose:</p>
+<p>其实现在, 如果是桌面端, 比如macOS, 安装的 docker 图形界面就自带 docker-compose:</p>
 <pre class="literal-block">
 ll /usr/local/bin/docker-compose
 lrwxr-xr-x&#64; 1 yanque  admin    62B Dec  6  2022 /usr/local/bin/docker-compose -&gt; /Applications/Docker.app/Contents/Resources/bin/docker-compose
@@ -325,7 +326,9 @@ docker-compose up -d
 <h2>yml 配置指令参考</h2>
 <dl class="docutils">
 <dt>version</dt>
-<dd>指定本 yml 依从的 compose 哪个版本制定的。</dd>
+<dd><p class="first">指定本 yml 依从的 compose 哪个版本制定的。</p>
+<p class="last">新版本不需要指定版本号，默认为 3.0。</p>
+</dd>
 <dt>build</dt>
 <dd><p class="first">指定为构建镜像上下文路径：</p>
 <p>例如 webapp 服务，指定为从上下文路径 ./dir/Dockerfile 所构建的镜像:</p>
@@ -773,7 +776,61 @@ services:
       - &quot;/localhost/data:/var/lib/postgresql/data&quot;
 </pre>
 </dd>
+<dt>extra_hosts</dt>
+<dd><p class="first">添加主机名到容器的 /etc/hosts 文件中:</p>
+<pre class="last literal-block">
+extra_hosts:
+  - &quot;somehost:162.242.195.82&quot;
+  - &quot;otherhost:50.31.209.229&quot;
+</pre>
+</dd>
+<dt>hostname</dt>
+<dd><p class="first">设置容器的主机名:</p>
+<pre class="last literal-block">
+hostname: my-emby-server
+</pre>
+</dd>
 </dl>
+<p>一个较完整配置emby的例子</p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">embyServer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emby/embyserver:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">embyServer</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span><span class="w">  </span><span class="c1"># 设置时区</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UID=1000</span><span class="w">          </span><span class="c1"># 宿主机的用户UID</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GID=1000</span><span class="w">          </span><span class="c1"># 宿主机的用户GID</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./config:/config</span><span class="w">   </span><span class="c1"># Emby配置目录, 这里可能会报错需要绝对路径</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./media:/media</span><span class="w">     </span><span class="c1"># 媒体文件目录</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8096:8096&quot;</span><span class="w">        </span><span class="c1"># Web UI 端口</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8920:8920&quot;</span><span class="w">        </span><span class="c1"># HTTPS 端口（可选）</span>
+<span class="w">    </span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span><span class="w">            </span><span class="c1"># 自定义DNS</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">macvlan_net</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.100</span><span class="w">  </span><span class="c1"># 指定固定IP（确保未被占用）</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">macvlan_net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">macvlan</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">parent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en0</span><span class="w">  </span><span class="c1"># 替换为你的物理网卡（ifconfig查看）</span>
+<span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.1.0/24&quot;</span><span class="w">  </span><span class="c1"># 子网掩码</span>
+<span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.1.1&quot;</span><span class="w">     </span><span class="c1"># 网关</span>
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>macvlan 仅支持 Linux</p>
+<p class="last">volumes最好使用绝对路径, 否则可能会报错 <tt class="docutils literal">service &quot;xxx&quot; refers to undefined volume conf: invalid compose project</tt></p>
+</div>
 <p>参考: <a class="reference external" href="https://www.runoob.com/docker/docker-compose.html">菜鸟教程</a></p>
 </div>
 <div class="section" id="yml-1">
@@ -887,27 +944,27 @@ services:
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>06</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
-											<p><p class="first last">husky</p>
+											<span class="date">May <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
+											<p><p class="first last">adrf</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
-											<p><p class="first last">npm私有github仓库作为package</p>
+											<span class="date">May <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
+											<p><p class="first last">magick</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/kgmwasm</p>
+											<span class="date">May <strong>07</strong></span>
+											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
+											<p><p class="first last">记录一次LCP问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/qmcwasm</p>
+											<span class="date">May <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
+											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>
@@ -994,16 +1051,18 @@ services:
 				<canvas id="universe" width="1312" height="880"></canvas>
 			</div>
 
-		<script src="/theme/js/jquery-3.7.1.min.js"></script>
-		<script src="/theme/js/jquery.dropotron.js"></script>
-		<script src="/theme/js/config.js"></script>
-		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
-		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
-		<script src="/theme/js/backloading.js"></script>
-		<script src="/theme/js/canvas/dark.js"></script>
-		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

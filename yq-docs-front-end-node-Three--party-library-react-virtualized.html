@@ -1,0 +1,482 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>react-virtualized</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 04 May 2025
+      , Category:
+	  <a href="category/qian-duan.html">前端</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/qian-duan.html">前端</a></li>
+													<li><a class="button button-alt" href="tag/node.html">Node</a></li>
+
+													<li><a class="button button-alt" href="tag/san-fang-ku.html">三方库</a></li>
+
+													<li><a class="button button-alt" href="tag/nodemo-kuai.html">Node模块</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2025-05-04</div>
+										<h2>react-virtualized</h2>
+
+										<span class="head-modify-time">修改于: 2025-05-04</span>
+
+									</div>
+									<p>基于React, 通过仅渲染大型数据集的一部分（仅足够填充视口）来工作。这有助于解决一些常见的性能瓶颈：</p>
+<ul class="simple">
+<li>它减少了渲染初始视图和处理更新所需的工作量（和时间）。</li>
+<li>它通过避免DOM节点的过度分配来减少内存占用。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>有一个类似组件 :<a class="reference external" href="/yq-docs-front-end-node-Three--party-library-react-window.html">react-window</a> ,
+是 react-virtualized 的一个轻量级替代品, 体积更小, 性能更好, API 更简单。</p>
+<p class="last">作者是同一个, 太复杂所以重开了一个</p>
+</div>
+<dl class="docutils">
+<dt>相关资源:</dt>
+<dd><ul class="first last simple">
+<li>npm地址: <a class="reference external" href="https://www.npmjs.com/package/react-virtualized">https://www.npmjs.com/package/react-virtualized</a></li>
+<li>GitHub地址: <a class="reference external" href="https://github.com/bvaughn/react-virtualized">https://github.com/bvaughn/react-virtualized</a></li>
+</ul>
+</dd>
+</dl>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="c1"># Yarn</span>
+yarn<span class="w"> </span>add<span class="w"> </span>react-virtualized
+
+<span class="c1"># NPM</span>
+npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>react-virtualized
+</pre></div>
+<div class="section" id="section-1">
+<h2>使用</h2>
+<p>一个封装的使用</p>
+<div class="highlight"><pre><span></span>import React, {ReactNode} from &#39;react&#39;;
+import { Column, Table, TableCellProps, TableHeaderProps } from &#39;react-virtualized&#39;;
+import &#39;react-virtualized/styles.css&#39;;
+
+interface IRcvVirtualTableProps&lt;T&gt; {
+    dataSource: T[]
+    // 表格的表头字符串列表
+    headCell: {label: string, dataKey: string, width: number}[]
+
+    tableHeight?: number
+    tableWidth?: number
+    // 行高
+    rowHeight?: number
+    headerHeight?: number
+
+    renderHeaderByKey?: (label: string | ReactNode, key: string) =&gt; ReactNode
+    renderCellByKey?: (val: T, idx: number, key: string) =&gt; ReactNode
+}
+
+export class RcvVirtualTable&lt;T&gt; extends React.Component&lt;IRcvVirtualTableProps&lt;T&gt;, any&gt; {
+
+    protected rendHeader(header: TableHeaderProps): ReactNode{
+        const {renderHeaderByKey} = this.props
+
+        if (renderHeaderByKey){
+            return renderHeaderByKey(header.label, header.dataKey)
+        }
+
+        return &lt;div className={&quot;h-[44px] w-[100px]&quot;}&gt;
+            {header.label}
+        &lt;/div&gt;
+    }
+    protected renderCell = (cell: TableCellProps): ReactNode =&gt; {
+        // Logger.debug(&quot;cell.cellData, &quot;, cell)
+
+        const {renderCellByKey} = this.props
+
+        const {dataKey, rowIndex} = cell
+        const rawData: any = cell.rowData as T;
+
+        if (renderCellByKey) {
+            return renderCellByKey(rawData, rowIndex, dataKey)
+        }
+
+        return &lt;div className={&quot;h-[64px] w-[200px]&quot;}&gt;
+            {rawData[dataKey]}
+        &lt;/div&gt;
+    }
+
+    render() {
+        const {dataSource, headCell,
+            tableHeight=600,
+            tableWidth=800,
+            headerHeight=44,
+            rowHeight=64} = this.props
+
+        return (
+            &lt;div style={{ height: &#39;100vh&#39; }}&gt;
+                {/*&lt;h2&gt;虚拟滚动表格示例 (共 {dataSource.length} 条数据)&lt;/h2&gt;*/}
+
+                &lt;Table
+                    width={tableWidth}          // 表格宽度
+                    height={tableHeight}         // 表格高度
+                    headerHeight={headerHeight}    // 表头高度
+                    rowHeight={rowHeight}       // 行高
+                    rowCount={dataSource.length} // 总行数
+                    rowGetter={({ index }) =&gt; dataSource[index]} // 获取行数据
+                    // rowStyle={{ borderBottom: &#39;1px solid #ddd&#39; }} // 行样式
+                &gt;
+                    {
+                        headCell.map((cell, i) =&gt; {
+                            return &lt;Column
+                                key={i}
+                                {...cell}
+                                headerRenderer={this.rendHeader.bind(this)}
+                                cellDataGetter={({rowData}) =&gt; rowData.index}
+                                cellRenderer={this.renderCell.bind(this)}
+                            /&gt;
+                        })
+                    }
+                &lt;/Table&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</pre></div>
+<p>此封装使用</p>
+<div class="highlight"><pre><span></span>// 示例数据
+const list_ = range(10000).map((_, index) =&gt; ({
+    id: index,
+    name: `用户 ${index}`,
+    email: `user${index}@example.com`,
+    age: Math.floor(Math.random() * 50) + 18,
+}));
+
+&lt;RcvVirtualTable
+    dataSource={list_}
+    headCell={[
+        {label: &quot;ID1&quot;, dataKey: &quot;id&quot;, width: 100},
+        {label: &quot;name1&quot;, dataKey: &quot;name&quot;, width: 200},
+        {label: &quot;email1&quot;, dataKey: &quot;email&quot;, width: 300},
+        {label: &quot;age1&quot;, dataKey: &quot;age&quot;, width: 100},
+    ]}
+/&gt;
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    使用
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">May <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
+											<p><p class="first last">adrf</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
+											<p><p class="first last">magick</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>07</strong></span>
+											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
+											<p><p class="first last">记录一次LCP问题</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
+											<p><p class="first last">react-virtualized</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

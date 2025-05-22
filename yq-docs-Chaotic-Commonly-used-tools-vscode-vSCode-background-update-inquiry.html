@@ -10,20 +10,21 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
 			<noscript>
-				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
-				<link rel="stylesheet" href="/theme/css/style.css" />
-				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
 			</noscript>
 
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
-		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -144,7 +145,7 @@
 
 									</div>
 									<p>因为想像vscode一样实现应用的后台无感更新, 所以clone下来vscode源码研究了这一部分.</p>
-<p>对于不同的系统版本, 实现的方式不同, 这里只讨论 windows 与 macos. linux看代码貌似没支持.</p>
+<p>对于不同的系统版本, 实现的方式不同, 这里只讨论 windows 与 macOS. linux看代码貌似没支持.</p>
 <div class="section" id="section-1">
 <h2>前置</h2>
 <table class="docutils field-list" frame="void" rules="none">
@@ -157,7 +158,7 @@
 </table>
 <p>vscode 事件, 组件等概念, 如果要介绍会导致篇幅太多, 故略过.</p>
 <p>如果需要自己构建, 国内目前只看到这一篇说明清楚了: <a class="reference external" href="https://blog.csdn.net/qq_38248561/article/details/129011139">打包VSCode源码为安装程序</a> , 其实源码仓库readme也有指引, 不过不是很明显.</p>
-<p>笔者使用macos, 最开始直接run的时候没成功, 后面就没管这个直接看代码, 再后面才找到要怎么构建.</p>
+<p>笔者使用macOS, 最开始直接run的时候没成功, 后面就没管这个直接看代码, 再后面才找到要怎么构建.</p>
 <p>更新模块的主要源码都在 <tt class="docutils literal">src/vs/platform/update</tt></p>
 <pre class="literal-block">
 yanque&#64;yanquedembp vscode-code % tree src/vs/platform/update
@@ -179,7 +180,7 @@ src/vs/platform/update
 <p>在 <tt class="docutils literal"><span class="pre">electron-main</span></tt> 下,</p>
 <ul class="simple">
 <li><tt class="docutils literal">abstractUpdateService.ts</tt> 定义了抽象模版, 后面三个都是继承此类.</li>
-<li><tt class="docutils literal">updateService.darwin.ts</tt> 是针对 macos 的实现</li>
+<li><tt class="docutils literal">updateService.darwin.ts</tt> 是针对 macOS 的实现</li>
 <li><tt class="docutils literal">updateService.linux.ts</tt> 是针对 linux 的实现</li>
 <li><tt class="docutils literal">updateService.win32.ts</tt> 是针对 windows 的实现</li>
 </ul>
@@ -452,7 +453,7 @@ pollUntil(() =&gt; mutex.isActive(readyMutexName))
 </div>
 </div>
 <div class="section" id="macos">
-<h2>macos无感更新</h2>
+<h2>macOS无感更新</h2>
 <p>使用了 <tt class="docutils literal">electron</tt> 下的 <tt class="docutils literal">autoUpdater</tt> 模块. 官网说明: <a class="reference external" href="https://www.electronjs.org/zh/docs/latest/api/auto-updater">autoUpdater</a></p>
 <p>应用其中部分:</p>
 <div class="topic">
@@ -580,7 +581,7 @@ pollUntil(() =&gt; mutex.isActive(readyMutexName))
   </li>
   <li class="toc-h0">
    <a class="" href="#macos">
-    macos无感更新
+    macOS无感更新
    </a>
   </li>
   <li class="toc-h0">
@@ -618,27 +619,27 @@ pollUntil(() =&gt; mutex.isActive(readyMutexName))
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>06</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
-											<p><p class="first last">husky</p>
+											<span class="date">May <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
+											<p><p class="first last">adrf</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
-											<p><p class="first last">npm私有github仓库作为package</p>
+											<span class="date">May <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
+											<p><p class="first last">magick</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/kgmwasm</p>
+											<span class="date">May <strong>07</strong></span>
+											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
+											<p><p class="first last">记录一次LCP问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/qmcwasm</p>
+											<span class="date">May <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
+											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>
@@ -725,16 +726,18 @@ pollUntil(() =&gt; mutex.isActive(readyMutexName))
 				<canvas id="universe" width="1312" height="880"></canvas>
 			</div>
 
-		<script src="/theme/js/jquery-3.7.1.min.js"></script>
-		<script src="/theme/js/jquery.dropotron.js"></script>
-		<script src="/theme/js/config.js"></script>
-		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
-		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
-		<script src="/theme/js/backloading.js"></script>
-		<script src="/theme/js/canvas/dark.js"></script>
-		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

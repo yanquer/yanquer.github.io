@@ -10,20 +10,21 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
 			<noscript>
-				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
-				<link rel="stylesheet" href="/theme/css/style.css" />
-				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
 			</noscript>
 
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
-		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -298,6 +299,45 @@ hello world!
 <strong>os.getppid()</strong><p></p>
 <p>返回父进程的进程ID。</p>
 </div>
+<div class="rst-function section" id="os.symlink(src, dst, target_is_directory=False)">
+<strong>os.symlink(src, dst, target_is_directory=False)</strong><p></p>
+<p>创建一个符号链接，指向 src 的路径，链接名为 dst。</p>
+<dl class="docutils">
+<dt>src</dt>
+<dd>源文件的路径。</dd>
+<dt>dst</dt>
+<dd>符号链接的名称。</dd>
+<dt>target_is_directory</dt>
+<dd>如果为 True，则表示源文件是一个目录。</dd>
+</dl>
+<p>注意如果使用 <cite>shutil.rmtree</cite> 删除, 会报错不能删除符号链接
+清除链接时建议使用 <cite>os.unlink</cite></p>
+</div>
+<div class="rst-function section" id="os.readlink(path)">
+<strong>os.readlink(path)</strong><p></p>
+<p>返回 path 的符号链接的目标路径。</p>
+<p>如果 path 不是符号链接，则抛出 OSError 异常。
+如果 path 是一个符号链接，则返回它所指向的路径。</p>
+</div>
+<div class="rst-function section" id="os.rename(src, dst)">
+<strong>os.rename(src, dst)</strong><p></p>
+<p>重命名文件或目录。</p>
+<dl class="docutils">
+<dt>src</dt>
+<dd>源文件或目录的路径。</dd>
+<dt>dst</dt>
+<dd>新的文件或目录的名称。</dd>
+</dl>
+<p>如果 dst 已经存在，则会覆盖它。</p>
+</div>
+<div class="rst-function section" id="os.unlink(path)">
+<strong>os.unlink(path)</strong><p></p>
+<p>删除文件或符号链接。</p>
+<dl class="docutils">
+<dt>path</dt>
+<dd>要删除的文件或符号链接的路径。</dd>
+</dl>
+</div>
 </div>
 
 								</article>
@@ -373,6 +413,22 @@ hello world!
      <a class="" href="#os.getppid()">
      </a>
     </li>
+    <li class="toc-h1">
+     <a class="" href="#os.symlink(src, dst, target_is_directory=False)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.readlink(path)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.rename(src, dst)">
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#os.unlink(path)">
+     </a>
+    </li>
    </ul>
   </li>
  </ul>
@@ -400,27 +456,27 @@ hello world!
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>06</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
-											<p><p class="first last">husky</p>
+											<span class="date">May <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
+											<p><p class="first last">adrf</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
-											<p><p class="first last">npm私有github仓库作为package</p>
+											<span class="date">May <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
+											<p><p class="first last">magick</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/kgmwasm</p>
+											<span class="date">May <strong>07</strong></span>
+											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
+											<p><p class="first last">记录一次LCP问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/qmcwasm</p>
+											<span class="date">May <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
+											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>
@@ -507,16 +563,18 @@ hello world!
 				<canvas id="universe" width="1312" height="880"></canvas>
 			</div>
 
-		<script src="/theme/js/jquery-3.7.1.min.js"></script>
-		<script src="/theme/js/jquery.dropotron.js"></script>
-		<script src="/theme/js/config.js"></script>
-		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
-		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
-		<script src="/theme/js/backloading.js"></script>
-		<script src="/theme/js/canvas/dark.js"></script>
-		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

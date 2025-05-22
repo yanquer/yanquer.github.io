@@ -10,20 +10,21 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
 			<noscript>
-				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
-				<link rel="stylesheet" href="/theme/css/style.css" />
-				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
 			</noscript>
 
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
-		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -145,7 +146,7 @@
 										<span class="head-modify-time">修改于: 2023-02-20</span>
 
 									</div>
-									<p>MacOS不像 Linux 有 <tt class="docutils literal">/etc/init.d/rc.local</tt>
+									<p>macOS不像 Linux 有 <tt class="docutils literal">/etc/init.d/rc.local</tt>
 以及 <tt class="docutils literal">service</tt> 的方式可以设置程序随机启动，
 而是使用 plist 文件管理.</p>
 <p>你可以写一个plist文件放到 <tt class="docutils literal">~/Library/Launch Agents/</tt> 下面，
@@ -169,7 +170,7 @@
 <p>这些配置文件由程序 <strong>launchctl</strong> 设置是否加载</p>
 <dl class="docutils">
 <dt>说明</dt>
-<dd><p class="first">launchctl 管理 MacOS 的启动脚本，控制启动计算机时需要开启的服务.
+<dd><p class="first">launchctl 管理 macOS 的启动脚本，控制启动计算机时需要开启的服务.
 也可以设置定时执行特定任务的脚本，就像Linux <a class="reference external" href="/yq-docs-operating-system-linux-Linux-instruction-crond.html">cron </a> 一样.</p>
 <p class="last">launchctl需要root权限。</p>
 </dd>
@@ -226,7 +227,7 @@ sudo launchctl unload -w [path/to/script]
 而Daemons文件夹下得plist是只要开机，可以不用登录就会被加载</li>
 </ul>
 </div>
-<p>参考: <a class="reference external" href="https://www.jianshu.com/p/baa23cc820d2">MacOS launchctl 启动进程控制</a></p>
+<p>参考: <a class="reference external" href="https://www.jianshu.com/p/baa23cc820d2">macOS launchctl 启动进程控制</a></p>
 </div>
 <div class="section" id="docker">
 <h2>用例-查找docker进程并关闭</h2>
@@ -296,27 +297,27 @@ $ launchctl stop com.docker.docker.2388 &amp;&amp; launchctl start com.docker.do
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>06</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
-											<p><p class="first last">husky</p>
+											<span class="date">May <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
+											<p><p class="first last">adrf</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
-											<p><p class="first last">npm私有github仓库作为package</p>
+											<span class="date">May <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
+											<p><p class="first last">magick</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/kgmwasm</p>
+											<span class="date">May <strong>07</strong></span>
+											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
+											<p><p class="first last">记录一次LCP问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/qmcwasm</p>
+											<span class="date">May <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
+											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>
@@ -403,16 +404,18 @@ $ launchctl stop com.docker.docker.2388 &amp;&amp; launchctl start com.docker.do
 				<canvas id="universe" width="1312" height="880"></canvas>
 			</div>
 
-		<script src="/theme/js/jquery-3.7.1.min.js"></script>
-		<script src="/theme/js/jquery.dropotron.js"></script>
-		<script src="/theme/js/config.js"></script>
-		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
-		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
-		<script src="/theme/js/backloading.js"></script>
-		<script src="/theme/js/canvas/dark.js"></script>
-		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {

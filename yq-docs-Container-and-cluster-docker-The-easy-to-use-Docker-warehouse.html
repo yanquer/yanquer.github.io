@@ -320,6 +320,87 @@ docker pull linuxserver/jellyfin
 </pre></div>
 </div></dd>
 </dl>
+<div class="section" id="section-1">
+<h3>开心版配置</h3>
+<div class="section" id="linux">
+<h4>linux与宿主机同网段</h4>
+<p>注意 macvlan 仅支持 Linux, <cite>compose</cite> 使用参考 <a class="reference external" href="/yq-docs-Container-and-cluster-docker-docker-compose.html">docker-compose</a></p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">embyServer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emby/embyserver:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">embyServer</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span><span class="w">  </span><span class="c1"># 设置时区</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UID=1000</span><span class="w">          </span><span class="c1"># 宿主机的用户UID</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GID=1000</span><span class="w">          </span><span class="c1"># 宿主机的用户GID</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./config:/config</span><span class="w">   </span><span class="c1"># Emby配置目录, 这里可能会报错需要绝对路径</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./media:/media</span><span class="w">     </span><span class="c1"># 媒体文件目录</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8096:8096&quot;</span><span class="w">        </span><span class="c1"># Web UI 端口</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8920:8920&quot;</span><span class="w">        </span><span class="c1"># HTTPS 端口（可选）</span>
+<span class="w">    </span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span><span class="w">            </span><span class="c1"># 自定义DNS</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">macvlan_net</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.100</span><span class="w">  </span><span class="c1"># 指定固定IP（确保未被占用）</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">macvlan_net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">macvlan</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">parent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en0</span><span class="w">  </span><span class="c1"># 替换为你的物理网卡（ifconfig查看）</span>
+<span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.1.0/24&quot;</span><span class="w">  </span><span class="c1"># 子网掩码</span>
+<span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;192.168.1.1&quot;</span><span class="w">     </span><span class="c1"># 网关</span>
+</pre></div>
+<p>可以这样查看配置的dns是否生效</p>
+<div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>embyServer<span class="w"> </span>cat<span class="w"> </span>/etc/resolv.conf
+</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">volumes最好使用绝对路径, 否则可能会报错 <tt class="docutils literal">service &quot;embyServer&quot; refers to undefined volume conf: invalid compose project</tt></p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h4>桥接网络</h4>
+<div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">embyServerY</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amilys/embyserver</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">embyServerY</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">embyServerY</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span><span class="w">  </span><span class="c1"># 设置时区</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UID=1000</span><span class="w">          </span><span class="c1"># 宿主机的用户UID</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GID=1000</span><span class="w">          </span><span class="c1"># 宿主机的用户GID</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># - &quot;/Volumes/nvme14-176XXXX6374/Project/Docker/emby-happy-version-y/conf:/config&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/Volumes/nvme14-176XXXX6374/Project/Docker/emby-happy-version-y/conf2:/config&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/Volumes/sata15-176XXXX6374/下载/Ye/Ye-Movie:/mnt/share1&quot;</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8097:8096&quot;</span><span class="w">   </span><span class="c1"># Web UI</span>
+<span class="w">      </span><span class="c1"># - &quot;8920:8920&quot;   # HTTPS (可选)</span>
+<span class="w">      </span><span class="c1"># - &quot;1900:1900/UDP&quot;   # UDP (DLNA)</span>
+<span class="w">      </span><span class="c1"># - &quot;7359:7359/UDP&quot;   # UDP (服务发现)</span>
+<span class="w">    </span><span class="c1"># network_mode: host  # 直接使用宿主机网络, mac上还是vm的, 不行...</span>
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h4>宿主机与容器通信（可选）</h4>
+<p>默认情况下，宿主机无法直接访问 macvlan 容器。
+要解决这个问题，可以在宿主机上创建一个 macvlan 接口：</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>macvlan_host<span class="w"> </span>link<span class="w"> </span>en0<span class="w"> </span><span class="nb">type</span><span class="w"> </span>macvlan<span class="w"> </span>mode<span class="w"> </span>bridge
+sudo<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">192</span>.168.1.200/24<span class="w"> </span>dev<span class="w"> </span>macvlan_host<span class="w">  </span><span class="c1"># 使用同子网下的另一个IP</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>macvlan_host<span class="w"> </span>up
+</pre></div>
+</div>
+</div>
 </div>
 
 								</article>
@@ -359,6 +440,30 @@ docker pull linuxserver/jellyfin
    <a class="" href="#emby">
     emby
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-1">
+      开心版配置
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#linux">
+        linux与宿主机同网段
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#section-2">
+        桥接网络
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#section-3">
+        宿主机与容器通信（可选）
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -385,6 +490,18 @@ docker pull linuxserver/jellyfin
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">Apr <strong>10</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-howler.html">howler</a></h3>
+											<p><p class="first last">howler</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Apr <strong>08</strong></span>
+											<h3><a href="yq-docs-front-end-question-tsx-generic-syntax.html">tsx的泛型语法</a></h3>
+											<p><p class="first last">tsx的泛型语法</p>
+</p>
+										</li>
+										<li>
 											<span class="date">Apr <strong>06</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
 											<p><p class="first last">husky</p>
@@ -394,18 +511,6 @@ docker pull linuxserver/jellyfin
 											<span class="date">Apr <strong>04</strong></span>
 											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
 											<p><p class="first last">npm私有github仓库作为package</p>
-</p>
-										</li>
-										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/kgmwasm</p>
-</p>
-										</li>
-										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/qmcwasm</p>
 </p>
 										</li>
 									</ul>

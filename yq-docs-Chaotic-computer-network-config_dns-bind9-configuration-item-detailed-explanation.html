@@ -1,0 +1,737 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme/css/style.css" />
+				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme/css/alabaster.css" />
+		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>BIND9配置项详细说明</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 12 April 2025
+      , Category:
+	  <a href="category/ji-suan-ji-wang-luo.html">计算机网络</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/ji-suan-ji-wang-luo.html">计算机网络</a></li>
+													<li><a class="button button-alt" href="tag/config_dns.html">Config_dns</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2025-04-12</div>
+										<h2>BIND9配置项详细说明</h2>
+
+										<span class="head-modify-time">修改于: 2025-04-12</span>
+
+									</div>
+									<div class="section" id="section-1">
+<h2>主配置文件结构</h2>
+<p>主要配置文件通常位于 <cite>/etc/bind/</cite></p>
+<ul class="simple">
+<li>named.conf - 主配置文件</li>
+<li>named.conf.options - 全局选项</li>
+<li>named.conf.local - 本地区域定义</li>
+<li>named.conf.default-zones - 默认区域(如localhost、根提示等)</li>
+</ul>
+<div class="section" id="named-conf-options">
+<h3>named.conf.options</h3>
+<p>最重要的全局选项配置文件</p>
+<div class="highlight"><pre><span></span>options<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span>基本设置
+<span class="w">    </span>directory<span class="w"> </span><span class="s2">&quot;/var/cache/bind&quot;</span><span class="p">;</span><span class="w">    </span><span class="c1"># 工作目录</span>
+<span class="w">    </span>pid-file<span class="w"> </span><span class="s2">&quot;/var/run/named/named.pid&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1"># PID文件位置</span>
+<span class="w">    </span>statistics-file<span class="w"> </span><span class="s2">&quot;/var/log/named.stats&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1"># 统计文件</span>
+
+<span class="w">    </span>//<span class="w"> </span>监听设置
+<span class="w">    </span>listen-on<span class="w"> </span><span class="o">{</span><span class="w"> </span>any<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w">             </span><span class="c1"># 监听所有IPv4接口</span>
+<span class="w">    </span>listen-on-v6<span class="w"> </span><span class="o">{</span><span class="w"> </span>any<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w">          </span><span class="c1"># 监听所有IPv6接口</span>
+
+<span class="w">    </span>//<span class="w"> </span>访问控制
+<span class="w">    </span>allow-query<span class="w"> </span><span class="o">{</span><span class="w"> </span>any<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w">           </span><span class="c1"># 允许查询的客户端</span>
+<span class="w">    </span>allow-recursion<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="m">192</span>.168.1.0/24<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="c1"># 允许递归查询的客户端</span>
+<span class="w">    </span>allow-transfer<span class="w"> </span><span class="o">{</span><span class="w"> </span>none<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w">       </span><span class="c1"># 限制区域传输</span>
+
+<span class="w">    </span>//<span class="w"> </span>转发设置
+<span class="w">    </span>forwarders<span class="w"> </span><span class="o">{</span><span class="w">                    </span><span class="c1"># 设置上游DNS</span>
+<span class="w">        </span><span class="m">8</span>.8.8.8<span class="p">;</span>
+<span class="w">        </span><span class="m">8</span>.8.4.4<span class="p">;</span>
+<span class="w">    </span><span class="o">}</span><span class="p">;</span>
+<span class="w">    </span>forward<span class="w"> </span>only<span class="p">;</span><span class="w">                   </span><span class="c1"># 仅使用转发器</span>
+
+<span class="w">    </span>//<span class="w"> </span>DNSSEC设置
+<span class="w">    </span>dnssec-validation<span class="w"> </span>auto<span class="p">;</span><span class="w">         </span><span class="c1"># 自动DNSSEC验证</span>
+<span class="w">    </span>dnssec-enable<span class="w"> </span>yes<span class="p">;</span><span class="w">              </span><span class="c1"># 启用DNSSEC支持</span>
+
+<span class="w">    </span>//<span class="w"> </span>缓存设置
+<span class="w">    </span>max-cache-size<span class="w"> </span>256M<span class="p">;</span><span class="w">            </span><span class="c1"># 最大缓存大小</span>
+<span class="w">    </span>max-cache-ttl<span class="w"> </span><span class="m">3600</span><span class="p">;</span><span class="w">             </span><span class="c1"># 最大缓存TTL</span>
+
+<span class="w">    </span>//<span class="w"> </span>日志设置
+<span class="w">    </span>version<span class="w"> </span><span class="s2">&quot;not currently available&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1"># 隐藏BIND版本</span>
+<span class="o">}</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="named-conf-local">
+<h3>named.conf.local</h3>
+<p>定义本地区域和视图：</p>
+<div class="highlight"><pre><span></span>//<span class="w"> </span>主区域定义
+zone<span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">type</span><span class="w"> </span>master<span class="p">;</span><span class="w">                    </span><span class="c1"># 主服务器</span>
+<span class="w">    </span>file<span class="w"> </span><span class="s2">&quot;/etc/bind/db.example.com&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1"># 区域文件路径</span>
+<span class="w">    </span>allow-update<span class="w"> </span><span class="o">{</span><span class="w"> </span>key<span class="w"> </span><span class="s2">&quot;rndc-key&quot;</span><span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="c1"># 动态更新控制</span>
+<span class="w">    </span>allow-transfer<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="m">192</span>.168.1.2<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="c1"># 从服务器IP</span>
+<span class="w">    </span>notify<span class="w"> </span>yes<span class="p">;</span><span class="w">                     </span><span class="c1"># 启用区域变更通知</span>
+<span class="o">}</span><span class="p">;</span>
+
+//<span class="w"> </span>从区域定义
+zone<span class="w"> </span><span class="s2">&quot;example.org&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">type</span><span class="w"> </span>slave<span class="p">;</span><span class="w">                     </span><span class="c1"># 从服务器</span>
+<span class="w">    </span>file<span class="w"> </span><span class="s2">&quot;slave/db.example.org&quot;</span><span class="p">;</span><span class="w">    </span><span class="c1"># 区域文件保存位置</span>
+<span class="w">    </span>masters<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="m">192</span>.168.1.1<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w">      </span><span class="c1"># 主服务器IP</span>
+<span class="o">}</span><span class="p">;</span>
+
+//<span class="w"> </span>反向解析区域
+zone<span class="w"> </span><span class="s2">&quot;1.168.192.in-addr.arpa&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">type</span><span class="w"> </span>master<span class="p">;</span>
+<span class="w">    </span>file<span class="w"> </span><span class="s2">&quot;/etc/bind/db.192.168.1&quot;</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+
+//<span class="w"> </span>根提示区域<span class="o">(</span>必须<span class="o">)</span>
+zone<span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">type</span><span class="w"> </span>hint<span class="p">;</span>
+<span class="w">    </span>file<span class="w"> </span><span class="s2">&quot;/etc/bind/db.root&quot;</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>区域文件格式说明</h2>
+<p>区域文件(如db.example.com)包含资源记录：</p>
+<div class="highlight"><pre><span></span><span class="nv">$TTL</span><span class="w"> </span><span class="m">86400</span><span class="w">                      </span><span class="c1"># 默认TTL值</span>
+@<span class="w">       </span>IN<span class="w"> </span>SOA<span class="w">  </span>ns1.example.com.<span class="w"> </span>admin.example.com.<span class="w"> </span><span class="o">(</span>
+<span class="w">                </span><span class="m">2024041801</span><span class="w">      </span><span class="p">;</span><span class="w"> </span>序列号
+<span class="w">                </span><span class="m">3600</span><span class="w">            </span><span class="p">;</span><span class="w"> </span>刷新时间<span class="o">(</span>秒<span class="o">)</span>
+<span class="w">                </span><span class="m">900</span><span class="w">             </span><span class="p">;</span><span class="w"> </span>重试间隔
+<span class="w">                </span><span class="m">604800</span><span class="w">          </span><span class="p">;</span><span class="w"> </span>过期时间
+<span class="w">                </span><span class="m">86400</span><span class="w"> </span><span class="o">)</span><span class="w">         </span><span class="p">;</span><span class="w"> </span>最小TTL
+
+<span class="p">;</span><span class="w"> </span>名称服务器记录,<span class="w"> </span>即nameserver
+<span class="w">        </span>IN<span class="w"> </span>NS<span class="w">   </span>ns1.example.com.
+<span class="w">        </span>IN<span class="w"> </span>NS<span class="w">   </span>ns2.example.com.
+
+<span class="p">;</span><span class="w"> </span>邮件交换记录
+<span class="w">        </span>IN<span class="w"> </span>MX<span class="w"> </span><span class="m">10</span><span class="w"> </span>mail.example.com.
+
+<span class="p">;</span><span class="w"> </span>A<span class="w"> </span>记录<span class="o">(</span>主机记录<span class="o">)</span>
+ns1<span class="w">     </span>IN<span class="w"> </span>A<span class="w">    </span><span class="m">192</span>.168.1.1
+ns2<span class="w">     </span>IN<span class="w"> </span>A<span class="w">    </span><span class="m">192</span>.168.1.2
+www<span class="w">     </span>IN<span class="w"> </span>A<span class="w">    </span><span class="m">192</span>.168.1.10
+mail<span class="w">    </span>IN<span class="w"> </span>A<span class="w">    </span><span class="m">192</span>.168.1.20
+
+<span class="p">;</span><span class="w"> </span>CNAME<span class="w"> </span>记录<span class="o">(</span>别名<span class="o">)</span>
+web<span class="w">     </span>IN<span class="w"> </span>CNAME<span class="w"> </span>www
+
+<span class="p">;</span><span class="w"> </span>TXT记录
+<span class="w">        </span>IN<span class="w"> </span>TXT<span class="w">  </span><span class="s2">&quot;v=spf1 mx -all&quot;</span>
+
+<span class="p">;</span><span class="w"> </span>SRV记录
+_sip._tcp<span class="w"> </span>IN<span class="w"> </span>SRV<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">5060</span><span class="w"> </span>sipserver
+</pre></div>
+</div>
+<div class="section" id="section-3">
+<h2>反向区域文件</h2>
+<p>db.192.168.1 文件内容：</p>
+<div class="highlight"><pre><span></span><span class="nv">$TTL</span><span class="w"> </span><span class="m">86400</span>
+@<span class="w"> </span>IN<span class="w"> </span>SOA<span class="w"> </span>ns1.example.com.<span class="w"> </span>admin.example.com.<span class="w"> </span><span class="o">(</span>
+<span class="w">            </span><span class="m">2024041801</span>
+<span class="w">            </span><span class="m">3600</span>
+<span class="w">            </span><span class="m">900</span>
+<span class="w">            </span><span class="m">604800</span>
+<span class="w">            </span><span class="m">86400</span><span class="w"> </span><span class="o">)</span>
+
+<span class="w">      </span>IN<span class="w"> </span>NS<span class="w">   </span>ns1.example.com.
+<span class="w">      </span>IN<span class="w"> </span>NS<span class="w">   </span>ns2.example.com.
+
+<span class="m">1</span><span class="w">      </span>IN<span class="w"> </span>PTR<span class="w">  </span>ns1.example.com.
+<span class="m">2</span><span class="w">      </span>IN<span class="w"> </span>PTR<span class="w">  </span>ns2.example.com.
+<span class="m">10</span><span class="w">     </span>IN<span class="w"> </span>PTR<span class="w">  </span>www.example.com.
+<span class="m">20</span><span class="w">     </span>IN<span class="w"> </span>PTR<span class="w">  </span>mail.example.com.
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h2>关键配置指令</h2>
+<dl class="docutils">
+<dt>allow-query</dt>
+<dd>允许查询的客户端 <tt class="docutils literal">{ 192.168.1.0/24; }</tt></dd>
+<dt>allow-recursion</dt>
+<dd>允许递归查询的客户端 <tt class="docutils literal">{ localhost; 192.168.1.0/24; }</tt></dd>
+<dt>allow-transfer</dt>
+<dd>允许区域传输的服务器 <tt class="docutils literal">{ 192.168.1.2; }</tt></dd>
+<dt>allow-update</dt>
+<dd>允许动态更新的客户端 <tt class="docutils literal">{ key <span class="pre">&quot;rndc-key&quot;;</span> }</tt></dd>
+<dt>notify</dt>
+<dd>是否通知从服务器, yes 或 no</dd>
+<dt>also-notify</dt>
+<dd>额外通知的服务器 <tt class="docutils literal">{ 192.168.1.3; }</tt></dd>
+<dt>forwarders</dt>
+<dd>上游DNS服务器 <tt class="docutils literal">{ 8.8.8.8; 1.1.1.1; }</tt></dd>
+<dt>forward</dt>
+<dd><p class="first">转发模式</p>
+<ul class="last simple">
+<li>only(仅转发)</li>
+<li>first(先尝试转发)</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-5">
+<h2>安全最佳实践</h2>
+<p>限制访问：</p>
+<div class="highlight"><pre><span></span>allow-query<span class="w"> </span><span class="o">{</span><span class="w"> </span>localhost<span class="p">;</span><span class="w"> </span><span class="m">192</span>.168.1.0/24<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span>
+allow-recursion<span class="w"> </span><span class="o">{</span><span class="w"> </span>localhost<span class="p">;</span><span class="w"> </span><span class="m">192</span>.168.1.0/24<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span>
+allow-transfer<span class="w"> </span><span class="o">{</span><span class="w"> </span>none<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w">  </span><span class="c1"># 或仅限从服务器</span>
+</pre></div>
+<p>隐藏版本信息：</p>
+<div class="highlight"><pre><span></span>version<span class="w"> </span><span class="s2">&quot;not disclosed&quot;</span><span class="p">;</span>
+</pre></div>
+<p>使用TSIG密钥认证：</p>
+<div class="highlight"><pre><span></span>key<span class="w"> </span><span class="s2">&quot;rndc-key&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>algorithm<span class="w"> </span>hmac-sha256<span class="p">;</span>
+<span class="w">    </span>secret<span class="w"> </span><span class="s2">&quot;base64-encoded-key&quot;</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+</pre></div>
+<p>启用DNSSEC：</p>
+<div class="highlight"><pre><span></span>dnssec-enable<span class="w"> </span>yes<span class="p">;</span>
+dnssec-validation<span class="w"> </span>auto<span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="section-6">
+<h2>常用管理命令</h2>
+<p>检查配置语法：</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>named-checkconf
+</pre></div>
+<p>检查区域文件：</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>named-checkzone<span class="w"> </span>example.com<span class="w"> </span>/etc/bind/db.example.com
+</pre></div>
+<p>重新加载配置：</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>rndc<span class="w"> </span>reload
+</pre></div>
+<p>查看运行状态：</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>rndc<span class="w"> </span>status
+</pre></div>
+<p>清空缓存：</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>rndc<span class="w"> </span>flush
+</pre></div>
+</div>
+<div class="section" id="rndc">
+<h2>rndc</h2>
+<p>即 <cite>Remote Name Daemon Control</cite></p>
+<p>rndc 是 BIND9 DNS 服务器的远程管理工具，用于在不重启服务的情况下动态控制 named 守护进程（BIND9 的主进程）。
+它通过加密的 TCP 连接（默认端口 953）与 named 通信，允许管理员执行各种管理操作。</p>
+<div class="section" id="section-7">
+<h3>核心功能</h3>
+<ul class="simple">
+<li>重载配置  重新加载 named.conf 和更新的 zone 文件</li>
+<li>刷新缓存  清空 DNS 缓存</li>
+<li>动态更新  触发或冻结动态 DNS 更新</li>
+<li>状态查询  查看服务器运行状态</li>
+<li>日志控制  调整日志级别</li>
+<li>区域管理  手动同步或冻结 zone 数据</li>
+<li>安全控制  使用密钥认证，防止未授权访问</li>
+</ul>
+</div>
+<div class="section" id="section-8">
+<h3>常用命令</h3>
+<p>基本操作</p>
+<div class="highlight"><pre><span></span>rndc<span class="w"> </span>reload<span class="w">         </span><span class="c1"># 重新加载配置文件和 zone 数据</span>
+rndc<span class="w"> </span>reload<span class="w"> </span>&lt;zone&gt;<span class="w">  </span><span class="c1"># 仅重载指定的 zone（如 rndc reload example.com）</span>
+rndc<span class="w"> </span>reconfig<span class="w">       </span><span class="c1"># 仅重载 named.conf（不重新加载 zone 文件）</span>
+rndc<span class="w"> </span>flush<span class="w">          </span><span class="c1"># 清空 DNS 缓存</span>
+rndc<span class="w"> </span>status<span class="w">         </span><span class="c1"># 查看 BIND9 运行状态</span>
+rndc<span class="w"> </span>querylog<span class="w">       </span><span class="c1"># 开启/关闭查询日志（on/off）</span>
+</pre></div>
+<div class="section" id="section-9">
+<h4>动态更新管理</h4>
+<div class="highlight"><pre><span></span>rndc<span class="w"> </span>freeze<span class="w"> </span>&lt;zone&gt;<span class="w">        </span><span class="c1"># 冻结 zone，禁止动态更新</span>
+rndc<span class="w"> </span>thaw<span class="w"> </span>&lt;zone&gt;<span class="w">          </span><span class="c1"># 解冻 zone，允许动态更新</span>
+rndc<span class="w"> </span>sync<span class="w"> </span>-clean<span class="w"> </span>&lt;zone&gt;<span class="w">   </span><span class="c1"># 强制同步动态更新到 zone 文件</span>
+</pre></div>
+</div>
+<div class="section" id="section-10">
+<h4>调试 &amp; 日志</h4>
+<div class="highlight"><pre><span></span>rndc<span class="w"> </span>trace<span class="w"> </span><span class="m">3</span><span class="w">        </span><span class="c1"># 提高日志级别（1-3，数字越大越详细）</span>
+rndc<span class="w"> </span>notrace<span class="w">        </span><span class="c1"># 恢复默认日志级别</span>
+rndc<span class="w"> </span>dumpdb<span class="w"> </span>-cache<span class="w">  </span><span class="c1"># 将缓存内容导出到 /var/cache/bind/named_dump.db</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rndc-1">
+<h3>rndc 配置</h3>
+<div class="section" id="section-11">
+<h4>密钥认证</h4>
+<p>rndc 默认使用 /etc/bind/rndc.key 进行身份验证：</p>
+<div class="highlight"><pre><span></span>key<span class="w"> </span><span class="s2">&quot;rndc-key&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>algorithm<span class="w"> </span>hmac-sha256<span class="p">;</span>
+<span class="w">    </span>secret<span class="w"> </span><span class="s2">&quot;Base64-encoded-key&quot;</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+</pre></div>
+<p>生成新密钥：</p>
+<div class="highlight"><pre><span></span>rndc-confgen<span class="w"> </span>-a<span class="w"> </span>-k<span class="w"> </span>&lt;key-name&gt;<span class="w"> </span>-c<span class="w"> </span>/etc/bind/rndc.key
+</pre></div>
+</div>
+<div class="section" id="named-conf">
+<h4>named.conf 配置</h4>
+<p>确保 BIND9 允许 rndc 连接：</p>
+<div class="highlight"><pre><span></span>controls<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>inet<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>port<span class="w"> </span><span class="m">953</span>
+<span class="w">    </span>allow<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="m">127</span>.0.0.1<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="w"> </span>keys<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="s2">&quot;rndc-key&quot;</span><span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-12">
+<h3>常见问题</h3>
+<div class="section" id="rndc-connection-refused">
+<h4>rndc: connection refused</h4>
+<p>原因：BIND9 未运行或 rndc 配置错误。</p>
+<p>解决：</p>
+<div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>bind9
+named-checkconf
+</pre></div>
+</div>
+<div class="section" id="rndc-permission-denied">
+<h4>rndc: permission denied</h4>
+<p>原因：密钥不匹配或权限问题。</p>
+<p>解决：</p>
+<div class="highlight"><pre><span></span>chown<span class="w"> </span>bind:bind<span class="w"> </span>/etc/bind/rndc.key
+chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span>/etc/bind/rndc.key
+</pre></div>
+</div>
+<div class="section" id="rndc-reload">
+<h4>rndc reload 失败</h4>
+<p>原因：zone 文件语法错误。</p>
+<p>解决：</p>
+<div class="highlight"><pre><span></span>named-checkzone<span class="w"> </span>example.com<span class="w"> </span>/etc/bind/db.example.com
+</pre></div>
+</div>
+</div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    主配置文件结构
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#named-conf-options">
+      named.conf.options
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#named-conf-local">
+      named.conf.local
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    区域文件格式说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
+    反向区域文件
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    关键配置指令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    安全最佳实践
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
+    常用管理命令
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#rndc">
+    rndc
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-7">
+      核心功能
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-8">
+      常用命令
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#section-9">
+        动态更新管理
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#section-10">
+        调试 &amp; 日志
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#rndc-1">
+      rndc 配置
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#section-11">
+        密钥认证
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#named-conf">
+        named.conf 配置
+       </a>
+      </li>
+     </ul>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-12">
+      常见问题
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#rndc-connection-refused">
+        rndc: connection refused
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#rndc-permission-denied">
+        rndc: permission denied
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#rndc-reload">
+        rndc reload 失败
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">Apr <strong>12</strong></span>
+											<h3><a href="./yq-docs-operating-system-linux-Istoreos-tutorial-docker-add-trust-certificate.html">教程-访问其他smb服务器</a></h3>
+											<p><p class="first last">教程-访问其他smb服务器</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Apr <strong>12</strong></span>
+											<h3><a href="yq-docs-Chaotic-computer-network-config_dns-bind9-configuration-item-detailed-explanation.html">BIND9配置项详细说明</a></h3>
+											<p><p class="first last">BIND9配置项详细说明</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Apr <strong>12</strong></span>
+											<h3><a href="yq-docs-Container-and-cluster-docker-turorial-docker-clash-proxy.html">docker容器使用clash代理</a></h3>
+											<p><p class="first last">docker容器使用clash代理</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Apr <strong>10</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-howler.html">howler</a></h3>
+											<p><p class="first last">howler</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script src="/theme/js/jquery.dropotron.js"></script>
+		<script src="/theme/js/config.js"></script>
+		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme/js/backloading.js"></script>
+		<script src="/theme/js/canvas/dark.js"></script>
+		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

@@ -10,20 +10,21 @@
 			<title>书言</title>
 			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
-			<link rel="stylesheet" href="/theme/css/custom-pygment.css" />
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
 			<noscript>
-				<link rel="stylesheet" href="/theme/css/skel-noscript.css" />
-				<link rel="stylesheet" href="/theme/css/style.css" />
-				<link rel="stylesheet" href="/theme/css/style-desktop.css" />
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
 			</noscript>
 
 		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
 		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
-		<link rel="stylesheet" href="/theme/css/alabaster.css" />
-		<link rel="stylesheet" href="/theme/css/custom-alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
 		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
 		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
 		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
@@ -276,7 +277,7 @@
 </dl>
 </div>
 <div class="section" id="macos">
-<h2>关于MacOS签名</h2>
+<h2>关于macOS签名</h2>
 <p>签名分两步, 一个是对本地代码进行签名, 一个是用AppleId公证签名(以便发布到应用商店).</p>
 <p>对于没有去Apple申请开发者证书的情况来说, 我们只进行本地代码签名即可</p>
 <div class="section" id="section-1">
@@ -286,8 +287,8 @@
 <li><p class="first">如果你将打包好的包安装的本机 <cite>/Applications/app.app</cite>, 你的应用需要获取录屏权限,
 然后你手动在系统设置里将录屏权限赋予给 <cite>/Applications/app.app</cite>.</p>
 <p>你以为这就结束了? 不,
-当进行实际需要录屏操作时候, <cite>/Applications/app.app/Contents/MacOS/app</cite> 还会申请一次权限.</p>
-<p>为什么对 <cite>/Applications/app.app</cite> 的权限无法附给 <cite>/Applications/app.app/Contents/MacOS/app</cite>.
+当进行实际需要录屏操作时候, <cite>/Applications/app.app/Contents/macOS/app</cite> 还会申请一次权限.</p>
+<p>为什么对 <cite>/Applications/app.app</cite> 的权限无法附给 <cite>/Applications/app.app/Contents/macOS/app</cite>.
 这就是没有进行代码签名的问题了.
 如果进行了代码签名, 两者就是一体(这么理解)</p>
 </li>
@@ -328,6 +329,11 @@ export CSC_KEY_PASSWORD=12345
 <div class="last"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CSC_IDENTITY_AUTO_DISCOVERY</span><span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>electron-builder<span class="w"> </span>--config<span class="w"> </span>electron-builder.yml
 </pre></div>
 </div></div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">如果你的证书过期了, 打开APP会出现 <cite>恶意应用</cite> 的提示, 需要重新导出有效的证书.
+如果你使用的还是过期的证书, 代码签名的时候就会报错 <tt class="docutils literal">app: CSSMERR_TP_CERT_REVOKED</tt></p>
+</div>
 </div>
 <div class="section" id="appleid">
 <h3>AppleId公证签名</h3>
@@ -476,7 +482,7 @@ signature in &lt;...&gt; not valid for use in process: mapped file has no chash,
   </li>
   <li class="toc-h0">
    <a class="" href="#macos">
-    关于MacOS签名
+    关于macOS签名
    </a>
    <ul class="toc-tree visible">
     <li class="toc-h1">
@@ -540,27 +546,27 @@ signature in &lt;...&gt; not valid for use in process: mapped file has no chash,
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Apr <strong>06</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-husky.html">husky</a></h3>
-											<p><p class="first last">husky</p>
+											<span class="date">May <strong>18</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
+											<p><p class="first last">adrf</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-tutorial-npm-add-private-git-repo-package.html">npm私有github仓库作为package</a></h3>
-											<p><p class="first last">npm私有github仓库作为package</p>
+											<span class="date">May <strong>12</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
+											<p><p class="first last">magick</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/kgmwasm.html">&#64;xhacker/kgmwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/kgmwasm</p>
+											<span class="date">May <strong>07</strong></span>
+											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
+											<p><p class="first last">记录一次LCP问题</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Apr <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-@xhacker/qmcwasm.html">&#64;xhacker/qmcwasm</a></h3>
-											<p><p class="first last">&#64;xhacker/qmcwasm</p>
+											<span class="date">May <strong>04</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
+											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>
@@ -647,16 +653,18 @@ signature in &lt;...&gt; not valid for use in process: mapped file has no chash,
 				<canvas id="universe" width="1312" height="880"></canvas>
 			</div>
 
-		<script src="/theme/js/jquery-3.7.1.min.js"></script>
-		<script src="/theme/js/jquery.dropotron.js"></script>
-		<script src="/theme/js/config.js"></script>
-		<script src="/theme/skel-s0.4.8/skel.min.js"></script>
-		<script src="/theme/skel-s0.4.8/skel-panels.min.js"></script>
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
 		<!-- <script src="/theme/js/skel.min.js"></script>
 		<script src="/theme/js/skel-panels.min.js"></script> -->
-		<script src="/theme/js/backloading.js"></script>
-		<script src="/theme/js/canvas/dark.js"></script>
-		<script src="/theme/js/yq-blog-plugin.min.js"></script>
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
 <script type="text/javascript">
 	function addEvent() {
 		$("#toc-contents-title-text").click(function() {
