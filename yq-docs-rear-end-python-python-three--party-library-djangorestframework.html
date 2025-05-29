@@ -1330,6 +1330,102 @@ BookInfoSerializer<span class="o">()</span>:
 <span class="p">]</span>
 </pre></div>
 </div>
+<div class="section" id="rest-token">
+<h2>rest token</h2>
+<p>DjangoRestFramework提供了一个简单的token认证方式 ( api-token ) , 通过 <cite>rest_framework.authtoken</cite> 模块实现.</p>
+<p>特点</p>
+<ul class="simple">
+<li>存储在数据库中（ <cite>authtoken_token</cite> 表）</li>
+<li>用于用户身份验证（通常放在 <tt class="docutils literal">Authorization: Token <span class="pre">&lt;token-value&gt;</span></tt> 请求头中）</li>
+<li>需要 <cite>rest_framework.authtoken</cite> 在 <cite>INSTALLED_APPS</cite> 中</li>
+<li>通过 <tt class="docutils literal">Token.objects.get_or_create(user=user)</tt> 管理</li>
+</ul>
+<p>用例</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span>
+<span class="kn">from</span> <span class="nn">django.middleware.csrf</span> <span class="kn">import</span> <span class="n">get_token</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.views.decorators.csrf</span> <span class="kn">import</span> <span class="n">csrf_exempt</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span>
+<span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">AllowAny</span>
+
+<span class="kn">from</span> <span class="nn">core.common.django.common_django</span> <span class="kn">import</span> <span class="n">json_response</span>
+<span class="kn">from</span> <span class="nn">user.models</span> <span class="kn">import</span> <span class="n">MSProfile</span>
+
+
+<span class="c1"># 登陆的时候 是没有 CSRF token 的, 取消此接口 scrf 校验,</span>
+<span class="c1">#   前端 axios 同步配置: {withCredentials: false,}</span>
+<span class="nd">@csrf_exempt</span>
+<span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="nd">@permission_classes</span><span class="p">([</span><span class="n">AllowAny</span><span class="p">])</span>
+<span class="nd">@json_response</span>
+<span class="k">def</span> <span class="nf">login_in</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; 获取 csrftoken, 跨域这样获取貌似有点毛病... 后续需要加强安全性&quot;&quot;&quot;</span>
+
+    <span class="c1"># username: str, password: str,</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 数据库查询用户</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">csrf_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
+        <span class="n">token</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">key</span>
+        <span class="c1"># token=user.auth_token.key</span>
+        <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">get_token</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># 纯 api 调用不需要</span>
+        <span class="c1"># login(request, user)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">profile</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">msprofile</span>
+        <span class="k">except</span> <span class="n">MSProfile</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="n">profile</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+        <span class="s2">&quot;avatar&quot;</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">avatar</span> <span class="k">if</span> <span class="n">profile</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span>
+        <span class="s1">&#39;csrf_token&#39;</span><span class="p">:</span> <span class="n">csrf_token</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+<p>忽略掉 <tt class="docutils literal">csrf_token</tt> , 此处是无用的, 写出来是因为保留方便以后做不分离的东西.</p>
+<p><tt class="docutils literal">Token</tt> 是 <cite>rest_framework.authtoken</cite> 提供的模型类, 用于存储用户的token信息.
+需要同步在 <cite>settings.py</cite> 中添加</p>
+<div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># 其它应用</span>
+
+    <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.authtoken&#39;</span><span class="p">,</span>
+
+    <span class="c1"># 其它应用</span>
+
+<span class="p">]</span>
+
+<span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="c1"># 默认访问权限, 默认是 `rest_framework.permissions.IsAuthenticated`</span>
+    <span class="c1"># 跟此处说的token无关,</span>
+
+    <span class="c1"># Use Django&#39;s standard `django.contrib.auth` permissions,</span>
+    <span class="c1"># or allow read-only access for unauthenticated users.</span>
+    <span class="s1">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly&#39;</span>
+    <span class="p">],</span>
+
+
+    <span class="o">...</span>
+    <span class="s1">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.authentication.TokenAuthentication&#39;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="section" id="section-27">
 <h2>异步</h2>
 <p>参考: <a class="reference external" href="/yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></p>
@@ -1546,6 +1642,11 @@ BookInfoSerializer<span class="o">()</span>:
    </a>
   </li>
   <li class="toc-h0">
+   <a class="" href="#rest-token">
+    rest token
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#section-27">
     异步
    </a>
@@ -1575,27 +1676,27 @@ BookInfoSerializer<span class="o">()</span>:
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">May <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
+											<p><p class="first last">anser</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>22</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
+											<p><p class="first last">认证与token</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
+											<p><p class="first last">file-type</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>18</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
 											<p><p class="first last">adrf</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>12</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
-											<p><p class="first last">magick</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>07</strong></span>
-											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
-											<p><p class="first last">记录一次LCP问题</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
-											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>

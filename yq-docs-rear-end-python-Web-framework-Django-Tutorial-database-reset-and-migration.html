@@ -160,6 +160,39 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 </pre></div>
 <p>仅 <cite>flush</cite> , 提示确认删除数据时, 输入 <cite>yes</cite> 即可</p>
 <div class="section" id="section-2">
+<h2>迁移说明/迁移回滚</h2>
+<p>查看当前迁移情况</p>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>showmigrations
+</pre></div>
+<p>输出中存在 <tt class="docutils literal">[X]</tt> 表示已经迁移, <tt class="docutils literal">[ ]</tt> 表示未迁移</p>
+<p>一般在 <tt class="docutils literal">python manage.py makemigrations [模型]</tt> 会生成一个 <tt class="docutils literal">[ ]</tt> 的迁移文件,
+如果想不应用这个迁移文件, 删除对应的 <tt class="docutils literal">模型/migrations/迁移名称.py</tt> 文件即可,</p>
+<p>如果想回滚此应用的所有迁移</p>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span><span class="o">[</span>模型<span class="o">]</span><span class="w"> </span>zero
+
+<span class="c1"># 比如 回滚admin应用的迁移：</span>
+<span class="c1"># python manage.py migrate admin zero</span>
+
+<span class="c1"># 然后应用所有迁移：</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+</pre></div>
+<p>如果想回滚到某个迁移文件, 或者说回滚特定应用的最近一次迁移：</p>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>&lt;app_name&gt;<span class="w"> </span>&lt;previous_migration_name&gt;
+
+<span class="c1"># 例如，如果要回滚users应用的最近一次迁移：</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>users<span class="w"> </span>0002_previous_migration
+</pre></div>
+<div class="section" id="section-3">
+<h3>高级选项</h3>
+<p>查看迁移的SQL语句（了解将执行什么操作）：</p>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>sqlmigrate<span class="w"> </span>&lt;app_name&gt;<span class="w"> </span>&lt;migration_number&gt;
+</pre></div>
+<p>伪造回滚（只修改迁移记录而不实际修改数据库）：</p>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>--fake<span class="w"> </span>&lt;app_name&gt;<span class="w"> </span>&lt;previous_migration_number&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-4">
 <h2>误删迁移文件</h2>
 <p>有时候可能想当然的认为删除迁移文件, 跟数据库文件就行,
 其实不行, 会导致 <tt class="docutils literal">python manage.py makemigrations [模型]</tt> 出现 <tt class="docutils literal">No changes detected</tt> ,
@@ -199,6 +232,18 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
  <ul class="toc-tree visible">
   <li class="toc-h0">
    <a class="" href="#section-2">
+    迁移说明/迁移回滚
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      高级选项
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
     误删迁移文件
    </a>
   </li>
@@ -227,27 +272,27 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">May <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
+											<p><p class="first last">anser</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>22</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
+											<p><p class="first last">认证与token</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
+											<p><p class="first last">file-type</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>18</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
 											<p><p class="first last">adrf</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>12</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
-											<p><p class="first last">magick</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>07</strong></span>
-											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
-											<p><p class="first last">记录一次LCP问题</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
-											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>

@@ -159,6 +159,54 @@ animation 属性是 animation-name，animation-duration, animation-timing-functi
 animation-delay，animation-iteration-count，animation-direction，animation-fill-mode
 和 animation-play-state 属性的一个简写属性形式</blockquote>
 <p>使用此属性, 就不必为了动效写很复杂的JS代码.</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>animation 和 transition 的区别</p>
+<ul class="simple">
+<li>animation 可以在元素的多个属性上同时应用动画效果，而 transition 通常只针对单个属性。</li>
+<li>transition (过渡)：元素从一种状态平滑过渡到另一种状态</li>
+<li>animation (动画)：可以创建更复杂的动画序列，包含多个关键帧</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="13%" />
+<col width="44%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">特性</th>
+<th class="head">transition</th>
+<th class="head">animation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>触发方式</td>
+<td>需要状态变化（如:hover、类名改变）</td>
+<td>可以自动开始或通过触发</td>
+</tr>
+<tr><td>关键帧控制</td>
+<td>只有开始和结束两个状态</td>
+<td>可以通过&#64;keyframes定义多个关键帧</td>
+</tr>
+<tr><td>循环播放</td>
+<td>不能循环</td>
+<td>可以无限循环或指定次数</td>
+</tr>
+<tr><td>方向控制</td>
+<td>只能正向播放</td>
+<td>可以正向、反向或交替播放</td>
+</tr>
+<tr><td>暂停/恢复</td>
+<td>不能暂停</td>
+<td>可以使用animation-play-state控制</td>
+</tr>
+<tr><td>中间状态</td>
+<td>只能定义起始和结束状态</td>
+<td>可以定义任意数量的中间状态</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="css3-keyframes">
 <h2>CSS3 &#64;keyframes 规则</h2>
 <p>要创建 <cite>CSS3</cite> 动画，你需要了解 <cite>&#64;keyframes</cite> 规则。</p>
@@ -343,6 +391,34 @@ animation: none 0 ease 0 1 normal
 <span class="w">    </span><span class="kp">-webkit-</span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">myfirst</span><span class="w"> </span><span class="mi">5</span><span class="kt">s</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="mi">2</span><span class="kt">s</span><span class="w"> </span><span class="kc">infinite</span><span class="w"> </span><span class="kc">alternate</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
+<div class="section" id="animation-fill-mode">
+<h3>额外末尾属性 animation-fill-mode</h3>
+<p>animation-fill-mode 属性定义了动画在播放结束后，元素的样式应该是什么样子。
+它不是 animation 简写属性的标准参数之一，但仍然可以放在 animation 里。</p>
+<p>animation-fill-mode 属性可以设置为以下值：</p>
+<ul class="simple">
+<li>none: 默认值。动画结束后，元素的样式将恢复到动画开始前的样子。</li>
+<li>forwards: 动画结束后，元素的样式将保持在动画的最后一帧。</li>
+<li>backwards: 动画开始前，元素的样式将保持在动画的第一帧。</li>
+<li>both: 动画结束后，元素的样式将保持在动画的最后一帧，并在动画开始前保持在动画的第一帧。
+即同时应用 forwards 和 backwards 的效果</li>
+</ul>
+<p>比如元素的宽度从 <cite>100%</cite> 变成 <cite>0</cite> 后保持为 <cite>0</cite></p>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">element</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">shrinkWidth</span><span class="w"> </span><span class="mi">2</span><span class="kt">s</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="kc">forwards</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">shrinkWidth</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">to</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="transition">
 <h2>过渡(transition)效果</h2>
@@ -498,6 +574,13 @@ animation: none 0 ease 0 1 normal
    <a class="" href="#css3-2">
     CSS3的动画属性
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#animation-fill-mode">
+      额外末尾属性 animation-fill-mode
+     </a>
+    </li>
+   </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#transition">
@@ -534,27 +617,27 @@ animation: none 0 ease 0 1 normal
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">May <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
+											<p><p class="first last">anser</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>22</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
+											<p><p class="first last">认证与token</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
+											<p><p class="first last">file-type</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>18</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
 											<p><p class="first last">adrf</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>12</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
-											<p><p class="first last">magick</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>07</strong></span>
-											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
-											<p><p class="first last">记录一次LCP问题</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
-											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>

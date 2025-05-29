@@ -258,6 +258,34 @@
   height: 100%;
 }
 </pre>
+<div class="section" id="flex-1">
+<h3>flex 子元素内容溢出时的百分比宽度</h3>
+<p>存在以下样式</p>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">flex-container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">flex-item1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">flex-item2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>想要的效果是 flex-item1 占据剩下行的宽度,
+但是实际上当 flex-item1 的内容超过宽度时候, 内部元素设置的width无法正确获取百分比对应的宽度</p>
+<p>解决办法: <strong>设置最小宽度以允许该元素缩小</strong></p>
+<div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">flex-item1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">min-width</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c">/* 关键！允许flex item缩小 */</span>
+<span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span><span class="w"> </span><span class="c">/* 可选，防止内容溢出 */</span>
+<span class="p">}</span>
+</pre></div>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">min-width:</span> 0</tt> - 覆盖 Flex 项默认的 <tt class="docutils literal"><span class="pre">min-width:</span> auto</tt> ，允许项目缩小到小于其内容宽度</li>
+</ul>
+</div>
 </div>
 
 								</article>
@@ -287,6 +315,13 @@
    <a class="" href="#flex">
     flex
    </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#flex-1">
+      flex 子元素内容溢出时的百分比宽度
+     </a>
+    </li>
+   </ul>
   </li>
  </ul>
 </div>
@@ -313,27 +348,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">May <strong>25</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
+											<p><p class="first last">anser</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>22</strong></span>
+											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
+											<p><p class="first last">认证与token</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>20</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
+											<p><p class="first last">file-type</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>18</strong></span>
 											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
 											<p><p class="first last">adrf</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>12</strong></span>
-											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-magick.html">magick</a></h3>
-											<p><p class="first last">magick</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>07</strong></span>
-											<h3><a href="yq-docs-front-end-question-lcp.html">记录一次LCP问题</a></h3>
-											<p><p class="first last">记录一次LCP问题</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>04</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-react-virtualized.html">react-virtualized</a></h3>
-											<p><p class="first last">react-virtualized</p>
 </p>
 										</li>
 									</ul>
