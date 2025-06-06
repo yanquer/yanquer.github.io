@@ -593,6 +593,86 @@ next dev src/renderer
 </pre>
 <p>就好了...</p>
 </div>
+<div class="section" id="inject">
+<h3>无法识别属性装饰器&#64;inject</h3>
+<p>报错大致:</p>
+<pre class="literal-block">
+Found an &#64;inject decorator in a non setter property method
+</pre>
+<p>但是在vite产品中又没这个问题</p>
+<p>最终发现是当前项目使用的是 <cite>babel-loader</cite> 进行编译的,
+即使已经配置  <cite>babel-loader</cite> 的装饰器支持, 也还是存在这个毛病.</p>
+<p>无奈在原来的编译流程后增加了个 <cite>ts-loader</cite> 进行编译, 这样就可以了</p>
+<p>原来的webpack(部分)</p>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">rules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.(js|ts)x?$/</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;babel-loader&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">cacheDirectory</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="k">extends</span><span class="o">:</span><span class="w"> </span><span class="nx">getBabelConfig</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">exclude</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="sr">/node_modules/</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">cwd</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;renderer&#39;</span><span class="p">)],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+<p>新的webpack(部分)</p>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">rules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.(js|ts)x?$/</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;babel-loader&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">cacheDirectory</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="k">extends</span><span class="o">:</span><span class="w"> </span><span class="nx">getBabelConfig</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">exclude</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="sr">/node_modules/</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">cwd</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;renderer&#39;</span><span class="p">)],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// 解决默认的加载器不识别 const bindToDefaultContainer = &lt;T&gt;(arg: T){} 这种泛型语法</span>
+<span class="w">    </span><span class="nx">useTsLoader</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.([cm]?ts|tsx)$/</span><span class="p">,</span><span class="w"> </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ts-loader&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">allowTsInNodeModules</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+
+<span class="w">  </span><span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<div class="section" id="inject-1">
+<h3>继承的&#64;inject无法识别</h3>
+<p>是从 <cite>6.x</cite> 升级到 <cite>7.x</cite> 版本后出现的, 之前是可以的.</p>
+<p>以为是bug就提出 <a class="reference external" href="https://github.com/inversify/InversifyJS/issues/1817">https://github.com/inversify/InversifyJS/issues/1817</a> ,
+官方回复不是bug, 新版本就是这样设计的, 如果需要继承需要使用 <cite>&#64;injectFromBase</cite> 装饰器</p>
+<p>参考 <a class="reference external" href="https://inversify.io/docs/api/decorator/#injectfrombase">https://inversify.io/docs/api/decorator/#injectfrombase</a></p>
+<p>官方文档例子</p>
+<div class="highlight"><pre><span></span><span class="nx">type</span><span class="w"> </span><span class="nx">Weapon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">unknown</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">injectable</span><span class="p">()</span>
+<span class="kr">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">BaseSoldier</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">public</span><span class="w"> </span><span class="nx">weapon</span><span class="o">:</span><span class="w"> </span><span class="nx">Weapon</span><span class="p">;</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="err">@</span><span class="nx">inject</span><span class="p">(</span><span class="s1">&#39;Weapon&#39;</span><span class="p">)</span><span class="w"> </span><span class="nx">weapon</span><span class="o">:</span><span class="w"> </span><span class="nx">Weapon</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">weapon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">weapon</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="nx">injectable</span><span class="p">()</span>
+<span class="err">@</span><span class="nx">injectFromBase</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">extendConstructorArguments</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">extendProperties</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Soldier</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseSoldier</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="c1">// Returns a soldier with a weapon</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">soldier</span><span class="o">:</span><span class="w"> </span><span class="nx">Soldier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">Soldier</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 
 								</article>
@@ -762,6 +842,16 @@ next dev src/renderer
       nextjs协作不识别构造函数中的注解
      </a>
     </li>
+    <li class="toc-h1">
+     <a class="" href="#inject">
+      无法识别属性装饰器@inject
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#inject-1">
+      继承的@inject无法识别
+     </a>
+    </li>
    </ul>
   </li>
  </ul>
@@ -789,27 +879,27 @@ next dev src/renderer
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
+											<p><p class="first last">copyfiles</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
+											<p><p class="first last">next-transpile-modules</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>28</strong></span>
+											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
+											<p><p class="first last">macOS网线直连PC-Win11</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>25</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
 											<p><p class="first last">anser</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>22</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
-											<p><p class="first last">认证与token</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
-											<p><p class="first last">file-type</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
-											<p><p class="first last">adrf</p>
 </p>
 										</li>
 									</ul>

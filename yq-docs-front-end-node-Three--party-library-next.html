@@ -157,6 +157,36 @@
 <p>安装</p>
 <div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>next
 </pre></div>
+<div class="section" id="section-1">
+<h2>升级到15</h2>
+<p>参考: <a class="reference external" href="https://nextjs.org/blog/next-15#smooth-upgrades-with-nextcodemod-cli">https://nextjs.org/blog/next-15#smooth-upgrades-with-nextcodemod-cli</a></p>
+<blockquote>
+<div class="highlight"><pre><span></span>npx<span class="w"> </span>@next/codemod@canary<span class="w"> </span>upgrade<span class="w"> </span>latest
+</pre></div>
+</blockquote>
+</div>
+<div class="section" id="nextjscss">
+<h2>nextjs无法库中默认导入css</h2>
+<p>报错:</p>
+<pre class="literal-block">
+Global CSS cannot be imported from within node_modules.
+</pre>
+<div class="section" id="section-2">
+<h3>方案一</h3>
+<p>参考: <a class="reference external" href="https://github.com/vercel/next.js/discussions/27953#discussioncomment-3978605">https://github.com/vercel/next.js/discussions/27953#discussioncomment-3978605</a></p>
+<p>据说是 13 版本增加的 <cite>app/</cite> 目录可以支持,
+参照 <a class="reference external" href="https://nextjs.org/blog/next-13#new-app-directory-beta">https://nextjs.org/blog/next-13#new-app-directory-beta</a> ,
+不过暂时没看到完整的教程, 不知道跟原来的pages怎么一起用</p>
+<p>后面发现一个官方的使用教程: <a class="reference external" href="https://nextjs.org/docs/app/guides/migrating/app-router-migration">https://nextjs.org/docs/app/guides/migrating/app-router-migration</a> , 待测试</p>
+</div>
+<div class="section" id="section-3">
+<h3>方案二</h3>
+<p>使用 <cite>next-transpile-modules</cite> 模块, 见 :<a class="reference external" href="/yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></p>
+<p>比如</p>
+<div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">withTM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;next-transpile-modules&#39;</span><span class="p">)([</span><span class="s1">&#39;@shared/ui&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;@shared/utils&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -173,6 +203,44 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    升级到15
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#nextjscss">
+    nextjs无法库中默认导入css
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      方案一
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      方案二
+     </a>
+    </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -190,27 +258,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
+											<p><p class="first last">copyfiles</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
+											<p><p class="first last">next-transpile-modules</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>28</strong></span>
+											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
+											<p><p class="first last">macOS网线直连PC-Win11</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>25</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
 											<p><p class="first last">anser</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>22</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
-											<p><p class="first last">认证与token</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
-											<p><p class="first last">file-type</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
-											<p><p class="first last">adrf</p>
 </p>
 										</li>
 									</ul>

@@ -161,8 +161,9 @@
 <dl class="docutils">
 <dt>related_name</dt>
 <dd><p class="first">用于反向查询模型对象本身;</p>
-<p>默认值为 <cite>answer_set</cite>, 即模型名小写 + <cite>_set</cite></p>
-<p class="last">用于反向查询 <cite>Question</cite> 对应的 <cite>Answer</cite>, 比如 <tt class="docutils literal"><span class="pre">q=Question.objects.all().first();</span> q.answer_set.all()</tt> 表示查询问题一的所有答案.</p>
+<p>默认值为 <cite>answer_set</cite>, 即模型名小写 + <cite>_set</cite>;
+特殊情况, 如果是 <cite>OneToOneField</cite> 字段, 默认值直接是 <cite>模型名小写</cite>, 如 <cite>answer</cite></p>
+<p class="last">用于反向查询 <cite>Question</cite> 对应的 <cite>Answer</cite>, 比如 <tt class="docutils literal"><span class="pre">q=Question.objects.all().first();</span> _set.all()</tt> 表示查询问题一的所有答案.</p>
 </dd>
 <dt>related_query_name</dt>
 <dd><p class="first">用于反向查询模型对象的字段;</p>
@@ -173,6 +174,41 @@
 <p class="last">当 <cite>related_name</cite> 有手动设置时, <cite>related_query_name</cite> 会自动设置为 <cite>related_name</cite> 的值.</p>
 </dd>
 </dl>
+<div class="section" id="set">
+<h2>反向查询中 _set 的使用规则</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="25%" />
+<col width="27%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">关系类型</th>
+<th class="head">无 related_name</th>
+<th class="head">有 related_name</th>
+<th class="head">命名约定</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>ForeignKey</td>
+<td>使用 模型名小写_set</td>
+<td>使用 related_name 值</td>
+<td>使用复数形式 (answers)</td>
+</tr>
+<tr><td>ManyToManyField</td>
+<td>使用 模型名小写_set</td>
+<td>使用 related_name 值</td>
+<td>使用复数形式 (answers)</td>
+</tr>
+<tr><td>OneToOneField</td>
+<td>直接使用 模型名小写</td>
+<td>使用 related_name 值</td>
+<td>使用单数形式 (answer)</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 								</article>
 						</div>
@@ -189,6 +225,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#set">
+    反向查询中 _set 的使用规则
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -206,27 +263,27 @@
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
+											<p><p class="first last">copyfiles</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
+											<p><p class="first last">next-transpile-modules</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>28</strong></span>
+											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
+											<p><p class="first last">macOS网线直连PC-Win11</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>25</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
 											<p><p class="first last">anser</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>22</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
-											<p><p class="first last">认证与token</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
-											<p><p class="first last">file-type</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
-											<p><p class="first last">adrf</p>
 </p>
 										</li>
 									</ul>

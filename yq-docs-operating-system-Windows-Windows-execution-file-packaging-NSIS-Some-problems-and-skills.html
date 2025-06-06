@@ -554,6 +554,51 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 <span class="c">; WriteUninstaller &quot;$INSTDIR\uninstall.exe&quot;</span>
 </pre></div>
 </div>
+<div class="section" id="section-17">
+<h2>注册表值外部访问</h2>
+<dl class="docutils">
+<dt>相关链接</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="/yq-docs-operating-system-Windows-Windows-execution-file-packaging-NSIS-Common-header-file.html">常用头文件</a> - <tt class="docutils literal">WinMessages.nsh</tt> - <tt class="docutils literal">关于SendMessage卡死</tt></li>
+</ul>
+</dd>
+</dl>
+<p>比如在 <cite>PowerShell</cite> 或 <cite>cmd</cite> 中直接访问注册表值.</p>
+<p>以 <a class="reference internal" href="#section-16">注册表值的读写</a> 中的例子继续说明, 写入的位置是
+<tt class="docutils literal">KLM &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTONE ONE&quot;</tt></p>
+<p>你可能想到直接使用 <cite>reg query</cite> 命令来查询这个注册表值</p>
+<div class="highlight"><pre><span></span>reg<span class="w"> </span>query<span class="w"> </span><span class="s2">&quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTONE ONE&quot;</span><span class="w"> </span>/v<span class="w"> </span>DisplayVersion
+</pre></div>
+<p>但是实际上有可能是找不到的, 因为 <tt class="docutils literal">64位系统上的32位程序会被重定向到 <span class="pre">HKLM\Software\WOW6432Node\...</span></tt>,
+需要通过新的路径查询</p>
+<div class="highlight"><pre><span></span>reg<span class="w"> </span>query<span class="w"> </span><span class="s2">&quot;HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\TTONE ONE&quot;</span><span class="w"> </span>/v<span class="w"> </span>DisplayVersion
+</pre></div>
+<p>如果忘记名字可以模糊查询名字先</p>
+<blockquote>
+<div class="highlight"><pre><span></span>reg<span class="w"> </span>query<span class="w"> </span><span class="s2">&quot;HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall&quot;</span><span class="w"> </span>/s<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span>/i<span class="w"> </span><span class="s2">&quot;产品名&quot;</span>
+</pre></div>
+</blockquote>
+<p>如果需要删除此项注册表</p>
+<blockquote>
+<div class="highlight"><pre><span></span>reg<span class="w"> </span>delete<span class="w"> </span><span class="s2">&quot;HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\TTONE ONE&quot;</span><span class="w"> </span>/f
+</pre></div>
+</blockquote>
+<p>有时候产品名字会被编码为
+<tt class="docutils literal">{GUID}</tt>, 需要使用 <cite>PowerShell</cite> 来查询</p>
+<div class="highlight"><pre><span></span><span class="c1"># Get-ItemProperty -Path &quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot; | Where-Object { $_.DisplayName -like &quot;*TTONE ONE*&quot; }</span>
+
+<span class="c1"># 查找特定产品的卸载项</span>
+<span class="nv">$productName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;您的产品名称&quot;</span>
+Get-ChildItem<span class="w"> </span>HKLM:<span class="se">\S</span>oftware<span class="se">\M</span>icrosoft<span class="se">\W</span>indows<span class="se">\C</span>urrentVersion<span class="se">\U</span>ninstall<span class="w"> </span><span class="p">|</span><span class="w"> </span>ForEach-Object<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">$displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>Get-ItemProperty<span class="w"> </span><span class="nv">$_</span>.PSPath<span class="o">)</span>.DisplayName
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">(</span><span class="nv">$displayName</span><span class="w"> </span>-match<span class="w"> </span><span class="o">[</span>regex<span class="o">]</span>::Escape<span class="o">(</span><span class="nv">$productName</span><span class="o">))</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span>Write-Host<span class="w"> </span><span class="s2">&quot;GUID键名: </span><span class="k">$(</span><span class="nv">$_</span>.PSChildName<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">        </span>Write-Host<span class="w"> </span><span class="s2">&quot;显示名称: </span><span class="nv">$displayName</span><span class="s2">&quot;</span>
+<span class="w">        </span>Write-Host<span class="w"> </span><span class="s2">&quot;完整路径: </span><span class="k">$(</span><span class="nv">$_</span>.Name<span class="k">)</span><span class="s2">`n&quot;</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
 <div class="section" id="powershell">
 <h2>调用PowerShell脚本</h2>
 <p>以一个例子说明, 定义一个检查字符串是不是符合 <tt class="docutils literal"><span class="pre">^\d+\.\d+\.\d+</span></tt> 的正则模式</p>
@@ -719,6 +764,11 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
    </a>
   </li>
   <li class="toc-h0">
+   <a class="" href="#section-17">
+    注册表值外部访问
+   </a>
+  </li>
+  <li class="toc-h0">
    <a class="" href="#powershell">
     调用PowerShell脚本
    </a>
@@ -748,27 +798,27 @@ MessageBox MB_OK &quot;dir not exists: $7 &quot;
 									</header>
 									<ul class="dates">
 										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
+											<p><p class="first last">copyfiles</p>
+</p>
+										</li>
+										<li>
+											<span class="date">Jun <strong>02</strong></span>
+											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
+											<p><p class="first last">next-transpile-modules</p>
+</p>
+										</li>
+										<li>
+											<span class="date">May <strong>28</strong></span>
+											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
+											<p><p class="first last">macOS网线直连PC-Win11</p>
+</p>
+										</li>
+										<li>
 											<span class="date">May <strong>25</strong></span>
 											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
 											<p><p class="first last">anser</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>22</strong></span>
-											<h3><a href="yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a></h3>
-											<p><p class="first last">认证与token</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>20</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-file-type.html">file-type</a></h3>
-											<p><p class="first last">file-type</p>
-</p>
-										</li>
-										<li>
-											<span class="date">May <strong>18</strong></span>
-											<h3><a href="yq-docs-rear-end-python-python-three--party-library-adrf.html">adrf</a></h3>
-											<p><p class="first last">adrf</p>
 </p>
 										</li>
 									</ul>
