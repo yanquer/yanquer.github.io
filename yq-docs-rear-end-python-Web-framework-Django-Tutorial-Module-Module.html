@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -301,6 +301,51 @@ class Person(models.Model):
 </dl>
 </div>
 </div>
+<div class="section" id="section-5">
+<h2>常见问题</h2>
+<div class="section" id="model-objects">
+<h3>类 'Model' 的未解析的特性引用 'objects'</h3>
+<p>Django 的模型类默认会有一个名为 <cite>objects</cite> 的管理器属性,
+用于执行数据库查询操作.
+如果在 IDE 中看到类似 &quot;类 'Model' 的未解析的特性引用 'objects'&quot; 的警告,
+通常是因为 IDE 没有正确识别 Django 的动态属性.
+这种警告通常不会影响代码的运行,
+可以放心使用 <cite>objects</cite> 属性进行数据库操作.</p>
+<p>不过为了更方便的IDE识别, 可以在模型类中显式地声明 <cite>objects</cite> 属性,
+例如:</p>
+<pre class="literal-block">
+from django.db import models
+
+class MyModel(models.Model):
+    # 显式声明 objects 属性
+    objects = models.Manager()
+
+    name = models.CharField(max_length=100)
+</pre>
+<p>也可以直接定义一个公共的基类, 让所有模型继承该基类,例如</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; 主要作基础类型注解 &quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Manager</span><span class="p">,</span> <span class="n">DateTimeField</span>
+
+<span class="c1"># from django.db.models.options import DEFAULT_NAMES</span>
+<span class="c1"># DEFAULT_NAMES</span>
+
+<span class="k">class</span> <span class="nc">BaseMeta</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">abstract</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">verbose_name</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span> <span class="nc">BaseDjModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Model 类型注解 &quot;&quot;&quot;</span>
+
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span>
+    <span class="c1"># 定义的 Meta 类</span>
+    <span class="n">_meta</span><span class="p">:</span> <span class="n">BaseMeta</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">abstract</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -347,6 +392,18 @@ class Person(models.Model):
     </li>
    </ul>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    常见问题
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#model-objects">
+      类 'Model' 的未解析的特性引用 'objects'
+     </a>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -372,27 +429,27 @@ class Person(models.Model):
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

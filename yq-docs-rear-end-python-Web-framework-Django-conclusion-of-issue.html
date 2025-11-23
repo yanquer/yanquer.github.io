@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -190,6 +190,21 @@ a.astimezone(TZ_SHANGHAI).strftime('%Y-%m-%d %H:%M:%S')
 <p>get查询不存在报错 <tt class="docutils literal">raise self.model.DoesNotExist(</tt></p>
 <p>最简单的做法是用 <tt class="docutils literal"><span class="pre">模型.objects.filter(id=id).exists()</span></tt> 或者 <tt class="docutils literal"><span class="pre">模型.objects.filter(id=id).first()</span></tt></p>
 </div>
+<div class="section" id="django-core-exceptions-improperlyconfigured-error-loading-mysqldb-module">
+<h2>django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.</h2>
+<p>或者是 <tt class="docutils literal">No module named 'MySQLdb'</tt></p>
+<p>参考: <a class="reference external" href="https://juejin.cn/post/7384303275377278987">掘金-Django报错...</a></p>
+<p>原因： MySQLdb仅支持Python2.，并不支持Python3.，在Python3中可以使用PyMySQL替代</p>
+<p>可行的解决方法:</p>
+<p>找到 <cite>settings</cite> 同级的 <cite>__init__.py</cite> 文件, 加入</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="n">pymysql</span><span class="o">.</span><span class="n">install_as_MySQLdb</span><span class="p">()</span>
+</pre></div>
+<p>记得同时安装此模块</p>
+<div class="highlight"><pre><span></span><span class="c1"># uv add pymysql</span>
+pip<span class="w"> </span>install<span class="w"> </span>pymysql
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -229,6 +244,11 @@ a.astimezone(TZ_SHANGHAI).strftime('%Y-%m-%d %H:%M:%S')
     get查询不存在报错
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#django-core-exceptions-improperlyconfigured-error-loading-mysqldb-module">
+    django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -254,27 +274,27 @@ a.astimezone(TZ_SHANGHAI).strftime('%Y-%m-%d %H:%M:%S')
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

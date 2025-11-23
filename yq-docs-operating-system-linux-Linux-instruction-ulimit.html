@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 26 February 2023
+      , 26 二月 2023
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -197,6 +197,22 @@ bash:<span class="w"> </span>ulimit:<span class="w"> </span>open<span class="w">
 <span class="k">fi</span>
 </pre></div>
 </div>
+<div class="section" id="section-1">
+<h2>其它相关内核配置</h2>
+<dl class="docutils">
+<dt>net.core.somaxconn</dt>
+<dd>socket监听队列的最大长度，即服务器处理连接请求的能力。
+默认情况下，这个值通常设置为128，这对于高负载和高并发的服务来说可能不够用。</dd>
+</dl>
+<p>查询与修改</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>root@localhost<span class="w"> </span><span class="o">]</span><span class="c1"># sysctl -a | grep net.core.somaxconn</span>
+net.core.somaxconn<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">128</span>
+<span class="o">[</span>root@localhost<span class="w"> </span><span class="o">]</span><span class="c1"># sysctl -w net.core.somaxconn=1024</span>
+net.core.somaxconn<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1024</span>
+<span class="o">[</span>root@localhost<span class="w"> </span><span class="o">]</span><span class="c1"># sysctl -a | grep net.core.somaxconn</span>
+net.core.somaxconn<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1024</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -226,6 +242,11 @@ bash:<span class="w"> </span>ulimit:<span class="w"> </span>open<span class="w">
     报错-cannot modify limit
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    其它相关内核配置
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -251,27 +272,27 @@ bash:<span class="w"> </span>ulimit:<span class="w"> </span>open<span class="w">
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

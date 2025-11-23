@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -152,6 +152,11 @@
 <pre class="literal-block">
 django-admin startproject $项目名
 </pre>
+<p>如果是在已有目录下创建项目, (比如先创建了虚拟环境安装admin指令时)
+需要加上 <tt class="docutils literal">.</tt> 表示当前目录:</p>
+<pre class="literal-block">
+django-admin startproject $项目名 .
+</pre>
 <div class="section" id="section-2">
 <h2>应用创建</h2>
 <p>命令行:</p>
@@ -210,6 +215,25 @@ Username:<span class="w"> </span>admin
 Email<span class="w"> </span>address:
 </pre></div>
 </div>
+<div class="section" id="uv">
+<h2>其他创建方式-uv创建</h2>
+<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>testDjUv
+<span class="nb">cd</span><span class="w"> </span>testDjUv
+uv<span class="w"> </span>init
+uv<span class="w"> </span>venv
+.<span class="w"> </span>.venv/bin/activate
+
+uv<span class="w"> </span>add<span class="w"> </span>django
+<span class="c1"># uv add pytest pytest-sugar --dev</span>
+
+<span class="c1"># 创建项目</span>
+uv<span class="w"> </span>run<span class="w"> </span>django-admin<span class="w"> </span>startproject<span class="w"> </span>testDjUv<span class="w"> </span>.
+
+<span class="c1"># 运行</span>
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</pre></div>
+<p>参考: <a class="reference external" href="https://www.clis.cc/knowledge/article/details/146986655466.html">https://www.clis.cc/knowledge/article/details/146986655466.html</a></p>
+</div>
 
 								</article>
 						</div>
@@ -249,6 +273,11 @@ Email<span class="w"> </span>address:
     创建管理员用户
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#uv">
+    其他创建方式-uv创建
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -274,27 +303,27 @@ Email<span class="w"> </span>address:
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

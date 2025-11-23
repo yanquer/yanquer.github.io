@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
     </div>
@@ -165,6 +165,88 @@ $ systemctl status kubelet
 </pre>
 </div>
 </div>
+<div class="section" id="k8s">
+<h2>k8s安装</h2>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>kubectl
+
+<span class="c1"># windows</span>
+choco<span class="w"> </span>install<span class="w"> </span>kubernetes-cli
+
+<span class="c1"># linux - debian - amd64</span>
+curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/release/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl&quot;</span>
+sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>kubectl<span class="w"> </span>/usr/local/bin/kubectl
+
+<span class="c1"># 查看版本</span>
+kubectl<span class="w"> </span>version<span class="w"> </span>--client
+</pre></div>
+</div>
+<div class="section" id="section-4">
+<h2>本地集群安装配置</h2>
+<p>minikube参考: <a class="reference external" href="https://minikube.sigs.k8s.io/docs/start/">https://minikube.sigs.k8s.io/docs/start/</a></p>
+<p>一般来说, 本地就自己一个机器, 手动一个一个去安装虚拟机测试也比较麻烦,
+这时可以使用 <cite>minikube</cite> 来快速搭建一个本地的 k8s 集群。</p>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>minikube
+
+<span class="c1"># windows</span>
+choco<span class="w"> </span>install<span class="w"> </span>minikube
+
+<span class="c1"># linux - debian</span>
+curl<span class="w"> </span>-LO<span class="w"> </span>https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>minikube_latest_amd64.deb
+</pre></div>
+<p>minikube常用指令</p>
+<div class="highlight"><pre><span></span><span class="c1"># 启动</span>
+minikube<span class="w"> </span>start
+
+<span class="c1"># 停止</span>
+minikube<span class="w"> </span>stop
+
+<span class="c1"># 删除</span>
+minikube<span class="w"> </span>delete<span class="w"> </span>--all
+
+<span class="c1"># dashboard, 不加 --url 会自动打开浏览器</span>
+minikube<span class="w"> </span>dashboard<span class="w"> </span>--url
+
+<span class="c1"># 查看集群状态</span>
+minikube<span class="w"> </span>status
+</pre></div>
+</div>
+<div class="section" id="section-5">
+<h2>常用指令</h2>
+<p>常见子指令格式</p>
+<div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w">       </span><span class="c1"># - 列出资源</span>
+kubectl<span class="w"> </span>describe<span class="w">  </span><span class="c1"># - 显示有关资源的详细信息</span>
+kubectl<span class="w"> </span>logs<span class="w">      </span><span class="c1"># - 打印 Pod 中容器的日志</span>
+kubectl<span class="w"> </span><span class="nb">exec</span><span class="w">      </span><span class="c1"># - 在 Pod 中的容器上执行命令</span>
+</pre></div>
+<p>一些实例</p>
+<div class="highlight"><pre><span></span><span class="c1"># 获取所有服务</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>--all-namespaces
+
+<span class="c1"># 获取指定命名空间的所有pod</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>cert-manager
+
+<span class="c1"># 通过yaml文件创建资源</span>
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.13.0/deploy/static/provider/aws/deploy.yaml
+<span class="c1"># 等价于使用 heml 包管理器 安装</span>
+
+<span class="c1"># 获取集群信息</span>
+kubectl<span class="w"> </span>cluster-info
+
+<span class="c1"># 获取部署资源信息</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>deployments
+
+<span class="c1"># 获取节点信息</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>nodes
+
+<span class="c1"># 打开一个代理终端, 以便访问被隔离的容器</span>
+kubectl<span class="w"> </span>proxy
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -201,6 +283,21 @@ $ systemctl status kubelet
     </li>
    </ul>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#k8s">
+    k8s安装
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    本地集群安装配置
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    常用指令
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -226,27 +323,27 @@ $ systemctl status kubelet
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

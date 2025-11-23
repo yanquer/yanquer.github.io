@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 24 February 2023
+      , 24 二月 2023
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -146,14 +146,36 @@
 										<span class="head-modify-time">修改于: 2023-02-24</span>
 
 									</div>
-									<p>查看本地连接</p>
+									<p>查看本地连接, 获取socket统计信息</p>
 <p>ss命令可以传递的参数：</p>
-<p>-t 显示TCP端口
+<p>-a 显示所有套接字
+-t 显示TCP端口
 -u 显示UDP端口
--n 不解析主机名
+-n 不解析主机名(即不转换服务端口号为服务名称)
+-r 显示路由套接字
 -l 显示监听端口
 -p 显示进程
--4 仅显示IPv4的socket连接</p>
+-4 仅显示IPv4的socket连接
+-x 显示更多信息,包括UNIX域套接字
+-i 显示更多信息,包括接口信息
+-o 显示更多信息,包括定时器信息</p>
+<p>列含义</p>
+<ul>
+<li><p class="first">Recv-Q： 表示本端应用程序还没有从内核缓冲区（接收缓冲区）中读取的数据量（以字节为单位）。
+- 简单说：数据已经通过网络到达你的机器，并被内核接收，但你的应用程序（例如 nginx, MySQL, 你的自定义服务）还没有调用 read() 或 recv() 系统调用将其取走。
+- 理想情况： 这个值应该接近 0。如果这个值持续很大或不断增长，通常表明应用程序处理数据过慢，可能遇到了性能瓶颈（如 CPU 繁忙、程序卡死、或逻辑上有阻塞）。</p>
+</li>
+<li><p class="first">Send-Q： 表示对端还没有确认（ACK）接收的数据量（以字节为单位）
+- 简单说：你的应用程序已经将数据交给内核发送，内核也已经发出，但还没有收到对端返回的 TCP 确认包（ACK）。
+- 理想情况： 在网络通畅的情况下，这个值也应该很小。</p>
+<p>如果这个值持续很大或不断增长，通常表明网络链路或对端有问题。
+比如网络延迟高、丢包严重，或者对端应用程序接收处理慢，导致其接收缓冲区满（进而通过 TCP 窗口通告机制通知本端停止发送）。</p>
+</li>
+</ul>
+<p>查看指定套接字:</p>
+<pre class="literal-block">
+ss -ln | grep 套接字名称
+</pre>
 
 								</article>
 						</div>
@@ -187,27 +209,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

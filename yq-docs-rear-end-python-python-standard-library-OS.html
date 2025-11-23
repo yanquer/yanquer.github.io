@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 21 February 2024
+      , 21 二月 2024
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -312,6 +312,8 @@ hello world!
 </dl>
 <p>注意如果使用 <cite>shutil.rmtree</cite> 删除, 会报错不能删除符号链接
 清除链接时建议使用 <cite>os.unlink</cite></p>
+<p>另外, 在windows系统上, 如果使用git-bash的rm删除符号链接目录, 会将源文件夹内容一起删除...
+此时还是老老实实unlink比较好</p>
 </div>
 <div class="rst-function section" id="os.readlink(path)">
 <strong>os.readlink(path)</strong><p></p>
@@ -336,6 +338,18 @@ hello world!
 <dl class="docutils">
 <dt>path</dt>
 <dd>要删除的文件或符号链接的路径。</dd>
+</dl>
+</div>
+<div class="rst-function section" id="os.makedirs(path, mode=0o777, exist_ok=False)">
+<strong>os.makedirs(path, mode=0o777, exist_ok=False)</strong><p></p>
+<p>递归地创建目录。</p>
+<dl class="docutils">
+<dt>path</dt>
+<dd>要创建的目录的路径。</dd>
+<dt>mode</dt>
+<dd>目录的权限，默认为 0o777。</dd>
+<dt>exist_ok</dt>
+<dd>如果为 True，则在目录已经存在时不会抛出异常。</dd>
 </dl>
 </div>
 </div>
@@ -429,6 +443,10 @@ hello world!
      <a class="" href="#os.unlink(path)">
      </a>
     </li>
+    <li class="toc-h1">
+     <a class="" href="#os.makedirs(path, mode=0o777, exist_ok=False)">
+     </a>
+    </li>
    </ul>
   </li>
  </ul>
@@ -456,27 +474,27 @@ hello world!
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

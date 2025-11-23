@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 06 February 2023
+      , 06 二月 2023
       , Category:
 	  <a href="category/za-luan-wu-zhang.html">杂乱无章</a>
     </div>
@@ -149,6 +149,42 @@
 </ul>
 <p>现在没有这个问题</p>
 <p>大多是一个规范习惯</p>
+<div class="section" id="wc">
+<h2>例: wc会忽略最后一行没有换行符的行数统计</h2>
+<p>测试场景如下</p>
+<p>创建不带换行符的文件测试</p>
+<div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;asdasdqweq1w&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>test.txt
+cat<span class="w"> </span>test.txt
+<span class="c1"># 输出内容</span>
+<span class="c1"># asdasdqweq1w%</span>
+
+<span class="c1"># 统计行数</span>
+wc<span class="w"> </span>-l<span class="w"> </span>test.txt
+<span class="c1"># 0</span>
+wc<span class="w"> </span>-L<span class="w"> </span>test.txt
+<span class="c1"># 0</span>
+</pre></div>
+<div class="figure">
+<img alt="统计结果" src="doc-raw/resources/images/2025-11-18-18-03-39.png" style="width: 600px;" />
+</div>
+<p>创建带换行符的文件测试</p>
+<div class="highlight"><pre><span></span><span class="c1"># echo 默认会带一个换行符</span>
+<span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;asdasdqweq1w&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>test2.txt
+cat<span class="w"> </span>test2.txt
+<span class="c1"># 输出内容</span>
+<span class="c1"># asdasdqweq1w</span>
+<span class="c1">#</span>
+
+<span class="c1"># 统计行数</span>
+wc<span class="w"> </span>-l<span class="w"> </span>test2.txt
+<span class="c1"># 1</span>
+wc<span class="w"> </span>-L<span class="w"> </span>test2.txt
+<span class="c1"># 12</span>
+</pre></div>
+<div class="figure">
+<img alt="统计结果2" src="doc-raw/resources/images/2025-11-18-18-04-18.png" style="width: 600px;" />
+</div>
+</div>
 
 								</article>
 						</div>
@@ -165,6 +201,27 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#wc">
+    例: wc会忽略最后一行没有换行符的行数统计
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -182,27 +239,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

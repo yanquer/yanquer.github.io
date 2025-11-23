@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
     </div>
@@ -188,16 +188,96 @@ Nginx的构建比以往任何时候都更有效率，更可扩展，更安全，
 为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标 (原始服务器)，
 然后代理向原始服务器转交请求并将获得的内容返回给客户端。</p>
 <p>正向代理是为我们服务的，即为客户端服务的，客户端可以根据正向代理访问到它本身无法访问到的服务器资源。</p>
-<p class="last">正向代理对我们是透明的，对服务端是非透明的，即服务端并不知道自己收到的是来自代理的访问还是来自真实客户端的访问。</p>
+<p>正向代理对我们是透明的，对服务端是非透明的，即服务端并不知道自己收到的是来自代理的访问还是来自真实客户端的访问。</p>
+<dl class="last docutils">
+<dt>定义</dt>
+<dd><ul class="first last simple">
+<li>客户端主动配置的代理服务器，代表客户端向外部服务器发送请求。</li>
+<li>隐藏客户端身份，目标服务器只知道代理的 IP，无法看到真实客户端。</li>
+</ul>
+</dd>
+<dt>核心特点</dt>
+<dd><ul class="first last simple">
+<li>客户端知道代理的存在（需手动配置代理设置）。</li>
+<li>代理 代表客户端 访问互联网。</li>
+<li>典型用途：突破访问限制、匿名上网、加速访问（缓存）。</li>
+</ul>
+</dd>
+<dt>举例</dt>
+<dd><ul class="first last simple">
+<li>公司内网代理：员工电脑配置代理服务器访问外网，公司防火墙只看到代理服务器的请求。</li>
+<li>科学上网工具：VPN 或 Shadowsocks 作为正向代理，帮助用户访问被屏蔽的网站（如 Google）。</li>
+<li>浏览器代理插件：配置代理服务器访问特定网站。</li>
+</ul>
+</dd>
+</dl>
 </dd>
 <dt>反向代理</dt>
 <dd><p class="first">反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，
 然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，
 此时代理服务器对外就表现为一个反向代理服务器。</p>
 <p>反向代理是为服务端服务的，反向代理可以帮助服务器接收来自客户端的请求，帮助服务器做请求转发，负载均衡等。</p>
-<p class="last">反向代理对服务端是透明的，对我们是非透明的，即我们并不知道自己访问的是代理服务器，而服务器知道反向代理在为他服务。</p>
+<p>反向代理对服务端是透明的，对我们是非透明的，即我们并不知道自己访问的是代理服务器，而服务器知道反向代理在为他服务。</p>
+<dl class="last docutils">
+<dt>定义</dt>
+<dd><ul class="first last simple">
+<li>服务器端配置的代理，代表后端服务器接收客户端请求。</li>
+<li>隐藏服务器身份，客户端不知道真实的后端服务器是谁。</li>
+</ul>
+</dd>
+<dt>核心特点</dt>
+<dd><ul class="first last simple">
+<li>客户端不知道代理的存在（以为代理就是真实服务器）。</li>
+<li>代理 代表服务器 处理请求，实现负载均衡、安全防护等。</li>
+<li>典型用途：隐藏服务器 IP、负载均衡、缓存静态内容、SSL 终结。</li>
+</ul>
+</dd>
+<dt>举例</dt>
+<dd><ul class="first last simple">
+<li>网站接入层：Nginx 作为反向代理，将用户请求分发到后端的多个 Web 服务器（如 Tomcat）。</li>
+<li>CDN 节点：用户访问 www.example.com，实际请求被 CDN 反向代理到最近的服务器。</li>
+<li>API 网关：客户端调用 api.example.com，网关反向代理到内部微服务。</li>
+</ul>
 </dd>
 </dl>
+</dd>
+</dl>
+<p>正向代理 vs 反向代理对比</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="43%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">维度</th>
+<th class="head">正向代理</th>
+<th class="head">反向代理</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>配置方</td>
+<td>客户端（如浏览器、手机）</td>
+<td>服务器端（如运维人员）</td>
+</tr>
+<tr><td>隐藏对象</td>
+<td>隐藏客户端 IP</td>
+<td>隐藏服务器 IP</td>
+</tr>
+<tr><td>典型用途</td>
+<td>突破封锁、匿名访问、缓存加速</td>
+<td>负载均衡、安全防护、高可用</td>
+</tr>
+<tr><td>客户端感知</td>
+<td>需显式配置代理</td>
+<td>无感知（代理对客户端透明）</td>
+</tr>
+<tr><td>访问目标</td>
+<td>任意外部网站（如 Google）</td>
+<td>固定后端服务（如内部 Web 服务）</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="section-2">
 <h3>负载均衡</h3>
@@ -425,27 +505,27 @@ Nginx可以作为一个HTTP服务器进行网站的发布处理，
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

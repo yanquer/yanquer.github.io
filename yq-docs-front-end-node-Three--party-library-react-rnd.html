@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 15 July 2024
+      , 15 七月 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -167,46 +167,22 @@ yarn<span class="w"> </span>add<span class="w"> </span>react-rnd<span class="w">
 </div>
 <div class="section" id="section-2">
 <h2>简单使用</h2>
-<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">Tree</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rc-tree&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="s2">&quot;rc-tree/assets/index.css&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Rnd</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-rnd&quot;</span><span class="p">;</span>
 
-
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CTree</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="p">&lt;</span><span class="nt">any</span><span class="err">,</span><span class="w"> </span><span class="na">any</span><span class="p">&gt;{</span>
-<span class="w">    </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(&lt;</span><span class="nt">Tree</span>
-<span class="w">            </span><span class="na">defaultExpandedKeys</span><span class="o">=</span><span class="p">{[</span><span class="s1">&#39;0-0&#39;</span><span class="p">]}</span>
-<span class="w">            </span><span class="na">treeData</span><span class="o">=</span><span class="p">{[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the first node&#39;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-0&#39;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-0-0&#39;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nx">isLeaf</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the second node, with a tooltip on hover&#39;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-0-1&#39;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nx">isLeaf</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the third node, with a tooltip on hover&#39;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0-1&#39;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">isLeaf</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is the title for the fourth node, with a tooltip on hover&#39;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">]}</span>
-<span class="w">        </span><span class="p">/&gt;);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<span class="p">&lt;</span><span class="nt">Rnd</span>
+<span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fixed&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="na">default</span><span class="o">=</span><span class="p">{{</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">}}</span>
+<span class="w">    </span><span class="na">position</span><span class="o">=</span><span class="p">{{</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">y</span><span class="p">}}</span>
+<span class="w">    </span><span class="na">enableResizing</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span>
+<span class="w">    </span><span class="na">bounds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;window&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="na">dragAxis</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">canDrag</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;both&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;none&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="na">onDragStop</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="nx">d</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="nx">d</span><span class="p">.</span><span class="nx">y</span><span class="p">})}</span>
+<span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;bg-gray-200&quot;</span><span class="p">}&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;text-center&quot;</span><span class="p">}&gt;</span><span class="nx">拖动我</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">Rnd</span><span class="p">&gt;</span>
 </pre></div>
-<div class="figure">
-<img alt="as you see" src="doc-raw/resources/images/2024-07-16-15-18-50.png" style="width: 480px;" />
-<p class="caption">效果2</p>
-</div>
 </div>
 
 								</article>
@@ -267,27 +243,27 @@ yarn<span class="w"> </span>add<span class="w"> </span>react-rnd<span class="w">
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

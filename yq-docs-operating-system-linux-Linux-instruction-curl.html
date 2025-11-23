@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -720,6 +720,50 @@ $ curl -X POST https://www.example.com
 </tr>
 </tbody>
 </table>
+<div class="section" id="curl-1">
+<h2>curl设置超时</h2>
+<p>curl 设置超时有两个参数</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--connect-timeout</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>连接超时.
+这只限制 curl 与服务器建立初始 TCP 连接所花费的时间。
+比如 DNS 查询、TCP 握手。一旦连接建立成功，这个计时器就停止了。</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--max-time</span></kbd></td>
+<td>最大时间超时.
+这是整个 curl 请求（从开始到结束）的总时间限制。这包括了连接建立、请求发送、以及最关键的——等待服务器响应数据的时间。</td></tr>
+</tbody>
+</table>
+<p>示例, 仅打印http返回状态码</p>
+<div class="highlight"><pre><span></span><span class="c1"># 超时后打印的结果是 000</span>
+curl<span class="w"> </span>-I<span class="w"> </span>--connect-timeout<span class="w"> </span><span class="m">10</span><span class="w"> </span>--max-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}&quot;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;https://pvdrama.cc/models?a=3&amp;language=es&amp;role=sjw&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</pre></div>
+<p>示例2,</p>
+<div class="highlight"><pre><span></span><span class="c1"># 5秒内必须连上服务器。</span>
+<span class="c1"># 整个请求（从开始到接收完数据）必须在30秒内完成</span>
+curl<span class="w"> </span>--connect-timeout<span class="w"> </span><span class="m">5</span><span class="w"> </span>--max-time<span class="w"> </span><span class="m">30</span><span class="w"> </span>https://example.com
+</pre></div>
+</div>
+<div class="section" id="curl-2">
+<h2>curl速率选项</h2>
+<div class="highlight"><pre><span></span><span class="c1"># 如果传输速度连续 10 秒都低于 1 字节/秒，则中止（默认值，比较严格）</span>
+curl<span class="w"> </span>--speed-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>https://example.com/slow-stream
+
+<span class="c1"># 更实用的例子：如果速度连续 20 秒都低于 10 KB/秒，则中止</span>
+curl<span class="w"> </span>--speed-limit<span class="w"> </span><span class="m">10000</span><span class="w"> </span>--speed-time<span class="w"> </span><span class="m">20</span><span class="w"> </span>https://example.com/large-file
+</pre></div>
+<dl class="docutils">
+<dt>--speed-limit 10000</dt>
+<dd>速度下限，单位是字节/秒（10000 字节/秒 ≈ 10 KB/秒）。</dd>
+<dt>--speed-time 20</dt>
+<dd>测量低速的时间窗口，单位是秒。</dd>
+</dl>
+</div>
 
 								</article>
 						</div>
@@ -736,6 +780,32 @@ $ curl -X POST https://www.example.com
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#curl-1">
+    curl设置超时
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#curl-2">
+    curl速率选项
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -753,27 +823,27 @@ $ curl -X POST https://www.example.com
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

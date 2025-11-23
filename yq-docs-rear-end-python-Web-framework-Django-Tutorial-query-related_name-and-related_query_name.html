@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 25 December 2024
+      , 25 十二月 2024
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -149,6 +149,8 @@
 
 									</div>
 									<p>参考: <a class="reference external" href="https://blog.csdn.net/coolzpf/article/details/132844054">https://blog.csdn.net/coolzpf/article/details/132844054</a></p>
+<p>related_name 和 related_query_name 是 Django ORM 中用于定义模型之间关系的两个重要参数,
+它们主要用于反向查询关联模型对象.</p>
 <p>比如有一个这样的应用</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
   <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;问题名称&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
@@ -163,10 +165,12 @@
 <dd><p class="first">用于反向查询模型对象本身;</p>
 <p>默认值为 <cite>answer_set</cite>, 即模型名小写 + <cite>_set</cite>;
 特殊情况, 如果是 <cite>OneToOneField</cite> 字段, 默认值直接是 <cite>模型名小写</cite>, 如 <cite>answer</cite></p>
-<p class="last">用于反向查询 <cite>Question</cite> 对应的 <cite>Answer</cite>, 比如 <tt class="docutils literal"><span class="pre">q=Question.objects.all().first();</span> _set.all()</tt> 表示查询问题一的所有答案.</p>
+<p class="last">用于反向查询 <cite>Question</cite> 对应的 <cite>Answer</cite>,
+比如 <tt class="docutils literal"><span class="pre">q=Question.objects.all().first();</span> q.answer_set.all()</tt> 表示查询问题一的所有答案.
+(此处是外键, 多对一关系)</p>
 </dd>
 <dt>related_query_name</dt>
-<dd><p class="first">用于反向查询模型对象的字段;</p>
+<dd><p class="first">用于反向查询模型对象的字段(跨表查询);</p>
 <p>默认值为 <cite>answer</cite>, 即模型名小写.</p>
 <p>同样用于反向查询 <cite>Question</cite> 对应的 <cite>Answer</cite>, 不过是具体到字段查询时候的名字,
 比如 <tt class="docutils literal"><span class="pre">Question.objects.all().filter(answer__content=&quot;自主学习&quot;)</span></tt>
@@ -209,6 +213,65 @@
 </tbody>
 </table>
 </div>
+<div class="section" id="section-1">
+<h2>示例</h2>
+<p>一对一字段(OneToOneField)</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
+<span class="k">class</span> <span class="nc">UserProfile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+
+<span class="c1"># 反向查询 - 通过小写模型名</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">profile</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">userprofile</span>  <span class="c1"># 直接访问</span>
+</pre></div>
+<p>多对一字段(ForeignKey)</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
+<span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Author</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># 反向查询 - 使用 related_name 或 默认 _set</span>
+<span class="n">author</span> <span class="o">=</span> <span class="n">Author</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">books</span> <span class="o">=</span> <span class="n">author</span><span class="o">.</span><span class="n">book_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># 使用默认的 _set</span>
+</pre></div>
+<p>多对多字段(ManyToManyField)</p>
+<div class="highlight"><pre><span></span><span class="c1"># models.py</span>
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Course</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">students</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Student</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># 反向查询 - 使用 related_name 或 默认 _set</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">courses</span> <span class="o">=</span> <span class="n">student</span><span class="o">.</span><span class="n">course_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># 使用默认的 _set</span>
+</pre></div>
+</div>
+<div class="section" id="related-name-related-query-name">
+<h2>使用 related_name 和 related_query_name 的例子</h2>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s1">&#39;问题名称&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Answer</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+                                  <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;关联的问题&#39;</span><span class="p">,</span>
+                                  <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;answers&#39;</span><span class="p">,</span>
+                                  <span class="n">related_query_name</span><span class="o">=</span><span class="s1">&#39;answer&#39;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="s1">&#39;答案的内容&#39;</span><span class="p">)</span>
+
+<span class="c1"># 反向查询 - 使用 related_name</span>
+<span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">answers</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">answers</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>  <span class="c1"># 使用 related_name</span>
+
+<span class="c1"># 反向查询 - 使用 related_query_name, 跨表字段查询</span>
+<span class="n">questions</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">answer__content</span><span class="o">=</span><span class="s2">&quot;自主学习&quot;</span><span class="p">)</span>  <span class="c1"># 使用 related_query_name</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -238,6 +301,16 @@
     反向查询中 _set 的使用规则
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    示例
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#related-name-related-query-name">
+    使用 related_name 和 related_query_name 的例子
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -263,27 +336,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

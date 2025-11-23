@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
     </div>
@@ -323,8 +323,121 @@ try_files file1 file2 ...(可以有多个file) url
 只是我们得注意的是： <strong>用户状态的保存问题，如Session会话信息，不能在保存到服务器上</strong></dd>
 </dl>
 </div>
+<div class="section" id="nginx-2">
+<h3>Nginx 反向代理场景</h3>
+<dl class="docutils">
+<dt>背景</dt>
+<dd><ul class="first last simple">
+<li>有一台设备 A 接了两根网线,</li>
+<li>A跟B在192.168.99.x ,  A: 192.168.99.2, B: 192.168.99.4</li>
+<li>A跟C在 172.16.1.x  ,  A: 172.16.1.2, C: 172.16.1.35</li>
+<li>需要让 B 192.168.99.4 访问到 C 172.16.1.35</li>
+</ul>
+</dd>
+<dt>proxy_set_header Host $host;</dt>
+<dd><dl class="first docutils">
+<dt>含义</dt>
+<dd><ul class="first last simple">
+<li>将客户端（B）请求的原始 Host 头（如 192.168.99.2:8800）传递给后端服务器（C）。</li>
+<li>$host 是 Nginx 变量，自动提取客户端请求中的 Host 头（不含端口）.
+即代表的是客户端（B）原始请求中的 Host 头信息</li>
+</ul>
+</dd>
+<dt>用途</dt>
+<dd><ul class="first last simple">
+<li>关键场景：当后端服务器（C）依赖 Host 头生成链接或验证域名时（如返回重定向、虚拟主机配置）。</li>
+</ul>
+</dd>
+</dl>
+<p>如</p>
+<ul class="last simple">
+<li>强制让 C 认为请求直接发给自己: <tt class="docutils literal">proxy_set_header Host 172.16.1.35;</tt></li>
+<li>让 C 知道请求来自 B 的原始 Host: <tt class="docutils literal">proxy_set_header Host $host;</tt></li>
+</ul>
+</dd>
+<dt>proxy_set_header X-Real-IP $remote_addr;</dt>
+<dd><dl class="first last docutils">
+<dt>含义</dt>
+<dd><ul class="first last simple">
+<li>将客户端的真实 IP（如 B 的 192.168.99.4）存放到 X-Real-IP 头中传递给 C。</li>
+<li>$remote_addr 是 Nginx 变量，表示直接客户端的 IP。</li>
+</ul>
+</dd>
+<dt>用途</dt>
+<dd><ul class="first last simple">
+<li>日志与审计：让 C 的日志记录真实的客户端 IP，而非代理服务器（A）的 IP。</li>
+<li>访问控制：C 可以根据真实 IP 做权限限制。</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</dt>
+<dd><dl class="first last docutils">
+<dt>含义</dt>
+<dd><ul class="first last simple">
+<li>将客户端的原始 IP 追加到 X-Forwarded-For 头中（多个代理时形成 IP 链）。</li>
+<li>$proxy_add_x_forwarded_for 自动处理以下两种情况：
+- 如果请求已包含 X-Forwarded-For，则追加 $remote_addr。
+- 如果没有，则新建 X-Forwarded-For 并设为 $remote_addr。</li>
+</ul>
+</dd>
+<dt>用途</dt>
+<dd><ul class="first last simple">
+<li>多级代理：追踪请求经过的所有代理节点（如 X-Forwarded-For: 客户端IP, 代理1IP, 代理2IP）。</li>
+<li>安全分析：识别原始请求来源，防止 IP 欺骗。</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>proxy_set_header X-Forwarded-Proto $scheme;</dt>
+<dd><dl class="first last docutils">
+<dt>含义</dt>
+<dd><ul class="first last simple">
+<li>告诉后端服务器（C）客户端（B）的原始请求协议（http 或 https）。</li>
+<li>$scheme 是 Nginx 变量，自动提取客户端请求的协议。</li>
+</ul>
+</dd>
+<dt>用途</dt>
+<dd><ul class="first last simple">
+<li>重定向与链接生成：
+如果 B 通过 http 访问代理，但 C 返回的链接需要是 https，需显式设置：
+<tt class="docutils literal">proxy_set_header <span class="pre">X-Forwarded-Proto</span> https;&nbsp; # 伪装成 HTTPS</tt></li>
+<li>避免 C 因检测到 http 而强制跳转到 https</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="section-5">
+<h2>一些$变量</h2>
+<dl class="docutils">
+<dt>$host</dt>
+<dd>客户端请求时候, 使用的地址/域名, 不含端口</dd>
+<dt>$http_host</dt>
+<dd>客户端请求的 Host 头（含端口）, 如, <cite>192.168.99.2:8800</cite></dd>
+<dt>$remote_addr</dt>
+<dd>客户端本身的 IP 地址</dd>
+<dt>$proxy_host</dt>
+<dd>proxy_pass 中指定的上游地址, 如 <cite>172.16.1.35</cite></dd>
+<dt>$scheme</dt>
+<dd>请求时候的协议, http 或 https</dd>
+<dt>$uri</dt>
+<dd>请求的 URI, 不含参数</dd>
+<dt>$document_root</dt>
+<dd>被代理的目录, 比如 <tt class="docutils literal">/var/www/html</tt></dd>
+<dt>$http_user_agent</dt>
+<dd>客户端的 User-Agent 信息, 如浏览器类型等</dd>
+<dt>$http_cookie</dt>
+<dd>客户端的 Cookie 信息</dd>
+<dt>$http_referer</dt>
+<dd>客户端请求的来源页面, 如点击链接时的上一个页面地址</dd>
+<dt>$http_x_forwarded_for</dt>
+<dd>客户端请求时, 通过代理设置的 X-Forwarded-For 头信息, 比如 <tt class="docutils literal">192.168.1.1, 192.168.1.2</tt></dd>
+</dl>
+</div>
+<div class="section" id="section-6">
 <h2>斜杠的作用</h2>
 <p>被代理的路径加不加斜杠的情况,
 尝试访问 <tt class="docutils literal">xx.xx.xx.xx/ui/img/img1.png</tt></p>
@@ -599,7 +712,7 @@ server {
 }
 </pre></div>
 </div>
-<div class="section" id="section-6">
+<div class="section" id="section-7">
 <h2>本地实际配置尝试</h2>
 <p>配置前端:</p>
 <pre class="literal-block">
@@ -616,6 +729,74 @@ location / {
                 rewrite / /ui/ ;    # 所有没匹配到的请求都交给 /ui/处理
 }
 </pre>
+</div>
+<div class="section" id="section-8">
+<h2>部分配置说明</h2>
+<p>$request_time 与 $connection_time ,
+后者表示一个tcp请求的总时长, 前者表示在一个tcp会话中的每一次请求处理时间, connection_time &gt;= request_time</p>
+<dl class="docutils">
+<dt>request_time</dt>
+<dd>接收到客户端第一个请求字节 到 向客户端发送完最后一个响应字节, 整个请求的处理效率, 一般几十毫秒到几秒</dd>
+<dt>connection_time</dt>
+<dd>TCP连接建立成功 到 TCP连接断开, 表示连接的持续时间和活跃度, 一般几秒到几分钟,
+与 <cite>keepalive_timeout</cite> 配置有关</dd>
+</dl>
+</div>
+<div class="section" id="section-9">
+<h2>日志配置详细信息</h2>
+<p>一般设置了日志格式后, 还需要指定access_log使用:</p>
+<pre class="literal-block">
+http {
+
+  # 定义日志格式 代号为main
+  log_format main escape=json '{&quot;access_ts&quot;:&quot;$time_iso8601&quot;,&quot;remote_addr&quot;:&quot;$remote_addr&quot;, &quot;status&quot;:&quot;$status&quot;,&quot;request_method&quot;: &quot;$request_method&quot;,&quot;request_length&quot;:&quot;$request_length&quot;,&quot;request_time&quot;:&quot;$request_time&quot;,&quot;bytes_sent&quot;:&quot;$bytes_sent&quot;, &quot;body_bytes_sent&quot;:&quot;$body_bytes_sent&quot;,&quot;http_host&quot;:&quot;$host&quot;,&quot;http_x_forward&quot;:&quot;$http_x_forwarded_for&quot;,&quot;connection_time&quot;:&quot;$connection_time&quot;,&quot;uri&quot;:&quot;$uri&quot;,&quot;request&quot;:&quot;$request&quot;,&quot;upstream_status&quot;:&quot;$upstream_status&quot;,&quot;upstream_connect_time&quot;:&quot;$upstream_connect_time&quot;,&quot;upstream_response_time&quot;:&quot;$upstream_response_time&quot;,&quot;upstream_response_length&quot;:&quot;$upstream_response_length&quot;,&quot;upstream_bytes_received&quot;:&quot;$upstream_bytes_received&quot;,&quot;upstream_bytes_sent&quot;:&quot;$upstream_bytes_sent&quot;}';
+  # 日志保存地址 格式代码 main
+  access_log  /usr/local/access.log  main
+
+}
+</pre>
+<p>配置后记得重启:</p>
+<pre class="literal-block">
+nginx -s reload
+</pre>
+</div>
+<div class="section" id="ip">
+<h2>内网代理获取真实客户端IP</h2>
+<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.oryoy.com/news/shi-yong-docker-bu-shu-nginx-shi-ru-he-huo-qu-ke-hu-duan-zhen-shi-ip-di-zhi-de-xiang-xi-jiao-cheng.html">https://www.oryoy.com/news/shi-yong-docker-bu-shu-nginx-shi-ru-he-huo-qu-ke-hu-duan-zhen-shi-ip-di-zhi-de-xiang-xi-jiao-cheng.html</a></li>
+</ul>
+</dd>
+</dl>
+<p>比如在docker中部署的nginx, 默认情况下nginx日志记录的客户端IP是docker网桥的IP地址, 而不是实际客户端的IP地址</p>
+<p>配置示例</p>
+<div class="highlight"><pre><span></span>http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # 设置真实IP头
+    # real_ip_header X-Real-IP;
+    # 设置真实 IP 变量
+    real_ip_header X-Forwarded-For;
+    set_real_ip_from 0.0.0.0/0; # 可根据实际情况调整信任的IP范围
+    real_ip_recursive on;
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            proxy_pass http://your_backend_server;
+            # 将客户端的真实IP地址添加到X-Real-IP和X-Forwarded-For头部信息
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}
+</pre></div>
 </div>
 
 								</article>
@@ -716,10 +897,20 @@ location / {
       upstream
      </a>
     </li>
+    <li class="toc-h1">
+     <a class="" href="#nginx-2">
+      Nginx 反向代理场景
+     </a>
+    </li>
    </ul>
   </li>
   <li class="toc-h0">
    <a class="" href="#section-5">
+    一些$变量
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-6">
     斜杠的作用
    </a>
   </li>
@@ -734,8 +925,23 @@ location / {
    </a>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-6">
+   <a class="" href="#section-7">
     本地实际配置尝试
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-8">
+    部分配置说明
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-9">
+    日志配置详细信息
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#ip">
+    内网代理获取真实客户端IP
    </a>
   </li>
  </ul>
@@ -763,27 +969,27 @@ location / {
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/hou-duan.html">后端</a>
     </div>
@@ -190,6 +190,23 @@ Java HotSpot(TM) 64-Bit Server VM (build 20.0.1+9-29, mixed mode, sharing)
 然后删除 <cite>/Library/Java/JavaVirtualMachines</cite> 下面相关版本即可.
 貌似可以不用删? 看起来找版本是从高到低的, 还没试过, 之前的两个11版本被我删完了, 1.8的貌似没有被自动识别, 以后有机会在试.</p>
 </div>
+<div class="section" id="section-1">
+<h2>多版本管理工具</h2>
+<p>类似 nvm</p>
+<p>官方项目:  <a class="reference external" href="https://github.com/sdkman/sdkman-cli">https://github.com/sdkman/sdkman-cli</a></p>
+<p>安装</p>
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>-s<span class="w"> </span>https://get.sdkman.io<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+<span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.sdkman/bin/sdkman-init.sh&quot;</span>
+sdk<span class="w"> </span>version
+</pre></div>
+<p>查看有哪些版本的 java 并安装</p>
+<div class="highlight"><pre><span></span>sdk<span class="w"> </span>list<span class="w"> </span>java
+sdk<span class="w"> </span>install<span class="w"> </span>java<span class="w"> </span><span class="m">20</span>.0.1-tem
+sdk<span class="w"> </span>use<span class="w"> </span>java<span class="w"> </span><span class="m">20</span>.0.1-tem
+<span class="c1"># 打开一个新窗口</span>
+java<span class="w"> </span>--version
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -224,6 +241,11 @@ Java HotSpot(TM) 64-Bit Server VM (build 20.0.1+9-29, mixed mode, sharing)
     Mac下的卸载
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    多版本管理工具
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -249,27 +271,27 @@ Java HotSpot(TM) 64-Bit Server VM (build 20.0.1+9-29, mixed mode, sharing)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

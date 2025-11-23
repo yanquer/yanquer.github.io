@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 30 March 2025
+      , 30 三月 2025
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -159,7 +159,47 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 <div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>flush
 </pre></div>
 <p>仅 <cite>flush</cite> , 提示确认删除数据时, 输入 <cite>yes</cite> 即可</p>
+<div class="admonition important">
+<p class="first admonition-title">重要</p>
+<p>flush是清空数据库所有内容, 但不会删除表结构.</p>
+<p>谨慎使用</p>
+<p>如果只是清楚某个app的数据, 建议备份后 <tt class="docutils literal">python manage.py migrate [模型] zero</tt> 回滚后再 <tt class="docutils literal">python manage.py migrate [模型]</tt> 应用迁移.</p>
+<p>如果只是想清楚某个表的数据,
+建议使用SQL语句 <tt class="docutils literal">DELETE FROM [表名];</tt> 或者 <tt class="docutils literal">TRUNCATE TABLE [表名];</tt> 区别是 <tt class="docutils literal">DELETE</tt> 会记录日志, <tt class="docutils literal">TRUNCATE</tt> 不会.</p>
+<p>或者者使用Django的ORM:</p>
+<pre class="last literal-block">
+from [模型].models import [模型类]
+[模型类].objects.all().delete()
+</pre>
+</div>
 <div class="section" id="section-2">
+<h2>数据库备份恢复</h2>
+<p>备份:</p>
+<pre class="literal-block">
+# python manage.py dumpdata $app &gt; $bak_file.json
+
+# 或者使用 --output 参数指定输出文件, 建议使用 output 来避免 shell 重定向的问题
+#   比如丢失引号等
+# --indent 参数指定缩进, 方便阅读
+python manage.py dumpdata $app --output=$bak_file.json --indent 2
+</pre>
+<p>恢复:</p>
+<pre class="literal-block">
+python manage.py loaddata $bak_file.json
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p>loaddata 会根据主键进行插入, 将其覆盖.
+如果存在外键依赖, 需要保证依赖的表数据已经存在.</p>
+<p>如果数据库存在多余的记录, loaddata 不会删除这些记录.</p>
+<p>所以最好的恢复备份措施是, 备份的时候全量备份, 恢复的时候先 flush 清空数据库,
+然后再 loaddata 恢复数据.</p>
+<p class="last">如果是单个表, 在处理好外键等数据库依赖后, 最好是先删除所有数据再 loaddata.
+如果新的数据是必要的, 还是直接loaddata即可.
+.. 可以考虑使用 <tt class="docutils literal"><span class="pre">--natural-primary</span></tt> 和 <tt class="docutils literal"><span class="pre">--natural-foreign</span></tt> 参数来进行恢复.</p>
+</div>
+</div>
+<div class="section" id="section-3">
 <h2>迁移说明/迁移回滚</h2>
 <p>查看当前迁移情况</p>
 <div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>showmigrations
@@ -182,7 +222,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 <span class="c1"># 例如，如果要回滚users应用的最近一次迁移：</span>
 python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span class="w"> </span>users<span class="w"> </span>0002_previous_migration
 </pre></div>
-<div class="section" id="section-3">
+<div class="section" id="section-4">
 <h3>高级选项</h3>
 <p>查看迁移的SQL语句（了解将执行什么操作）：</p>
 <div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>sqlmigrate<span class="w"> </span>&lt;app_name&gt;<span class="w"> </span>&lt;migration_number&gt;
@@ -192,11 +232,12 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span clas
 </pre></div>
 </div>
 </div>
-<div class="section" id="section-4">
+<div class="section" id="section-5">
 <h2>误删迁移文件</h2>
 <p>有时候可能想当然的认为删除迁移文件, 跟数据库文件就行,
 其实不行, 会导致 <tt class="docutils literal">python manage.py makemigrations [模型]</tt> 出现 <tt class="docutils literal">No changes detected</tt> ,
-无法生成任何内容.</p>
+无法生成任何内容.
+因为实际上, Django 会在数据库中记录已经应用的迁移文件.</p>
 <p>解决办法</p>
 <p>先做一个空迁移, 生成第一个空的迁移文件</p>
 <div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="o">--</span><span class="n">empty</span> <span class="p">[</span><span class="n">模型</span><span class="p">]</span>
@@ -232,18 +273,23 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span clas
  <ul class="toc-tree visible">
   <li class="toc-h0">
    <a class="" href="#section-2">
+    数据库备份恢复
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-3">
     迁移说明/迁移回滚
    </a>
    <ul class="toc-tree visible">
     <li class="toc-h1">
-     <a class="" href="#section-3">
+     <a class="" href="#section-4">
       高级选项
      </a>
     </li>
    </ul>
   </li>
   <li class="toc-h0">
-   <a class="" href="#section-4">
+   <a class="" href="#section-5">
     误删迁移文件
    </a>
   </li>
@@ -272,27 +318,27 @@ python<span class="w"> </span>manage.py<span class="w"> </span>migrate<span clas
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -277,6 +277,26 @@ Entry.objects.all().filter(pub_date__year=2006)
 <li><cite>__iregex</cite> : 不区分大小写的正则匹配</li>
 </ul>
 </div>
+<div class="section" id="queryset">
+<h2>其它-排除指定的QuerySet</h2>
+<p>可以使用 exclude() 来排除某些条件的记录，exclude() 的参数和 filter() 一样。</p>
+<p>比如正常一般是这么查询:</p>
+<pre class="literal-block">
+Entry.objects.exclude(pub_date__year=2006)
+
+# 等价于
+Entry.objects.all().exclude(pub_date__year=2006)
+</pre>
+<p>当排除的是QuerySet时:</p>
+<pre class="literal-block">
+query1 = Entry.objects.filter(pub_date__year=2006)
+query2 = Entry.objects.filter(headline__startswith='What')
+
+# 下面两种都可
+# query3 = query2.exclude(id__in=query1.values_list('id', flat=True))
+query3 = query2.exclude(pk__in=query1.values_list('pk', flat=True))
+</pre>
+</div>
 
 								</article>
 						</div>
@@ -311,6 +331,11 @@ Entry.objects.all().filter(pub_date__year=2006)
     filter/other
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#queryset">
+    其它-排除指定的QuerySet
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -336,27 +361,27 @@ Entry.objects.all().filter(pub_date__year=2006)
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

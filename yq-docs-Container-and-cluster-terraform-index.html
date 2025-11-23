@@ -1,0 +1,522 @@
+
+<!DOCTYPE HTML>
+<!--
+	Dopetrope 2.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html data-theme="dark">
+	<head>
+			<title>书言</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta charset="utf-8" />
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+			<!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" /> -->
+			<link rel="stylesheet" href="/theme//css/custom-pygment.css" />
+			<noscript>
+				<link rel="stylesheet" href="/theme//css/skel-noscript.css" />
+				<link rel="stylesheet" href="/theme//css/style.css" />
+				<link rel="stylesheet" href="/theme//css/style-desktop.css" />
+			</noscript>
+
+		<!-- tipuesearch 放在这, 因为搜索框是全局定义的 -->
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/tipuesearch.css" />
+		<link rel="stylesheet" href="/theme//Tipue-Search-5.0.0/custom/tipuesearch-custom.css" />
+		<link rel="stylesheet" href="/theme//css/alabaster.css" />
+		<link rel="stylesheet" href="/theme//css/custom-alabaster.css" />
+		<!-- <link rel="stylesheet" href="/theme/fontawesome-free-6.5.1-web/css/all.min.css" /> -->
+		<!--  <link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-brands-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-regular-400.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-solid-900.woff2" />
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="/theme/fontawesome-free-6.5.1-web/webfonts/fa-v4compatibility.woff2" /> -->
+
+
+	</head>
+	<body class="no-sidebar">
+
+		<!-- 内容 -->
+		<div>
+
+			<!-- Header Wrapper -->
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Header -->
+								<section id="header">
+
+									<!-- Logo -->
+									<div class="page-home">
+										<h1><a href="/">HOME</a></h1>
+									</div>
+
+									<!-- Nav -->
+									<div class="page-menu">
+										<nav id="nav">
+											<ul>
+
+												<!-- categories -->
+														<li ><a href="/category/ai.html">AI</a></li>
+														<li ><a href="/category/ai-yolo.html">AI, yolo</a></li>
+														<li ><a href="/category/an-quan.html">安全</a></li>
+														<li ><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+														<li ><a href="/category/cao-zuo-xi-tong.html">操作系统</a></li>
+														<li ><a href="/category/chang-yong-gong-ju-shi-yong.html">常用工具使用</a></li>
+														<li><a href="/categories.html">More...</a></li>
+											</ul>
+										</nav>
+									</div>
+								</section>
+
+						</div>
+					</div>
+					<div class="row page-head-search">
+						<form class="navbar-search" action="/search.html" role="search">
+							<!-- <button class="fa-solid fa-magnifying-glass" type="submit"></button> -->
+							<button type="submit"></button>
+							<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+						</form>
+					</div>
+  <div class="row page-head page-article persistent">
+    <div class="page-head-title">
+      <h2>terraform</h2>
+    </div>
+    <div class="page-head-content">
+      By
+	  <a href="author/yanque.html">YanQue</a>
+      , 20 七月 2025
+      , Category:
+	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
+    </div>
+	<div class="red-line">
+    </div>
+  </div>
+				</div>
+
+				<!-- 头部下方动效 -->
+				<div class="waves-area">
+					<section class="main-hero-waves-area waves-area">
+						<svg class="waves-svg" preserveAspectRatio="none" shape-rendering="auto" viewBox="0 24 150 28"
+							 xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<path
+										d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+										id="gentle-wave"></path>
+							</defs>
+							<g class="parallax">
+								<use href="#gentle-wave" x="48" y="0"></use>
+								<use href="#gentle-wave" x="48" y="3"></use>
+								<use href="#gentle-wave" x="48" y="5"></use>
+								<use href="#gentle-wave" x="48" y="7"></use>
+							</g>
+						</svg>
+					</section>
+				</div>
+
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+				<div class="container">
+<div class="row">
+	<div class="12u">
+			<section>
+				<div>
+					<div class="row">
+						<div class="12u skel-cell-mainContent">
+							<!-- Content -->
+								<article class="box is-post">
+									<div class="box-head">
+										<div class="post-infos">
+											<ul class="tags">
+												<li><a class="button" href="category/rong-qi-yu-ji-qun.html">容器与集群</a></li>
+													<li><a class="button button-alt" href="tag/k8s.html">K8s</a></li>
+
+											</ul>
+										</div>
+
+										<div class="pennant pennant-alt date">2025-07-20</div>
+										<h2>terraform</h2>
+
+										<span class="head-modify-time">修改于: 2025-07-20</span>
+
+									</div>
+									<dl class="docutils">
+<dt>参考</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.terraform.io/">Terraform官网</a></li>
+<li><a class="reference external" href="https://www.terraform.io/zh/docs">Terraform中文文档</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/Sunzz/p/18498915">博客园-史上最全 Terraform 入门教程，助你无坑入门！</a></li>
+</ul>
+</dd>
+</dl>
+<p>Terraform 是一个开源的基础设施即代码（Infrastructure as Code, IaC）工具，由 HashiCorp 开发。它允许用户通过配置文件以编程方式管理云基础设施、物理设备以及其他服务的资源。</p>
+<div class="section" id="section-1">
+<h2>工作原理和工作流程</h2>
+<div class="section" id="section-2">
+<h3>文件类型</h3>
+<dl class="docutils">
+<dt>tf</dt>
+<dd>Terraform 使用 <cite>.tf</cite> 文件作为配置文件，这些文件包含了资源的定义和配置。每个 <cite>.tf</cite> 文件可以包含多个资源定义。</dd>
+<dt>tfstate</dt>
+<dd>Terraform 使用 <cite>.tfstate</cite> 文件来跟踪已创建的资源状态。这个文件记录了当前基础设施的实际状态，以便在后续操作中进行对比和管理。</dd>
+</dl>
+</div>
+<div class="section" id="section-3">
+<h3>管理基础设施步骤</h3>
+<ol class="arabic simple">
+<li>编写 <cite>.tf</cite> 文件，定义所需的资源和配置。</li>
+<li>使用 <cite>terraform init</cite> 初始化工作目录，下载所需的提供者插件（如 AWS、Azure 等）。</li>
+<li>使用 <cite>terraform plan</cite> 生成执行计划，查看将要创建、修改或删除的资源。</li>
+<li>使用 <cite>terraform apply</cite> 执行计划，实际创建或修改资源。 Terraform 会维护一个状态文件（ <cite>terraform.tfstate</cite> ），记录当前基础设施的状态。这个文件用于跟踪资源的实际状态，以便在后续操作中进行对比和管理。</li>
+<li>使用 <cite>terraform destroy</cite> 销毁已创建的资源。</li>
+</ol>
+<dl class="docutils">
+<dt>变更管理</dt>
+<dd>当需要对基础设施进行更改时，用户只需修改配置文件，然后重复执行 plan 和 apply 流程。Terraform 会自动识别资源的变更，并进行相应的更新。</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">有时候你可能想在执行的时候查看详细日志, 可以加环境变量 <tt class="docutils literal">TF_LOG=DEBUG</tt> 来查看详细的执行日志。</p>
+</div>
+</div>
+</div>
+<div class="section" id="section-4">
+<h2>基本使用概念</h2>
+<div class="section" id="provider">
+<h3>Provider</h3>
+<p>定义: <cite>Provider</cite> 是 <cite>Terraform</cite> 与外部服务（如 AWS、Azure、Google Cloud 等）进行交互的插件。它们负责管理资源的生命周期。</p>
+<p>使用: 在 <cite>provider.tf</cite> 文件中，通常会定义所需的云服务提供商。例如，对于 AWS，你可能会写如下内容：</p>
+<div class="highlight"><pre><span></span><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 3.0&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-west-1&quot;</span>
+<span class="c1">#  access_key = var.aws_access_key  #本文使用aws cli那块定义的key</span>
+<span class="c1">#  secret_key = var.aws_secret_key</span>
+<span class="p">}</span>
+</pre></div>
+<ul class="simple">
+<li>这里， <cite>required_providers</cite> 定义了所需的 AWS 提供商及其版本。</li>
+<li>provider 块则设置了访问该服务的具体参数，如区域和凭证。</li>
+</ul>
+</div>
+<div class="section" id="terraform-4">
+<h3>Terraform状态文件</h3>
+<ul class="simple">
+<li>定义: <cite>terraform.tfstate</cite> 是 Terraform 用来跟踪已管理资源状态的文件。它存储了当前基础设施的详细信息。</li>
+<li>作用: 这个文件帮助 Terraform 在执行计划（ <cite>terraform plan</cite> ）和应用（ <cite>terraform apply</cite> ）时了解哪些资源已经创建、哪些需要更新或删除。</li>
+<li>注意事项: 状态文件敏感且重要，应妥善保管，避免直接修改。为了提高安全性，通常建议使用远程后端（如 S3）存储状态文件。</li>
+</ul>
+</div>
+<div class="section" id="terraform-5">
+<h3>Terraform配置文件</h3>
+<ul class="simple">
+<li>定义: Terraform 的配置文件以 <cite>.tf</cite> 为扩展名，包含了所有基础设施资源的定义和配置。</li>
+<li>内容: 每个配置文件可以包含资源定义、变量、输出等。例如， <cite>main.tf</cite> 中可以包含 VPC、子网、EC2 实例的定义。</li>
+</ul>
+<p>示例:</p>
+<div class="highlight"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;my_vpc&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">cidr_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.0.0.0/16&quot;</span>
+<span class="w">  </span><span class="na">enable_dns_support</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_dns_hostnames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-5">
+<h3>变量文件</h3>
+<ul class="simple">
+<li>定义: 变量文件（通常命名为 <cite>variables.tf</cite> ）用于定义可以在多个地方使用的变量，以提高灵活性。</li>
+<li>使用: 你可以在配置中引用这些变量，以便根据不同环境（如开发、测试、生产）进行定制。</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;region&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The AWS region to deploy resources&quot;</span>
+<span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-west-1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="section-6">
+<h3>输出文件</h3>
+<ul class="simple">
+<li>定义: 输出文件（通常命名为 <cite>outputs.tf</cite> ）用于定义在 Terraform 执行后希望输出的信息，方便用户获取资源的关键信息。</li>
+<li>作用: 输出可以是 EC2 实例的公共 IP 地址、安全组 ID 等。</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;instance_ip&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.my_instance.public_ip</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="section-7">
+<h2>环境配置</h2>
+<p>安装</p>
+<div class="highlight"><pre><span></span><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>terraform
+
+<span class="c1"># windows</span>
+choco<span class="w"> </span>install<span class="w"> </span>terraform
+
+<span class="c1"># linux</span>
+wget<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>https://apt.releases.hashicorp.com/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/hashicorp-archive-keyring.gpg
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com </span><span class="k">$(</span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">&#39;(?&lt;=UBUNTU_CODENAME=).*&#39;</span><span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">||</span><span class="w"> </span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/hashicorp.list
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>terraform
+</pre></div>
+</div>
+
+								</article>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+
+
+
+		<!-- Sider Bar -->
+		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    工作原理和工作流程
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#section-2">
+      文件类型
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-3">
+      管理基础设施步骤
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-4">
+    基本使用概念
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#provider">
+      Provider
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#terraform-4">
+      Terraform状态文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#terraform-5">
+      Terraform配置文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-5">
+      变量文件
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#section-6">
+      输出文件
+     </a>
+    </li>
+   </ul>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-7">
+    环境配置
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
+		</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<!-- Footer -->
+					<section id="footer" class="container">
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header>
+										<h2>Latest articles</h2>
+									</header>
+									<ul class="dates">
+										<li>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
+</p>
+										</li>
+										<li>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
+</p>
+										</li>
+										<li>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
+</p>
+										</li>
+										<li>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
+</p>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Blogroll</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="https://yq-yqr.readthedocs.io/zh/blog-theme/blog.html">旧版(迁移中)</a></li>
+											<li><a href="https://getpelican.com/">Pelican</a></li>
+											<li><a href="https://www.python.org/">Python.org</a></li>
+											<li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+									</ul>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header>
+										<h2>Categories</h2>
+									</header>
+									<ul class="divided">
+											<li><a href="/category/ai.html">AI</a></li>
+											<li><a href="/category/ai-yolo.html">AI, yolo</a></li>
+											<li><a href="/category/an-quan.html">安全</a></li>
+											<li><a href="/category/ban-ben-kong-zhi.html">版本控制</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+								<section>
+									<header>
+										<h2>SITEMAP</h2>
+									</header>
+
+									<ul class="divided">
+												<li><a href="/authors.html">作者</a></li>
+												<li><a href="/categories.html">分类</a></li>
+												<li><a href="/archives.html">归档</a></li>
+												<li><a href="/tags.html">标签</a></li>
+									</ul>
+								</section>
+							</div>
+
+							<div class="4u">
+
+								<section>
+									<header>
+										<h2>Contact</h2>
+									</header>
+									<ul class="social">
+									</ul>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<!-- Copyright -->
+									<div id="copyright">
+										<ul class="links">
+											<li>&copy; YanQue 2019-2024	</li>
+											<!-- <li>Images: <a href="http://facebook.com/DreametryDoodle">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+											<li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+										</ul>
+									</div>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		</div>
+
+		<!-- 其他 -->
+
+			<div style="position: fixed;">
+				<!-- 深色模式粒子效果 -->
+				<!-- <canvas id="universe" width="1428" height="993" data-relingo-block="true" data-relingo-parsed="true"></canvas> -->
+				<!-- 深色模式下添加粒子效果canvas -->
+				<canvas id="universe" width="1312" height="880"></canvas>
+			</div>
+
+		<script src="/theme//js/jquery-3.7.1.min.js"></script>
+		<script src="/theme//js/jquery.dropotron.js"></script>
+
+		<script src="/theme//js/config.js"></script>
+		<script src="/theme//js/backloading.js"></script>
+
+		<script src="/theme//skel-s0.4.8/skel.min.js"></script>
+		<script src="/theme//skel-s0.4.8/skel-panels.min.js"></script>
+		<!-- <script src="/theme/js/skel.min.js"></script>
+		<script src="/theme/js/skel-panels.min.js"></script> -->
+		<script src="/theme//js/canvas/dark.js"></script>
+		<script src="/theme//js/yq-blog-plugin.min.js"></script>
+<script type="text/javascript">
+	function addEvent() {
+		$("#toc-contents-title-text").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tools").click(function() {
+			$("#top-toc-tree-container").toggleClass("no-active");
+			$("#sidebar-tools").toggleClass("no-active");
+		})
+		$("#sidebar-tool-back-top").click(function() {
+			// window.scrollTo(0, 0);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		})
+	}
+	addEvent()
+</script>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/theme/css/ie8.css" /><![endif]-->
+	</body>
+</html>

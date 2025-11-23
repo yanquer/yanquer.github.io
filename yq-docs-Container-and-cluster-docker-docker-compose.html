@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 06 March 2024
+      , 06 三月 2024
       , Category:
 	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
     </div>
@@ -197,6 +197,11 @@ lrwxr-xr-x&#64; 1 yanque  admin    62B Dec  6  2022 /usr/local/bin/docker-compos
 <kbd><span class="option">-f</span></kbd></td>
 <td><p class="first">指定配置文件, 不指定时默认为 <cite>docker-compose.yml</cite></p>
 <p class="last">注意此选项要紧跟在 <cite>docker-compose</cite> 后面</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--build</span></kbd></td>
+<td><p class="first">构建镜像并启动容器(dockerfile无更新时候不会触发完全重建, 会直接使用以前构建好的layer快速生成)</p>
+<p class="last">如果仅仅是重启指定的服务 <tt class="docutils literal"><span class="pre">docker-compose</span> up <span class="pre">--build</span> $serviceName <span class="pre">-d</span></tt></p>
 </td></tr>
 </tbody>
 </table>
@@ -850,6 +855,243 @@ hostname: my-emby-server
     nginx[&#39;redirect_http_to_https_port&#39;] = 80
 </pre></div>
 </div>
+<div class="section" id="dockerfile-1">
+<h2>直接dockerfile启动</h2>
+<p>首先需要有一个 dockerfile 文件, 然后 compose 文件中指定 build 即可</p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">web</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./Dockerfile</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5000:5000&quot;</span>
+</pre></div>
+<p>这种情况, 如果dockerfile中配置的内容更新, 如果每次手动down然后up,
+会在build的过程中停机, 此时可以使用 <cite>--build</cite> 参数, 这样会在不停止容器的情况下进行构建,
+然后再重启容器, 达到无停机更新的目的:</p>
+<pre class="literal-block">
+docker-compose up -d --build
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last"><tt class="docutils literal"><span class="pre">--build</span></tt> 会自动识别dockerfile配置的内容是否有更新, 比如内容有 <tt class="docutils literal">COPY . /APP</tt> 这种,
+如果代码内容有更新, 则会重新构建镜像, 然后重启容器. 没有更新就单纯重启.
+(底层貌似是有时间戳之类的机制来判断是否有更新)</p>
+</div>
+</div>
+<div class="section" id="healthcheck">
+<h2>healthcheck机制</h2>
+<p>可以在 yml 文件中配置 healthcheck 来检测容器的健康状态.</p>
+<p>可用于多个容器之间存在依赖关系, 可以检测某个容器是否健康, 然后再启动依赖它的容器.</p>
+<p>比如mysql正常后启动web容器</p>
+<div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;mysqladmin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+
+<span class="w">  </span><span class="nt">web</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-web-app:latest</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+</pre></div>
+<p>例子2</p>
+<div class="highlight"><pre><span></span><span class="c1"># docker-compose.yml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mysql</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.0</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_db</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rootpassword</span>
+<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myuser</span>
+<span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mypassword</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3306:3306&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./init.sql:/docker-entrypoint-initdb.d/init.sql</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;mysqladmin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-u&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-p$$MYSQL_ROOT_PASSWORD&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">      </span><span class="nt">start_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+
+<span class="w">  </span><span class="nt">web</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">django_app</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">sh -c &quot;while ! nc -z mysql 3306; do sleep 2; done &amp;&amp;</span>
+<span class="w">            </span><span class="no">python manage.py migrate &amp;&amp;</span>
+<span class="w">            </span><span class="no">python manage.py runserver 0.0.0.0:8000&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/app</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8000&quot;</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mysql</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WAIT_HOSTS=mysql:3306</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WAIT_HOSTS_TIMEOUT=300</span>
+</pre></div>
+<p>这种方式有个缺点, 就是实际使用的时候 healthcheck 检查每次会弄很久,
+即使实际上是正常的.</p>
+</div>
+<div class="section" id="dockerfile-2">
+<h2>dockerfile多行</h2>
+<p>可以使用一对 <tt class="docutils literal">EOF</tt></p>
+<div class="highlight"><pre><span></span>RUN<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt;-EOF &gt; /path/to/file.txt</span>
+<span class="s">line 1</span>
+<span class="s">line 2</span>
+<span class="s">line 3</span>
+<span class="s">EOF</span>
+</pre></div>
+<div class="highlight"><pre><span></span>RUN<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">echo &quot;&quot;&quot;</span>
+<span class="s">. .venv/bin/activate</span>
+<span class="s"># python manage.py collectstatic</span>
+<span class="s">python manage.py collectstatic --noinput --clear</span>
+<span class="s">python manage.py migrate</span>
+<span class="s">uwsgi --ini ptloc/conf/uwsgi-docker.ini</span>
+<span class="s">&quot;&quot;&quot; &gt; run.sh</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<div class="section" id="section-5">
+<h2>附: 最近一次示例</h2>
+<div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mysql-ptloc</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.0</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root_passwordxxx</span>
+<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ptloc</span>
+<span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ptlocUser</span>
+<span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ninja321</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3306:3306&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1">#- /data/www/site/mysql:/var/lib/mysql</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data/mysql:/var/lib/mysql</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./ptloc/conf/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">custom_net</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5.0.10</span>
+<span class="c1">#    healthcheck:</span>
+<span class="c1">#      # test: [ &quot;CMD&quot;, &quot;mysqladmin&quot;, &quot;ping&quot;, &quot;-h&quot;, &quot;localhost&quot;, &quot;-u&quot;, &quot;ptlocUser&quot;, &quot;-p$$MYSQL_ROOT_PASSWORD&quot; ]</span>
+<span class="c1">#      test: [ &quot;CMD&quot;, &quot;mysqladmin&quot;, &quot;ping&quot;, &quot;-h&quot;, &quot;localhost&quot;, &quot;-u&quot;, &quot;ptlocUser&quot;, &quot;-pninja321&quot; ]</span>
+<span class="c1">#      timeout: 1s</span>
+<span class="c1">#      retries: 10</span>
+<span class="c1">#      start_period: 1s</span>
+
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4.0&#39;</span><span class="w">    </span><span class="c1"># 最多使用 4 个 CPU 核心</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4G</span><span class="w">     </span><span class="c1"># 最多使用 内存</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.5&#39;</span><span class="w">    </span><span class="c1"># 保证至少 0.5 个 CPU 核心</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256M</span><span class="w">   </span><span class="c1"># 保证至少 256MB 内存</span>
+
+<span class="w">  </span><span class="nt">web-ptloc</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="c1"># docker build -t myapp -f resources/docker/Dockerfile .</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./resources/docker/Dockerfile</span>
+<span class="c1">#      args:</span>
+<span class="c1">#        BUILDKIT_PROGRESS: plain  # 进度输出格式</span>
+<span class="c1">#    network_mode: &quot;host&quot;</span>
+<span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">   </span><span class="c1"># 相当于 -i</span>
+<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">          </span><span class="c1"># 相当于 -t</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9191:9191&quot;</span>
+<span class="c1">#      - &quot;8000:8000&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># - &quot;/data/www/site/logs:/logs&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./data/logs:/app/data/logs&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">socket_dir:/tmp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static_dir:/app/data/static</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">DJ_RUN_DEBUG</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">      </span><span class="c1"># Django域名, 避免访问CSRF</span>
+<span class="w">      </span><span class="nt">DJ_FRONT_DOMAIN</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.localp.cc&quot;</span>
+<span class="w">      </span><span class="c1"># 用于请求验证</span>
+<span class="w">      </span><span class="nt">DJ_B_HTTP_AU_HEADER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AUKEY&quot;</span>
+<span class="w">      </span><span class="nt">DJ_B_HTTP_AU_VAL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eXVlbGFpeXVlaGFvCg==&quot;</span>
+<span class="w">      </span><span class="c1"># 数据库</span>
+<span class="w">      </span><span class="nt">DJ_DATABASE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ptloc</span>
+<span class="w">      </span><span class="nt">DJ_DATABASE_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ptlocUser</span>
+<span class="w">      </span><span class="nt">DJ_DATABASE_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ninja321</span>
+<span class="w">      </span><span class="nt">DJ_DATABASE_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5.0.10</span>
+<span class="w">      </span><span class="nt">DJ_DATABASE_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql-ptloc</span>
+<span class="c1">#      mysql-ptloc:</span>
+<span class="c1">#        condition: service_healthy</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">custom_net</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5.0.11</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4.0&#39;</span><span class="w">    </span><span class="c1"># 最多使用 4 个 CPU 核心</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4G</span><span class="w">     </span><span class="c1"># 最多使用 内存</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.5&#39;</span><span class="w">    </span><span class="c1"># 保证至少 0.5 个 CPU 核心</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256M</span><span class="w">   </span><span class="c1"># 保证至少 256MB 内存</span>
+
+<span class="w">  </span><span class="nt">nginx-ptloc</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nginx:latest&quot;</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80:80&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./ptloc/conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./ptloc/conf/nginx/conf.d/ptloc.conf:/etc/nginx/conf.d/ptloc.conf:ro&quot;</span>
+<span class="w">      </span><span class="c1"># - &quot;/data/www/site/nginx:/var/log/nginx&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./data/logs/nginx:/var/log/nginx&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">socket_dir:/tmp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static_dir:/data/www/site/static</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-ptloc</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">custom_net</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5.0.12</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4.0&#39;</span><span class="w">    </span><span class="c1"># 最多使用 4 个 CPU 核心</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4G</span><span class="w">     </span><span class="c1"># 最多使用 内存</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.5&#39;</span><span class="w">    </span><span class="c1"># 保证至少 0.5 个 CPU 核心</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256M</span><span class="w">   </span><span class="c1"># 保证至少 256MB 内存</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 共享socket文件, 以便 nginx 代理</span>
+<span class="w">  </span><span class="nt">socket_dir</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 静态文件共享</span>
+<span class="w">  </span><span class="nt">static_dir</span><span class="p">:</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">custom_net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+<span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5.0.0/24</span>
+<span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5.0.1</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -919,6 +1161,26 @@ hostname: my-emby-server
     yml文件存在多行配置
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#dockerfile-1">
+    直接dockerfile启动
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#healthcheck">
+    healthcheck机制
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#dockerfile-2">
+    dockerfile多行
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-5">
+    附: 最近一次示例
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -944,27 +1206,27 @@ hostname: my-emby-server
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

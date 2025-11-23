@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 20 February 2023
+      , 20 二月 2023
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -149,6 +149,7 @@
 
 									</div>
 									<p>抽象基类在你要将公共信息放入很多模型时会很有用。
+(比如创建不建立数据表的基类, 但其字段会被子类继承)
 编写你的基类，并在 <a class="reference external" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/#meta-options">Meta</a>
 类中填入 <cite>abstract=True</cite>.
 该模型将不会创建任何数据表。当其用作其它模型类的基类时，它的字段会自动添加至子类。</p>
@@ -170,6 +171,51 @@ class Student(CommonInfo):
 因为它是一个抽象基类。它不会生成数据表，也没有管理器，也不能被实例化和保存。</p>
 <p>从抽象基类继承来的字段可被其它字段或值重写，或用 <cite>None</cite> 删除。</p>
 <p>对很多用户来说，这种继承可能就是你想要的。它提供了一种在 Python 级抽出公共信息的方法，但仍会在子类模型中创建数据表。</p>
+<div class="section" id="section-2">
+<h2>继承一个非抽象父类</h2>
+<p>比如已经有一个 <cite>Place</cite> 模型:</p>
+<pre class="literal-block">
+class Place(models.Model):
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=80)
+
+    class Meta:
+        abstract = False
+        verbose_name = &quot;地点&quot;
+        verbose_name_plural = &quot;地点&quot;
+</pre>
+<p>你可以通过继承 <cite>Place</cite> 来创建一个新的模型 <cite>Restaurant</cite>:</p>
+<pre class="literal-block">
+class Restaurant(Place):
+    serves_hot_dogs = models.BooleanField(default=False)
+    serves_pizza = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = &quot;餐馆&quot;
+        verbose_name_plural = &quot;餐馆&quot;
+</pre>
+<p><cite>Restaurant</cite> 模型将拥有 <cite>name</cite> 和 <cite>address</cite> 字段，因为它们是从 <cite>Place</cite> 继承来的。
+但是， <cite>Place</cite> 模型将不会被创建为 <cite>Restaurant</cite> 模型的基类。
+<cite>Place</cite> 模型将继续作为一个独立的模型存在，并拥有自己的数据表。</p>
+<p>另外, django 默认会在 <cite>Restaurant</cite> 加一个 <cite>place_ptr</cite> 字段作为外键关联到 <cite>Place</cite> 表.
+使 <cite>Restaurant</cite> 和 <cite>Place</cite> 之间形成了一个一对一的关系。
+如果你不想要这个行为, 可以通过在 <cite>Meta</cite> 类中设置 <cite>base_manager_name</cite> 来避免这个外键的创建.
+例如:</p>
+<pre class="literal-block">
+class Restaurant(Place):
+    serves_hot_dogs = models.BooleanField(default=False)
+    serves_pizza = models.BooleanField(default=False)
+
+    class Meta:
+        base_manager_name = 'objects'
+        verbose_name = &quot;餐馆&quot;
+        verbose_name_plural = &quot;餐馆&quot;
+</pre>
+<p>这样 <cite>Restaurant</cite> 就不会有 <cite>place_ptr</cite> 字段了,
+但是你需要手动管理 <cite>Place</cite> 和 <cite>Restaurant</cite> 之间的关系,
+例如在创建 <cite>Restaurant</cite> 时, 需要先创建一个 <cite>Place</cite> 对象,
+然后将其赋值给 <cite>Restaurant</cite> 的某个字段来建立关联.</p>
+</div>
 
 								</article>
 						</div>
@@ -186,6 +232,27 @@ class Student(CommonInfo):
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    继承一个非抽象父类
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -203,27 +270,27 @@ class Student(CommonInfo):
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

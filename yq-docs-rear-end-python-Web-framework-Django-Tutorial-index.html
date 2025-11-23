@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 25 December 2024
+      , 25 十二月 2024
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -169,7 +169,87 @@
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-url-to-file-field.html">将网络URL保存为文件字段</a>
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-database-reset-and-migration.html">数据库重置与迁移</a>
 <a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-token-authentication.html">认证与token</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-target-form-field-validation-logic.html">指定表单字段的验证逻辑</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-add-custom-command.html">增加自定义command命令</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-index-u-static.html">静态资源更新</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-index-custom-sort.html">数据库查询自定义排序</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-index-group.html">数据库分组查询</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-proxy-model.html">代理模型</a>
+<a class="sphinx-toc-tree" href="/yq-docs-rear-end-python-Web-framework-Django-Tutorial-inline.html">内联</a>
+</div><div class="section" id="save-update">
+<h2>save()与update()</h2>
+<dl class="docutils">
+<dt>save()</dt>
+<dd>保存一个对象到数据库, 有新增和更新两种情况</dd>
+<dt>update()</dt>
+<dd><p class="first">批量更新, 直接在QuerySet上调用, 不会触发模型的 save() 方法</p>
+<p>例子:</p>
+<pre class="last literal-block">
+# save() 新增
+obj = Model(field1=value1, field2=value2)
+obj.save()
+
+# save() 更新
+obj = Model.objects.get(id=1)
+obj.field1 = new_value
+obj.save()
+
+# update() 批量更新
+Model.objects.filter(condition).update(field1=new_value)
+</pre>
+</dd>
+</dl>
 </div>
+<div class="section" id="section-1">
+<h2>一些常见的用法</h2>
+<p>统计总数:</p>
+<pre class="literal-block">
+Model.objects.count()
+</pre>
+<p>查询所有不重复的时间,
+比如存在一个字段 <cite>date</cite></p>
+<pre class="literal-block">
+Model.objects.values_list('date', flat=True).distinct().order_by('date')
+</pre>
+<p>结果是一个列表, 里面是所有不重复的日期</p>
+<p>如果需要字典的结果:</p>
+<pre class="literal-block">
+Model.objects.values('date').distinct().order_by('date')
+
+# 字典包含一个日期键值对, 键为 `date`
+</pre>
+<p>等价HAVING的查询:</p>
+<pre class="literal-block">
+from django.db.models import Count
+
+# 结果是字典
+Model.objects.values('field1').annotate(count=Count('field1')).filter(count__gt=5)
+# 结果是字典
+Model.objects.values('field1').annotate(count=Count('pk')).filter(count__gt=5)
+# 结果是模型对象
+Model.objects.annotate(count=Count('pk')).filter(count__gt=5)
+</pre>
+</div>
+<div class="section" id="django-1">
+<h2>启动Django发现代码加载两次</h2>
+<p>在使用 <cite>runserver</cite> 启动Django开发服务器时,
+默认启用了自动重载功能,
+当代码发生变化时, 服务器会自动重启以应用新的代码.
+这会导致代码被加载两次.</p>
+<p>如果不需要这个功能, 可以通过添加 <cite>--noreload</cite> 参数来禁用自动重载:</p>
+<pre class="literal-block">
+python manage.py runserver --noreload
+</pre>
+<p>或者也可以判断一下环境变量, 避免代码被加载两次:</p>
+<pre class="literal-block">
+import os
+
+if os.environ.get('RUN_MAIN') == 'true':
+    # 这里放置只需要执行一次的代码
+    ...
+</pre>
+</div>
+
 								</article>
 						</div>
 					</div>
@@ -185,6 +265,37 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#save-update">
+    save()与update()
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    一些常见的用法
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#django-1">
+    启动Django发现代码加载两次
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -202,27 +313,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

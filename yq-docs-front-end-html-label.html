@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 15 October 2024
+      , 15 十月 2024
       , Category:
 	  <a href="category/qian-duan.html">前端</a>
     </div>
@@ -226,6 +226,238 @@ pre { white-space: pre; }
 <li>value: 当前编辑器内容</li>
 </ul>
 </div>
+<div class="section" id="svg">
+<h2>svg</h2>
+<p>可以用来绘制矢量图形，支持动画和交互。</p>
+<p>支持的子标签</p>
+<ul class="simple">
+<li>circle: 绘制圆形</li>
+<li>rect: 绘制矩形</li>
+<li>line: 绘制直线</li>
+<li>ellipse: 绘制椭圆</li>
+<li>polyline: 绘制折线</li>
+<li>polygon: 绘制多边形</li>
+<li>path: 绘制路径</li>
+<li>text: 绘制文本</li>
+<li>linearGradient: 线性渐变</li>
+<li>radialGradient: 径向渐变</li>
+<li>pattern: 图案填充</li>
+<li>g: 分组元素，可以包含其他 SVG 元素</li>
+<li>defs: 定义元素，可以包含其他 SVG 元素，用于定义可重用的图形或样式</li>
+<li>use: 使用定义的元素</li>
+<li>symbol: 定义一个符号，可以作为其他元素引用</li>
+<li>image: 绘制图像</li>
+<li>a: 定义超链接</li>
+<li>mask: 定义遮罩</li>
+<li>animate: 定义动画</li>
+<li>animateTransform: 定义变换动画</li>
+<li>animateMotion: 定义运动动画</li>
+<li>clipPath: 定义裁剪路径</li>
+<li>foreignObject: 允许在 SVG 中嵌入其他 XML 或 HTML 内容</li>
+<li>filter: 定义滤镜效果</li>
+<li>feGaussianBlur: 滤镜效果，用于模糊</li>
+<li>feColorMatrix: 滤镜效果，用于颜色转换</li>
+<li>feComponentTransfer: 滤镜效果，用于颜色转换</li>
+<li>feComposite: 滤镜效果，用于合成图形</li>
+<li>feMerge: 滤镜效果，用于合并多个图形</li>
+<li>feMorphology: 滤镜效果，用于形态学操作</li>
+<li>feDistantLight: 滤镜效果，用于 distant light</li>
+<li>fePointLight: 滤镜效果，用于 point light</li>
+<li>feSpotLight: 滤镜效果，用于 spot light</li>
+<li>feSpecularLighting: 滤镜效果，用于高光照明</li>
+<li>feDiffuseLighting: 滤镜效果，用于漫反射照明</li>
+<li>feConvolveMatrix: 滤镜效果，用于卷积矩阵</li>
+<li>feDisplacementMap: 滤镜效果，用于位移映射</li>
+<li>feTile: 滤镜效果，用于平铺图形</li>
+<li>feTurbulence: 滤镜效果，用于生成噪声或纹理</li>
+<li>feFlood: 滤镜效果，用于填充颜色</li>
+<li>feBlend: 滤镜效果，用于混合</li>
+<li>feDropShadow: 滤镜效果，用于投影</li>
+<li>feImage: 滤镜效果，用于图像处理</li>
+<li>feOffset: 滤镜效果，用于偏移</li>
+<li>feConvexPolygon: 滤镜效果，用于凸多边形</li>
+<li>feSolidColor: 滤镜效果，用于填充颜色</li>
+</ul>
+<p>详细说明</p>
+<p>svg是 SVG 图形的根容器</p>
+<div class="highlight"><pre><span></span>&lt;svg width=&quot;200&quot; height=&quot;100&quot; viewBox=&quot;0 0 200 100&quot;&gt;
+  &lt;!-- SVG内容 --&gt;
+&lt;/svg&gt;
+</pre></div>
+<p>其中, width/height 可以由外部指定, viewBox 则是 SVG 的坐标系大小, 实际会按照宽高比进行缩放</p>
+<div class="section" id="lineargradient">
+<h3>linearGradient 线性渐变</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;defs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;linearGradient</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;grad1&quot;</span><span class="w"> </span><span class="na">x1=</span><span class="s">&quot;0%&quot;</span><span class="w"> </span><span class="na">y1=</span><span class="s">&quot;0%&quot;</span><span class="w"> </span><span class="na">x2=</span><span class="s">&quot;100%&quot;</span><span class="w"> </span><span class="na">y2=</span><span class="s">&quot;0%&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;stop</span><span class="w"> </span><span class="na">offset=</span><span class="s">&quot;0%&quot;</span><span class="w"> </span><span class="na">style=</span><span class="s">&quot;stop-color:rgb(255,0,0);stop-opacity:1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;stop</span><span class="w"> </span><span class="na">offset=</span><span class="s">&quot;100%&quot;</span><span class="w"> </span><span class="na">style=</span><span class="s">&quot;stop-color:rgb(255,255,0);stop-opacity:1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/linearGradient&gt;</span>
+<span class="nt">&lt;/defs&gt;</span>
+<span class="nt">&lt;rect</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;180&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;80&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;url(#grad1)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="radialgradient">
+<h3>radialGradient 径向渐变</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;defs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;radialGradient</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;grad2&quot;</span><span class="w"> </span><span class="na">cx=</span><span class="s">&quot;50%&quot;</span><span class="w"> </span><span class="na">cy=</span><span class="s">&quot;50%&quot;</span><span class="w"> </span><span class="na">r=</span><span class="s">&quot;50%&quot;</span><span class="w"> </span><span class="na">fx=</span><span class="s">&quot;50%&quot;</span><span class="w"> </span><span class="na">fy=</span><span class="s">&quot;50%&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;stop</span><span class="w"> </span><span class="na">offset=</span><span class="s">&quot;0%&quot;</span><span class="w"> </span><span class="na">style=</span><span class="s">&quot;stop-color:rgb(255,255,255);stop-opacity:0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;stop</span><span class="w"> </span><span class="na">offset=</span><span class="s">&quot;100%&quot;</span><span class="w"> </span><span class="na">style=</span><span class="s">&quot;stop-color:rgb(0,0,255);stop-opacity:1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/radialGradient&gt;</span>
+<span class="nt">&lt;/defs&gt;</span>
+<span class="nt">&lt;ellipse</span><span class="w"> </span><span class="na">cx=</span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="na">cy=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">rx=</span><span class="s">&quot;85&quot;</span><span class="w"> </span><span class="na">ry=</span><span class="s">&quot;30&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;url(#grad2)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="pattern">
+<h3>pattern 图案填充</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;defs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;pattern</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;pattern1&quot;</span><span class="w"> </span><span class="na">patternUnits=</span><span class="s">&quot;userSpaceOnUse&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;20&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/pattern&gt;</span>
+<span class="nt">&lt;/defs&gt;</span>
+<span class="nt">&lt;rect</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;200&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;url(#pattern1)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="filter">
+<h3>filter 滤镜效果</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;defs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;filter</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;blur&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;feGaussianBlur</span><span class="w"> </span><span class="na">in=</span><span class="s">&quot;SourceGraphic&quot;</span><span class="w"> </span><span class="na">stdDeviation=</span><span class="s">&quot;5&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/filter&gt;</span>
+<span class="nt">&lt;/defs&gt;</span>
+<span class="nt">&lt;rect</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;160&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;60&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="w"> </span><span class="na">filter=</span><span class="s">&quot;url(#blur)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="image">
+<h3>image 绘制图像</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;160&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;120&quot;</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;image.jpg&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="a">
+<h3>a 超链接</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;a</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;https://example.com&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;orange&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="animate">
+<h3>animate 基础动画</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;animate</span><span class="w"> </span><span class="na">attributeName=</span><span class="s">&quot;x&quot;</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;150&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3s&quot;</span><span class="w"> </span><span class="na">repeatCount=</span><span class="s">&quot;indefinite&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/rect&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="animatetransform">
+<h3>animateTransform 变换动画</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;animateTransform</span><span class="w"> </span><span class="na">attributeName=</span><span class="s">&quot;transform&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;rotate&quot;</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;0 45 45&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;360 45 45&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;5s&quot;</span><span class="w"> </span><span class="na">repeatCount=</span><span class="s">&quot;indefinite&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/rect&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="path">
+<h3>path 路径绘制</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M 10 80 Q 95 10 180 80 T 350 80&quot;</span><span class="w"> </span><span class="na">stroke=</span><span class="s">&quot;black&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;transparent&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<dl class="docutils">
+<dt>路径命令详解</dt>
+<dd><p class="first">路径命令由字母（表示命令类型）和坐标参数组成，命令字母大小写敏感：</p>
+<ul class="last simple">
+<li>大写字母表示绝对坐标</li>
+<li>小写字母表示相对坐标</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="m-m">
+<h4>移动命令 (M/m)</h4>
+<div class="highlight"><pre><span></span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M x,y 后续命令...&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<ul class="simple">
+<li>M (Move to): 将画笔移动到指定点，不画线</li>
+<li>示例: <tt class="docutils literal">M 10,20</tt> 移动到绝对坐标 (10,20)</li>
+<li>示例: <tt class="docutils literal">m 10,20</tt> 相对于当前位置移动 (10,20)</li>
+</ul>
+</div>
+<div class="section" id="l-l-h-h-v-v">
+<h4>直线命令 (L/l, H/h, V/v)</h4>
+<div class="highlight"><pre><span></span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M x,y L x,y&quot;</span><span class="w"> </span><span class="na">stroke=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<ul class="simple">
+<li>L (Line to): 从当前点到指定点画直线</li>
+<li>H (Horizontal): 水平线，只需x坐标</li>
+<li>V (Vertical): 垂直线，只需y坐标</li>
+<li>示例: <tt class="docutils literal">L 50,50</tt> 画到绝对坐标 (50,50)</li>
+<li>示例: <tt class="docutils literal">l 30,0</tt> 向右画30px水平线</li>
+</ul>
+</div>
+<div class="section" id="z-z">
+<h4>闭合命令 (Z/z)</h4>
+<div class="highlight"><pre><span></span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M10,10 L50,10 L30,50 Z&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<ul class="simple">
+<li>Z: 闭合路径，从当前点画直线回起点</li>
+<li>不区分大小写，不需要参数</li>
+</ul>
+</div>
+<div class="section" id="c-c-s-s">
+<h4>三次贝塞尔曲线 (C/c, S/s)</h4>
+<div class="highlight"><pre><span></span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M10,80 C40,10 65,10 95,80&quot;</span><span class="w"> </span><span class="na">stroke=</span><span class="s">&quot;black&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;none&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<dl class="docutils">
+<dt>C (Cubic Bézier):</dt>
+<dd><ul class="first last simple">
+<li>语法: <tt class="docutils literal">C x1,y1 x2,y2 x,y</tt></li>
+<li>(x1,y1): 起点控制点</li>
+<li>(x2,y2): 终点控制点</li>
+<li>(x,y): 终点</li>
+</ul>
+</dd>
+<dt>S (Smooth cubic Bézier): 简化的连续曲线</dt>
+<dd><ul class="first last simple">
+<li>语法: <tt class="docutils literal">S x2,y2 x,y</tt></li>
+<li>自动对称前一个控制点</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="q-q-t-t">
+<h4>二次贝塞尔曲线 (Q/q, T/t)</h4>
+<div class="highlight"><pre><span></span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M10,80 Q52.5,10 95,80&quot;</span><span class="w"> </span><span class="na">stroke=</span><span class="s">&quot;black&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;none&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<dl class="docutils">
+<dt>Q (Quadratic Bézier):</dt>
+<dd><ul class="first last simple">
+<li>语法: <tt class="docutils literal">Q x1,y1 x,y</tt></li>
+<li>(x1,y1): 控制点</li>
+<li>(x,y): 终点</li>
+</ul>
+</dd>
+<dt>T (Smooth quadratic Bézier): 简化的连续曲线</dt>
+<dd><ul class="first last simple">
+<li>语法: <tt class="docutils literal">T x,y</tt></li>
+<li>自动对称前一个控制点</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="a-a">
+<h4>椭圆弧曲线 (A/a)</h4>
+<div class="highlight"><pre><span></span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M10,50 A30,30 0 0 1 50,50&quot;</span><span class="w"> </span><span class="na">stroke=</span><span class="s">&quot;black&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;none&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<dl class="docutils">
+<dt>A (Arc):</dt>
+<dd><ul class="first last simple">
+<li>语法: <tt class="docutils literal">A rx,ry <span class="pre">x-axis-rotation</span> <span class="pre">large-arc-flag</span> <span class="pre">sweep-flag</span> x,y</tt></li>
+<li>rx, ry: x轴和y轴半径</li>
+<li>x-axis-rotation: 椭圆旋转角度(度)</li>
+<li>large-arc-flag: 0表示小弧，1表示大弧</li>
+<li>sweep-flag: 0表示逆时针，1表示顺时针</li>
+<li>x,y: 终点坐标</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 
 								</article>
 						</div>
@@ -284,6 +516,90 @@ pre { white-space: pre; }
     textarea
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#svg">
+    svg
+   </a>
+   <ul class="toc-tree visible">
+    <li class="toc-h1">
+     <a class="" href="#lineargradient">
+      linearGradient 线性渐变
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#radialgradient">
+      radialGradient 径向渐变
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#pattern">
+      pattern 图案填充
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#filter">
+      filter 滤镜效果
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#image">
+      image 绘制图像
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#a">
+      a 超链接
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#animate">
+      animate 基础动画
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#animatetransform">
+      animateTransform 变换动画
+     </a>
+    </li>
+    <li class="toc-h1">
+     <a class="" href="#path">
+      path 路径绘制
+     </a>
+     <ul class="toc-tree visible">
+      <li class="toc-h2">
+       <a class="" href="#m-m">
+        移动命令 (M/m)
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#l-l-h-h-v-v">
+        直线命令 (L/l, H/h, V/v)
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#z-z">
+        闭合命令 (Z/z)
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#c-c-s-s">
+        三次贝塞尔曲线 (C/c, S/s)
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#q-q-t-t">
+        二次贝塞尔曲线 (Q/q, T/t)
+       </a>
+      </li>
+      <li class="toc-h2">
+       <a class="" href="#a-a">
+        椭圆弧曲线 (A/a)
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
  </ul>
 </div>
 
@@ -309,27 +625,27 @@ pre { white-space: pre; }
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

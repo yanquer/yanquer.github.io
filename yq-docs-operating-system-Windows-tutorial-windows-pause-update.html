@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 16 January 2025
+      , 16 一月 2025
       , Category:
 	  <a href="category/cao-zuo-xi-tong.html">操作系统</a>
     </div>
@@ -144,7 +144,19 @@
 										<span class="head-modify-time">修改于: 2025-01-16</span>
 
 									</div>
-									<p>最简单的方法</p>
+									<dl class="docutils">
+<dt>关键字</dt>
+<dd><ul class="first last simple">
+<li>Windows暂停更新</li>
+<li>暂停更新</li>
+<li>Win10暂停更新</li>
+<li>Win11暂停更新</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="section-1">
+<h2>方案一: 更改系统时间(已失效)</h2>
+<p>最简单的方法</p>
 <ol class="arabic simple">
 <li>将系统设置的时间修改为几十年后</li>
 <li>系统更新-高级-选择推迟更新的时间为十几年后</li>
@@ -153,6 +165,22 @@
 <p>参考自 <a class="reference external" href="https://zhuanlan.zhihu.com/p/642914883">https://zhuanlan.zhihu.com/p/642914883</a> 的评论</p>
 <div class="figure">
 <img alt="Windows暂停更新" src="doc-raw/resources/images/2025-01-17-16-29-33.png" style="width: 50%;" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">已经失效, 系统时间更新会取消掉之前设置的暂停更新</p>
+</div>
+</div>
+<div class="section" id="section-2">
+<h2>方案二: 修改注册表可选时间</h2>
+<p>Powershell管理员权限执行</p>
+<div class="highlight"><pre><span></span><span class="n">reg</span> <span class="n">add</span> <span class="s2">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings&quot;</span> <span class="p">/</span><span class="n">v</span> <span class="n">FlightSettingsMaxPauseDays</span> <span class="p">/</span><span class="n">t</span> <span class="n">reg_dword</span> <span class="p">/</span><span class="n">d</span> <span class="n">10000</span> <span class="p">/</span><span class="n">f</span>
+</pre></div>
+<p>就可看到暂停时间到 10000 天以后了</p>
+<div class="figure">
+<img alt="Windows暂停更新10000天" src="doc-raw/resources/images/2025-08-07-09-54-30.png" style="width: 50%;" />
+</div>
+<p>参考: <a class="reference external" href="https://zhuanlan.zhihu.com/p/642914883">知乎-唯一无副作用禁用Win10/11更新方法，一键暂停1000周</a></p>
 </div>
 
 								</article>
@@ -170,6 +198,32 @@
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    方案一: 更改系统时间(已失效)
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    方案二: 修改注册表可选时间
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -187,27 +241,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

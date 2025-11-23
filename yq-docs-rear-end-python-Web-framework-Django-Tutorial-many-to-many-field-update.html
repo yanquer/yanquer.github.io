@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 28 March 2025
+      , 28 三月 2025
       , Category:
 	  <a href="category/hou-duan-python.html">后端; python</a>
     </div>
@@ -192,6 +192,45 @@ Direct assignment to the forward side of a many-to-many set is prohibited. Use s
 <span class="c1"># 设置博文的多对多关系为[tag1, tag2, tag3]</span>
 <span class="n">blog</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="n">tag1</span><span class="p">,</span> <span class="n">tag2</span><span class="p">,</span> <span class="n">tag3</span><span class="p">])</span>
 </pre></div>
+<div class="section" id="section-2">
+<h2>多对多字段查询</h2>
+<p>比如有一个模型</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Article</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+<p>查询示例</p>
+<p>直接用跨表name查询</p>
+<div class="highlight"><pre><span></span><span class="c1"># 查询所有包含特定标签的文章</span>
+<span class="n">articles_with_tag</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__name</span><span class="o">=</span><span class="s1">&#39;Django&#39;</span><span class="p">)</span>
+
+<span class="c1"># 查询包含多个标签的文章</span>
+<span class="n">articles_with_tags</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__name__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Django&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+
+<span class="c1"># 查询标签类别为特定值的文章</span>
+<span class="n">articles_with_tag_category</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__category</span><span class="o">=</span><span class="s1">&#39;Programming&#39;</span><span class="p">)</span>
+</pre></div>
+<p>使用主键或者模型查询</p>
+<div class="highlight"><pre><span></span><span class="c1"># 查询包含 tag ID 为 1,2,3 中任意一个的文章</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__in</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+
+<span class="c1"># 查询必须同时包含 tag 1,2,3 的文章</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 查询 tag 名称为 &quot;python&quot; 或 &quot;javascript&quot; 的文章</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tags__name__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;javascript&#39;</span><span class="p">])</span>
+
+<span class="c1"># 查询 tag 名称为 &quot;python&quot; 且分类为 &quot;programming&quot; 的文章</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">tags__name</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span>
+    <span class="n">tags__category</span><span class="o">=</span><span class="s1">&#39;programming&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 
 								</article>
 						</div>
@@ -208,6 +247,27 @@ Direct assignment to the forward side of a many-to-many set is prohibited. Use s
 
 		<!-- Sider Bar -->
 		<div id="right-side-bar">
+	<nav>
+		<div id="top-toc-tree-container" class="fixed-container">
+			<div class="toc-contents-title">
+				<h4 id="toc-contents-title-text">Contents</h4>
+				<!-- <span class="tool-tip-text">点击隐藏</span> -->
+			</div>
+			<div id="toc-tree-container">
+ <ul class="toc-tree visible">
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    多对多字段查询
+   </a>
+  </li>
+ </ul>
+</div>
+
+		</div>
+	</nav>
+	<div id="sidebar-tools" class="fixed-container no-active cant-select">
+		<!-- 按钮 使用 content 绘制图标 -->
+	</div>
 	<div id="sidebar-tool-back-top" class="fixed-container cant-select">
 		<!-- 按钮 使用 content 绘制图标 -->
 	</div>
@@ -225,27 +285,27 @@ Direct assignment to the forward side of a many-to-many set is prohibited. Use s
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>

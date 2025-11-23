@@ -87,7 +87,7 @@
     <div class="page-head-content">
       By
 	  <a href="author/yanque.html">YanQue</a>
-      , 09 March 2024
+      , 09 三月 2024
       , Category:
 	  <a href="category/rong-qi-yu-ji-qun.html">容器与集群</a>
     </div>
@@ -172,6 +172,59 @@
 <span class="s2">&quot;https://ypzju6vq.mirror.aliyuncs.com&quot;</span>,
 </pre></div>
 </div>
+<div class="section" id="section-1">
+<h2>安装</h2>
+<p>debian 安装, 参考: <a class="reference external" href="https://u.sb/debian-install-docker/">https://u.sb/debian-install-docker/</a></p>
+<div class="highlight"><pre><span></span>apt<span class="w"> </span>update
+<span class="c1"># apt upgrade -y</span>
+apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>vim<span class="w"> </span>wget<span class="w"> </span>gnupg<span class="w"> </span>dpkg<span class="w"> </span>apt-transport-https<span class="w"> </span>lsb-release<span class="w"> </span>ca-certificates
+
+<span class="c1"># 配置GPG 方式一</span>
+<span class="c1"># curl -sSL https://download.docker.com/linux/debian/gpg | gpg --dearmor &gt; /usr/share/keyrings/docker-ce.gpg</span>
+<span class="c1"># echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-ce.gpg] https://download.docker.com/linux/debian $(lsb_release -sc) stable&quot; &gt; /etc/apt/sources.list.d/docker.list</span>
+<span class="c1"># 配置GPG 方式二: 国内源</span>
+curl<span class="w"> </span>-sSL<span class="w"> </span>https://download.docker.com/linux/debian/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>&gt;<span class="w"> </span>/usr/share/keyrings/docker-ce.gpg
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/docker-ce.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian </span><span class="k">$(</span>lsb_release<span class="w"> </span>-sc<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/apt/sources.list.d/docker.list
+
+<span class="c1"># 安装</span>
+apt<span class="w"> </span>update
+apt<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-compose-plugin
+</pre></div>
+</div>
+<div class="section" id="section-2">
+<h2>最简单的安装</h2>
+<div class="highlight"><pre><span></span>add_docker<span class="o">(){</span>
+<span class="w">  </span><span class="c1"># 下载安装脚本</span>
+<span class="w">  </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://get.docker.com<span class="w"> </span>-o<span class="w"> </span>get-docker.sh
+
+<span class="w">  </span><span class="c1"># 执行安装</span>
+<span class="w">  </span>sudo<span class="w"> </span>sh<span class="w"> </span>get-docker.sh
+
+<span class="w">  </span><span class="c1"># 将当前用户添加到docker组（避免每次使用sudo）</span>
+<span class="w">  </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+
+<span class="w">  </span><span class="c1"># 重新登录或执行以下命令使分组生效</span>
+<span class="w">  </span>newgrp<span class="w"> </span>docker
+
+<span class="w">  </span><span class="c1"># 把原来的nginx停掉, 用docker的</span>
+<span class="w">  </span><span class="c1"># sudo service nginx stop</span>
+<span class="o">}</span>
+</pre></div>
+<p>内容</p>
+<!-- 文件可见 ``resources/code/get-docker.sh`` -->
+<!-- # ubuntu -->
+<!-- sudo apt-get update -->
+<!-- sudo apt-get install docker.io -->
+<!-- # debian -->
+<!-- sudo apt-get update -->
+<!-- sudo apt-get install docker-ce docker-ce-cli containerd.io -->
+<!-- # centos -->
+<!-- sudo yum install docker-ce docker-ce-cli containerd.io -->
+<!-- # 启动docker服务 -->
+<!-- sudo systemctl start docker -->
+<!-- # 设置开机启动 -->
+<!-- sudo systemctl enable docker -->
+</div>
 
 								</article>
 						</div>
@@ -201,6 +254,16 @@
     曾可用的docker镜像服务器
    </a>
   </li>
+  <li class="toc-h0">
+   <a class="" href="#section-1">
+    安装
+   </a>
+  </li>
+  <li class="toc-h0">
+   <a class="" href="#section-2">
+    最简单的安装
+   </a>
+  </li>
  </ul>
 </div>
 
@@ -226,27 +289,27 @@
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-copyfiles.html">copyfiles</a></h3>
-											<p><p class="first last">copyfiles</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-operating-system-linux-Linux-instruction-jenv.html">jenv</a></h3>
+											<p><p class="first last">jenv</p>
 </p>
 										</li>
 										<li>
-											<span class="date">Jun <strong>02</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-next-transpile-modules.html">next-transpile-modules</a></h3>
-											<p><p class="first last">next-transpile-modules</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-index.html">Java教程</a></h3>
+											<p><p class="first last">Java教程</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>28</strong></span>
-											<h3><a href="yq-docs-Chaotic-macOS-Win11-direct-connection.html">macOS网线直连PC-Win11</a></h3>
-											<p><p class="first last">macOS网线直连PC-Win11</p>
+											<span class="date">11 <strong>23</strong></span>
+											<h3><a href="yq-docs-rear-end-java-tutorial-multi-version-coexistence.html">Java多版本共存</a></h3>
+											<p><p class="first last">Java多版本共存</p>
 </p>
 										</li>
 										<li>
-											<span class="date">May <strong>25</strong></span>
-											<h3><a href="yq-docs-front-end-node-Three--party-library-anser.html">anser</a></h3>
-											<p><p class="first last">anser</p>
+											<span class="date">11 <strong>10</strong></span>
+											<h3><a href="yq-docs-rear-end-python-python-three--party-library-supervisor.html">supervisor</a></h3>
+											<p><p class="first last">supervisor</p>
 </p>
 										</li>
 									</ul>
